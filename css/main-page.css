@@ -336,6 +336,8 @@ body {
     }
 }
 
+
+
 /* Секция "Популярные товары" */
 
 .popular-products {
@@ -407,6 +409,9 @@ body {
     min-height: 610px;
 }
 
+.image-wrapper {
+    position: relative;
+}
 
 .product-desc {
     padding: 10px 0;
