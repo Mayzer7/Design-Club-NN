@@ -5,6 +5,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'SF Pro Display Ultralight';
+    src: url('../fonts/SF-Pro-Display-Ultralight.otf');
+    font-weight: 300;
+    font-style: normal;
+}
+
 html {
     box-sizing: border-box;
 }
@@ -51,13 +58,17 @@ header {
     padding: 40px 20px;
 }
 
-.main-page {
+/* Верхрняя секция главной страницы */
+
+.main-page-top {
     background-image: url('../images/main-page/background.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top center;
     min-height: 100vh;
 }
+
+/* Шапка */
 
 .header-container {
     display: flex;
@@ -149,3 +160,72 @@ header {
     gap: 10px; 
 }
 
+.contact-button:hover {
+    background-color: #AE9877;
+    color: #fff;
+}
+
+.under-header {
+    padding: 0 20px;
+}
+
+.under-header-container {
+    margin-top: 250px;
+    display: flex;
+    align-items: center;
+    gap: 410px;
+}
+
+.invite-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.invite-container h4 {
+    font-family: 'SF Pro Display Ultralight', sans-serif;
+    font-size: 32px;
+}
+
+.invite-button { 
+    position: relative;
+    display: inline-flex;
+    align-items: center; 
+    justify-content: center;
+    text-align: center;
+    padding: 14px 74px;
+    background-color: #AE9877;
+    cursor: pointer;
+    overflow: hidden;
+    border: none;
+    color: #fff; 
+    transition: all 0.3s ease;
+    gap: 10px; 
+}
+
+/* Заголовок */
+
+.title-container {
+    margin-top: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.title-container h1 {
+    font-family: 'SF Pro Display Ultralight', sans-serif;
+    font-size: 100px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.title-images {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.title-images img {
+    width: 76px;
+    height: 75px;
+}
