@@ -1,0 +1,151 @@
+@font-face {
+    font-family: 'SF Pro Display';
+    src: url('../fonts/SF-Pro-Display-Light.otf');
+    font-weight: 300;
+    font-style: normal;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+}
+
+body {
+    font-family: 'SF Pro Display', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: #EDE4D7;
+}
+
+header {
+    padding: 40px 20px;
+}
+
+.main-page {
+    background-image: url('../images/main-page/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    min-height: 100vh;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: center;
+}
+
+.logo {
+    width: 128px;
+    height: 97px;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.catalog-nav ul li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.catalog-nav a {
+    transition: color 0.3s ease;
+}
+
+.catalog-nav a:hover {
+    color: #AE9877;
+}
+
+.main-nav ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.main-nav a {
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: #AE9877;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    background: transparent;
+    min-width: 360px;
+    padding: 5px 0;
+    gap: 8px;
+}
+
+.search-bar input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #AE9877;
+    font-size: 18px;
+}
+
+.contact-header {
+    display: flex;
+    gap: 40px;
+}
+
+.contact-button {
+    margin-top: -15px;    
+    position: relative;
+    display: inline-flex;
+    align-items: center; 
+    justify-content: center;
+    text-align: center;
+    padding: 14px 20px;
+    background-color: transparent;
+    cursor: pointer;
+    overflow: hidden;
+    border: 1px solid white;
+    color: #EDE4D7; 
+    transition: all 0.3s ease;
+    gap: 10px; 
+}
+
