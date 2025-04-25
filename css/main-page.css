@@ -54,9 +54,7 @@ body {
     color: #EDE4D7;
 }
 
-header {
-    padding: 40px 20px;
-}
+
 
 /* Верхрняя секция главной страницы */
 
@@ -69,6 +67,10 @@ header {
 }
 
 /* Шапка */
+
+.header-top {
+    padding: 40px 20px;
+}
 
 .header-container {
     display: flex;
@@ -229,3 +231,108 @@ header {
     width: 76px;
     height: 75px;
 }
+
+
+/* Секция "Почему выбирают нас" */
+
+.why-choose-us {
+    padding: 100px 20px 200px 20px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display Ultralight', sans-serif;
+}
+
+.why-choose-us p {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.middle-title {
+    display: flex;
+    justify-content: center;
+}
+
+.title-group {
+    text-align: left;
+}
+
+.title-group h1 {
+    font-size: 70px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.title-group h4 {
+    text-align: left;
+}
+
+.why-choose-us-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 60px;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem 1rem 1rem 2rem;
+    max-width: 100%;
+    background-color: transparent;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    bottom: 30px;
+    left: 0;
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.card h2 {
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.card p {
+    font-weight: 600;
+    margin-bottom: 40px;
+    color: #EDE4D7;
+}
+
+.card img {
+    margin-top: 250px;
+    width: 288px;
+    height: 288px;
+}
+
+.why-choose-us-content .card:nth-child(1) img {
+    width: 288px;
+    height: 260px;
+}
+
+@media (min-width: 1400px) {
+    .why-choose-us-content .card:nth-child(1),
+    .why-choose-us-content .card:nth-child(3) {
+        transform: translateY(165px);
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .card p {
+        margin-bottom: 20px;
+    }
+
+    .title-group h1 {
+        font-size: 40px;
+    }
+
+    .title-group h4 {
+        font-size: 18px;
+    }
+}
+
