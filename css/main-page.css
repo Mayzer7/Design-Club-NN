@@ -336,3 +336,167 @@ body {
     }
 }
 
+
+
+/* Секция "Популярные товары" */
+
+.popular-products {
+    padding: 100px 20px 200px 20px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display Ultralight', sans-serif;
+}
+
+.middle-title {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.popular-products-title {
+    text-align: center;
+    flex-grow: 1;
+}
+
+.popular-products-title h1 {
+    font-size: 70px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.nav-arrows button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.product-cards {
+    margin-top: 70px;
+    display: flex;
+    flex-wrap: nowrap;            
+    gap: 20px;
+    margin-left: -120px;               
+}
+
+.product-card {
+    flex: 0 0 auto;             
+    max-width: 300px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.product-card p {
+    font-weight: 600;
+}
+
+.product-card-scope {
+    flex: 0 0 auto;             
+    max-width: 555px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.product-card-scope img {
+    width: 100%;
+    height: 100%;
+    min-width: 555px;
+    min-height: 610px;
+}
+
+
+.product-desc {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-desc h4 {
+    color: rgba(237, 228, 215, 0.4);
+}
+
+.open-all-catalog {
+    margin-top: 60px;
+    display: flex;
+    gap: 10px;
+}
+
+.open-all-catalog a {
+    font-weight: 600;
+    border-bottom: 1px solid #EDE4D7;
+    padding: 5px 0;
+}
+
+.badges {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px; 
+}
+
+.badge {
+    padding: 5px 10px;
+    background-color: #555D6F;
+    font-family: 'SF Pro Display', sans-serif;
+    color: #fff;
+    margin-top: 5px;
+    white-space: nowrap;
+}
+
+.badge.discount {
+    position: relative; 
+    top: unset;
+    right: unset;
+    background-color: #AE9877;
+}
+
+.badge.delivery {
+    display: flex;
+    align-items: center;
+    gap: 6px; 
+}
+
+.badge.delivery img {
+    width: 16px;
+    height: 16px;
+}
+
+@media (max-width: 1200px) {
+    .product-cards {
+        margin-left: -60px;
+    }
+}
+
+@media (max-width: 992px) {
+    .product-cards {
+        margin-left: -40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-cards {
+        margin-left: 0;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .product-card {
+        max-width: 100%;
+    }
+
+    .product-card-scope {
+        max-width: 100%;
+    }
+
+    .product-card-scope img {
+        min-width: 100%;
+        min-height: auto;
+    }
+}
