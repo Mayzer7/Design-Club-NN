@@ -346,13 +346,6 @@ body {
     font-family: 'SF Pro Display Ultralight', sans-serif;
 }
 
-.middle-title {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-}
-
 .popular-products-title {
     text-align: center;
     flex-grow: 1;
@@ -503,3 +496,69 @@ body {
         min-height: auto;
     }
 }
+
+
+/* Секция "Наши бренды" */
+
+.our-brands {
+    padding: 100px 20px 200px 20px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display Ultralight', sans-serif;
+}
+
+.title-our-brands {
+    font-size: 70px;
+    padding-left: 30%;
+    text-transform: uppercase;
+}
+
+.our-brands-content {
+    margin-top: 60px;
+}
+
+
+/* Секция "Популярные категории" */
+
+.popular-categories {
+    padding: 100px 20px 200px 20px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display Ultralight', sans-serif;
+}
+
+.title-p {
+    position: relative;
+    top: 30px;
+}
+
+
+.title-popular-categories {
+    font-size: 70px;
+    padding-left: 30%;
+    text-transform: uppercase;
+}
+
+.popular-categories-cards {
+    display: flex;
+    margin-top: 60px;
+    gap: 15px;
+}
+
+.popular-categories-card img {
+    width: auto;
+}
+
+.popular-categories-content > .popular-categories-cards:first-child {
+    justify-content: flex-end;
+}
+
+.popular-categories-card-desc {
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.popular-categories-card-desc p {
+    color: rgba(237, 228, 215, 0.4);
+}
+
+
