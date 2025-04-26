@@ -79,7 +79,7 @@
     </section>
 
     <section class="why-choose-us">
-        <p>О нас</p>
+        <p class="block-title">О нас</p>
 
         <header class="middle-title">
             <div class="title-group">
@@ -142,7 +142,7 @@
     
                         <p>Описание товара</p>
     
-                        <div class="product-desc">
+                        <div class="product-desc custom-desc">
                             <h4>Бренд</h4>
                             <h3>WaserKraft</h3>
                         </div>
@@ -165,7 +165,7 @@
     
                         <p>Описание товара</p>
     
-                        <div class="product-desc">
+                        <div class="product-desc custom-desc">
                             <h4>Бренд</h4>
                             <h3>WaserKraft</h3>
                         </div>
@@ -201,7 +201,7 @@
                         
                             <p>Описание товара</p>
                         
-                            <div class="product-desc">
+                            <div class="product-desc custom-desc">
                                 <h4>Бренд</h4>
                                 <h3>WaserKraft</h3>
                             </div>
@@ -230,7 +230,7 @@
     
                         <p>Описание товара</p>
     
-                        <div class="product-desc">
+                        <div class="product-desc custom-desc">
                             <h4>Бренд</h4>
                             <h3>WaserKraft</h3>
                         </div>
@@ -253,7 +253,7 @@
     
                         <p>Описание товара</p>
     
-                        <div class="product-desc">
+                        <div class="product-desc custom-desc">
                             <h4>Бренд</h4>
                             <h3>WaserKraft</h3>
                         </div>
@@ -276,7 +276,7 @@
     
                         <p>Описание товара</p>
     
-                        <div class="product-desc">
+                        <div class="product-desc custom-desc">
                             <h4>Бренд</h4>
                             <h3>WaserKraft</h3>
                         </div>
@@ -299,7 +299,7 @@
     
                         <p>Описание товара</p>
     
-                        <div class="product-desc">
+                        <div class="product-desc custom-desc">
                             <h4>Бренд</h4>
                             <h3>WaserKraft</h3>
                         </div>
@@ -320,7 +320,7 @@
     </section>
 
     <section class="our-brands">
-        <p>О нас</p>
+        <p class="block-title">О нас</p>
 
         <header>
             <h1 class="title-our-brands">Наши бренды</h1>
@@ -335,7 +335,7 @@
     </section>
 
     <section class="popular-categories">
-        <p class="title-p">Разделы</p>
+        <p class="block-title">Разделы</p>
 
         <header>
             <h1 class="title-popular-categories">Популярные категории</h1>
@@ -403,7 +403,7 @@
     </section>
 
     <section class="about-company">
-        <p class="title-p">О компании</p>
+        <p class="block-title">О компании</p>
 
         <header>
             <h1 class="about-company-title">Забудьте о тревогах<br> ваш ремонт и мебель -<br> наша забота</h1>
@@ -447,5 +447,59 @@
             </div>
         </main>
     </section>
+
+    <section class="get-request">
+        <p class="block-title">Оставить заявку</p>
+    
+        <header>
+            <h1 class="get-request-title">Запишитесь на<br> персональную консультацию</h1>
+        </header>
+    
+        <main class="get-request-content">
+            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A708e6fab04d33999be2dc6e8dea7cf73fd1ca5dee26e9111212d300012ab36d7&amp;source=constructor" width="337" height="381" frameborder="0"></iframe>
+    
+            <div class="get-request-container">
+                <div class="content-wrapper">
+                    <p>
+                        В нашем шоуруме вас встретит атмосфера тепла и уюта, а также<br>
+                        индивидуальный подход к каждому клиенту. Насладитесь чашечкой<br>
+                        ароматного чая, пока мы поможем вам создать пространство мечты!
+                    </p>
+    
+                    <form id="request-form" class="contact-form" onsubmit="return validateForm(event)">
+                        <div class="contact-input">
+                            <input type="text" id="name" name="name" placeholder="ВАШЕ ИМЯ">
+                            <span class="error" id="name-error"></span>
+                        </div>  
+                        
+                        <div class="contact-input">
+                            <input type="text" id="phone" name="phone" placeholder="ТЕЛЕФОН">
+                            <span class="error" id="phone-error"></span>
+                        </div>
+    
+                        <div class="accept-politics">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="accept" name="accept" />
+                                <div class="checkbox-img"></div>
+                            </label>
+
+                            <p>Согласен <span><a href="#">с политикой конфиденциальности и обработки персональных данных</a></span></p>
+                            
+                            <span class="error" id="accept-error"></span> <!-- Ошибка для чекбокса -->
+                        </div>
+
+                        <span class="error" id="accept-error"></span>
+    
+                        <button type="submit" class="get-request-button">
+                            ОСТАВИТЬ ЗАЯВКУ
+                            <img src="images/svg/contact.svg" alt="Связаться" class="contact-icon">
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <script src="js/main-page/form-validation.js"></script>
 </body>
 </html>

@@ -1,14 +1,28 @@
 @font-face {
     font-family: 'SF Pro Display';
     src: url('../fonts/SF-Pro-Display-Light.otf');
-    font-weight: 300;
+    font-weight: 900;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'SF Pro Display Ultralight';
     src: url('../fonts/SF-Pro-Display-Ultralight.otf');
-    font-weight: 300;
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Future New Light';
+    src: url('../fonts/FuturaNewLight.otf');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Future New Bold';
+    src: url('../fonts/FuturaNewLight.otf');
+    font-weight: 400;
     font-style: normal;
 }
 
@@ -215,7 +229,7 @@ body {
 }
 
 .title-container h1 {
-    font-family: 'SF Pro Display Ultralight', sans-serif;
+    font-family: 'Future New Light', sans-serif;
     font-size: 100px;
     font-weight: 600;
     text-transform: uppercase;
@@ -238,10 +252,10 @@ body {
 .why-choose-us {
     padding: 100px 20px 200px 20px;
     background-color: #151c28;
-    font-family: 'SF Pro Display Ultralight', sans-serif;
+    font-family: 'SF Pro Display', sans-serif;
 }
 
-.why-choose-us p {
+.block-title {
     color: rgba(255, 255, 255, 0.6);
 }
 
@@ -255,7 +269,8 @@ body {
 }
 
 .title-group h1 {
-    font-size: 70px;
+    font-family: 'Future New Light', sans-serif;
+    font-size: 60px;
     text-transform: uppercase;
     text-align: center;
     margin-bottom: 20px;
@@ -293,12 +308,12 @@ body {
 }
 
 .card h2 {
+    font-family: 'Future New Bold', sans-serif;
     text-transform: uppercase;
     margin-bottom: 20px;
 }
 
 .card p {
-    font-weight: 600;
     margin-bottom: 40px;
     color: #EDE4D7;
 }
@@ -343,16 +358,21 @@ body {
 .popular-products {
     padding: 100px 20px 200px 20px;
     background-color: #151c28;
-    font-family: 'SF Pro Display Ultralight', sans-serif;
+    font-family: 'SF Pro Display', sans-serif;
+}
+
+.popular-products p {
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .popular-products-title {
+    font-family: 'Future New Light', sans-serif;
     text-align: center;
     flex-grow: 1;
 }
 
 .popular-products-title h1 {
-    font-size: 70px;
+    font-size: 60px;
     text-transform: uppercase;
     text-align: center;
     margin-bottom: 20px;
@@ -382,8 +402,9 @@ body {
 }
 
 .product-card p {
-    font-weight: 600;
+    color: #EDE4D7;
 }
+
 
 .product-card-scope {
     flex: 0 0 auto;             
@@ -392,6 +413,10 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.product-card-scope p {
+    color: #EDE4D7;
 }
 
 
@@ -411,6 +436,10 @@ body {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     display: flex;
     justify-content: space-between;
+}
+
+.custom-desc {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .product-desc h4 {
@@ -440,7 +469,6 @@ body {
 .badge {
     padding: 5px 10px;
     background-color: #555D6F;
-    font-family: 'SF Pro Display', sans-serif;
     color: #fff;
     margin-top: 5px;
     white-space: nowrap;
@@ -503,12 +531,13 @@ body {
 .our-brands {
     padding: 100px 20px 200px 20px;
     background-color: #151c28;
-    font-family: 'SF Pro Display Ultralight', sans-serif;
+    font-family: 'SF Pro Display', sans-serif;
 }
 
 .title-our-brands {
-    font-size: 70px;
-    padding-left: 30%;
+    font-family: 'Future New Light', sans-serif;
+    font-size: 60px;
+    padding-left: 25%;
     text-transform: uppercase;
 }
 
@@ -522,7 +551,7 @@ body {
 .popular-categories {
     padding: 100px 20px 200px 20px;
     background-color: #151c28;
-    font-family: 'SF Pro Display Ultralight', sans-serif;
+    font-family: 'SF Pro Display', sans-serif;
 }
 
 .title-p {
@@ -532,8 +561,9 @@ body {
 
 
 .title-popular-categories {
-    font-size: 70px;
-    padding-left: 30%;
+    font-family: 'Future New Light', sans-serif;
+    font-size: 60px;
+    padding-left: 25%;
     text-transform: uppercase;
 }
 
@@ -567,12 +597,13 @@ body {
 .about-company {
     padding: 100px 20px 200px 20px;
     background-color: #151c28;
-    font-family: 'SF Pro Display Ultralight', sans-serif;
+    font-family: 'SF Pro Display', sans-serif;
 }
 
 .about-company-title {
+    font-family: 'Future New Light', sans-serif;
     font-size: 70px;
-    padding-left: 30%;
+    padding-left: 25%;
     text-transform: uppercase;
 }
 
@@ -581,7 +612,7 @@ body {
 }
 
 .about-company-container {
-    padding-left: 30%;
+    padding-left: 25%;
     display: flex;
     align-items: flex-start;
     gap: 40px;
@@ -605,5 +636,150 @@ body {
 
 .about-company-container img:last-child {
     margin-left: auto;
+}
+
+
+/* Секция "Запишитесь на персональную консультацию" */
+
+.get-request {
+    padding: 30px 20px 200px 20px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display', sans-serif;
+    background-image: url("../images/main-page/get-request-bg.png");
+    background-repeat: no-repeat;
+}
+
+.get-request-title {
+    font-family: 'Future New Light', sans-serif;
+    font-size: 70px;
+    padding-left: 25%;
+    text-transform: uppercase;
+}
+
+.get-request-content {
+    margin-top: 60px;
+    display: flex; 
+}
+
+.get-request-container {
+    padding-left: 7%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.content-wrapper form {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.contact-input {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    background: transparent;
+    padding: 5px 0;
+    gap: 8px;
+    width: 105%;
+}
+
+.contact-input input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #FFF;
+    font-size: 18px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.contact-input input::placeholder {
+    color: #555D6F;
+}
+
+.error {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    color: red;
+    font-size: 14px;
+    display: none;
+    margin-top: 5px;
+    padding-left: 5px;
+}
+
+.accept-politics {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.accept-politics p {
+    font-size: 14px;
+}
+
+.accept-politics p span {
+    color: #AE9877;
+    border-bottom: 1px solid #AE9877;
+}
+
+
+.get-request-button { 
+    font-size: 18px;
+    position: relative;
+    display: inline-flex;
+    align-items: center; 
+    justify-content: space-between;
+    text-align: center;
+    padding: 20px 20px;
+    background-color: #AE9877;
+    cursor: pointer;
+    overflow: hidden;
+    border: none;
+    color: #fff; 
+    transition: all 0.3s ease;
+    width: 105%;
+}
+
+
+.custom-checkbox {
+    position: relative;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+}
+
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkbox-img {
+    width: 25px;
+    height: 25px;
+    background-image: url('../images/svg/checkbox.svg');
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.3s ease; 
+}
+
+.custom-checkbox input:checked + .checkbox-img {
+    background-image: url('../images/svg/check-mark.svg');
 }
 
