@@ -562,3 +562,48 @@ body {
 }
 
 
+/* Секция "О компании" */
+
+.about-company {
+    padding: 100px 20px 200px 20px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display Ultralight', sans-serif;
+}
+
+.about-company-title {
+    font-size: 70px;
+    padding-left: 30%;
+    text-transform: uppercase;
+}
+
+.about-company-content {
+    margin-top: 60px;
+}
+
+.about-company-container {
+    padding-left: 30%;
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.about-company-desc {
+    display: flex;
+    flex-direction: column;
+}
+
+.about-company-subtitle {
+    font-size: 30px;
+    text-transform: uppercase;
+    padding-bottom: 140px;
+}
+
+.about-company-desc p {
+    padding: 10px 0;
+    white-space: nowrap;
+}
+
+.about-company-container img:last-child {
+    margin-left: auto;
+}
+
