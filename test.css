@@ -1,0 +1,131 @@
+
+
+/* Секция "Отзывы от покупателей" */
+
+
+.reviews {
+    padding: 5px 20px 0 20px;
+    background-color: #1D2535;
+    font-family: 'SF Pro Display Thin', sans-serif;  
+}
+
+.reviews-title {
+    font-family: 'Future New Light', sans-serif;
+    font-size: 70px;
+    text-transform: uppercase;
+}
+    
+.reviews-content {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.reviews-left {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+
+
+.reviews-middle {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10%;
+    gap: 40px;
+    position: relative; 
+}
+
+.reviews-middle h1 {
+    font-size: 70px;
+    font-family: 'Future New Light', sans-serif;
+    text-transform: uppercase;
+}
+
+.reviews-cards {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 20px;
+}
+
+.review-card {
+    position: relative;
+    min-width: 600px;
+    width: 100%;
+    min-height: 353px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-left: 1px solid rgba(255, 255, 255, 0.4);
+    border-right: 1px solid rgba(255, 255, 255, 0.4);
+    background-color: transparent;
+    
+    background-image:
+        linear-gradient(to right, 
+            rgba(255, 255, 255, 0.4) 0%, 
+            rgba(255, 255, 255, 0.4) 7%, 
+            transparent 7%, 
+            transparent 93%, 
+            rgba(255, 255, 255, 0.4) 93%, 
+            rgba(255, 255, 255, 0.4) 100%),
+        linear-gradient(to right, 
+            rgba(255, 255, 255, 0.4) 0%, 
+            rgba(255, 255, 255, 0.4) 7%, 
+            transparent 7%, 
+            transparent 93%, 
+            rgba(255, 255, 255, 0.4) 93%, 
+            rgba(255, 255, 255, 0.4) 100%);
+    background-repeat: no-repeat;
+    background-position: top, bottom;
+    background-size: 100% 1px;
+}
+
+.rating-number {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    gap: 10px;
+    border-left: 1px solid rgba(255, 255, 255, 0.4);
+    border-right: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+
+.rating-number p {
+    white-space: nowrap;
+}
+
+.rating-number h1 {
+    font-family: 'Future New Light', sans-serif;
+    font-size: 70px;
+}
+
+.review-link a {
+    font-size: 16px;
+    margin-right: 10px;
+    color: #BBB5AC;
+}
+
+.review-author {
+    padding-top: 20px;
+    font-family: 'Future New Light', sans-serif;
+    font-size: 34px;
+    text-transform: uppercase;
+}
+
+.review-text {
+    text-align: left;
+    max-width: 500px;
+}
+
+.reviews-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
