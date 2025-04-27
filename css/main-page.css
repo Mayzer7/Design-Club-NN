@@ -277,7 +277,7 @@ body {
 
 .title-group h1 {
     font-family: 'Future New Light', sans-serif;
-    font-size: 60px;
+    font-size: 76px;
     text-transform: uppercase;
     text-align: center;
     margin-bottom: 20px;
@@ -374,7 +374,7 @@ body {
 }
 
 .popular-products-title h1 {
-    font-size: 60px;
+    font-size: 76px;
     text-transform: uppercase;
     padding-left: 28%;
     margin-bottom: 20px;
@@ -538,7 +538,7 @@ body {
 
 .title-our-brands {
     font-family: 'Future New Light', sans-serif;
-    font-size: 60px;
+    font-size: 76px;
     padding-left: 25%;
     text-transform: uppercase;
 }
@@ -564,7 +564,7 @@ body {
 
 .title-popular-categories {
     font-family: 'Future New Light', sans-serif;
-    font-size: 60px;
+    font-size: 76px;
     padding-left: 25%;
     text-transform: uppercase;
 }
@@ -604,7 +604,7 @@ body {
 
 .about-company-title {
     font-family: 'Future New Light', sans-serif;
-    font-size: 60px;
+    font-size: 76px;
     padding-left: 25%;
     text-transform: uppercase;
 }
@@ -655,7 +655,7 @@ body {
 
 .get-request-title {
     font-family: 'Future New Light', sans-serif;
-    font-size: 60px;
+    font-size: 76px;
     padding-left: 25%;
     text-transform: uppercase;
 }
@@ -798,7 +798,7 @@ body {
 
 .projects-title {
     font-family: 'Future New Light', sans-serif;
-    font-size: 60px;
+    font-size: 76px;
     padding-left: 25%;
     text-transform: uppercase;
 }
@@ -895,7 +895,7 @@ body {
 
 .reviews-title h1 {
     font-family: 'Future New Light', sans-serif;
-    font-size: 60px;
+    font-size: 76px;
     text-transform: uppercase;
     margin-bottom: 20px;
 } 
@@ -1047,5 +1047,56 @@ body {
     background-color: transparent;
     border: none;
     cursor: pointer;
+}
+
+
+/* Секция "Связаться с нами" */
+
+.get-contact {
+    padding: 150px 0 100px 20px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display Thin', sans-serif;  
+}
+
+.get-contact-container {
+    display: flex;
+    justify-content: space-between;
+    height: 524px;
+}
+
+.left-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.left-side img {
+    width: 56px;
+    height: 56px;
+}
+
+.img-side img {
+    margin-top: -70px;
+}
+
+.main-side-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+    padding-left: 10%;
+}
+
+.main-side-wrapper h1 {
+    font-family: 'Future New Light', sans-serif;
+    font-size: 76px;
+    white-space: nowrap;
+}
+
+.main-side-wrapper form {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
 }
 
