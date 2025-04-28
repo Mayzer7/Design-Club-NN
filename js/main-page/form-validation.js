@@ -43,3 +43,59 @@ function validateForm(event) {
 // Привязка события к кнопке отправки
 const form = document.getElementById('request-form');
 form.addEventListener('submit', validateForm);
+
+
+// Переключение карточек товара через стрелочки
+const wrapper = document.getElementById('productCards');
+const cards  = Array.from(wrapper.querySelectorAll('.product-card'));
+const scopeContainer = document.querySelector('.product-card-scope');
+const leftArrow  = document.getElementById('left-arrow');
+const rightArrow = document.getElementById('right-arrow');
+        
+const cardGap = 20; 
+let cardWidth = cards[0].getBoundingClientRect().width;
+const step = cardWidth + cardGap;
+        
+// Индекс карточки, которая сейчас в scope
+let activeIndex = 0;
+        
+// Функция обновления содержимого scope-карты
+function updateScope(idx) {
+    const srcCard = cards[idx];
+    // клонируем всё содержимое .product-card внутрь .product-card-scope
+    scopeContainer.innerHTML = '';
+    const clone = srcCard.cloneNode(true);
+    // у клона убираем класс .product-card (и переназначим класс scope)
+    clone.classList.remove('product-card');
+    clone.classList.add('product-card-scope');
+    scopeContainer.appendChild(clone);
+}
+        
+// Функция прокрутки и обновления
+function moveTo(idx) {
+    // сдвигаем обёртку: так, чтобы выбранная карточка встала
+    const offset = (idx - 2) * step;
+    wrapper.style.transition = 'transform 0.5s ease';
+
+    updateScope(idx);
+}
+    
+// Навешиваем обработчики
+rightArrow.addEventListener('click', () => {
+if (activeIndex < cards.length - 1) {
+    activeIndex++;
+    moveTo(activeIndex);
+    }
+});
+    
+leftArrow.addEventListener('click', () => {
+    if (activeIndex > 0) {
+        activeIndex--;
+        moveTo(activeIndex);
+    }
+});
+    
+// Инициализируем видимую scope-карту
+moveTo(activeIndex);
+
+
