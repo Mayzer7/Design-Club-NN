@@ -470,28 +470,23 @@
                         ароматного чая, пока мы поможем вам создать пространство мечты!
                     </p>
     
-                    <form id="request-form" class="contact-form" onsubmit="return validateForm(event)">
+                    <form id="contact-form-1" class="contact-form" onsubmit="return validateForm(event, 'contact-form-1')">
                         <div class="contact-input">
-                            <input type="text" id="name" name="name" placeholder="ВАШЕ ИМЯ">
-                            <span class="error" id="name-error"></span>
+                            <input type="text" name="name" placeholder="ВАШЕ ИМЯ">
+                            <span class="error-contact"></span>
                         </div>  
-                        
                         <div class="contact-input">
-                            <input type="text" id="phone" name="phone" placeholder="ТЕЛЕФОН">
-                            <span class="error" id="phone-error"></span>
+                            <input type="text" name="phone" placeholder="ТЕЛЕФОН">
+                            <span class="error-contact"></span>
                         </div>
-    
                         <div class="accept-politics">
                             <label class="custom-checkbox">
-                                <input type="checkbox" id="accept" name="accept" />
+                                <input type="checkbox" name="accept" />
                                 <div class="checkbox-img"></div>
                             </label>
-
                             <p>Согласен <span><a href="#">с политикой конфиденциальности и обработки персональных данных</a></span></p>
-                            
-                            <span class="error" id="accept-error"></span>
+                            <span class="error-contact"></span>
                         </div>
-    
                         <button type="submit" class="get-request-button">
                             ОСТАВИТЬ ЗАЯВКУ
                             <img src="images/svg/contact.svg" alt="Связаться" class="contact-icon">
@@ -632,8 +627,8 @@
                 <h1 class="hide">Отзывы от покупателей</h1>
             </div>
             <div class="nav-arrows-reviews">
-                <button id="left-arrow"><img src="images/svg/left-arrow.svg" alt="Стерлка влево"></button>
-                <button id="right-arrow"><img src="images/svg/right-arrow.svg" alt="Стерлка вправо"></button>
+                <button id="left-arrow-review"><img src="images/svg/left-arrow.svg" alt="Стерлка влево"></button>
+                <button id="right-arrow-review"><img src="images/svg/right-arrow.svg" alt="Стерлка вправо"></button>
             </div>
         </header>
 
@@ -744,28 +739,23 @@
                             ароматного чая, пока мы поможем вам создать пространство мечты!
                         </p>
         
-                        <form id="request-form" class="contact-form" onsubmit="return validateForm(event)">
+                        <form id="contact-form-2" class="contact-form" onsubmit="return validateForm(event, 'contact-form-2')">
                             <div class="contact-input">
-                                <input type="text" id="name" name="name" placeholder="ВАШЕ ИМЯ">
-                                <span class="error" id="name-error"></span>
+                                <input type="text" name="name" placeholder="ВАШЕ ИМЯ">
+                                <span class="error-contact"></span>
                             </div>  
-                            
                             <div class="contact-input">
-                                <input type="text" id="phone" name="phone" placeholder="ТЕЛЕФОН">
-                                <span class="error" id="phone-error"></span>
+                                <input type="text" name="phone" placeholder="ТЕЛЕФОН">
+                                <span class="error-contact"></span>
                             </div>
-        
                             <div class="accept-politics">
                                 <label class="custom-checkbox">
-                                    <input type="checkbox" id="accept" name="accept" />
+                                    <input type="checkbox" name="accept" />
                                     <div class="checkbox-img"></div>
                                 </label>
-    
                                 <p>Согласен <span><a href="#">с политикой конфиденциальности и обработки персональных данных</a></span></p>
-                                
-                                <span class="error" id="accept-error"></span>
+                                <span class="error-contact"></span>
                             </div>
-        
                             <button type="submit" class="get-request-button">
                                 ОСТАВИТЬ ЗАЯВКУ
                                 <img src="images/svg/contact.svg" alt="Связаться" class="contact-icon">
