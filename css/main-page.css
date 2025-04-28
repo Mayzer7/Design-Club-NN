@@ -1131,3 +1131,80 @@ body {
 .opacity {
     opacity: 0;
 }
+
+
+/* Footer */
+
+.footer {
+    padding: 100px 20px 20px 20px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300; 
+}
+
+.footer-container {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-logo {
+    width: 178px;
+    height: 135px;
+}
+
+.footer-navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-navigation h1 {
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    font-size: 24px;
+}
+
+.footer-navigation ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-transform: uppercase;
+}
+
+.footer-navigation ul li a {
+    transition: color 0.3s ease;
+}
+
+.footer-navigation ul li a:hover {
+    color: #AE9877;
+}
+
+.footer-address p {
+    margin-bottom: 5px;
+    color: rgba(237, 228, 215, 0.7);
+}
+
+.footer-address h1 {
+    font-size: 38px;
+    margin-bottom: 40px;
+    font-family: 'SF Pro Display Thin', sans-serif; 
+    font-weight: 600;
+}
+
+.footer-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.footer-icon {
+    height: 36px;
+    width: 36px;
+}
+
+
+
+
+
+
+
