@@ -644,7 +644,7 @@ body {
 /* Секция "Запишитесь на персональную консультацию" */
 
 .get-request {
-    padding: 40px 20px 90px 20px;
+    padding: 60px 20px 90px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display', sans-serif;
     background-image: url("../images/main-page/get-request-bg.png");
@@ -653,6 +653,7 @@ body {
     background-position: center right;
 }
 
+
 .get-request-title {
     font-family: 'Future New Light', sans-serif;
     font-size: 76px;
@@ -660,9 +661,19 @@ body {
     text-transform: uppercase;
 }
 
+.get-request-title-test {
+    font-family: 'Future New Light', sans-serif;
+    font-size: 76px;
+    text-transform: uppercase;
+}
+
 .get-request-content {
     margin-top: 60px;
     display: flex; 
+}
+
+.get-request-content iframe {
+    margin-top: 120px;
 }
 
 .get-request-container {
@@ -677,6 +688,7 @@ body {
     flex-direction: column;
     align-items: flex-start;
     gap: 40px;
+    margin-top: -90px;
 }
 
 .content-wrapper form {
@@ -786,6 +798,12 @@ body {
     background-image: url('../images/svg/check-mark.svg');
 }
 
+
+@media (max-width: 1660px) {
+    .get-request-content iframe {
+        margin-top: 210px;
+    }
+}
 
 
 /* Секция "Проекты, реализованные совместно с нами" */
@@ -961,7 +979,7 @@ body {
     display: flex;
     flex-direction: column;
     padding-left: 10%;
-    margin-top: -150px;
+    margin-top: -170px;
 }
 
 .prediction-cards header {
@@ -1049,13 +1067,23 @@ body {
     cursor: pointer;
 }
 
+@media (max-width: 1774px) {
+    .prediction-cards {
+        padding-left: 4%;
+    }
+}
+
 
 /* Секция "Связаться с нами" */
 
 .get-contact {
     padding: 150px 0 100px 20px;
     background-color: #151c28;
-    font-family: 'SF Pro Display Thin', sans-serif;  
+    font-family: 'SF Pro Display Thin', sans-serif; 
+    background-image: url("../images/main-page/form-contact-us.png");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center right; 
 }
 
 .get-contact-container {
@@ -1100,3 +1128,6 @@ body {
     gap: 35px;
 }
 
+.opacity {
+    opacity: 0;
+}
