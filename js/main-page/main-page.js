@@ -184,6 +184,24 @@ searchInput.addEventListener('input', function () {
 });
 
 
+underHeader.addEventListener('click', function () {
+    // Удаляем активность каталога, если он открыт
+    if (isCatalogActive) {
+        openCatalog.parentElement.classList.remove('active');
+        isCatalogActive = false;
+        menuNavigation.style.display = 'none';
+        openCatalog.style.color = '';
+    }
+
+    // Сбрасываем фон и стили
+    header.style.backgroundColor = 'transparent';
+    searchItems.classList.remove('show');
+    underHeaderContainer.style.marginTop = '250px';
+    underHeader.style.filter = 'none';
+    underHeader.style.backdropFilter = 'none';
+    searchInput.value = '';
+});
+
 // Нажатие на кнопку каталог в хедере
 
 const menuNavigation = document.querySelector('.menu-navigation');
