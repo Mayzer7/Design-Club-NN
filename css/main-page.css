@@ -1233,8 +1233,9 @@ body {
 
 .footer-container {
     padding-top: 20px;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 2fr auto; 
+    gap: 40px;
 }
 
 .footer-logo {
@@ -1297,8 +1298,10 @@ body {
 }
 
 .footer-copyright {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 0.9fr 1.5fr 1fr auto;
+    gap: 10px;
+    padding: 20px 0;
 }
 
 .footer-copyright a {
