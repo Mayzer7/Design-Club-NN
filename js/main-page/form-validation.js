@@ -142,3 +142,35 @@ rightArrowReview.addEventListener('click', () => { // <-- исправлено
 function updateTransform() {
     cardsContainer.style.transform = `translateX(${-cardWidthReview * currentIndexReview}px)`; // <-- исправлено
 }
+
+
+
+
+const searchInput = document.getElementById('search-input');
+const header = document.querySelector('.header-top');
+const searchItems = document.querySelector('.search-items');
+const underHeaderContainer = document.querySelector('.under-header-container');
+const underHeader = document.querySelector('.under-header');
+
+// Обработчик ввода в поле поиска
+searchInput.addEventListener('input', function () {
+    if (searchInput.value.trim() !== '') {
+        // Меняем фон header на синий
+        header.style.backgroundColor = '#151c28'; // синий цвет
+
+        // Показываем элементы с плавным переходом
+        searchItems.classList.add('show');
+        underHeaderContainer.style.marginTop = '0px';
+        underHeader.style.filter = 'blur(5px)';
+        underHeader.style.backdropFilter = 'blur(5px)';
+    } else {
+        // Сбрасываем фон header, если поиск пуст
+        header.style.backgroundColor = 'transparent';
+
+        // Скрываем элементы с плавным переходом
+        searchItems.classList.remove('show');
+        underHeaderContainer.style.marginTop = '250px';
+        underHeader.style.filter = 'none';
+        underHeader.style.backdropFilter = 'none';
+    }
+});
