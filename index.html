@@ -18,8 +18,11 @@
                     <nav class="catalog-nav">
                         <ul>
                             <li>
-                                <a href="#">КАТАЛОГ</a>
-                                <img src="images/svg/down-arrow.svg" alt="Стрелка вниз" class="arrow-icon">
+                                <a class="open-catalog" href="#">КАТАЛОГ</a>
+                                
+                                <svg class="down-arrow" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
+                                </svg>
                             </li>
                         </ul>
                     </nav>
@@ -43,36 +46,36 @@
 
                     <div class="search-items">
                         <div class="search-item">
-                            <img src="images/main-page/product-card-crane.png" alt="">
+                            <a href="#"><img src="images/main-page/product-card-crane.png" alt=""></a>
                         
                             <div class="search-item-info">
-                                <p>Раковина Ornella</p>
+                                <a href="#">Раковина Ornella</a>
 
-                                <p>27 000 ₽</p>
+                                <a href="#">27 000 ₽</a>
                             </div>
                         </div>
 
                         <hr class="line">
 
                         <div class="search-item">
-                            <img src="images/main-page/product-card-crane.png" alt="">
+                            <a href="#"><img src="images/main-page/product-card-crane.png" alt=""></a>
                         
                             <div class="search-item-info">
-                                <p>Раковина Ornella</p>
+                                <a href="#">Раковина Ornella</a>
 
-                                <p>27 000 ₽</p>
+                                <a href="#">27 000 ₽</a>
                             </div>
                         </div>
 
                         <hr class="line">
 
                         <div class="search-item">
-                            <img src="images/main-page/product-card-crane.png" alt="">
+                            <a href="#"><img src="images/main-page/product-card-crane.png" alt=""></a>
                         
                             <div class="search-item-info">
-                                <p>Раковина Ornella</p>
+                                <a href="#">Раковина Ornella</a>
 
-                                <p>27 000 ₽</p>
+                                <a href="#">27 000 ₽</a>
                             </div>
                         </div>
 
@@ -100,6 +103,115 @@
                 </div>
             </div>
         </header>
+
+        <div class="menu-navigation">
+            <hr class="line">
+            <div class="menu-navigation-container">
+
+                <div class="left-menu">
+                    <nav>
+                      <ul>
+                        <!-- Меню Сантехника -->
+                        <li class="menu-item-plumbing">
+                          <a href="#" class="menu-toggle-plumbing">
+                            Сантехника
+                            <svg class="menu-plumbing-arrow" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
+                            </svg>     
+                          </a>
+                          <ul class="submenu-plumbing">
+                            <li><a href="#">Инсталляции и клавиши</a></li>
+                            <li><a href="#">Унитазы и биде</a></li>
+                            <li><a href="#">Раковины</a></li>
+                            <li><a href="#">Биде</a></li>
+                            
+                            <li class="submenu-items">
+                                <div class="submenu-item">
+                                    <a href="#" class="shower-enclosures-and-pallets">
+                                        Душевые ограждения и поддоны
+                                    </a>
+                                    
+                                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                            </li>
+
+                            <li class="submenu-items">
+                                <div class="submenu-item">
+                                    <a href="#" class="plumbing">
+                                        Смесители
+                                    </a>
+                                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                            </li>
+
+                            <li class="submenu-items">
+                                <div class="submenu-item">
+                                    <a href="#" class="shower-program">
+                                        Душевая программа
+                                    </a>
+                                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                            </li>
+
+                            <li class="submenu-items">
+                                <div class="submenu-item">
+                                    <a href="#" class="plumbing">
+                                        Смесители
+                                    </a>
+                                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                            </li>
+
+                            <li><a href="#">Аксессуары и декор</a></li>
+                            <li><a href="#">Дополнительные комплектующие</a></li>
+                          </ul>
+                        </li>
+                      
+                        <!-- Меню Мебель -->
+                        <li class="menu-item-furniture">
+                            <a href="#" class="menu-toggle-furniture">
+                                Мебель
+                                <svg class="menu-plumbing-arrow" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
+                                </svg>     
+                              </a>
+                          <ul class="submenu-furniture">
+                            <li><a href="#">Шкафы и стеллажи</a></li>
+                            <li><a href="#">Тумбы и комоды</a></li>
+                            <li><a href="#">Кровати</a></li>
+                            <li><a href="#">Столы и стулья</a></li>
+                            <li><a href="#">Диваны</a></li>
+                            <li><a href="#">Мебель для ванной</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </nav>
+                </div>
+
+                <div class="right-menu">
+                    <div class="right-menu-content">
+                        <a href="#">Душевые уголки, двери и перегородки</a>
+                        <a href="#">Поддоны</a>
+                        <a href="#">Шторки для ванны</a>
+                        <div class="all-categories-link">
+                            <a href="#">Все товары категории</a>
+                            
+                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
+                            </svg>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <main class="under-header">
             <div class="under-header-container">

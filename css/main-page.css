@@ -53,6 +53,11 @@ html, body {
 a {
     color: inherit;
     text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #AE9877;
 }
 
 ul {
@@ -87,11 +92,11 @@ body {
     min-height: 100vh;
 }
 
+
 /* Шапка */
 
 .header-top {
     padding: 40px 20px;
-    transition: background-color 0.5s ease; /* Плавное изменение фона */
 }
 
 .header-container {
@@ -111,6 +116,154 @@ body {
     justify-content: center;
     gap: 40px;
 }
+
+
+/* Ховеры и анимации для стрелок */
+
+.down-arrow {
+    transition: transform 0.3s ease;
+}
+
+.menu-plumbing-arrow {
+    transition: transform 0.3s ease;
+}
+
+li.active .down-arrow {
+    transform: rotate(180deg);
+    color: #AE9877;
+}
+
+li.active .menu-plumbing-arrow {
+    transform: rotate(180deg);
+    color: #AE9877;
+}
+
+.open-catalog:hover + .down-arrow {
+    color: #D4B28C;
+}
+
+.menu-toggle-plumbing:hover + .menu-plumbing-arrow {
+    color: #D4B28C;
+}
+
+.menu-item.active .menu-plumbing-arrow  {
+    transform: rotate(180deg);
+    color: #AE9877;
+}
+
+.menu-item.active .menu-toggle-plumbing {
+    color: #AE9877;
+}
+
+
+/* Всплывающее меню при нажатии на Каталог */
+
+.menu-toggle-furniture,
+.menu-toggle-plumbing {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 26px;
+    margin-top: 20px;
+    color: #EDE4D7;
+    transition: color 0.3s ease;
+}
+  
+.menu-arrow {
+    transition: stroke 0.3s ease;
+}
+
+.menu-toggle-furniture:hover,
+.menu-toggle-plumbing:hover {
+    color: #AE9877;
+}
+
+.menu-navigation {
+    position: relative;
+    z-index: 5;
+    display: none;
+    padding: 20px;
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 900;
+    transition: background-color 0.5s ease;
+}
+
+.menu-navigation-container {
+    display: flex;
+}
+
+.left-menu {
+    margin-right: 100px;
+}
+
+.left-menu ul li a {
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300;
+}
+
+.submenu-furniture {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+}
+
+.submenu-plumbing {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+}
+
+.submenu-content {
+    display: none;
+}
+
+.submenu-item {
+    display: flex;
+    align-items: center;
+}
+
+.submenu-item svg {
+    margin-top: 4px;
+}
+
+.right-menu {
+    position: relative;
+    top: -9px;
+    padding: 26px;
+    border-left: 1px solid rgba(255, 255, 255, 0.4);   
+}
+
+.right-menu-content {
+    margin-top: 30px;
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.right-menu-content a {
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300;
+}
+
+
+.all-categories-link {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.all-categories-link a {
+    font-size: 20px;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 900;
+}
+
+.all-categories-link svg {
+    margin-top: 4px;
+}
+
 
 .catalog-nav ul li {
     display: flex;
@@ -151,18 +304,17 @@ body {
 .search-items {
     display: flex;
     opacity: 0;
-    max-height: 0; /* Начальная высота 0 */
+    max-height: 0; 
     overflow: hidden;
     flex-direction: column;
     gap: 5px;
     margin-top: 30px;
-    transition: opacity 1s ease, max-height 1s ease; /* Плавное изменение opacity и max-height */
+    transition: opacity 1s ease, max-height 1s ease;
 }
 
-/* Когда элемент становится видимым */
 .search-items.show {
     opacity: 1;
-    max-height: 500px; /* Установите достаточное значение для max-height, чтобы вместить все элементы */
+    max-height: 500px;
 }
 
 .search-item {
@@ -176,6 +328,11 @@ body {
     display: flex;
     flex-direction: column;
     gap: 8px;
+}
+
+.search-item-info a{
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300;
 }
 
 .all-result-link {
@@ -252,7 +409,13 @@ body {
     color: #fff;
 }
 
+
+
+
+
 .under-header {
+    position: relative;
+    z-index: 2;
     padding: 0 20px;
     transition: filter 0.5s ease, backdrop-filter 0.5s ease;
 }
@@ -1137,7 +1300,7 @@ body {
     gap: 20px;
     overflow-x: hidden;
     padding-bottom: 20px;
-    transition: transform 0.5s ease; /* плавная анимация сдвига */
+    transition: transform 0.5s ease; 
 }
 
 .review-card {
@@ -1198,7 +1361,6 @@ body {
 }
 
 .hide {
-    /* opacity: 0; */
     display: none;
 }
 
@@ -1369,7 +1531,6 @@ body {
 .footer-copyright a:hover {
     color: #AE9877;
 }
-
 
 
 
