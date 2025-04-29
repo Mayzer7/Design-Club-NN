@@ -166,6 +166,14 @@ body {
     gap: 40px;
 }
 
+.contact-header a {
+    transition: color 0.3s ease;
+}
+
+.contact-header a:hover {
+    color: #AE9877;
+}
+
 .contact-button {
     margin-top: -15px;    
     position: relative;
@@ -260,6 +268,11 @@ body {
     padding: 100px 20px 200px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display', sans-serif;
+}
+
+.why-up-title {
+    position: relative;
+    top: 30px;
 }
 
 .block-title {
@@ -364,8 +377,9 @@ body {
     font-family: 'SF Pro Display', sans-serif;
 }
 
-.popular-products p {
-    color: rgba(255, 255, 255, 0.6);
+.popular-up-title {
+    position: relative;
+    top: 30px;
 }
 
 .popular-products-title {
@@ -546,6 +560,11 @@ body {
     font-family: 'SF Pro Display', sans-serif;
 }
 
+.our-up-title {
+    position: relative;
+    top: 30px;
+}
+
 .title-our-brands {
     font-family: 'Future New Light', sans-serif;
     font-size: 76px;
@@ -605,6 +624,11 @@ body {
     padding: 50px 20px 200px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display', sans-serif;
+}
+
+.popular-up-title {
+    position: relative;
+    top: 30px;
 }
 
 .title-p {
@@ -774,24 +798,15 @@ body {
     color: #555D6F;
 }
 
-.error {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    color: red;
-    font-size: 14px;
-    display: none;
-    margin-top: 5px;
-    padding-left: 5px;
-}
+
 
 .error-contact {
+    font-family: 'SF Pro Display Thin', sans-serif; 
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    color: red;
+    color: #EB5151;
     font-size: 14px;
     display: none;
     margin-top: 5px;
@@ -875,6 +890,11 @@ body {
     padding: 200px 20px 300px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;  
+}
+
+.projects-up-title {
+    position: relative;
+    top: 30px;
 }
 
 .projects-title {
@@ -968,6 +988,11 @@ body {
     padding: 130px 20px 100px 20px;
     background-color: #1D2535;
     font-family: 'SF Pro Display Thin', sans-serif;  
+}
+
+.reviews-up-title {
+    position: relative;
+    top: -30px;
 }
 
 .reviews-title{
@@ -1227,6 +1252,11 @@ body {
     padding-bottom: 10px;
     text-transform: uppercase;
     font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.footer-navigation h1:hover {
+    color: #AE9877;
 }
 
 .footer-navigation ul {
@@ -1266,8 +1296,18 @@ body {
     width: 36px;
 }
 
+.footer-copyright {
+    display: flex;
+    justify-content: space-between;
+}
 
+.footer-copyright a {
+    transition: color 0.3s ease;
+}
 
+.footer-copyright a:hover {
+    color: #AE9877;
+}
 
 
 
