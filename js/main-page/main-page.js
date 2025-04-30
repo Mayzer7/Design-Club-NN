@@ -144,12 +144,7 @@ function updateTransform() {
 }
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    const header = document.querySelector('.header-top');
-    if (header) {
-      header.style.backgroundColor = '#151c28';
-    }
-});
+
 
 
 // Поиск в хедере
@@ -437,10 +432,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!header) return;
   
     if (initialScrollTop === 0) {
-      console.log('ДАА');
-      header.style.backgroundColor = 'transparent'; // или 'transparent' — выбери нужное
+      header.style.backgroundColor = 'transparent';
     } else {
-      header.style.backgroundColor = '#151c28';
+      header.style.display = 'none';
     }
   });
 
@@ -476,6 +470,7 @@ window.addEventListener('scroll', () => {
     openCatalog.style.color = '';
     
   } else if (scrollDelta < 0) {
+    header.style.display = 'block';
     // Скролл вверх
     header.classList.remove('header-hidden');
     header.classList.add('header-scrolled-up');
