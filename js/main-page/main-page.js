@@ -144,6 +144,13 @@ function updateTransform() {
 }
 
 
+document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('.header-top');
+    if (header) {
+      header.style.backgroundColor = '#151c28';
+    }
+});
+
 
 // Поиск в хедере
 

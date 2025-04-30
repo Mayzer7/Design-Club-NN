@@ -44,6 +44,62 @@ function validateForm(event, formId) {
     }
 }
 
+// Переключение карточек товара через стрелочки
+const wrapper = document.getElementById('productCards');
+const cards  = Array.from(wrapper.querySelectorAll('.product-card'));
+const scopeContainer = document.querySelector('.product-card-scope');
+const leftArrow  = document.getElementById('left-arrow');
+const rightArrow = document.getElementById('right-arrow');
+        
+const cardGap = 20; 
+let cardWidth = cards[0].getBoundingClientRect().width;
+const step = cardWidth + cardGap;
+        
+// Индекс карточки, которая сейчас в scope
+let activeIndex = 0;
+        
+// Функция обновления содержимого scope-карты
+function updateScope(idx) {
+    const srcCard = cards[idx];
+    // клонируем всё содержимое .product-card внутрь .product-card-scope
+    scopeContainer.innerHTML = '';
+    const clone = srcCard.cloneNode(true);
+    // у клона убираем класс .product-card (и переназначим класс scope)
+    clone.classList.remove('product-card');
+    clone.classList.add('product-card-scope');
+    scopeContainer.appendChild(clone);
+}
+        
+// Функция прокрутки и обновления
+function moveTo(idx) {
+    // сдвигаем обёртку: так, чтобы выбранная карточка встала
+    const offset = (idx - 2) * step;
+    wrapper.style.transition = 'transform 0.5s ease';
+
+    updateScope(idx);
+}
+    
+// Навешиваем обработчики
+rightArrow.addEventListener('click', () => {
+if (activeIndex < cards.length - 1) {
+    activeIndex++;
+    moveTo(activeIndex);
+    }
+});
+    
+leftArrow.addEventListener('click', () => {
+    if (activeIndex > 0) {
+        activeIndex--;
+        moveTo(activeIndex);
+    }
+});
+    
+// Инициализируем видимую scope-карту
+moveTo(activeIndex);
+
+
+
+
 
 // Секция "Наши Отзывы от покупателей"
 
@@ -101,54 +157,87 @@ let isCatalogActive = false;
 // Обработчик ввода в поле поиска
 searchInput.addEventListener('input', function () {
     if (searchInput.value.trim() !== '') {
+        menuNavigation.style.marginTop = '430px';
+        underHeader.style.filter = 'blur(5px)';
+
+        // Накидываем blur на все контейнеры
+        blurContainers.forEach(container => {
+            container.style.filter = 'blur(5px)';
+        });
+
+        // Расширяем background color
+        header.style.paddingBottom = '270px';
         // Меняем фон header на синий
         header.style.backgroundColor = '#151c28'; // синий цвет
-
         // Показываем элементы с плавным переходом
         searchItems.classList.add('show');
-        underHeaderContainer.style.marginTop = '0px';
-        underHeader.style.filter = 'blur(5px)';
-        underHeader.style.backdropFilter = 'blur(5px)';
     } else if (!isCatalogActive) {
+        menuNavigation.style.marginTop = '200px';
         // Сбрасываем фон header, если поиск пуст
         header.style.backgroundColor = 'transparent';
 
+        header.style.paddingBottom = '40px';
+
         // Скрываем элементы с плавным переходом
         searchItems.classList.remove('show');
-        underHeaderContainer.style.marginTop = '250px';
         underHeader.style.filter = 'none';
-        underHeader.style.backdropFilter = 'none';
+
+        // Сбрасываем blur, если поле поиска пустое
+        blurContainers.forEach(container => {
+            container.style.filter = '';
+        });
     } else {
+        menuNavigation.style.marginTop = '200px';
         // Скрываем элементы с плавным переходом
         searchItems.classList.remove('show');
-        underHeaderContainer.style.marginTop = '0px';
+        header.style.transition = 'padding-bottom 0.5s ease';
+        header.style.paddingBottom = '40px';
         underHeader.style.filter = 'blur(5px)';
-        underHeader.style.backdropFilter = 'blur(5px)';
     }
 });
 
 
 
 
-// // Клик во вне
-// underHeader.addEventListener('click', function () {
-//     // Удаляем активность каталога, если он открыт
-//     if (isCatalogActive) {
-//         openCatalog.parentElement.classList.remove('active');
-//         isCatalogActive = false;
-//         menuNavigation.style.display = 'none';
-//         openCatalog.style.color = '';
-//     }
 
-//     // Сбрасываем фон и стили
-//     header.style.backgroundColor = 'transparent';
-//     searchItems.classList.remove('show');
-//     underHeaderContainer.style.marginTop = '250px';
-//     underHeader.style.filter = 'none';
-//     underHeader.style.backdropFilter = 'none';
-//     searchInput.value = '';
-// });
-    
+
+
+
+
+const blurContainers = document.querySelectorAll('.blur-container');
+
+// Функция когда клик вне хедера
+function resetHeaderState() {
+    // Удаляем активность каталога, если он открыт
+    if (isCatalogActive) {
+        openCatalog.parentElement.classList.remove('active');
+        isCatalogActive = false;
+        menuNavigation.style.display = 'none';
+        openCatalog.style.color = '';
+    }
+
+    // Сбрасываем фон и стили
+    header.style.backgroundColor = 'transparent';
+    searchItems.classList.remove('show');
+    underHeader.style.filter = 'none';
+    underHeader.style.backdropFilter = 'none';
+    searchInput.value = '';
+    menuNavigation.style.marginTop = '200px';
+    header.style.paddingBottom = '40px';
+
+    // Сбрасываем blur, если поле поиска пустое
+    blurContainers.forEach(container => {
+        container.style.filter = '';
+    });
+}
+
+// Назначаем обработчики на все blur-контейнеры
+blurContainers.forEach(container => {
+    container.addEventListener('click', resetHeaderState);
+});
+
+// Обработчик на underHeader, если он есть
+underHeader.addEventListener('click', resetHeaderState);
 
 
 
@@ -163,9 +252,16 @@ openCatalog.addEventListener('click', function (e) {
     e.preventDefault(); // чтобы не перезагружалась страница
     this.parentElement.classList.toggle('active');
 
-    underHeaderContainer.style.marginTop = '0px';
     underHeader.style.filter = 'blur(5px)';
-    underHeader.style.backdropFilter = 'blur(5px)';
+
+    // Накидываем blur на все контейнеры
+    blurContainers.forEach(container => {
+        container.style.filter = 'blur(5px)';
+    });
+
+    if (searchInput.value.trim() == '') {
+        header.style.paddingBottom = '40px';
+    }
 
     // Проверяем, активирован ли класс и выводим результат в консоль
     const isActive = this.parentElement.classList.contains('active');
@@ -178,19 +274,24 @@ openCatalog.addEventListener('click', function (e) {
         menuNavigation.style.backgroundColor = '#151c28';
         menuNavigation.style.display = 'block';
     } else {
-        // Когда каталог деактивирован, скрываем меню и сбрасываем стиль
-        openCatalog.style.color = '';
-        header.style.backgroundColor = 'transparent';
-        menuNavigation.style.display = 'none';
-
-        underHeaderContainer.style.marginTop = '250px';
-        underHeader.style.filter = 'none';
-        underHeader.style.backdropFilter = 'none';
-
-        searchItems.classList.remove('show');
-
-        // Сбросить поле поиска
-        searchInput.value = '';
+        if (searchInput.value.trim() !== '') {
+            menuNavigation.style.display = 'none';
+            openCatalog.style.color = '';
+        } else {
+            // Когда каталог деактивирован, скрываем меню и сбрасываем стиль
+            openCatalog.style.color = '';
+            header.style.backgroundColor = 'transparent';
+            menuNavigation.style.display = 'none';
+    
+            // underHeaderContainer.style.marginTop = '250px';
+            underHeader.style.filter = 'none';
+            underHeader.style.backdropFilter = 'none';
+    
+            searchItems.classList.remove('show');
+    
+            // Сбросить поле поиска
+            searchInput.value = '';
+        }
     }
 });
 
@@ -208,9 +309,35 @@ document.querySelectorAll('.menu-toggle-plumbing').forEach(toggle => {
         subMenu.style.display = isOpen ? 'none' : 'flex';
         menuItem.classList.toggle('active', !isOpen);
 
-        underHeaderContainer.style.marginTop = isOpen ? '0px' : '0px';
+        // underHeaderContainer.style.marginTop = isOpen ? '0px' : '0px';
     });
 });
+
+
+// Закрытие всех подменю при наведении на header
+header.addEventListener('mouseenter', function () {
+    document.querySelectorAll('.submenu-plumbing').forEach(subMenu => {
+        subMenu.style.display = 'none';
+    });
+
+    document.querySelectorAll('.submenu-furniture').forEach(subMenu => {
+        subMenu.style.display = 'none';
+    });
+
+    document.querySelectorAll('.right-menu-content').forEach(subMenu => {
+        subMenu.style.display = 'none';
+    });
+
+    document.querySelectorAll('.menu-item-furniture').forEach(menuItem => {
+        menuItem.classList.remove('active');
+    });
+
+    document.querySelectorAll('.menu-item-plumbing').forEach(menuItem => {
+        menuItem.classList.remove('active');
+    });
+});
+
+
 
 
 document.querySelectorAll('.menu-toggle-furniture').forEach(toggle => {
@@ -271,7 +398,7 @@ document.querySelectorAll('.plumbing').forEach(link => {
 });
 
 
-// Назначаем обработчики на все .shower-program
+// Назначаем обработчики на все .plumbing
 document.querySelectorAll('.shower-program').forEach(link => {
     link.addEventListener('click', function (e) {
         e.preventDefault();
@@ -292,3 +419,55 @@ document.querySelectorAll('.shower-program').forEach(link => {
         rightMenuContent.style.display = 'flex';
     });
 });
+
+
+
+
+
+
+// Чётко считываем скроллы и скрываем/показываем header
+
+let lastScrollTop = 0;
+const scrollThreshold = 1; // минимальный порог (можно даже 0, если нужно всё отслеживать)
+
+window.addEventListener('scroll', () => {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const scrollDelta = scrollTop - lastScrollTop;
+
+  // Учитываем любые изменения скролла, даже при scrollTop === 0
+  if (Math.abs(scrollDelta) < scrollThreshold) {
+    lastScrollTop = scrollTop; // всё равно обновим позицию
+    return;
+  }
+
+  if (scrollDelta > 0) {
+    // Скролл вниз
+    header.classList.add('header-hidden');
+    header.classList.remove('header-scrolled-up');
+
+    // Сброс состояния
+    blurContainers.forEach(container => container.style.filter = '');
+    header.style.backgroundColor = 'transparent';
+    underHeader.style.filter = 'none';
+    openCatalog.parentElement.classList.remove('active');
+    isCatalogActive = false;
+    menuNavigation.style.display = 'none';
+    openCatalog.style.color = '';
+    
+  } else if (scrollDelta < 0) {
+    // Скролл вверх
+    header.classList.remove('header-hidden');
+    header.classList.add('header-scrolled-up');
+  }
+
+  // Если в самом верху — убираем "скролл вверх" класс
+  if (scrollTop <= 0) {
+    header.classList.remove('header-scrolled-up');
+  }
+
+  lastScrollTop = scrollTop;
+});
+
+
+
+console.log('about-us');
