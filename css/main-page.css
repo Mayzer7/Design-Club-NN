@@ -112,6 +112,8 @@ body {
     transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
+
+
 .header-container {
     display: flex;
     justify-content: space-between;
@@ -334,22 +336,29 @@ li.active .menu-plumbing-arrow {
     z-index: 5;
 }
 
+
+
+
+
+
 .search-items {
     margin-top: 20px;
     display: flex;
-    opacity: 0;
-    max-height: 0;
     flex-direction: column;
     gap: 5px;
     position: absolute; 
     top: 100%; 
     left: 0; 
     right: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0s 0.3s;
 }
 
 .search-items.show {
     opacity: 1;
-    max-height: 500px;
+    visibility: visible;
+    transition: opacity 0.3s ease-in-out, visibility 0s 0s;
 }
 
 .search-item {
@@ -357,7 +366,30 @@ li.active .menu-plumbing-arrow {
     align-items: flex-start;
     text-align: left;
     gap: 13px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
+.search-items.show .search-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Для мгновенного исчезновения */
+.search-items:not(.show) {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0s, visibility 0s;
+}
+
+.search-items:not(.show) .search-item {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0s, transform 0s;
+}
+
+
 
 .zoom-image {
     display: inline-block;

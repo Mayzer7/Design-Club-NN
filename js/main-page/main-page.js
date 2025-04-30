@@ -199,6 +199,11 @@ searchInput.addEventListener('input', function () {
 
 
 
+
+
+
+
+
 const blurContainers = document.querySelectorAll('.blur-container');
 
 // Функция когда клик вне хедера
@@ -270,7 +275,6 @@ openCatalog.addEventListener('click', function (e) {
         menuNavigation.style.display = 'block';
     } else {
         if (searchInput.value.trim() !== '') {
-            console.log('Поле поиска не пустое');
             menuNavigation.style.display = 'none';
             openCatalog.style.color = '';
         } else {
@@ -308,6 +312,24 @@ document.querySelectorAll('.menu-toggle-plumbing').forEach(toggle => {
         // underHeaderContainer.style.marginTop = isOpen ? '0px' : '0px';
     });
 });
+
+
+// Закрытие всех подменю при наведении на header
+header.addEventListener('mouseenter', function () {
+    document.querySelectorAll('.submenu-plumbing').forEach(subMenu => {
+        subMenu.style.display = 'none';
+    });
+
+    document.querySelectorAll('.right-menu-content').forEach(subMenu => {
+        subMenu.style.display = 'none';
+    });
+
+    document.querySelectorAll('.menu-item-plumbing').forEach(menuItem => {
+        menuItem.classList.remove('active');
+    });
+});
+
+
 
 
 document.querySelectorAll('.menu-toggle-furniture').forEach(toggle => {
@@ -392,41 +414,48 @@ document.querySelectorAll('.shower-program').forEach(link => {
 
 
 
-// Появление хедера при скроле вверх
+
+
+
+// Чётко считываем скроллы и скрываем/показываем header
 
 let lastScrollTop = 0;
+const scrollThreshold = 1; // минимальный порог (можно даже 0, если нужно всё отслеживать)
 
 window.addEventListener('scroll', () => {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const scrollDelta = scrollTop - lastScrollTop;
 
-  if (scrollTop > lastScrollTop && scrollTop > 100) {
-    console.log("Я скролю вниз")
-    
-    // Сбрасываем blur, если поле поиска пустое
-    blurContainers.forEach(container => {
-        container.style.filter = '';
-    });
-    
+  // Учитываем любые изменения скролла, даже при scrollTop === 0
+  if (Math.abs(scrollDelta) < scrollThreshold) {
+    lastScrollTop = scrollTop; // всё равно обновим позицию
+    return;
+  }
+
+  if (scrollDelta > 0) {
+    // Скролл вниз
+    header.classList.add('header-hidden');
+    header.classList.remove('header-scrolled-up');
+
+    // Сброс состояния
+    blurContainers.forEach(container => container.style.filter = '');
+    header.style.backgroundColor = 'transparent';
     underHeader.style.filter = 'none';
-    
     openCatalog.parentElement.classList.remove('active');
     isCatalogActive = false;
     menuNavigation.style.display = 'none';
     openCatalog.style.color = '';
-    // Скроллим вниз — скрыть хедер и убрать фон
-    header.classList.add('header-hidden');
-    header.classList.remove('header-scrolled-up');
-  } else if (scrollTop < lastScrollTop && scrollTop > 100) {
-    console.log("Я скролю вверх")
-    // Скроллим вверх — показать хедер и добавить фон
+    
+  } else if (scrollDelta < 0) {
+    // Скролл вверх
     header.classList.remove('header-hidden');
     header.classList.add('header-scrolled-up');
   }
 
-  // Если вернулись в самый верх — убрать фон
+  // Если в самом верху — убираем "скролл вверх" класс
   if (scrollTop <= 0) {
     header.classList.remove('header-scrolled-up');
   }
 
-  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  lastScrollTop = scrollTop;
 });
