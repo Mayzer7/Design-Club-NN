@@ -320,8 +320,16 @@ header.addEventListener('mouseenter', function () {
         subMenu.style.display = 'none';
     });
 
+    document.querySelectorAll('.submenu-furniture').forEach(subMenu => {
+        subMenu.style.display = 'none';
+    });
+
     document.querySelectorAll('.right-menu-content').forEach(subMenu => {
         subMenu.style.display = 'none';
+    });
+
+    document.querySelectorAll('.menu-item-furniture').forEach(menuItem => {
+        menuItem.classList.remove('active');
     });
 
     document.querySelectorAll('.menu-item-plumbing').forEach(menuItem => {
