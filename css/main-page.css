@@ -40,7 +40,6 @@ html {
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
     overflow-x: hidden;
 }
 
@@ -95,7 +94,22 @@ body {
 /* Шапка */
 
 .header-top {
-    padding: 40px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+}
+
+.header-hidden {
+    transform: translateY(-100%);
+}
+
+.header-scrolled-up {
+    background-color: #151c28 !important;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 .header-container {
@@ -182,15 +196,15 @@ li.active .menu-plumbing-arrow {
 }
 
 .menu-navigation {
-    margin-top: -20px;
-    position: absolute;
+    margin-top: 200px;
+    position: fixed;
     width: 100%;
-    z-index: 5;
     display: none;
+    z-index: 5;
     padding: 20px;
     font-family: 'SF Pro Display', sans-serif;
     font-weight: 900;
-    transition: background-color 0.5s ease;
+    transition: margin-top 0.5s ease, background-color 0.5s ease;
     background-color: #151c28;
     /* min-height: 250px; */
 }
@@ -200,7 +214,7 @@ li.active .menu-plumbing-arrow {
 }
 
 .left-menu {
-    position: relative; /* для позиционирования ::after */
+    position: relative; 
     margin-right: 100px;
 }
   
@@ -208,10 +222,10 @@ li.active .menu-plumbing-arrow {
     content: '';
     position: absolute;
     top: 0;
-    right: -100px; /* смещение полоски на 100px вправо */
+    right: -100px; 
     width: 1px;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.4); /* вместо border */
+    background-color: rgba(255, 255, 255, 0.4); 
 }
 
 .left-menu ul li a {
@@ -325,14 +339,12 @@ li.active .menu-plumbing-arrow {
     display: flex;
     opacity: 0;
     max-height: 0;
-    overflow: hidden;
     flex-direction: column;
     gap: 5px;
-    position: absolute; /* Абсолютное позиционирование */
-    top: 100%; /* Позиционируем список сразу под input */
-    left: 0; /* Выравнивание по левому краю родительского контейнера */
+    position: absolute; 
+    top: 100%; 
+    left: 0; 
     right: 0;
-    transition: opacity 1s ease, max-height 1s ease;
 }
 
 .search-items.show {
@@ -349,7 +361,6 @@ li.active .menu-plumbing-arrow {
 
 .zoom-image {
     display: inline-block;
-    overflow: hidden;
   }
 
 .zoom-image img {
@@ -433,7 +444,6 @@ li.active .menu-plumbing-arrow {
     padding: 14px 20px;
     background-color: transparent;
     cursor: pointer;
-    overflow: hidden;
     border: 1px solid white;
     color: #EDE4D7; 
     transition: all 0.3s ease;
@@ -451,6 +461,7 @@ li.active .menu-plumbing-arrow {
 .page-wrapper {
     position: relative; 
 }
+
 .under-header {
     position: absolute;
     top: 365px;
@@ -489,7 +500,6 @@ li.active .menu-plumbing-arrow {
     padding: 14px 74px;
     background-color: #AE9877;
     cursor: pointer;
-    overflow: hidden;
     border: none;
     color: #fff; 
     transition: all 0.3s ease;
@@ -531,6 +541,10 @@ li.active .menu-plumbing-arrow {
     background-color: #151c28;
     font-family: 'SF Pro Display', sans-serif;
 }
+
+/* .blur-container {
+    filter: blur(5px);
+} */
 
 .why-up-title {
     position: relative;
@@ -1102,7 +1116,6 @@ li.active .menu-plumbing-arrow {
     padding: 20px 20px;
     background-color: #AE9877;
     cursor: pointer;
-    overflow: hidden;
     border: none;
     color: #fff; 
     transition: all 0.3s ease;

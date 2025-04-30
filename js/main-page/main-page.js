@@ -157,7 +157,14 @@ let isCatalogActive = false;
 // Обработчик ввода в поле поиска
 searchInput.addEventListener('input', function () {
     if (searchInput.value.trim() !== '') {
+        menuNavigation.style.marginTop = '430px';
         underHeader.style.filter = 'blur(5px)';
+
+        // Накидываем blur на все контейнеры
+        blurContainers.forEach(container => {
+            container.style.filter = 'blur(5px)';
+        });
+
         // Расширяем background color
         header.style.paddingBottom = '270px';
         // Меняем фон header на синий
@@ -165,13 +172,22 @@ searchInput.addEventListener('input', function () {
         // Показываем элементы с плавным переходом
         searchItems.classList.add('show');
     } else if (!isCatalogActive) {
+        menuNavigation.style.marginTop = '200px';
         // Сбрасываем фон header, если поиск пуст
         header.style.backgroundColor = 'transparent';
+
+        header.style.paddingBottom = '40px';
 
         // Скрываем элементы с плавным переходом
         searchItems.classList.remove('show');
         underHeader.style.filter = 'none';
+
+        // Сбрасываем blur, если поле поиска пустое
+        blurContainers.forEach(container => {
+            container.style.filter = '';
+        });
     } else {
+        menuNavigation.style.marginTop = '200px';
         // Скрываем элементы с плавным переходом
         searchItems.classList.remove('show');
         header.style.transition = 'padding-bottom 0.5s ease';
@@ -181,7 +197,12 @@ searchInput.addEventListener('input', function () {
 });
 
 
-underHeader.addEventListener('click', function () {
+
+
+const blurContainers = document.querySelectorAll('.blur-container');
+
+// Функция когда клик вне хедера
+function resetHeaderState() {
     // Удаляем активность каталога, если он открыт
     if (isCatalogActive) {
         openCatalog.parentElement.classList.remove('active');
@@ -196,7 +217,25 @@ underHeader.addEventListener('click', function () {
     underHeader.style.filter = 'none';
     underHeader.style.backdropFilter = 'none';
     searchInput.value = '';
+    menuNavigation.style.marginTop = '200px';
+    header.style.paddingBottom = '40px';
+
+    // Сбрасываем blur, если поле поиска пустое
+    blurContainers.forEach(container => {
+        container.style.filter = '';
+    });
+}
+
+// Назначаем обработчики на все blur-контейнеры
+blurContainers.forEach(container => {
+    container.addEventListener('click', resetHeaderState);
 });
+
+// Обработчик на underHeader, если он есть
+underHeader.addEventListener('click', resetHeaderState);
+
+
+
 
 // Нажатие на кнопку каталог в хедере
 
@@ -209,6 +248,11 @@ openCatalog.addEventListener('click', function (e) {
     this.parentElement.classList.toggle('active');
 
     underHeader.style.filter = 'blur(5px)';
+
+    // Накидываем blur на все контейнеры
+    blurContainers.forEach(container => {
+        container.style.filter = 'blur(5px)';
+    });
 
     if (searchInput.value.trim() == '') {
         header.style.paddingBottom = '40px';
@@ -344,4 +388,45 @@ document.querySelectorAll('.shower-program').forEach(link => {
         `;
         rightMenuContent.style.display = 'flex';
     });
+});
+
+
+
+// Появление хедера при скроле вверх
+
+let lastScrollTop = 0;
+
+window.addEventListener('scroll', () => {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (scrollTop > lastScrollTop && scrollTop > 100) {
+    console.log("Я скролю вниз")
+    
+    // Сбрасываем blur, если поле поиска пустое
+    blurContainers.forEach(container => {
+        container.style.filter = '';
+    });
+    
+    underHeader.style.filter = 'none';
+    
+    openCatalog.parentElement.classList.remove('active');
+    isCatalogActive = false;
+    menuNavigation.style.display = 'none';
+    openCatalog.style.color = '';
+    // Скроллим вниз — скрыть хедер и убрать фон
+    header.classList.add('header-hidden');
+    header.classList.remove('header-scrolled-up');
+  } else if (scrollTop < lastScrollTop && scrollTop > 100) {
+    console.log("Я скролю вверх")
+    // Скроллим вверх — показать хедер и добавить фон
+    header.classList.remove('header-hidden');
+    header.classList.add('header-scrolled-up');
+  }
+
+  // Если вернулись в самый верх — убрать фон
+  if (scrollTop <= 0) {
+    header.classList.remove('header-scrolled-up');
+  }
+
+  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 });
