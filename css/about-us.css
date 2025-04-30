@@ -33,6 +33,13 @@
     font-style: normal;
 }
 
+
+@font-face {
+    font-family: 'SF UI Display Thin';
+    src: url('../fonts/sf-ui-display-8.otf');
+    font-style: normal;
+}
+
 html {
     box-sizing: border-box;
 }
@@ -84,7 +91,7 @@ body {
 /* Верхрняя секция главной страницы */
 
 .main-page-top {
-    background-image: url('../images/main-page/background.png');
+    background-image: url('../images/about-us/background.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top center;
@@ -496,7 +503,7 @@ li.active .menu-plumbing-arrow {
 
 .under-header {
     position: absolute;
-    top: 365px;
+    top: 200px;
     left: 0;
     width: 100%;
     z-index: 2;
@@ -505,43 +512,19 @@ li.active .menu-plumbing-arrow {
 }
 
 .under-header-container {
-    margin-top: 100px;
+    margin-top: 20px;
     display: flex;
     align-items: center;
-    gap: 410px;
     transition: margin-top 0.5s ease;
 }
 
-.invite-container {
+.links {
     display: flex;
-    flex-direction: column;
-    gap: 40px;
-}
-
-.invite-container h4 {
-    font-family: 'SF Pro Display Ultralight', sans-serif;
-    font-size: 32px;
-}
-
-.invite-button { 
-    position: relative;
-    display: inline-flex;
-    align-items: center; 
-    justify-content: center;
+    gap: 10px;
     text-align: center;
-    padding: 14px 74px;
-    background-color: #AE9877;
-    cursor: pointer;
-    border: none;
-    color: #fff; 
-    transition: all 0.3s ease;
-    gap: 10px; 
 }
-
-/* Заголовок */
 
 .title-container {
-    margin-top: 48px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -549,27 +532,73 @@ li.active .menu-plumbing-arrow {
 
 .title-container h1 {
     font-family: 'Future New Light', sans-serif;
-    font-size: 100px;
-    font-weight: 600;
+    font-size: 250px;
     text-transform: uppercase;
 }
 
-.title-images {
+.under-header-content {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    align-items: self-end;
+    justify-content: space-between;
 }
 
-.title-images img {
-    width: 76px;
-    height: 75px;
+.nn {
+    font-family: 'Future New Light', sans-serif;
+    font-size: 372px;
+    line-height: 250px;
+}
+
+
+/* Секция "Уникальные решения для вашего дома" */
+
+.unique-solutions {
+    padding: 100px 20px 200px 20px;
+    background-color: #151c28;
+    font-family: 'SF UI Display Thin', sans-serif;
+    font-size: 20px;
+}
+
+.unique-solutions-container {
+    margin-top: 60px;
+}
+
+.unique-solutions-content-left p {
+    padding-bottom: 30px;
+}
+
+.unique-solutions-content-right p {
+    padding-bottom: 54px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto; /* Центр фиксированной ширины */
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+}
+
+.unique-solutions-title {
+    font-family: 'Future New Light', sans-serif;
+    font-size: 76px;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+}
+
+.unique-solutions-content {
+    display: flex;
+    gap: 20px;
 }
 
 
 /* Секция "Почему выбирают нас" */
 
 .why-choose-us {
-    padding: 100px 20px 200px 20px;
+    padding: 0px 20px 200px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display', sans-serif;
 }
@@ -600,7 +629,6 @@ li.active .menu-plumbing-arrow {
     font-family: 'Future New Light', sans-serif;
     font-size: 76px;
     text-transform: uppercase;
-    text-align: center;
     margin-bottom: 20px;
 }
 

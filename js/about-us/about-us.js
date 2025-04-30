@@ -145,6 +145,8 @@ function updateTransform() {
 
 
 
+
+
 // Поиск в хедере
 
 const searchInput = document.getElementById('search-input');
@@ -422,6 +424,19 @@ document.querySelectorAll('.shower-program').forEach(link => {
 
 
 
+document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('.header-top');
+    const initialScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    console.log('Начальное положение прокрутки:', initialScrollTop);
+  
+    if (!header) return;
+  
+    if (initialScrollTop === 0) {
+      header.style.backgroundColor = 'transparent';
+    } else {
+      header.style.display = 'none';
+    }
+  });
 
 
 
@@ -455,6 +470,7 @@ window.addEventListener('scroll', () => {
     openCatalog.style.color = '';
     
   } else if (scrollDelta < 0) {
+    header.style.display = 'block';
     // Скролл вверх
     header.classList.remove('header-hidden');
     header.classList.add('header-scrolled-up');
@@ -467,7 +483,3 @@ window.addEventListener('scroll', () => {
 
   lastScrollTop = scrollTop;
 });
-
-
-
-console.log('about-us');
