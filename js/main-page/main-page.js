@@ -429,6 +429,20 @@ document.querySelectorAll('.shower-program').forEach(link => {
 
 
 
+document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('.header-top');
+    const initialScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    console.log('Начальное положение прокрутки:', initialScrollTop);
+  
+    if (!header) return;
+  
+    if (initialScrollTop === 0) {
+      console.log('ДАА');
+      header.style.backgroundColor = 'transparent'; // или 'transparent' — выбери нужное
+    } else {
+      header.style.backgroundColor = '#151c28';
+    }
+  });
 
 
 
