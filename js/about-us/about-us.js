@@ -44,62 +44,6 @@ function validateForm(event, formId) {
     }
 }
 
-// Переключение карточек товара через стрелочки
-const wrapper = document.getElementById('productCards');
-const cards  = Array.from(wrapper.querySelectorAll('.product-card'));
-const scopeContainer = document.querySelector('.product-card-scope');
-const leftArrow  = document.getElementById('left-arrow');
-const rightArrow = document.getElementById('right-arrow');
-        
-const cardGap = 20; 
-let cardWidth = cards[0].getBoundingClientRect().width;
-const step = cardWidth + cardGap;
-        
-// Индекс карточки, которая сейчас в scope
-let activeIndex = 0;
-        
-// Функция обновления содержимого scope-карты
-function updateScope(idx) {
-    const srcCard = cards[idx];
-    // клонируем всё содержимое .product-card внутрь .product-card-scope
-    scopeContainer.innerHTML = '';
-    const clone = srcCard.cloneNode(true);
-    // у клона убираем класс .product-card (и переназначим класс scope)
-    clone.classList.remove('product-card');
-    clone.classList.add('product-card-scope');
-    scopeContainer.appendChild(clone);
-}
-        
-// Функция прокрутки и обновления
-function moveTo(idx) {
-    // сдвигаем обёртку: так, чтобы выбранная карточка встала
-    const offset = (idx - 2) * step;
-    wrapper.style.transition = 'transform 0.5s ease';
-
-    updateScope(idx);
-}
-    
-// Навешиваем обработчики
-rightArrow.addEventListener('click', () => {
-if (activeIndex < cards.length - 1) {
-    activeIndex++;
-    moveTo(activeIndex);
-    }
-});
-    
-leftArrow.addEventListener('click', () => {
-    if (activeIndex > 0) {
-        activeIndex--;
-        moveTo(activeIndex);
-    }
-});
-    
-// Инициализируем видимую scope-карту
-moveTo(activeIndex);
-
-
-
-
 
 // Секция "Наши Отзывы от покупателей"
 
@@ -157,46 +101,57 @@ let isCatalogActive = false;
 // Обработчик ввода в поле поиска
 searchInput.addEventListener('input', function () {
     if (searchInput.value.trim() !== '') {
-        underHeader.style.filter = 'blur(5px)';
-        // Расширяем background color
-        header.style.paddingBottom = '270px';
         // Меняем фон header на синий
         header.style.backgroundColor = '#151c28'; // синий цвет
+
         // Показываем элементы с плавным переходом
         searchItems.classList.add('show');
+        underHeaderContainer.style.marginTop = '0px';
+        underHeader.style.filter = 'blur(5px)';
+        underHeader.style.backdropFilter = 'blur(5px)';
     } else if (!isCatalogActive) {
         // Сбрасываем фон header, если поиск пуст
         header.style.backgroundColor = 'transparent';
 
         // Скрываем элементы с плавным переходом
         searchItems.classList.remove('show');
+        underHeaderContainer.style.marginTop = '250px';
         underHeader.style.filter = 'none';
+        underHeader.style.backdropFilter = 'none';
     } else {
         // Скрываем элементы с плавным переходом
         searchItems.classList.remove('show');
-        header.style.transition = 'padding-bottom 0.5s ease';
-        header.style.paddingBottom = '40px';
+        underHeaderContainer.style.marginTop = '0px';
         underHeader.style.filter = 'blur(5px)';
+        underHeader.style.backdropFilter = 'blur(5px)';
     }
 });
 
 
-underHeader.addEventListener('click', function () {
-    // Удаляем активность каталога, если он открыт
-    if (isCatalogActive) {
-        openCatalog.parentElement.classList.remove('active');
-        isCatalogActive = false;
-        menuNavigation.style.display = 'none';
-        openCatalog.style.color = '';
-    }
 
-    // Сбрасываем фон и стили
-    header.style.backgroundColor = 'transparent';
-    searchItems.classList.remove('show');
-    underHeader.style.filter = 'none';
-    underHeader.style.backdropFilter = 'none';
-    searchInput.value = '';
-});
+
+// // Клик во вне
+// underHeader.addEventListener('click', function () {
+//     // Удаляем активность каталога, если он открыт
+//     if (isCatalogActive) {
+//         openCatalog.parentElement.classList.remove('active');
+//         isCatalogActive = false;
+//         menuNavigation.style.display = 'none';
+//         openCatalog.style.color = '';
+//     }
+
+//     // Сбрасываем фон и стили
+//     header.style.backgroundColor = 'transparent';
+//     searchItems.classList.remove('show');
+//     underHeaderContainer.style.marginTop = '250px';
+//     underHeader.style.filter = 'none';
+//     underHeader.style.backdropFilter = 'none';
+//     searchInput.value = '';
+// });
+    
+
+
+
 
 // Нажатие на кнопку каталог в хедере
 
@@ -208,11 +163,9 @@ openCatalog.addEventListener('click', function (e) {
     e.preventDefault(); // чтобы не перезагружалась страница
     this.parentElement.classList.toggle('active');
 
+    underHeaderContainer.style.marginTop = '0px';
     underHeader.style.filter = 'blur(5px)';
-
-    if (searchInput.value.trim() == '') {
-        header.style.paddingBottom = '40px';
-    }
+    underHeader.style.backdropFilter = 'blur(5px)';
 
     // Проверяем, активирован ли класс и выводим результат в консоль
     const isActive = this.parentElement.classList.contains('active');
@@ -225,25 +178,19 @@ openCatalog.addEventListener('click', function (e) {
         menuNavigation.style.backgroundColor = '#151c28';
         menuNavigation.style.display = 'block';
     } else {
-        if (searchInput.value.trim() !== '') {
-            console.log('Поле поиска не пустое');
-            menuNavigation.style.display = 'none';
-            openCatalog.style.color = '';
-        } else {
-            // Когда каталог деактивирован, скрываем меню и сбрасываем стиль
-            openCatalog.style.color = '';
-            header.style.backgroundColor = 'transparent';
-            menuNavigation.style.display = 'none';
-    
-            // underHeaderContainer.style.marginTop = '250px';
-            underHeader.style.filter = 'none';
-            underHeader.style.backdropFilter = 'none';
-    
-            searchItems.classList.remove('show');
-    
-            // Сбросить поле поиска
-            searchInput.value = '';
-        }
+        // Когда каталог деактивирован, скрываем меню и сбрасываем стиль
+        openCatalog.style.color = '';
+        header.style.backgroundColor = 'transparent';
+        menuNavigation.style.display = 'none';
+
+        underHeaderContainer.style.marginTop = '250px';
+        underHeader.style.filter = 'none';
+        underHeader.style.backdropFilter = 'none';
+
+        searchItems.classList.remove('show');
+
+        // Сбросить поле поиска
+        searchInput.value = '';
     }
 });
 
@@ -261,7 +208,7 @@ document.querySelectorAll('.menu-toggle-plumbing').forEach(toggle => {
         subMenu.style.display = isOpen ? 'none' : 'flex';
         menuItem.classList.toggle('active', !isOpen);
 
-        // underHeaderContainer.style.marginTop = isOpen ? '0px' : '0px';
+        underHeaderContainer.style.marginTop = isOpen ? '0px' : '0px';
     });
 });
 
@@ -324,7 +271,7 @@ document.querySelectorAll('.plumbing').forEach(link => {
 });
 
 
-// Назначаем обработчики на все .plumbing
+// Назначаем обработчики на все .shower-program
 document.querySelectorAll('.shower-program').forEach(link => {
     link.addEventListener('click', function (e) {
         e.preventDefault();
