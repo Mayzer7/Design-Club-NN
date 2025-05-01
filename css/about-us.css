@@ -37,6 +37,7 @@
 @font-face {
     font-family: 'SF UI Display Thin';
     src: url('../fonts/sf-ui-display-8.otf');
+    font-weight: 900;
     font-style: normal;
 }
 
@@ -542,6 +543,48 @@ li.active .menu-plumbing-arrow {
     justify-content: space-between;
 }
 
+.video-container {
+    position: relative;
+    display: inline-block;
+}
+
+.video-container img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.video-button {    
+    font-family: 'SF UI Display Thin', sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 0;
+    font-size: 16px;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    border: 1px solid white;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+
+.video-button:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
 .nn {
     font-family: 'Future New Light', sans-serif;
     font-size: 372px;
@@ -703,7 +746,140 @@ li.active .menu-plumbing-arrow {
     }
 }
 
+/* Секция  "О складе"*/
 
+.expansion-up {
+    padding: 130px 20px 0px 20px;
+    background-color: #1D2535;
+    font-family: 'SF Pro Display Thin', sans-serif;  
+}
+
+.about-warehouse-container-padding {
+    padding-left: 26%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.about-warehouse {
+    padding: 50px 20px 90px 20px;
+    background-color: #151c28;
+    font-family: 'SF UI Display Thin', sans-serif;
+    background-image: url("../images/about-us/about-warehouse/background.png");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center right;
+    height: 100vh;
+    position: relative;
+}
+
+.warehouse-up-title {
+    position: absolute;
+    top: 0px;
+}
+
+.about-warehouse-title {
+    font-family: 'Future New Light', sans-serif;
+    font-size: 76px;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+}
+
+
+.about-warehouse-content {
+    display: flex;
+    gap: 40px;
+}
+
+.about-warehouse-first {
+    display: flex;
+    justify-content: space-between;
+}
+
+.about-warehouse-first-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Текст будет наверху, фото — внизу */
+    
+    height: 100%; /* Обеспечить растяжение по высоте родителя */
+}
+
+.about-warehouse-first-content p {
+    font-size: 20px;
+}
+
+.about-warehouse-first-content img {
+    width: 127px;
+    height: 137px;
+}
+
+.about-warehouse-wrapper {
+    margin-top: -100px;
+}
+
+.flex-end {
+    display: flex;
+    align-items: flex-end;
+}
+
+.about-warehouse-last {
+    position: absolute;
+    right: 20px;
+    bottom: 30px;
+}
+
+.expansion-down {
+    padding-top: 50px;
+    background-color: #1D2535;
+    font-family: 'SF Pro Display Thin', sans-serif;  
+}
+
+@media (max-width: 1900px) {
+    .about-warehouse-wrapper {
+        margin-top: -250px;
+    }
+
+    .expansion-up {
+        padding: 250px 20px 0px 20px;
+    }
+
+    .warehouse-up-title {
+        top: -150px;
+    }
+}
+
+@media (max-width: 1636px) {
+    .about-warehouse-wrapper {
+        margin-top: -350px;
+    }
+
+    .expansion-up {
+        padding: 350px 20px 0px 20px;
+    }
+
+    .warehouse-up-title {
+        top: -220px;
+    }
+}
+
+@media (max-width: 1560px) {
+    .expansion-up {
+        padding: 400px 20px 0px 20px;
+    }
+
+    .about-warehouse-wrapper {
+        margin-top: -420px;
+    }
+
+    .expansion-down {
+        padding: 100px 20px 0px 20px;
+    }
+
+    .warehouse-up-title {
+        top: -300px;
+    }
+
+}
 
 /* Секция "Популярные товары" */
 

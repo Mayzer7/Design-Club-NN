@@ -565,6 +565,11 @@ li.active .menu-plumbing-arrow {
     height: 75px;
 }
 
+@media (max-width: 1900px) {
+    .under-header {
+        top: 200px;
+    }
+}
 
 /* Секция "Почему выбирают нас" */
 
