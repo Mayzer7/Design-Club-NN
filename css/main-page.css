@@ -515,7 +515,7 @@ li.active .menu-plumbing-arrow {
 .invite-container {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 20px;
 }
 
 .invite-container h4 {
@@ -523,19 +523,37 @@ li.active .menu-plumbing-arrow {
     font-size: 32px;
 }
 
-.invite-button { 
+.invite-button {
+    font-size: 18px;
     position: relative;
     display: inline-flex;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
+    gap: 10px; 
     text-align: center;
-    padding: 14px 74px;
+    padding: 20px 20px;
     background-color: #AE9877;
     cursor: pointer;
     border: none;
-    color: #fff; 
+    color: #fff;
     transition: all 0.3s ease;
-    gap: 10px; 
+    width: 60%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.invite-button:hover {
+    background-color: #9c8766; 
+    transform: scale(1.03);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.invite-button .contact-icon {
+    transition: transform 0.3s ease;
+}
+
+.invite-button:hover .contact-icon {
+    transform: translateX(5px);
 }
 
 /* Заголовок */
@@ -1034,7 +1052,7 @@ li.active .menu-plumbing-arrow {
 .get-request {
     padding: 60px 20px 90px 20px;
     background-color: #151c28;
-    font-family: 'SF Pro Display', sans-serif;
+    font-family: 'SF Pro Display Thin', sans-serif;
     background-image: url("../images/main-page/get-request-bg.png");
     background-repeat: no-repeat;
     background-size: cover; 
@@ -1143,22 +1161,39 @@ li.active .menu-plumbing-arrow {
 }
 
 
-.get-request-button { 
+.get-request-button {
+    font-family: 'SF Pro Display Thin', sans-serif;
     font-size: 18px;
     position: relative;
     display: inline-flex;
-    align-items: center; 
+    align-items: center;
     justify-content: space-between;
+    gap: 10px; 
     text-align: center;
     padding: 20px 20px;
     background-color: #AE9877;
     cursor: pointer;
     border: none;
-    color: #fff; 
+    color: #fff;
     transition: all 0.3s ease;
     width: 105%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
+.get-request-button:hover {
+    background-color: #9c8766; 
+    transform: scale(1.03);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.get-request-button .contact-icon {
+    transition: transform 0.3s ease;
+}
+
+.get-request-button:hover .contact-icon {
+    transform: translateX(5px);
+}
 
 .custom-checkbox {
     position: relative;
