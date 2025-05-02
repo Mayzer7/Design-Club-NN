@@ -1,3 +1,20 @@
+// Поиск в хедере
+
+function performSearch() {
+    const query = document.getElementById('search-input').value;
+    window.location.href = 'search-no-result-page.html?query=' + encodeURIComponent(query);
+}
+
+document.getElementById('search-input').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        performSearch();
+    }
+});
+
+document.querySelector('.search-icon-button').addEventListener('click', function() {
+    performSearch();
+});
+
 // Валидация 2 форм для связи на странице
 
 function validateForm(event, formId) {
@@ -188,7 +205,6 @@ underHeader.addEventListener('click', resetHeaderState);
 
 
 
-
 // Нажатие на кнопку каталог в хедере
 
 const menuNavigation = document.querySelector('.menu-navigation');
@@ -204,6 +220,7 @@ openCatalog.addEventListener('click', function (e) {
     // Накидываем blur на все контейнеры
     blurContainers.forEach(container => {
         container.style.filter = 'blur(5px)';
+        container.style.cursor = 'pointer';
     });
 
     if (searchInput.value.trim() == '') {
@@ -241,6 +258,7 @@ openCatalog.addEventListener('click', function (e) {
         }
     }
 });
+
 
 
 
@@ -406,13 +424,17 @@ window.addEventListener('scroll', () => {
     header.classList.remove('header-scrolled-up');
 
     // Сброс состояния
-    blurContainers.forEach(container => container.style.filter = '');
+    blurContainers.forEach(container => {
+        container.style.filter = ''
+        container.style.cursor = ''
+    });
     header.style.backgroundColor = 'transparent';
     underHeader.style.filter = 'none';
     openCatalog.parentElement.classList.remove('active');
     isCatalogActive = false;
     menuNavigation.style.display = 'none';
     openCatalog.style.color = '';
+    
     
   } else if (scrollDelta < 0) {
     header.style.display = 'block';

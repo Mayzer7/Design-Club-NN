@@ -1,3 +1,20 @@
+// Поиск в хедере
+
+function performSearch() {
+    const query = document.getElementById('search-input').value;
+    window.location.href = 'search-no-result-page.html?query=' + encodeURIComponent(query);
+}
+
+document.getElementById('search-input').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        performSearch();
+    }
+});
+
+document.querySelector('.search-icon-button').addEventListener('click', function() {
+    performSearch();
+});
+
 // Валидация 2 форм для связи на странице
 
 function validateForm(event, formId) {
@@ -226,6 +243,7 @@ function resetHeaderState() {
     searchInput.value = '';
     menuNavigation.style.marginTop = '200px';
     header.style.paddingBottom = '40px';
+    underHeader.style.cursor = '';
 
     // Сбрасываем blur, если поле поиска пустое
     blurContainers.forEach(container => {
@@ -244,6 +262,7 @@ underHeader.addEventListener('click', resetHeaderState);
 
 
 
+
 // Нажатие на кнопку каталог в хедере
 
 const menuNavigation = document.querySelector('.menu-navigation');
@@ -255,10 +274,12 @@ openCatalog.addEventListener('click', function (e) {
     this.parentElement.classList.toggle('active');
 
     underHeader.style.filter = 'blur(5px)';
+    underHeader.style.cursor = 'pointer';
 
     // Накидываем blur на все контейнеры
     blurContainers.forEach(container => {
         container.style.filter = 'blur(5px)';
+        container.style.cursor = 'pointer';
     });
 
     if (searchInput.value.trim() == '') {
@@ -296,6 +317,7 @@ openCatalog.addEventListener('click', function (e) {
         }
     }
 });
+
 
 
 
@@ -440,6 +462,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
 // Чётко считываем скроллы и скрываем/показываем header
 
 let lastScrollTop = 0;
@@ -461,13 +484,20 @@ window.addEventListener('scroll', () => {
     header.classList.remove('header-scrolled-up');
 
     // Сброс состояния
-    blurContainers.forEach(container => container.style.filter = '');
+    blurContainers.forEach(container => {
+        container.style.filter = ''
+        container.style.cursor = ''
+    });
+    
     header.style.backgroundColor = 'transparent';
     underHeader.style.filter = 'none';
+    underHeader.style.cursor = '';
     openCatalog.parentElement.classList.remove('active');
     isCatalogActive = false;
     menuNavigation.style.display = 'none';
     openCatalog.style.color = '';
+    
+    
     
   } else if (scrollDelta < 0) {
     header.style.display = 'block';

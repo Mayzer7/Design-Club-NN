@@ -1,3 +1,20 @@
+// Поиск в хедере
+
+function performSearch() {
+    const query = document.getElementById('search-input').value;
+    window.location.href = 'search-no-result-page.html?query=' + encodeURIComponent(query);
+}
+
+document.getElementById('search-input').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        performSearch();
+    }
+});
+
+document.querySelector('.search-icon-button').addEventListener('click', function() {
+    performSearch();
+});
+
 // Валидация формы "Остались вопросы?"
 
 function validateForm(event, formId) {
@@ -84,7 +101,7 @@ searchInput.addEventListener('input', function () {
         // Сбрасываем фон header, если поиск пуст
         header.style.backgroundColor = 'transparent';
 
-        header.style.paddingBottom = '40px';
+        header.style.paddingBottom = '30px';
 
         // Скрываем элементы с плавным переходом
         searchItems.classList.remove('show');
@@ -99,7 +116,7 @@ searchInput.addEventListener('input', function () {
         // Скрываем элементы с плавным переходом
         searchItems.classList.remove('show');
         header.style.transition = 'padding-bottom 0.5s ease';
-        header.style.paddingBottom = '40px';
+        header.style.paddingBottom = '30px';
         underHeader.style.filter = 'blur(5px)';
     }
 });
@@ -144,6 +161,7 @@ underHeader.addEventListener('click', resetHeaderState);
 // Нажатие на кнопку каталог в хедере
 
 const menuNavigation = document.querySelector('.menu-navigation');
+const menuNavigationRelative = document.querySelector('.menu-navigation-relative');
 const openCatalog = document.querySelector('.open-catalog');
 
 openCatalog.addEventListener('click', function (e) {    
@@ -159,9 +177,6 @@ openCatalog.addEventListener('click', function (e) {
         container.style.cursor = 'pointer';
     });
 
-    if (searchInput.value.trim() == '') {
-        header.style.paddingBottom = '40px';
-    }
 
     // Проверяем, активирован ли класс и выводим результат в консоль
     const isActive = this.parentElement.classList.contains('active');
@@ -335,6 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
 // Чётко считываем скроллы и скрываем/показываем header
 
 let lastScrollTop = 0;
@@ -356,13 +372,18 @@ window.addEventListener('scroll', () => {
     header.classList.remove('header-scrolled-up');
 
     // Сброс состояния
-    blurContainers.forEach(container => container.style.filter = '');
+    blurContainers.forEach(container => {
+        container.style.filter = ''
+        container.style.cursor = ''
+    });
     header.style.backgroundColor = 'transparent';
+    header.style.paddingBottom = '15px';
     underHeader.style.filter = 'none';
     openCatalog.parentElement.classList.remove('active');
     isCatalogActive = false;
     menuNavigation.style.display = 'none';
     openCatalog.style.color = '';
+    
     
   } else if (scrollDelta < 0) {
     header.style.display = 'block';
@@ -378,7 +399,6 @@ window.addEventListener('scroll', () => {
 
   lastScrollTop = scrollTop;
 });
-
 
 
 // Навигация (раскрытие менюшек)

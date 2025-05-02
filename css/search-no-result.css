@@ -458,6 +458,13 @@ li.active .menu-plumbing-arrow {
     font-size: 18px;
 }
 
+.search-icon-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-top: 5px;
+    padding: 0;
+}
 
 .search-bar-on-page {
     display: flex;

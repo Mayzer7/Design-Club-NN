@@ -123,7 +123,7 @@ input[type="number"] {
 
 .header-top {
     position: fixed;
-    top: 0;
+    top: 0px;
     left: 0;
     width: 100%;
     padding: 20px;
@@ -143,10 +143,12 @@ input[type="number"] {
 
 
 .header-container {
+    padding-top: 5px;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     text-align: center;
+    height: 150px;
 }
 
 .logo {
@@ -158,6 +160,7 @@ input[type="number"] {
     display: flex;
     justify-content: center;
     gap: 40px;
+    transform: translateY(-18px);
 }
 
 
@@ -221,12 +224,13 @@ li.active .menu-plumbing-arrow {
     color: #AE9877;
 }
 
+
 .menu-navigation-relative {
     position: relative;
 }
 
 .menu-navigation {
-    margin-top: 200px;
+    margin-top: 170px;
     position: fixed;
     width: 100%;
     display: none;
@@ -472,6 +476,14 @@ li.active .menu-plumbing-arrow {
     outline: none;
     color: #fff;
     font-size: 18px;
+}
+
+.search-icon-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-top: 5px;
+    padding: 0;
 }
 
 .contact-header {

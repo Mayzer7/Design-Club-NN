@@ -1,5 +1,22 @@
 // Поиск в хедере
 
+function performSearch() {
+    const query = document.getElementById('search-input').value;
+    window.location.href = 'search-no-result-page.html?query=' + encodeURIComponent(query);
+}
+
+document.getElementById('search-input').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        performSearch();
+    }
+});
+
+document.querySelector('.search-icon-button').addEventListener('click', function() {
+    performSearch();
+});
+
+// Поиск в хедере
+
 const searchInput = document.getElementById('search-input');
 const header = document.querySelector('.header-top');
 const searchItems = document.querySelector('.search-items');
@@ -301,13 +318,17 @@ window.addEventListener('scroll', () => {
     header.classList.remove('header-scrolled-up');
 
     // Сброс состояния
-    blurContainers.forEach(container => container.style.filter = '');
+    blurContainers.forEach(container => {
+        container.style.filter = ''
+        container.style.cursor = ''
+    });
     header.style.backgroundColor = 'transparent';
     underHeader.style.filter = 'none';
     openCatalog.parentElement.classList.remove('active');
     isCatalogActive = false;
     menuNavigation.style.display = 'none';
     openCatalog.style.color = '';
+    
     
   } else if (scrollDelta < 0) {
     header.style.display = 'block';
