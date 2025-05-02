@@ -1,0 +1,754 @@
+@font-face {
+    font-family: 'SF Pro Display';
+    src: url('../fonts/SF-Pro-Display-Light.otf');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SF Pro Display Ultralight';
+    src: url('../fonts/SF-Pro-Display-Ultralight.otf');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Future New Light';
+    src: url('../fonts/FuturaNewLight.otf');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Future New Bold';
+    src: url('../fonts/FuturaNewLight.otf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SF Pro Display Thin';
+    src: url('../fonts/SF-Pro-Display-Thin.otf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #AE9877;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+}
+
+body {
+    font-family: 'SF Pro Display', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: #EDE4D7;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Верхрняя секция главной страницы */
+
+.main-page-top {
+    background-image: url('../images/search-no-result/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 700px;
+}
+
+/* Шапка */
+
+.header-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+}
+
+.header-hidden {
+    transform: translateY(-100%);
+}
+
+.header-scrolled-up {
+    background-color: #151c28 !important;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+
+
+.header-container {
+    padding-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: center;
+}
+
+.logo {
+    width: 128px;
+    height: 97px;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+
+/* Ховеры и анимации для стрелок */
+
+.down-arrow {
+    transition: transform 0.3s ease;
+}
+
+.menu-plumbing-arrow {
+    transition: transform 0.3s ease;
+}
+
+li.active .down-arrow {
+    transform: rotate(180deg);
+    color: #AE9877;
+}
+
+li.active .menu-plumbing-arrow {
+    transform: rotate(180deg);
+    color: #AE9877;
+}
+
+.open-catalog:hover + .down-arrow {
+    color: #D4B28C;
+}
+
+.menu-toggle-plumbing:hover + .menu-plumbing-arrow {
+    color: #D4B28C;
+}
+
+.menu-item.active .menu-plumbing-arrow  {
+    transform: rotate(180deg);
+    color: #AE9877;
+}
+
+.menu-item.active .menu-toggle-plumbing {
+    color: #AE9877;
+}
+
+
+/* Всплывающее меню при нажатии на Каталог */
+
+.menu-toggle-furniture,
+.menu-toggle-plumbing {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 26px;
+    margin-top: 20px;
+    color: #EDE4D7;
+    transition: color 0.3s ease;
+}
+  
+.menu-arrow {
+    transition: stroke 0.3s ease;
+}
+
+.menu-toggle-furniture:hover,
+.menu-toggle-plumbing:hover {
+    color: #AE9877;
+}
+
+.menu-navigation-relative {
+    position: relative;
+}
+
+.menu-navigation {
+    margin-top: 200px;
+    position: fixed;
+    width: 100%;
+    display: none;
+    z-index: 5;
+    padding: 20px;
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 900;
+    transition: margin-top 0.5s ease, background-color 0.5s ease;
+    background-color: #151c28;
+    /* min-height: 250px; */
+}
+
+.menu-navigation-container {
+    display: flex;
+}
+
+.left-menu {
+    position: relative; 
+    margin-right: 100px;
+}
+  
+.left-menu::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -100px; 
+    width: 1px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.4); 
+}
+
+.left-menu ul li a {
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300;
+}
+
+.submenu-furniture {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+}
+
+.submenu-plumbing {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+}
+
+.submenu-content {
+    display: none;
+}
+
+.submenu-item {
+    display: flex;
+    align-items: center;
+}
+
+.submenu-item svg {
+    margin-top: 4px;
+}
+
+.right-menu {
+    position: relative;
+    top: -9px;
+    padding: 26px;  
+}
+
+.right-menu-content {
+    margin-top: 30px;
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.right-menu-content a {
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300;
+}
+
+
+.all-categories-link {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.all-categories-link a {
+    font-size: 20px;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 900;
+}
+
+.all-categories-link svg {
+    margin-top: 4px;
+}
+
+
+.catalog-nav ul li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.catalog-nav a {
+    transition: color 0.3s ease;
+}
+
+.catalog-nav a:hover {
+    color: #AE9877;
+}
+
+.main-nav ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.main-nav a {
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: #AE9877;
+}
+
+.search-container {
+    max-width: 360px;
+    width: 100%;
+    position: relative;
+    z-index: 5;
+}
+
+
+
+
+
+
+.search-items {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: absolute; 
+    top: 100%; 
+    left: 0; 
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0s 0.3s;
+}
+
+.search-items.show {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease-in-out, visibility 0s 0s;
+}
+
+.search-item {
+    display: flex;
+    align-items: flex-start;
+    text-align: left;
+    gap: 13px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.search-items.show .search-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Для мгновенного исчезновения */
+.search-items:not(.show) {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0s, visibility 0s;
+}
+
+.search-items:not(.show) .search-item {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0s, transform 0s;
+}
+
+
+
+.zoom-image {
+    display: inline-block;
+  }
+
+.zoom-image img {
+    transition: transform 0.3s ease;
+}
+
+.zoom-image:hover img {
+    transform: scale(1.1);
+}
+
+.search-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.search-item-info a{
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300;
+}
+
+.all-result-link {
+    margin-top: 20px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.all-result-link h4 {
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300;
+}
+
+.search-item img {
+    width: 60px;
+    height: 67px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    background: transparent;
+    min-width: 360px;
+    padding: 5px 0;
+    gap: 8px;
+}
+
+.search-bar input {
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300;
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 18px;
+}
+
+
+.search-bar-on-page {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    background: transparent;
+    min-width: 360px;
+    padding: 5px 0;
+    gap: 8px;
+}
+
+.search-bar-on-page input {
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300;
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 18px;
+}
+
+.contact-header {
+    display: flex;
+    gap: 40px;
+}
+
+.contact-header a {
+    transition: color 0.3s ease;
+}
+
+.contact-header a:hover {
+    color: #AE9877;
+}
+
+.contact-button {
+    margin-top: -15px;    
+    position: relative;
+    display: inline-flex;
+    align-items: center; 
+    justify-content: center;
+    text-align: center;
+    padding: 14px 20px;
+    background-color: transparent;
+    cursor: pointer;
+    border: 1px solid white;
+    color: #EDE4D7; 
+    transition: all 0.3s ease;
+    gap: 10px; 
+}
+
+.contact-button:hover {
+    background-color: #AE9877;
+    color: #fff;
+}
+
+
+/* Секция 'Услуги' */
+
+.page-wrapper {
+    position: relative; 
+}
+
+.under-header {
+    position: absolute;
+    top: 200px;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    padding: 20px;
+    transition: filter 0.2s ease, backdrop-filter 0.2s ease;
+}
+
+.under-header-container {
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.under-header-container a:first-child {
+    color: #7B8292;
+}
+
+
+.service-content {
+    padding-left: 25%;
+    position: relative;
+}
+
+
+
+.services-title {
+    font-family: 'Future New Light', sans-serif;
+    font-size: 100px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.result-container {
+    width: 300px;
+}
+
+.services-subtitle {
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+/* Для расширения контейнера под хедером */
+
+.expansion-up {
+    padding: 100px 0px 0px 0px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display Thin', sans-serif;  
+}
+
+/* Секция "Не нашли что искали?" */
+
+.get-request {
+    padding: 60px 20px 90px 20px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    background-image: url("../images/search-no-result/background2.png");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center right;
+    height: 480px;
+}
+
+.get-request-content {
+    display: flex;
+    height: 350px;
+}
+
+.left-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.left-side p {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.right-side {
+    padding-left: 18.5%;
+}
+
+.right-side-title {
+    font-family: 'Future New Light', sans-serif;
+    font-size: 76px;
+    text-transform: uppercase;
+}
+
+.right-side-desc {
+    margin-top: 60px;
+}
+
+.right-side-desc h4 {
+    font-size: 26px;
+}
+
+.right-side-desc p {
+    font-size: 20px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+
+.get-request-button {
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-size: 18px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px; 
+    text-align: center;
+    padding: 20px 20px;
+    background-color: #AE9877;
+    cursor: pointer;
+    border: none;
+    color: #fff;
+    transition: all 0.3s ease;
+    width: 433px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.get-request-button:hover {
+    background-color: #9c8766; 
+    transform: scale(1.03);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.get-request-button .contact-icon {
+    transition: transform 0.3s ease;
+}
+
+.get-request-button:hover .contact-icon {
+    transform: translateX(5px);
+}
+
+
+/* Footer */
+
+.footer {
+    padding: 100px 20px 20px 20px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300; 
+}
+
+.footer-container {
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1fr 1fr 2fr auto; 
+    gap: 40px;
+}
+
+.footer-logo {
+    width: 178px;
+    height: 135px;
+}
+
+.footer-navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-navigation h1 {
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.footer-navigation h1:hover {
+    color: #AE9877;
+}
+
+.footer-navigation ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-transform: uppercase;
+}
+
+.footer-navigation ul li a {
+    transition: color 0.3s ease;
+}
+
+.footer-navigation ul li a:hover {
+    color: #AE9877;
+}
+
+.footer-address p {
+    margin-bottom: 5px;
+    color: rgba(237, 228, 215, 0.7);
+}
+
+.footer-address h1 {
+    font-size: 38px;
+    margin-bottom: 40px;
+    font-family: 'SF Pro Display Thin', sans-serif; 
+    font-weight: 600;
+}
+
+.footer-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.footer-icon {
+    height: 36px;
+    width: 36px;
+}
+
+.footer-copyright {
+    display: grid;
+    grid-template-columns: 0.81fr 1.5fr 1fr auto;
+    gap: 10px;
+    padding: 20px 0;
+}
+
+.footer-copyright a {
+    transition: color 0.3s ease;
+}
+
+.footer-copyright a:hover {
+    color: #AE9877;
+}   
+
