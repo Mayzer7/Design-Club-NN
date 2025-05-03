@@ -1,0 +1,1017 @@
+@font-face {
+    font-family: 'SF Pro Display';
+    src: url('../fonts/SF-Pro-Display-Light.otf');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SF Pro Display Ultralight';
+    src: url('../fonts/SF-Pro-Display-Ultralight.otf');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Future New Light';
+    src: url('../fonts/FuturaNewLight.otf');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Future New Bold';
+    src: url('../fonts/FuturaNewLight.otf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SF Pro Display Thin';
+    src: url('../fonts/SF-Pro-Display-Thin.otf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'SF UI Display Thin';
+    src: url('../fonts/sf-ui-display-8.otf');
+    font-weight: 900;
+    font-style: normal;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #AE9877;
+}
+
+ul {
+    margin-left: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+}
+
+body {
+    font-family: 'SF Pro Display', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: #EDE4D7;
+}
+
+/*
+Для того чтобы когда в input вводятся только цифры, 
+браузер не отображал некрасивый ползунок увелечения числа
+*/
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Для Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+
+.line {
+    width: 100%;
+    height: 1px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+/* Верхрняя секция главной страницы */
+
+.main-page-top {
+    background-color: #151c28;
+    min-height: 300px;
+}
+
+/* Шапка */
+
+.header-top {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+}
+
+.header-hidden {
+    transform: translateY(-100%);
+}
+
+.header-scrolled-up {
+    background-color: #151c28 !important;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+
+
+.header-container {
+    padding-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: center;
+    height: 150px;
+}
+
+.logo {
+    width: 128px;
+    height: 97px;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    transform: translateY(-18px);
+}
+
+
+/* Ховеры и анимации для стрелок */
+
+.down-arrow {
+    transition: transform 0.3s ease;
+}
+
+.menu-plumbing-arrow {
+    transition: transform 0.3s ease;
+}
+
+li.active .down-arrow {
+    transform: rotate(180deg);
+    color: #AE9877;
+}
+
+li.active .menu-plumbing-arrow {
+    transform: rotate(180deg);
+    color: #AE9877;
+}
+
+.open-catalog:hover + .down-arrow {
+    color: #D4B28C;
+}
+
+.menu-toggle-plumbing:hover + .menu-plumbing-arrow {
+    color: #D4B28C;
+}
+
+.menu-item.active .menu-plumbing-arrow  {
+    transform: rotate(180deg);
+    color: #AE9877;
+}
+
+.menu-item.active .menu-toggle-plumbing {
+    color: #AE9877;
+}
+
+
+/* Всплывающее меню при нажатии на Каталог */
+
+.menu-toggle-furniture,
+.menu-toggle-plumbing {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 26px;
+    margin-top: 20px;
+    color: #EDE4D7;
+    transition: color 0.3s ease;
+}
+  
+.menu-arrow {
+    transition: stroke 0.3s ease;
+}
+
+.menu-toggle-furniture:hover,
+.menu-toggle-plumbing:hover {
+    color: #AE9877;
+}
+
+
+.menu-navigation-relative {
+    position: relative;
+}
+
+.menu-navigation {
+    margin-top: 170px;
+    position: fixed;
+    width: 100%;
+    display: none;
+    z-index: 5;
+    padding: 20px;
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 900;
+    transition: margin-top 0.5s ease, background-color 0.5s ease;
+    background-color: #151c28;
+    /* min-height: 250px; */
+}
+
+.menu-navigation-container {
+    display: flex;
+}
+
+.left-menu {
+    position: relative; 
+    margin-right: 100px;
+}
+  
+.left-menu::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -100px; 
+    width: 1px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.4); 
+}
+
+.left-menu ul li a {
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300;
+}
+
+.submenu-furniture {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+}
+
+.submenu-plumbing {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+}
+
+.submenu-content {
+    display: none;
+}
+
+.submenu-item {
+    display: flex;
+    align-items: center;
+}
+
+.submenu-item svg {
+    margin-top: 4px;
+}
+
+.right-menu {
+    position: relative;
+    top: -9px;
+    padding: 26px;  
+}
+
+.right-menu-content {
+    margin-top: 30px;
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.right-menu-content a {
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300;
+}
+
+
+.all-categories-link {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.all-categories-link a {
+    font-size: 20px;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 900;
+}
+
+.all-categories-link svg {
+    margin-top: 4px;
+}
+
+
+.catalog-nav ul li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.catalog-nav a {
+    transition: color 0.3s ease;
+}
+
+.catalog-nav a:hover {
+    color: #AE9877;
+}
+
+.main-nav ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.main-nav a {
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: #AE9877;
+}
+
+.search-container {
+    max-width: 360px;
+    width: 100%;
+    position: relative;
+    z-index: 5;
+}
+
+.search-items {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: absolute; 
+    top: 100%; 
+    left: 0; 
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0s 0.3s;
+}
+
+.search-items.show {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease-in-out, visibility 0s 0s;
+}
+
+.search-item {
+    display: flex;
+    align-items: flex-start;
+    text-align: left;
+    gap: 13px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.search-items.show .search-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Для мгновенного исчезновения */
+.search-items:not(.show) {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0s, visibility 0s;
+}
+
+.search-items:not(.show) .search-item {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0s, transform 0s;
+}
+
+.zoom-image {
+    display: inline-block;
+  }
+
+.zoom-image img {
+    transition: transform 0.3s ease;
+}
+
+.zoom-image:hover img {
+    transform: scale(1.1);
+}
+
+.search-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.search-item-info a{
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300;
+}
+
+.all-result-link {
+    margin-top: 20px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.all-result-link h4 {
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300;
+}
+
+.search-item img {
+    width: 60px;
+    height: 67px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    background: transparent;
+    min-width: 360px;
+    padding: 5px 0;
+    gap: 8px;
+}
+
+.search-bar input {
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300;
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 18px;
+}
+
+.search-icon-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-top: 5px;
+    padding: 0;
+}
+
+.contact-header {
+    display: flex;
+    gap: 40px;
+}
+
+.contact-header a {
+    transition: color 0.3s ease;
+}
+
+.contact-header a:hover {
+    color: #AE9877;
+}
+
+.contact-button {
+    margin-top: -15px;    
+    position: relative;
+    display: inline-flex;
+    align-items: center; 
+    justify-content: center;
+    text-align: center;
+    padding: 14px 20px;
+    background-color: transparent;
+    cursor: pointer;
+    border: 1px solid white;
+    color: #EDE4D7; 
+    transition: all 0.3s ease;
+    gap: 10px; 
+}
+
+.contact-button:hover {
+    background-color: #AE9877;
+    color: #fff;
+}
+
+.page-wrapper {
+    font-family: 'SF UI Display Thin', sans-serif;
+    position: relative; 
+}
+
+
+.under-header {
+    position: absolute;
+    top: 200px;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    padding: 20px;
+    transition: filter 0.2s ease, backdrop-filter 0.2s ease;
+}
+
+.under-header-container {
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    transition: margin-top 0.5s ease;
+}
+
+.links {
+    position: absolute;
+    top: 120px;
+    display: flex;
+    gap: 10px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.links a:nth-child(1),
+.links a:nth-child(3) {
+    color: #7B8292;
+}
+
+
+
+/* Секция "Оформить заказ" */
+
+.buy-products {
+    padding: 120px 20px 100px 20px;
+    background-color: #151c28;
+
+    position: relative;
+}
+
+.buy-products-section {
+    padding-left: 25%;
+}
+
+.title-items {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    font-family: 'Future New Light', sans-serif;
+    text-transform: uppercase;
+    font-size: 112px;
+    margin-bottom: 60px;
+}
+
+.buy-products-content {
+    display: flex;
+    gap: 115px;
+}
+
+.left-side {
+    display: flex;
+    flex-direction: column;
+    width: 645px;
+}
+
+.buyer {
+    font-family: 'Future New Bold', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 34px;
+    margin-bottom: 40px;
+}
+
+
+
+.order-input {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    background: transparent;
+    padding: 5px 0;
+    gap: 8px;
+    width: 105%;
+    margin-bottom: 30px;
+}
+
+.order-input input {
+    width: 100%; 
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #FFF;
+    font-size: 18px;
+    padding: 5px 0; 
+}
+
+.order-input input::placeholder {
+    color: #555D6F;
+}
+
+
+.order-input textarea {
+    width: 100%;
+    height: 311px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #FFF;
+    font-size: 18px;
+    padding: 5px 0;
+    font-family: 'SF Pro Display', sans-serif;
+    resize: none;
+}
+
+.order-input textarea::placeholder {
+    color: #555D6F;
+}
+
+
+.accept-politics-order {
+    margin-top: 40px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.accept-politics-order p {
+    font-size: 14px;
+}
+
+.accept-politics-order p span {
+    color: #AE9877;
+    border-bottom: 1px solid #AE9877;
+}
+
+.error-contact {
+    font-family: 'SF Pro Display Thin', sans-serif; 
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    color: #EB5151;
+    font-size: 14px;
+    display: none;
+    margin-top: 5px;
+    padding-left: 5px;
+}
+
+
+
+
+.get-order-button {
+    margin-top: 10px;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-size: 18px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; 
+    text-align: center;
+    padding: 20px 20px;
+    background-color: #AE9877;
+    cursor: pointer;
+    border: none;
+    color: #fff;
+    transition: all 0.3s ease;
+    width: 105%;    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.get-order-button:hover {
+    background-color: #9c8766; 
+    transform: scale(1.03);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.get-order-button .contact-icon {
+    transition: transform 0.3s ease;
+}
+
+.get-order-button:hover .contact-icon {
+    transform: translateX(5px);
+}
+
+
+
+
+.right-side {
+    display: flex;
+    flex-direction: column;
+    max-width: 645px;
+    width: 100%;
+}
+
+.right-side-items {
+    font-family: 'Future New Bold', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 34px;
+    margin-bottom: 40px;
+}
+
+/* Для прокрутки товаров оформления заказа */
+
+.right-side-scroll-wrapper {
+    padding: 5px 0;
+    max-height: 570px;
+    overflow-y: auto;
+    padding-right: 10px;
+    scroll-behavior: smooth;
+}
+  
+.right-side-scroll-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+  
+.right-side-scroll-wrapper::-webkit-scrollbar-track {
+    background-color: rgba(237, 228, 215, 0.4);
+}
+  
+.right-side-scroll-wrapper::-webkit-scrollbar-thumb {
+    background-color: #EDE4D7;
+}
+
+
+
+.line-buy {
+    border: none;
+    height: 1px;   
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 0; 
+}
+
+.order-products {
+    margin: 20px 0;
+    display: flex;
+}
+
+.order-right {
+    padding: 0 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-name {
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 900;
+    font-size: 26px;
+}
+
+.product-desc {
+    margin-top: 14px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-desc-left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.product-desc-left p {
+    font-family: 'SF Pro Display', sans-serif;
+    font-size: 16px;
+    color: rgba(237, 228, 215, 0.7);
+}
+
+.product-desc-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 120px;
+    gap: 10px;
+}
+
+.product-desc-right p {
+    font-family: 'SF Pro Display', sans-serif;
+    font-size: 16px;
+}
+
+.price-per-piece {
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 900;
+    margin-bottom: 15px;
+    color: #615F5B;
+    font-size: 16px;
+}
+
+.product-last-line {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.change-count {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.change-count button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-top: 5px;
+    padding: 0;
+    margin: 0;
+}
+
+.total {
+    display: flex;
+    align-items: flex-end;
+    gap: 15px;
+}
+
+.discount {
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 900;
+    font-size: 21px;
+    color: #615F5B;
+    text-decoration: line-through;
+}
+
+.total-price {
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 900;
+    font-size: 28px;
+}
+
+.total-order-price-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.total-order-price-container h3 {
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.total-order-price {
+    text-transform: uppercase;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 900;
+    font-size: 34px;
+}
+
+.custom-checkbox {
+    position: relative;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+}
+
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkbox-img {
+    width: 25px;
+    height: 25px;
+    background-image: url('../images/svg/checkbox.svg');
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.3s ease; 
+}
+
+.custom-checkbox input:checked + .checkbox-img {
+    background-image: url('../images/svg/check-mark.svg');
+}
+
+
+@media (max-width: 1660px) {
+    .get-request-content iframe {
+        margin-top: 210px;
+    }
+}
+
+
+
+
+/* Footer */
+
+.footer {
+    padding: 100px 20px 20px 20px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300; 
+}
+
+.footer-container {
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1fr 1fr 2fr auto; 
+    gap: 40px;
+}
+
+.footer-logo {
+    width: 178px;
+    height: 135px;
+}
+
+.footer-navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-navigation h1 {
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.footer-navigation h1:hover {
+    color: #AE9877;
+}
+
+.footer-navigation ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-transform: uppercase;
+}
+
+.footer-navigation ul li a {
+    transition: color 0.3s ease;
+}
+
+.footer-navigation ul li a:hover {
+    color: #AE9877;
+}
+
+.footer-address p {
+    margin-bottom: 5px;
+    color: rgba(237, 228, 215, 0.7);
+}
+
+.footer-address h1 {
+    font-size: 38px;
+    margin-bottom: 40px;
+    font-family: 'SF Pro Display Thin', sans-serif; 
+    font-weight: 600;
+}
+
+.footer-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.footer-icon {
+    height: 36px;
+    width: 36px;
+}
+
+.footer-copyright {
+    display: grid;
+    grid-template-columns: 0.81fr 1.5fr 1fr auto;
+    gap: 10px;
+    padding: 20px 0;
+}
+
+.footer-copyright a {
+    transition: color 0.3s ease;
+}
+
+.footer-copyright a:hover {
+    color: #AE9877;
+}
+
