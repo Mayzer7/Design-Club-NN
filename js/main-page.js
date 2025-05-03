@@ -477,6 +477,14 @@ window.addEventListener('scroll', () => {
     // Скролл вниз
     header.classList.add('header-hidden');
     header.classList.remove('header-scrolled-up');
+    
+    searchInput.blur(); // убирает фокус с поля ввода
+    searchInput.value = ''; // очищает текст
+    searchItems.classList.remove('show'); // скрывает блок
+    
+    // Убираем пустые отступы
+    header.style.paddingBottom = '20px';
+    menuNavigation.style.marginTop = '170px';
 
     // Сброс состояния
     blurContainers.forEach(container => {
@@ -497,6 +505,9 @@ window.addEventListener('scroll', () => {
   } else if (scrollDelta < 0) {
     header.style.display = 'block';
     // Скролл вверх
+
+    menuNavigation.style.marginTop = '170px';
+
     header.classList.remove('header-hidden');
     header.classList.add('header-scrolled-up');
   }

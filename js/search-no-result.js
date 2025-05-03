@@ -376,6 +376,14 @@ window.addEventListener('scroll', () => {
     // Скролл вниз
     header.classList.add('header-hidden');
     header.classList.remove('header-scrolled-up');
+    
+    searchInput.blur(); // убирает фокус с поля ввода
+    searchInput.value = ''; // очищает текст
+    searchItems.classList.remove('show'); // скрывает блок
+
+    // Убираем пустые отступы
+    header.style.paddingBottom = '20px';
+    menuNavigation.style.marginTop = '170px';
 
     // Сброс состояния
     blurContainers.forEach(container => {
