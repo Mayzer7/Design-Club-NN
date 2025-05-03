@@ -1,4 +1,5 @@
-// Поиск в хедере
+// Переадрисация на страницу "Результаты поиска" после того как 
+// пользователь ввел название товарава в поиске и нажал Enter
 
 function performSearch() {
     const query = document.getElementById('search-input').value;
@@ -70,6 +71,8 @@ function validateForm(event, formId) {
 }
 
 
+
+
 // Поиск в хедере
 
 const searchInput = document.getElementById('search-input');
@@ -97,11 +100,11 @@ searchInput.addEventListener('input', function () {
         // Показываем элементы с плавным переходом
         searchItems.classList.add('show');
     } else if (!isCatalogActive) {
-        menuNavigation.style.marginTop = '200px';
+        menuNavigation.style.marginTop = '170px';
         // Сбрасываем фон header, если поиск пуст
         header.style.backgroundColor = 'transparent';
 
-        header.style.paddingBottom = '30px';
+        header.style.paddingBottom = '20px';
 
         // Скрываем элементы с плавным переходом
         searchItems.classList.remove('show');
@@ -112,14 +115,22 @@ searchInput.addEventListener('input', function () {
             container.style.filter = '';
         });
     } else {
-        menuNavigation.style.marginTop = '200px';
+        menuNavigation.style.marginTop = '170px';
         // Скрываем элементы с плавным переходом
         searchItems.classList.remove('show');
         header.style.transition = 'padding-bottom 0.5s ease';
-        header.style.paddingBottom = '30px';
+        header.style.paddingBottom = '20px';
         underHeader.style.filter = 'blur(5px)';
     }
 });
+
+
+
+
+
+
+
+
 
 const blurContainers = document.querySelectorAll('.blur-container');
 
@@ -139,13 +150,11 @@ function resetHeaderState() {
     underHeader.style.filter = 'none';
     underHeader.style.backdropFilter = 'none';
     searchInput.value = '';
-    menuNavigation.style.marginTop = '200px';
-    header.style.paddingBottom = '40px';
+    underHeader.style.cursor = '';
 
     // Сбрасываем blur, если поле поиска пустое
     blurContainers.forEach(container => {
         container.style.filter = '';
-        container.style.cursor = '';
     });
 }
 
@@ -158,10 +167,12 @@ blurContainers.forEach(container => {
 underHeader.addEventListener('click', resetHeaderState);
 
 
+
+
+
 // Нажатие на кнопку каталог в хедере
 
 const menuNavigation = document.querySelector('.menu-navigation');
-const menuNavigationRelative = document.querySelector('.menu-navigation-relative');
 const openCatalog = document.querySelector('.open-catalog');
 
 openCatalog.addEventListener('click', function (e) {    
@@ -170,13 +181,13 @@ openCatalog.addEventListener('click', function (e) {
     this.parentElement.classList.toggle('active');
 
     underHeader.style.filter = 'blur(5px)';
+    underHeader.style.cursor = 'pointer';
 
     // Накидываем blur на все контейнеры
     blurContainers.forEach(container => {
         container.style.filter = 'blur(5px)';
         container.style.cursor = 'pointer';
     });
-
 
     // Проверяем, активирован ли класс и выводим результат в консоль
     const isActive = this.parentElement.classList.contains('active');
@@ -209,6 +220,7 @@ openCatalog.addEventListener('click', function (e) {
         }
     }
 });
+
 
 
 

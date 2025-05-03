@@ -1,4 +1,5 @@
-// Поиск в хедере
+// Переадрисация на страницу "Результаты поиска" после того как 
+// пользователь ввел название товарава в поиске и нажал Enter
 
 function performSearch() {
     const query = document.getElementById('search-input').value;
@@ -191,11 +192,11 @@ searchInput.addEventListener('input', function () {
         // Показываем элементы с плавным переходом
         searchItems.classList.add('show');
     } else if (!isCatalogActive) {
-        menuNavigation.style.marginTop = '200px';
+        menuNavigation.style.marginTop = '170px';
         // Сбрасываем фон header, если поиск пуст
         header.style.backgroundColor = 'transparent';
 
-        header.style.paddingBottom = '40px';
+        header.style.paddingBottom = '20px';
 
         // Скрываем элементы с плавным переходом
         searchItems.classList.remove('show');
@@ -206,11 +207,11 @@ searchInput.addEventListener('input', function () {
             container.style.filter = '';
         });
     } else {
-        menuNavigation.style.marginTop = '200px';
+        menuNavigation.style.marginTop = '170px';
         // Скрываем элементы с плавным переходом
         searchItems.classList.remove('show');
         header.style.transition = 'padding-bottom 0.5s ease';
-        header.style.paddingBottom = '40px';
+        header.style.paddingBottom = '20px';
         underHeader.style.filter = 'blur(5px)';
     }
 });
@@ -241,8 +242,6 @@ function resetHeaderState() {
     underHeader.style.filter = 'none';
     underHeader.style.backdropFilter = 'none';
     searchInput.value = '';
-    menuNavigation.style.marginTop = '200px';
-    header.style.paddingBottom = '40px';
     underHeader.style.cursor = '';
 
     // Сбрасываем blur, если поле поиска пустое
@@ -281,10 +280,6 @@ openCatalog.addEventListener('click', function (e) {
         container.style.filter = 'blur(5px)';
         container.style.cursor = 'pointer';
     });
-
-    if (searchInput.value.trim() == '') {
-        header.style.paddingBottom = '40px';
-    }
 
     // Проверяем, активирован ли класс и выводим результат в консоль
     const isActive = this.parentElement.classList.contains('active');
