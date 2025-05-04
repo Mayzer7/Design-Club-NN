@@ -89,7 +89,7 @@ body {
 /* Верхрняя секция главной страницы */
 
 .main-page-top {
-    background-image: url('../images/reviews/background.png');
+    background-image: url('../images/projects/background.png');
     background-repeat: no-repeat;
     background-size: contain;
     height: 800px;
@@ -525,59 +525,11 @@ li.active .menu-plumbing-arrow {
 }
 
 
-.reviews-container {
+.projects-header-container {
     margin-top: 60px;
     padding-left: 26%;
     position: relative;
 } 
-
-.rating-number {
-    position: absolute;
-    top: 155px;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-self: flex-start;
-    padding: 14px 55px;
-    gap: 10px;
-    border-left: 1px solid rgba(255, 255, 255, 0.4);
-    border-right: 1px solid rgba(255, 255, 255, 0.4);
-
-    background-image:
-        linear-gradient(to right, 
-            rgba(255, 255, 255, 0.4) 0%, 
-            rgba(255, 255, 255, 0.4) 7%, 
-            transparent 7%, 
-            transparent 93%, 
-            rgba(255, 255, 255, 0.4) 93%, 
-            rgba(255, 255, 255, 0.4) 100%),
-        linear-gradient(to right, 
-            rgba(255, 255, 255, 0.4) 0%, 
-            rgba(255, 255, 255, 0.4) 7%, 
-            transparent 7%, 
-            transparent 93%, 
-            rgba(255, 255, 255, 0.4) 93%, 
-            rgba(255, 255, 255, 0.4) 100%);
-    background-repeat: no-repeat;
-    background-position: top, bottom;
-    background-size: 100% 1px; 
-}
-
-
-.rating-number p {
-    white-space: nowrap;
-}
-
-.rating-number h1 {
-    font-family: 'Future New Light', sans-serif;
-    font-size: 93px;
-}
-
-.stars {
-    display: flex;
-    gap: 5px;
-}
 
 .title {
     font-family: 'Future New Light', sans-serif;
@@ -589,30 +541,54 @@ li.active .menu-plumbing-arrow {
 .subtitle {
     margin-top: 30px;
     margin-bottom: 40px;
-    font-size: 26px;
+    font-size: 20px;
+}
+
+/* Для расширения контейнера под хедером */
+
+.expansion-up {
+    padding: 0px 20px 0px 0px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display Thin', sans-serif;  
 }
 
 
-.review-cards {
+/* Секция "Проекты" */
+
+
+.projects-section {
+    padding: 0px 20px 20px 20px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300; 
+}
+
+.projects-navigation {
     display: flex;
     gap: 20px;
 }
 
-.review-card {
-    margin-top: 60px;
-    position: relative;
-    min-width: 692px;
-    width: 100%;
-    min-height: 414px;
-    height: 100%;
+.projects-nav {
+    width: 100px;
+    padding: 9px 110px;
+    border: none;
+    background-color: transparent;
+    color: #EDE4D7;
+    cursor: pointer;
+    font-family: 'Future New Light', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    align-self: flex-start;
+
     border-left: 1px solid rgba(255, 255, 255, 0.4);
     border-right: 1px solid rgba(255, 255, 255, 0.4);
-    background-color: transparent;
-    
+
     background-image:
         linear-gradient(to right, 
             rgba(255, 255, 255, 0.4) 0%, 
@@ -633,82 +609,117 @@ li.active .menu-plumbing-arrow {
     background-size: 100% 1px;
 }
 
-.review-text {
-    font-family: 'SF Pro Display Thin', sans-serif;
-    text-align: left;
-    padding: 40px;
-    font-size: 20px;
+/* Ховер для всей области .projects-nav (включая кнопку) */
+.projects-nav:hover {
+    color: #AE9877;  
+    border-left-color: #AE9877; 
+    border-right-color: #AE9877; 
+    background-image:
+        linear-gradient(to right, 
+            #AE9877 0%, 
+            #AE9877 7%, 
+            transparent 7%, 
+            transparent 93%, 
+            #AE9877 93%, 
+            #AE9877 100%),
+        linear-gradient(to right, 
+            #AE9877 0%, 
+            #AE9877 7%, 
+            transparent 7%, 
+            transparent 93%, 
+            #AE9877 93%, 
+            #AE9877 100%);
 }
 
-.review-text span a {
-    color: rgba(237, 228, 215, 0.4);
-}
 
-.review-author {
-    padding-top: 20px;
-    font-family: 'Future New Bold', sans-serif;
-    font-weight: 600;
-    font-size: 34px;
-    text-transform: uppercase;
-}
-
-.review-link a {
-    font-size: 16px;
-    margin-right: 10px;
-    color: #BBB5AC;
-}
-
-.hide {
-    display: none;
-}
-
-.nav-arrows-reviews {
-    position: relative;
-    bottom: 10px;
-    z-index: 10;
-}
-
-.nav-arrows-reviews button {
-    background-color: transparent;
+/* Стили для кнопки */
+.projects-nav button {
     border: none;
+    min-width: 220px;
+    background-color: transparent;
+    color: inherit;  
     cursor: pointer;
-}
-
-
-/* Для расширения контейнера под хедером */
-
-.expansion-up {
-    padding: 0px 20px 0px 0px;
-    background-color: #151c28;
-    font-family: 'SF Pro Display Thin', sans-serif;  
-}
-
-/* Секция "Отзывов" */
-
-.reviews-section {
-    padding: 0px 0px 20px 490px;
-    background-color: #151c28;
-    font-family: 'SF Pro Display Thin', sans-serif;
-    font-weight: 300; 
-}
-
-.review-section-container {
-    max-width: 1405px;
-    width: 100%;
-}
-
-.more {
-    margin-top: 60px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.more h1 {
+    font-family: 'Future New Light', sans-serif;
     font-size: 18px;
+    font-weight: 600;
     text-transform: uppercase;
-    border-bottom: 1px solid rgba(255, 255, 255);
+    white-space: nowrap;
+    transition: color 0.3s ease;
 }
+
+/* Ховер на кнопке */
+.projects-nav button:hover {
+    color: #AE9877;  /* Меняем цвет текста при ховере на кнопку */
+}
+
+.project-content {
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.project-content-title {
+    font-family: 'Future New Light', sans-serif;
+    font-size: 76px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    padding-left: 26%;
+}
+
+.little-up {
+    margin-top: 90px;
+}
+
+.project-content-first p,
+.project-content-last-up p {
+    color: rgba(255, 255, 255, 0.6);    
+}
+
+.project-content-second {
+    display: flex;
+    gap: 20px;
+    margin-left: 270px;
+}
+
+
+.project-content-second-right {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.project-title {
+    font-size: 26px;
+    font-family: 'SF Pro Display Thin', sans-serif;
+}
+
+
+.project-content-last {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.project-content-last button {
+    border: none;
+    background-color: transparent;
+    color: #EDE4D7;
+    font-family: 'Sf Pro Display', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 5px 0;
+    margin: 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+
 
 /* Footer */
 
