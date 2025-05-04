@@ -73,7 +73,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 body {
-    font-family: 'SF Pro Display', sans-serif;
+    font-family: 'SF Pro Display Thin', sans-serif;
     font-size: 18px;
     font-weight: 300;
     color: #EDE4D7;
@@ -89,11 +89,10 @@ body {
 /* Верхрняя секция главной страницы */
 
 .main-page-top {
-    background-image: url('../images/services/background.png');
+    background-image: url('../images/furniture-build/background.png');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: top center;
-    min-height: 100vh;
+    min-height: 2000px;
 }
 
 /* Шапка */
@@ -525,60 +524,106 @@ li.active .menu-plumbing-arrow {
     gap: 10px;
 }
 
-.under-header-container a:first-child {
+.under-header-container a:nth-child(1),
+.under-header-container a:nth-child(3) {
     color: #7B8292;
 }
 
+.under-header-container a:nth-child(1):hover,
+.under-header-container a:nth-child(3):hover {
+    color: #AE9877;
+}
 
-.service-content {
-    padding-left: 24.5%;
+/* Секция контента 'Разгрузка, подъем и сборка мебели' */
+
+.furniture-build-container {
+    margin-top: 60px;
+    padding-left: 25.5%;
     position: relative;
 }
 
-.small-image {
-    position: absolute;
-    top: 230px;
-    left: 0;
-}
-
-.services-title {
+.furniture-title {
     font-family: 'Future New Light', sans-serif;
     font-size: 100px;
     font-weight: 600;
     text-transform: uppercase;
 }
 
-.services-subtitle {
-    margin-top: 30px;
-    margin-bottom: 40px;
+.first-text {
+    margin: 30px 0;
+    font-size: 20px;
 }
 
-.services-images {
+
+
+.video-container {
+    position: relative;
+    display: inline-block;
+}
+
+.video-container img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.video-button {    
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 0;
+    font-size: 16px;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    border: 1px solid white;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.video-button:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+
+.advantages-title {
+    text-transform: uppercase;
+    font-family: 'Future New Bold', sans-serif;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.advantages-container {
+    display: flex;
+    gap: 40px;
+}
+
+.advantages-left,
+.advantages-right {
+    display: flex;
+    flex-direction: column;
     gap: 20px;
 }
 
-.services-image {
+.advantages-left-up,
+.advantages-left-down,
+.advantages-right-up,
+.advantages-right-down {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
 }
-
-.services-image a {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.services-image a:hover {
-    transform: scale(1.03);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
-}
-
-@media (max-width: 1900px) {
-    .under-header {
-        top: 200px;
-    }
-}
-
 
 /* Для расширения контейнера под хедером */
 
@@ -588,60 +633,72 @@ li.active .menu-plumbing-arrow {
     font-family: 'SF Pro Display Thin', sans-serif;  
 }
 
-/* Секция "Запишитесь на персональную консультацию" */
 
-.get-request {
-    padding: 60px 20px 90px 20px;
+
+/* Секция "Остались вопросы?" */
+
+.get-contact {
+    padding: 60px 0 150px 20px;
     background-color: #151c28;
-    font-family: 'SF Pro Display Thin', sans-serif;
-    background-image: url("../images/main-page/get-request-bg.png");
+    font-family: 'SF Pro Display Thin', sans-serif; 
+    background-image: url("../images/customers-page/background.png");
     background-repeat: no-repeat;
     background-size: cover; 
-    background-position: center right;
+    background-position: center right; 
+    position: relative;
 }
 
-
-.get-request-title {
-    font-family: 'Future New Light', sans-serif;
-    font-size: 76px;
-    padding-left: 25%;
-    text-transform: uppercase;
+.get-contact-container {
+    display: flex;
+    justify-content: space-between;
+    height: 524px;
 }
 
-.get-request-title-test {
-    font-family: 'Future New Light', sans-serif;
-    font-size: 76px;
-    text-transform: uppercase;
-}
-
-.get-request-content {
-    margin-top: 60px;
-    display: flex; 
-}
-
-.get-request-content iframe {
-    margin-top: 120px;
-}
-
-.get-request-container {
-    padding-left: 7%;
+.left-side {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    justify-content: space-between;
+    
 }
 
-.content-wrapper {
+.block-title {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.6);
+    top: 70px;
+}
+
+.left-side img {
+    width: 56px;
+    height: 56px;
+}
+
+.img-side img {
+    margin-top: -70px;
+}
+
+.main-side-wrapper {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    justify-content: space-between;
     gap: 40px;
-    margin-top: -90px;
+    padding-left: 25%;
 }
 
-.content-wrapper form {
+.main-side-wrapper h1 {
+    font-family: 'Future New Light', sans-serif;
+    font-size: 76px;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+.main-side-wrapper form {
     display: flex;
     flex-direction: column;
     gap: 35px;
+}
+
+.opacity {
+    opacity: 0;
 }
 
 .contact-input {
@@ -669,8 +726,6 @@ li.active .menu-plumbing-arrow {
 .contact-input input::placeholder {
     color: #555D6F;
 }
-
-
 
 .error-contact {
     font-family: 'SF Pro Display Thin', sans-serif; 
@@ -700,7 +755,6 @@ li.active .menu-plumbing-arrow {
     color: #AE9877;
     border-bottom: 1px solid #AE9877;
 }
-
 
 .get-request-button {
     font-family: 'SF Pro Display Thin', sans-serif;
@@ -764,12 +818,6 @@ li.active .menu-plumbing-arrow {
     background-image: url('../images/svg/check-mark.svg');
 }
 
-
-@media (max-width: 1660px) {
-    .get-request-content iframe {
-        margin-top: 210px;
-    }
-}
 
 /* Footer */
 
