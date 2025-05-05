@@ -572,6 +572,11 @@ li.active .menu-plumbing-arrow {
     gap: 10px;
 }
 
+.services-image img {
+    width: 411px;
+    height: 376px;
+}
+
 .services-image a {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
