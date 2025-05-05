@@ -85,8 +85,15 @@ body {
     font-size: 18px;
     font-weight: 300;
     color: #EDE4D7;
+    background-color: #151c28;
 }
 
+.container {
+    max-width: 1920px;
+    margin: 0 auto;
+    position: relative;
+    width: 100%;  
+}
 
 /*
 Для того чтобы когда в input вводятся только цифры, 
@@ -681,6 +688,7 @@ li.active .menu-plumbing-arrow {
     padding: 180px 20px 20px 20px;
     background-color: #151c28;
     font-family: 'SF UI Display Thin', sans-serif;
+    overflow: hidden;
 }
 
 
@@ -731,6 +739,7 @@ li.active .menu-plumbing-arrow {
     padding: 180px 20px 200px 20px;
     background-color: #151c28;
     font-family: 'SF UI Display Thin', sans-serif;
+    overflow: hidden;
 }
 
 
@@ -795,8 +804,6 @@ li.active .menu-plumbing-arrow {
     background: none;
     cursor: pointer;
 }
-
-
 
 .product-cards {
     margin-top: 70px;
@@ -956,8 +963,6 @@ li.active .menu-plumbing-arrow {
     }
 }
 
-
-
 @media (max-width: 768px) {
     .product-cards {
         margin-left: 0;
@@ -980,13 +985,13 @@ li.active .menu-plumbing-arrow {
 } 
 
 
-
 /* Секция "Отзывы от покупателей" */
 
 .reviews {
     padding: 130px 20px 100px 20px;
     background-color: #151c28;
-    font-family: 'SF Pro Display Thin', sans-serif;  
+    font-family: 'SF Pro Display Thin', sans-serif; 
+    overflow: hidden; 
 }
 
 .reviews-up-title {

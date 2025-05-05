@@ -1,5 +1,4 @@
-// Валидация формы Вакансии
-
+// Валидация формы "Вакансии"
 
 function validateForm(event, formId) {
     event.preventDefault();
@@ -51,6 +50,20 @@ function validateForm(event, formId) {
 
     return false;
 }
+
+
+// Отображение выбранного файла загруженного в форму "Вакансии"
+
+const input = document.getElementById('resume-upload-input');
+const fileNameSpan = document.querySelector('.file-name');
+    
+input.addEventListener('change', () => {
+    if (input.files.length > 0) {
+        fileNameSpan.textContent = `Файл выбран: ${input.files[0].name}`;
+    } else {
+        fileNameSpan.textContent = '';
+    }
+});
 
 
 // Переадрисация на страницу "Результаты поиска" после того как 

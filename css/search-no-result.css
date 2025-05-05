@@ -77,6 +77,14 @@ body {
     font-size: 18px;
     font-weight: 300;
     color: #EDE4D7;
+    background-color: #151c28;
+}
+
+.container {
+    max-width: 1920px;
+    margin: 0 auto;
+    position: relative;
+    width: 100%;  
 }
 
 .line {
@@ -92,6 +100,7 @@ body {
     background-image: url('../images/search-no-result/background.png');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: top center;
     min-height: 700px;
 }
 

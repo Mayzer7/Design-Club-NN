@@ -16,53 +16,20 @@ document.querySelector('.search-icon-button').addEventListener('click', function
     performSearch();
 });
 
-// Валидация 2 форм для связи на странице
 
-function validateForm(event, formId) {
-    event.preventDefault();
-
-    const form = document.getElementById(formId);
-
-    // Скрыть все ошибки только внутри своей формы
-    const errorElements = form.querySelectorAll('.error-contact');
-    errorElements.forEach(error => error.style.display = 'none');
-
-    let valid = true;
-
-    // Поля внутри своей формы
-    const nameInput = form.querySelector('input[name="name"]');
-    const phoneInput = form.querySelector('input[name="phone"]');
-    const acceptInput = form.querySelector('input[name="accept"]');
-    const errorSpans = form.querySelectorAll('.error-contact');
-
-    // Проверка поля "Ваше имя"
-    if (!nameInput.value.trim()) {
-        errorSpans[0].textContent = 'Пожалуйста, введите ваше имя.';
-        errorSpans[0].style.display = 'block';
-        valid = false;
-    }
-
-    // Проверка поля "Телефон"
-    if (!phoneInput.value.trim()) {
-        errorSpans[1].textContent = 'Пожалуйста, введите ваш телефон.';
-        errorSpans[1].style.display = 'block';
-        valid = false;
-    }
-
-    // Проверка чекбокса "Согласие"
-    if (!acceptInput.checked) {
-        errorSpans[2].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
-        errorSpans[2].style.display = 'block';
-        valid = false;
-    }
-
-    // Если всё ок — отправляем форму
-    if (valid) {
-        form.submit();
-    }
+// Функция для получения параметра из URL
+function getQueryParam(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
 }
 
+// Получаем значение параметра "query" из URL
+const query = getQueryParam('query');
 
+// Помещаем запрос в value поля поиска
+if (query) {
+    document.getElementById('search-input-on-page').value = query;
+}
 
 
 // Поиск в хедере

@@ -85,8 +85,15 @@ body {
     font-size: 18px;
     font-weight: 300;
     color: #EDE4D7;
+    background-color: #151c28;
 }
 
+.container {
+    max-width: 1920px;
+    margin: 0 auto;
+    position: relative;
+    width: 100%;  
+}
 
 .line {
     width: 100%;
@@ -103,7 +110,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top center;
-    min-height: 100vh;
+    min-height: 1000px;
 }
 
 /* Шапка */
@@ -780,7 +787,7 @@ li.active .menu-plumbing-arrow {
     background-repeat: no-repeat;
     background-size: cover; 
     background-position: center right;
-    height: 100vh;
+    min-height: 1000px;
     position: relative;
 }
 
@@ -836,7 +843,7 @@ li.active .menu-plumbing-arrow {
 .about-warehouse-last {
     position: absolute;
     right: 20px;
-    bottom: 30px;
+    bottom: 90px;
 }
 
 .expansion-down {
@@ -1134,7 +1141,8 @@ li.active .menu-plumbing-arrow {
 .reviews {
     padding: 130px 20px 100px 20px;
     background-color: #151c28;
-    font-family: 'SF Pro Display Thin', sans-serif;  
+    font-family: 'SF Pro Display Thin', sans-serif;
+    overflow: hidden; /* чтобы карточки отзывов уходящие за экран не было видно при уменьшении экрана*/  
 }
 
 .reviews-up-title {

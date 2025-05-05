@@ -1,3 +1,31 @@
+// Переключение фотографий "Галерея проекта"
+
+const gallery = document.querySelector('.project-gallery-images');
+const images = document.querySelectorAll('.project-gallery-images img');
+const leftArrow = document.querySelector('.left-arrow');
+const rightArrow = document.querySelector('.right-arrow');
+
+let currentIndex = 0;
+const imageWidth = 1120 + 20; // 1120px + 20px gap
+
+function updateGalleryTransform() {
+    const offset = -(currentIndex * imageWidth);
+    gallery.style.transform = `translateX(${offset}px)`;
+}
+
+rightArrow.addEventListener('click', () => {
+    if (currentIndex < images.length - 2) {
+        currentIndex++;
+        updateGalleryTransform();
+    }
+});
+
+leftArrow.addEventListener('click', () => {
+    if (currentIndex >= 0) {
+        currentIndex--;
+        updateGalleryTransform();
+    }
+});
 
 // Секция "Наши Отзывы от покупателей"
 
