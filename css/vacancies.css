@@ -33,14 +33,6 @@
     font-style: normal;
 }
 
-
-@font-face {
-    font-family: 'SF UI Display Thin';
-    src: url('../fonts/sf-ui-display-8.otf');
-    font-weight: 900;
-    font-style: normal;
-}
-
 html {
     box-sizing: border-box;
 }
@@ -85,8 +77,8 @@ body {
     font-size: 18px;
     font-weight: 300;
     color: #EDE4D7;
+    background-color: #151c28;
 }
-
 
 .line {
     width: 100%;
@@ -95,15 +87,15 @@ body {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-
 /* Верхрняя секция главной страницы */
 
 .main-page-top {
-    background-image: url('../images/about-us/background.png');
+    background-image: url('../images/reviews/background.png');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: top center;
-    min-height: 100vh;
+    background-position: center;
+    min-height: 80vh;
+    background-color: #151c28;
 }
 
 /* Шапка */
@@ -352,11 +344,6 @@ li.active .menu-plumbing-arrow {
     z-index: 5;
 }
 
-
-
-
-
-
 .search-items {
     margin-top: 20px;
     display: flex;
@@ -512,7 +499,7 @@ li.active .menu-plumbing-arrow {
 }
 
 
-
+/* header */
 
 .page-wrapper {
     position: relative; 
@@ -529,475 +516,160 @@ li.active .menu-plumbing-arrow {
 }
 
 .under-header-container {
-    margin-top: 20px;
+    margin-top: 60px;
     display: flex;
     align-items: center;
-    transition: margin-top 0.5s ease;
-}
-
-.links {
-    display: flex;
     gap: 10px;
-    text-align: center;
 }
 
-.title-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+.under-header-container a:first-child {
+    color: #7B8292;
 }
 
-.title-container h1 {
-    font-family: 'Future New Light', sans-serif;
-    font-size: 250px;
-    text-transform: uppercase;
-}
+/* HEADER */
 
-.under-header-content {
-    display: flex;
-    align-items: self-end;
-    justify-content: space-between;
-}
-
-.video-container {
-    position: relative;
-    display: inline-block;
-}
-
-.video-container img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
-
-.video-button {    
-    font-family: 'SF UI Display Thin', sans-serif;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    padding: 0;
-    font-size: 16px;
-    transform: translate(-50%, -50%);
-    width: 100px;
-    height: 100px;
-    border: 1px solid white;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    color: white;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-
-
-.video-button:hover {
-    transform: translate(-50%, -50%) scale(1.05);
-}
-
-.nn {
-    font-family: 'Future New Light', sans-serif;
-    font-size: 372px;
-    line-height: 250px;
-}
-
-
-/* Секция "Уникальные решения для вашего дома" */
-
-.unique-solutions {
-    padding: 100px 20px 200px 20px;
-    background-color: #151c28;
-    font-family: 'SF UI Display Thin', sans-serif;
-    font-size: 20px;
-}
-
-.unique-solutions-container {
+.vacancies-container {
     margin-top: 60px;
-}
-
-.unique-solutions-content-left p {
-    padding-bottom: 30px;
-}
-
-.unique-solutions-content-right p {
-    padding-bottom: 54px;
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: auto auto auto; /* Центр фиксированной ширины */
-    align-items: flex-end;
-    justify-content: space-between;
-}
-
-.center {
-    display: flex;
-    flex-direction: column;
-}
-
-.unique-solutions-title {
-    font-family: 'Future New Light', sans-serif;
-    font-size: 76px;
-    text-transform: uppercase;
-    margin-bottom: 60px;
-}
-
-.unique-solutions-content {
-    display: flex;
-    gap: 20px;
-}
-
-
-/* Секция "Почему выбирают нас" */
-
-.why-choose-us {
-    padding: 0px 20px 200px 20px;
-    background-color: #151c28;
-    font-family: 'SF Pro Display', sans-serif;
-}
-
-/* .blur-container {
-    filter: blur(5px);
-} */
-
-.why-up-title {
+    padding-left: 25%;
     position: relative;
-    top: 30px;
-}
+} 
 
-.block-title {
-    color: rgba(255, 255, 255, 0.6);
-}
-
-.title-group {
-    padding-left: 25.6%;
-}
-
-.title-group h1 {
+.title {
     font-family: 'Future New Light', sans-serif;
-    font-size: 76px;
+    font-size: 142px;
+    font-weight: 600;
     text-transform: uppercase;
-    margin-bottom: 20px;
 }
 
-.why-choose-us-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 60px;
+.subtitle {
+    margin-top: 30px;
+    font-size: 26px;
 }
 
-.card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 1rem 1rem 1rem 2rem;
-    max-width: 100%;
-    background-color: transparent;
-}
-
-.card::before {
-    content: "";
-    position: absolute;
-    top: 20px;
-    bottom: 30px;
-    left: 0;
-    width: 1px;
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.card h2 {
-    font-family: 'Future New Bold', sans-serif;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-}
-
-.card p {
-    margin-bottom: 40px;
-    color: #EDE4D7;
-}
-
-.card img {
-    margin-top: 250px;
-    width: 288px;
-    height: 288px;
-}
-
-.why-choose-us-content .card:nth-child(1) img {
-    width: 288px;
-    height: 260px;
-}
-
-@media (min-width: 1400px) {
-    .why-choose-us-content .card:nth-child(1),
-    .why-choose-us-content .card:nth-child(3) {
-        transform: translateY(165px);
-    }
-}
-
-@media (max-width: 1024px) {
-
-    .card p {
-        margin-bottom: 20px;
-    }
-
-    .title-group h1 {
-        font-size: 40px;
-    }
-
-    .title-group h4 {
-        font-size: 18px;
-    }
-}
-
-/* Секция  "О складе"*/
+/* Для расширения контейнера под хедером */
 
 .expansion-up {
-    padding: 130px 20px 0px 20px;
-    background-color: #1D2535;
+    padding: 0px 20px 0px 0px;
+    background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;  
 }
 
-.about-warehouse-container-padding {
-    padding-left: 26%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
+/* Секция "Вакансий " */
 
-.about-warehouse {
-    padding: 50px 20px 90px 20px;
+.vacancies-section-container-main {
+    padding: 0 20px;
     background-color: #151c28;
-    font-family: 'SF UI Display Thin', sans-serif;
-    background-image: url("../images/about-us/about-warehouse/background.png");
-    background-repeat: no-repeat;
-    background-size: cover; 
-    background-position: center right;
-    height: 100vh;
-    position: relative;
+
+    
 }
 
-.warehouse-up-title {
-    position: absolute;
-    top: 0px;
+.vacancies-section {
+    background-color: #151c28;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300; 
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding-left: 25%;
 }
 
-.about-warehouse-title {
-    font-family: 'Future New Light', sans-serif;
-    font-size: 76px;
-    text-transform: uppercase;
-    margin-bottom: 60px;
+.vacancies-section-container {
+    max-width: 1000px;
+    width: 100%;
 }
 
 
-.about-warehouse-content {
-    display: flex;
-    gap: 40px;
-}
-
-.about-warehouse-first {
+.vacancy {
     display: flex;
     justify-content: space-between;
+    padding: 40px 0;
 }
 
-.about-warehouse-first-content {
+.vacancy-title {
+    font-size: 26px;
+}
+
+.work-info {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Текст будет наверху, фото — внизу */
-    
-    height: 100%; /* Обеспечить растяжение по высоте родителя */
+    gap: 54px;
 }
 
-.about-warehouse-first-content p {
+.work-info h1 {
     font-size: 20px;
 }
 
-.about-warehouse-first-content img {
-    width: 127px;
-    height: 137px;
+.work-info h1 span {
+    font-family: 'Sf Pro Display Thin', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
 }
 
-.about-warehouse-wrapper {
-    margin-top: -100px;
+.requirements h1 {
+    font-size: 20px;
+    margin-bottom: 5px;
 }
 
-.flex-end {
-    display: flex;
-    align-items: flex-end;
+.requirements p {
+    margin-bottom: 10px;
 }
 
-.about-warehouse-last {
-    position: absolute;
-    right: 20px;
-    bottom: 30px;
-}
 
-.expansion-down {
-    padding-top: 50px;
-    background-color: #1D2535;
-    font-family: 'SF Pro Display Thin', sans-serif;  
-}
+/* Секция "Оставьте ваше резюме" */
 
-@media (max-width: 1900px) {
-    .about-warehouse-wrapper {
-        margin-top: -250px;
-    }
-
-    .expansion-up {
-        padding: 250px 20px 0px 20px;
-    }
-
-    .warehouse-up-title {
-        top: -150px;
-    }
-}
-
-@media (max-width: 1636px) {
-    .about-warehouse-wrapper {
-        margin-top: -350px;
-    }
-
-    .expansion-up {
-        padding: 350px 20px 0px 20px;
-    }
-
-    .warehouse-up-title {
-        top: -220px;
-    }
-}
-
-@media (max-width: 1560px) {
-    .expansion-up {
-        padding: 400px 20px 0px 20px;
-    }
-
-    .about-warehouse-wrapper {
-        margin-top: -420px;
-    }
-
-    .expansion-down {
-        padding: 100px 20px 0px 20px;
-    }
-
-    .warehouse-up-title {
-        top: -300px;
-    }
-
-}
-
-/* Секция "Шоурум" */
-
-.showroom {
-    padding: 100px 20px 200px 20px;
+.get-contact {
+    margin-top: 100px;
+    padding: 150px 0 100px 20px;
     background-color: #151c28;
-    font-family: 'SF UI Display Thin', sans-serif;
-    position: relative;
-}
-
-.showroom-title {
-    font-family: 'Future New Light', sans-serif;
-    font-size: 76px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-}
-
-.showroom-up-title {
-    position: absolute;
-}
-
-.showroom-content {
-    padding-left: 26%;
-}
-
-.showroom-left svg {
-    margin-top: 30px;
-    margin-bottom: 110px;
-}
-
-.showroom-first {
-    display: flex;
-    justify-content: space-between;
-}
-
-.showroom-second p {
-    margin-bottom: 60px;
-}
-
-.showroom-last-line {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.showroom-last-line p:first-child {
-    color: rgba(237, 228, 215, 0.7);
-}
-
-.showroom-line {
-    margin-top: 20px;
-}
-
-/* Секция "Запишитесь на персональную консультацию" */
-
-.get-request {
-    padding: 60px 20px 90px 20px;
-    background-color: #151c28;
-    font-family: 'SF Pro Display', sans-serif;
-    background-image: url("../images/main-page/get-request-bg.png");
+    font-family: 'SF Pro Display Thin', sans-serif; 
+    background-image: url("../images/vacancies/background.png");
     background-repeat: no-repeat;
     background-size: cover; 
-    background-position: center right;
+    background-position: center right; 
 }
 
-
-.get-request-title {
-    font-family: 'Future New Light', sans-serif;
-    font-size: 76px;
-    padding-left: 25%;
-    text-transform: uppercase;
+.get-contact-container {
+    display: flex;
+    justify-content: space-between;
+    min-height: 524px;
+    height: 100%;
 }
 
-.get-request-title-test {
-    font-family: 'Future New Light', sans-serif;
-    font-size: 76px;
-    text-transform: uppercase;
-}
-
-.get-request-content {
-    margin-top: 60px;
-    display: flex; 
-}
-
-.get-request-content iframe {
-    margin-top: 120px;
-}
-
-.get-request-container {
-    padding-left: 7%;
+.left-side {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    justify-content: space-between;
+    
 }
 
-.content-wrapper {
+.main-side-wrapper {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    justify-content: space-between;
     gap: 40px;
-    margin-top: -90px;
+    padding-left: 10%;
 }
 
-.content-wrapper form {
+.main-side-wrapper h1 {
+    font-family: 'Future New Light', sans-serif;
+    font-size: 93px;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+.opacity {
+    opacity: 0;
+}
+
+
+/* Форма */
+
+.vacancies-form-container {
+    width: 110%;
+}
+
+.vacancies-form {
     display: flex;
     flex-direction: column;
-    gap: 35px;
+    gap: 20px;
 }
 
 .contact-input {
@@ -1009,7 +681,7 @@ li.active .menu-plumbing-arrow {
     background: transparent;
     padding: 5px 0;
     gap: 8px;
-    width: 105%;
+    width: 100%;
 }
 
 .contact-input input {
@@ -1057,9 +729,8 @@ li.active .menu-plumbing-arrow {
     border-bottom: 1px solid #AE9877;
 }
 
-
-
 .get-request-button {
+    margin-top: 10px;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-size: 18px;
     position: relative;
@@ -1074,7 +745,7 @@ li.active .menu-plumbing-arrow {
     border: none;
     color: #fff;
     transition: all 0.3s ease;
-    width: 105%;
+    width: 100%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
@@ -1092,7 +763,6 @@ li.active .menu-plumbing-arrow {
 .get-request-button:hover .contact-icon {
     transform: translateX(5px);
 }
-
 
 .custom-checkbox {
     position: relative;
@@ -1123,205 +793,43 @@ li.active .menu-plumbing-arrow {
 }
 
 
-@media (max-width: 1660px) {
-    .get-request-content iframe {
-        margin-top: 210px;
-    }
-}
-
-/* Секция "Отзывы от покупателей" */
-
-.reviews {
-    padding: 130px 20px 100px 20px;
-    background-color: #151c28;
-    font-family: 'SF Pro Display Thin', sans-serif;  
-}
-
-.reviews-up-title {
-    position: relative;
-    top: -30px;
-}
-
-.middle-title {
-    display: flex;
-    align-items: flex-end;
-}
-
-.reviews-title{
-    flex-grow: 1;
-}
-
-.reviews-title h1 {
-    font-family: 'Future New Light', sans-serif;
-    font-size: 76px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-} 
-
-
-.reviews-content {
-    margin-top: 60px;
-}
-
-.reviews-content-container {
-    display: flex;
-    gap: 40px;
-}
-
-
-.rating-number {
-    position: relative;
+.resume-upload {
+    margin: 10px 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    align-self: flex-start;
-    padding: 55px 55px;
-    gap: 10px;
-    border-left: 1px solid rgba(255, 255, 255, 0.4);
-    border-right: 1px solid rgba(255, 255, 255, 0.4);
-
-    background-image:
-        linear-gradient(to right, 
-            rgba(255, 255, 255, 0.4) 0%, 
-            rgba(255, 255, 255, 0.4) 7%, 
-            transparent 7%, 
-            transparent 93%, 
-            rgba(255, 255, 255, 0.4) 93%, 
-            rgba(255, 255, 255, 0.4) 100%),
-        linear-gradient(to right, 
-            rgba(255, 255, 255, 0.4) 0%, 
-            rgba(255, 255, 255, 0.4) 7%, 
-            transparent 7%, 
-            transparent 93%, 
-            rgba(255, 255, 255, 0.4) 93%, 
-            rgba(255, 255, 255, 0.4) 100%);
-    background-repeat: no-repeat;
-    background-position: top, bottom;
-    background-size: 100% 1px; 
-}
-
-
-.rating-number p {
-    white-space: nowrap;
-}
-
-.rating-number h1 {
-    font-family: 'Future New Light', sans-serif;
-    font-size: 93px;
-}
-
-.stars {
-    display: flex;
-    gap: 5px;
-}
-
-.prediction-cards {
-    display: flex;
-    flex-direction: column;
-    padding-left: 10%;
-    margin-top: -170px;
-}
-
-.prediction-cards header {
-    margin-bottom: 60px;
-}
-
-.reviews-cards {
-    display: flex;
-    gap: 20px;
-    overflow-x: hidden;
-    padding-bottom: 20px;
-    transition: transform 0.5s ease; 
-}
-
-.review-card {
-    position: relative;
-    min-width: 600px;
-    width: 100%;
-    min-height: 353px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    border-left: 1px solid rgba(255, 255, 255, 0.4);
-    border-right: 1px solid rgba(255, 255, 255, 0.4);
-    background-color: transparent;
-    
-    background-image:
-        linear-gradient(to right, 
-            rgba(255, 255, 255, 0.4) 0%, 
-            rgba(255, 255, 255, 0.4) 7%, 
-            transparent 7%, 
-            transparent 93%, 
-            rgba(255, 255, 255, 0.4) 93%, 
-            rgba(255, 255, 255, 0.4) 100%),
-        linear-gradient(to right, 
-            rgba(255, 255, 255, 0.4) 0%, 
-            rgba(255, 255, 255, 0.4) 7%, 
-            transparent 7%, 
-            transparent 93%, 
-            rgba(255, 255, 255, 0.4) 93%, 
-            rgba(255, 255, 255, 0.4) 100%);
-    background-repeat: no-repeat;
-    background-position: top, bottom;
-    background-size: 100% 1px;
-}
-
-.review-text {
-    text-align: left;
-    max-width: 500px;
-}
-
-.review-text span a {
-    color: rgba(237, 228, 215, 0.4);
-}
-
-.review-author {
-    padding-top: 20px;
-    font-family: 'Future New Light', sans-serif;
-    font-size: 34px;
-    text-transform: uppercase;
-}
-
-.review-link a {
-    font-size: 16px;
-    margin-right: 10px;
-    color: #BBB5AC;
-}
-
-.open-all-catalog a {
-    font-family: 'SF Pro Display Thin', sans-serif;
-    font-weight: 600;
-    display: inline-block;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-    width: fit-content; /* или фиксированная ширина, например, 150px */
-    padding-bottom: 5px;
-    margin-top: 60px;
-}
-
-.hide {
-    display: none;
-}
-
-.nav-arrows-reviews {
-    position: relative;
-    bottom: 10px;
-    z-index: 10;
-}
-
-.nav-arrows-reviews button {
-    background-color: transparent;
-    border: none;
+    gap: 8px;
     cursor: pointer;
+    color: #AE9877;
+    font-family: 'SF Pro Display Thin', sans-serif;
 }
 
-@media (max-width: 1774px) {
-    .prediction-cards {
-        padding-left: 4%;
-    }
+.resume-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px; 
+    color: #EDE4D7;
+    font-size: 20px;
+    cursor: pointer;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    transition: color 0.3s ease;
+    padding: 5px 0;
 }
+
+.resume-label:hover {
+    color: #9c8766;
+}
+
+.resume-label svg {
+    flex-shrink: 0; /* чтобы SVG не сжимался */
+    vertical-align: middle;
+}
+
+.file-name {
+    color: #D4B28C;
+}
+
+
+
 
 /* Footer */
 
@@ -1411,5 +919,5 @@ li.active .menu-plumbing-arrow {
 
 .footer-copyright a:hover {
     color: #AE9877;
-}
+}   
 

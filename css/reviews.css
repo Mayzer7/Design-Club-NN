@@ -91,7 +91,8 @@ body {
 .main-page-top {
     background-image: url('../images/reviews/background.png');
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
+    background-position: center;
     height: 800px;
     background-color: #151c28;
 }
