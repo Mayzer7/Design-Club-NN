@@ -77,9 +77,15 @@ body {
     font-size: 18px;
     font-weight: 300;
     color: #EDE4D7;
+    background-color: #151c28;
 }
 
-
+.container {
+    max-width: 1920px;
+    margin: 0 auto;
+    position: relative;
+    width: 100%;  
+}
 
 /* Верхрняя секция главной страницы */
 
@@ -88,7 +94,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top center;
-    min-height: 100vh;
+    min-height: 1000px;
 }
 
 /* Шапка */
@@ -715,6 +721,7 @@ li.active .menu-plumbing-arrow {
     padding: 100px 20px 200px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display', sans-serif;
+    overflow: hidden;
 }
 
 .popular-up-title {
@@ -1355,6 +1362,7 @@ li.active .menu-plumbing-arrow {
     padding: 130px 20px 100px 20px;
     background-color: #1D2535;
     font-family: 'SF Pro Display Thin', sans-serif;  
+    overflow: hidden;
 }
 
 .reviews-up-title {
