@@ -1,123 +1,21 @@
-// Переадрисация на страницу "Результаты поиска" после того как 
-// пользователь ввел название товарава в поиске и нажал Enter
 
-function performSearch() {
-    const query = document.getElementById('search-input').value;
-    window.location.href = 'search-no-result-page.html?query=' + encodeURIComponent(query);
-}
+// Выплывающие меню фильтров
 
-document.getElementById('search-input').addEventListener('keypress', function(event) {
-    if (event.key === 'Enter') {
-        performSearch();
-    }
+const toggleBtn = document.getElementById('filterToggle');
+const dropdown = document.getElementById('filterDropdown');
+        
+// Открытие/закрытие меню по кнопке
+toggleBtn.addEventListener('click', (event) => {
+    event.stopPropagation(); // Останавливаем событие, чтобы не сработал обработчик на document
+    dropdown.classList.toggle('active');
 });
 
-document.querySelector('.search-icon-button').addEventListener('click', function() {
-    performSearch();
-});
-
-// Валидация 2 форм для связи на странице
-
-function validateForm(event, formId) {
-    event.preventDefault();
-
-    const form = document.getElementById(formId);
-
-    // Скрыть все ошибки только внутри своей формы
-    const errorElements = form.querySelectorAll('.error-contact');
-    errorElements.forEach(error => error.style.display = 'none');
-
-    let valid = true;
-
-    // Поля внутри своей формы
-    const nameInput = form.querySelector('input[name="name"]');
-    const phoneInput = form.querySelector('input[name="phone"]');
-    const acceptInput = form.querySelector('input[name="accept"]');
-    const errorSpans = form.querySelectorAll('.error-contact');
-
-    // Проверка поля "Ваше имя"
-    if (!nameInput.value.trim()) {
-        errorSpans[0].textContent = 'Пожалуйста, введите ваше имя.';
-        errorSpans[0].style.display = 'block';
-        valid = false;
-    }
-
-    // Проверка поля "Телефон"
-    if (!phoneInput.value.trim()) {
-        errorSpans[1].textContent = 'Пожалуйста, введите ваш телефон.';
-        errorSpans[1].style.display = 'block';
-        valid = false;
-    }
-
-    // Проверка чекбокса "Согласие"
-    if (!acceptInput.checked) {
-        errorSpans[2].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
-        errorSpans[2].style.display = 'block';
-        valid = false;
-    }
-
-    // Если всё ок — отправляем форму
-    if (valid) {
-        form.submit();
-    }
-}
-
-// Переключение карточек товара через стрелочки
-const wrapper = document.getElementById('productCards');
-const cards  = Array.from(wrapper.querySelectorAll('.product-card'));
-const scopeContainer = document.querySelector('.product-card-scope');
-const leftArrow  = document.getElementById('left-arrow');
-const rightArrow = document.getElementById('right-arrow');
-        
-const cardGap = 20; 
-let cardWidth = cards[0].getBoundingClientRect().width;
-const step = cardWidth + cardGap;
-        
-// Индекс карточки, которая сейчас в scope
-let activeIndex = 0;
-        
-// Функция обновления содержимого scope-карты
-function updateScope(idx) {
-    const srcCard = cards[idx];
-    // клонируем всё содержимое .product-card внутрь .product-card-scope
-    scopeContainer.innerHTML = '';
-    const clone = srcCard.cloneNode(true);
-    // у клона убираем класс .product-card (и переназначим класс scope)
-    clone.classList.remove('product-card');
-    clone.classList.add('product-card-scope');
-    scopeContainer.appendChild(clone);
-}
-        
-// Функция прокрутки и обновления
-function moveTo(idx) {
-    // сдвигаем обёртку: так, чтобы выбранная карточка встала
-    const offset = (idx - 2) * step;
-    wrapper.style.transition = 'transform 0.5s ease';
-
-    updateScope(idx);
-}
-    
-// Навешиваем обработчики
-rightArrow.addEventListener('click', () => {
-if (activeIndex < cards.length - 1) {
-    activeIndex++;
-    moveTo(activeIndex);
+// Закрытие меню при клике вне меню и кнопки
+document.addEventListener('click', (event) => {
+    if (!dropdown.contains(event.target) && event.target !== toggleBtn) {
+        dropdown.classList.remove('active');
     }
 });
-    
-leftArrow.addEventListener('click', () => {
-    if (activeIndex > 0) {
-        activeIndex--;
-        moveTo(activeIndex);
-    }
-});
-    
-// Инициализируем видимую scope-карту
-moveTo(activeIndex);
-
-
-
-
 
 // Секция "Наши Отзывы от покупателей"
 
@@ -163,6 +61,87 @@ function updateTransform() {
 
 
 
+
+// Валидация формы "Запишитесь на персональную консультацию"
+
+function validateForm(event, formId) {
+    event.preventDefault();
+
+    const form = document.getElementById(formId);
+
+    // Скрыть все ошибки только внутри своей формы
+    const errorElements = form.querySelectorAll('.error-contact');
+    errorElements.forEach(error => error.style.display = 'none');
+
+    let valid = true;
+
+    // Поля внутри своей формы
+    const nameInput = form.querySelector('input[name="name"]');
+    const phoneInput = form.querySelector('input[name="phone"]');
+    const acceptInput = form.querySelector('input[name="accept"]');
+    const errorSpans = form.querySelectorAll('.error-contact');
+
+    // Проверка поля "Ваше имя"
+    if (!nameInput.value.trim()) {
+        errorSpans[0].textContent = 'Пожалуйста, введите ваше имя.';
+        errorSpans[0].style.display = 'block';
+        valid = false;
+    }
+
+    // Проверка поля "Телефон"
+    if (!phoneInput.value.trim()) {
+        errorSpans[1].textContent = 'Пожалуйста, введите ваш телефон.';
+        errorSpans[1].style.display = 'block';
+        valid = false;
+    }
+
+    // Проверка чекбокса "Согласие"
+    if (!acceptInput.checked) {
+        errorSpans[2].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
+        errorSpans[2].style.display = 'block';
+        valid = false;
+    }
+
+    // Если всё ок — отправляем форму
+    if (valid) {
+        form.submit();
+    }
+}
+
+
+
+// Переадрисация на страницу "Результаты поиска" после того как 
+// пользователь ввел название товарава в поиске и нажал Enter
+
+function performSearch() {
+    const query = document.getElementById('search-input').value;
+    window.location.href = 'search-no-result-page.html?query=' + encodeURIComponent(query);
+}
+
+document.getElementById('search-input').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        performSearch();
+    }
+});
+
+document.querySelector('.search-icon-button').addEventListener('click', function() {
+    performSearch();
+});
+
+
+// Функция для получения параметра из URL
+function getQueryParam(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+}
+
+// Получаем значение параметра "query" из URL
+const query = getQueryParam('query');
+
+// Помещаем запрос в value поля поиска
+if (query) {
+    document.getElementById('search-input-on-page').value = query;
+}
 
 
 // Поиск в хедере
@@ -215,14 +194,6 @@ searchInput.addEventListener('input', function () {
         underHeader.style.filter = 'blur(5px)';
     }
 });
-
-
-
-
-
-
-
-
 
 const blurContainers = document.querySelectorAll('.blur-container');
 
@@ -315,7 +286,6 @@ openCatalog.addEventListener('click', function (e) {
 
 
 
-
 // Отображение меню Сантехники
 document.querySelectorAll('.menu-toggle-plumbing').forEach(toggle => {
     toggle.addEventListener('click', function (e) {
@@ -405,7 +375,7 @@ document.querySelectorAll('.plumbing').forEach(link => {
             <a href="#">Новые поддоны</a>
             <a href="#">Новые шторки</a>
             <div class="all-categories-link">
-                <a href="catalog-page.html">Все товары категории</a>
+                <a href="#">Все товары категории</a>
                             
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
@@ -481,7 +451,7 @@ window.addEventListener('scroll', () => {
     searchInput.blur(); // убирает фокус с поля ввода
     searchInput.value = ''; // очищает текст
     searchItems.classList.remove('show'); // скрывает блок
-    
+
     // Убираем пустые отступы
     header.style.paddingBottom = '20px';
     menuNavigation.style.marginTop = '170px';
@@ -491,23 +461,17 @@ window.addEventListener('scroll', () => {
         container.style.filter = ''
         container.style.cursor = ''
     });
-    
     header.style.backgroundColor = 'transparent';
     underHeader.style.filter = 'none';
-    underHeader.style.cursor = '';
     openCatalog.parentElement.classList.remove('active');
     isCatalogActive = false;
     menuNavigation.style.display = 'none';
     openCatalog.style.color = '';
     
     
-    
   } else if (scrollDelta < 0) {
     header.style.display = 'block';
     // Скролл вверх
-
-    menuNavigation.style.marginTop = '170px';
-
     header.classList.remove('header-hidden');
     header.classList.add('header-scrolled-up');
   }
