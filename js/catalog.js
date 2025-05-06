@@ -2,12 +2,19 @@
 // Выплывающие меню фильтров
 
 const toggleBtn = document.getElementById('filterToggle');
+const toggleBtn2 = document.getElementById('filterToggle-2');
 const dropdown = document.getElementById('filterDropdown');
+const dropdown2 = document.getElementById('filterDropdown-2');
         
 // Открытие/закрытие меню по кнопке
 toggleBtn.addEventListener('click', (event) => {
     event.stopPropagation(); // Останавливаем событие, чтобы не сработал обработчик на document
     dropdown.classList.toggle('active');
+});
+
+toggleBtn2.addEventListener('click', (event) => {
+    event.stopPropagation(); // Останавливаем событие, чтобы не сработал обработчик на document
+    dropdown2.classList.toggle('active');
 });
 
 // Закрытие меню при клике вне меню и кнопки
