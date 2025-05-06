@@ -289,7 +289,6 @@ header.addEventListener('mouseenter', function () {
         menuItem.classList.remove('active');
     });
 });
-
 // Делегирование для правого меню
 const rightMenuContent = document.querySelector('.right-menu-content');
 
@@ -298,11 +297,11 @@ document.querySelectorAll('.shower-enclosures-and-pallets').forEach(link => {
     link.addEventListener('click', function (e) {
         e.preventDefault();
         rightMenuContent.innerHTML = `
-            <a href="#">Душевые уголки, двери и перегородки</a>
-            <a href="#">Поддоны</a>
-            <a href="#">Шторки для ванны</a>
+            <a href="catalog-page.html">Душевые уголки, двери и перегородки</a>
+            <a href="catalog-page.html">Поддоны</a>
+            <a href="catalog-page.html">Шторки для ванны</a>
             <div class="all-categories-link">
-                <a href="#">Все товары категории</a>
+                <a href="catalog-page.html">Все товары категории</a>
                             
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
@@ -318,11 +317,11 @@ document.querySelectorAll('.plumbing').forEach(link => {
     link.addEventListener('click', function (e) {
         e.preventDefault();
         rightMenuContent.innerHTML = `
-            <a href="#">Новые душевые кабины</a>
-            <a href="#">Новые поддоны</a>
-            <a href="#">Новые шторки</a>
+            <a href="catalog-page.html">Новые душевые кабины</a>
+            <a href="catalog-page.html">Новые поддоны</a>
+            <a href="catalog-page.html">Новые шторки</a>
             <div class="all-categories-link">
-                <a href="#">Все товары категории</a>
+                <a href="catalog-page.html">Все товары категории</a>
                             
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
@@ -334,18 +333,18 @@ document.querySelectorAll('.plumbing').forEach(link => {
 });
 
 
-// Назначаем обработчики на все .plumbing
+// Назначаем обработчики на все .shower-program
 document.querySelectorAll('.shower-program').forEach(link => {
     link.addEventListener('click', function (e) {
         e.preventDefault();
         rightMenuContent.innerHTML = `
-            <a href="#">Лейки и держатели</a>
-            <a href="#">Душевые стойки и штанги</a>
-            <a href="#">Гибкие шланги</a>
-            <a href="#">Верхний душ</a>
-            <a href="#">Готовые душевые комплекты</a>
+            <a href="catalog-page.html">Лейки и держатели</a>
+            <a href="catalog-page.html">Душевые стойки и штанги</a>
+            <a href="catalog-page.html">Гибкие шланги</a>
+            <a href="catalog-page.html">Верхний душ</a>
+            <a href="catalog-page.html">Готовые душевые комплекты</a>
             <div class="all-categories-link">
-                <a href="#">Все товары категории</a>
+                <a href="catalog-page.html">Все товары категории</a>
                             
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
