@@ -564,9 +564,16 @@ li.active .menu-plumbing-arrow {
     position: relative;
 }
 
-
+.count-products {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    font-size: 20px;
+    color: #AE9877;
+}
 
 .services-title {
+    margin-top: 60px;
     font-family: 'Future New Light', sans-serif;
     font-size: 100px;
     font-weight: 600;

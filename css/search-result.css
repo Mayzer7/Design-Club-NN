@@ -558,13 +558,18 @@ li.active .menu-plumbing-arrow {
     color: #7B8292;
 }
 
-
 .service-content {
     padding-left: 25%;
     position: relative;
 }
 
-
+.count-products {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    color: #AE9877;
+    font-size: 20px;
+}
 
 .services-title {
     margin: 60px 0;
