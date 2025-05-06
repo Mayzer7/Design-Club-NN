@@ -1,3 +1,30 @@
+// Модальное окно для просмотра видео
+
+const modal = document.getElementById("videoModal");
+const btn = document.querySelector(".video-button");
+const closeBtn = document.querySelector(".close");
+const video = document.getElementById("modalVideo");
+
+btn.addEventListener("click", () => {
+    modal.style.display = "flex";
+    video.play();
+});
+
+closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+    video.pause();
+    video.currentTime = 0;
+});
+
+window.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      modal.style.display = "none";
+      video.pause();
+      video.currentTime = 0;
+    }
+});
+
+
 // Переадрисация на страницу "Результаты поиска" после того как 
 // пользователь ввел название товарава в поиске и нажал Enter
 
