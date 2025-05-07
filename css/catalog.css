@@ -1079,7 +1079,16 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
-  }
+}
+
+.zoom-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.zoom-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
   
 .product-card {
   overflow: hidden;
