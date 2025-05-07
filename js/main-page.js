@@ -237,6 +237,8 @@ function resetHeaderState() {
     }
 
     // Сбрасываем фон и стили
+    header.style.paddingBottom = '20px';
+    menuNavigation.style.marginTop = '170px';
     header.style.backgroundColor = 'transparent';
     searchItems.classList.remove('show');
     underHeader.style.filter = 'none';

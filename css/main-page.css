@@ -95,6 +95,7 @@ body {
     background-size: cover;
     background-position: top center;
     min-height: 1000px;
+
 }
 
 /* Шапка */
@@ -469,6 +470,7 @@ li.active .menu-plumbing-arrow {
 }
 
 .contact-header {
+    margin-top: 10px;
     display: flex;
     gap: 40px;
 }
@@ -482,6 +484,8 @@ li.active .menu-plumbing-arrow {
 }
 
 .contact-button {
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 900;
     margin-top: -15px;    
     position: relative;
     display: inline-flex;
@@ -495,6 +499,7 @@ li.active .menu-plumbing-arrow {
     color: #EDE4D7; 
     transition: all 0.3s ease;
     gap: 10px; 
+    font-size: 18px;
 }
 
 .contact-button:hover {
@@ -612,9 +617,6 @@ li.active .menu-plumbing-arrow {
     font-family: 'SF Pro Display', sans-serif;
 }
 
-/* .blur-container {
-    filter: blur(5px);
-} */
 
 .why-up-title {
     position: relative;
@@ -1008,8 +1010,35 @@ li.active .menu-plumbing-arrow {
     gap: 15px;
 }
 
+.popular-categories-card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
 .popular-categories-card img {
-    width: auto;
+    width: 455px;
+    height: 376px;
+}
+
+.services-image {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.services-image img {
+    width: 411px;
+    height: 376px;
+}
+
+.popular-categories-card a {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.popular-categories-card a:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
 
 .popular-categories-content > .popular-categories-cards:first-child {
@@ -1328,15 +1357,29 @@ li.active .menu-plumbing-arrow {
     justify-content: space-between;
 }
 
-.project-content-last button {
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
+.open-project {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.right-arrow {
-    width: 53px;
-    height: 33px;
+.open-project a {
+    border: none;
+    background-color: transparent;
+    color: #EDE4D7;
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #EDE4D7;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.open-project a:hover {
+    color: #AE9877;
+    border-bottom: 1px solid #AE9877;
 }
 
 .project-image-wrapper {
