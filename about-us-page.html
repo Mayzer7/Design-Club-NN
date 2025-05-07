@@ -139,12 +139,10 @@
                         </div>
         
                         <div class="contact-header">
-                            <a href="#" class="phone">+ 7 999 383 93 11</a>
-        
                             <a href="cart-page.html">КОРЗИНА (1)</a>
         
                             <button class="contact-button">
-                                СВЯЗАТЬСЯ
+                                СВЯЗАТЬСЯ С НАМИ
                                 <img src="images/svg/contact.svg" alt="Связаться" class="contact-icon">
                             </button>
                         </div>
@@ -736,10 +734,18 @@
         </section>
     </div>
 
+    <div class="modal-overlay" id="modal">
+        <div class="modal-video">
+          <h2>Связаться с нами</h2>
+          <p>Форма или контакты...</p>
+          <button onclick="closeModal()">Закрыть</button>
+        </div>
+      </div>
+
     <!-- Модальное окно для просмотра видео -->
-    <div id="videoModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
+    <div id="videoModal" class="modal-video">
+        <div class="modal-content-video">
+            <span class="close-video">&times;</span>
             <video controls id="modalVideo" preload="metadata">
                 <source src="http://103.74.94.225/video/showroom.mp4" type="video/mp4">
                 Ваш браузер не поддерживает видео.

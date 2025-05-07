@@ -2,7 +2,7 @@
 
 const modal = document.getElementById("videoModal");
 const btn = document.querySelector(".video-button");
-const closeBtn = document.querySelector(".close");
+const closeBtn = document.querySelector(".close-video");
 const video = document.getElementById("modalVideo");
 
 btn.addEventListener("click", () => {

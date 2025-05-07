@@ -495,6 +495,7 @@ li.active .menu-plumbing-arrow {
 }
 
 .contact-header {
+    margin-top: 10px;
     display: flex;
     gap: 40px;
 }
@@ -507,7 +508,10 @@ li.active .menu-plumbing-arrow {
     color: #AE9877;
 }
 
+
 .contact-button {
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 900;
     margin-top: -15px;    
     position: relative;
     display: inline-flex;
@@ -521,6 +525,7 @@ li.active .menu-plumbing-arrow {
     color: #EDE4D7; 
     transition: all 0.3s ease;
     gap: 10px; 
+    font-size: 18px;
 }
 
 .contact-button:hover {
