@@ -1,3 +1,14 @@
+// Раскрытие отзыва по больше если нужно 
+
+const readFullButton = document.getElementById('read-full-btn');
+const reviewContinueText = document.querySelector('.review-continue-text')
+const readFullReview = document.querySelector('.read-full-review');
+
+readFullButton.addEventListener('click', () => {
+    reviewContinueText.style.display = 'block';
+    readFullReview.style.display = 'none';  
+});
+
 // Валидация модального окна формы "Связаться с нами"
 
 const thanksModal = document.getElementById('thanksModal');
@@ -220,15 +231,19 @@ function validateForm(event, formId) {
 function toggleContactMethodMenu() {
     const menu = document.getElementById('menu-contact-method');
     const arrow = document.getElementById('dropdown-arrow');
-    
-    const isOpen = menu.classList.contains('open');
-    
-    if (isOpen) {
-        menu.classList.remove('open');
+
+    if (menu.classList.contains('open')) {
+        // Закрытие меню с анимацией
+        menu.style.maxHeight = '0px';
+        menu.style.opacity = '0';
         arrow.classList.remove('rotated');
+        menu.classList.remove('open');
     } else {
-        menu.classList.add('open');
+        // Открытие меню с анимацией до нужной высоты
+        menu.style.maxHeight = menu.scrollHeight + 'px';
+        menu.style.opacity = '1';
         arrow.classList.add('rotated');
+        menu.classList.add('open');
     }
 }
 

@@ -550,7 +550,7 @@ li.active .menu-plumbing-arrow {
     font-size: 32px;
 }
 
-.invite-button {
+.invite-link {
     font-size: 18px;
     position: relative;
     display: inline-flex;
@@ -569,17 +569,18 @@ li.active .menu-plumbing-arrow {
     overflow: hidden;
 }
 
-.invite-button:hover {
+.invite-link:hover {
+    color: #fff;
     background-color: #9c8766; 
     transform: scale(1.03);
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
 
-.invite-button .contact-icon {
+.invite-link .contact-icon {
     transition: transform 0.3s ease;
 }
 
-.invite-button:hover .contact-icon {
+.invite-link:hover .contact-icon {
     transform: translateX(5px);
 }
 
@@ -732,7 +733,6 @@ li.active .menu-plumbing-arrow {
     text-align: center;
     margin-bottom: 20px;
 }
-
 .why-choose-us-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -748,6 +748,13 @@ li.active .menu-plumbing-arrow {
     padding: 1rem 1rem 1rem 2rem;
     max-width: 100%;
     background-color: transparent;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    cursor: pointer; 
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
 }
 
 .card::before {
@@ -777,17 +784,11 @@ li.active .menu-plumbing-arrow {
     height: 288px;
 }
 
-.why-choose-us-content .card:nth-child(1) img {
-    width: 288px;
-    height: 260px;
+.down-card {
+    position: relative;
+    top: 200px;
 }
 
-@media (min-width: 1400px) {
-    .why-choose-us-content .card:nth-child(1),
-    .why-choose-us-content .card:nth-child(3) {
-        transform: translateY(165px);
-    }
-}
 
 @media (max-width: 1024px) {
 
@@ -803,7 +804,6 @@ li.active .menu-plumbing-arrow {
         font-size: 18px;
     }
 }
-
 
 /* Секция "С этим товаром покупают" */
 
@@ -895,6 +895,16 @@ li.active .menu-plumbing-arrow {
     box-sizing: border-box;
 }
 
+.product-card-inner a {
+    display: block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card-inner a:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
 .product-card h1 {
     font-family: 'SF Pro Display', sans-serif;
     font-size: 26px;
@@ -920,12 +930,22 @@ li.active .menu-plumbing-arrow {
     height: 685px;
 }
 
+
 .product-card-scope {
     flex: 0 0 auto;             
     max-width: 455px;
     width: 100%;    
     display: flex;
     flex-direction: column;
+}
+
+.product-card-scope a {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card-scope a:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .product-card-scope h1 {
@@ -983,6 +1003,12 @@ li.active .menu-plumbing-arrow {
     font-weight: 600;
     border-bottom: 1px solid #EDE4D7;
     padding: 5px 0;
+    transition: all 0.3s ease;
+}
+
+.open-all-catalog a:hover {
+    color: #AE9877;
+    border-bottom: 1px solid #AE9877;
 }
 
 .badges {
@@ -1084,6 +1110,16 @@ li.active .menu-plumbing-arrow {
     display: flex;
     justify-content: space-between;
     gap: 20px;
+}
+
+
+.our-brands-content a {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.our-brands-content a:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
 
 .brand-item {
@@ -1316,6 +1352,11 @@ li.active .menu-plumbing-arrow {
     padding: 5px 0;
     gap: 8px;
     width: 105%;
+    transition: all 0.3s ease;
+}
+
+.contact-input:hover {
+    background-color: rgba(255, 255, 255, 0.02);
 }
 
 .contact-input input {
@@ -1636,7 +1677,7 @@ li.active .menu-plumbing-arrow {
 .reviews-cards {
     display: flex;
     gap: 20px;
-    overflow-x: hidden;
+    overflow-x: visible; 
     padding-bottom: 20px;
     transition: transform 0.5s ease; 
 }
@@ -1655,7 +1696,6 @@ li.active .menu-plumbing-arrow {
     border-left: 1px solid rgba(255, 255, 255, 0.4);
     border-right: 1px solid rgba(255, 255, 255, 0.4);
     background-color: transparent;
-    
     background-image:
         linear-gradient(to right, 
             rgba(255, 255, 255, 0.4) 0%, 
@@ -1674,6 +1714,15 @@ li.active .menu-plumbing-arrow {
     background-repeat: no-repeat;
     background-position: top, bottom;
     background-size: 100% 1px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box; 
+    transform-origin: center; 
+}
+
+.review-card:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2); 
+    cursor: pointer;
 }
 
 .review-text {
@@ -1681,8 +1730,22 @@ li.active .menu-plumbing-arrow {
     max-width: 500px;
 }
 
-.review-text span a {
+.review-text span button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300;   
     color: rgba(237, 228, 215, 0.4);
+}
+
+.read-full-review {
+    display: block;
+}
+
+.review-continue-text {
+    display: none;
 }
 
 .review-author {
@@ -1811,11 +1874,14 @@ li.active .menu-plumbing-arrow {
     position: relative;
     padding-right: 40px;
     box-sizing: border-box; 
+
 }
+
+
 
 .contact-input-fields input {
     width: 100%;
-    padding-right: 40px; /* чтобы текст не наезжал на стрелку */
+    padding-right: 40px; 
     cursor: pointer;
     box-sizing: border-box;
 }
@@ -1838,7 +1904,7 @@ li.active .menu-plumbing-arrow {
 
 .contact-input-fields-menu input {
     width: 100%;
-    padding-right: 40px; /* чтобы текст не наезжал на стрелку */
+    padding-right: 40px; 
     cursor: pointer;
     box-sizing: border-box;
 }
@@ -1851,28 +1917,17 @@ li.active .menu-plumbing-arrow {
     pointer-events: none; 
 }
 
-/* Скрытое меню */
 .menu-contact-method {
-    max-height: 0;
-    max-width: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease, opacity 0.4s ease;
     opacity: 0;
+    max-height: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
 }
 
-/* Видимое меню */
-.menu-contact-method.open {
-    max-height: 500px; /* Достаточно, чтобы вместить все пункты */
-    max-width: 1000px;
-    opacity: 1;
-}
-
-/* Стрелка вниз */
 .dropdown-arrow {
     transition: transform 0.3s ease;
 }
 
-/* Поворот стрелки вверх */
 .dropdown-arrow.rotated {
     transform: translateY(-50%) rotate(180deg);
 }
@@ -1886,7 +1941,7 @@ li.active .menu-plumbing-arrow {
 /* Footer */
 
 .footer {
-    padding: 100px 20px 20px 20px;
+    padding: 0px 20px 20px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 
@@ -1987,7 +2042,7 @@ li.active .menu-plumbing-arrow {
     align-items: center;
     opacity: 0;  
     transform: scale(0.9); 
-    transition: opacity 0.5s ease, transform 0.5s ease;  /* Плавная анимация */
+    transition: opacity 0.5s ease, transform 0.5s ease;  
 }
 
 .modal.open {

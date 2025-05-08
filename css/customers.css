@@ -605,7 +605,7 @@ li.active .menu-plumbing-arrow {
 }
 
 .customers-navigation:hover {
-    background-color: rgba(255, 255, 255, 0.02); /* тонкий визуальный отклик */
+    background-color: rgba(255, 255, 255, 0.02);
 }
 
 .title-nav-items {
