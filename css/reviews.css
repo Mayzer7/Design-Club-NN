@@ -710,6 +710,17 @@ li.active .menu-plumbing-arrow {
     width: 100%;
 }
 
+.more-reviews {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+.more-reviews.show {
+    opacity: 1;
+}
+
 .more {
     margin-top: 60px;
     display: flex;
@@ -717,10 +728,24 @@ li.active .menu-plumbing-arrow {
     gap: 10px;
 }
 
-.more h1 {
+.more button {
+    font-family: 'SF Pro Display Bold', sans-serif;
+    font-weight: 300;
     font-size: 18px;
     text-transform: uppercase;
     border-bottom: 1px solid rgba(255, 255, 255);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: #EDE4D7;
+    border-bottom: 1px solid #EDE4D7;
+    padding: 2px 0;
+    transition: all 0.3s ease;
+}
+
+.more button:hover {
+    color: #AE9877;
+    border-bottom: 1px solid #AE9877;
 }
 
 /* Footer */
