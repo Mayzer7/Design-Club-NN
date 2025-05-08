@@ -1237,6 +1237,66 @@ li.active .menu-plumbing-arrow {
 
 
 
+/* Секция "Связаться с нами" */
+
+.get-contact {
+    padding: 150px 0 250px 20px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display Thin', sans-serif; 
+    background-image: url("../images/main-page/form-contact-us.png");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center right; 
+}
+
+.get-contact-container {
+    display: flex;
+    justify-content: space-between;
+    height: 524px;
+}
+
+.left-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.left-side img {
+    width: 56px;
+    height: 56px;
+}
+
+.img-side img {
+    margin-top: -70px;
+}
+
+.main-side-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+    padding-left: 10%;
+}
+
+.main-side-wrapper h1 {
+    font-family: 'Future New Light', sans-serif;
+    font-size: 76px;
+    white-space: nowrap;
+}
+
+.main-side-wrapper form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.opacity {
+    opacity: 0;
+}
+
+
+
 /* Как удобнее связаться */
 
 
@@ -1338,6 +1398,7 @@ li.active .menu-plumbing-arrow {
     color: #fff;
 }
 
+
 .contact-input {
     position: relative;
     display: flex;
@@ -1360,12 +1421,6 @@ li.active .menu-plumbing-arrow {
     padding: 5px 0; 
 }
 
-.contact-input input::placeholder {
-    color: #555D6F;
-}
-
-
-
 .error-contact {
     font-family: 'SF Pro Display', sans-serif; 
     position: absolute;
@@ -1378,6 +1433,7 @@ li.active .menu-plumbing-arrow {
     margin-top: 5px;
     padding-left: 5px;
 }
+
 .accept-politics {
     position: relative;
     display: flex;
@@ -1393,7 +1449,6 @@ li.active .menu-plumbing-arrow {
     color: #AE9877;
     border-bottom: 1px solid #AE9877;
 }
-
 
 .get-request-button {
     margin-top: 5px;
@@ -1456,6 +1511,13 @@ li.active .menu-plumbing-arrow {
 
 .custom-checkbox input:checked + .checkbox-img {
     background-image: url('../images/svg/check-mark.svg');
+}
+
+
+@media (max-width: 1660px) {
+    .get-request-content iframe {
+        margin-top: 210px;
+    }
 }
 
 /* Footer */

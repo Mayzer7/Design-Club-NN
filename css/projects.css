@@ -40,7 +40,6 @@ html {
 html, body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
 }
 
 *,
@@ -99,8 +98,9 @@ body {
 .main-page-top {
     background-image: url('../images/projects/background.png');
     background-repeat: no-repeat;
-    background-size: contain;
-    height: 800px;
+    background-size: cover;
+    background-position: 70px 0px;
+    height: 1000px;
     background-color: #151c28;
 }
 
@@ -120,12 +120,11 @@ body {
     transform: translateY(-100%);
 }
 
+
 .header-scrolled-up {
     background-color: #151c28 !important;
     transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
-
-
 
 .header-container {
     padding-top: 5px;
@@ -575,6 +574,32 @@ li.active .menu-plumbing-arrow {
     font-weight: 300; 
 }
 
+.sticky-nav {
+    z-index: 999;
+    background-color: #151c28;
+    width: 100%;
+    height: 60px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav-hidden {
+    position: sticky;
+    top: 190px;
+}
+
+.nav-not-hidden {
+    z-index: 999;
+    background-color: #151c28;
+    width: 100%;
+    height: 60px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav-scrolled-up {
+    background-color: #151c28 !important;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
 .projects-navigation {
     display: flex;
     gap: 20px;
@@ -668,6 +693,10 @@ li.active .menu-plumbing-arrow {
     padding: 20px 0;
     display: flex;
     justify-content: space-between;
+}
+
+.projects-content-container {
+    scroll-margin-top: 300px;
 }
 
 .project-content-title {
@@ -973,7 +1002,6 @@ li.active .menu-plumbing-arrow {
     transition: all 0.3s ease;
     width: 100%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
 }
 
 .get-request-button-modal:hover {

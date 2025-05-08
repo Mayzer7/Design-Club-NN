@@ -508,53 +508,69 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Чётко считываем скроллы и скрываем/показываем header
 
+const stickyNav = document.querySelector('.sticky-nav');
 let lastScrollTop = 0;
-const scrollThreshold = 1; // минимальный порог (можно даже 0, если нужно всё отслеживать)
+let scrollTimer = null; // для управления таймером
+
+const scrollThreshold = 1;
 
 window.addEventListener('scroll', () => {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   const scrollDelta = scrollTop - lastScrollTop;
 
-  // Учитываем любые изменения скролла, даже при scrollTop === 0
   if (Math.abs(scrollDelta) < scrollThreshold) {
-    lastScrollTop = scrollTop; // всё равно обновим позицию
+    lastScrollTop = scrollTop;
     return;
   }
 
+  // Сначала сбрасываем возможный таймер
+  if (scrollTimer) {
+    clearTimeout(scrollTimer);
+    scrollTimer = null;
+  }
+
   if (scrollDelta > 0) {
-    // Скролл вниз
+    // Скролл вниз — скрываем навигацию сразу
+    stickyNav.classList.remove('nav-scrolled-up');
+    stickyNav.classList.remove('nav-hidden');
+    stickyNav.classList.add('nav-not-hidden');
+
     header.classList.add('header-hidden');
     header.classList.remove('header-scrolled-up');
-    
-    searchInput.blur(); // убирает фокус с поля ввода
-    searchInput.value = ''; // очищает текст
-    searchItems.classList.remove('show'); // скрывает блок
 
-    // Убираем пустые отступы
+    searchInput.blur();
+    searchInput.value = '';
+    searchItems.classList.remove('show');
+
     header.style.paddingBottom = '20px';
     menuNavigation.style.marginTop = '170px';
 
-    // Сброс состояния
     blurContainers.forEach(container => {
-        container.style.filter = ''
-        container.style.cursor = ''
+      container.style.filter = '';
+      container.style.cursor = '';
     });
+
     header.style.backgroundColor = 'transparent';
     underHeader.style.filter = 'none';
     openCatalog.parentElement.classList.remove('active');
     isCatalogActive = false;
     menuNavigation.style.display = 'none';
     openCatalog.style.color = '';
-    
-    
-  } else if (scrollDelta < 0) {
+  } 
+  else if (scrollDelta < 0) {
+    // Скролл вверх — показываем хедер сразу
     header.style.display = 'block';
-    // Скролл вверх
     header.classList.remove('header-hidden');
     header.classList.add('header-scrolled-up');
+
+    // А меню навигации — через 300 мс, если пользователь не продолжит скроллить
+    scrollTimer = setTimeout(() => {
+      stickyNav.classList.remove('nav-not-hidden');
+      stickyNav.classList.add('nav-hidden');
+      stickyNav.classList.add('nav-scrolled-up');
+    }, 250);
   }
 
-  // Если в самом верху — убираем "скролл вверх" класс
   if (scrollTop <= 0) {
     header.classList.remove('header-scrolled-up');
   }
