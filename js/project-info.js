@@ -96,12 +96,36 @@ function updateTransform() {
 }
 
 
+// Выбор способа связи в форме "Связаться с нами"
 
+function toggleContactMethodMenu() {
+    const menu = document.getElementById('menu-contact-method');
+    const arrow = document.getElementById('dropdown-arrow');
+    
+    const isOpen = menu.classList.contains('open');
+    
+    if (isOpen) {
+        menu.classList.remove('open');
+        arrow.classList.remove('rotated');
+    } else {
+        menu.classList.add('open');
+        arrow.classList.add('rotated');
+    }
+}
+
+// Обработка выбора пункта меню
+document.querySelectorAll('.input-field').forEach(item => {
+    item.addEventListener('click', function () {
+        const selected = document.getElementById('selected-contact-method');
+        selected.value = this.placeholder;
+        toggleContactMethodMenu(); // Скрываем меню после выбора
+    });
+});
 
 
 // Валидация формы "Связаться с нами"
 
-function validateForm(event, formId) {
+function validateFormContact(event, formId) {
     event.preventDefault();
 
     const form = document.getElementById(formId);
@@ -117,6 +141,7 @@ function validateForm(event, formId) {
     const phoneInput = form.querySelector('input[name="phone"]');
     const acceptInput = form.querySelector('input[name="accept"]');
     const errorSpans = form.querySelectorAll('.error-contact');
+    const methodInput = form.querySelector('input[name="contact_method"]');
 
     // Проверка поля "Ваше имя"
     if (!nameInput.value.trim()) {
@@ -132,10 +157,17 @@ function validateForm(event, formId) {
         valid = false;
     }
 
+    // Проверка поля "Способ связи"
+    if (!methodInput.value.trim()) {
+        errorSpans[2].textContent = 'Пожалуйста, выберите способ связи.';
+        errorSpans[2].style.display = 'block';
+        valid = false;
+    }
+
     // Проверка чекбокса "Согласие"
     if (!acceptInput.checked) {
-        errorSpans[2].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
-        errorSpans[2].style.display = 'block';
+        errorSpans[3].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
+        errorSpans[3].style.display = 'block';
         valid = false;
     }
 
@@ -144,6 +176,8 @@ function validateForm(event, formId) {
         form.submit();
     }
 }
+
+
 
 
 // Переадрисация на страницу "Результаты поиска" после того как 

@@ -253,7 +253,7 @@
                     </h1>
     
                     <div class="project-info-content">
-                        <div class="left-side">        
+                        <div class="left-side-image">        
                             <div class="video-container">
                                 <img src="images/project-info/image-1.png" alt="Видео изображение">
                                 
@@ -718,7 +718,7 @@
             <div class="blur-container">
                 <main class="get-contant-content">
                     <div class="get-contact-container">
-                        <div class="left-side-contact">
+                        <div class="left-side">
                             <p class="block-title">Оставить заявку</p>
         
                             <img src="images/svg/gray-scope.svg" alt="Gray scope">
@@ -734,15 +734,63 @@
                                     ароматного чая, пока мы поможем вам создать пространство мечты!
                                 </p>
                 
-                                <form id="contact-form-2" class="contact-form" onsubmit="return validateForm(event, 'contact-form-2')">
+                                <form id="contact-form-2" class="contact-form" onsubmit="return validateFormContact(event, 'contact-form-2')">
                                     <div class="contact-input">
                                         <input type="text" name="name" placeholder="ВАШЕ ИМЯ">
                                         <span class="error-contact"></span>
                                     </div>  
+                                    
                                     <div class="contact-input">
-                                        <input type="number" name="phone" placeholder="ТЕЛЕФОН">
+                                        <input type="text" name="phone" placeholder="ТЕЛЕФОН">
                                         <span class="error-contact"></span>
                                     </div>
+
+                                    <div class="contact-input contact-method-selector" onclick="toggleContactMethodMenu()">
+                                        <div class="contact-input-fields">
+                                            <input type="text" name="contact_method" placeholder="КАК УДОБНЕЕ СВЯЗАТЬСЯ" readonly id="selected-contact-method">
+                                            
+                                            <svg id="dropdown-arrow" class="dropdown-arrow" width="28" height="28" viewBox="0 0 28 28" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M8 16.5859L13.2929 10.9005C13.6834 10.4811 14.3166 10.4811 14.7071 10.9006L20 16.5859"
+                                                    stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="round" />
+                                            </svg>
+                                        </div>
+
+                                        <span class="error-contact"></span>
+                                    </div>
+
+                                    <div class="contact-input-menu menu-contact-method" id="menu-contact-method">
+                                        <div class="contact-input contact-method-selector">
+                                            <div class="contact-input-fields-menu">
+                                                <input class="input-field" type="text" name="contact_method" placeholder="СОЗВОНИТЬСЯ" readonly id="selected-contact-method">
+                                                
+                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M21.5 9.5L13.7931 19.7401C13.4699 20.0866 13.2887 20.0866 12.9655 19.7401L7.5 13.5" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                </svg>    
+                                            </div>
+                                        </div>
+
+                                        <div class="contact-input contact-method-selector">
+                                            <div class="contact-input-fields-menu">
+                                                <input class="input-field" type="text" name="contact_method" placeholder="НАПИСАТЬ В TELEGRAM" readonly id="selected-contact-method">
+                                                
+                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M21.5 9.5L13.7931 19.7401C13.4699 20.0866 13.2887 20.0866 12.9655 19.7401L7.5 13.5" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                </svg>    
+                                            </div>
+                                        </div>
+
+                                        <div class="contact-input contact-method-selector">
+                                            <div class="contact-input-fields-menu">
+                                                <input class="input-field" type="text" name="contact_method" placeholder="НАПИСАТЬ В WHAT'S APP" readonly id="selected-contact-method">
+                                                
+                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M21.5 9.5L13.7931 19.7401C13.4699 20.0866 13.2887 20.0866 12.9655 19.7401L7.5 13.5" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                </svg>    
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="accept-politics">
                                         <label class="custom-checkbox">
                                             <input type="checkbox" name="accept" />

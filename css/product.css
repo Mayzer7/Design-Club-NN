@@ -50,6 +50,7 @@ html {
 html, body {
     margin: 0;
     padding: 0;
+    
 }
 
 *,
@@ -575,7 +576,6 @@ li.active .menu-plumbing-arrow {
 .product {
     padding: 100px 0px 100px 0px;
     background-color: #151c28;
-
     position: relative;
 }
 
@@ -587,6 +587,7 @@ li.active .menu-plumbing-arrow {
 }
 
 .product-images {
+    overflow: hidden;
     display: flex;
     gap: 20px;
     margin-left: -160px;
@@ -678,12 +679,11 @@ li.active .menu-plumbing-arrow {
     display: flex;
     justify-content: space-between;
     padding-left: 5.5%;
-    padding-right: 5.5%;
+    margin-right: 20px;
 }
 
 .sticky-rigth {
     margin-top: 30px;
-    margin-right: 20px;
 }
 
 .product-info-rigth-fixed {
@@ -750,9 +750,10 @@ li.active .menu-plumbing-arrow {
 }
 
 .add-to-cart button {
+    white-space: nowrap;
     display: flex;
     align-items: center;
-    gap: 146px;
+    gap: 136px;
     text-transform: uppercase;
     font-size: 18px;
     color: #FFF;
@@ -776,7 +777,7 @@ li.active .menu-plumbing-arrow {
     justify-content: center;
     gap: 5px;
     background-color: #AE9877;
-    max-width: 303px;
+    max-width: 290px;
     width: 100%;
 }
 
@@ -794,13 +795,14 @@ li.active .menu-plumbing-arrow {
 
 
 .product-added-to-cart-notification {
+    white-space: nowrap;
     margin-top: 17px;
     display: flex;
     align-items: center;
     gap: 10px;
     background-color: #171F2E;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 14px 21px;
+    padding: 14px;
     color: #fff;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300;
@@ -817,7 +819,8 @@ li.active .menu-plumbing-arrow {
 
 
 .product-description {
-    width: 1500px;
+    min-width: 1400px;
+    width: 100%;
     margin-top: 60px;
     padding-left: 25%;
 }

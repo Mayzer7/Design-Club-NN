@@ -1182,14 +1182,8 @@ li.active .menu-plumbing-arrow {
     padding: 5px 0; 
 }
 
-.contact-input input::placeholder {
-    color: #555D6F;
-}
-
-
-
 .error-contact {
-    font-family: 'SF Pro Display Thin', sans-serif; 
+    font-family: 'SF Pro Display', sans-serif; 
     position: absolute;
     top: 100%;
     left: 0;
@@ -1217,8 +1211,26 @@ li.active .menu-plumbing-arrow {
     border-bottom: 1px solid #AE9877;
 }
 
+.accept-politics-modal {
+    margin-top: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.accept-politics-modal p {
+    font-size: 14px;
+}
+
+.accept-politics-modal p span {
+    color: #AE9877;
+    border-bottom: 1px solid #AE9877;
+}
+
 
 .get-request-button {
+    margin-top: 5px;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-size: 18px;
     position: relative;
@@ -1584,7 +1596,7 @@ li.active .menu-plumbing-arrow {
 /* Секция "Связаться с нами" */
 
 .get-contact {
-    padding: 150px 0 100px 20px;
+    padding: 150px 0 250px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif; 
     background-image: url("../images/main-page/form-contact-us.png");
@@ -1632,11 +1644,114 @@ li.active .menu-plumbing-arrow {
 .main-side-wrapper form {
     display: flex;
     flex-direction: column;
-    gap: 35px;
+    gap: 20px;
 }
 
 .opacity {
     opacity: 0;
+}
+
+
+
+/* Как удобнее связаться */
+
+
+.contact-input-menu {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: transparent;
+    padding: 5px 0;
+    gap: 8px;
+    width: 105%;
+}
+
+.contact-input-menu input {
+    width: 100%; 
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #FFF;
+    font-size: 18px;
+    padding: 5px 0; 
+}
+
+
+.contact-input-fields {
+    width: 100%;
+    position: relative;
+    padding-right: 40px;
+    box-sizing: border-box; 
+}
+
+.contact-input-fields input {
+    width: 100%;
+    padding-right: 40px; /* чтобы текст не наезжал на стрелку */
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.contact-input-fields svg {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; 
+}
+
+
+
+.contact-input-fields-menu {
+    width: 100%;
+    position: relative;
+    box-sizing: border-box; 
+}
+
+.contact-input-fields-menu input {
+    width: 100%;
+    padding-right: 40px; /* чтобы текст не наезжал на стрелку */
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.contact-input-fields-menu svg {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; 
+}
+
+/* Скрытое меню */
+.menu-contact-method {
+    max-height: 0;
+    max-width: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+    opacity: 0;
+}
+
+/* Видимое меню */
+.menu-contact-method.open {
+    max-height: 500px; /* Достаточно, чтобы вместить все пункты */
+    max-width: 1000px;
+    opacity: 1;
+}
+
+/* Стрелка вниз */
+.dropdown-arrow {
+    transition: transform 0.3s ease;
+}
+
+/* Поворот стрелки вверх */
+.dropdown-arrow.rotated {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+
+.input-field::placeholder {
+    color: #fff;
 }
 
 
@@ -1840,48 +1955,8 @@ li.active .menu-plumbing-arrow {
     padding: 5px 0; 
 }
 
-.contact-input input::placeholder {
-    color: #555D6F;
-}
-
-
-
-.error-contact {
-    font-family: 'SF Pro Display Thin', sans-serif; 
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    color: #EB5151;
-    font-size: 14px;
-    display: none;
-    margin-top: 5px;
-    padding-left: 5px;
-}
-
-.accept-politics {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.accept-politics p {
-    font-family: 'SF Pro Display Thin', sans-serif;
-    font-weight: 300;
-    font-size: 14px;
-}
-
-.accept-politics p span {
-    color: #AE9877;
-    border-bottom: 1px solid #AE9877;
-}
-
-
-
 .get-request-button-modal {
-    margin-top: 5px;
+    margin-top: 10px;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-size: 18px;
     position: relative;
