@@ -667,3 +667,310 @@ li.active .menu-plumbing-arrow {
     color: #AE9877;
 }   
 
+
+
+
+
+/* Модальное окно "Связаться с нами" */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;  
+    transform: scale(0.9); 
+    transition: opacity 0.5s ease, transform 0.5s ease;  /* Плавная анимация */
+}
+
+.modal.open {
+    display: flex;
+    opacity: 1;  
+    transform: scale(1);  
+}
+
+.modal-content {
+    width: 725px;
+    height: 849px;
+    background-color: #151C28;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    min-width: 300px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.modal-content-info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+
+    position: relative;
+}
+
+
+.modal-content-info-inner button {
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    cursor: pointer;
+}
+
+
+.modal-content-info img {
+    margin-bottom: 30px;
+    width: 171px;
+    height: 171px;
+}
+
+.phone-number {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.modal-content-info h1 {
+    font-family: 'Future New Light', sans-serif;
+    font-size: 76px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.modal-description {
+    font-size: 20px;
+}
+
+.contact-form-modal {
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.contact-input-modal {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    background: transparent;
+    padding: 10px 0;
+    gap: 8px;
+    width: 100%;
+}
+
+.contact-input-modal input {
+    width: 100%; 
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #FFF;
+    font-size: 18px;
+    padding: 5px 0; 
+}
+
+
+.accept-politics-modal {
+    margin-top: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.accept-politics-modal p {
+    font-size: 14px;
+}
+
+.accept-politics-modal p span {
+    color: #AE9877;
+    border-bottom: 1px solid #AE9877;
+}
+
+.get-request-button-modal {
+    margin-top: 10px;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-size: 18px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px; 
+    text-align: center;
+    padding: 20px 20px;
+    background-color: #AE9877;
+    cursor: pointer;
+    border: none;
+    color: #fff;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.get-request-button-modal:hover {
+    background-color: #9c8766; 
+    transform: scale(1.03);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.get-request-button .contact-icon {
+    transition: transform 0.3s ease;
+}
+
+.get-request-button:hover .contact-icon {
+    transform: translateX(5px);
+}
+
+
+.custom-checkbox {
+    position: relative;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+}
+
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkbox-img {
+    width: 25px;
+    height: 25px;
+    background-image: url('../images/svg/checkbox.svg');
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.3s ease; 
+}
+
+.custom-checkbox input:checked + .checkbox-img {
+    background-image: url('../images/svg/check-mark.svg');
+}
+
+
+
+/* Модальное окно "Спасибо за заявку" */
+
+.modal-thanks {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;  
+    transform: scale(0.9); 
+    transition: opacity 0.5s ease, transform 0.5s ease;  
+}
+
+.modal-thanks.open {
+    display: flex;
+    opacity: 1;  
+    transform: scale(1);  
+}
+
+.modal-content-thanks {
+    width: 618px;
+    height: 377px;
+    background-color: #151C28;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    min-width: 300px;
+    position: relative;
+}
+
+.modal-content-info-thanks {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+
+    position: relative;
+}
+
+.modal-content-info-thanks h1 {
+    font-family: 'Future New Light', sans-serif;
+    font-size: 76px;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+}
+
+.modal-content-info-inner-thanks button {
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    cursor: pointer;
+}
+
+.modal-content-info-inner-thanks svg {
+    margin-bottom: 25px;
+}
+
+.modal-description-info {
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300;
+}
+
+
+/* Модальное окно "Произошла ошибка" */
+
+.error-contact {
+    font-family: 'SF Pro Display', sans-serif; 
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    color: #EB5151;
+    font-size: 14px;
+    display: none;
+    margin-top: 5px;
+    padding-left: 5px;
+}
+
+
+.modal-error {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;  
+    transform: scale(0.9); 
+    transition: opacity 0.5s ease, transform 0.5s ease;  
+}
+
+.modal-error.open {
+    display: flex;
+    opacity: 1;  
+    transform: scale(1);  
+}
+
+.modal-content-error {
+    width: 618px;
+    height: 377px;
+    background-color: #151C28;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    min-width: 300px;
+    position: relative;
+}

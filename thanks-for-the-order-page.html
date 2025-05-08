@@ -337,6 +337,116 @@
         </section>
     </div>
 
+    <!-- Модальное окно "Связаться с нами"-->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <div class="modal-content-info">
+                <div class="modal-content-info-inner">
+                    <button id="closeModalBtn" class="close-modal">
+                        <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22.8549 9.64285L9.14062 23.3571M22.8549 23.3572L9.14063 9.64287" stroke="#EDE4D7" stroke-linecap="square"/>
+                        </svg>
+                    </button>
+
+                    <img src="images/svg/get-request.svg" alt="">
+        
+                    <p class="phone-number">+7 999 999 99 99</p>
+                
+                    <h1>
+                        Связаться<br> с нами
+                    </h1>
+
+                    <p class="modal-description">
+                        Оставьте заявку и менеджер 
+                        свяжется с вами в рабочее время 
+                    </p>
+                </div>
+            </div>
+
+            <div class="modal-inputs">
+                <form id="contact-form-modal" class="contact-form-modal" onsubmit="return validateFormModal(event, 'contact-form-modal')">
+                    <div class="contact-input-modal">
+                        <input type="text" name="name" placeholder="ВАШЕ ИМЯ">
+                        <span class="error-contact"></span>
+                    </div>  
+                    <div class="contact-input-modal">
+                        <input type="text" name="phone" placeholder="ТЕЛЕФОН">
+                        <span class="error-contact"></span>
+                    </div>
+                    <div class="accept-politics-modal">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="accept" />
+                            <div class="checkbox-img"></div>
+                        </label>
+                        <p>Согласен <span><a href="#">с политикой конфиденциальности и обработки персональных данных</a></span></p>
+                        <span class="error-contact"></span>
+                    </div>
+                    <button type="submit" class="get-request-button-modal">
+                        ОСТАВИТЬ ЗАЯВКУ 
+                        <img src="images/svg/contact.svg" alt="Связаться" class="contact-icon">
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно "Спасибо за заявку"-->
+    <div class="modal-thanks" id="thanksModal">
+        <div class="modal-content-thanks">
+            <div class="modal-content-info-thanks">
+                <div class="modal-content-info-inner-thanks">
+                    <button id="closeModalBtnThanks" class="close-modal">
+                        <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22.8549 9.64285L9.14062 23.3571M22.8549 23.3572L9.14063 9.64287" stroke="#EDE4D7" stroke-linecap="square"/>
+                        </svg>
+                    </button>
+
+                    <svg width="79" height="79" viewBox="0 0 79 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="39.5" cy="39.5" r="39.5" fill="#3A8E99"/>
+                        <path d="M64 27L37.6245 52.2806C36.6237 53.2398 35.0013 53.2398 34.0005 52.2806L23 41.7367" stroke="white" stroke-opacity="0.6" stroke-width="4" stroke-linecap="square"/>
+                    </svg>
+                
+                    <h1>
+                        Спасибо<br> за заявку
+                    </h1>
+
+                    <p class="modal-description-thanks">
+                        Наш менеджер свяжется с вами в течении двух рабочих дней
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно "Произошла ошибка"-->
+    <div class="modal-error" id="errorModal">
+        <div class="modal-content-error">
+            <div class="modal-content-info-thanks">
+                <div class="modal-content-info-inner-thanks">
+                    <button id="closeModalBtnError" class="close-modal">
+                        <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22.8549 9.64285L9.14062 23.3571M22.8549 23.3572L9.14063 9.64287" stroke="#EDE4D7" stroke-linecap="square"/>
+                        </svg>
+                    </button>
+
+                    <svg width="79" height="79" viewBox="0 0 79 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="79" height="79" rx="39.5" fill="#924141"/>
+                        <path d="M56.4275 22.5715L22.5703 56.4287M56.4275 56.4287L22.5703 22.5716" stroke="white" stroke-opacity="0.6" stroke-width="4" stroke-linecap="square"/>
+                    </svg>    
+                
+                    <h1>
+                        Произошла<br>
+                        ошибка
+                    </h1>
+
+                    <p class="modal-description-info">
+                        Сожалеем, но произошла ошибка. Попробуйте еще раз. 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Cookie -->
     <div id="cookie-container"></div>
 

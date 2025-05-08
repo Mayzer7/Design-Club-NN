@@ -43,14 +43,30 @@ function validateFormModal(event, formId) {
 
     // Если есть ошибка, переадресовываем пользователя
     if (!valid) {
-        modal.style.display = 'none';
+        contactModal.style.display = 'none';
+
         errorModal.style.display = 'flex';
+        container.style.filter = 'blur(5px)';
+        setTimeout(() => {
+            errorModal.classList.add('open');  
+        }, 10);
+
         return;
     }
 
     // Если всё ок — показываем спасибо за заявку
-    modal.style.display = 'none';
+    contactModal.style.display = 'none';
+    
     thanksModal.style.display = 'flex';
+    container.style.filter = 'blur(5px)';
+    setTimeout(() => {
+        thanksModal.classList.add('open');  
+    }, 10);
+
+    // Очистить поля формы после успешной отправки
+    nameInput.value = '';
+    phoneInput.value = '';
+    acceptInput.checked = false;
 }
 
 
@@ -59,7 +75,7 @@ const openBtn = document.getElementById('openModalBtn');
 const closeBtn = document.getElementById('closeModalBtn');
 const closeBtnThanks = document.getElementById('closeModalBtnThanks');
 const closeBtnError = document.getElementById('closeModalBtnError');
-const modal = document.getElementById('contactModal');
+const contactModal = document.getElementById('contactModal');
 const modalContent = document.querySelector('.modal-content');
     
 // Для блюра контейнера из вне модалки
@@ -67,47 +83,71 @@ const container = document.querySelector('.container');
 
 // Открытие
 openBtn.addEventListener('click', () => {
-    modal.style.display = 'flex';
+    contactModal.style.display = 'flex';
     container.style.filter = 'blur(5px)';
+    setTimeout(() => {
+        contactModal.classList.add('open');  
+    }, 10); 
 });
 
 // Закрытие по кнопке ✖
 closeBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
-    container.style.filter = 'none';
+    contactModal.classList.remove('open');  
+    setTimeout(() => {
+        contactModal.style.display = 'none';
+        container.style.filter = 'none';
+    }, 500); 
 });
 
+// Закрытие по кнопке ✖
 closeBtnThanks.addEventListener('click', () => {
-    thanksModal.style.display = 'none';
-    container.style.filter = 'none';
-});
-
-closeBtnError.addEventListener('click', () => {
-    errorModal.style.display = 'none';
-    container.style.filter = 'none';
-});
-
-modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        modal.style.display = 'none';
+    thanksModal.classList.remove('open');  
+    setTimeout(() => {
         thanksModal.style.display = 'none';
         container.style.filter = 'none';
+    }, 500); 
+});
+
+// Закрытие по кнопке ✖
+closeBtnError.addEventListener('click', () => {
+    errorModal.classList.remove('open');  
+    setTimeout(() => {
+        errorModal.style.display = 'none';
+        container.style.filter = 'none';
+    }, 500); 
+});
+
+contactModal.addEventListener('click', (e) => {
+    if (e.target === contactModal) {
+        contactModal.classList.remove('open');  
+        setTimeout(() => {
+            contactModal.style.display = 'none';
+            container.style.filter = 'none';
+        }, 500); 
     }
 });
 
+
 thanksModal.addEventListener('click', (e) => {
     if (e.target === thanksModal) {
-        thanksModal.style.display = 'none';
-        container.style.filter = 'none';
+        thanksModal.classList.remove('open');  
+        setTimeout(() => {
+            thanksModal.style.display = 'none';
+            container.style.filter = 'none';
+        }, 500); 
     }
 });
 
 errorModal.addEventListener('click', (e) => {
     if (e.target === errorModal) {
-        errorModal.style.display = 'none';
-        container.style.filter = 'none';
+        errorModal.classList.remove('open');  
+        setTimeout(() => {
+            errorModal.style.display = 'none';
+            container.style.filter = 'none';
+        }, 500); 
     }
 });
+
 
 // Переадрисация на страницу "Результаты поиска" после того как 
 // пользователь ввел название товарава в поиске и нажал Enter
@@ -254,68 +294,6 @@ function validateFormContact(event, formId) {
         form.submit();
     }
 }
-
-
-
-
-
-
-
-// Переключение карточек товара через стрелочки
-const wrapper = document.getElementById('productCards');
-const cards  = Array.from(wrapper.querySelectorAll('.product-card'));
-const scopeContainer = document.querySelector('.product-card-scope');
-const leftArrow  = document.getElementById('left-arrow');
-const rightArrow = document.getElementById('right-arrow');
-        
-const cardGap = 20; 
-let cardWidth = cards[0].getBoundingClientRect().width;
-const step = cardWidth + cardGap;
-        
-// Индекс карточки, которая сейчас в scope
-let activeIndex = 0;
-        
-// Функция обновления содержимого scope-карты
-function updateScope(idx) {
-    const srcCard = cards[idx];
-    // клонируем всё содержимое .product-card внутрь .product-card-scope
-    scopeContainer.innerHTML = '';
-    const clone = srcCard.cloneNode(true);
-    // у клона убираем класс .product-card (и переназначим класс scope)
-    clone.classList.remove('product-card');
-    clone.classList.add('product-card-scope');
-    scopeContainer.appendChild(clone);
-}
-        
-// Функция прокрутки и обновления
-function moveTo(idx) {
-    // сдвигаем обёртку: так, чтобы выбранная карточка встала
-    const offset = (idx - 2) * step;
-    wrapper.style.transition = 'transform 0.5s ease';
-
-    updateScope(idx);
-}
-    
-// Навешиваем обработчики
-rightArrow.addEventListener('click', () => {
-if (activeIndex < cards.length - 1) {
-    activeIndex++;
-    moveTo(activeIndex);
-    }
-});
-    
-leftArrow.addEventListener('click', () => {
-    if (activeIndex > 0) {
-        activeIndex--;
-        moveTo(activeIndex);
-    }
-});
-    
-// Инициализируем видимую scope-карту
-moveTo(activeIndex);
-
-
-
 
 
 // Секция "Наши Отзывы от покупателей"

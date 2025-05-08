@@ -1,28 +1,155 @@
-// Модальное окно для просмотра видео
+// Валидация модального окна формы "Связаться с нами"
 
-const modal = document.getElementById("videoModal");
-const btn = document.querySelector(".video-button");
-const closeBtn = document.querySelector(".close");
-const video = document.getElementById("modalVideo");
+const thanksModal = document.getElementById('thanksModal');
+const errorModal = document.getElementById('errorModal');
 
-btn.addEventListener("click", () => {
-    modal.style.display = "flex";
-    video.play();
+function validateFormModal(event, formId) {
+    event.preventDefault();
+
+    const form = document.getElementById(formId);
+
+    // Скрыть все ошибки только внутри своей формы
+    const errorElements = form.querySelectorAll('.error-contact');
+    errorElements.forEach(error => error.style.display = 'none');
+
+    let valid = true;
+
+    // Поля внутри своей формы
+    const nameInput = form.querySelector('input[name="name"]');
+    const phoneInput = form.querySelector('input[name="phone"]');
+    const acceptInput = form.querySelector('input[name="accept"]');
+    const errorSpans = form.querySelectorAll('.error-contact');
+
+    // Проверка поля "Ваше имя"
+    if (!nameInput.value.trim()) {
+        errorSpans[0].textContent = 'Пожалуйста, введите ваше имя.';
+        errorSpans[0].style.display = 'block';
+        valid = false;
+    }
+
+    // Проверка поля "Телефон"
+    if (!phoneInput.value.trim()) {
+        errorSpans[1].textContent = 'Пожалуйста, введите ваш телефон.';
+        errorSpans[1].style.display = 'block';
+        valid = false;
+    }
+
+    // Проверка чекбокса "Согласие"
+    if (!acceptInput.checked) {
+        errorSpans[2].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
+        errorSpans[2].style.display = 'block';
+        valid = false;
+    }
+
+    // Если есть ошибка, переадресовываем пользователя
+    if (!valid) {
+        contactModal.style.display = 'none';
+
+        errorModal.style.display = 'flex';
+        container.style.filter = 'blur(5px)';
+        setTimeout(() => {
+            errorModal.classList.add('open');  
+        }, 10);
+
+        return;
+    }
+
+    // Если всё ок — показываем спасибо за заявку
+    contactModal.style.display = 'none';
+    
+    thanksModal.style.display = 'flex';
+    container.style.filter = 'blur(5px)';
+    setTimeout(() => {
+        thanksModal.classList.add('open');  
+    }, 10);
+
+    // Очистить поля формы после успешной отправки
+    nameInput.value = '';
+    phoneInput.value = '';
+    acceptInput.checked = false;
+}
+
+
+// Модальное окно "Связаться с нами"
+const openBtn = document.getElementById('openModalBtn');
+const closeBtn = document.getElementById('closeModalBtn');
+const closeBtnThanks = document.getElementById('closeModalBtnThanks');
+const closeBtnError = document.getElementById('closeModalBtnError');
+const contactModal = document.getElementById('contactModal');
+const modalContent = document.querySelector('.modal-content');
+    
+// Для блюра контейнера из вне модалки
+const container = document.querySelector('.container');
+
+// Открытие
+openBtn.addEventListener('click', () => {
+    contactModal.style.display = 'flex';
+    container.style.filter = 'blur(5px)';
+    setTimeout(() => {
+        contactModal.classList.add('open');  
+    }, 10); 
 });
 
-closeBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-    video.pause();
-    video.currentTime = 0;
+// Закрытие по кнопке ✖
+closeBtn.addEventListener('click', () => {
+    contactModal.classList.remove('open');  
+    setTimeout(() => {
+        contactModal.style.display = 'none';
+        container.style.filter = 'none';
+    }, 500); 
 });
 
-window.addEventListener("click", (event) => {
-    if (event.target === modal) {
-      modal.style.display = "none";
-      video.pause();
-      video.currentTime = 0;
+// Закрытие по кнопке ✖
+closeBtnThanks.addEventListener('click', () => {
+    thanksModal.classList.remove('open');  
+    setTimeout(() => {
+        thanksModal.style.display = 'none';
+        container.style.filter = 'none';
+    }, 500); 
+});
+
+// Закрытие по кнопке ✖
+closeBtnError.addEventListener('click', () => {
+    errorModal.classList.remove('open');  
+    setTimeout(() => {
+        errorModal.style.display = 'none';
+        container.style.filter = 'none';
+    }, 500); 
+});
+
+contactModal.addEventListener('click', (e) => {
+    if (e.target === contactModal) {
+        contactModal.classList.remove('open');  
+        setTimeout(() => {
+            contactModal.style.display = 'none';
+            container.style.filter = 'none';
+        }, 500); 
     }
 });
+
+
+thanksModal.addEventListener('click', (e) => {
+    if (e.target === thanksModal) {
+        thanksModal.classList.remove('open');  
+        setTimeout(() => {
+            thanksModal.style.display = 'none';
+            container.style.filter = 'none';
+        }, 500); 
+    }
+});
+
+errorModal.addEventListener('click', (e) => {
+    if (e.target === errorModal) {
+        errorModal.classList.remove('open');  
+        setTimeout(() => {
+            errorModal.style.display = 'none';
+            container.style.filter = 'none';
+        }, 500); 
+    }
+});
+
+
+
 
 
 // Переадрисация на страницу "Результаты поиска" после того как 
