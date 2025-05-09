@@ -30,9 +30,14 @@ function updateSizes() {
 }
 
 function moveTrack() {
-    const manualShift = 450;          
-    const offset = manualShift;      
-    const x = -currentIndex * cardWidth + offset;
+    // читаем CSS-переменную и парсим в число
+    const shiftValue = getComputedStyle(track)
+                         .getPropertyValue('--manual-shift')
+                         .trim();
+    const manualShift = parseFloat(shiftValue);
+
+    // рассчитываем смещение
+    const x = -currentIndex * cardWidth + manualShift;
     track.style.transform = `translateX(${x}px)`;
     cards.forEach((c, i) => c.classList.toggle('active', i === currentIndex));
 }
@@ -449,10 +454,14 @@ const underHeaderContainer = document.querySelector('.under-header-container');
 const underHeader = document.querySelector('.under-header');
 let isCatalogActive = false;
 
+const marginTopStart = parseFloat(getComputedStyle(document.querySelector('.menu-navigation')).marginTop);
+const marginTopUseSearch = marginTopStart + 250;
+
+
 // Обработчик ввода в поле поиска
 searchInput.addEventListener('input', function () {
     if (searchInput.value.trim() !== '') {
-        menuNavigation.style.marginTop = '430px';
+        menuNavigation.style.marginTop = marginTopUseSearch + 'px';
         underHeader.style.filter = 'blur(5px)';
 
         // Накидываем blur на все контейнеры
@@ -467,7 +476,7 @@ searchInput.addEventListener('input', function () {
         // Показываем элементы с плавным переходом
         searchItems.classList.add('show');
     } else if (!isCatalogActive) {
-        menuNavigation.style.marginTop = '170px';
+        menuNavigation.style.marginTop = marginTopStart + 'px';
         // Сбрасываем фон header, если поиск пуст
         header.style.backgroundColor = 'transparent';
 
@@ -482,7 +491,7 @@ searchInput.addEventListener('input', function () {
             container.style.filter = '';
         });
     } else {
-        menuNavigation.style.marginTop = '170px';
+        menuNavigation.style.marginTop = marginTopStart + 'px';
         // Скрываем элементы с плавным переходом
         searchItems.classList.remove('show');
         header.style.transition = 'padding-bottom 0.5s ease';

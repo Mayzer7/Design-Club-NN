@@ -18,6 +18,7 @@
 .cookie-banner-text {
   font-size: 16px;
   color: #EDE4D7;
+  
 }
 
 .cookie-banner-text span a {
@@ -82,4 +83,33 @@
 
 .reject-btn:active {
   transform: scale(0.98);
+}
+
+
+/* Адаптив */
+
+@media (max-width: 1250px) {
+  .cookie-banner {
+    width: 1100px;
+  }
+
+
+  .visible-svg {
+    display: none;
+  }
+
+  .cookie-btn {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1150px) {
+  .cookie-banner {
+    width: 953px;
+  }
+
+  .cookie-banner-text {
+    font-size: 14px;
+  }
+
 }
