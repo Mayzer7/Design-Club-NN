@@ -1,3 +1,42 @@
+// Переключение категорий с помощью стрелочек
+
+function smoothScroll(element, change, duration) {
+    const start = element.scrollLeft;
+    const startTime = performance.now();
+
+    function animateScroll(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 0.5 * (1 - Math.cos(Math.PI * progress)); // easeInOut
+
+        element.scrollLeft = start + change * ease;
+
+        if (progress < 1) {
+            requestAnimationFrame(animateScroll);
+        }
+    }
+
+    requestAnimationFrame(animateScroll);
+}
+        
+const categories = document.querySelector('.categories');
+const nextBtn = document.getElementById('next');
+const prevBtn = document.getElementById('prev');
+
+const scrollAmount = 300; 
+
+nextBtn.addEventListener('click', () => {
+    smoothScroll(categories, 470, 500);
+});
+
+prevBtn.addEventListener('click', () => {
+    smoothScroll(categories, -470, 500);
+});
+
+
+
+
+
 // Валидация модального окна формы "Связаться с нами"
 
 const thanksModal = document.getElementById('thanksModal');

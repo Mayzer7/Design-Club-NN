@@ -575,8 +575,8 @@ li.active .menu-plumbing-arrow {
 
 .catalog-content {
     padding-left: 25%;
-    position: relative;
     margin-top: 60px;
+    position: relative;
 }
 
 .count-products {
@@ -594,10 +594,29 @@ li.active .menu-plumbing-arrow {
     text-transform: uppercase;
 }
 
+.catalog-subtitle-and-arrows {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
 
 .catalog-subtitle {
     margin-top: 30px;
     margin-bottom: 40px;
+    max-width: 551px;
+    width: 100%;
+}
+
+.nav-arrows-products {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-arrows-products button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .catalog-container {
@@ -606,9 +625,29 @@ li.active .menu-plumbing-arrow {
 
 /* Категории */
 
+.categories-wrapper {
+    overflow: hidden;
+    position: relative;
+}
+
 .categories {
     display: flex;
     gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    transition: scroll-left 0.5s ease-in-out;
+    padding-bottom: 10px;
+}
+
+/* Скрываем браузерный горизонтальный скрол */
+
+.categories {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE/Edge */
+}
+
+.categories::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
 .category a {
