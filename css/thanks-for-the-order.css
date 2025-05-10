@@ -104,6 +104,10 @@ body {
     min-height: 1200px;
 }
 
+
+
+
+
 /* Шапка */
 
 .header-top {
@@ -348,6 +352,8 @@ li.active .menu-plumbing-arrow {
     width: 100%;
     position: relative;
     z-index: 5;
+
+    
 }
 
 
@@ -356,6 +362,7 @@ li.active .menu-plumbing-arrow {
 
 
 .search-items {
+    
     margin-top: 20px;
     display: flex;
     flex-direction: column;
@@ -451,7 +458,6 @@ li.active .menu-plumbing-arrow {
     align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     background: transparent;
-    min-width: 360px;
     padding: 5px 0;
     gap: 8px;
 }
@@ -489,6 +495,7 @@ li.active .menu-plumbing-arrow {
     color: #AE9877;
 }
 
+
 .contact-button {
     font-family: 'SF Pro Display', sans-serif;
     font-weight: 900;
@@ -514,7 +521,62 @@ li.active .menu-plumbing-arrow {
 }
 
 
-/* Секция 'Услуги' */
+@media (max-width: 1200px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .catalog-nav {
+        margin-right: 30px;
+    }
+
+    .search-container {
+        max-width: 250px;
+    }
+
+    .under-header-container {
+        gap: 186px;
+    }
+
+    .menu-navigation {
+        margin-top: 210px;
+    }
+}
+
+@media (max-width: 1024px) {
+    /* Шапка */
+
+    .menu-navigation {
+        margin-top: 200px;
+    }
+
+    .search-container {
+        max-width: 214px;
+    }
+
+    .main-nav a {
+        font-size: 16px;
+    }
+    
+    .catalog-nav ul li a {
+        font-size: 16px;
+    }
+
+    .logo {
+        margin-right: 100px;
+    }
+
+    .contact-header a {
+        font-size: 16px;
+    }
+
+    .main-nav ul {
+        gap: 5px;
+    }
+    
+}
+
 
 .page-wrapper {
     position: relative; 
@@ -544,6 +606,7 @@ li.active .menu-plumbing-arrow {
 
 
 .content {
+    margin-top: 56px;
     padding-left: 25%;
     position: relative;
 }
@@ -565,11 +628,6 @@ li.active .menu-plumbing-arrow {
         top: 200px;
     }
 }
-
-
-/* Для расширения контейнера под хедером */
-
-
 
 
 /* Footer */
@@ -667,6 +725,95 @@ li.active .menu-plumbing-arrow {
     color: #AE9877;
 }   
 
+
+.footer-1024 {
+    display: none;
+    padding: 100px 20px 20px 20px;
+    background-color: transparent;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300; 
+    position: absolute;
+    top: 800px;
+    left: 0;
+    width: 100%;
+    z-index: 10; 
+}
+
+.footer-container-1024 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-top: 20px;
+}
+
+.footer-copyright-1024 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-top: 20px;
+}
+
+.last-column {
+    justify-self: end;
+}
+
+.footer-copyright-1024 a {
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-copyright-1024 a:hover {
+    color: #AE9877;
+}
+
+.footer-grid-down {
+    margin-top: 60px;
+    margin-bottom: 36px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-top: 20px;
+}
+
+.footer-nav-down h1 {
+    text-transform: uppercase;
+    font-size: 24px;
+}
+
+.footer-nav-down p {
+    font-size: 16px;
+    color: rgba(237, 228, 215, 0.7);
+    margin-bottom: 5px;
+}
+
+
+/* Адаптив */
+
+@media (max-width: 1425px) {
+    .footer {
+        padding: 200px 20px 0 20px;
+    }
+}
+
+@media (max-width: 1335px) {
+    .footer {
+        display: none;
+    }
+
+    .footer-1024 {
+        display: block;
+    }
+}
+
+@media (max-width: 1150px) {
+    .main-page-top {
+        background-image: url('../images/thanks-for-the-order/adaptive/background.png');
+    }
+
+    .subtitle {
+        font-size: 16px;
+    }
+}
 
 
 /* Модальное окно "Связаться с нами" */
@@ -932,6 +1079,20 @@ li.active .menu-plumbing-arrow {
 
 /* Модальное окно "Произошла ошибка" */
 
+.error-contact {
+    font-family: 'SF Pro Display', sans-serif; 
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    color: #EB5151;
+    font-size: 14px;
+    display: none;
+    margin-top: 5px;
+    padding-left: 5px;
+}
+
+
 .modal-error {
     display: none;
     position: fixed;
@@ -958,17 +1119,3 @@ li.active .menu-plumbing-arrow {
     min-width: 300px;
     position: relative;
 }
-
-.error-contact {
-    font-family: 'SF Pro Display', sans-serif; 
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    color: #EB5151;
-    font-size: 14px;
-    display: none;
-    margin-top: 5px;
-    padding-left: 5px;
-}
-
