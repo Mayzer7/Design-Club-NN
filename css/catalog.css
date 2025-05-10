@@ -1287,19 +1287,12 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 /* Адаптив карточек */
 
 
-
 @media (max-width: 1220px) {
     .product-cards {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
 
 }
-
-/* @media (max-width: 1000px) {
-    .product-cards {
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    }
-} */
  
 @media (max-width: 1900px) {
     .product-cards {
@@ -1353,6 +1346,18 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     }
 }
 
+
+@media (max-width: 1200px) {
+    .badge {
+        font-size: 12px;
+    } 
+}
+
+@media (max-width: 1150px) {
+    .badge {
+        font-size: 10px;
+    } 
+}
 
 /* Плашки со скидкой внутри карточек товаров */
 
@@ -1721,17 +1726,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     }
 }
 
-@media (max-width: 1200px) {
-    .badge {
-        font-size: 12px;
-    } 
-}
 
-@media (max-width: 1150px) {
-    .badge {
-        font-size: 10px;
-    } 
-}
     
 
 
