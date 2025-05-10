@@ -2211,6 +2211,10 @@ li.active .menu-plumbing-arrow {
     width: 800px;
 }
 
+.main-side-wrapper p {
+    width: 400px;   
+}
+
 .main-side-wrapper h1 {
     font-family: 'Future New Light', sans-serif;
     font-size: 76px;
@@ -2337,7 +2341,7 @@ li.active .menu-plumbing-arrow {
 
 @media (max-width: 1030px) {
     .main-side-wrapper {
-        padding-left: 10%;
+        padding-left: 20%;
     }
 
     .get-contact {
@@ -2443,6 +2447,76 @@ li.active .menu-plumbing-arrow {
 
 .footer-copyright a:hover {
     color: #AE9877;
+}
+
+
+
+.footer-1024 {
+    display: none;
+    padding: 0px 20px 20px 20px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300; 
+}
+
+.footer-container-1024 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-top: 20px;
+}
+
+.footer-copyright-1024 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-top: 20px;
+}
+
+.last-column {
+    justify-self: end;
+}
+
+.footer-copyright-1024 a {
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-copyright-1024 a:hover {
+    color: #AE9877;
+}
+
+.footer-grid-down {
+    margin-top: 60px;
+    margin-bottom: 36px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-top: 20px;
+}
+
+.footer-nav-down h1 {
+    text-transform: uppercase;
+    font-size: 24px;
+}
+
+.footer-nav-down p {
+    font-size: 16px;
+    color: rgba(237, 228, 215, 0.7);
+    margin-bottom: 5px;
+}
+
+
+/* Адаптив */
+
+@media (max-width: 1335px) {
+    .footer {
+        display: none;
+    }
+
+    .footer-1024 {
+        display: block;
+    }
 }
 
 /* Модальное окно "Связаться с нами" */
