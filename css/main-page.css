@@ -1670,6 +1670,7 @@ li.active .menu-plumbing-arrow {
 }
 
 
+
 /* Адаптив */
 
 @media (max-width: 1660px) {
@@ -1683,6 +1684,12 @@ li.active .menu-plumbing-arrow {
         margin-top: 300px;
         width: 250px;
         height: 300px;
+    }
+}
+
+@media (max-width: 1230px) {
+    .get-request {
+        background-image: url("../images/main-page/adaptive/request-background-1024.png");
     }
 }
 
@@ -2722,7 +2729,7 @@ li.active .menu-plumbing-arrow {
 
 /* Адаптив модального окна */
 
-@media (max-width: 1024px) {
+@media (max-width: 1040px) {
     .contact-modal-title {
         display: none;
     }
