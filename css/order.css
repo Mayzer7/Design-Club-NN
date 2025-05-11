@@ -127,11 +127,15 @@ input[type="number"] {
     min-height: 300px;
 }
 
+
+
+
+
 /* Шапка */
 
 .header-top {
     position: fixed;
-    top: 0px;
+    top: 0;
     left: 0;
     width: 100%;
     padding: 20px;
@@ -156,7 +160,6 @@ input[type="number"] {
     justify-content: space-between;
     align-items: flex-start;
     text-align: center;
-    height: 150px;
 }
 
 .logo {
@@ -168,7 +171,9 @@ input[type="number"] {
     display: flex;
     justify-content: center;
     gap: 40px;
-    transform: translateY(-18px);
+
+    position: relative;
+    top: -18px; /* поднимает вверх */
 }
 
 
@@ -231,7 +236,6 @@ li.active .menu-plumbing-arrow {
 .menu-toggle-plumbing:hover {
     color: #AE9877;
 }
-
 
 .menu-navigation-relative {
     position: relative;
@@ -353,6 +357,10 @@ li.active .menu-plumbing-arrow {
     color: #AE9877;
 }
 
+.main-nav {
+    position: relative;
+}
+
 .main-nav ul {
     display: flex;
     flex-direction: column;
@@ -374,6 +382,8 @@ li.active .menu-plumbing-arrow {
     width: 100%;
     position: relative;
     z-index: 5;
+
+    
 }
 
 .search-items {
@@ -470,7 +480,6 @@ li.active .menu-plumbing-arrow {
     align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     background: transparent;
-    min-width: 360px;
     padding: 5px 0;
     gap: 8px;
 }
@@ -508,6 +517,7 @@ li.active .menu-plumbing-arrow {
     color: #AE9877;
 }
 
+
 .contact-button {
     font-family: 'SF Pro Display', sans-serif;
     font-weight: 900;
@@ -531,6 +541,70 @@ li.active .menu-plumbing-arrow {
     background-color: #AE9877;
     color: #fff;
 }
+
+
+@media (max-width: 1200px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .catalog-nav {
+        margin-right: 30px;
+    }
+
+    .search-container {
+        max-width: 250px;
+    }
+
+
+    .menu-navigation {
+        margin-top: 210px;
+    }
+
+    .main-nav {
+        top: -35px;
+    }
+
+    .under-header {
+        top: 320px;
+    }
+}
+
+@media (max-width: 1024px) {
+    /* Шапка */
+
+    .menu-navigation {
+        margin-top: 200px;
+    }
+
+    .search-container {
+        max-width: 214px;
+    }
+
+    .main-nav a {
+        font-size: 16px;
+    }
+    
+    .catalog-nav ul li a {
+        font-size: 16px;
+    }
+
+    .logo {
+        margin-right: 100px;
+    }
+
+    .contact-header a {
+        font-size: 16px;
+    }
+
+    .main-nav ul {
+        gap: 5px;
+    }    
+}
+
+
+
 
 .page-wrapper {
     font-family: 'SF UI Display Thin', sans-serif;
@@ -786,6 +860,11 @@ li.active .menu-plumbing-arrow {
     display: flex;
 }
 
+.order-left img {
+    width: 211px;
+    height: 232px;
+}
+
 .order-right {
     padding: 0 20px;
     width: 100%;
@@ -804,6 +883,8 @@ li.active .menu-plumbing-arrow {
     margin-top: 14px;
     display: flex;
     justify-content: space-between;
+    max-width: 400px;
+    width: 100%;
 }
 
 .product-desc-left {
@@ -842,6 +923,7 @@ li.active .menu-plumbing-arrow {
 .product-last-line {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
     text-align: center;
 }
 
@@ -862,6 +944,7 @@ li.active .menu-plumbing-arrow {
 
 .total {
     display: flex;
+    flex-direction: column;
     align-items: flex-end;
     gap: 15px;
 }
@@ -928,13 +1011,54 @@ li.active .menu-plumbing-arrow {
 }
 
 
-@media (max-width: 1660px) {
-    .get-request-content iframe {
-        margin-top: 210px;
+/* Адаптив */
+
+.buy-products-content-1024 {
+    display: none;
+    flex-direction: column;
+    gap: 115px;
+}
+
+.down-side-1024 {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+}
+
+.up-side-1024 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+@media (max-width: 1700px) {
+    .buy-products-content {
+        display: none;
+    }
+
+    .buy-products-content-1024 {
+        display: flex;
     }
 }
 
+@media (max-width: 1060px) {
+    .title {
+        font-size: 98px;
+    }
 
+    .right-side-items {
+        font-size: 26px;
+    }
+
+    .product-name {
+        font-size: 22px;
+    }
+
+    .product-desc-left p,
+    .product-desc-right p {
+        font-size: 14px;
+    }
+}
 
 
 /* Footer */
@@ -965,6 +1089,7 @@ li.active .menu-plumbing-arrow {
 }
 
 .footer-navigation h1 {
+    white-space: nowrap;
     padding-bottom: 10px;
     text-transform: uppercase;
     font-size: 24px;
@@ -1028,6 +1153,74 @@ li.active .menu-plumbing-arrow {
 }
 
 
+
+.footer-1024 {
+    display: none;
+    padding: 100px 20px 20px 20px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300; 
+}
+
+.footer-container-1024 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-top: 20px;
+}
+
+.footer-copyright-1024 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-top: 20px;
+}
+
+.last-column {
+    justify-self: end;
+}
+
+.footer-copyright-1024 a {
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-copyright-1024 a:hover {
+    color: #AE9877;
+}
+
+.footer-grid-down {
+    margin-top: 60px;
+    margin-bottom: 36px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-top: 20px;
+}
+
+.footer-nav-down h1 {
+    text-transform: uppercase;
+    font-size: 24px;
+}
+
+.footer-nav-down p {
+    font-size: 16px;
+    color: rgba(237, 228, 215, 0.7);
+    margin-bottom: 5px;
+}
+
+
+/* Адаптив */
+
+@media (max-width: 1335px) {
+    .footer {
+        display: none;
+    }
+
+    .footer-1024 {
+        display: block;
+    }
+}
 
 
 
