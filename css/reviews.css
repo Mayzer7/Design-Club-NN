@@ -349,9 +349,17 @@ li.active .menu-plumbing-arrow {
     width: 100%;
     position: relative;
     z-index: 5;
+
+    
 }
 
+
+
+
+
+
 .search-items {
+    
     margin-top: 20px;
     display: flex;
     flex-direction: column;
@@ -447,7 +455,6 @@ li.active .menu-plumbing-arrow {
     align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     background: transparent;
-    min-width: 360px;
     padding: 5px 0;
     gap: 8px;
 }
@@ -485,6 +492,7 @@ li.active .menu-plumbing-arrow {
     color: #AE9877;
 }
 
+
 .contact-button {
     font-family: 'SF Pro Display', sans-serif;
     font-weight: 900;
@@ -508,6 +516,64 @@ li.active .menu-plumbing-arrow {
     background-color: #AE9877;
     color: #fff;
 }
+
+
+@media (max-width: 1200px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .catalog-nav {
+        margin-right: 30px;
+    }
+
+    .search-container {
+        max-width: 250px;
+    }
+
+    .under-header-container {
+        gap: 186px;
+    }
+
+    .menu-navigation {
+        margin-top: 210px;
+    }
+}
+
+@media (max-width: 1024px) {
+    /* Шапка */
+
+    .menu-navigation {
+        margin-top: 200px;
+    }
+
+    .search-container {
+        max-width: 214px;
+    }
+
+    .main-nav a {
+        font-size: 16px;
+    }
+    
+    .catalog-nav ul li a {
+        font-size: 16px;
+    }
+
+    .logo {
+        margin-right: 100px;
+    }
+
+    .contact-header a {
+        font-size: 16px;
+    }
+
+    .main-nav ul {
+        gap: 5px;
+    }
+    
+}
+
 
 
 /* header */
@@ -616,7 +682,7 @@ li.active .menu-plumbing-arrow {
     position: relative;
     min-width: 692px;
     width: 100%;
-    min-height: 414px;
+    min-height: 440px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -657,8 +723,14 @@ li.active .menu-plumbing-arrow {
     color: rgba(237, 228, 215, 0.4);
 }
 
+.review-author-and-yandex-link {
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .review-author {
-    padding-top: 20px;
     font-family: 'Future New Bold', sans-serif;
     font-weight: 600;
     font-size: 34px;
@@ -748,6 +820,144 @@ li.active .menu-plumbing-arrow {
     border-bottom: 1px solid #AE9877;
 }
 
+/* Адаптив */
+
+@media (max-width: 1910px) {
+    .review-card {
+        min-width: 0px;
+        max-width: 500px;
+        width: 100%;
+        min-height: 550px;
+    }
+
+    .review-author {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 1720px) {
+    .reviews-section {
+        padding: 0px 0px 20px 450px;
+    }
+}
+
+@media (max-width: 1600px) {
+    .reviews-section {
+        padding: 0px 0px 20px 420px;
+    }
+}
+
+@media (max-width: 1500px) {
+    .reviews-section {
+        padding: 0px 0px 20px 390px;
+    }
+}
+
+@media (max-width: 1440px) {
+    .reviews-section {
+        padding: 0px 0px 20px 360px;
+    }
+    
+    .review-card {
+        min-width: 0px;
+        max-width: 450px;
+        width: 100%;
+        min-height: 550px;
+    }
+
+    .title {
+        font-size: 98px;
+    }
+
+    .rating-number {
+        top: 100px;
+    }
+
+    .main-page-top {
+        height: 700px;
+    }
+
+}
+
+@media (max-width: 1300px) {
+    .review-card {
+        min-width: 0px;
+        max-width: 350px;
+        width: 100%;
+        min-height: 550px;
+    }
+
+    .review-author {
+        font-size: 22px;
+    }
+
+    .review-link {
+        padding-bottom: 40px;
+    }
+
+}
+
+@media (max-width: 1270px) {
+    .reviews-section {
+        padding: 0px 0px 20px 330px;
+    }
+
+    
+}
+
+@media (max-width: 1180px) {
+    .reviews-section {
+        padding: 0px 0px 20px 300px;
+    }
+
+    .rating-number {
+        padding: 14px 30px;
+        top: 160px;
+    }
+
+
+    .rating-number h1 {
+        font-size: 47px;
+    }
+}
+
+@media (max-width: 1150px) {
+    .main-page-top {
+        background-image: url('../images/reviews/adaptive/background-1024.png');
+    }
+
+    .review-text {
+        font-size: 16px;
+    }
+
+    .review-link {
+        padding-bottom: 20px;
+    }
+
+    .review-card {
+        min-width: 0px;
+        max-width: 350px;
+        width: 100%;
+        min-height: 450px;
+    }
+
+    .subtitle {
+        font-size: 22px;
+    }
+
+    .rating-number {
+        top: 130px;
+    }
+
+}
+
+@media (max-width: 1060px) {
+    .reviews-section {
+        padding: 0px 0px 20px 280px;
+    }
+}
+
+
 /* Footer */
 
 .footer {
@@ -776,6 +986,7 @@ li.active .menu-plumbing-arrow {
 }
 
 .footer-navigation h1 {
+    white-space: nowrap;
     padding-bottom: 10px;
     text-transform: uppercase;
     font-size: 24px;
@@ -836,7 +1047,78 @@ li.active .menu-plumbing-arrow {
 
 .footer-copyright a:hover {
     color: #AE9877;
-}   
+}
+
+
+
+.footer-1024 {
+    display: none;
+    padding: 100px 20px 20px 20px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300; 
+}
+
+.footer-container-1024 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-top: 20px;
+}
+
+.footer-copyright-1024 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-top: 20px;
+}
+
+.last-column {
+    justify-self: end;
+}
+
+.footer-copyright-1024 a {
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-copyright-1024 a:hover {
+    color: #AE9877;
+}
+
+.footer-grid-down {
+    margin-top: 60px;
+    margin-bottom: 36px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-top: 20px;
+}
+
+.footer-nav-down h1 {
+    text-transform: uppercase;
+    font-size: 24px;
+}
+
+.footer-nav-down p {
+    font-size: 16px;
+    color: rgba(237, 228, 215, 0.7);
+    margin-bottom: 5px;
+}
+
+
+/* Адаптив */
+
+@media (max-width: 1335px) {
+    .footer {
+        display: none;
+    }
+
+    .footer-1024 {
+        display: block;
+    }
+}
+
 
 
 
