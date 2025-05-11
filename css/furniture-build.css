@@ -101,7 +101,8 @@ body {
     background-image: url('../images/furniture-build/background.png');
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 2000px;
+    background-position: center;
+    min-height: 2100px;
 }
 
 /* Шапка */
@@ -348,6 +349,8 @@ li.active .menu-plumbing-arrow {
     width: 100%;
     position: relative;
     z-index: 5;
+
+    
 }
 
 
@@ -356,6 +359,7 @@ li.active .menu-plumbing-arrow {
 
 
 .search-items {
+    
     margin-top: 20px;
     display: flex;
     flex-direction: column;
@@ -451,7 +455,6 @@ li.active .menu-plumbing-arrow {
     align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     background: transparent;
-    min-width: 360px;
     padding: 5px 0;
     gap: 8px;
 }
@@ -482,7 +485,6 @@ li.active .menu-plumbing-arrow {
 }
 
 .contact-header a {
-    font-family: 'SF Pro Display', sans-serif;
     transition: color 0.3s ease;
 }
 
@@ -514,6 +516,64 @@ li.active .menu-plumbing-arrow {
     background-color: #AE9877;
     color: #fff;
 }
+
+
+@media (max-width: 1200px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .catalog-nav {
+        margin-right: 30px;
+    }
+
+    .search-container {
+        max-width: 250px;
+    }
+
+    .under-header-container {
+        gap: 186px;
+    }
+
+    .menu-navigation {
+        margin-top: 210px;
+    }
+}
+
+@media (max-width: 1024px) {
+    /* Шапка */
+
+    .menu-navigation {
+        margin-top: 200px;
+    }
+
+    .search-container {
+        max-width: 214px;
+    }
+
+    .main-nav a {
+        font-size: 16px;
+    }
+    
+    .catalog-nav ul li a {
+        font-size: 16px;
+    }
+
+    .logo {
+        margin-right: 100px;
+    }
+
+    .contact-header a {
+        font-size: 16px;
+    }
+
+    .main-nav ul {
+        gap: 5px;
+    }
+    
+}
+
 
 
 /* Секция 'Услуги' */
@@ -564,11 +624,20 @@ li.active .menu-plumbing-arrow {
     text-transform: uppercase;
 }
 
+.furniture-build-content {
+    max-width: 910px;
+    width: 100%;
+}
+
+.furniture-texts {
+    max-width: 455px;
+    width: 100%;
+}
+
 .first-text {
     margin: 30px 0;
     font-size: 20px;
 }
-
 
 
 .video-container {
@@ -578,8 +647,8 @@ li.active .menu-plumbing-arrow {
 
 .video-container img {
     display: block;
-    max-width: 100%;
-    height: auto;
+    width: 907px;
+    height: 550px;
 }
 
 .video-button {    
@@ -613,6 +682,7 @@ li.active .menu-plumbing-arrow {
 
 
 .advantages-title {
+    font-size: 26px;
     text-transform: uppercase;
     font-family: 'Future New Bold', sans-serif;
     margin-top: 30px;
@@ -640,6 +710,72 @@ li.active .menu-plumbing-arrow {
     gap: 15px;
 }
 
+
+/* Адаптив */
+
+@media (max-width: 1370px) {
+    .furniture-title {
+        font-size: 80px;
+    }
+
+    .video-container img {
+        width: 709px;
+        height: 450px;
+    }
+
+    .furniture-build-content {
+        max-width: 710px;
+    }
+
+    .main-page-top {
+        min-height: 1900px;
+    }
+}
+
+@media (max-width: 1335px) {
+    .footer {
+        display: none;
+    }
+
+    .footer-1024 {
+        display: block;
+    }
+}
+
+@media (max-width: 1160px) {
+    .furniture-title {
+        font-size: 70px;
+    }
+    
+    .video-container img {
+        width: 490px;
+        height: 296px;
+    }
+
+    .furniture-build-content {
+        max-width: 710px;
+    }
+
+    .first-text {
+        font-size: 16px;
+    }
+
+    .advantages-left h1,
+    .advantages-right h1 {
+        font-size: 22px;
+    }
+
+    .advantages-left p,
+    .advantages-right p {
+        font-size: 16px;
+    }
+
+    .main-page-top {
+        min-height: 1500px;
+    }
+}
+
+
 /* Для расширения контейнера под хедером */
 
 .expansion-up {
@@ -653,7 +789,7 @@ li.active .menu-plumbing-arrow {
 /* Секция "Остались вопросы?" */
 
 .get-contact {
-    padding: 60px 0 150px 20px;
+    padding: 80px 0 150px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif; 
     background-image: url("../images/customers-page/background.png");
@@ -673,13 +809,12 @@ li.active .menu-plumbing-arrow {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
+    height: 580px;
 }
 
 .block-title {
-    position: absolute;
+    white-space: nowrap;
     color: rgba(255, 255, 255, 0.6);
-    top: 70px;
 }
 
 .left-side img {
@@ -687,9 +822,7 @@ li.active .menu-plumbing-arrow {
     height: 56px;
 }
 
-.img-side img {
-    margin-top: -70px;
-}
+
 
 .main-side-wrapper {
     display: flex;
@@ -763,6 +896,7 @@ li.active .menu-plumbing-arrow {
 }
 
 .accept-politics p {
+    white-space: nowrap;
     font-size: 14px;
 }
 
@@ -833,6 +967,31 @@ li.active .menu-plumbing-arrow {
     background-image: url('../images/svg/check-mark.svg');
 }
 
+/* Адаптив "Остались вопросы" */
+
+@media (max-width: 1200px) {
+    .main-side-wrapper {
+        padding-left: 20%;
+    }
+}
+
+@media (max-width: 1180px) {
+    .main-side-wrapper h1 {
+        font-size: 60px;
+    }
+
+    .main-side-text {
+        font-size: 16px;
+    }
+
+    
+}
+
+@media (max-width: 1100px) {
+    .get-contact {
+        background-image: url("../images/furniture-build/adaptive/background-contact-1024.png");
+    }
+}
 
 /* Footer */
 
@@ -862,6 +1021,7 @@ li.active .menu-plumbing-arrow {
 }
 
 .footer-navigation h1 {
+    white-space: nowrap;
     padding-bottom: 10px;
     text-transform: uppercase;
     font-size: 24px;
@@ -922,9 +1082,77 @@ li.active .menu-plumbing-arrow {
 
 .footer-copyright a:hover {
     color: #AE9877;
-}   
+}
 
 
+
+.footer-1024 {
+    display: none;
+    padding: 100px 20px 20px 20px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300; 
+}
+
+.footer-container-1024 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-top: 20px;
+}
+
+.footer-copyright-1024 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-top: 20px;
+}
+
+.last-column {
+    justify-self: end;
+}
+
+.footer-copyright-1024 a {
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-copyright-1024 a:hover {
+    color: #AE9877;
+}
+
+.footer-grid-down {
+    margin-top: 60px;
+    margin-bottom: 36px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-top: 20px;
+}
+
+.footer-nav-down h1 {
+    text-transform: uppercase;
+    font-size: 24px;
+}
+
+.footer-nav-down p {
+    font-size: 16px;
+    color: rgba(237, 228, 215, 0.7);
+    margin-bottom: 5px;
+}
+
+
+/* Адаптив */
+
+@media (max-width: 1335px) {
+    .footer {
+        display: none;
+    }
+
+    .footer-1024 {
+        display: block;
+    }
+}
 
 
 
