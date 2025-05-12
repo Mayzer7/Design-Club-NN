@@ -168,6 +168,8 @@ document.querySelector('.search-icon-button').addEventListener('click', function
 });
 
 
+
+
 // Поиск в хедере
 
 const searchInput = document.getElementById('search-input');
@@ -177,47 +179,41 @@ const underHeaderContainer = document.querySelector('.under-header-container');
 const underHeader = document.querySelector('.under-header');
 let isCatalogActive = false;
 
+const marginTopStart = parseFloat(getComputedStyle(document.querySelector('.menu-navigation')).marginTop);
+const marginTopUseSearch = marginTopStart + 250;
+
+
+
 // Обработчик ввода в поле поиска
 searchInput.addEventListener('input', function () {
-    if (searchInput.value.trim() !== '') {
-        menuNavigation.style.marginTop = '430px';
+    const isSearching = searchInput.value.trim() !== '';
+
+    if (isSearching) {
+        menuNavigation.classList.remove('default-margin');
+        menuNavigation.classList.add('search-active');
         underHeader.style.filter = 'blur(5px)';
-
-        // Накидываем blur на все контейнеры
-        blurContainers.forEach(container => {
-            container.style.filter = 'blur(5px)';
-        });
-
-        // Расширяем background color
+        blurContainers.forEach(container => container.style.filter = 'blur(5px)');
         header.style.paddingBottom = '270px';
-        // Меняем фон header на синий
-        header.style.backgroundColor = '#151c28'; // синий цвет
-        // Показываем элементы с плавным переходом
+        header.style.backgroundColor = '#151c28';
         searchItems.classList.add('show');
-    } else if (!isCatalogActive) {
-        menuNavigation.style.marginTop = '170px';
-        // Сбрасываем фон header, если поиск пуст
-        header.style.backgroundColor = 'transparent';
-
-        header.style.paddingBottom = '20px';
-
-        // Скрываем элементы с плавным переходом
-        searchItems.classList.remove('show');
-        underHeader.style.filter = 'none';
-
-        // Сбрасываем blur, если поле поиска пустое
-        blurContainers.forEach(container => {
-            container.style.filter = '';
-        });
     } else {
-        menuNavigation.style.marginTop = '170px';
-        // Скрываем элементы с плавным переходом
-        searchItems.classList.remove('show');
-        header.style.transition = 'padding-bottom 0.5s ease';
-        header.style.paddingBottom = '20px';
-        underHeader.style.filter = 'blur(5px)';
+        menuNavigation.classList.remove('search-active');
+        menuNavigation.classList.add('default-margin');
+
+        if (!isCatalogActive) {
+            header.style.backgroundColor = 'transparent';
+            header.style.paddingBottom = '20px';
+            searchItems.classList.remove('show');
+            underHeader.style.filter = 'none';
+            blurContainers.forEach(container => container.style.filter = '');
+        } else {
+            searchItems.classList.remove('show');
+            header.style.paddingBottom = '20px';
+            underHeader.style.filter = 'blur(5px)';
+        }
     }
 });
+
 
 
 const blurContainers = document.querySelectorAll('.blur-container');
@@ -255,6 +251,7 @@ blurContainers.forEach(container => {
 underHeader.addEventListener('click', resetHeaderState);
 
 
+
 // Нажатие на кнопку каталог в хедере
 
 const menuNavigation = document.querySelector('.menu-navigation');
@@ -284,6 +281,7 @@ openCatalog.addEventListener('click', function (e) {
         header.style.backgroundColor = '#151c28';
         menuNavigation.style.backgroundColor = '#151c28';
         menuNavigation.style.display = 'block';
+        menuNavigation.classList.add('default-margin');
     } else {
         if (searchInput.value.trim() !== '') {
             menuNavigation.style.display = 'none';
@@ -305,6 +303,7 @@ openCatalog.addEventListener('click', function (e) {
         }
     }
 });
+
 
 // Отображение меню Сантехники
 document.querySelectorAll('.menu-toggle-plumbing').forEach(toggle => {
@@ -440,6 +439,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+
+
+
+
+
 // Чётко считываем скроллы и скрываем/показываем header
 
 let lastScrollTop = 0;
@@ -463,28 +467,32 @@ window.addEventListener('scroll', () => {
     searchInput.blur(); // убирает фокус с поля ввода
     searchInput.value = ''; // очищает текст
     searchItems.classList.remove('show'); // скрывает блок
-
+    
     // Убираем пустые отступы
     header.style.paddingBottom = '20px';
-    menuNavigation.style.marginTop = '170px';
 
     // Сброс состояния
     blurContainers.forEach(container => {
         container.style.filter = ''
         container.style.cursor = ''
     });
+    
     header.style.backgroundColor = 'transparent';
-    header.style.paddingBottom = '15px';
     underHeader.style.filter = 'none';
+    underHeader.style.cursor = '';
     openCatalog.parentElement.classList.remove('active');
     isCatalogActive = false;
     menuNavigation.style.display = 'none';
+    menuNavigation.classList.add('default-margin');
+    menuNavigation.classList.remove('search-active');
     openCatalog.style.color = '';
-    
     
   } else if (scrollDelta < 0) {
     header.style.display = 'block';
     // Скролл вверх
+
+    menuNavigation.classList.add('default-margin');
+
     header.classList.remove('header-hidden');
     header.classList.add('header-scrolled-up');
   }
@@ -496,7 +504,6 @@ window.addEventListener('scroll', () => {
 
   lastScrollTop = scrollTop;
 });
-
 
 
 

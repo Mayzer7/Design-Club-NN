@@ -363,6 +363,10 @@ function resetHeaderState() {
     underHeader.style.backdropFilter = 'none';
     searchInput.value = '';
     underHeader.style.cursor = '';
+    header.style.paddingBottom = '20px';
+    menuNavigation.classList.add('default-margin');
+    menuNavigation.classList.remove('search-active');
+    
 
     // Сбрасываем blur, если поле поиска пустое
     blurContainers.forEach(container => {
@@ -422,7 +426,6 @@ openCatalog.addEventListener('click', function (e) {
             header.style.backgroundColor = 'transparent';
             menuNavigation.style.display = 'none';
     
-            // underHeaderContainer.style.marginTop = '250px';
             underHeader.style.filter = 'none';
             underHeader.style.backdropFilter = 'none';
     
