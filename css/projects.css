@@ -706,6 +706,7 @@ li.active .menu-plumbing-arrow {
 }
 
 .nav-not-hidden {
+    top: 0;
     z-index: 999;
     background-color: #151c28;
     width: 100%;
@@ -714,6 +715,7 @@ li.active .menu-plumbing-arrow {
 }
 
 .nav-scrolled-up {
+    top: 0;
     background-color: #151c28 !important;
     transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }

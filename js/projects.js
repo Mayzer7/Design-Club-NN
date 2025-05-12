@@ -509,7 +509,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const stickyNav = document.querySelector('.sticky-nav');
 let lastScrollTop = 0;
-const scrollThreshold = 1; // минимальный порог (можно даже 0, если нужно всё отслеживать)
+const scrollThreshold = 0; // минимальный порог (можно даже 0, если нужно всё отслеживать)
+
+let scrollTimer;
+
 
 window.addEventListener('scroll', () => {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -529,6 +532,14 @@ window.addEventListener('scroll', () => {
 
     header.classList.add('header-hidden');
     header.classList.remove('header-scrolled-up');
+
+    if (!header.classList.contains('header-hidden')) {
+        scrollTimer = setTimeout(() => {
+        stickyNav.classList.remove('nav-not-hidden');
+        stickyNav.classList.add('nav-hidden');
+        stickyNav.classList.add('nav-scrolled-up');
+        }, 300);
+    }
     
     searchInput.blur(); // убирает фокус с поля ввода
     searchInput.value = ''; // очищает текст
@@ -555,19 +566,19 @@ window.addEventListener('scroll', () => {
     
   } else if (scrollDelta < 0) {
     header.style.display = 'block';
-    // Скролл вверх
+    // Скролл вверх 
 
-    menuNavigation.classList.add('default-margin');
 
     header.classList.remove('header-hidden');
     header.classList.add('header-scrolled-up');
 
-    // Меню навигации — через 250 мс, если пользователь не продолжит скроллить
-    scrollTimer = setTimeout(() => {
-      stickyNav.classList.remove('nav-not-hidden');
-      stickyNav.classList.add('nav-hidden');
-      stickyNav.classList.add('nav-scrolled-up');
-    }, 250);
+    
+    if (!header.classList.contains('header-hidden')) {
+        scrollTimer = setTimeout(() => {
+            stickyNav.classList.add('nav-hidden')
+            stickyNav.classList.remove('nav-not-hidden');
+        }, 300);
+    }
   }
 
   // Если в самом верху — убираем "скролл вверх" класс
