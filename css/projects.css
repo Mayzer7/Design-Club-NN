@@ -131,6 +131,7 @@ body {
 
 .header-hidden {
     transform: translateY(-100%);
+    transition: none !important;
 }
 
 .header-scrolled-up {
@@ -747,7 +748,7 @@ li.active .menu-plumbing-arrow {
 
 .projects-nav {
     width: 100px;
-    padding: 9px 110px;
+    padding: 2px 110px;
     border: none;
     background-color: transparent;
     color: #EDE4D7;
@@ -813,6 +814,7 @@ li.active .menu-plumbing-arrow {
 .projects-nav button {
     border: none;
     min-width: 220px;
+
     background-color: transparent;
     color: inherit;  
     cursor: pointer;

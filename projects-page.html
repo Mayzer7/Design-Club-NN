@@ -301,9 +301,7 @@
                             <div class="projects-nav">
                                 <button>декор</button>
                             </div>
-                        </div>
-
-            
+                        </div>            
                     </div>
         
                     <div class="projects-content-container" id="complexes">
@@ -1087,18 +1085,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        document.querySelectorAll('.projects-nav button').forEach(button => {
-            button.addEventListener('click', () => {
-              const targetId = button.getAttribute('data-target');
-              const targetEl = document.querySelector(targetId);
-              if (targetEl) {
-                targetEl.scrollIntoView({ behavior: 'smooth' });
-              }
-            });
-          });
-    </script>
 
     <!-- Cookie -->
     <div id="cookie-container"></div>

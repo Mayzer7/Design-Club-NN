@@ -1,3 +1,27 @@
+// Переключение по навигации
+
+
+let isScrollingProgrammatically = false;
+
+document.querySelectorAll('.projects-nav button').forEach(button => {
+    button.addEventListener('click', () => {
+        const targetId = button.getAttribute('data-target');
+        if (!targetId) return;
+
+        isScrollingProgrammatically = true; // Флаг, что скролл программный
+        
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Через небольшой таймаф снимаем флаг
+        setTimeout(() => {
+            isScrollingProgrammatically = false;
+        }, 1000); // Время анимации скролла + запас
+    });
+});
+
 // Валидация модального окна формы "Связаться с нами"
 
 const thanksModal = document.getElementById('thanksModal');
@@ -513,6 +537,8 @@ let scrollTimer = null;            // ← добавили для хранени
 const scrollThreshold = 0;         // минимальный порог (можно даже 0)
 
 window.addEventListener('scroll', () => {
+    if (isScrollingProgrammatically) return;
+
   // отменяем все ранее запущенные отложенные скрытия
   clearTimeout(scrollTimer);
 
