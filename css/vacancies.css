@@ -107,6 +107,15 @@ body {
 
 /* Шапка */
 
+.logo-img {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
 .header-top {
     position: fixed;
     top: 0;
@@ -224,6 +233,11 @@ li.active .menu-plumbing-arrow {
     transition: margin-top 0.5s ease, background-color 0.5s ease;
     background-color: #151c28;
     /* min-height: 250px; */
+}
+
+/* Основной отступ */
+.menu-navigation.default-margin {
+    margin-top: 170px;
 }
 
 .menu-navigation-container {
@@ -351,6 +365,11 @@ li.active .menu-plumbing-arrow {
     z-index: 5;
 }
 
+
+
+
+
+
 .search-items {
     margin-top: 20px;
     display: flex;
@@ -447,7 +466,6 @@ li.active .menu-plumbing-arrow {
     align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     background: transparent;
-    min-width: 360px;
     padding: 5px 0;
     gap: 8px;
 }
@@ -510,6 +528,77 @@ li.active .menu-plumbing-arrow {
 }
 
 
+/* Адаптив Шапки */
+
+
+/* Отступ при активном поиске */
+.menu-navigation.search-active {
+    margin-top: 420px; 
+}
+
+
+
+
+@media (max-width: 1200px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .catalog-nav {
+        margin-right: 30px;
+    }
+
+    .search-container {
+        max-width: 250px;
+    }
+
+    .menu-navigation.default-margin {
+        margin-top: 210px;
+    }
+
+    /* Отступ при активном поиске */
+    .menu-navigation.search-active {
+        margin-top: 480px; 
+    }
+}
+
+@media (max-width: 1024px) {
+    .menu-navigation.default-margin {
+        margin-top: 200px;
+    }
+
+    /* Отступ при активном поиске */
+    .menu-navigation.search-active {
+        margin-top: 450px; 
+    }
+
+    .search-container {
+        max-width: 214px;
+    }
+
+    .main-nav a {
+        font-size: 16px;
+    }
+    
+    .catalog-nav ul li a {
+        font-size: 16px;
+    }
+
+    .logo {
+        margin-right: 100px;
+    }
+
+    .contact-header a {
+        font-size: 16px;
+    }
+
+    .main-nav ul {
+        gap: 5px;
+    }
+    
+}
+
 /* header */
 
 .page-wrapper {
@@ -537,11 +626,13 @@ li.active .menu-plumbing-arrow {
     color: #7B8292;
 }
 
-/* HEADER */
+
+
+/* Секция "Вакансий " */
 
 .vacancies-container {
     margin-top: 60px;
-    padding-left: 25%;
+    padding-left: 24.5vw;
     position: relative;
 } 
 
@@ -557,21 +648,9 @@ li.active .menu-plumbing-arrow {
     font-size: 26px;
 }
 
-/* Для расширения контейнера под хедером */
-
-.expansion-up {
-    padding: 0px 20px 0px 0px;
-    background-color: #151c28;
-    font-family: 'SF Pro Display Thin', sans-serif;  
-}
-
-/* Секция "Вакансий " */
-
 .vacancies-section-container-main {
     padding: 0 20px;
     background-color: #151c28;
-
-    
 }
 
 .vacancies-section {
@@ -579,7 +658,7 @@ li.active .menu-plumbing-arrow {
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 
     border: 1px solid rgba(255, 255, 255, 0.2);
-    padding-left: 25%;
+    padding-left: 24.5vw;
 }
 
 .vacancies-section-container {
@@ -614,6 +693,10 @@ li.active .menu-plumbing-arrow {
     font-size: 18px;
 }
 
+.requirements {
+    padding-right: 30px;
+}
+
 .requirements h1 {
     font-size: 20px;
     margin-bottom: 5px;
@@ -623,12 +706,38 @@ li.active .menu-plumbing-arrow {
     margin-bottom: 10px;
 }
 
+/* Адаптив */
+
+@media (max-width: 1200px) {
+    .vacancy-title {
+        font-size: 22px;
+    }
+
+    .work-info h1 {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 1150px) {
+    .requirements {
+        max-width: 300px;
+        width: 100%;
+    }
+
+    .title {
+        font-size: 98px;
+    }
+
+    .main-page-top {
+        min-height: 650px;
+    }
+}
 
 /* Секция "Оставьте ваше резюме" */
 
 .get-contact {
     margin-top: 100px;
-    padding: 150px 0 100px 20px;
+    padding: 80px 0 100px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif; 
     background-image: url("../images/vacancies/background.png");
@@ -648,7 +757,12 @@ li.active .menu-plumbing-arrow {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
+    height: 497px;
+}
+
+.left-side p {
+    color: rgba(255, 255, 255, 0.6);
+    white-space: nowrap;
 }
 
 .main-side-wrapper {
@@ -656,14 +770,22 @@ li.active .menu-plumbing-arrow {
     flex-direction: column;
     justify-content: space-between;
     gap: 40px;
-    padding-left: 10%;
+    margin-left: 9vh;
+    width: 750px;
 }
 
 .main-side-wrapper h1 {
     font-family: 'Future New Light', sans-serif;
-    font-size: 93px;
-    white-space: nowrap;
     text-transform: uppercase;
+    font-size: 93px;
+    
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto; /* Автоматическая расстановка переносов */
+    
+    /* Для лучшей поддержки в разных браузерах: */
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
 }
 
 .opacity {
@@ -673,10 +795,6 @@ li.active .menu-plumbing-arrow {
 
 /* Форма */
 
-.vacancies-form-container {
-    width: 110%;
-}
-
 .vacancies-form {
     display: flex;
     flex-direction: column;
@@ -684,7 +802,6 @@ li.active .menu-plumbing-arrow {
 }
 
 .contact-input {
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -840,6 +957,77 @@ li.active .menu-plumbing-arrow {
 }
 
 
+/* Адаптив "Оставьте ваше резюме"*/
+
+@media (max-width: 1760px) {
+    .main-side-wrapper {
+        margin-left: 15vh;
+    }
+}
+
+@media (max-width: 1610px) {
+    .main-side-wrapper {
+        margin-left: 19vh;
+    }
+}
+
+@media (max-width: 1400px) {
+    .main-side-wrapper {
+        margin-left: 19vh;
+    }
+
+    .main-side-wrapper {
+        width: 900px;
+    }
+}
+
+@media (max-width: 1370px) {
+    .main-side-wrapper {
+        margin-left: 16vh;
+    }
+}
+
+@media (max-width: 1270px) {
+    .main-side-wrapper {
+        width: 800px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .main-side-wrapper h1 {
+        font-size: 60px;
+        max-width: 600px;
+        width: 100%;
+    }
+
+    .main-side-text {
+        max-width: 450px;
+        width: 100%;
+    }
+
+    .main-side-wrapper {
+        width: 650px;
+    }
+}
+
+@media (max-width: 1140px) {
+    .main-side-wrapper {
+        margin-left: 12vh;
+    }
+}
+
+@media (max-width: 1100px) {
+    .get-contact {
+        background-image: url('../images/vacancies/adaptive/background-1024.png');
+    }
+
+}
+
+@media (max-width: 1030px) {
+    .main-side-wrapper {
+        margin-left: 9vh;
+    }
+}
 
 
 /* Footer */
@@ -870,6 +1058,7 @@ li.active .menu-plumbing-arrow {
 }
 
 .footer-navigation h1 {
+    white-space: nowrap;
     padding-bottom: 10px;
     text-transform: uppercase;
     font-size: 24px;
@@ -930,9 +1119,77 @@ li.active .menu-plumbing-arrow {
 
 .footer-copyright a:hover {
     color: #AE9877;
-}   
+}
 
 
+
+.footer-1024 {
+    display: none;
+    padding: 100px 20px 20px 20px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300; 
+}
+
+.footer-container-1024 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-top: 20px;
+}
+
+.footer-copyright-1024 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-top: 20px;
+}
+
+.last-column {
+    justify-self: end;
+}
+
+.footer-copyright-1024 a {
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-copyright-1024 a:hover {
+    color: #AE9877;
+}
+
+.footer-grid-down {
+    margin-top: 60px;
+    margin-bottom: 36px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-top: 20px;
+}
+
+.footer-nav-down h1 {
+    text-transform: uppercase;
+    font-size: 24px;
+}
+
+.footer-nav-down p {
+    font-size: 16px;
+    color: rgba(237, 228, 215, 0.7);
+    margin-bottom: 5px;
+}
+
+
+/* Адаптив */
+
+@media (max-width: 1335px) {
+    .footer {
+        display: none;
+    }
+
+    .footer-1024 {
+        display: block;
+    }
+}
 
 
 /* Модальное окно "Связаться с нами" */
