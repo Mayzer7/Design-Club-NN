@@ -509,12 +509,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const stickyNav = document.querySelector('.sticky-nav');
 let lastScrollTop = 0;
-const scrollThreshold = 0; // минимальный порог (можно даже 0, если нужно всё отслеживать)
-
-let scrollTimer;
-
+let scrollTimer = null;            // ← добавили для хранения таймера
+const scrollThreshold = 0;         // минимальный порог (можно даже 0)
 
 window.addEventListener('scroll', () => {
+  // отменяем все ранее запущенные отложенные скрытия
+  clearTimeout(scrollTimer);
+
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   const scrollDelta = scrollTop - lastScrollTop;
 
@@ -526,34 +527,24 @@ window.addEventListener('scroll', () => {
 
   if (scrollDelta > 0) {
     // Скролл вниз — скрываем навигацию сразу
-    stickyNav.classList.remove('nav-scrolled-up');
-    stickyNav.classList.remove('nav-hidden');
-    stickyNav.classList.add('nav-not-hidden');
+    stickyNav.classList.remove('hidden');
 
     header.classList.add('header-hidden');
     header.classList.remove('header-scrolled-up');
 
-    if (!header.classList.contains('header-hidden')) {
-        scrollTimer = setTimeout(() => {
-        stickyNav.classList.remove('nav-not-hidden');
-        stickyNav.classList.add('nav-hidden');
-        stickyNav.classList.add('nav-scrolled-up');
-        }, 300);
-    }
-    
-    searchInput.blur(); // убирает фокус с поля ввода
-    searchInput.value = ''; // очищает текст
-    searchItems.classList.remove('show'); // скрывает блок
-    
+    searchInput.blur(); 
+    searchInput.value = ''; 
+    searchItems.classList.remove('show'); 
+
     // Убираем пустые отступы
     header.style.paddingBottom = '20px';
 
     // Сброс состояния
     blurContainers.forEach(container => {
-        container.style.filter = ''
-        container.style.cursor = ''
+      container.style.filter = '';
+      container.style.cursor = '';
     });
-    
+
     header.style.backgroundColor = 'transparent';
     underHeader.style.filter = 'none';
     underHeader.style.cursor = '';
@@ -563,22 +554,17 @@ window.addEventListener('scroll', () => {
     menuNavigation.classList.add('default-margin');
     menuNavigation.classList.remove('search-active');
     openCatalog.style.color = '';
-    
-  } else if (scrollDelta < 0) {
-    header.style.display = 'block';
-    // Скролл вверх 
 
+  } else {
+    // Скролл вверх — показываем навигацию с задержкой
+    header.style.display = 'block';
+
+    scrollTimer = setTimeout(() => {
+      stickyNav.classList.add('hidden');
+    }, 300);
 
     header.classList.remove('header-hidden');
     header.classList.add('header-scrolled-up');
-
-    
-    if (!header.classList.contains('header-hidden')) {
-        scrollTimer = setTimeout(() => {
-            stickyNav.classList.add('nav-hidden')
-            stickyNav.classList.remove('nav-not-hidden');
-        }, 300);
-    }
   }
 
   // Если в самом верху — убираем "скролл вверх" класс
