@@ -1,3 +1,88 @@
+// Переключение карточек товара
+
+const track = document.getElementById('track');
+const cards = Array.from(track.querySelectorAll('.popular-product-card'));
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+    
+let currentIndex = 2; // стартуем с Product 3 (индекс 2)
+let cardWidth, visibleCount;
+
+// Привязываем клики к статическим карточкам
+cards.forEach((card, idx) => {
+    if (idx === currentIndex) card.classList.add('active');
+    card.addEventListener('click', () => goTo(idx));
+});
+
+function updateSizes() {
+    const contW = document.querySelector('.carousel-container').clientWidth;
+    
+    if (contW < 600) visibleCount = 3;
+    else if (contW < 900) visibleCount = 4;
+    else visibleCount = 5;
+
+    const style = getComputedStyle(cards[0]);
+    const margin = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+    cardWidth = cards[0].clientWidth + margin;
+
+    moveTrack();
+    updateButtons();
+}
+
+function moveTrack() {
+    // читаем CSS-переменную и парсим в число
+    const shiftValue = getComputedStyle(track)
+                         .getPropertyValue('--manual-shift')
+                         .trim();
+    const manualShift = parseFloat(shiftValue);
+
+    // рассчитываем смещение
+    const x = -currentIndex * cardWidth + manualShift;
+    track.style.transform = `translateX(${x}px)`;
+    cards.forEach((c, i) => c.classList.toggle('active', i === currentIndex));
+}
+
+function goTo(idx) {
+    currentIndex = Math.max(0, Math.min(cards.length - 1, idx));
+    moveTrack();
+    updateButtons();
+}
+
+function updateButtons() {
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex === cards.length - 1;
+}
+
+prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
+nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
+window.addEventListener('resize', updateSizes);
+window.addEventListener('load', updateSizes);
+
+
+// Свайпы карточек товара
+
+let startX = 0;
+let endX = 0;
+
+track.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+});
+
+track.addEventListener('touchmove', (e) => {
+    endX = e.touches[0].clientX;
+});
+
+track.addEventListener('touchend', () => {
+    const swipeThreshold = 50;  // Минимальная длина свайпа для смены карточки
+    const diff = startX - endX;
+
+    if (diff > swipeThreshold) {
+        goTo(currentIndex + 1);
+    } else if (diff < -swipeThreshold) {
+        goTo(currentIndex - 1);
+    }
+});
+
 // Валидация модального окна формы "Связаться с нами"
 
 const thanksModal = document.getElementById('thanksModal');
@@ -273,48 +358,41 @@ const underHeaderContainer = document.querySelector('.under-header-container');
 const underHeader = document.querySelector('.under-header');
 let isCatalogActive = false;
 
+const marginTopStart = parseFloat(getComputedStyle(document.querySelector('.menu-navigation')).marginTop);
+const marginTopUseSearch = marginTopStart + 250;
+
+console.log(marginTopStart);
+
+
 // Обработчик ввода в поле поиска
 searchInput.addEventListener('input', function () {
-    if (searchInput.value.trim() !== '') {
-        menuNavigation.style.marginTop = '430px';
+    const isSearching = searchInput.value.trim() !== '';
+
+    if (isSearching) {
+        menuNavigation.classList.remove('default-margin');
+        menuNavigation.classList.add('search-active');
         underHeader.style.filter = 'blur(5px)';
-
-        // Накидываем blur на все контейнеры
-        blurContainers.forEach(container => {
-            container.style.filter = 'blur(5px)';
-        });
-
-        // Расширяем background color
+        blurContainers.forEach(container => container.style.filter = 'blur(5px)');
         header.style.paddingBottom = '270px';
-        // Меняем фон header на синий
-        header.style.backgroundColor = '#151c28'; // синий цвет
-        // Показываем элементы с плавным переходом
+        header.style.backgroundColor = '#151c28';
         searchItems.classList.add('show');
-    } else if (!isCatalogActive) {
-        menuNavigation.style.marginTop = '170px';
-        // Сбрасываем фон header, если поиск пуст
-        header.style.backgroundColor = 'transparent';
-
-        header.style.paddingBottom = '20px';
-
-        // Скрываем элементы с плавным переходом
-        searchItems.classList.remove('show');
-        underHeader.style.filter = 'none';
-
-        // Сбрасываем blur, если поле поиска пустое
-        blurContainers.forEach(container => {
-            container.style.filter = '';
-        });
     } else {
-        menuNavigation.style.marginTop = '170px';
-        // Скрываем элементы с плавным переходом
-        searchItems.classList.remove('show');
-        header.style.transition = 'padding-bottom 0.5s ease';
-        header.style.paddingBottom = '20px';
-        underHeader.style.filter = 'blur(5px)';
+        menuNavigation.classList.remove('search-active');
+        menuNavigation.classList.add('default-margin');
+
+        if (!isCatalogActive) {
+            header.style.backgroundColor = 'transparent';
+            header.style.paddingBottom = '20px';
+            searchItems.classList.remove('show');
+            underHeader.style.filter = 'none';
+            blurContainers.forEach(container => container.style.filter = '');
+        } else {
+            searchItems.classList.remove('show');
+            header.style.paddingBottom = '20px';
+            underHeader.style.filter = 'blur(5px)';
+        }
     }
 });
-
 
 
 
@@ -336,6 +414,8 @@ function resetHeaderState() {
     }
 
     // Сбрасываем фон и стили
+    header.style.paddingBottom = '20px';
+    menuNavigation.style.marginTop = '170px';
     header.style.backgroundColor = 'transparent';
     searchItems.classList.remove('show');
     underHeader.style.filter = 'none';
@@ -390,6 +470,7 @@ openCatalog.addEventListener('click', function (e) {
         header.style.backgroundColor = '#151c28';
         menuNavigation.style.backgroundColor = '#151c28';
         menuNavigation.style.display = 'block';
+        menuNavigation.classList.add('default-margin');
     } else {
         if (searchInput.value.trim() !== '') {
             menuNavigation.style.display = 'none';
@@ -553,6 +634,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
 // Чётко считываем скроллы и скрываем/показываем header
 
 let lastScrollTop = 0;
@@ -576,28 +658,34 @@ window.addEventListener('scroll', () => {
     searchInput.blur(); // убирает фокус с поля ввода
     searchInput.value = ''; // очищает текст
     searchItems.classList.remove('show'); // скрывает блок
-
+    
     // Убираем пустые отступы
     header.style.paddingBottom = '20px';
-    menuNavigation.style.marginTop = '170px';
 
     // Сброс состояния
     blurContainers.forEach(container => {
         container.style.filter = ''
         container.style.cursor = ''
     });
+    
     header.style.backgroundColor = 'transparent';
-    header.style.paddingBottom = '15px';
     underHeader.style.filter = 'none';
+    underHeader.style.cursor = '';
     openCatalog.parentElement.classList.remove('active');
     isCatalogActive = false;
     menuNavigation.style.display = 'none';
+    menuNavigation.classList.add('default-margin');
+    menuNavigation.classList.remove('search-active');
     openCatalog.style.color = '';
+    
     
     
   } else if (scrollDelta < 0) {
     header.style.display = 'block';
     // Скролл вверх
+
+    menuNavigation.classList.add('default-margin');
+
     header.classList.remove('header-hidden');
     header.classList.add('header-scrolled-up');
   }

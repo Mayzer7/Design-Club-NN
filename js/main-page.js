@@ -1,7 +1,7 @@
 // Переключение карточек товара
 
 const track = document.getElementById('track');
-const cards = Array.from(track.querySelectorAll('.product-card'));
+const cards = Array.from(track.querySelectorAll('.popular-product-card'));
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
     
