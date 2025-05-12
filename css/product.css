@@ -929,6 +929,13 @@ li.active .menu-plumbing-arrow {
 }
 
 
+/* Главный адаптив */
+
+@media (max-width: 1850px) {
+    
+}
+
+
 /* Секция "С этим товаром покупают" */
 
 
