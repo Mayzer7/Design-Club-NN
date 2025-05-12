@@ -46,7 +46,7 @@ html, body {
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+    box-sizing: border-box; 
 }
 
 a {
@@ -99,13 +99,22 @@ body {
 .main-page-top {
     background-image: url('../images/page-not-found-404/background.png');
     background-repeat: no-repeat;
-    background-size: cover ;
-    background-position: center 0px;
-    min-height: 950px;
+    background-size: cover;
+    background-position: center center;
+    height: 1460px;
     background-color: #151c28;
 }
 
 /* Шапка */
+
+.logo-img {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
 
 .header-top {
     position: fixed;
@@ -224,6 +233,11 @@ li.active .menu-plumbing-arrow {
     transition: margin-top 0.5s ease, background-color 0.5s ease;
     background-color: #151c28;
     /* min-height: 250px; */
+}
+
+/* Основной отступ */
+.menu-navigation.default-margin {
+    margin-top: 170px;
 }
 
 .menu-navigation-container {
@@ -351,6 +365,11 @@ li.active .menu-plumbing-arrow {
     z-index: 5;
 }
 
+
+
+
+
+
 .search-items {
     margin-top: 20px;
     display: flex;
@@ -447,7 +466,6 @@ li.active .menu-plumbing-arrow {
     align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     background: transparent;
-    min-width: 360px;
     padding: 5px 0;
     gap: 8px;
 }
@@ -509,6 +527,77 @@ li.active .menu-plumbing-arrow {
     color: #fff;
 }
 
+/* Адаптив Шапки */
+
+
+/* Отступ при активном поиске */
+.menu-navigation.search-active {
+    margin-top: 420px; 
+}
+
+
+
+
+@media (max-width: 1200px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .catalog-nav {
+        margin-right: 30px;
+    }
+
+    .search-container {
+        max-width: 250px;
+    }
+
+    .menu-navigation.default-margin {
+        margin-top: 210px;
+    }
+
+    /* Отступ при активном поиске */
+    .menu-navigation.search-active {
+        margin-top: 480px; 
+    }
+}
+
+@media (max-width: 1024px) {
+    .menu-navigation.default-margin {
+        margin-top: 200px;
+    }
+
+    /* Отступ при активном поиске */
+    .menu-navigation.search-active {
+        margin-top: 450px; 
+    }
+
+    .search-container {
+        max-width: 214px;
+    }
+
+    .main-nav a {
+        font-size: 16px;
+    }
+    
+    .catalog-nav ul li a {
+        font-size: 16px;
+    }
+
+    .logo {
+        margin-right: 100px;
+    }
+
+    .contact-header a {
+        font-size: 16px;
+    }
+
+    .main-nav ul {
+        gap: 5px;
+    }
+    
+}
+
 
 /* header */
 
@@ -524,6 +613,7 @@ li.active .menu-plumbing-arrow {
     z-index: 2;
     padding: 20px;
     transition: filter 0.2s ease, backdrop-filter 0.2s ease;
+    overflow-y: hidden;
 }
 
 .under-header-container {
@@ -586,12 +676,10 @@ li.active .menu-plumbing-arrow {
 
 
 
-
 /* Footer */
 
 .footer {
-    padding: 0px 20px 0px 20px;
-    background-color: transparent;
+    padding: 120px 0px 0px 0px;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 
 }
@@ -615,6 +703,7 @@ li.active .menu-plumbing-arrow {
 }
 
 .footer-navigation h1 {
+    white-space: nowrap;
     padding-bottom: 10px;
     text-transform: uppercase;
     font-size: 24px;
@@ -675,10 +764,76 @@ li.active .menu-plumbing-arrow {
 
 .footer-copyright a:hover {
     color: #AE9877;
-}   
+}
 
 
 
+.footer-1024 {
+    display: none;
+    padding: 120px 0px 0px 0px;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300; 
+}
+
+.footer-container-1024 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-top: 20px;
+}
+
+.footer-copyright-1024 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-top: 20px;
+}
+
+.last-column {
+    justify-self: end;
+}
+
+.footer-copyright-1024 a {
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-copyright-1024 a:hover {
+    color: #AE9877;
+}
+
+.footer-grid-down {
+    margin-top: 60px;
+    margin-bottom: 36px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-top: 20px;
+}
+
+.footer-nav-down h1 {
+    text-transform: uppercase;
+    font-size: 24px;
+}
+
+.footer-nav-down p {
+    font-size: 16px;
+    color: rgba(237, 228, 215, 0.7);
+    margin-bottom: 5px;
+}
+
+
+/* Адаптив */
+
+@media (max-width: 1335px) {
+    .footer {
+        display: none;
+    }
+
+    .footer-1024 {
+        display: block;
+    }
+}
 
 
 
