@@ -9,7 +9,7 @@ function validateFormModal(event, formId) {
     const form = document.getElementById(formId);
 
     // Скрыть все ошибки только внутри своей формы
-    const errorElements = form.querySelectorAll('.error-contact');
+    const errorElements = form.querySelectorAll('.error-contact-modal');
     errorElements.forEach(error => error.style.display = 'none');
 
     let valid = true;
@@ -18,7 +18,7 @@ function validateFormModal(event, formId) {
     const nameInput = form.querySelector('input[name="name"]');
     const phoneInput = form.querySelector('input[name="phone"]');
     const acceptInput = form.querySelector('input[name="accept"]');
-    const errorSpans = form.querySelectorAll('.error-contact');
+    const errorSpans = form.querySelectorAll('.error-contact-modal');
 
     // Проверка поля "Ваше имя"
     if (!nameInput.value.trim()) {
@@ -149,7 +149,42 @@ errorModal.addEventListener('click', (e) => {
 });
 
 
-// Валидация формы "Вакансии"
+// Отображение загруженного файла 
+// в форме "Оставьте ваше резюме"
+
+const input = document.getElementById('resume-upload-input');
+const fileNameSpan = document.querySelector('.file-name');
+    
+input.addEventListener('change', () => {
+    if (input.files.length > 0) {
+        fileNameSpan.textContent = `Файл выбран: ${input.files[0].name}`;
+    } else {
+        fileNameSpan.textContent = '';
+    }
+});
+
+
+
+// Переадрисация на страницу "Результаты поиска" после того как 
+// пользователь ввел название товарава в поиске и нажал Enter
+
+function performSearch() {
+    const query = document.getElementById('search-input').value;
+    window.location.href = 'search-no-result-page.html?query=' + encodeURIComponent(query);
+}
+
+document.getElementById('search-input').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        performSearch();
+    }
+});
+
+document.querySelector('.search-icon-button').addEventListener('click', function() {
+    performSearch();
+});
+
+
+// Валидация формы "Оставьте ваше резюме"
 
 function validateForm(event, formId) {
     event.preventDefault();
@@ -203,39 +238,6 @@ function validateForm(event, formId) {
 }
 
 
-// Отображение выбранного файла загруженного в форму "Вакансии"
-
-const input = document.getElementById('resume-upload-input');
-const fileNameSpan = document.querySelector('.file-name');
-    
-input.addEventListener('change', () => {
-    if (input.files.length > 0) {
-        fileNameSpan.textContent = `Файл выбран: ${input.files[0].name}`;
-    } else {
-        fileNameSpan.textContent = '';
-    }
-});
-
-
-// Переадрисация на страницу "Результаты поиска" после того как 
-// пользователь ввел название товарава в поиске и нажал Enter
-
-function performSearch() {
-    const query = document.getElementById('search-input').value;
-    window.location.href = 'search-no-result-page.html?query=' + encodeURIComponent(query);
-}
-
-document.getElementById('search-input').addEventListener('keypress', function(event) {
-    if (event.key === 'Enter') {
-        performSearch();
-    }
-});
-
-document.querySelector('.search-icon-button').addEventListener('click', function() {
-    performSearch();
-});
-
-
 
 // Поиск в хедере
 
@@ -246,54 +248,40 @@ const underHeaderContainer = document.querySelector('.under-header-container');
 const underHeader = document.querySelector('.under-header');
 let isCatalogActive = false;
 
+const marginTopStart = parseFloat(getComputedStyle(document.querySelector('.menu-navigation')).marginTop);
+const marginTopUseSearch = marginTopStart + 250;
+
+
+
 // Обработчик ввода в поле поиска
 searchInput.addEventListener('input', function () {
-    if (searchInput.value.trim() !== '') {
-        menuNavigation.style.marginTop = '430px';
+    const isSearching = searchInput.value.trim() !== '';
+
+    if (isSearching) {
+        menuNavigation.classList.remove('default-margin');
+        menuNavigation.classList.add('search-active');
         underHeader.style.filter = 'blur(5px)';
-
-        // Накидываем blur на все контейнеры
-        blurContainers.forEach(container => {
-            container.style.filter = 'blur(5px)';
-        });
-
-        // Расширяем background color
+        blurContainers.forEach(container => container.style.filter = 'blur(5px)');
         header.style.paddingBottom = '270px';
-        // Меняем фон header на синий
-        header.style.backgroundColor = '#151c28'; // синий цвет
-        // Показываем элементы с плавным переходом
+        header.style.backgroundColor = '#151c28';
         searchItems.classList.add('show');
-    } else if (!isCatalogActive) {
-        menuNavigation.style.marginTop = '170px';
-        // Сбрасываем фон header, если поиск пуст
-        header.style.backgroundColor = 'transparent';
-
-        header.style.paddingBottom = '20px';
-
-        // Скрываем элементы с плавным переходом
-        searchItems.classList.remove('show');
-        underHeader.style.filter = 'none';
-
-        // Сбрасываем blur, если поле поиска пустое
-        blurContainers.forEach(container => {
-            container.style.filter = '';
-        });
     } else {
-        menuNavigation.style.marginTop = '170px';
-        // Скрываем элементы с плавным переходом
-        searchItems.classList.remove('show');
-        header.style.transition = 'padding-bottom 0.5s ease';
-        header.style.paddingBottom = '20px';
-        underHeader.style.filter = 'blur(5px)';
+        menuNavigation.classList.remove('search-active');
+        menuNavigation.classList.add('default-margin');
+
+        if (!isCatalogActive) {
+            header.style.backgroundColor = 'transparent';
+            header.style.paddingBottom = '20px';
+            searchItems.classList.remove('show');
+            underHeader.style.filter = 'none';
+            blurContainers.forEach(container => container.style.filter = '');
+        } else {
+            searchItems.classList.remove('show');
+            header.style.paddingBottom = '20px';
+            underHeader.style.filter = 'blur(5px)';
+        }
     }
 });
-
-
-
-
-
-
-
 
 
 const blurContainers = document.querySelectorAll('.blur-container');
@@ -332,8 +320,6 @@ underHeader.addEventListener('click', resetHeaderState);
 
 
 
-
-
 // Нажатие на кнопку каталог в хедере
 
 const menuNavigation = document.querySelector('.menu-navigation');
@@ -363,6 +349,7 @@ openCatalog.addEventListener('click', function (e) {
         header.style.backgroundColor = '#151c28';
         menuNavigation.style.backgroundColor = '#151c28';
         menuNavigation.style.display = 'block';
+        menuNavigation.classList.add('default-margin');
     } else {
         if (searchInput.value.trim() !== '') {
             menuNavigation.style.display = 'none';
@@ -387,6 +374,7 @@ openCatalog.addEventListener('click', function (e) {
 
 
 
+
 // Отображение меню Сантехники
 document.querySelectorAll('.menu-toggle-plumbing').forEach(toggle => {
     toggle.addEventListener('click', function (e) {
@@ -403,20 +391,6 @@ document.querySelectorAll('.menu-toggle-plumbing').forEach(toggle => {
     });
 });
 
-
-// Отображение меню Мебели
-document.querySelectorAll('.menu-toggle-furniture').forEach(toggle => {
-    toggle.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        const menuItem = toggle.closest('.menu-item-furniture');
-        const subMenu = menuItem.querySelector('.submenu-furniture');
-
-        const isOpen = subMenu.style.display === 'flex';
-        subMenu.style.display = isOpen ? 'none' : 'flex';
-        menuItem.classList.toggle('active', !isOpen);
-    });
-});
 
 // Закрытие всех подменю при наведении на header
 header.addEventListener('mouseenter', function () {
@@ -440,6 +414,21 @@ header.addEventListener('mouseenter', function () {
         menuItem.classList.remove('active');
     });
 });
+
+
+document.querySelectorAll('.menu-toggle-furniture').forEach(toggle => {
+    toggle.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const menuItem = toggle.closest('.menu-item-furniture');
+        const subMenu = menuItem.querySelector('.submenu-furniture');
+
+        const isOpen = subMenu.style.display === 'flex';
+        subMenu.style.display = isOpen ? 'none' : 'flex';
+        menuItem.classList.toggle('active', !isOpen);
+    });
+});
+
 // Делегирование для правого меню
 const rightMenuContent = document.querySelector('.right-menu-content');
 
@@ -507,7 +496,6 @@ document.querySelectorAll('.shower-program').forEach(link => {
 });
 
 
-
 document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('.header-top');
     const initialScrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -547,27 +535,32 @@ window.addEventListener('scroll', () => {
     searchInput.blur(); // убирает фокус с поля ввода
     searchInput.value = ''; // очищает текст
     searchItems.classList.remove('show'); // скрывает блок
-
+    
     // Убираем пустые отступы
     header.style.paddingBottom = '20px';
-    menuNavigation.style.marginTop = '170px';
 
     // Сброс состояния
     blurContainers.forEach(container => {
         container.style.filter = ''
         container.style.cursor = ''
     });
+    
     header.style.backgroundColor = 'transparent';
     underHeader.style.filter = 'none';
+    underHeader.style.cursor = '';
     openCatalog.parentElement.classList.remove('active');
     isCatalogActive = false;
     menuNavigation.style.display = 'none';
+    menuNavigation.classList.add('default-margin');
+    menuNavigation.classList.remove('search-active');
     openCatalog.style.color = '';
-    
     
   } else if (scrollDelta < 0) {
     header.style.display = 'block';
     // Скролл вверх
+
+    menuNavigation.classList.add('default-margin');
+
     header.classList.remove('header-hidden');
     header.classList.add('header-scrolled-up');
   }
