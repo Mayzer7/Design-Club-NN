@@ -68,7 +68,7 @@ a:hover {
 }
 
 ul {
-    margin-left: 0;
+    margin: 0;
     padding: 0;
 }
 
@@ -95,23 +95,6 @@ body {
     width: 100%;  
 }
 
-/*
-Для того чтобы когда в input вводятся только цифры, 
-браузер не отображал некрасивый ползунок увелечения числа
-*/
-
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-/* Для Firefox */
-input[type="number"] {
-    -moz-appearance: textfield;
-}
-
-
 .line {
     width: 100%;
     height: 1px;
@@ -120,15 +103,23 @@ input[type="number"] {
 }
 
 
+
 /* Верхрняя секция главной страницы */
 
 .main-page-top {
-    background-color: #151c28;
-    min-height: 300px;
+    min-height: 350px;
 }
 
-
 /* Шапка */
+
+.logo-img {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
 
 .header-top {
     position: fixed;
@@ -168,9 +159,6 @@ input[type="number"] {
     display: flex;
     justify-content: center;
     gap: 40px;
-
-    position: relative;
-    top: -18px; /* поднимает вверх */
 }
 
 
@@ -250,6 +238,11 @@ li.active .menu-plumbing-arrow {
     transition: margin-top 0.5s ease, background-color 0.5s ease;
     background-color: #151c28;
     /* min-height: 250px; */
+}
+
+/* Основной отступ */
+.menu-navigation.default-margin {
+    margin-top: 170px;
 }
 
 .menu-navigation-container {
@@ -354,10 +347,6 @@ li.active .menu-plumbing-arrow {
     color: #AE9877;
 }
 
-.main-nav {
-    position: relative;
-}
-
 .main-nav ul {
     display: flex;
     flex-direction: column;
@@ -379,9 +368,12 @@ li.active .menu-plumbing-arrow {
     width: 100%;
     position: relative;
     z-index: 5;
-
-    
 }
+
+
+
+
+
 
 .search-items {
     margin-top: 20px;
@@ -430,6 +422,8 @@ li.active .menu-plumbing-arrow {
     transform: translateY(10px);
     transition: opacity 0s, transform 0s;
 }
+
+
 
 .zoom-image {
     display: inline-block;
@@ -514,7 +508,6 @@ li.active .menu-plumbing-arrow {
     color: #AE9877;
 }
 
-
 .contact-button {
     font-family: 'SF Pro Display', sans-serif;
     font-weight: 900;
@@ -539,6 +532,16 @@ li.active .menu-plumbing-arrow {
     color: #fff;
 }
 
+/* Адаптив Шапки */
+
+
+/* Отступ при активном поиске */
+.menu-navigation.search-active {
+    margin-top: 420px; 
+}
+
+
+
 
 @media (max-width: 1200px) {
     .nav-container {
@@ -554,19 +557,189 @@ li.active .menu-plumbing-arrow {
         max-width: 250px;
     }
 
+    .menu-navigation.default-margin {
+        margin-top: 210px;
+    }
+
+    /* Отступ при активном поиске */
+    .menu-navigation.search-active {
+        margin-top: 480px; 
+    }
+}
+
+@media (max-width: 1024px) {
+    .menu-navigation.default-margin {
+        margin-top: 200px;
+    }
+
+    /* Отступ при активном поиске */
+    .menu-navigation.search-active {
+        margin-top: 450px; 
+    }
+
+    .search-container {
+        max-width: 214px;
+    }
+
+    .main-nav a {
+        font-size: 16px;
+    }
+    
+    .catalog-nav ul li a {
+        font-size: 16px;
+    }
+
+    .logo {
+        margin-right: 100px;
+    }
+
+    .contact-header a {
+        font-size: 16px;
+    }
+
+    .main-nav ul {
+        gap: 5px;
+    }
+    
+}
+
+
+
+.page-wrapper {
+    position: relative; 
+}
+
+.under-header {
+    position: absolute;
+    top: 200px;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    padding: 20px;
+    transition: filter 0.2s ease, backdrop-filter 0.2s ease;
+}
+
+.under-header-container {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    transition: margin-top 0.5s ease;
+}
+
+.links {
+    display: flex;
+    gap: 10px;
+    text-align: center;
+}
+
+.title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.title-container h1 {
+    white-space: nowrap;
+    font-family: 'Future New Light', sans-serif;
+    font-size: 250px;
+    text-transform: uppercase;
+}
+
+.under-header-content {
+    display: flex;
+    align-items: self-end;
+    justify-content: space-between;
+}
+
+.video-container {
+    position: relative;
+    display: inline-block;
+}
+
+.video-container img {
+    display: block;
+    width: 634px;
+    height: 356px;
+}
+
+.video-button {    
+    font-family: 'SF UI Display Thin', sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 0;
+    font-size: 16px;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    border: 1px solid white;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.video-button:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+.nn {
+    font-family: 'Future New Light', sans-serif;
+    font-size: 372px;
+    line-height: 250px;
+}
+
+
+/* Адаптив */
+
+.under-header-content p {
+    max-width: 407px;
+    width: 100%;
+    font-size: 20px;
+}
+
+@media (max-width: 1200px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .catalog-nav {
+        margin-right: 30px;
+    }
+
+    .search-container {
+        max-width: 250px;
+    }
+
+    .under-header-container {
+        gap: 186px;
+    }
 
     .menu-navigation {
         margin-top: 210px;
     }
+}
 
-    .main-nav {
-        top: -35px;
+
+@media (max-width: 1050px) {
+    .under-header-container {
+        gap: 120px;
     }
 
-    .under-header {
-        top: 320px;
+    .contact-header {
+        gap: 20px;
     }
 }
+
 
 @media (max-width: 1024px) {
     /* Шапка */
@@ -601,40 +774,10 @@ li.active .menu-plumbing-arrow {
     
 }
 
-.page-wrapper {
-    font-family: 'SF UI Display Thin', sans-serif;
-    position: relative; 
-}
 
 
-.under-header {
-    position: absolute;
-    top: 200px;
-    left: 0;
-    width: 100%;
-    z-index: 2;
-    padding: 20px;
-    transition: filter 0.2s ease, backdrop-filter 0.2s ease;
-}
 
-.under-header-container {
-    margin-top: 60px;
-    display: flex;
-    align-items: center;
-    transition: margin-top 0.5s ease;
-}
 
-.links {
-    position: absolute;
-    top: 120px;
-    display: flex;
-    gap: 10px;
-    text-align: center;
-}
-
-.links a:first-child {
-    color: #7B8292;
-}
 
 /* Секция "Корзина" */
 
@@ -945,7 +1088,6 @@ li.active .menu-plumbing-arrow {
 }
 
 
-
 /* Секция "Запишитесь на персональную консультацию" */
 
 .get-request {
@@ -1169,8 +1311,6 @@ li.active .menu-plumbing-arrow {
     }
 }
 
-
-
 /* Footer */
 
 .footer {
@@ -1332,12 +1472,6 @@ li.active .menu-plumbing-arrow {
     }
 }
 
-
-
-
-
-
-
 /* Модальное окно "Связаться с нами" */
 
 .modal {
@@ -1349,7 +1483,7 @@ li.active .menu-plumbing-arrow {
     align-items: center;
     opacity: 0;  
     transform: scale(0.9); 
-    transition: opacity 0.5s ease, transform 0.5s ease;  /* Плавная анимация */
+    transition: opacity 0.5s ease, transform 0.5s ease;  
 }
 
 .modal.open {
@@ -1396,7 +1530,6 @@ li.active .menu-plumbing-arrow {
     cursor: pointer;
 }
 
-
 .modal-content-info img {
     margin-bottom: 30px;
     width: 171px;
@@ -1408,9 +1541,17 @@ li.active .menu-plumbing-arrow {
     margin-bottom: 20px;
 }
 
-.modal-content-info h1 {
+.contact-modal-title {
     font-family: 'Future New Light', sans-serif;
     font-size: 76px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.res-1024 {
+    display: none;
+    font-family: 'Future New Light', sans-serif;
+    font-size: 60px;
     text-transform: uppercase;
     margin-bottom: 20px;
 }
@@ -1532,6 +1673,32 @@ li.active .menu-plumbing-arrow {
 }
 
 
+/* Адаптив модального окна */
+
+@media (max-width: 1040px) {
+    .contact-modal-title {
+        display: none;
+    }
+
+    .res-1024 {
+        display: block;
+    }
+    
+    .modal-content-info img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .modal-description {
+        font-size: 16px;
+    }
+
+    .modal-content {
+        width: 731px;
+        height: 659px;
+    }
+}
+
 
 /* Модальное окно "Спасибо за заявку" */
 
@@ -1627,3 +1794,6 @@ li.active .menu-plumbing-arrow {
     min-width: 300px;
     position: relative;
 }
+
+
+

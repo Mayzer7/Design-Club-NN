@@ -235,6 +235,11 @@ li.active .menu-plumbing-arrow {
     /* min-height: 250px; */
 }
 
+/* Основной отступ */
+.menu-navigation.default-margin {
+    margin-top: 170px;
+}
+
 .menu-navigation-container {
     display: flex;
 }
@@ -358,12 +363,14 @@ li.active .menu-plumbing-arrow {
     width: 100%;
     position: relative;
     z-index: 5;
-
-    
 }
 
+
+
+
+
+
 .search-items {
-    
     margin-top: 20px;
     display: flex;
     flex-direction: column;
@@ -496,7 +503,6 @@ li.active .menu-plumbing-arrow {
     color: #AE9877;
 }
 
-
 .contact-button {
     font-family: 'SF Pro Display', sans-serif;
     font-weight: 900;
@@ -521,6 +527,76 @@ li.active .menu-plumbing-arrow {
     color: #fff;
 }
 
+/* Адаптив Шапки */
+
+
+/* Отступ при активном поиске */
+.menu-navigation.search-active {
+    margin-top: 420px; 
+}
+
+
+
+
+@media (max-width: 1200px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .catalog-nav {
+        margin-right: 30px;
+    }
+
+    .search-container {
+        max-width: 250px;
+    }
+
+    .menu-navigation.default-margin {
+        margin-top: 210px;
+    }
+
+    /* Отступ при активном поиске */
+    .menu-navigation.search-active {
+        margin-top: 480px; 
+    }
+}
+
+@media (max-width: 1024px) {
+    .menu-navigation.default-margin {
+        margin-top: 200px;
+    }
+
+    /* Отступ при активном поиске */
+    .menu-navigation.search-active {
+        margin-top: 450px; 
+    }
+
+    .search-container {
+        max-width: 214px;
+    }
+
+    .main-nav a {
+        font-size: 16px;
+    }
+    
+    .catalog-nav ul li a {
+        font-size: 16px;
+    }
+
+    .logo {
+        margin-right: 100px;
+    }
+
+    .contact-header a {
+        font-size: 16px;
+    }
+
+    .main-nav ul {
+        gap: 5px;
+    }
+    
+}
 
 
 
