@@ -123,6 +123,15 @@ input[type="number"] {
 
 /* Шапка */
 
+.logo-img {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
 .header-top {
     position: fixed;
     top: 0;
@@ -240,6 +249,11 @@ li.active .menu-plumbing-arrow {
     transition: margin-top 0.5s ease, background-color 0.5s ease;
     background-color: #151c28;
     /* min-height: 250px; */
+}
+
+/* Основной отступ */
+.menu-navigation.default-margin {
+    margin-top: 170px;
 }
 
 .menu-navigation-container {
@@ -365,8 +379,6 @@ li.active .menu-plumbing-arrow {
     width: 100%;
     position: relative;
     z-index: 5;
-
-    
 }
 
 
@@ -375,7 +387,6 @@ li.active .menu-plumbing-arrow {
 
 
 .search-items {
-    
     margin-top: 20px;
     display: flex;
     flex-direction: column;
@@ -508,7 +519,6 @@ li.active .menu-plumbing-arrow {
     color: #AE9877;
 }
 
-
 .contact-button {
     font-family: 'SF Pro Display', sans-serif;
     font-weight: 900;
@@ -533,6 +543,16 @@ li.active .menu-plumbing-arrow {
     color: #fff;
 }
 
+/* Адаптив Шапки */
+
+
+/* Отступ при активном поиске */
+.menu-navigation.search-active {
+    margin-top: 420px; 
+}
+
+
+
 
 @media (max-width: 1200px) {
     .nav-container {
@@ -548,20 +568,24 @@ li.active .menu-plumbing-arrow {
         max-width: 250px;
     }
 
-    .under-header-container {
-        gap: 186px;
+    .menu-navigation.default-margin {
+        margin-top: 210px;
     }
 
-    .menu-navigation {
-        margin-top: 210px;
+    /* Отступ при активном поиске */
+    .menu-navigation.search-active {
+        margin-top: 480px; 
     }
 }
 
 @media (max-width: 1024px) {
-    /* Шапка */
-
-    .menu-navigation {
+    .menu-navigation.default-margin {
         margin-top: 200px;
+    }
+
+    /* Отступ при активном поиске */
+    .menu-navigation.search-active {
+        margin-top: 450px; 
     }
 
     .search-container {
@@ -589,6 +613,7 @@ li.active .menu-plumbing-arrow {
     }
     
 }
+
 
 
 /* Секция 'Услуги' */
@@ -2136,7 +2161,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     align-items: center;
     opacity: 0;  
     transform: scale(0.9); 
-    transition: opacity 0.5s ease, transform 0.5s ease;  /* Плавная анимация */
+    transition: opacity 0.5s ease, transform 0.5s ease;  
 }
 
 .modal.open {
@@ -2183,7 +2208,6 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     cursor: pointer;
 }
 
-
 .modal-content-info img {
     margin-bottom: 30px;
     width: 171px;
@@ -2195,9 +2219,17 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     margin-bottom: 20px;
 }
 
-.modal-content-info h1 {
+.contact-modal-title {
     font-family: 'Future New Light', sans-serif;
     font-size: 76px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.res-1024 {
+    display: none;
+    font-family: 'Future New Light', sans-serif;
+    font-size: 60px;
     text-transform: uppercase;
     margin-bottom: 20px;
 }
@@ -2319,6 +2351,32 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 }
 
 
+/* Адаптив модального окна */
+
+@media (max-width: 1040px) {
+    .contact-modal-title {
+        display: none;
+    }
+
+    .res-1024 {
+        display: block;
+    }
+    
+    .modal-content-info img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .modal-description {
+        font-size: 16px;
+    }
+
+    .modal-content {
+        width: 731px;
+        height: 659px;
+    }
+}
+
 
 /* Модальное окно "Спасибо за заявку" */
 
@@ -2414,3 +2472,4 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     min-width: 300px;
     position: relative;
 }
+

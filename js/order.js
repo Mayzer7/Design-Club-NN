@@ -509,64 +509,75 @@ window.addEventListener('scroll', () => {
 
 // Валидация формы "Оформления заказа"
 
-document.querySelector('form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    let hasError = false;
+function initFormValidation(form, successUrl, errorUrl) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        let hasError = false;
 
-    // Сброс ошибок
-    const errorMessages = document.querySelectorAll('.error-contact');
-    errorMessages.forEach(el => {
-        el.textContent = '';
-        el.style.display = 'none';
-    });
+        // Сброс ошибок внутри формы
+        const errorMessages = form.querySelectorAll('.error-contact');
+        errorMessages.forEach(el => {
+            el.textContent = '';
+            el.style.display = 'none';
+        });
 
-    // Валидация имени
-    const nameInput = document.querySelector('input[name="name"]');
-    if (nameInput.value.trim() === '') {
-        const error = nameInput.closest('.order-input').querySelector('.error-contact');
-        error.textContent = 'Введите имя';
-        error.style.display = 'block';
-        hasError = true;
-    }
-
-    // Валидация телефона
-    const phoneInput = document.querySelector('input[name="phone"]');
-    if (phoneInput.value.trim() === '') {
-        const error = phoneInput.closest('.order-input').querySelector('.error-contact');
-        error.textContent = 'Введите телефон';
-        error.style.display = 'block';
-        hasError = true;
-    }
-
-    // Валидация комментария
-    const commentTextarea = document.querySelector('textarea');
-    if (commentTextarea.value.trim() === '') {
-        // Создаём или находим error span под textarea
-        let error = commentTextarea.nextElementSibling;
-        if (!error || !error.classList.contains('error-contact')) {
-            error = document.createElement('span');
-            error.className = 'error-contact';
-            commentTextarea.insertAdjacentElement('afterend', error);
+        // Валидация имени
+        const nameInput = form.querySelector('input[name="name"]');
+        if (nameInput && nameInput.value.trim() === '') {
+            const error = nameInput.closest('.order-input').querySelector('.error-contact');
+            error.textContent = 'Введите имя';
+            error.style.display = 'block';
+            hasError = true;
         }
-        error.textContent = 'Введите комментарий';
-        error.style.display = 'block';
-        hasError = true;
-    }
 
-    // Валидация чекбокса
-    const checkbox = document.querySelector('input[name="accept"]');
-    if (!checkbox.checked) {
-        const error = document.querySelector('.accept-politics-order .error-contact');
-        error.textContent = 'Необходимо согласиться с политикой';
-        error.style.display = 'block';
-        error.style.marginBottom = '20px';
-        hasError = true;
-    }
+        // Валидация телефона
+        const phoneInput = form.querySelector('input[name="phone"]');
+        if (phoneInput && phoneInput.value.trim() === '') {
+            const error = phoneInput.closest('.order-input').querySelector('.error-contact');
+            error.textContent = 'Введите телефон';
+            error.style.display = 'block';
+            hasError = true;
+        }
 
-    // Отправка формы, если нет ошибок
-    if (!hasError) {
-        window.location.href = 'thanks-for-the-order-page.html';
-    } else {
-        window.location.href = 'order-mistake-page.html';
-    }
+        // Валидация комментария
+        const commentTextarea = form.querySelector('textarea');
+        if (commentTextarea && commentTextarea.value.trim() === '') {
+            let error = commentTextarea.nextElementSibling;
+            if (!error || !error.classList.contains('error-contact')) {
+                error = document.createElement('span');
+                error.className = 'error-contact';
+                commentTextarea.insertAdjacentElement('afterend', error);
+            }
+            error.textContent = 'Введите комментарий';
+            error.style.display = 'block';
+            hasError = true;
+        }
+
+        // Валидация чекбокса
+        const checkbox = form.querySelector('input[name="accept"]');
+        if (checkbox && !checkbox.checked) {
+            const error = form.querySelector('.accept-politics-order .error-contact');
+            error.textContent = 'Необходимо согласиться с политикой';
+            error.style.display = 'block';
+            error.style.marginBottom = '20px';
+            hasError = true;
+        }
+
+        // Обработка результата
+        if (!hasError) {
+            window.open(successUrl, '_blank');
+            form.reset();
+        } else {
+            window.open(errorUrl, '_blank');
+        }
+    });
+}
+
+// Применяем ко всем формам валидацию так как их две: форма для 1920 и 1080
+document.querySelectorAll('form').forEach(form => {
+    initFormValidation(
+        form,
+        'thanks-for-the-order-page.html',
+        'order-mistake-page.html'
+    );
 });

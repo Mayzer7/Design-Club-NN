@@ -627,9 +627,15 @@ li.active .menu-plumbing-arrow {
 }
 
 .links {
+    margin-top: 30px;
     display: flex;
     gap: 10px;
     text-align: center;
+}
+
+.links a:nth-child(1),
+.links a:nth-child(3) {
+    color: #7B8292;
 }
 
 .title-container {
@@ -779,7 +785,7 @@ li.active .menu-plumbing-arrow {
 /* Секция "Оформить заказ" */
 
 .buy-products {
-    padding: 120px 20px 100px 20px;
+    padding: 20px 20px 100px 20px;
     background-color: #151c28;
 
     position: relative;

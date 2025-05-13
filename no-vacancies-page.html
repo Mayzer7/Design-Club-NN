@@ -289,7 +289,7 @@
                                                 <input type="checkbox" name="accept" />
                                                 <div class="checkbox-img"></div>
                                             </label>
-                                            <p>Согласен <span><a href="#">с политикой конфиденциальности и обработки персональных данных</a></span></p>
+                                            <p>Согласен <span><a href="privacy-policy-page.html">с политикой конфиденциальности и обработки персональных данных</a></span></p>
                                             <span class="error-contact"></span>
                                             
                                         </div>
@@ -507,8 +507,12 @@
         
                     <p class="phone-number">+7 999 999 99 99</p>
                 
-                    <h1>
+                    <h1 class="contact-modal-title">
                         Связаться<br> с нами
+                    </h1>
+
+                    <h1 class="res-1024">
+                        Связаться с нами
                     </h1>
 
                     <p class="modal-description">
@@ -522,11 +526,11 @@
                 <form id="contact-form-modal" class="contact-form-modal" onsubmit="return validateFormModal(event, 'contact-form-modal')">
                     <div class="contact-input-modal">
                         <input type="text" name="name" placeholder="ВАШЕ ИМЯ">
-                        <span class="error-contact-modal"></span>
+                        <span class="error-contact"></span>
                     </div>  
                     <div class="contact-input-modal">
                         <input type="text" name="phone" placeholder="ТЕЛЕФОН">
-                        <span class="error-contact-modal"></span>
+                        <span class="error-contact"></span>
                     </div>
                     <div class="accept-politics-modal">
                         <label class="custom-checkbox">
@@ -534,7 +538,7 @@
                             <div class="checkbox-img"></div>
                         </label>
                         <p>Согласен <span><a href="#">с политикой конфиденциальности и обработки персональных данных</a></span></p>
-                        <span class="error-contact-modal"></span>
+                        <span class="error-contact"></span>
                     </div>
                     <button type="submit" class="get-request-button-modal">
                         ОСТАВИТЬ ЗАЯВКУ 
@@ -601,10 +605,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        
-    </script>
 
     <!-- Cookie -->
     <div id="cookie-container"></div>

@@ -425,6 +425,11 @@ openCatalog.addEventListener('click', function (e) {
             openCatalog.style.color = '';
             header.style.backgroundColor = 'transparent';
             menuNavigation.style.display = 'none';
+
+            blurContainers.forEach(container => {
+                container.style.filter = 'none';
+                container.style.cursor = '';
+            });
     
             underHeader.style.filter = 'none';
             underHeader.style.backdropFilter = 'none';

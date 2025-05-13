@@ -349,6 +349,7 @@ function validateForm(event, formId) {
 
 
 
+
 // Поиск в хедере
 
 const searchInput = document.getElementById('search-input');
@@ -361,7 +362,6 @@ let isCatalogActive = false;
 const marginTopStart = parseFloat(getComputedStyle(document.querySelector('.menu-navigation')).marginTop);
 const marginTopUseSearch = marginTopStart + 250;
 
-console.log(marginTopStart);
 
 
 // Обработчик ввода в поле поиска
@@ -400,7 +400,6 @@ searchInput.addEventListener('input', function () {
 
 
 
-
 const blurContainers = document.querySelectorAll('.blur-container');
 
 // Функция когда клик вне хедера
@@ -414,8 +413,6 @@ function resetHeaderState() {
     }
 
     // Сбрасываем фон и стили
-    header.style.paddingBottom = '20px';
-    menuNavigation.style.marginTop = '170px';
     header.style.backgroundColor = 'transparent';
     searchItems.classList.remove('show');
     underHeader.style.filter = 'none';
@@ -480,6 +477,12 @@ openCatalog.addEventListener('click', function (e) {
             openCatalog.style.color = '';
             header.style.backgroundColor = 'transparent';
             menuNavigation.style.display = 'none';
+
+            // Убираем блюр со всех контейнеров, когда выходим из каталога
+            blurContainers.forEach(container => {
+                container.style.filter = 'none';
+                container.style.cursor = '';
+            });
     
             // underHeaderContainer.style.marginTop = '250px';
             underHeader.style.filter = 'none';
@@ -635,6 +638,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
 // Чётко считываем скроллы и скрываем/показываем header
 
 let lastScrollTop = 0;
@@ -677,8 +681,6 @@ window.addEventListener('scroll', () => {
     menuNavigation.classList.add('default-margin');
     menuNavigation.classList.remove('search-active');
     openCatalog.style.color = '';
-    
-    
     
   } else if (scrollDelta < 0) {
     header.style.display = 'block';

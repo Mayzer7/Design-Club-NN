@@ -166,7 +166,10 @@ document.querySelector('.search-icon-button').addEventListener('click', function
     performSearch();
 });
 
-// Валидация формы "Остались вопросы?"
+
+
+
+// Валидация форм на странице
 
 function validateForm(event, formId) {
     event.preventDefault();
@@ -182,7 +185,6 @@ function validateForm(event, formId) {
     // Поля внутри своей формы
     const nameInput = form.querySelector('input[name="name"]');
     const phoneInput = form.querySelector('input[name="phone"]');
-    const questionInput = form.querySelector('input[name="your-question"]'); // <-- новое поле
     const acceptInput = form.querySelector('input[name="accept"]');
     const errorSpans = form.querySelectorAll('.error-contact');
 
@@ -200,17 +202,10 @@ function validateForm(event, formId) {
         valid = false;
     }
 
-    // Проверка поля "Ваш вопрос"
-    if (!questionInput.value.trim()) {
-        errorSpans[2].textContent = 'Пожалуйста, введите ваш вопрос.';
-        errorSpans[2].style.display = 'block';
-        valid = false;
-    }
-
     // Проверка чекбокса "Согласие"
     if (!acceptInput.checked) {
-        errorSpans[3].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
-        errorSpans[3].style.display = 'block';
+        errorSpans[2].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
+        errorSpans[2].style.display = 'block';
         valid = false;
     }
 
@@ -219,7 +214,6 @@ function validateForm(event, formId) {
         form.submit();
     }
 }
-
 
 
 
@@ -351,8 +345,13 @@ openCatalog.addEventListener('click', function (e) {
             openCatalog.style.color = '';
             header.style.backgroundColor = 'transparent';
             menuNavigation.style.display = 'none';
-    
-            // underHeaderContainer.style.marginTop = '250px';
+
+            // Убираем блюр со всех контейнеров, когда выходим из каталога
+            blurContainers.forEach(container => {
+                container.style.filter = 'none';
+                container.style.cursor = '';
+            });
+            
             underHeader.style.filter = 'none';
             underHeader.style.backdropFilter = 'none';
     

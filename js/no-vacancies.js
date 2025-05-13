@@ -1,3 +1,4 @@
+
 // Валидация модального окна формы "Связаться с нами"
 
 const thanksModal = document.getElementById('thanksModal');
@@ -9,7 +10,7 @@ function validateFormModal(event, formId) {
     const form = document.getElementById(formId);
 
     // Скрыть все ошибки только внутри своей формы
-    const errorElements = form.querySelectorAll('.error-contact-modal');
+    const errorElements = form.querySelectorAll('.error-contact');
     errorElements.forEach(error => error.style.display = 'none');
 
     let valid = true;
@@ -18,7 +19,7 @@ function validateFormModal(event, formId) {
     const nameInput = form.querySelector('input[name="name"]');
     const phoneInput = form.querySelector('input[name="phone"]');
     const acceptInput = form.querySelector('input[name="accept"]');
-    const errorSpans = form.querySelectorAll('.error-contact-modal');
+    const errorSpans = form.querySelectorAll('.error-contact');
 
     // Проверка поля "Ваше имя"
     if (!nameInput.value.trim()) {
@@ -147,6 +148,9 @@ errorModal.addEventListener('click', (e) => {
         }, 500); 
     }
 });
+
+
+
 
 
 // Отображение загруженного файла 
@@ -359,8 +363,13 @@ openCatalog.addEventListener('click', function (e) {
             openCatalog.style.color = '';
             header.style.backgroundColor = 'transparent';
             menuNavigation.style.display = 'none';
+
+            // Убираем блюр со всех контейнеров, когда выходим из каталога
+            blurContainers.forEach(container => {
+                container.style.filter = 'none';
+                container.style.cursor = '';
+            });
     
-            // underHeaderContainer.style.marginTop = '250px';
             underHeader.style.filter = 'none';
             underHeader.style.backdropFilter = 'none';
     

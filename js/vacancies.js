@@ -364,6 +364,12 @@ openCatalog.addEventListener('click', function (e) {
             openCatalog.style.color = '';
             header.style.backgroundColor = 'transparent';
             menuNavigation.style.display = 'none';
+
+            // Убираем блюр со всех контейнеров, когда выходим из каталога
+            blurContainers.forEach(container => {
+                container.style.filter = 'none';
+                container.style.cursor = '';
+            });
     
             // underHeaderContainer.style.marginTop = '250px';
             underHeader.style.filter = 'none';

@@ -111,7 +111,17 @@ body {
 
 
 
+
 /* Шапка */
+
+.logo-img {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
 
 .header-top {
     position: fixed;
@@ -594,6 +604,7 @@ li.active .menu-plumbing-arrow {
     }
     
 }
+
 
 
 
@@ -2393,5 +2404,16 @@ li.active .menu-plumbing-arrow {
     position: relative;
 }
 
-
+.error-contact {
+    font-family: 'SF Pro Display', sans-serif; 
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    color: #EB5151;
+    font-size: 14px;
+    display: none;
+    margin-top: 5px;
+    padding-left: 5px;
+}
 
