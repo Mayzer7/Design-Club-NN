@@ -1,3 +1,279 @@
+// Переключение фотографий "Галерея проекта"
+
+const gallery = document.querySelector('.project-gallery-images');
+const images = document.querySelectorAll('.project-gallery-images img');
+const leftArrow = document.querySelector('.left-arrow');
+const rightArrow = document.querySelector('.right-arrow');
+
+let currentIndex = 0;
+
+function updateGalleryTransform() {
+  const imageElement = document.querySelector('.project-gallery-images img');
+  const isSmallScreen = window.innerWidth <= 1373;
+  const imageWidth = isSmallScreen ? 532 + 20 : 1120 + 20;
+  const offset = -(currentIndex * imageWidth);
+  gallery.style.transform = `translateX(${offset}px)`;
+}
+
+rightArrow.addEventListener('click', () => {
+  if (currentIndex < images.length - 2) {
+    currentIndex++;
+    updateGalleryTransform();
+  }
+});
+
+leftArrow.addEventListener('click', () => {
+  if (currentIndex >= 0) {
+    currentIndex--;
+    updateGalleryTransform();
+  }
+});
+
+// Обновление галереи при изменении размера экрана
+window.addEventListener('resize', () => {
+  updateGalleryTransform();
+});
+
+
+// Переключение карточек товара
+
+const track = document.getElementById('track');
+const cards = Array.from(track.querySelectorAll('.popular-product-card'));
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+    
+let currentIndexCard = 2; // стартуем с Product 3 (индекс 2)
+let cardWidth, visibleCount;
+
+// Привязываем клики к статическим карточкам
+cards.forEach((card, idx) => {
+    if (idx === currentIndexCard) card.classList.add('active');
+    card.addEventListener('click', () => goTo(idx));
+});
+
+function updateSizes() {
+    const contW = document.querySelector('.carousel-container').clientWidth;
+    
+    if (contW < 600) visibleCount = 3;
+    else if (contW < 900) visibleCount = 4;
+    else visibleCount = 5;
+
+    const style = getComputedStyle(cards[0]);
+    const margin = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+    cardWidth = cards[0].clientWidth + margin;
+
+    moveTrack();
+    updateButtons();
+}
+
+function moveTrack() {
+    // читаем CSS-переменную и парсим в число
+    const shiftValue = getComputedStyle(track)
+                         .getPropertyValue('--manual-shift')
+                         .trim();
+    const manualShift = parseFloat(shiftValue);
+
+    // рассчитываем смещение
+    const x = -currentIndexCard * cardWidth + manualShift;
+    track.style.transform = `translateX(${x}px)`;
+    cards.forEach((c, i) => c.classList.toggle('active', i === currentIndexCard));
+}
+
+function goTo(idx) {
+    currentIndexCard = Math.max(0, Math.min(cards.length - 1, idx));
+    moveTrack();
+    updateButtons();
+}
+
+function updateButtons() {
+    prevBtn.disabled = currentIndexCard === 0;
+    nextBtn.disabled = currentIndexCard === cards.length - 1;
+}
+
+prevBtn.addEventListener('click', () => goTo(currentIndexCard - 1));
+nextBtn.addEventListener('click', () => goTo(currentIndexCard + 1));
+window.addEventListener('resize', updateSizes);
+window.addEventListener('load', updateSizes);
+
+
+// Свайпы карточек товара
+
+let startX = 0;
+let endX = 0;
+
+track.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+});
+
+track.addEventListener('touchmove', (e) => {
+    endX = e.touches[0].clientX;
+});
+
+track.addEventListener('touchend', () => {
+    const swipeThreshold = 50;  // Минимальная длина свайпа для смены карточки
+    const diff = startX - endX;
+
+    if (diff > swipeThreshold) {
+        goTo(currentIndexCard + 1);
+    } else if (diff < -swipeThreshold) {
+        goTo(currentIndexCard - 1);
+    }
+});
+
+
+// Секция "Отзывы от покупателей"
+
+
+// Раскрытие отзыва по больше если нужно 
+
+const readFullButton = document.getElementById('read-full-btn');
+const reviewContinueText = document.querySelector('.review-continue-text')
+const readFullReview = document.querySelector('.read-full-review');
+
+readFullButton.addEventListener('click', () => {
+    reviewContinueText.style.display = 'block';
+    readFullReview.style.display = 'none';  
+});
+
+// Переключение карточек отзывов
+const cardsContainer = document.querySelector('.reviews-cards');
+const leftArrowReview = document.getElementById('left-arrow-review');
+const rightArrowReview = document.getElementById('right-arrow-review');
+const ratingNumber = document.querySelector('.rating-number');
+const cardsReview = document.querySelectorAll('.review-card');
+const cardWidthReview = cardsReview[0].offsetWidth + 20; 
+
+let currentIndexReview = 0;
+
+leftArrowReview.addEventListener('click', () => moveReview(-1));
+rightArrowReview.addEventListener('click', () => moveReview(1));
+
+function moveReview(direction) {
+  const newIndex = currentIndexReview + direction;
+  if (newIndex >= 0 && newIndex < cardsReview.length) {
+    currentIndexReview = newIndex;
+    updateTransform();
+    ratingNumber.style.visibility = currentIndexReview > 0 ? 'hidden' : 'visible';
+  }
+}
+
+function updateTransform() {
+  cardsContainer.style.transform = `translateX(${-cardWidthReview * currentIndexReview}px)`;
+}
+
+// Добавляем свайп
+let startReviewX = 0;
+let isDragging = false;
+
+cardsContainer.addEventListener('touchstart', e => {
+  startReviewX = e.touches[0].clientX;
+  isDragging = true;
+}, { passive: true });
+
+cardsContainer.addEventListener('touchmove', e => {
+}, { passive: true });
+
+cardsContainer.addEventListener('touchend', e => {
+  if (!isDragging) return;
+  const endX = e.changedTouches[0].clientX;
+  const diffX = endX - startReviewX;
+  const threshold = 50; // минимальная дистанция свайпа
+  if (diffX > threshold) {
+    moveReview(-1); // свайп вправо
+  } else if (diffX < -threshold) {
+    moveReview(1);  // свайп влево
+  }
+  isDragging = false;
+});
+
+
+
+// Валидация формы "Связаться с нами"
+
+function validateFormContact(event, formId) {
+    event.preventDefault();
+
+    const form = document.getElementById(formId);
+
+    // Скрыть все ошибки только внутри своей формы
+    const errorElements = form.querySelectorAll('.error-contact');
+    errorElements.forEach(error => error.style.display = 'none');
+
+    let valid = true;
+
+    // Поля внутри своей формы
+    const nameInput = form.querySelector('input[name="name"]');
+    const phoneInput = form.querySelector('input[name="phone"]');
+    const acceptInput = form.querySelector('input[name="accept"]');
+    const errorSpans = form.querySelectorAll('.error-contact');
+    const methodInput = form.querySelector('input[name="contact_method"]');
+
+    // Проверка поля "Ваше имя"
+    if (!nameInput.value.trim()) {
+        errorSpans[0].textContent = 'Пожалуйста, введите ваше имя.';
+        errorSpans[0].style.display = 'block';
+        valid = false;
+    }
+
+    // Проверка поля "Телефон"
+    if (!phoneInput.value.trim()) {
+        errorSpans[1].textContent = 'Пожалуйста, введите ваш телефон.';
+        errorSpans[1].style.display = 'block';
+        valid = false;
+    }
+
+    // Проверка поля "Способ связи"
+    if (!methodInput.value.trim()) {
+        errorSpans[2].textContent = 'Пожалуйста, выберите способ связи.';
+        errorSpans[2].style.display = 'block';
+        valid = false;
+    }
+
+    // Проверка чекбокса "Согласие"
+    if (!acceptInput.checked) {
+        errorSpans[3].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
+        errorSpans[3].style.display = 'block';
+        valid = false;
+    }
+
+    // Если всё ок — отправляем форму
+    if (valid) {
+        form.submit();
+    }
+}
+
+
+// Выбор способа связи в форме "Связаться с нами"
+
+function toggleContactMethodMenu() {
+    const menu = document.getElementById('menu-contact-method');
+    const arrow = document.getElementById('dropdown-arrow');
+
+    if (menu.classList.contains('open')) {
+        // Закрытие меню с анимацией
+        menu.style.maxHeight = '0px';
+        menu.style.opacity = '0';
+        arrow.classList.remove('rotated');
+        menu.classList.remove('open');
+    } else {
+        // Открытие меню с анимацией до нужной высоты
+        menu.style.maxHeight = menu.scrollHeight + 'px';
+        menu.style.opacity = '1';
+        arrow.classList.add('rotated');
+        menu.classList.add('open');
+    }
+}
+
+// Обработка выбора пункта меню
+document.querySelectorAll('.input-field').forEach(item => {
+    item.addEventListener('click', function () {
+        const selected = document.getElementById('selected-contact-method');
+        selected.value = this.placeholder;
+        toggleContactMethodMenu(); // Скрываем меню после выбора
+    });
+});
+
+
 // Валидация модального окна формы "Связаться с нами"
 
 const thanksModal = document.getElementById('thanksModal');
@@ -149,159 +425,6 @@ errorModal.addEventListener('click', (e) => {
 });
 
 
-// Переключение фотографий "Галерея проекта"
-
-const gallery = document.querySelector('.project-gallery-images');
-const images = document.querySelectorAll('.project-gallery-images img');
-const leftArrow = document.querySelector('.left-arrow');
-const rightArrow = document.querySelector('.right-arrow');
-
-let currentIndex = 0;
-const imageWidth = 1120 + 20; // 1120px + 20px gap
-
-function updateGalleryTransform() {
-    const offset = -(currentIndex * imageWidth);
-    gallery.style.transform = `translateX(${offset}px)`;
-}
-
-rightArrow.addEventListener('click', () => {
-    if (currentIndex < images.length - 2) {
-        currentIndex++;
-        updateGalleryTransform();
-    }
-});
-
-leftArrow.addEventListener('click', () => {
-    if (currentIndex >= 0) {
-        currentIndex--;
-        updateGalleryTransform();
-    }
-});
-
-// Секция "Наши Отзывы от покупателей"
-
-// Переключение карточек отзывов
-const cardsContainer = document.querySelector('.reviews-cards');
-const leftArrowReview = document.getElementById('left-arrow-review');
-const rightArrowReview = document.getElementById('right-arrow-review');
-const ratingNumber = document.querySelector('.rating-number');
-        
-let currentIndexReview = 0;
-const cardsReview = document.querySelectorAll('.review-card');
-const cardWidthReview = cardsReview[0].offsetWidth + 20; // ширина карты + gap
-        
-leftArrowReview.addEventListener('click', () => { // <-- исправлено
-    if (currentIndexReview > 0) {
-        currentIndexReview--;
-        updateTransform();
-    }
-
-    if (currentIndexReview > 0) {
-        ratingNumber.style.visibility = 'hidden';
-    } else {
-        ratingNumber.style.visibility = 'visible';
-    }
-});
-        
-rightArrowReview.addEventListener('click', () => { // <-- исправлено
-    if (currentIndexReview < cardsReview.length - 1) {
-        currentIndexReview++;
-        updateTransform();
-    }
-
-    if (currentIndexReview > 0) {
-        ratingNumber.style.visibility = 'hidden';
-    } else {
-        ratingNumber.style.visibility = 'visible';
-    }
-});
-        
-function updateTransform() {
-    cardsContainer.style.transform = `translateX(${-cardWidthReview * currentIndexReview}px)`; // <-- исправлено
-}
-
-
-// Выбор способа связи в форме "Связаться с нами"
-
-function toggleContactMethodMenu() {
-    const menu = document.getElementById('menu-contact-method');
-    const arrow = document.getElementById('dropdown-arrow');
-    
-    const isOpen = menu.classList.contains('open');
-    
-    if (isOpen) {
-        menu.classList.remove('open');
-        arrow.classList.remove('rotated');
-    } else {
-        menu.classList.add('open');
-        arrow.classList.add('rotated');
-    }
-}
-
-// Обработка выбора пункта меню
-document.querySelectorAll('.input-field').forEach(item => {
-    item.addEventListener('click', function () {
-        const selected = document.getElementById('selected-contact-method');
-        selected.value = this.placeholder;
-        toggleContactMethodMenu(); // Скрываем меню после выбора
-    });
-});
-
-
-// Валидация формы "Связаться с нами"
-
-function validateFormContact(event, formId) {
-    event.preventDefault();
-
-    const form = document.getElementById(formId);
-
-    // Скрыть все ошибки только внутри своей формы
-    const errorElements = form.querySelectorAll('.error-contact');
-    errorElements.forEach(error => error.style.display = 'none');
-
-    let valid = true;
-
-    // Поля внутри своей формы
-    const nameInput = form.querySelector('input[name="name"]');
-    const phoneInput = form.querySelector('input[name="phone"]');
-    const acceptInput = form.querySelector('input[name="accept"]');
-    const errorSpans = form.querySelectorAll('.error-contact');
-    const methodInput = form.querySelector('input[name="contact_method"]');
-
-    // Проверка поля "Ваше имя"
-    if (!nameInput.value.trim()) {
-        errorSpans[0].textContent = 'Пожалуйста, введите ваше имя.';
-        errorSpans[0].style.display = 'block';
-        valid = false;
-    }
-
-    // Проверка поля "Телефон"
-    if (!phoneInput.value.trim()) {
-        errorSpans[1].textContent = 'Пожалуйста, введите ваш телефон.';
-        errorSpans[1].style.display = 'block';
-        valid = false;
-    }
-
-    // Проверка поля "Способ связи"
-    if (!methodInput.value.trim()) {
-        errorSpans[2].textContent = 'Пожалуйста, выберите способ связи.';
-        errorSpans[2].style.display = 'block';
-        valid = false;
-    }
-
-    // Проверка чекбокса "Согласие"
-    if (!acceptInput.checked) {
-        errorSpans[3].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
-        errorSpans[3].style.display = 'block';
-        valid = false;
-    }
-
-    // Если всё ок — отправляем форму
-    if (valid) {
-        form.submit();
-    }
-}
-
 
 
 
@@ -325,6 +448,62 @@ document.querySelector('.search-icon-button').addEventListener('click', function
 
 
 
+// Валидация формы "Остались вопросы?"
+
+function validateForm(event, formId) {
+    event.preventDefault();
+
+    const form = document.getElementById(formId);
+
+    // Скрыть все ошибки только внутри своей формы
+    const errorElements = form.querySelectorAll('.error-contact');
+    errorElements.forEach(error => error.style.display = 'none');
+
+    let valid = true;
+
+    // Поля внутри своей формы
+    const nameInput = form.querySelector('input[name="name"]');
+    const phoneInput = form.querySelector('input[name="phone"]');
+    const questionInput = form.querySelector('input[name="your-question"]');
+    const acceptInput = form.querySelector('input[name="accept"]');
+    const errorSpans = form.querySelectorAll('.error-contact');
+
+    // Проверка поля "Ваше имя"
+    if (!nameInput.value.trim()) {
+        errorSpans[0].textContent = 'Пожалуйста, введите ваше имя.';
+        errorSpans[0].style.display = 'block';
+        valid = false;
+    }
+
+    // Проверка поля "Телефон"
+    if (!phoneInput.value.trim()) {
+        errorSpans[1].textContent = 'Пожалуйста, введите ваш телефон.';
+        errorSpans[1].style.display = 'block';
+        valid = false;
+    }
+
+    // Проверка поля "Ваш вопрос"
+    if (!questionInput.value.trim()) {
+        errorSpans[2].textContent = 'Пожалуйста, введите ваш вопрос.';
+        errorSpans[2].style.display = 'block';
+        valid = false;
+    }
+
+    // Проверка чекбокса "Согласие"
+    if (!acceptInput.checked) {
+        errorSpans[3].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
+        errorSpans[3].style.display = 'block';
+        valid = false;
+    }
+
+    // Если всё ок — отправляем форму
+    if (valid) {
+        form.submit();
+    }
+}
+
+
+
 // Поиск в хедере
 
 const searchInput = document.getElementById('search-input');
@@ -334,49 +513,40 @@ const underHeaderContainer = document.querySelector('.under-header-container');
 const underHeader = document.querySelector('.under-header');
 let isCatalogActive = false;
 
+const marginTopStart = parseFloat(getComputedStyle(document.querySelector('.menu-navigation')).marginTop);
+const marginTopUseSearch = marginTopStart + 250;
+
+
+
 // Обработчик ввода в поле поиска
 searchInput.addEventListener('input', function () {
-    if (searchInput.value.trim() !== '') {
-        menuNavigation.style.marginTop = '430px';
+    const isSearching = searchInput.value.trim() !== '';
+
+    if (isSearching) {
+        menuNavigation.classList.remove('default-margin');
+        menuNavigation.classList.add('search-active');
         underHeader.style.filter = 'blur(5px)';
-
-        // Накидываем blur на все контейнеры
-        blurContainers.forEach(container => {
-            container.style.filter = 'blur(5px)';
-        });
-
-        // Расширяем background color
+        blurContainers.forEach(container => container.style.filter = 'blur(5px)');
         header.style.paddingBottom = '270px';
-        // Меняем фон header на синий
-        header.style.backgroundColor = '#151c28'; // синий цвет
-        // Показываем элементы с плавным переходом
+        header.style.backgroundColor = '#151c28';
         searchItems.classList.add('show');
-    } else if (!isCatalogActive) {
-        menuNavigation.style.marginTop = '170px';
-        // Сбрасываем фон header, если поиск пуст
-        header.style.backgroundColor = 'transparent';
-
-        header.style.paddingBottom = '20px';
-
-        // Скрываем элементы с плавным переходом
-        searchItems.classList.remove('show');
-        underHeader.style.filter = 'none';
-
-        // Сбрасываем blur, если поле поиска пустое
-        blurContainers.forEach(container => {
-            container.style.filter = '';
-        });
     } else {
-        menuNavigation.style.marginTop = '170px';
-        // Скрываем элементы с плавным переходом
-        searchItems.classList.remove('show');
-        header.style.transition = 'padding-bottom 0.5s ease';
-        header.style.paddingBottom = '20px';
-        underHeader.style.filter = 'blur(5px)';
+        menuNavigation.classList.remove('search-active');
+        menuNavigation.classList.add('default-margin');
+
+        if (!isCatalogActive) {
+            header.style.backgroundColor = 'transparent';
+            header.style.paddingBottom = '20px';
+            searchItems.classList.remove('show');
+            underHeader.style.filter = 'none';
+            blurContainers.forEach(container => container.style.filter = '');
+        } else {
+            searchItems.classList.remove('show');
+            header.style.paddingBottom = '20px';
+            underHeader.style.filter = 'blur(5px)';
+        }
     }
 });
-
-
 
 
 
@@ -451,6 +621,7 @@ openCatalog.addEventListener('click', function (e) {
         header.style.backgroundColor = '#151c28';
         menuNavigation.style.backgroundColor = '#151c28';
         menuNavigation.style.display = 'block';
+        menuNavigation.classList.add('default-margin');
     } else {
         if (searchInput.value.trim() !== '') {
             menuNavigation.style.display = 'none';
@@ -460,6 +631,12 @@ openCatalog.addEventListener('click', function (e) {
             openCatalog.style.color = '';
             header.style.backgroundColor = 'transparent';
             menuNavigation.style.display = 'none';
+
+            // Убираем блюр со всех контейнеров, когда выходим из каталога
+            blurContainers.forEach(container => {
+                container.style.filter = 'none';
+                container.style.cursor = '';
+            });
     
             // underHeaderContainer.style.marginTop = '250px';
             underHeader.style.filter = 'none';
@@ -492,20 +669,6 @@ document.querySelectorAll('.menu-toggle-plumbing').forEach(toggle => {
 });
 
 
-// Отображение меню Мебели
-document.querySelectorAll('.menu-toggle-furniture').forEach(toggle => {
-    toggle.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        const menuItem = toggle.closest('.menu-item-furniture');
-        const subMenu = menuItem.querySelector('.submenu-furniture');
-
-        const isOpen = subMenu.style.display === 'flex';
-        subMenu.style.display = isOpen ? 'none' : 'flex';
-        menuItem.classList.toggle('active', !isOpen);
-    });
-});
-
 // Закрытие всех подменю при наведении на header
 header.addEventListener('mouseenter', function () {
     document.querySelectorAll('.submenu-plumbing').forEach(subMenu => {
@@ -528,6 +691,23 @@ header.addEventListener('mouseenter', function () {
         menuItem.classList.remove('active');
     });
 });
+
+
+
+
+document.querySelectorAll('.menu-toggle-furniture').forEach(toggle => {
+    toggle.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const menuItem = toggle.closest('.menu-item-furniture');
+        const subMenu = menuItem.querySelector('.submenu-furniture');
+
+        const isOpen = subMenu.style.display === 'flex';
+        subMenu.style.display = isOpen ? 'none' : 'flex';
+        menuItem.classList.toggle('active', !isOpen);
+    });
+});
+
 // Делегирование для правого меню
 const rightMenuContent = document.querySelector('.right-menu-content');
 
@@ -612,6 +792,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
 // Чётко считываем скроллы и скрываем/показываем header
 
 let lastScrollTop = 0;
@@ -635,27 +816,32 @@ window.addEventListener('scroll', () => {
     searchInput.blur(); // убирает фокус с поля ввода
     searchInput.value = ''; // очищает текст
     searchItems.classList.remove('show'); // скрывает блок
-
+    
     // Убираем пустые отступы
     header.style.paddingBottom = '20px';
-    menuNavigation.style.marginTop = '170px';
 
     // Сброс состояния
     blurContainers.forEach(container => {
         container.style.filter = ''
         container.style.cursor = ''
     });
+    
     header.style.backgroundColor = 'transparent';
     underHeader.style.filter = 'none';
+    underHeader.style.cursor = '';
     openCatalog.parentElement.classList.remove('active');
     isCatalogActive = false;
     menuNavigation.style.display = 'none';
+    menuNavigation.classList.add('default-margin');
+    menuNavigation.classList.remove('search-active');
     openCatalog.style.color = '';
-    
     
   } else if (scrollDelta < 0) {
     header.style.display = 'block';
     // Скролл вверх
+
+    menuNavigation.classList.add('default-margin');
+
     header.classList.remove('header-hidden');
     header.classList.add('header-scrolled-up');
   }
@@ -667,6 +853,3 @@ window.addEventListener('scroll', () => {
 
   lastScrollTop = scrollTop;
 });
-
-
-

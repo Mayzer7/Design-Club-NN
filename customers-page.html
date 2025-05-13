@@ -11,12 +11,11 @@
         <section class="page-wrapper">
             <main class="under-header">
                 <hr class="line">
+    
                 <div class="under-header-container">
-                    <div class="links">
-                        <a href="index.html">Главная</a>
-                        <p>/</p>
-                        <a href="customers-page.html">Покупателям</a>
-                    </div>
+                    <a href="index.html">Главная</a>
+                    <p>/</p>
+                    <a href="customers-page.html">Покупателям</a>
                 </div>
             </main>
         </section>
@@ -237,7 +236,7 @@
                 </div>
             </div>
         </section>
-    
+
         <section class="customers">
             <div class="customers-section">
                 <div class="blur-container">
@@ -420,6 +419,16 @@
     
             <hr class="line-customer">
         </section>
+
+
+
+
+
+    
+        <section class="expansion-up">
+            <div class="blur-container">
+            </div>
+        </section>
     
         <section class="get-contact">
             <div class="blur-container">
@@ -471,7 +480,7 @@
                                             <input type="checkbox" name="accept" />
                                             <div class="checkbox-img"></div>
                                         </label>
-                                        <p>Согласен <span><a href="#">с политикой конфиденциальности и обработки персональных данных</a></span></p>
+                                        <p>Согласен <span><a href="privacy-policy-page.html">с политикой конфиденциальности и обработки персональных данных</a></span></p>
                                         <span class="error-contact"></span>
                                     </div>
                                     <button type="submit" class="get-request-button">
@@ -671,6 +680,19 @@
         </section>
     </div>
 
+    
+
+    <!-- Модальное окно для просмотра видео -->
+    <div id="videoModal" class="modal-video">
+        <div class="modal-content-video">
+            <span class="close-video">&times;</span>
+            <video controls id="modalVideo" preload="metadata">
+                <source src="http://103.74.94.225/video/services.mp4" type="video/mp4">
+                Ваш браузер не поддерживает видео.
+            </video>
+        </div>
+    </div>
+
     <!-- Модальное окно "Связаться с нами"-->
     <div class="modal" id="contactModal">
         <div class="modal-content">
@@ -686,8 +708,12 @@
         
                     <p class="phone-number">+7 999 999 99 99</p>
                 
-                    <h1>
+                    <h1 class="contact-modal-title">
                         Связаться<br> с нами
+                    </h1>
+
+                    <h1 class="res-1024">
+                        Связаться с нами
                     </h1>
 
                     <p class="modal-description">
@@ -712,7 +738,7 @@
                             <input type="checkbox" name="accept" />
                             <div class="checkbox-img"></div>
                         </label>
-                        <p>Согласен <span><a href="#">с политикой конфиденциальности и обработки персональных данных</a></span></p>
+                        <p>Согласен <span><a href="privacy-policy-page.html" target="_blank">с политикой конфиденциальности и обработки персональных данных</a></span></p>
                         <span class="error-contact"></span>
                     </div>
                     <button type="submit" class="get-request-button-modal">

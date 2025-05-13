@@ -5,12 +5,12 @@ const cards = Array.from(track.querySelectorAll('.popular-product-card'));
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
     
-let currentIndex = 2; // стартуем с Product 3 (индекс 2)
+let currentIndexCard = 2; // стартуем с Product 3 (индекс 2)
 let cardWidth, visibleCount;
 
 // Привязываем клики к статическим карточкам
 cards.forEach((card, idx) => {
-    if (idx === currentIndex) card.classList.add('active');
+    if (idx === currentIndexCard) card.classList.add('active');
     card.addEventListener('click', () => goTo(idx));
 });
 
@@ -37,24 +37,24 @@ function moveTrack() {
     const manualShift = parseFloat(shiftValue);
 
     // рассчитываем смещение
-    const x = -currentIndex * cardWidth + manualShift;
+    const x = -currentIndexCard * cardWidth + manualShift;
     track.style.transform = `translateX(${x}px)`;
-    cards.forEach((c, i) => c.classList.toggle('active', i === currentIndex));
+    cards.forEach((c, i) => c.classList.toggle('active', i === currentIndexCard));
 }
 
 function goTo(idx) {
-    currentIndex = Math.max(0, Math.min(cards.length - 1, idx));
+    currentIndexCard = Math.max(0, Math.min(cards.length - 1, idx));
     moveTrack();
     updateButtons();
 }
 
 function updateButtons() {
-    prevBtn.disabled = currentIndex === 0;
-    nextBtn.disabled = currentIndex === cards.length - 1;
+    prevBtn.disabled = currentIndexCard === 0;
+    nextBtn.disabled = currentIndexCard === cards.length - 1;
 }
 
-prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
-nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
+prevBtn.addEventListener('click', () => goTo(currentIndexCard - 1));
+nextBtn.addEventListener('click', () => goTo(currentIndexCard + 1));
 window.addEventListener('resize', updateSizes);
 window.addEventListener('load', updateSizes);
 
@@ -77,9 +77,9 @@ track.addEventListener('touchend', () => {
     const diff = startX - endX;
 
     if (diff > swipeThreshold) {
-        goTo(currentIndex + 1);
+        goTo(currentIndexCard + 1);
     } else if (diff < -swipeThreshold) {
-        goTo(currentIndex - 1);
+        goTo(currentIndexCard - 1);
     }
 });
 

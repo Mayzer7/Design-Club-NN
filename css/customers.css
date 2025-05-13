@@ -33,14 +33,6 @@
     font-style: normal;
 }
 
-
-@font-face {
-    font-family: 'SF UI Display Thin';
-    src: url('../fonts/sf-ui-display-8.otf');
-    font-weight: 900;
-    font-style: normal;
-}
-
 html {
     box-sizing: border-box;
 }
@@ -68,7 +60,7 @@ a:hover {
 }
 
 ul {
-    margin-left: 0;
+    margin: 0;
     padding: 0;
 }
 
@@ -81,7 +73,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 body {
-    font-family: 'SF Pro Display', sans-serif;
+    font-family: 'SF Pro Display Thin', sans-serif;
     font-size: 18px;
     font-weight: 300;
     color: #EDE4D7;
@@ -95,23 +87,6 @@ body {
     width: 100%;  
 }
 
-/*
-Для того чтобы когда в input вводятся только цифры, 
-браузер не отображал некрасивый ползунок увелечения числа
-*/
-
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-/* Для Firefox */
-input[type="number"] {
-    -moz-appearance: textfield;
-}
-
-
 .line {
     width: 100%;
     height: 1px;
@@ -123,11 +98,19 @@ input[type="number"] {
 /* Верхрняя секция главной страницы */
 
 .main-page-top {
-    background-color: #151c28;
-    min-height: 300px;
+    min-height: 350px;
 }
 
 /* Шапка */
+
+.logo-img {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
 
 .header-top {
     position: fixed;
@@ -164,8 +147,6 @@ input[type="number"] {
 }
 
 .nav-container {
-    position: relative;
-    top: -18px;
     display: flex;
     justify-content: center;
     gap: 40px;
@@ -248,6 +229,11 @@ li.active .menu-plumbing-arrow {
     transition: margin-top 0.5s ease, background-color 0.5s ease;
     background-color: #151c28;
     /* min-height: 250px; */
+}
+
+/* Основной отступ */
+.menu-navigation.default-margin {
+    margin-top: 170px;
 }
 
 .menu-navigation-container {
@@ -373,8 +359,6 @@ li.active .menu-plumbing-arrow {
     width: 100%;
     position: relative;
     z-index: 5;
-
-    
 }
 
 
@@ -383,7 +367,6 @@ li.active .menu-plumbing-arrow {
 
 
 .search-items {
-    
     margin-top: 20px;
     display: flex;
     flex-direction: column;
@@ -516,7 +499,6 @@ li.active .menu-plumbing-arrow {
     color: #AE9877;
 }
 
-
 .contact-button {
     font-family: 'SF Pro Display', sans-serif;
     font-weight: 900;
@@ -541,17 +523,21 @@ li.active .menu-plumbing-arrow {
     color: #fff;
 }
 
+/* Адаптив Шапки */
+
+
+/* Отступ при активном поиске */
+.menu-navigation.search-active {
+    margin-top: 420px; 
+}
+
+
+
 
 @media (max-width: 1200px) {
     .nav-container {
         flex-direction: column;
         gap: 20px;
-    }
-
-
-    .main-nav {
-        position: relative;
-        top: -38px;
     }
 
     .catalog-nav {
@@ -562,20 +548,24 @@ li.active .menu-plumbing-arrow {
         max-width: 250px;
     }
 
-    .under-header-container {
-        gap: 186px;
+    .menu-navigation.default-margin {
+        margin-top: 210px;
     }
 
-    .menu-navigation {
-        margin-top: 210px;
+    /* Отступ при активном поиске */
+    .menu-navigation.search-active {
+        margin-top: 480px; 
     }
 }
 
 @media (max-width: 1024px) {
-    /* Шапка */
-
-    .menu-navigation {
+    .menu-navigation.default-margin {
         margin-top: 200px;
+    }
+
+    /* Отступ при активном поиске */
+    .menu-navigation.search-active {
+        margin-top: 450px; 
     }
 
     .search-container {
@@ -605,11 +595,12 @@ li.active .menu-plumbing-arrow {
 }
 
 
+
+/* Секция 'Услуги' */
+
 .page-wrapper {
-    font-family: 'SF UI Display Thin', sans-serif;
     position: relative; 
 }
-
 
 .under-header {
     position: absolute;
@@ -625,20 +616,19 @@ li.active .menu-plumbing-arrow {
     margin-top: 60px;
     display: flex;
     align-items: center;
-    transition: margin-top 0.5s ease;
-}
-
-.links {
-    position: absolute;
-    top: 120px;
-    display: flex;
     gap: 10px;
-    text-align: center;
 }
 
-.links a:first-child {
+.under-header-container a:nth-child(1) {
     color: #7B8292;
 }
+
+.under-header-container a:nth-child(1):hover,
+.under-header-container a:nth-child(3):hover {
+    color: #AE9877;
+}
+
+
 
 /* Секция "Покупателям" */
 
@@ -740,6 +730,19 @@ li.active .menu-plumbing-arrow {
         font-size: 98px;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Секция "Остались вопросы?" */
 
@@ -948,7 +951,6 @@ li.active .menu-plumbing-arrow {
     }
 }
 
-
 /* Footer */
 
 .footer {
@@ -1111,7 +1113,6 @@ li.active .menu-plumbing-arrow {
 }
 
 
-
 /* Модальное окно "Связаться с нами" */
 
 .modal {
@@ -1123,7 +1124,7 @@ li.active .menu-plumbing-arrow {
     align-items: center;
     opacity: 0;  
     transform: scale(0.9); 
-    transition: opacity 0.5s ease, transform 0.5s ease;  /* Плавная анимация */
+    transition: opacity 0.5s ease, transform 0.5s ease;  
 }
 
 .modal.open {
@@ -1170,7 +1171,6 @@ li.active .menu-plumbing-arrow {
     cursor: pointer;
 }
 
-
 .modal-content-info img {
     margin-bottom: 30px;
     width: 171px;
@@ -1182,9 +1182,17 @@ li.active .menu-plumbing-arrow {
     margin-bottom: 20px;
 }
 
-.modal-content-info h1 {
+.contact-modal-title {
     font-family: 'Future New Light', sans-serif;
     font-size: 76px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.res-1024 {
+    display: none;
+    font-family: 'Future New Light', sans-serif;
+    font-size: 60px;
     text-transform: uppercase;
     margin-bottom: 20px;
 }
@@ -1305,6 +1313,32 @@ li.active .menu-plumbing-arrow {
     background-image: url('../images/svg/check-mark.svg');
 }
 
+
+/* Адаптив модального окна */
+
+@media (max-width: 1040px) {
+    .contact-modal-title {
+        display: none;
+    }
+
+    .res-1024 {
+        display: block;
+    }
+    
+    .modal-content-info img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .modal-description {
+        font-size: 16px;
+    }
+
+    .modal-content {
+        width: 731px;
+        height: 659px;
+    }
+}
 
 
 /* Модальное окно "Спасибо за заявку" */
