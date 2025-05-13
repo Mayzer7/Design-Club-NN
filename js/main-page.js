@@ -482,7 +482,7 @@ searchInput.addEventListener('input', function () {
         menuNavigation.classList.add('search-active');
         underHeader.style.filter = 'blur(5px)';
         blurContainers.forEach(container => container.style.filter = 'blur(5px)');
-        header.style.paddingBottom = '270px';
+        header.classList.add('header-search-padding');
         header.style.backgroundColor = '#151c28';
         searchItems.classList.add('show');
     } else {
@@ -491,13 +491,13 @@ searchInput.addEventListener('input', function () {
 
         if (!isCatalogActive) {
             header.style.backgroundColor = 'transparent';
-            header.style.paddingBottom = '20px';
+            header.classList.remove('header-search-padding');
             searchItems.classList.remove('show');
             underHeader.style.filter = 'none';
             blurContainers.forEach(container => container.style.filter = '');
         } else {
             searchItems.classList.remove('show');
-            header.style.paddingBottom = '20px';
+            header.classList.remove('header-search-padding');
             underHeader.style.filter = 'blur(5px)';
         }
     }
@@ -775,8 +775,9 @@ window.addEventListener('scroll', () => {
     searchInput.value = ''; // очищает текст
     searchItems.classList.remove('show'); // скрывает блок
     
+    header.classList.remove('header-search-padding');
     // Убираем пустые отступы
-    header.style.paddingBottom = '20px';
+    
 
     // Сброс состояния
     blurContainers.forEach(container => {
@@ -795,6 +796,7 @@ window.addEventListener('scroll', () => {
     openCatalog.style.color = '';
     
   } else if (scrollDelta < 0) {
+    
     header.style.display = 'block';
     // Скролл вверх
 
