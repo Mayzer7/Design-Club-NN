@@ -1528,7 +1528,7 @@ li.active .menu-plumbing-arrow {
 
 .badges {
     position: absolute;
-    top: 10px;
+    top: 20px;
     right: 10px;
     display: flex;
     gap: 10px; 
@@ -1854,10 +1854,7 @@ li.active .menu-plumbing-arrow {
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     
-    .badges {
-        top: 20px;
-        right: 10px;
-    }
+   
 
     .popular-product-desc-first,
     .popular-product-desc-second,
@@ -2374,7 +2371,7 @@ li.active .menu-plumbing-arrow {
 }
 
 
-/* Адаптив */
+/* Адаптив "О компании" */
 
 .desc-low-res {
     margin-top: 30px;
@@ -2383,6 +2380,7 @@ li.active .menu-plumbing-arrow {
 
 .subtitle-low-res {
     display: none;
+    text-transform: none;
 } 
 
 @media (max-width: 1530px) {
@@ -2476,6 +2474,10 @@ li.active .menu-plumbing-arrow {
     .desc-low-res {
         display: block;
     }
+
+    .about-company {
+        padding: 50px 20px 50px 20px;
+    }
 }
 
 @media (max-width: 720px) {
@@ -2515,6 +2517,14 @@ li.active .menu-plumbing-arrow {
 
     .about-company-desc-text {
         font-size: 16px;
+    }
+
+    .desc-low-res {
+        margin-top: 0px;
+    }
+
+    .about-company-content {
+        margin-top: 15px;
     }
 }
 
@@ -2841,6 +2851,10 @@ li.active .menu-plumbing-arrow {
         font-size: 16px;
     }
 
+    .get-request-up-title {
+        font-size: 14px;
+    }
+
     .maps-mobile {
         width: 350px;
         height: 250px;
@@ -2863,14 +2877,15 @@ li.active .menu-plumbing-arrow {
 /* Секция "Проекты, реализованные совместно с нами" */
 
 .projects {
-    padding: 200px 20px 300px 20px;
+    padding: 200px 20px 200px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;  
 }
 
 .projects-up-title {
     position: relative;
-    top: 30px;
+    top: 0px;
+    left: 2px;
 }
 
 .projects-title {
@@ -2882,6 +2897,7 @@ li.active .menu-plumbing-arrow {
     
 .projects-content {
     margin-top: 60px;
+
 }
 
 .line {
@@ -2904,10 +2920,14 @@ li.active .menu-plumbing-arrow {
     display: flex;
     align-items: stretch;
     gap: 40px;
+
+    padding: 20px 0;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .project-name {
-    white-space: nowrap;
     font-family: 'Future New Bold', sans-serif;
     margin-bottom: 10px;
     font-size: 34px;
@@ -2921,6 +2941,11 @@ li.active .menu-plumbing-arrow {
     padding-left: 7%;
     display: flex;
     gap: 20px;
+}
+
+.project-content-second p {
+    max-width: 320px;
+    width: 100%;
 }
 
 .project-content-second img {
@@ -2973,14 +2998,12 @@ li.active .menu-plumbing-arrow {
 }
 
 .open-all-catalog-projects {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    transform: translateY(120px);
+    margin-top: 60px;
+    padding-left: 25%;
 }
 
 
-/* Адаптив */
+/* Адаптив "Проекты, реализованные совместно с нами" */
 
 @media (max-width: 1800px) {
     .project-content-second {
@@ -3054,6 +3077,122 @@ li.active .menu-plumbing-arrow {
         font-size: 55px;
     }
 }
+
+@media (max-width: 840px) {
+    .projects-content-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .project-image {
+        display: none;
+    }
+
+    .project-content-last {
+        margin-left: 0;
+        margin-top: 20px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .project-content-second {
+        padding-left: 0%;   
+    }
+
+    .open-project {
+        margin-bottom: 20px;
+    }
+
+    .project-content-second img {
+        width: 358px;
+        height: 449px;
+    }
+
+    .open-all-catalog-projects {
+        padding-left: 2%;
+    }
+    
+    .projects-title {
+        margin-top: 10px;
+        padding-left: 0%;
+    }
+
+    .projects {
+        padding: 100px 20px 70px 20px;
+    }
+    
+}
+
+@media (max-width: 755px) {
+    .project-content-second {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 490px) {
+    .projects-content-container {
+        margin-top: 0px
+    }
+
+    .projects-title {
+        font-size: 50px;
+    }
+
+    .projects-up-title {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 440px) {
+    .projects-title {
+        font-size: 40px;
+    }
+
+    .projects-content {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 395px) {
+    .project-name {
+        font-size: 24px;
+    }
+
+    .project-data {
+        font-size: 14px;
+    }
+
+    .project-content-second img {
+        width: 340px;
+        height: 388px;
+    }
+}
+
+@media (max-width: 378px) {
+    .project-content-second img {
+        width: 320px;
+        height: 388px;
+    }
+}
+
+@media (max-width: 360px) {
+    .project-content-second img {
+        width: 310px;
+        height: 388px;
+    }
+
+    .project-content-second p {
+        font-size: 16px;
+    }
+
+    .open-project a {
+        font-size: 16px;
+    }
+}
+
+
+
+
 
 /* Секция "Отзывы от покупателей" */
 
@@ -3271,7 +3410,7 @@ li.active .menu-plumbing-arrow {
     border-bottom: 1px solid #AE9877;
 }
 
-/* Адаптив */
+/* Адаптив Отзывы от покупателей */
 
 .show-title {
     display: none;
@@ -3328,6 +3467,30 @@ li.active .menu-plumbing-arrow {
         padding: 35px 43px;
     }
 }
+
+@media (max-width: 890px) {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* Секция "Связаться с нами" */
