@@ -23,6 +23,9 @@ document.querySelectorAll('.projects-nav button').forEach(button => {
       behavior: 'smooth'
     });
 
+    // Добавляем якорь в адресную строку без перезагрузки
+    history.pushState(null, '', targetId);  
+
     setTimeout(() => {
       isScrollingProgrammatically = false;
     }, 100);

@@ -745,6 +745,11 @@ li.active .menu-plumbing-arrow {
     background-color: #EDE4D7;
 }
 
+/* для всех секций с id в нашем блоке */
+.projects-content-container[id] {
+  /* высота вашего headerOffset (110px) плюс желаемый дополнительный отступ */
+  scroll-margin-top: 120px;
+}
 
 .projects-nav {
     width: 100px;
