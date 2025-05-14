@@ -25,7 +25,7 @@ document.querySelectorAll('.projects-nav button').forEach(button => {
 
     setTimeout(() => {
       isScrollingProgrammatically = false;
-    }, 700);
+    }, 100);
   });
 });
 
