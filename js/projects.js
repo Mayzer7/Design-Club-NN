@@ -1,25 +1,32 @@
-// Переключение по навигации
-
+// Переключение по навигации 
+// (isScrollingProgrammatically - состояние нужно, 
+// чтобы при переключении навигации браузер считывал скролл,
+// но не показывал шапку в этот момент)
 
 let isScrollingProgrammatically = false;
 
 document.querySelectorAll('.projects-nav button').forEach(button => {
-    button.addEventListener('click', () => {
-        const targetId = button.getAttribute('data-target');
-        if (!targetId) return;
+  button.addEventListener('click', () => {
+    const targetId = button.getAttribute('data-target');
+    if (!targetId) return;
+    const targetEl = document.querySelector(targetId);
+    if (!targetEl) return;
 
-        isScrollingProgrammatically = true; // Флаг, что скролл программный
-        
-        const targetEl = document.querySelector(targetId);
-        if (targetEl) {
-            targetEl.scrollIntoView({ behavior: 'smooth' });
-        }
+    const headerOffset = 110;
+    const elementPosition = targetEl.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
-        // Через небольшой таймаф снимаем флаг
-        setTimeout(() => {
-            isScrollingProgrammatically = false;
-        }, 1000); // Время анимации скролла + запас
+    isScrollingProgrammatically = true;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
     });
+
+    setTimeout(() => {
+      isScrollingProgrammatically = false;
+    }, 700);
+  });
 });
 
 // Валидация модального окна формы "Связаться с нами"
@@ -539,64 +546,64 @@ const scrollThreshold = 0;         // минимальный порог (мож�
 window.addEventListener('scroll', () => {
     if (isScrollingProgrammatically) return;
 
-  // отменяем все ранее запущенные отложенные скрытия
-  clearTimeout(scrollTimer);
+    // отменяем все ранее запущенные отложенные скрытия
+    clearTimeout(scrollTimer);
 
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  const scrollDelta = scrollTop - lastScrollTop;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollDelta = scrollTop - lastScrollTop;
 
-  // Учитываем любые изменения скролла, даже при scrollTop === 0
-  if (Math.abs(scrollDelta) < scrollThreshold) {
-    lastScrollTop = scrollTop; // всё равно обновим позицию
-    return;
-  }
+    // Учитываем любые изменения скролла, даже при scrollTop === 0
+    if (Math.abs(scrollDelta) < scrollThreshold) {
+        lastScrollTop = scrollTop; // всё равно обновим позицию
+        return;
+    }
 
-  if (scrollDelta > 0) {
-    // Скролл вниз — скрываем навигацию сразу
-    stickyNav.classList.remove('hidden');
+    if (scrollDelta > 0) {
+        // Скролл вниз — скрываем навигацию сразу
+        stickyNav.classList.remove('hidden');
 
-    header.classList.add('header-hidden');
-    header.classList.remove('header-scrolled-up');
+        header.classList.add('header-hidden');
+        header.classList.remove('header-scrolled-up');
 
-    searchInput.blur(); 
-    searchInput.value = ''; 
-    searchItems.classList.remove('show'); 
+        searchInput.blur(); 
+        searchInput.value = ''; 
+        searchItems.classList.remove('show'); 
 
-    // Убираем пустые отступы
-    header.style.paddingBottom = '20px';
+        // Убираем пустые отступы
+        header.style.paddingBottom = '20px';
 
-    // Сброс состояния
-    blurContainers.forEach(container => {
-      container.style.filter = '';
-      container.style.cursor = '';
-    });
+        // Сброс состояния
+        blurContainers.forEach(container => {
+        container.style.filter = '';
+        container.style.cursor = '';
+        });
 
-    header.style.backgroundColor = 'transparent';
-    underHeader.style.filter = 'none';
-    underHeader.style.cursor = '';
-    openCatalog.parentElement.classList.remove('active');
-    isCatalogActive = false;
-    menuNavigation.style.display = 'none';
-    menuNavigation.classList.add('default-margin');
-    menuNavigation.classList.remove('search-active');
-    openCatalog.style.color = '';
+        header.style.backgroundColor = 'transparent';
+        underHeader.style.filter = 'none';
+        underHeader.style.cursor = '';
+        openCatalog.parentElement.classList.remove('active');
+        isCatalogActive = false;
+        menuNavigation.style.display = 'none';
+        menuNavigation.classList.add('default-margin');
+        menuNavigation.classList.remove('search-active');
+        openCatalog.style.color = '';
 
-  } else {
-    // Скролл вверх — показываем навигацию с задержкой
-    header.style.display = 'block';
+    } else {
+        // Скролл вверх — показываем навигацию с задержкой
+        header.style.display = 'block';
 
-    scrollTimer = setTimeout(() => {
-      stickyNav.classList.add('hidden');
-    }, 300);
+        scrollTimer = setTimeout(() => {
+        stickyNav.classList.add('hidden');
+        }, 300);
 
-    header.classList.remove('header-hidden');
-    header.classList.add('header-scrolled-up');
-  }
+        header.classList.remove('header-hidden');
+        header.classList.add('header-scrolled-up');
+    }
 
-  // Если в самом верху — убираем "скролл вверх" класс
-  if (scrollTop <= 0) {
-    header.classList.remove('header-scrolled-up');
-  }
+    // Если в самом верху — убираем "скролл вверх" класс
+    if (scrollTop <= 0) {
+        header.classList.remove('header-scrolled-up');
+    }
 
-  lastScrollTop = scrollTop;
+    lastScrollTop = scrollTop;
 });
