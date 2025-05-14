@@ -2637,6 +2637,8 @@ li.active .menu-plumbing-arrow {
     padding: 5px 0; 
 }
 
+
+
 .error-contact {
     font-family: 'SF Pro Display', sans-serif; 
     position: absolute;
@@ -2861,17 +2863,13 @@ li.active .menu-plumbing-arrow {
     }
 }
 
-
 @media (max-width: 380px) {
     .maps-mobile {
         width: 310px;
         height: 200px;
     }
+    
 }
-
-
-
-
 
 
 /* Секция "Проекты, реализованные совместно с нами" */
@@ -3596,22 +3594,22 @@ li.active .menu-plumbing-arrow {
     padding: 150px 0 250px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif; 
-    background-image: url("../images/main-page/form-contact-us.png");
+    background-image: url("../images/main-page/get-contact-bg.png");
     background-repeat: no-repeat;
     background-size: cover; 
     background-position: center right; 
+    position: relative;
 }
 
 .get-contact-container {
     display: flex;
-    justify-content: space-between;
     height: 524px;
 }
 
 .left-side {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; 
+    justify-content: space-between;
     height: 560px;
 }
 
@@ -3625,24 +3623,32 @@ li.active .menu-plumbing-arrow {
     flex-direction: column;
     justify-content: space-between;
     gap: 40px;
-    padding-left: 28%;
-    width: 800px;
+    width: 100%;
+    max-width: 2000px;
+    padding-left: 38%;
 }
 
-.main-side-wrapper p {
-    width: 400px;   
+.get-contact-form {
+    max-width: 900px;
+    width: 100%;
+}
+
+.main-side-text {
+    margin-bottom: 50px; 
+    padding-right: 20px;
 }
 
 .main-side-wrapper h1 {
+    white-space: nowrap;
     font-family: 'Future New Light', sans-serif;
     font-size: 76px;
-    white-space: nowrap;
 }
 
 .main-side-wrapper form {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding-right: 20px;
 }
 
 .opacity {
@@ -3652,14 +3658,13 @@ li.active .menu-plumbing-arrow {
 /* Как удобнее связаться */
 
 .contact-input-menu {
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     background: transparent;
     padding: 5px 0;
     gap: 8px;
-    width: 105%;
+    width: 100%;
 }
 
 .contact-input-menu input {
@@ -3675,7 +3680,6 @@ li.active .menu-plumbing-arrow {
 
 .contact-input-fields {
     width: 100%;
-    position: relative;
     padding-right: 40px;
     box-sizing: border-box; 
 
@@ -3698,7 +3702,6 @@ li.active .menu-plumbing-arrow {
 
 .contact-input-fields-menu {
     width: 100%;
-    position: relative;
     box-sizing: border-box; 
 }
 
@@ -3737,7 +3740,9 @@ li.active .menu-plumbing-arrow {
     color: #fff;
 }
 
-/* Адаптив */
+
+
+/* Адаптив "Связаться с нами" */
 
 @media (max-width: 1585px) {
     .main-side-wrapper {
@@ -3753,14 +3758,15 @@ li.active .menu-plumbing-arrow {
 
 @media (max-width: 1100px) {
     .main-side-wrapper {
-        width: 645px;
+        padding-left: 10%;
+    }
+
+    .main-side-wrapper {
+        max-width: 650px;
     }
 }
 
 @media (max-width: 1030px) {
-    .main-side-wrapper {
-        padding-left: 20%;
-    }
 
     .get-contact {
         background-image: url("../images/main-page/adaptive/contact-background.png");
@@ -3770,11 +3776,49 @@ li.active .menu-plumbing-arrow {
         font-size: 60px;
     }
 
-    .main-side-wrapper p {
+    .main-side-text {
         font-size: 16px;
     }
 }
 
+@media (max-width: 900px) {
+    .left-side img {
+        display: none;
+    }
+
+    .get-up-title {
+        position: absolute;
+        top: 120px;
+        left: 20px;
+    }
+
+    .main-side-wrapper {
+        padding-left: 0%;
+    }
+}
+
+@media (max-width: 565px) {
+    .main-side-wrapper h1 {
+        white-space: normal;
+    }
+}
+
+@media (max-width: 410px) {
+    .main-side-wrapper h1 {
+        font-size: 40px;
+    }
+
+    .get-up-title {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 370px) {
+    .contact-input-fields input::placeholder,
+    .contact-input input::placeholder {
+        font-size: 14px;
+    }
+}
 
 /* Footer */
 
@@ -3867,7 +3911,7 @@ li.active .menu-plumbing-arrow {
     color: #AE9877;
 }
 
-
+/* Футер для 1024 разрешения */
 
 .footer-1024 {
     display: none;
@@ -3925,7 +3969,63 @@ li.active .menu-plumbing-arrow {
 }
 
 
-/* Адаптив */
+/* Футер при разрешении меньше 1024 (870px) */
+
+.footer-below-1024 {
+    display: none;
+    padding: 0px 20px 20px 20px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300; 
+}
+
+.footer-first-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.footer-second-line {
+    margin: 40px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-first-column {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.footer-design-club-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.copyright-lines {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.copyrigth-first-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.copyrigth-second-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+    
+}
+
+/* Адаптив для footer */
 
 @media (max-width: 1335px) {
     .footer {
@@ -3936,6 +4036,63 @@ li.active .menu-plumbing-arrow {
         display: block;
     }
 }
+
+@media (max-width: 870px) {
+    .footer-1024 {
+        display: none;
+    }
+
+    .footer-below-1024 {
+        display: block;
+    }
+
+}
+
+
+@media (max-width: 460px) {
+    .footer-nav-up h1 a {
+        font-size: 20px;
+    }
+
+    .footer-nav-up ul li a {
+        font-size: 16px;
+    }
+
+    .footer-nav-down p {
+        font-size: 14px;
+    }
+
+    .footer-nav-down h1 {
+        font-size: 20px;
+    }
+
+    .copyright-lines a {
+        font-size: 14px;
+    }
+
+    .design-club-logo {
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 440px) {
+    .footer-logo-below {
+        width: 120px;
+        height: 91px;
+    }
+
+    .footer-icons img {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+
+
+
+
+
+
 
 /* Модальное окно "Связаться с нами" */
 
@@ -3958,8 +4115,10 @@ li.active .menu-plumbing-arrow {
 }
 
 .modal-content {
-    width: 725px;
-    height: 849px;
+    max-width: 725px;
+    width: 100%;
+    max-height: 895px;
+    height: 100%;
     background-color: #151C28;
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     min-width: 300px;
@@ -3981,8 +4140,7 @@ li.active .menu-plumbing-arrow {
     align-items: center;
     text-align: center;
     padding: 40px;
-
-    position: relative;
+    
 }
 
 
@@ -4138,7 +4296,7 @@ li.active .menu-plumbing-arrow {
 }
 
 
-/* Адаптив модального окна */
+/* Адаптив модального окна "Связаться с нами"*/
 
 @media (max-width: 1040px) {
     .contact-modal-title {
@@ -4159,10 +4317,95 @@ li.active .menu-plumbing-arrow {
     }
 
     .modal-content {
-        width: 731px;
-        height: 659px;
+        max-width: 731px;
+        max-height: 659px;
     }
 }
+
+@media (max-width: 785px) {
+    .modal-content {
+        max-width: 95%; 
+    }
+}
+
+@media (max-width: 642px) {
+    .modal-content {
+        max-height: 710px;
+    }
+}
+
+@media (max-width: 544px) {
+    .modal-content {
+        max-height: 730px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-form-modal {
+        padding: 0 20px;
+    }
+
+    .modal-content-info {
+        padding: 40px 20px;
+    }
+}
+
+@media (max-width: 427px) {
+    .get-request-button-modal {
+        margin-top: 20px;
+    }
+
+    .modal-content {
+        max-height: 740px;
+    }
+}
+
+
+@media (max-width: 410px) {
+    .modal-content-info-inner img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .phone-number {
+        font-size: 16px;
+    }
+
+    .res-1024 {
+        font-size: 38px;
+    }
+
+    .modal-description {
+        font-size: 16px;
+    }
+
+    .accept-politics-modal p {
+        font-size: 14px;
+    }
+
+    .accept-politics-modal p span a {
+        font-size: 14px;
+    }
+
+    .modal-content {
+        max-height: 650px;
+    }
+}
+
+@media (max-width: 395px) {
+    .modal-content {
+        max-height: 690px;
+    }
+}
+
+@media (max-width: 363px) {
+    .modal-content {
+        max-height: 700px;
+    }
+}
+
+
+
 
 
 /* Модальное окно "Спасибо за заявку" */
@@ -4229,6 +4472,10 @@ li.active .menu-plumbing-arrow {
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300;
 }
+
+/* Адаптив модального окна "Спасибо за заявку" */
+
+
 
 
 /* Модальное окно "Произошла ошибка" */
