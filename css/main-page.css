@@ -3202,33 +3202,37 @@ li.active .menu-plumbing-arrow {
     background-color: #171F2E;
     font-family: 'SF Pro Display Thin', sans-serif;  
     overflow: hidden;
+    
+    
 }
 
-.reviews-up-title {
-    position: relative;
-    top: -30px;
+.review-up-title {
+    position: absolute;
+    top: 0;
+    left: 2px;
 }
 
-.reviews-title{
-    flex-grow: 1;
-}
-
-.reviews-title h1 {
+.reviews-title {
     font-family: 'Future New Light', sans-serif;
     font-size: 76px;
+    padding-left: 24%;
     text-transform: uppercase;
     margin-bottom: 20px;
+
 } 
 
+.reviews-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+}
 
 .reviews-content {
     margin-top: 60px;
+    display: flex;
 }
 
-.reviews-content-container {
-    display: flex;
-    gap: 40px;
-}
 
 
 .rating-number {
@@ -3281,7 +3285,6 @@ li.active .menu-plumbing-arrow {
     display: flex;
     flex-direction: column;
     padding-left: 10%;
-    margin-top: -170px;
 }
 
 .prediction-cards header {
@@ -3293,6 +3296,7 @@ li.active .menu-plumbing-arrow {
     gap: 20px;
     overflow-x: visible; 
     padding-bottom: 20px;
+    padding-left: 10%;
     transition: transform 0.5s ease; 
 }
 
@@ -3380,9 +3384,7 @@ li.active .menu-plumbing-arrow {
 }
 
 .nav-arrows-reviews {
-    position: relative;
-    bottom: 10px;
-    z-index: 10;
+    display: flex;
 }
 
 .nav-arrows-reviews button {
@@ -3392,6 +3394,7 @@ li.active .menu-plumbing-arrow {
 }
 
 .open-all-catalog-reviews {
+    margin-left: 24%;
     padding: 5px;
     margin-top: 60px;
     display: flex;
@@ -3412,53 +3415,69 @@ li.active .menu-plumbing-arrow {
 
 /* Адаптив Отзывы от покупателей */
 
-.show-title {
-    display: none;
+@media (max-width: 1845px) {
+    .reviews-cards {
+        padding-left: 9%;
+    }
 }
 
-@media (max-width: 1774px) {
-    .prediction-cards {
+@media (max-width: 1700px) {
+    .reviews-cards {
+        padding-left: 8%;
+    }
+}
+
+@media (max-width: 1525px) {
+    .reviews-cards {
+        padding-left: 7%;
+    }
+}
+
+@media (max-width: 1426px) {
+    .reviews-cards {
+        padding-left: 6%;
+    }
+}
+
+@media (max-width: 1415px) {
+    .reviews-cards {
+        padding-left: 5%;
+    }
+}
+
+@media (max-width: 1280px) {
+    .reviews-cards {
         padding-left: 4%;
     }
 }
 
-@media (max-width: 1500px) {
-    .reviews-content-container {
-        gap: 0;
-    }
-
-    .prediction-cards {
-        padding-left: 3%;
+@media (max-width: 1200px) {
+    .reviews-title {
+        padding-left: 25%;
     }
 }
 
-@media (max-width: 1400px) {
-    .reviews-title h1 {
-        font-size: 60px;
+@media (max-width: 1150px) {
+    .reviews-title {
+        padding-left: 27%;
     }
 
-    .prediction-cards {
-        margin-top: -150px;
+    .open-all-catalog-reviews {
+        padding-left: 4%;
     }
 }
 
-@media (max-width: 1400px) {
-    .hide-title {
-        display: none;
+@media (max-width: 1050px) {
+    .reviews-title {
+        padding-left: 29%;
     }
 
-    .show-title {
-        display: block;
+    .open-all-catalog-reviews {
+        padding-left: 6%;
     }
+}
 
-    .prediction-cards header {
-        margin-bottom: 10px;
-    }
-
-    .prediction-cards {
-        margin-top: -170px;
-    }
-
+@media (max-width: 1030px) {
     .rating-number h1 {
         font-size: 47px;
     }
@@ -3466,27 +3485,105 @@ li.active .menu-plumbing-arrow {
     .rating-number {
         padding: 35px 43px;
     }
+
+    .reviews-title {
+        font-size: 60px;
+    }
+
+    .reviews-title {
+        padding-left: 26%;
+    }
+
+    .open-all-catalog-reviews {
+        padding-left: 3%;
+    }
 }
 
-@media (max-width: 890px) {
 
+@media (max-width: 1000px) {
+    .reviews-content {
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 0px;
+    }
+
+    .reviews-title,
+    .reviews-cards {
+        padding-left: 0%;
+    }
+
+    .open-all-catalog-reviews {
+        margin-left: 0%;
+        padding: 0;
+    }
+
+    .nav-arrows-reviews {
+        position: absolute;
+        top: 250px;
+        right: 0;
+    }
+
+    .review-up-title {
+        top: -30px;
+    }
+
+    .rating-number h1 {
+        font-size: 93px;
+    }
+
+    .rating-number {
+        padding: 23px 73px;
+    }
+
+    .open-all-catalog-reviews {
+        margin-top: 20px;
+    }
 }
 
+@media (max-width: 740px) {
+    .nav-arrows-reviews {
+        top: 320px;
+    }
+}
 
+@media (max-width: 651px) {
+    .review-card {
+        min-width: 282px;
+        min-height: 400px;
+    }
 
+    .review-author {
+        font-size: 24px;
+    }
 
+    .review-text {
+        font-size: 16px;
+    }
 
+    .review-card {
+        align-items: flex-start;
+    }
 
+    .open-all-catalog-reviews {
+        margin-top: 10px;
+    }
+}
 
+@media (max-width: 470px) {
+    .nav-arrows-reviews {
+        display: none;
+    }
+}
 
+@media (max-width: 430px) {
+    .reviews-title {
+        font-size: 38px;
+    }
 
-
-
-
-
-
-
-
+    .review-up-title {
+        font-size: 14px;
+    }
+}
 
 
 
