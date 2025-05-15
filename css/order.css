@@ -115,15 +115,6 @@ body {
 
 /* Шапка */
 
-.logo-img {
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.logo-img:hover {
-  transform: scale(1.1);
-  cursor: pointer;
-}
-
 .header-top {
     position: fixed;
     top: 0;
