@@ -809,7 +809,6 @@ li.active .menu-plumbing-arrow {
 }
 
 
-
 /* Секция "Остались вопросы?" */
 
 .get-contact {
@@ -825,7 +824,6 @@ li.active .menu-plumbing-arrow {
 
 .get-contact-container {
     display: flex;
-    justify-content: space-between;
     height: 524px;
 }
 
@@ -853,7 +851,8 @@ li.active .menu-plumbing-arrow {
     flex-direction: column;
     justify-content: space-between;
     gap: 40px;
-    padding-left: 25%;
+    max-width: 910px;
+    padding-left: 38%;  
 }
 
 .main-side-wrapper h1 {
@@ -867,6 +866,7 @@ li.active .menu-plumbing-arrow {
     display: flex;
     flex-direction: column;
     gap: 35px;
+    width: 105%;
 }
 
 .opacity {
@@ -882,7 +882,7 @@ li.active .menu-plumbing-arrow {
     background: transparent;
     padding: 5px 0;
     gap: 8px;
-    width: 105%;
+    width: 95%;
 }
 
 .contact-input input {
@@ -944,7 +944,7 @@ li.active .menu-plumbing-arrow {
     border: none;
     color: #fff;
     transition: all 0.3s ease;
-    width: 105%;
+    width: 95%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
@@ -991,31 +991,115 @@ li.active .menu-plumbing-arrow {
     background-image: url('../images/svg/check-mark.svg');
 }
 
+.main-side-text {
+    font-size: 18px;
+}
+
 /* Адаптив "Остались вопросы" */
 
-@media (max-width: 1200px) {
+@media (max-width: 1770px) {
     .main-side-wrapper {
-        padding-left: 20%;
+        padding-left: 33%;
     }
 }
 
-@media (max-width: 1180px) {
-    .main-side-wrapper h1 {
-        font-size: 60px;
+@media (max-width: 1655px) {
+    .main-side-wrapper {
+        padding-left: 30%;
+    }
+}
+
+@media (max-width: 1555px) {
+    .main-side-wrapper {
+        padding-left: 25%;  
+    }
+}
+
+@media (max-width: 1390px) {
+    .main-side-wrapper {
+        padding-left: 20%;  
+    }
+}
+
+@media (max-width: 1200px) {
+    .main-side-wrapper form {
+        width: 100%;
     }
 
     .main-side-text {
-        font-size: 16px;
+        max-width: 420px;
+        width: 100%;
     }
+}
 
-    
+@media (max-width: 1128px) {
+    .main-side-wrapper {
+        padding-left: 17%;  
+    }
 }
 
 @media (max-width: 1100px) {
     .get-contact {
         background-image: url("../images/furniture-build/adaptive/background-contact-1024.png");
     }
+
+    .main-side-wrapper {
+        padding-left: 15%;  
+    }
+
+    .main-side-wrapper h1 {
+        font-size: 60px;
+    }
+
+    .main-side-wrapper form {
+        width: 105%;
+    }
+
+    .main-side-text {
+        font-size: 16px;
+    }
 }
+
+@media (max-width: 950px) {
+    .left-side div {
+        display: none;
+    }
+
+    .get-contact-up-title {
+        position: absolute;
+        top: 50px;
+        left: 20px;
+    }
+
+    .main-side-wrapper {
+        padding-left: 0%;  
+    }
+}
+
+@media (max-width: 660px) {
+    .main-side-wrapper h1 {
+        white-space: normal;
+    }
+
+    .main-side-wrapper form {
+        width: 100%;
+    }
+
+    .accept-politics p {
+        white-space: normal;
+    }
+}
+
+@media (max-width: 450px) {
+    .get-contact-up-title {
+        font-size: 14px;
+    }
+
+    .main-side-wrapper h1 {
+        font-size: 50px;
+    }
+}
+
 
 /* Footer */
 

@@ -1424,26 +1424,30 @@ li.active .menu-plumbing-arrow {
 
 /* Секция "Связаться с нами" */
 
+
+
+/* Секция "Связаться с нами" */
+
 .get-contact {
     padding: 150px 0 250px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif; 
-    background-image: url("../images/main-page/form-contact-us.png");
+    background-image: url("../images/main-page/get-contact-bg.png");
     background-repeat: no-repeat;
     background-size: cover; 
     background-position: center right; 
+    position: relative;
 }
 
 .get-contact-container {
     display: flex;
-    justify-content: space-between;
     height: 524px;
 }
 
 .left-side {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; 
+    justify-content: space-between;
     height: 560px;
 }
 
@@ -1457,30 +1461,37 @@ li.active .menu-plumbing-arrow {
     flex-direction: column;
     justify-content: space-between;
     gap: 40px;
-    padding-left: 28%;
-    width: 800px;
+    width: 100%;
+    max-width: 2000px;
+    padding-left: 38%;
 }
 
-.main-side-wrapper p {
-    width: 400px;   
+.get-contact-form {
+    max-width: 900px;
+    width: 100%;
+}
+
+.main-side-text {
+    margin-bottom: 50px; 
+    padding-right: 20px;
 }
 
 .main-side-wrapper h1 {
+    white-space: nowrap;
     font-family: 'Future New Light', sans-serif;
     font-size: 76px;
-    white-space: nowrap;
 }
 
 .main-side-wrapper form {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding-right: 20px;
 }
 
 .opacity {
     opacity: 0;
 }
-
 
 
 .contact-input {
@@ -1492,7 +1503,7 @@ li.active .menu-plumbing-arrow {
     background: transparent;
     padding: 5px 0;
     gap: 8px;
-    width: 105%;
+    width: 100%;
     transition: all 0.3s ease;
 }
 
@@ -1511,8 +1522,20 @@ li.active .menu-plumbing-arrow {
 }
 
 
+.error-contact {
+    font-family: 'SF Pro Display', sans-serif; 
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    color: #EB5151;
+    font-size: 14px;
+    display: none;
+    margin-top: 5px;
+    padding-left: 5px;
+}
+
 .accept-politics {
-    white-space: nowrap;
     position: relative;
     display: flex;
     align-items: center;
@@ -1528,21 +1551,6 @@ li.active .menu-plumbing-arrow {
     color: #AE9877;
     border-bottom: 1px solid #AE9877;
 }
-
-
-.error-contact {
-    font-family: 'SF Pro Display', sans-serif; 
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    color: #EB5151;
-    font-size: 14px;
-    display: none;
-    margin-top: 5px;
-    padding-left: 5px;
-}
-
 
 .get-request-button {
     margin-top: 5px;
@@ -1560,7 +1568,7 @@ li.active .menu-plumbing-arrow {
     border: none;
     color: #fff;
     transition: all 0.3s ease;
-    width: 105%;
+    width: 100%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
@@ -1609,20 +1617,16 @@ li.active .menu-plumbing-arrow {
 
 
 
-
 /* Как удобнее связаться */
 
-
-
 .contact-input-menu {
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     background: transparent;
     padding: 5px 0;
     gap: 8px;
-    width: 105%;
+    width: 100%;
 }
 
 .contact-input-menu input {
@@ -1638,7 +1642,6 @@ li.active .menu-plumbing-arrow {
 
 .contact-input-fields {
     width: 100%;
-    position: relative;
     padding-right: 40px;
     box-sizing: border-box; 
 
@@ -1661,7 +1664,6 @@ li.active .menu-plumbing-arrow {
 
 .contact-input-fields-menu {
     width: 100%;
-    position: relative;
     box-sizing: border-box; 
 }
 
@@ -1700,7 +1702,11 @@ li.active .menu-plumbing-arrow {
     color: #fff;
 }
 
-/* Адаптив */
+
+
+
+
+/* Адаптив "Связаться с нами" */
 
 @media (max-width: 1585px) {
     .main-side-wrapper {
@@ -1716,14 +1722,15 @@ li.active .menu-plumbing-arrow {
 
 @media (max-width: 1100px) {
     .main-side-wrapper {
-        width: 645px;
+        padding-left: 10%;
+    }
+
+    .main-side-wrapper {
+        max-width: 650px;
     }
 }
 
 @media (max-width: 1030px) {
-    .main-side-wrapper {
-        padding-left: 20%;
-    }
 
     .get-contact {
         background-image: url("../images/main-page/adaptive/contact-background.png");
@@ -1733,11 +1740,49 @@ li.active .menu-plumbing-arrow {
         font-size: 60px;
     }
 
-    .main-side-wrapper p {
+    .main-side-text {
         font-size: 16px;
     }
 }
 
+@media (max-width: 900px) {
+    .left-side img {
+        display: none;
+    }
+
+    .get-up-title {
+        position: absolute;
+        top: 120px;
+        left: 20px;
+    }
+
+    .main-side-wrapper {
+        padding-left: 0%;
+    }
+}
+
+@media (max-width: 565px) {
+    .main-side-wrapper h1 {
+        white-space: normal;
+    }
+}
+
+@media (max-width: 410px) {
+    .main-side-wrapper h1 {
+        font-size: 40px;
+    }
+
+    .get-up-title {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 370px) {
+    .contact-input-fields input::placeholder,
+    .contact-input input::placeholder {
+        font-size: 14px;
+    }
+}
 
 
 

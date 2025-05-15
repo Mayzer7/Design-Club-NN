@@ -105,7 +105,18 @@ body {
     background-color: #151c28;
 }
 
+
+
 /* Шапка */
+
+.logo-img {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
 
 .header-top {
     position: fixed;
@@ -224,6 +235,11 @@ li.active .menu-plumbing-arrow {
     transition: margin-top 0.5s ease, background-color 0.5s ease;
     background-color: #151c28;
     /* min-height: 250px; */
+}
+
+/* Основной отступ */
+.menu-navigation.default-margin {
+    margin-top: 170px;
 }
 
 .menu-navigation-container {
@@ -351,6 +367,11 @@ li.active .menu-plumbing-arrow {
     z-index: 5;
 }
 
+
+
+
+
+
 .search-items {
     margin-top: 20px;
     display: flex;
@@ -447,7 +468,6 @@ li.active .menu-plumbing-arrow {
     align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     background: transparent;
-    min-width: 360px;
     padding: 5px 0;
     gap: 8px;
 }
@@ -507,6 +527,77 @@ li.active .menu-plumbing-arrow {
 .contact-button:hover {
     background-color: #AE9877;
     color: #fff;
+}
+
+/* Адаптив Шапки */
+
+
+/* Отступ при активном поиске */
+.menu-navigation.search-active {
+    margin-top: 420px; 
+}
+
+
+
+
+@media (max-width: 1200px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .catalog-nav {
+        margin-right: 30px;
+    }
+
+    .search-container {
+        max-width: 250px;
+    }
+
+    .menu-navigation.default-margin {
+        margin-top: 210px;
+    }
+
+    /* Отступ при активном поиске */
+    .menu-navigation.search-active {
+        margin-top: 480px; 
+    }
+}
+
+@media (max-width: 1024px) {
+    .menu-navigation.default-margin {
+        margin-top: 200px;
+    }
+
+    /* Отступ при активном поиске */
+    .menu-navigation.search-active {
+        margin-top: 450px; 
+    }
+
+    .search-container {
+        max-width: 214px;
+    }
+
+    .main-nav a {
+        font-size: 16px;
+    }
+    
+    .catalog-nav ul li a {
+        font-size: 16px;
+    }
+
+    .logo {
+        margin-right: 100px;
+    }
+
+    .contact-header a {
+        font-size: 16px;
+    }
+
+    .main-nav ul {
+        gap: 5px;
+    }
+    
 }
 
 
@@ -639,7 +730,6 @@ li.active .menu-plumbing-arrow {
 
 .get-contact-container {
     display: flex;
-    justify-content: space-between;
     min-height: 524px;
     height: 100%;
 }
@@ -648,7 +738,10 @@ li.active .menu-plumbing-arrow {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
+}
+
+.left-side svg {
+    margin-bottom: 200px;
 }
 
 .main-side-wrapper {
@@ -656,7 +749,9 @@ li.active .menu-plumbing-arrow {
     flex-direction: column;
     justify-content: space-between;
     gap: 40px;
-    padding-left: 10%;
+    max-width: 800px;
+    width: 100%;
+    margin-left: 55%;
 }
 
 .main-side-wrapper h1 {
@@ -664,6 +759,11 @@ li.active .menu-plumbing-arrow {
     font-size: 93px;
     white-space: nowrap;
     text-transform: uppercase;
+}
+
+.main-side-subtitle {
+    max-width: 645px;
+    width: 100%;
 }
 
 .opacity {
@@ -840,6 +940,62 @@ li.active .menu-plumbing-arrow {
 }
 
 
+/* Адаптив "Оставьте ваше резюме" */
+
+@media (max-width: 1800px) {
+    .main-side-wrapper {
+        margin-left: 48%;
+    }
+}
+
+@media (max-width: 1600px) {
+    .main-side-wrapper {
+        margin-left: 40%;
+    }
+}
+
+@media (max-width: 1425px) {
+    .main-side-wrapper {
+        margin-left: 35%;
+    }
+}
+
+@media (max-width: 1320px) {
+    .main-side-wrapper {
+        margin-left: 30%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .main-side-wrapper {
+        margin-left: 25%;
+    }
+}
+
+@media (max-width: 1100px) {
+    .get-contact {
+        background-image: url('../images/vacancies/adaptive/background-1024.png');
+    }
+
+    .main-side-wrapper {
+        margin-left: 20%;
+    }
+
+}
+
+@media (max-width: 1030px) {
+    .main-side-wrapper {
+        margin-left: 15%;
+    }
+
+    .main-side-subtitle {
+        max-width: 412px;
+    }
+
+    .main-side-wrapper h1 {
+        font-size: 60px;
+    }
+}
 
 
 /* Footer */
@@ -870,6 +1026,7 @@ li.active .menu-plumbing-arrow {
 }
 
 .footer-navigation h1 {
+    white-space: nowrap;
     padding-bottom: 10px;
     text-transform: uppercase;
     font-size: 24px;
@@ -930,8 +1087,77 @@ li.active .menu-plumbing-arrow {
 
 .footer-copyright a:hover {
     color: #AE9877;
-}   
+}
 
+
+
+.footer-1024 {
+    display: none;
+    padding: 100px 20px 20px 20px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300; 
+}
+
+.footer-container-1024 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-top: 20px;
+}
+
+.footer-copyright-1024 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-top: 20px;
+}
+
+.last-column {
+    justify-self: end;
+}
+
+.footer-copyright-1024 a {
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-copyright-1024 a:hover {
+    color: #AE9877;
+}
+
+.footer-grid-down {
+    margin-top: 60px;
+    margin-bottom: 36px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-top: 20px;
+}
+
+.footer-nav-down h1 {
+    text-transform: uppercase;
+    font-size: 24px;
+}
+
+.footer-nav-down p {
+    font-size: 16px;
+    color: rgba(237, 228, 215, 0.7);
+    margin-bottom: 5px;
+}
+
+
+/* Адаптив */
+
+@media (max-width: 1335px) {
+    .footer {
+        display: none;
+    }
+
+    .footer-1024 {
+        display: block;
+    }
+}
 
 
 
@@ -946,7 +1172,7 @@ li.active .menu-plumbing-arrow {
     align-items: center;
     opacity: 0;  
     transform: scale(0.9); 
-    transition: opacity 0.5s ease, transform 0.5s ease;  /* Плавная анимация */
+    transition: opacity 0.5s ease, transform 0.5s ease;  
 }
 
 .modal.open {
@@ -993,7 +1219,6 @@ li.active .menu-plumbing-arrow {
     cursor: pointer;
 }
 
-
 .modal-content-info img {
     margin-bottom: 30px;
     width: 171px;
@@ -1005,9 +1230,17 @@ li.active .menu-plumbing-arrow {
     margin-bottom: 20px;
 }
 
-.modal-content-info h1 {
+.contact-modal-title {
     font-family: 'Future New Light', sans-serif;
     font-size: 76px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.res-1024 {
+    display: none;
+    font-family: 'Future New Light', sans-serif;
+    font-size: 60px;
     text-transform: uppercase;
     margin-bottom: 20px;
 }
@@ -1129,6 +1362,32 @@ li.active .menu-plumbing-arrow {
 }
 
 
+/* Адаптив модального окна */
+
+@media (max-width: 1040px) {
+    .contact-modal-title {
+        display: none;
+    }
+
+    .res-1024 {
+        display: block;
+    }
+    
+    .modal-content-info img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .modal-description {
+        font-size: 16px;
+    }
+
+    .modal-content {
+        width: 731px;
+        height: 659px;
+    }
+}
+
 
 /* Модальное окно "Спасибо за заявку" */
 
@@ -1224,3 +1483,6 @@ li.active .menu-plumbing-arrow {
     min-width: 300px;
     position: relative;
 }
+
+
+
