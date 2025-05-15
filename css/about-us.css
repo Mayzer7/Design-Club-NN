@@ -152,6 +152,7 @@ body {
 }
 
 .header-right {
+    margin-left: 13%;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
