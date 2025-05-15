@@ -36,6 +36,7 @@
                             материалов. Выбор смесителя не только влияет на 
                             функциональность, но и на общий стиль и атмосферу ванных 
                             комнат и кухонь, делая их более стильными и удобными.
+                            
                         </p>
 
                         <div class="nav-arrows-products">
@@ -62,102 +63,114 @@
             <header class="header-top">
                 <div class="container">
                     <div class="header-container">
-                        <a href="main-page.html">
-                            <img src="images/svg/logo.svg" alt="Логотип" class="logo">
+                        <a href="main-page.html" class="logo-link">
+                            <img src="images/svg/logo.svg" alt="Логотип" class="logo logo-img">
                         </a>
             
-                        <div class="nav-container">
-                            <nav class="catalog-nav">
-                                <ul>
-                                    <li>
-                                        <a class="open-catalog" href="#">КАТАЛОГ</a>
-                                        
-                                        <svg class="down-arrow" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
-                                        </svg>
-                                    </li>
-                                </ul>
-                            </nav>
+                        <div class="header-right">
+                            <div class="nav-container">
+                                <nav class="catalog-nav">
+                                    <ul>
+                                        <li>
+                                            <a class="open-catalog" href="#">КАТАЛОГ</a>
+                                            
+                                            <svg class="down-arrow" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
+                                            </svg>
+                                        </li>
+                                    </ul>
+                                </nav>
+                
+                                <nav class="main-nav">
+                                    <ul>
+                                        <li><a href="about-us-page.html">О НАС</a></li>
+                                        <li><a href="projects-page.html">ПРОЕКТЫ</a></li>
+                                        <li><a href="customers-page.html">ПОКУПАТЕЛЯМ</a></li>
+                                        <li><a href="reviews-page.html">ОТЗЫВЫ</a></li>
+                                        <li><a href="services-page.html">УСЛУГИ</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
             
-                            <nav class="main-nav">
-                                <ul>
-                                    <li><a href="about-us-page.html">О НАС</a></li>
-                                    <li><a href="projects-page.html">ПРОЕКТЫ</a></li>
-                                    <li><a href="customers-page.html">ПОКУПАТЕЛЯМ</a></li>
-                                    <li><a href="reviews-page.html">ОТЗЫВЫ</a></li>
-                                    <li><a href="services-page.html">УСЛУГИ</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-        
-                        <div class="search-container">
-                            <div class="search-bar">
-                                <input id="search-input" type="text" placeholder="Искать">
-                                <button class="search-icon-button">
-                                    <img src="images/svg/search.svg" alt="Поиск" class="search-icon">
+                            <div class="search-container">
+                                <div class="search-bar">
+                                    <input id="search-input" type="text" placeholder="Искать">
+                                    <button class="search-icon-button">
+                                        <img src="images/svg/search.svg" alt="Поиск" class="search-icon">
+                                    </button>
+                                </div>
+            
+                                <div class="search-items">
+                                    <div class="search-item">
+                                        <a href="#" class="zoom-image">
+                                            <img src="images/main-page/product-card-crane.png" alt="">
+                                        </a>
+                                    
+                                        <div class="search-item-info">
+                                            <a href="#">Раковина Ornella</a>
+            
+                                            <a href="#">27 000 ₽</a>
+                                        </div>
+                                    </div>
+            
+                                    <hr class="line">
+            
+                                    <div class="search-item">
+                                        <a href="#" class="zoom-image">
+                                            <img src="images/main-page/product-card-crane.png" alt="">
+                                        </a>
+                                    
+                                        <div class="search-item-info">
+                                            <a href="#">Раковина Ornella</a>
+            
+                                            <a href="#">27 000 ₽</a>
+                                        </div>
+                                    </div>
+            
+                                    <hr class="line">
+            
+                                    <div class="search-item">
+                                        <a href="#" class="zoom-image">
+                                            <img src="images/main-page/product-card-crane.png" alt="">
+                                        </a>
+                                    
+                                        <div class="search-item-info">
+                                            <a href="#">Раковина Ornella</a>
+            
+                                            <a href="#">27 000 ₽</a>
+                                        </div>
+                                    </div>
+            
+                                    <hr class="line">
+            
+                                    <div class="all-result-link">
+                                        <h4><a href="search-result-page.html">Все результаты</a></h4>
+                                        
+                                        <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1 1L6.68539 6.29289C7.10487 6.68342 7.10487 7.31658 6.68539 7.70711L1 13" stroke="#EDE4D7" stroke-linecap="round"/>
+                                        </svg>    
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <div class="contact-header">
+                                <a href="cart-page.html">КОРЗИНА (1)</a>
+            
+                                <button class="contact-button" id="openModalBtn">
+                                    СВЯЗАТЬСЯ С НАМИ
+                                    <img src="images/svg/contact.svg" alt="Связаться" class="contact-icon">
                                 </button>
                             </div>
-        
-                            <div class="search-items">
-                                <div class="search-item">
-                                    <a href="#" class="zoom-image">
-                                        <img src="images/main-page/product-card-crane.png" alt="">
-                                    </a>
-                                
-                                    <div class="search-item-info">
-                                        <a href="#">Раковина Ornella</a>
-        
-                                        <a href="#">27 000 ₽</a>
-                                    </div>
-                                </div>
-        
-                                <hr class="line">
-        
-                                <div class="search-item">
-                                    <a href="#" class="zoom-image">
-                                        <img src="images/main-page/product-card-crane.png" alt="">
-                                    </a>
-                                
-                                    <div class="search-item-info">
-                                        <a href="#">Раковина Ornella</a>
-        
-                                        <a href="#">27 000 ₽</a>
-                                    </div>
-                                </div>
-        
-                                <hr class="line">
-        
-                                <div class="search-item">
-                                    <a href="#" class="zoom-image">
-                                        <img src="images/main-page/product-card-crane.png" alt="">
-                                    </a>
-                                
-                                    <div class="search-item-info">
-                                        <a href="#">Раковина Ornella</a>
-        
-                                        <a href="#">27 000 ₽</a>
-                                    </div>
-                                </div>
-        
-                                <hr class="line">
-        
-                                <div class="all-result-link">
-                                    <h4><a href="search-result-page.html">Все результаты</a></h4>
-                                    
-                                    <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 1L6.68539 6.29289C7.10487 6.68342 7.10487 7.31658 6.68539 7.70711L1 13" stroke="#EDE4D7" stroke-linecap="round"/>
-                                    </svg>    
-                                </div>
+
+                            <div class="burger-menu">
+                                <button id="openBurgerMenu">
+                                    <svg class="burger-icon" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="5" y="6.5" width="26" height="1" fill="#EDE4D7"/>
+                                        <rect x="5" y="15.5" width="26" height="1" fill="#EDE4D7"/>
+                                        <rect x="5" y="24.5" width="26" height="1" fill="#EDE4D7"/>
+                                    </svg>
+                                </button>
                             </div>
-                        </div>
-        
-                        <div class="contact-header">
-                            <a href="cart-page.html">КОРЗИНА (1)</a>
-        
-                            <button class="contact-button" id="openModalBtn">
-                                СВЯЗАТЬСЯ С НАМИ
-                                <img src="images/svg/contact.svg" alt="Связаться" class="contact-icon">
-                            </button>
                         </div>
                     </div>
                 </div>
