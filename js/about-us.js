@@ -1,3 +1,61 @@
+// Для переключение карточек "Почему выбирают нас" с помощью стрелок
+
+document.addEventListener("DOMContentLoaded", function () {
+    const whyCards = document.querySelectorAll('.why-choose-us-content .card');
+    const rigthTitleGroup = document.querySelector('.rigth-title-group');
+
+    const isSmallScreen = window.innerWidth <= 600;
+
+    if (whyCards.length > 4 && !isSmallScreen) {
+        rigthTitleGroup.classList.add('visible');
+    } else {
+        rigthTitleGroup.classList.remove('visible');
+    }
+});
+
+// Плавная анимация для переключения
+function easeInOutQuad(t) {
+    return t < 0.5
+        ? 2 * t * t
+        : -1 + (4 - 2 * t) * t;
+}
+
+function animateScroll(container, delta, duration = 800) {
+    const start = container.scrollLeft;
+    const end = start + delta;
+    const t0 = performance.now();
+
+    function tick(t) {
+        const elapsed = t - t0;
+        const progress = Math.min(elapsed / duration, 1);
+        container.scrollLeft = start + (end - start) * easeInOutQuad(progress);
+
+        if (progress < 1) requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('.why-choose-us-content');
+    const leftArrow = document.getElementById('why-left-arrow');
+    const rightArrow = document.getElementById('why-right-arrow');
+
+    const minWidth = parseInt(
+        window.getComputedStyle(document.querySelector('.card')).getPropertyValue('min-width'), 10
+    );
+
+    const scrollAmount = minWidth; // ширина + отступ
+
+    rightArrow.addEventListener('click', () => {
+        animateScroll(container, scrollAmount, 300);
+    });
+
+    leftArrow.addEventListener('click', () => {
+        animateScroll(container, -scrollAmount, 300);
+    });
+});
+
 
 
 // Валидация модального окна формы "Связаться с нами"
@@ -223,18 +281,22 @@ function validateForm(event, formId) {
 
 
 
-// Секция "Отзывы от покупателей"
-
+// Секция "Наши Отзывы от покупателей"
 
 // Раскрытие отзыва по больше если нужно 
-
 const readFullButton = document.getElementById('read-full-btn');
-const reviewContinueText = document.querySelector('.review-continue-text')
+const reviewContinueText = document.querySelector('.review-continue-text');
 const readFullReview = document.querySelector('.read-full-review');
 
-readFullButton.addEventListener('click', () => {
-    reviewContinueText.style.display = 'block';
-    readFullReview.style.display = 'none';  
+document.querySelectorAll('.read-full-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        const review = button.closest('.review-text');
+        const continueText = review.querySelector('.review-continue-text');
+        const readMore = review.querySelector('.read-full-review');
+
+        continueText.style.display = 'inline';
+        readMore.style.display = 'none';
+    });
 });
 
 // Переключение карточек отзывов
@@ -251,42 +313,58 @@ leftArrowReview.addEventListener('click', () => moveReview(-1));
 rightArrowReview.addEventListener('click', () => moveReview(1));
 
 function moveReview(direction) {
-  const newIndex = currentIndexReview + direction;
-  if (newIndex >= 0 && newIndex < cardsReview.length) {
-    currentIndexReview = newIndex;
-    updateTransform();
-    ratingNumber.style.visibility = currentIndexReview > 0 ? 'hidden' : 'visible';
-  }
+    const newIndex = currentIndexReview + direction;
+    if (newIndex >= 0 && newIndex < cardsReview.length) {
+        currentIndexReview = newIndex;
+        updateTransform();
+
+        // Скрывать рейтинг только если ширина окна больше 1000px
+        if (window.innerWidth > 1000) {
+            ratingNumber.style.visibility = currentIndexReview > 0 ? 'hidden' : 'visible';
+        } else {
+            ratingNumber.style.visibility = 'visible';
+        }
+    }
 }
 
 function updateTransform() {
-  cardsContainer.style.transform = `translateX(${-cardWidthReview * currentIndexReview}px)`;
+    cardsContainer.style.transform = `translateX(${-cardWidthReview * currentIndexReview}px)`;
 }
+
+// Обработка ресайза окна — обновляем видимость рейтинга
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 1000) {
+        ratingNumber.style.visibility = currentIndexReview > 0 ? 'hidden' : 'visible';
+    } else {
+        ratingNumber.style.visibility = 'visible';
+    }
+});
 
 // Добавляем свайп
 let startReviewX = 0;
 let isDragging = false;
 
 cardsContainer.addEventListener('touchstart', e => {
-  startReviewX = e.touches[0].clientX;
-  isDragging = true;
+    startReviewX = e.touches[0].clientX;
+    isDragging = true;
 }, { passive: true });
 
-cardsContainer.addEventListener('touchmove', e => {
-}, { passive: true });
+cardsContainer.addEventListener('touchmove', e => {}, { passive: true });
 
 cardsContainer.addEventListener('touchend', e => {
-  if (!isDragging) return;
-  const endX = e.changedTouches[0].clientX;
-  const diffX = endX - startReviewX;
-  const threshold = 50; // минимальная дистанция свайпа
-  if (diffX > threshold) {
-    moveReview(-1); // свайп вправо
-  } else if (diffX < -threshold) {
-    moveReview(1);  // свайп влево
-  }
-  isDragging = false;
+    if (!isDragging) return;
+    const endX = e.changedTouches[0].clientX;
+    const diffX = endX - startReviewX;
+    const threshold = 50; // минимальная дистанция свайпа
+    if (diffX > threshold) {
+        moveReview(-1); // свайп вправо
+    } else if (diffX < -threshold) {
+        moveReview(1);  // свайп влево
+    }
+    isDragging = false;
 });
+
+
 
 
 
@@ -316,7 +394,7 @@ searchInput.addEventListener('input', function () {
         menuNavigation.classList.add('search-active');
         underHeader.style.filter = 'blur(5px)';
         blurContainers.forEach(container => container.style.filter = 'blur(5px)');
-        header.style.paddingBottom = '270px';
+        header.classList.add('header-search-padding');
         header.style.backgroundColor = '#151c28';
         searchItems.classList.add('show');
     } else {
@@ -325,18 +403,17 @@ searchInput.addEventListener('input', function () {
 
         if (!isCatalogActive) {
             header.style.backgroundColor = 'transparent';
-            header.style.paddingBottom = '20px';
+            header.classList.remove('header-search-padding');
             searchItems.classList.remove('show');
             underHeader.style.filter = 'none';
             blurContainers.forEach(container => container.style.filter = '');
         } else {
             searchItems.classList.remove('show');
-            header.style.paddingBottom = '20px';
+            header.classList.remove('header-search-padding');
             underHeader.style.filter = 'blur(5px)';
         }
     }
 });
-
 
 
 
@@ -588,7 +665,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
 // Чётко считываем скроллы и скрываем/показываем header
 
 let lastScrollTop = 0;
@@ -613,8 +689,9 @@ window.addEventListener('scroll', () => {
     searchInput.value = ''; // очищает текст
     searchItems.classList.remove('show'); // скрывает блок
     
+    header.classList.remove('header-search-padding');
     // Убираем пустые отступы
-    header.style.paddingBottom = '20px';
+    
 
     // Сброс состояния
     blurContainers.forEach(container => {
@@ -633,6 +710,7 @@ window.addEventListener('scroll', () => {
     openCatalog.style.color = '';
     
   } else if (scrollDelta < 0) {
+    
     header.style.display = 'block';
     // Скролл вверх
 
@@ -648,4 +726,63 @@ window.addEventListener('scroll', () => {
   }
 
   lastScrollTop = scrollTop;
+});
+
+
+
+
+// Секция "Уникальные решения для вашего дома"
+
+
+// Переключение фотографий в секции "О компании" на разрешении 520px и ниже
+
+const sliderWrapperUnique = document.querySelector(".slider-wrapper");
+const slidesUnique = document.querySelectorAll(".slide");
+let currentIndexUnique = 0;
+let uniqueStartX = 0;
+let uniqueCurrentX = 0;
+let isDraggingUnique = false;
+
+const slideWidthUnique = slidesUnique[0].offsetWidth + 10; // 10px — это gap
+
+function updateSlider() {
+    const offset = -currentIndexUnique * slideWidthUnique;
+    sliderWrapperUnique.style.transform = `translateX(${offset}px)`;
+}
+
+// Начало свайпа
+sliderWrapperUnique.addEventListener("touchstart", (e) => {
+    uniqueStartX = e.touches[0].clientX;
+    isDraggingUnique = true;
+});
+
+// Движение свайпа
+sliderWrapperUnique.addEventListener("touchmove", (e) => {
+    if (!isDraggingUnique) return;
+    
+    uniqueCurrentX = e.touches[0].clientX;
+    const diff = uniqueCurrentX - uniqueStartX;
+
+    sliderWrapperUnique.style.transform = `translateX(${
+        -(currentIndexUnique * slideWidthUnique) + diff
+    }px)`;
+});
+
+// Завершение свайпа
+sliderWrapperUnique.addEventListener("touchend", () => {
+    isDraggingUnique = false;
+
+    const diff = uniqueCurrentX - uniqueStartX;
+
+    // Если свайп вправо
+    if (diff > 50 && currentIndexUnique > 0) {
+        currentIndexUnique--;
+    }
+
+    // Если свайп влево
+    else if (diff < -50 && currentIndexUnique < slidesUnique.length - 1) {
+        currentIndexUnique++;
+    }
+
+    updateSlider();
 });

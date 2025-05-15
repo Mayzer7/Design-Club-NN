@@ -1,3 +1,62 @@
+// Для переключение карточек "Почему выбирают нас" с помощью стрелок
+
+document.addEventListener("DOMContentLoaded", function () {
+    const whyCards = document.querySelectorAll('.why-choose-us-content .card');
+    const rigthTitleGroup = document.querySelector('.rigth-title-group');
+
+    const isSmallScreen = window.innerWidth <= 600;
+
+    if (whyCards.length > 4 && !isSmallScreen) {
+        rigthTitleGroup.classList.add('visible');
+    } else {
+        rigthTitleGroup.classList.remove('visible');
+    }
+});
+
+// Плавная анимация для переключения
+function easeInOutQuad(t) {
+    return t < 0.5
+        ? 2 * t * t
+        : -1 + (4 - 2 * t) * t;
+}
+
+function animateScroll(container, delta, duration = 800) {
+    const start = container.scrollLeft;
+    const end = start + delta;
+    const t0 = performance.now();
+
+    function tick(t) {
+        const elapsed = t - t0;
+        const progress = Math.min(elapsed / duration, 1);
+        container.scrollLeft = start + (end - start) * easeInOutQuad(progress);
+
+        if (progress < 1) requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('.why-choose-us-content');
+    const leftArrow = document.getElementById('why-left-arrow');
+    const rightArrow = document.getElementById('why-right-arrow');
+
+    const minWidth = parseInt(
+        window.getComputedStyle(document.querySelector('.card')).getPropertyValue('min-width'), 10
+    );
+
+    const scrollAmount = minWidth; // ширина + отступ
+
+    rightArrow.addEventListener('click', () => {
+        animateScroll(container, scrollAmount, 300);
+    });
+
+    leftArrow.addEventListener('click', () => {
+        animateScroll(container, -scrollAmount, 300);
+    });
+});
+
+
 // Переключение карточек товара
 
 const track = document.getElementById('track');
