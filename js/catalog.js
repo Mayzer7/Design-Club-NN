@@ -195,47 +195,68 @@ const toggleBtn = document.getElementById('filterToggle');
 const toggleBtn2 = document.getElementById('filterToggle-2');
 const dropdown = document.getElementById('filterDropdown');
 const dropdown2 = document.getElementById('filterDropdown-2');
-        
+
+// Функция для закрытия всех выпадающих меню
+const closeAllDropdowns = () => {
+    dropdown.classList.remove('active');
+    dropdown2.classList.remove('active');
+};
+
 // Открытие/закрытие меню по кнопке
 toggleBtn.addEventListener('click', (event) => {
     event.stopPropagation(); // Останавливаем событие, чтобы не сработал обработчик на document
-    dropdown.classList.toggle('active');
+
+    const isActive = dropdown.classList.contains('active');
+
+    closeAllDropdowns();
+
+    if (!isActive) {
+        dropdown.classList.add('active');
+    }
 });
 
 toggleBtn2.addEventListener('click', (event) => {
-    event.stopPropagation(); // Останавливаем событие, чтобы не сработал обработчик на document
-    dropdown2.classList.toggle('active');
+    event.stopPropagation();
+
+    const isActive = dropdown2.classList.contains('active');
+
+    closeAllDropdowns();
+
+    if (!isActive) {
+        dropdown2.classList.add('active');
+    }
 });
 
 // Закрытие меню при клике вне меню и кнопки
 document.addEventListener('click', (event) => {
-    if (!dropdown.contains(event.target) && event.target !== toggleBtn) {
-        dropdown.classList.remove('active');
+    if (
+        !dropdown.contains(event.target) &&
+        event.target !== toggleBtn &&
+        !dropdown2.contains(event.target) &&
+        event.target !== toggleBtn2
+    ) {
+        closeAllDropdowns();
     }
 });
 
-document.addEventListener('click', (event) => {
-    if (!dropdown2.contains(event.target) && event.target !== toggleBtn2) {
-        dropdown2.classList.remove('active');
-    }
-});
 
 
-
-
-
-// Секция "Отзывы от покупателей"
-
+// Секция "Наши Отзывы от покупателей"
 
 // Раскрытие отзыва по больше если нужно 
-
 const readFullButton = document.getElementById('read-full-btn');
-const reviewContinueText = document.querySelector('.review-continue-text')
+const reviewContinueText = document.querySelector('.review-continue-text');
 const readFullReview = document.querySelector('.read-full-review');
 
-readFullButton.addEventListener('click', () => {
-    reviewContinueText.style.display = 'block';
-    readFullReview.style.display = 'none';  
+document.querySelectorAll('.read-full-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        const review = button.closest('.review-text');
+        const continueText = review.querySelector('.review-continue-text');
+        const readMore = review.querySelector('.read-full-review');
+
+        continueText.style.display = 'inline';
+        readMore.style.display = 'none';
+    });
 });
 
 // Переключение карточек отзывов
@@ -252,42 +273,57 @@ leftArrowReview.addEventListener('click', () => moveReview(-1));
 rightArrowReview.addEventListener('click', () => moveReview(1));
 
 function moveReview(direction) {
-  const newIndex = currentIndexReview + direction;
-  if (newIndex >= 0 && newIndex < cardsReview.length) {
-    currentIndexReview = newIndex;
-    updateTransform();
-    ratingNumber.style.visibility = currentIndexReview > 0 ? 'hidden' : 'visible';
-  }
+    const newIndex = currentIndexReview + direction;
+    if (newIndex >= 0 && newIndex < cardsReview.length) {
+        currentIndexReview = newIndex;
+        updateTransform();
+
+        // Скрывать рейтинг только если ширина окна больше 1000px
+        if (window.innerWidth > 1000) {
+            ratingNumber.style.visibility = currentIndexReview > 0 ? 'hidden' : 'visible';
+        } else {
+            ratingNumber.style.visibility = 'visible';
+        }
+    }
 }
 
 function updateTransform() {
-  cardsContainer.style.transform = `translateX(${-cardWidthReview * currentIndexReview}px)`;
+    cardsContainer.style.transform = `translateX(${-cardWidthReview * currentIndexReview}px)`;
 }
+
+// Обработка ресайза окна — обновляем видимость рейтинга
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 1000) {
+        ratingNumber.style.visibility = currentIndexReview > 0 ? 'hidden' : 'visible';
+    } else {
+        ratingNumber.style.visibility = 'visible';
+    }
+});
 
 // Добавляем свайп
 let startReviewX = 0;
 let isDragging = false;
 
 cardsContainer.addEventListener('touchstart', e => {
-  startReviewX = e.touches[0].clientX;
-  isDragging = true;
+    startReviewX = e.touches[0].clientX;
+    isDragging = true;
 }, { passive: true });
 
-cardsContainer.addEventListener('touchmove', e => {
-}, { passive: true });
+cardsContainer.addEventListener('touchmove', e => {}, { passive: true });
 
 cardsContainer.addEventListener('touchend', e => {
-  if (!isDragging) return;
-  const endX = e.changedTouches[0].clientX;
-  const diffX = endX - startReviewX;
-  const threshold = 50; // минимальная дистанция свайпа
-  if (diffX > threshold) {
-    moveReview(-1); // свайп вправо
-  } else if (diffX < -threshold) {
-    moveReview(1);  // свайп влево
-  }
-  isDragging = false;
+    if (!isDragging) return;
+    const endX = e.changedTouches[0].clientX;
+    const diffX = endX - startReviewX;
+    const threshold = 50; // минимальная дистанция свайпа
+    if (diffX > threshold) {
+        moveReview(-1); // свайп вправо
+    } else if (diffX < -threshold) {
+        moveReview(1);  // свайп влево
+    }
+    isDragging = false;
 });
+
 
 
 
