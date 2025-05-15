@@ -4436,23 +4436,30 @@ li.active .menu-plumbing-arrow {
 }
 
 .modal-content-thanks {
-    width: 618px;
-    height: 377px;
+    max-width: 618px;
+    max-height: 377px;
+    width: 100%;
     background-color: #151C28;
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     min-width: 300px;
     position: relative;
+    overflow-wrap: break-word; 
 }
 
 .modal-content-info-thanks {
+    
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     text-align: center;
     padding: 30px;
-
     position: relative;
+}
+
+.modal-content-info-inner-thanks {
+    max-width: 100%;
+    width: 100%;
 }
 
 .modal-content-info-thanks h1 {
@@ -4480,9 +4487,42 @@ li.active .menu-plumbing-arrow {
     font-weight: 300;
 }
 
+.thanks-svg {
+    width: 79px;
+    height: 79px;
+}
+
+
 /* Адаптив модального окна "Спасибо за заявку" */
 
+@media (max-width: 670px) {
+    .modal-content-thanks {
+        max-width: 95%;
+    }
+}
 
+
+@media (max-width: 585px) {
+    .modal-content-info-inner-thanks h1 {
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 400px) {
+    .modal-content-info-inner-thanks h1 {
+        font-size: 38px;
+    }
+
+    .modal-description-info {
+        font-size: 16px;
+    }
+
+    .thanks-svg {
+        width: 56px;
+        height: 56px;
+    }
+
+}
 
 
 /* Модальное окно "Произошла ошибка" */
@@ -4499,6 +4539,11 @@ li.active .menu-plumbing-arrow {
     transition: opacity 0.5s ease, transform 0.5s ease;  
 }
 
+.error-svg {
+    width: 79px;
+    height: 79px;
+}
+
 .modal-error.open {
     display: flex;
     opacity: 1;  
@@ -4506,17 +4551,63 @@ li.active .menu-plumbing-arrow {
 }
 
 .modal-content-error {
-    width: 618px;
-    height: 377px;
+    max-width: 618px;
+    max-height: 377px;
+    width: 100%;
     background-color: #151C28;
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     min-width: 300px;
     position: relative;
+    overflow-wrap: break-word; 
+}
+
+.modal-content-info-inner-error {
+    max-width: 100%;
+    width: 100%;
 }
 
 
+.modal-content-info-inner-error button {
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    cursor: pointer;
+}
+
+.modal-content-info-inner-error svg {
+    margin-bottom: 25px;
+}
 
 
+/* Адаптив модального окна "Произошла ошибка"*/
 
 
+@media (max-width: 670px) {
+    .modal-content-error {
+        max-width: 95%;
+    }
+}
 
+@media (max-width: 585px) {
+    .modal-content-info-inner-error h1 {
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 400px) {
+    .modal-content-info-inner-error h1 {
+        font-size: 38px;
+    }
+
+    .modal-description-info {
+        font-size: 16px;
+    }
+
+    .error-svg {
+        width: 56px;
+        height: 56px;
+    }
+
+}
