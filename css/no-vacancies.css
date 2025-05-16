@@ -118,6 +118,9 @@ input[type="number"] {
     background-color: #151c28;
 }
 
+
+
+
 /* Шапка */
 
 .header-top {
@@ -144,14 +147,20 @@ input[type="number"] {
 .header-container {
     padding-top: 5px;
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    text-align: center;
 }
 
 .logo {
     width: 128px;
     height: 97px;
+}
+
+.header-right {
+    margin-left: 13%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: center;    
+    width: 100%;    
 }
 
 .nav-container {
@@ -242,6 +251,11 @@ li.active .menu-plumbing-arrow {
 /* Основной отступ */
 .menu-navigation.default-margin {
     margin-top: 170px;
+}
+
+/* Отступ при активном поиске */
+.menu-navigation.search-active {
+    margin-top: 420px; 
 }
 
 .menu-navigation-container {
@@ -369,11 +383,6 @@ li.active .menu-plumbing-arrow {
     z-index: 5;
 }
 
-
-
-
-
-
 .search-items {
     margin-top: 20px;
     display: flex;
@@ -392,6 +401,11 @@ li.active .menu-plumbing-arrow {
     opacity: 1;
     visibility: visible;
     transition: opacity 0.3s ease-in-out, visibility 0s 0s;
+}
+
+.header-search-padding {
+    padding-bottom: 270px;
+    background-color: #151c28;
 }
 
 .search-item {
@@ -421,8 +435,6 @@ li.active .menu-plumbing-arrow {
     transform: translateY(10px);
     transition: opacity 0s, transform 0s;
 }
-
-
 
 .zoom-image {
     display: inline-block;
@@ -508,6 +520,7 @@ li.active .menu-plumbing-arrow {
 }
 
 .contact-button {
+    white-space: nowrap;
     font-family: 'SF Pro Display', sans-serif;
     font-weight: 900;
     margin-top: -15px;    
@@ -532,53 +545,69 @@ li.active .menu-plumbing-arrow {
 }
 
 
+
 /* Адаптив Шапки */
 
 
-/* Отступ при активном поиске */
-.menu-navigation.search-active {
-    margin-top: 420px; 
+.burger-menu {
+    display: none;
 }
 
+.burger-menu button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
 
+.burger-icon {
+    width: 50px;
+    height: 43px;
+}
 
+@media (max-width: 1560px) {
+    .header-right {
+        margin-left: 5%;
+    }
+}
 
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
     .nav-container {
         flex-direction: column;
         gap: 20px;
-    }
-
-    .catalog-nav {
-        margin-right: 30px;
-    }
-
-    .search-container {
-        max-width: 250px;
     }
 
     .menu-navigation.default-margin {
         margin-top: 210px;
     }
 
-    /* Отступ при активном поиске */
     .menu-navigation.search-active {
-        margin-top: 480px; 
+        margin-top: 460px; 
+    }
+
+    .catalog-nav {
+        margin-right: 25px;
     }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1160px) {
+    .search-container {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 1090px) {
+    .search-container {
+        max-width: 214px;
+    }
+}
+
+@media (max-width: 1030px) {
     .menu-navigation.default-margin {
         margin-top: 200px;
     }
 
-    /* Отступ при активном поиске */
     .menu-navigation.search-active {
-        margin-top: 450px; 
-    }
-
-    .search-container {
-        max-width: 214px;
+        margin-top: 460px; 
     }
 
     .main-nav a {
@@ -590,7 +619,7 @@ li.active .menu-plumbing-arrow {
     }
 
     .logo {
-        margin-right: 100px;
+        margin-right: 50px;
     }
 
     .contact-header a {
@@ -600,8 +629,73 @@ li.active .menu-plumbing-arrow {
     .main-nav ul {
         gap: 5px;
     }
-    
 }
+
+@media (max-width: 1010px) {
+    .contact-header button {
+        display: none;
+    }
+
+    .burger-menu {
+        display: block;
+    }
+}
+
+@media (max-width: 840px) {
+    .contact-header a {
+        display: none;
+    }
+
+    .logo {
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 730px) {
+    .nav-container {
+        display: none;
+    }
+
+    .menu-navigation-relative {
+        display: none;
+    }
+
+    .search-container {
+        margin-left: 10%;
+    }
+
+    .header-search-padding {
+        padding-bottom: 320px;
+        background-color: #151C28;
+    }
+}
+
+@media (max-width: 630px) {
+    .search-container {
+        margin-left: 7%;
+    }
+}
+
+@media (max-width: 550px) {
+    .search-container {
+        margin-left: 0%;
+    }
+}
+
+@media (max-width: 505px) {
+    .search-container {
+        display: none;
+    }
+}
+
+@media (max-width: 400px) {
+    .logo {
+        width: 82px;
+        height: 82px;
+    }
+}
+
+
 
 /* header */
 
@@ -630,6 +724,20 @@ li.active .menu-plumbing-arrow {
     color: #7B8292;
 }
 
+
+/* Адаптив под шапкой */
+
+@media (max-width: 730px) {
+    .under-header {
+        top: 130px;
+    }
+}
+
+@media (max-width: 400px) {
+    .under-header {
+        top: 90px;
+    }
+}
 
 
 /* Секция "Вакансий " */
@@ -679,19 +787,19 @@ li.active .menu-plumbing-arrow {
     justify-content: space-between;
     gap: 40px;
     margin-left: 45vh;
-    width: 750px;
+    max-width: 750px;
+    width: 100%;
 }
 
 .main-side-wrapper h1 {
     font-family: 'Future New Light', sans-serif;
     text-transform: uppercase;
-    font-size: 93px;
+    font-size: 142px;
     
     word-break: break-word;
     overflow-wrap: break-word;
-    hyphens: auto; /* Автоматическая расстановка переносов */
+    hyphens: auto; 
     
-    /* Для лучшей поддержки в разных браузерах: */
     -webkit-hyphens: auto;
     -ms-hyphens: auto;
 }
@@ -713,6 +821,7 @@ li.active .menu-plumbing-arrow {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 95%;
 }
 
 .contact-input {
@@ -872,7 +981,7 @@ li.active .menu-plumbing-arrow {
 }
 
 
-/* Адаптив "Оставьте ваше резюме"*/
+/* Адаптив "Вакансии*/
 
 @media (max-width: 1885px) {
     .main-side-wrapper {
@@ -950,21 +1059,96 @@ li.active .menu-plumbing-arrow {
         background-image: url('../images/vacancies/no-vacancies/adaptive/background-1024.png');
         background-position: center right; 
     }
-}
 
-@media (max-width: 1070px) {
     .main-side-wrapper {
-        margin-left: 24vh;
-        width: 700px;
+        margin-left: 13vh;
     }
 }
 
-@media (max-width: 1010px) {
+@media (max-width: 1060px) {
     .main-side-wrapper {
-        margin-left: 24vh;
-        width: 650px;
+        margin-left: 0vh;
     }
 }
+
+@media (max-width: 735px) {
+    .main-side-wrapper h1 {
+        font-size: 130px;
+    }
+}
+
+@media (max-width: 730px) {
+    .get-contact {
+        margin-top: 0px;
+    }
+}
+
+@media (max-width: 675px) {
+    .main-side-wrapper h1 {
+        font-size: 115px;
+    }
+}
+
+@media (max-width: 600px) {
+    .main-side-wrapper h1 {
+        font-size: 100px;
+    }
+
+    .get-contact {
+        background-image: none;
+    }
+}
+
+@media (max-width: 525px) {
+    .main-side-wrapper h1 {
+        font-size: 85px;
+    }
+}
+
+@media (max-width: 460px) {
+    .main-side-wrapper h1 {
+        font-size: 70px;
+    }
+
+    .main-side-text {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 400px) {
+    .under-header-container {
+        margin-top: 20px;
+    }
+
+    .get-contact {
+        padding: 10px 0 0 20px;
+    }
+}
+
+@media (max-width: 380px) {
+    .main-side-wrapper h1 {
+        font-size: 55px;
+    }
+
+    .under-header-container a,
+    .under-header-container p,
+    .under-header-container a:first-child {
+        font-size: 14px;
+    }
+
+    .main-side-wrapper {
+        gap: 15px;
+    }
+
+    .main-side-text {
+        margin-bottom: 30px;
+    }
+}
+
+
+
+
+
 
 
 
@@ -1059,7 +1243,7 @@ li.active .menu-plumbing-arrow {
     color: #AE9877;
 }
 
-
+/* Футер для 1024 разрешения */
 
 .footer-1024 {
     display: none;
@@ -1117,7 +1301,63 @@ li.active .menu-plumbing-arrow {
 }
 
 
-/* Адаптив */
+/* Футер при разрешении меньше 1024 (870px) */
+
+.footer-below-1024 {
+    display: none;
+    padding: 100px 20px 20px 20px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300; 
+}
+
+.footer-first-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.footer-second-line {
+    margin: 40px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-first-column {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.footer-design-club-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.copyright-lines {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.copyrigth-first-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.copyrigth-second-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+    
+}
+
+/* Адаптив для footer */
 
 @media (max-width: 1335px) {
     .footer {
@@ -1128,6 +1368,60 @@ li.active .menu-plumbing-arrow {
         display: block;
     }
 }
+
+@media (max-width: 870px) {
+    .footer-1024 {
+        display: none;
+    }
+
+    .footer-below-1024 {
+        display: block;
+    }
+
+}
+
+
+@media (max-width: 460px) {
+    .footer-nav-up h1 a {
+        font-size: 20px;
+    }
+
+    .footer-nav-up ul li a {
+        font-size: 16px;
+    }
+
+    .footer-nav-down p {
+        font-size: 14px;
+    }
+
+    .footer-nav-down h1 {
+        font-size: 20px;
+    }
+
+    .copyright-lines a {
+        font-size: 14px;
+    }
+
+    .design-club-logo {
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 440px) {
+    .footer-logo-below {
+        width: 120px;
+        height: 91px;
+    }
+
+    .footer-icons img {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+
+
+
 
 
 /* Модальное окно "Связаться с нами" */
