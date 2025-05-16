@@ -1093,10 +1093,6 @@ li.active .menu-plumbing-arrow {
     .main-side-wrapper h1 {
         font-size: 100px;
     }
-
-    .get-contact {
-        background-image: none;
-    }
 }
 
 @media (max-width: 525px) {
@@ -1305,7 +1301,7 @@ li.active .menu-plumbing-arrow {
 
 .footer-below-1024 {
     display: none;
-    padding: 100px 20px 20px 20px;
+    padding: 100px 20px 0px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 

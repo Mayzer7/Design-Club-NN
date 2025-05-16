@@ -107,6 +107,9 @@ body {
 
 
 
+
+
+
 /* Шапка */
 
 .header-top {
@@ -133,14 +136,20 @@ body {
 .header-container {
     padding-top: 5px;
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    text-align: center;
 }
 
 .logo {
     width: 128px;
     height: 97px;
+}
+
+.header-right {
+    margin-left: 13%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: center;    
+    width: 100%;    
 }
 
 .nav-container {
@@ -231,6 +240,11 @@ li.active .menu-plumbing-arrow {
 /* Основной отступ */
 .menu-navigation.default-margin {
     margin-top: 170px;
+}
+
+/* Отступ при активном поиске */
+.menu-navigation.search-active {
+    margin-top: 420px; 
 }
 
 .menu-navigation-container {
@@ -358,11 +372,6 @@ li.active .menu-plumbing-arrow {
     z-index: 5;
 }
 
-
-
-
-
-
 .search-items {
     margin-top: 20px;
     display: flex;
@@ -381,6 +390,11 @@ li.active .menu-plumbing-arrow {
     opacity: 1;
     visibility: visible;
     transition: opacity 0.3s ease-in-out, visibility 0s 0s;
+}
+
+.header-search-padding {
+    padding-bottom: 270px;
+    background-color: #151c28;
 }
 
 .search-item {
@@ -410,8 +424,6 @@ li.active .menu-plumbing-arrow {
     transform: translateY(10px);
     transition: opacity 0s, transform 0s;
 }
-
-
 
 .zoom-image {
     display: inline-block;
@@ -497,6 +509,7 @@ li.active .menu-plumbing-arrow {
 }
 
 .contact-button {
+    white-space: nowrap;
     font-family: 'SF Pro Display', sans-serif;
     font-weight: 900;
     margin-top: -15px;    
@@ -520,53 +533,70 @@ li.active .menu-plumbing-arrow {
     color: #fff;
 }
 
+
+
 /* Адаптив Шапки */
 
 
-/* Отступ при активном поиске */
-.menu-navigation.search-active {
-    margin-top: 420px; 
+.burger-menu {
+    display: none;
 }
 
+.burger-menu button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
 
+.burger-icon {
+    width: 50px;
+    height: 43px;
+}
 
+@media (max-width: 1560px) {
+    .header-right {
+        margin-left: 5%;
+    }
+}
 
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
     .nav-container {
         flex-direction: column;
         gap: 20px;
-    }
-
-    .catalog-nav {
-        margin-right: 30px;
-    }
-
-    .search-container {
-        max-width: 250px;
     }
 
     .menu-navigation.default-margin {
         margin-top: 210px;
     }
 
-    /* Отступ при активном поиске */
     .menu-navigation.search-active {
-        margin-top: 480px; 
+        margin-top: 460px; 
+    }
+
+    .catalog-nav {
+        margin-right: 25px;
     }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1160px) {
+    .search-container {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 1090px) {
+    .search-container {
+        max-width: 214px;
+    }
+}
+
+@media (max-width: 1030px) {
     .menu-navigation.default-margin {
         margin-top: 200px;
     }
 
-    /* Отступ при активном поиске */
     .menu-navigation.search-active {
-        margin-top: 450px; 
-    }
-
-    .search-container {
-        max-width: 214px;
+        margin-top: 460px; 
     }
 
     .main-nav a {
@@ -578,7 +608,7 @@ li.active .menu-plumbing-arrow {
     }
 
     .logo {
-        margin-right: 100px;
+        margin-right: 50px;
     }
 
     .contact-header a {
@@ -588,7 +618,70 @@ li.active .menu-plumbing-arrow {
     .main-nav ul {
         gap: 5px;
     }
-    
+}
+
+@media (max-width: 1010px) {
+    .contact-header button {
+        display: none;
+    }
+
+    .burger-menu {
+        display: block;
+    }
+}
+
+@media (max-width: 840px) {
+    .contact-header a {
+        display: none;
+    }
+
+    .logo {
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 730px) {
+    .nav-container {
+        display: none;
+    }
+
+    .menu-navigation-relative {
+        display: none;
+    }
+
+    .search-container {
+        margin-left: 10%;
+    }
+
+    .header-search-padding {
+        padding-bottom: 320px;
+        background-color: #151C28;
+    }
+}
+
+@media (max-width: 630px) {
+    .search-container {
+        margin-left: 7%;
+    }
+}
+
+@media (max-width: 550px) {
+    .search-container {
+        margin-left: 0%;
+    }
+}
+
+@media (max-width: 505px) {
+    .search-container {
+        display: none;
+    }
+}
+
+@media (max-width: 400px) {
+    .logo {
+        width: 82px;
+        height: 82px;
+    }
 }
 
 
@@ -609,7 +702,7 @@ li.active .menu-plumbing-arrow {
 }
 
 .under-header-container {
-    margin-top: 60px;
+    margin-top: 40px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -619,10 +712,25 @@ li.active .menu-plumbing-arrow {
     color: #7B8292;
 }
 
+/* Адаптив под шапкой */
+
+@media (max-width: 730px) {
+    .under-header {
+        top: 130px;
+    }
+}
+
+@media (max-width: 400px) {
+    .under-header {
+        top: 90px;
+    }
+}
+
+
 /* HEADER */
 
 .vacancies-container {
-    margin-top: 60px;
+    margin-top: 30px;
     padding-left: 25%;
     position: relative;
 } 
@@ -678,6 +786,8 @@ li.active .menu-plumbing-arrow {
 
 .vacancy-title {
     font-size: 26px;
+    max-width: 210px;
+    width: 100%;
 }
 
 .work-info {
@@ -706,12 +816,144 @@ li.active .menu-plumbing-arrow {
 }
 
 
+/* Адаптив Вакансии */
+
+.vacancy {
+    padding-right: 20px;
+}
+
+@media (max-width: 1150px) {
+    .vacancies-section {
+        padding-left: 5%;
+    }
+
+    .vacancies-container {
+        padding-left: 21%;
+    }
+}
+
+@media (max-width: 1080px) {
+    .vacancies-container {
+        padding-left: 15%;
+    }
+}
+
+@media (max-width: 970px) {
+    .vacancies-container {
+        padding-left: 12%;
+    }
+}
+
+@media (max-width: 895px) {
+    .vacancies-container {
+        padding-left: 0%;
+    }
+}
+
+@media (max-width: 890px) {
+    .vacancy {
+        flex-direction: column;
+        padding: 20px 0;
+    }
+
+    .work-info {
+        gap: 0px;
+        width: 100%;
+    }
+
+    .vacancy-title {
+        max-width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .work-info h1 {
+        margin-bottom: 20px;
+    }
+
+    .work-info h1 span {
+        margin-top: 20px;
+    }
+
+    .vacancies-section {
+        border-left: none;
+        border-right: none;
+    }
+}
+
+@media (max-width: 760px) {
+    .title {
+        font-size: 110px;
+    }
+
+    .main-page-top {
+        min-height: 615px;
+    }
+}
+
+@media (max-width: 730px) {
+    .main-page-top {
+        min-height: 545px;
+    }
+}
+
+@media (max-width: 585px) {
+    .title {
+        font-size: 90px;
+    }
+}
+
+@media (max-width: 485px) {
+    .title {
+        font-size: 70px;
+    }
+
+    .subtitle {
+        margin-top: 15px;
+        font-size: 20px;
+    }
+
+    .main-page-top {
+        min-height: 460px;
+    }
+}
+
+@media (max-width: 400px) {
+    .title {
+        font-size: 42px;
+    }
+    
+    .subtitle {
+        font-size: 16px;
+    }
+
+    .under-header-container a,
+    .under-header-container p,
+    .under-header-container a:first-child {
+        font-size: 14px;
+    }
+
+    .under-header-container {
+        margin-top: 30px;
+    }
+
+    .main-page-top {
+        min-height: 340px;
+    }
+}
+
+
+
+
 /* Секция "Оставьте ваше резюме" */
 
+.expansion {
+    padding: 20px 0 20px 20px;
+}
+
 .get-contact {
-    margin-top: 100px;
-    padding: 150px 0 100px 20px;
-    background-color: #151c28;
+    margin-top: 50px;
+    padding: 80px 0 100px 20px;
+    background-color: #171F2E;
     font-family: 'SF Pro Display Thin', sans-serif; 
     background-image: url("../images/vacancies/background.png");
     background-repeat: no-repeat;
@@ -721,18 +963,20 @@ li.active .menu-plumbing-arrow {
 
 .get-contact-container {
     display: flex;
+    justify-content: space-between;
     min-height: 524px;
     height: 100%;
 }
 
-.left-side {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.main-side {
+    position: relative;
 }
 
-.left-side svg {
-    margin-bottom: 200px;
+.get-up-title {
+    position: absolute;
+    top: -20px;
+    left: 5px;
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .main-side-wrapper {
@@ -740,21 +984,29 @@ li.active .menu-plumbing-arrow {
     flex-direction: column;
     justify-content: space-between;
     gap: 40px;
-    max-width: 800px;
+    margin-left: 45vh;
+    max-width: 750px;
     width: 100%;
-    margin-left: 55%;
 }
 
 .main-side-wrapper h1 {
     font-family: 'Future New Light', sans-serif;
-    font-size: 93px;
-    white-space: nowrap;
     text-transform: uppercase;
+    font-size: 110px;
+    
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto; 
+    
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
 }
 
-.main-side-subtitle {
-    max-width: 645px;
+.main-side-text {
+    max-width: 601px;
     width: 100%;
+    font-size: 22px;
+    padding-right: 20px;
 }
 
 .opacity {
@@ -764,14 +1016,11 @@ li.active .menu-plumbing-arrow {
 
 /* Форма */
 
-.vacancies-form-container {
-    width: 110%;
-}
-
 .vacancies-form {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 95%;
 }
 
 .contact-input {
@@ -832,7 +1081,7 @@ li.active .menu-plumbing-arrow {
 }
 
 .get-request-button {
-    margin-top: 10px;
+    margin-top: 25px;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-size: 18px;
     position: relative;
@@ -931,62 +1180,134 @@ li.active .menu-plumbing-arrow {
 }
 
 
-/* Адаптив "Оставьте ваше резюме" */
+/* Адаптив "Вакансии*/
 
-@media (max-width: 1800px) {
+@media (max-width: 1885px) {
     .main-side-wrapper {
-        margin-left: 48%;
+        margin-left: 42vh;
     }
 }
 
-@media (max-width: 1600px) {
+
+@media (max-width: 1786px) {
     .main-side-wrapper {
-        margin-left: 40%;
+        margin-left: 40vh;
     }
 }
 
-@media (max-width: 1425px) {
+@media (max-width: 1703px) {
     .main-side-wrapper {
-        margin-left: 35%;
+        margin-left: 38vh;
     }
 }
 
-@media (max-width: 1320px) {
+@media (max-width: 1634px) {
     .main-side-wrapper {
-        margin-left: 30%;
+        margin-left: 36vh;
     }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1561px) {
     .main-side-wrapper {
-        margin-left: 25%;
+        margin-left: 34vh;
+    }
+}
+
+@media (max-width: 1470px) {
+    .main-side-wrapper {
+        margin-left: 32vh;
+    }
+}
+
+@media (max-width: 1374px) {
+    .main-side-wrapper {
+        margin-left: 30vh;
+    }
+}
+
+@media (max-width: 1217px) {
+    .main-side-wrapper {
+        margin-left: 28vh;
+    }
+}
+
+@media (max-width: 1120px) {
+    .main-side-wrapper {
+        margin-left: 26vh;
     }
 }
 
 @media (max-width: 1100px) {
     .get-contact {
         background-image: url('../images/vacancies/adaptive/background-1024.png');
+        
     }
 
     .main-side-wrapper {
-        margin-left: 20%;
+        margin-left: 13vh;
     }
-
 }
 
-@media (max-width: 1030px) {
+@media (max-width: 1060px) {
     .main-side-wrapper {
-        margin-left: 15%;
+        margin-left: 0vh;
     }
+}
 
-    .main-side-subtitle {
-        max-width: 412px;
-    }
-
+@media (max-width: 750px) {
     .main-side-wrapper h1 {
-        font-size: 60px;
+        font-size: 70px;
+        max-width: 490px;
+    }
+
+    .get-contact {
+        background-size: 650px 500px;
+        background-position: right 50px;
     }
 }
+
+@media (max-width: 730px) {
+    .get-contact {
+        margin-top: 0px;
+    }
+}
+
+@media (max-width: 495px) {
+    .main-side-wrapper h1 {
+        font-size: 38px;
+        max-width: 250px;
+        margin-top: 10px;
+    }
+
+    .main-side-text {
+        font-size: 16px;
+    }
+
+    .main-side-wrapper {
+        gap: 10px;
+    }
+
+}
+
+    
+
+@media (max-width: 380px) {
+    .under-header-container a,
+    .under-header-container p,
+    .under-header-container a:first-child {
+        font-size: 14px;
+    }
+
+    .main-side-wrapper {
+        gap: 15px;
+    }
+
+    .main-side-text {
+        margin-bottom: 30px;
+    }
+}
+
+
 
 
 /* Footer */
@@ -1080,7 +1401,7 @@ li.active .menu-plumbing-arrow {
     color: #AE9877;
 }
 
-
+/* Футер для 1024 разрешения */
 
 .footer-1024 {
     display: none;
@@ -1138,7 +1459,63 @@ li.active .menu-plumbing-arrow {
 }
 
 
-/* Адаптив */
+/* Футер при разрешении меньше 1024 (870px) */
+
+.footer-below-1024 {
+    display: none;
+    padding: 100px 20px 0px 20px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300; 
+}
+
+.footer-first-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.footer-second-line {
+    margin: 40px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-first-column {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.footer-design-club-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.copyright-lines {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.copyrigth-first-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.copyrigth-second-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+    
+}
+
+/* Адаптив для footer */
 
 @media (max-width: 1335px) {
     .footer {
@@ -1149,6 +1526,58 @@ li.active .menu-plumbing-arrow {
         display: block;
     }
 }
+
+@media (max-width: 870px) {
+    .footer-1024 {
+        display: none;
+    }
+
+    .footer-below-1024 {
+        display: block;
+    }
+
+}
+
+
+@media (max-width: 460px) {
+    .footer-nav-up h1 a {
+        font-size: 20px;
+    }
+
+    .footer-nav-up ul li a {
+        font-size: 16px;
+    }
+
+    .footer-nav-down p {
+        font-size: 14px;
+    }
+
+    .footer-nav-down h1 {
+        font-size: 20px;
+    }
+
+    .copyright-lines a {
+        font-size: 14px;
+    }
+
+    .design-club-logo {
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 440px) {
+    .footer-logo-below {
+        width: 120px;
+        height: 91px;
+    }
+
+    .footer-icons img {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+
 
 
 
@@ -1289,7 +1718,7 @@ li.active .menu-plumbing-arrow {
 }
 
 .get-request-button-modal {
-    margin-top: 10px;
+    margin-top: 25px;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-size: 18px;
     position: relative;
