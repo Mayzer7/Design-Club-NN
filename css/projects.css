@@ -912,7 +912,7 @@ li.active .menu-plumbing-arrow {
 }
 
 
-/* Адаптив */
+/* Адаптив "Проекты" */
 
 @media (max-width: 1800px) {
     .project-content-second {
@@ -1012,7 +1012,21 @@ li.active .menu-plumbing-arrow {
 
 @media (max-width: 1100px) {
     .project-content-second {
-        margin-left: 210px;
+        margin-left: 100px;
+    }
+
+    .project-content-title {
+        padding-left: 16%;
+    }
+}
+
+@media (max-width: 890px) {
+    .project-content-second {
+        margin-left: 30px;
+    }
+    
+    .project-content-title {
+        padding-left: 9%;
     }
 }
 
