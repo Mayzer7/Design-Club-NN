@@ -87,6 +87,23 @@ body {
     width: 100%;  
 }
 
+
+/*
+Для того чтобы когда в input вводятся только цифры, 
+браузер не отображал некрасивый ползунок увелечения числа
+*/
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Для Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
 .line {
     width: 100%;
     height: 1px;
@@ -94,31 +111,8 @@ body {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Верхрняя секция главной страницы */
-
-.main-page-top {
-    background-image: url('../images/reviews/background.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 800px;
-    background-color: #151c28;
-}
-
-
-
-
 
 /* Шапка */
-
-.logo-img {
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.logo-img:hover {
-  transform: scale(1.1);
-  cursor: pointer;
-}
 
 .header-top {
     position: fixed;
@@ -144,14 +138,20 @@ body {
 .header-container {
     padding-top: 5px;
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    text-align: center;
 }
 
 .logo {
     width: 128px;
     height: 97px;
+}
+
+.header-right {
+    margin-left: 13%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: center;    
+    width: 100%;    
 }
 
 .nav-container {
@@ -242,6 +242,11 @@ li.active .menu-plumbing-arrow {
 /* Основной отступ */
 .menu-navigation.default-margin {
     margin-top: 170px;
+}
+
+/* Отступ при активном поиске */
+.menu-navigation.search-active {
+    margin-top: 420px; 
 }
 
 .menu-navigation-container {
@@ -369,11 +374,6 @@ li.active .menu-plumbing-arrow {
     z-index: 5;
 }
 
-
-
-
-
-
 .search-items {
     margin-top: 20px;
     display: flex;
@@ -392,6 +392,11 @@ li.active .menu-plumbing-arrow {
     opacity: 1;
     visibility: visible;
     transition: opacity 0.3s ease-in-out, visibility 0s 0s;
+}
+
+.header-search-padding {
+    padding-bottom: 270px;
+    background-color: #151c28;
 }
 
 .search-item {
@@ -421,8 +426,6 @@ li.active .menu-plumbing-arrow {
     transform: translateY(10px);
     transition: opacity 0s, transform 0s;
 }
-
-
 
 .zoom-image {
     display: inline-block;
@@ -508,6 +511,7 @@ li.active .menu-plumbing-arrow {
 }
 
 .contact-button {
+    white-space: nowrap;
     font-family: 'SF Pro Display', sans-serif;
     font-weight: 900;
     margin-top: -15px;    
@@ -531,53 +535,70 @@ li.active .menu-plumbing-arrow {
     color: #fff;
 }
 
+
+
 /* Адаптив Шапки */
 
 
-/* Отступ при активном поиске */
-.menu-navigation.search-active {
-    margin-top: 420px; 
+.burger-menu {
+    display: none;
 }
 
+.burger-menu button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
 
+.burger-icon {
+    width: 50px;
+    height: 43px;
+}
 
+@media (max-width: 1560px) {
+    .header-right {
+        margin-left: 5%;
+    }
+}
 
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
     .nav-container {
         flex-direction: column;
         gap: 20px;
-    }
-
-    .catalog-nav {
-        margin-right: 30px;
-    }
-
-    .search-container {
-        max-width: 250px;
     }
 
     .menu-navigation.default-margin {
         margin-top: 210px;
     }
 
-    /* Отступ при активном поиске */
     .menu-navigation.search-active {
-        margin-top: 480px; 
+        margin-top: 460px; 
+    }
+
+    .catalog-nav {
+        margin-right: 25px;
     }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1160px) {
+    .search-container {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 1090px) {
+    .search-container {
+        max-width: 214px;
+    }
+}
+
+@media (max-width: 1030px) {
     .menu-navigation.default-margin {
         margin-top: 200px;
     }
 
-    /* Отступ при активном поиске */
     .menu-navigation.search-active {
-        margin-top: 450px; 
-    }
-
-    .search-container {
-        max-width: 214px;
+        margin-top: 460px; 
     }
 
     .main-nav a {
@@ -589,7 +610,7 @@ li.active .menu-plumbing-arrow {
     }
 
     .logo {
-        margin-right: 100px;
+        margin-right: 50px;
     }
 
     .contact-header a {
@@ -599,12 +620,76 @@ li.active .menu-plumbing-arrow {
     .main-nav ul {
         gap: 5px;
     }
+}
+
+@media (max-width: 1010px) {
+    .contact-header button {
+        display: none;
+    }
+
+    .burger-menu {
+        display: block;
+    }
+}
+
+@media (max-width: 840px) {
+    .contact-header a {
+        display: none;
+    }
+
+    .logo {
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 730px) {
+    .nav-container {
+        display: none;
+    }
+
+    .menu-navigation-relative {
+        display: none;
+    }
+
+    .search-container {
+        margin-left: 10%;
+    }
+
+    .header-search-padding {
+        padding-bottom: 320px;
+        background-color: #151C28;
+    }
+
     
 }
 
+@media (max-width: 630px) {
+    .search-container {
+        margin-left: 7%;
+    }
+}
+
+@media (max-width: 550px) {
+    .search-container {
+        margin-left: 0%;
+    }
+}
+
+@media (max-width: 505px) {
+    .search-container {
+        display: none;
+    }
+}
+
+@media (max-width: 400px) {
+    .logo {
+        width: 82px;
+        height: 82px;
+    }
+}
 
 
-/* header */
+/* Секция 'Под шапкой' */
 
 .page-wrapper {
     position: relative; 
@@ -621,84 +706,88 @@ li.active .menu-plumbing-arrow {
 }
 
 .under-header-container {
-    margin-top: 60px;
+    margin-top: 30px;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.under-header-container a:first-child {
+.under-header-container a:nth-child(1) {
     color: #7B8292;
 }
 
+/* Адаптив секции под шапкой */
 
-.reviews-container {
-    margin-top: 60px;
-    padding-left: 26%;
-    position: relative;
-} 
+@media (max-width: 730px) {
+    .under-header {
+        top: 130px;
+    }
+}
 
-.rating-number {
-    position: absolute;
-    top: 155px;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-self: flex-start;
-    padding: 14px 55px;
-    gap: 10px;
-    border-left: 1px solid rgba(255, 255, 255, 0.4);
-    border-right: 1px solid rgba(255, 255, 255, 0.4);
+@media (max-width: 400px) {
+    .under-header {
+        top: 90px;
+    }
+}
 
-    background-image:
-        linear-gradient(to right, 
-            rgba(255, 255, 255, 0.4) 0%, 
-            rgba(255, 255, 255, 0.4) 7%, 
-            transparent 7%, 
-            transparent 93%, 
-            rgba(255, 255, 255, 0.4) 93%, 
-            rgba(255, 255, 255, 0.4) 100%),
-        linear-gradient(to right, 
-            rgba(255, 255, 255, 0.4) 0%, 
-            rgba(255, 255, 255, 0.4) 7%, 
-            transparent 7%, 
-            transparent 93%, 
-            rgba(255, 255, 255, 0.4) 93%, 
-            rgba(255, 255, 255, 0.4) 100%);
+/* "Заголовок под шапкой" */
+
+.reviews-title-section-container {
+    padding: 300px 20px 0px 20px;
+    background-image: url('../images/reviews/background.png');
     background-repeat: no-repeat;
-    background-position: top, bottom;
-    background-size: 100% 1px; 
+    background-size: cover;
+    background-position: 100% 0;
 }
 
-
-.rating-number p {
-    white-space: nowrap;
+.reviews-content {
+    margin-top: 60px;
+    padding-left: 25%;
+    position: relative;
 }
 
-.rating-number h1 {
-    font-family: 'Future New Light', sans-serif;
-    font-size: 93px;
-}
-
-.stars {
-    display: flex;
-    gap: 5px;
-}
-
-.title {
+.reviews-title {
     font-family: 'Future New Light', sans-serif;
     font-size: 142px;
     font-weight: 600;
     text-transform: uppercase;
 }
 
-.subtitle {
+.reviews-subtitle {
     margin-top: 30px;
     margin-bottom: 40px;
+    max-width: 690px;
+    width: 100%;
     font-size: 26px;
 }
 
+
+@media (max-width: 1100px) {
+    .reviews-title-section-container {
+        background-image: url('../images/reviews/adaptive/background-1024.png');
+    }
+}
+
+
+
+
+
+
+
+
+/* Секция "Отзывов" */
+
+.reviews-section {
+    padding: 0px 20px 20px 480px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300; 
+}
+
+.review-section-container {
+    max-width: 1405px;
+    width: 100%;
+}
 
 .review-cards {
     display: flex;
@@ -708,10 +797,10 @@ li.active .menu-plumbing-arrow {
 .review-card {
     margin-top: 60px;
     position: relative;
-    min-width: 692px;
+    max-width: 692px;
     width: 100%;
-    min-height: 440px;
     height: 100%;
+    padding-bottom: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -763,6 +852,8 @@ li.active .menu-plumbing-arrow {
     font-weight: 600;
     font-size: 34px;
     text-transform: uppercase;
+    text-align: center;
+    padding: 0px 10px;
 }
 
 .review-link a {
@@ -785,29 +876,6 @@ li.active .menu-plumbing-arrow {
     background-color: transparent;
     border: none;
     cursor: pointer;
-}
-
-
-/* Для расширения контейнера под хедером */
-
-.expansion-up {
-    padding: 0px 20px 0px 0px;
-    background-color: #151c28;
-    font-family: 'SF Pro Display Thin', sans-serif;  
-}
-
-/* Секция "Отзывов" */
-
-.reviews-section {
-    padding: 0px 0px 20px 490px;
-    background-color: #151c28;
-    font-family: 'SF Pro Display Thin', sans-serif;
-    font-weight: 300; 
-}
-
-.review-section-container {
-    max-width: 1405px;
-    width: 100%;
 }
 
 .more-reviews {
@@ -848,143 +916,295 @@ li.active .menu-plumbing-arrow {
     border-bottom: 1px solid #AE9877;
 }
 
+
+.rating-number {
+    position: absolute;
+    top: 155px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: flex-start;
+    padding: 14px 55px;
+    gap: 10px;
+    border-left: 1px solid rgba(255, 255, 255, 0.4);
+    border-right: 1px solid rgba(255, 255, 255, 0.4);
+
+    background-image:
+        linear-gradient(to right, 
+            rgba(255, 255, 255, 0.4) 0%, 
+            rgba(255, 255, 255, 0.4) 7%, 
+            transparent 7%, 
+            transparent 93%, 
+            rgba(255, 255, 255, 0.4) 93%, 
+            rgba(255, 255, 255, 0.4) 100%),
+        linear-gradient(to right, 
+            rgba(255, 255, 255, 0.4) 0%, 
+            rgba(255, 255, 255, 0.4) 7%, 
+            transparent 7%, 
+            transparent 93%, 
+            rgba(255, 255, 255, 0.4) 93%, 
+            rgba(255, 255, 255, 0.4) 100%);
+    background-repeat: no-repeat;
+    background-position: top, bottom;
+    background-size: 100% 1px; 
+}
+
+
+.rating-number p {
+    white-space: nowrap;
+}
+
+.rating-number h1 {
+    font-family: 'Future New Light', sans-serif;
+    font-size: 93px;
+}
+
+
+
+.rating-number-mobile {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    align-self: flex-start;
+    padding: 14px 55px;
+    width: 100%;
+    gap: 10px;
+    border-left: 1px solid rgba(255, 255, 255, 0.4);
+    border-right: 1px solid rgba(255, 255, 255, 0.4);
+
+    background-image:
+        linear-gradient(to right, 
+            rgba(255, 255, 255, 0.4) 0%, 
+            rgba(255, 255, 255, 0.4) 7%, 
+            transparent 7%, 
+            transparent 93%, 
+            rgba(255, 255, 255, 0.4) 93%, 
+            rgba(255, 255, 255, 0.4) 100%),
+        linear-gradient(to right, 
+            rgba(255, 255, 255, 0.4) 0%, 
+            rgba(255, 255, 255, 0.4) 7%, 
+            transparent 7%, 
+            transparent 93%, 
+            rgba(255, 255, 255, 0.4) 93%, 
+            rgba(255, 255, 255, 0.4) 100%);
+    background-repeat: no-repeat;
+    background-position: top, bottom;
+    background-size: 100% 1px; 
+}
+
+
+.rating-number-mobile p {
+    white-space: nowrap;
+}
+
+.rating-number-mobile h1 {
+    font-family: 'Future New Light', sans-serif;
+    font-size: 93px;
+}
+
+
+.stars {
+    display: flex;
+    gap: 5px;
+}
+
+
 /* Адаптив */
 
-@media (max-width: 1910px) {
-    .review-card {
-        min-width: 0px;
-        max-width: 500px;
-        width: 100%;
-        min-height: 550px;
+@media (max-width: 1915px) {
+    .reviews-content {
+        padding-left: 20%;
     }
 
-    .review-author {
-        font-size: 28px;
-    }
-}
-
-@media (max-width: 1720px) {
     .reviews-section {
-        padding: 0px 0px 20px 450px;
+        padding: 0 20px 20px 386px;
     }
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 1750px) {
     .reviews-section {
-        padding: 0px 0px 20px 420px;
-    }
-}
-
-@media (max-width: 1500px) {
-    .reviews-section {
-        padding: 0px 0px 20px 390px;
-    }
-}
-
-@media (max-width: 1440px) {
-    .reviews-section {
-        padding: 0px 0px 20px 360px;
-    }
-    
-    .review-card {
-        min-width: 0px;
-        max-width: 450px;
-        width: 100%;
-        min-height: 550px;
-    }
-
-    .title {
-        font-size: 98px;
-    }
-
-    .rating-number {
-        top: 100px;
-    }
-
-    .main-page-top {
-        height: 700px;
-    }
-
-}
-
-@media (max-width: 1300px) {
-    .review-card {
-        min-width: 0px;
-        max-width: 350px;
-        width: 100%;
-        min-height: 550px;
+        padding: 0 20px 20px 333px;
     }
 
     .review-author {
         font-size: 22px;
     }
-
-    .review-link {
-        padding-bottom: 40px;
-    }
-
 }
 
-@media (max-width: 1270px) {
-    .reviews-section {
-        padding: 0px 0px 20px 330px;
+@media (max-width: 1620px) {
+    .reviews-title {
+        font-size: 110px;
     }
 
-    
-}
-
-@media (max-width: 1180px) {
-    .reviews-section {
-        padding: 0px 0px 20px 300px;
+    .reviews-subtitle {
+        font-size: 22px;
     }
 
     .rating-number {
-        padding: 14px 30px;
-        top: 160px;
+        top: 65px;
+    }
+}
+
+@media (max-width: 1540px) {
+    .reviews-content {
+        padding-left: 22%;  
+    }
+}
+
+@media (max-width: 1405px) {
+    .reviews-content {
+        padding-left: 25%;  
+    }
+}
+
+
+@media (max-width: 1230px) {
+    .review-card {
+        max-width: 356px;
+    }
+}
+
+@media (max-width: 1225px) {
+     .reviews-content {
+        padding-left: 28%;  
+    }
+}
+
+@media (max-width: 1180px) {
+    .reviews-title {
+        font-size: 98px;
     }
 
+    .reviews-subtitle {
+        font-size: 22px;
+    }
+
+    .rating-number {
+        padding: 10px 20px;
+        top: 115px;
+    }
 
     .rating-number h1 {
         font-size: 47px;
     }
-}
+} 
 
 @media (max-width: 1150px) {
     .main-page-top {
         background-image: url('../images/reviews/adaptive/background-1024.png');
+    }
+}
+
+@media (max-width: 1100px) {
+    .reviews-section {
+        padding: 0 20px 20px 300px;
+    }
+}
+
+@media (max-width: 1050px) {
+    .reviews-content {
+        padding-left: 23%;
+    }
+
+    .reviews-section {
+        padding: 0 20px 20px 240px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .rating-number {
+        display: none;
+    }
+
+    .rating-number-mobile {
+        display: flex;
+    }
+
+    .reviews-content {
+        padding-left: 0%;
+    }
+
+    .reviews-section {
+        padding: 0 20px 20px 20px;
+    }
+
+    .review-card {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 775px) {
+    .reviews-title-section-container  {
+        background-image: none;
+        padding: 235px 20px 0 20px;
+    }
+}
+
+@media (max-width: 770px) {
+    .review-cards {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .review-card {
+        max-width: 100%;
+        margin-top: 20px;
+    }
+
+    .more {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 730px) {
+    .reviews-title-section-container  {
+        padding: 170px 20px 0 20px;
+    }
+}
+
+@media (max-width: 720px) {
+    .reviews-title {
+        font-size: 70px;
+    }
+
+    .reviews-subtitle {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 520px) {
+    .reviews-title {
+        font-size: 50px;
+    }
+
+    .reviews-subtitle {
+        font-size: 16px;
     }
 
     .review-text {
         font-size: 16px;
     }
 
-    .review-link {
-        padding-bottom: 20px;
+    .review-author {
+        font-size: 18px;
     }
 
-    .review-card {
-        min-width: 0px;
-        max-width: 350px;
-        width: 100%;
-        min-height: 450px;
-    }
 
-    .subtitle {
-        font-size: 22px;
-    }
+}
 
-    .rating-number {
-        top: 130px;
+@media (max-width: 400px) {
+    .reviews-title-section-container {
+        padding: 125px 20px 0 20px;
     }
 
 }
 
-@media (max-width: 1060px) {
-    .reviews-section {
-        padding: 0px 0px 20px 280px;
+@media (max-width: 380px) {
+    .reviews-title {
+        font-size: 42px;
     }
 }
-
 
 /* Footer */
 
@@ -1077,7 +1297,7 @@ li.active .menu-plumbing-arrow {
     color: #AE9877;
 }
 
-
+/* Футер для 1024 разрешения */
 
 .footer-1024 {
     display: none;
@@ -1135,7 +1355,63 @@ li.active .menu-plumbing-arrow {
 }
 
 
-/* Адаптив */
+/* Футер при разрешении меньше 1024 (870px) */
+
+.footer-below-1024 {
+    display: none;
+    padding: 100px 20px 0px 20px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300; 
+}
+
+.footer-first-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.footer-second-line {
+    margin: 40px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-first-column {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.footer-design-club-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.copyright-lines {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.copyrigth-first-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.copyrigth-second-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+    
+}
+
+/* Адаптив для footer */
 
 @media (max-width: 1335px) {
     .footer {
@@ -1146,6 +1422,57 @@ li.active .menu-plumbing-arrow {
         display: block;
     }
 }
+
+@media (max-width: 870px) {
+    .footer-1024 {
+        display: none;
+    }
+
+    .footer-below-1024 {
+        display: block;
+    }
+
+}
+
+
+@media (max-width: 460px) {
+    .footer-nav-up h1 a {
+        font-size: 20px;
+    }
+
+    .footer-nav-up ul li a {
+        font-size: 16px;
+    }
+
+    .footer-nav-down p {
+        font-size: 14px;
+    }
+
+    .footer-nav-down h1 {
+        font-size: 20px;
+    }
+
+    .copyright-lines a {
+        font-size: 14px;
+    }
+
+    .design-club-logo {
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 440px) {
+    .footer-logo-below {
+        width: 120px;
+        height: 91px;
+    }
+
+    .footer-icons img {
+        width: 32px;
+        height: 32px;
+    }
+}
+
 
 
 
@@ -1473,15 +1800,3 @@ li.active .menu-plumbing-arrow {
     position: relative;
 }
 
-.error-contact {
-    font-family: 'SF Pro Display', sans-serif; 
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    color: #EB5151;
-    font-size: 14px;
-    display: none;
-    margin-top: 5px;
-    padding-left: 5px;
-}
