@@ -1,3 +1,4 @@
+
 // Переключение карточек товара
 
 const track = document.getElementById('track');
@@ -5,12 +6,12 @@ const cards = Array.from(track.querySelectorAll('.popular-product-card'));
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
     
-let currentIndexCard = 2; // стартуем с Product 3 (индекс 2)
+let currentIndex = 2; // стартуем с Product 3 (индекс 2)
 let cardWidth, visibleCount;
 
 // Привязываем клики к статическим карточкам
 cards.forEach((card, idx) => {
-    if (idx === currentIndexCard) card.classList.add('active');
+    if (idx === currentIndex) card.classList.add('active');
     card.addEventListener('click', () => goTo(idx));
 });
 
@@ -37,24 +38,24 @@ function moveTrack() {
     const manualShift = parseFloat(shiftValue);
 
     // рассчитываем смещение
-    const x = -currentIndexCard * cardWidth + manualShift;
+    const x = -currentIndex * cardWidth + manualShift;
     track.style.transform = `translateX(${x}px)`;
-    cards.forEach((c, i) => c.classList.toggle('active', i === currentIndexCard));
+    cards.forEach((c, i) => c.classList.toggle('active', i === currentIndex));
 }
 
 function goTo(idx) {
-    currentIndexCard = Math.max(0, Math.min(cards.length - 1, idx));
+    currentIndex = Math.max(0, Math.min(cards.length - 1, idx));
     moveTrack();
     updateButtons();
 }
 
 function updateButtons() {
-    prevBtn.disabled = currentIndexCard === 0;
-    nextBtn.disabled = currentIndexCard === cards.length - 1;
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex === cards.length - 1;
 }
 
-prevBtn.addEventListener('click', () => goTo(currentIndexCard - 1));
-nextBtn.addEventListener('click', () => goTo(currentIndexCard + 1));
+prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
+nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
 window.addEventListener('resize', updateSizes);
 window.addEventListener('load', updateSizes);
 
@@ -77,11 +78,73 @@ track.addEventListener('touchend', () => {
     const diff = startX - endX;
 
     if (diff > swipeThreshold) {
-        goTo(currentIndexCard + 1);
+        goTo(currentIndex + 1);
     } else if (diff < -swipeThreshold) {
-        goTo(currentIndexCard - 1);
+        goTo(currentIndex - 1);
     }
 });
+
+
+
+
+// Для переключение карточек "Почему выбирают нас" с помощью стрелок
+
+document.addEventListener("DOMContentLoaded", function () {
+    const whyCards = document.querySelectorAll('.why-choose-us-content .card');
+    const rigthTitleGroup = document.querySelector('.rigth-title-group');
+
+    const isSmallScreen = window.innerWidth <= 600;
+
+    if (whyCards.length > 4 && !isSmallScreen) {
+        rigthTitleGroup.classList.add('visible');
+    } else {
+        rigthTitleGroup.classList.remove('visible');
+    }
+});
+
+// Плавная анимация для переключения
+function easeInOutQuad(t) {
+    return t < 0.5
+        ? 2 * t * t
+        : -1 + (4 - 2 * t) * t;
+}
+
+function animateScroll(container, delta, duration = 800) {
+    const start = container.scrollLeft;
+    const end = start + delta;
+    const t0 = performance.now();
+
+    function tick(t) {
+        const elapsed = t - t0;
+        const progress = Math.min(elapsed / duration, 1);
+        container.scrollLeft = start + (end - start) * easeInOutQuad(progress);
+
+        if (progress < 1) requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('.why-choose-us-content');
+    const leftArrow = document.getElementById('why-left-arrow');
+    const rightArrow = document.getElementById('why-right-arrow');
+
+    const minWidth = parseInt(
+        window.getComputedStyle(document.querySelector('.card')).getPropertyValue('min-width'), 10
+    );
+
+    const scrollAmount = minWidth; // ширина + отступ
+
+    rightArrow.addEventListener('click', () => {
+        animateScroll(container, scrollAmount, 300);
+    });
+
+    leftArrow.addEventListener('click', () => {
+        animateScroll(container, -scrollAmount, 300);
+    });
+});
+
 
 // Валидация модального окна формы "Связаться с нами"
 
@@ -234,13 +297,19 @@ errorModal.addEventListener('click', (e) => {
 });
 
 
+
 // Добавление товара в корзину
 
 const addBtn = document.getElementById('add-btn');
+const addBtnMobile = document.getElementById('add-btn-mobile');
 const qtyBlock = document.getElementById('qty-block');
+const qtyBlockMobile = document.getElementById('qty-block-mobile');
 const notifyBlock = document.getElementById('notify-block');
+const notifyBlockMobile = document.getElementById('notify-block-mobile');
 const minusBtn = document.getElementById('minus-btn');
+const minusBtnMobile = document.getElementById('minus-btn-mobile');
 const plusBtn = document.getElementById('plus-btn');
+const plusBtnMobile = document.getElementById('plus-btn-mobile');
 const qtyLabel = document.getElementById('qty-label');
           
 let quantity = 1;
@@ -271,6 +340,22 @@ minusBtn.addEventListener('click', () => {
       notifyBlock.classList.remove('active');
       document.querySelector('.add-to-cart').style.display = '';
     }
+});
+
+// Для контейнера мобильного телефона
+
+addBtnMobile.addEventListener('click', () => {
+    // скрываем кнопку "В корзину"
+    document.querySelector('.add-to-cart-mobile').style.display = 'none';
+    // показываем эти два блока
+    qtyBlockMobile.classList.add('active');
+    notifyBlockMobile.classList.add('active');
+    qtyLabel.textContent = quantity;
+});
+    
+plusBtnMobile.addEventListener('click', () => {
+    quantity++;
+    qtyLabel.textContent = quantity;
 });
 
 
