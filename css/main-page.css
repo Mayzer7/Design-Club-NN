@@ -891,16 +891,15 @@ li.active .menu-plumbing-arrow {
 }
 
 
-.burger-catalog nav ul ul,
-nav ul ul {
+/* Только для бургер‑меню */
+.burger-catalog nav ul ul {
   max-height: 0;
   overflow: hidden;
   opacity: 0;
   transition: max-height 0.4s ease, opacity 0.4s ease;
 }
 
-.burger-catalog nav ul ul.open,
-nav ul ul.open {
+.burger-catalog nav ul ul.open {
   max-height: 1000px; 
   opacity: 1;
 }
