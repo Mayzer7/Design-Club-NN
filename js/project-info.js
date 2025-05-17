@@ -35,6 +35,7 @@ window.addEventListener('resize', () => {
 });
 
 
+
 // Переключение карточек товара
 
 const track = document.getElementById('track');
@@ -121,18 +122,24 @@ track.addEventListener('touchend', () => {
 });
 
 
-// Секция "Отзывы от покупателей"
 
+
+// Секция "Наши Отзывы от покупателей"
 
 // Раскрытие отзыва по больше если нужно 
-
 const readFullButton = document.getElementById('read-full-btn');
-const reviewContinueText = document.querySelector('.review-continue-text')
+const reviewContinueText = document.querySelector('.review-continue-text');
 const readFullReview = document.querySelector('.read-full-review');
 
-readFullButton.addEventListener('click', () => {
-    reviewContinueText.style.display = 'block';
-    readFullReview.style.display = 'none';  
+document.querySelectorAll('.read-full-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        const review = button.closest('.review-text');
+        const continueText = review.querySelector('.review-continue-text');
+        const readMore = review.querySelector('.read-full-review');
+
+        continueText.style.display = 'inline';
+        readMore.style.display = 'none';
+    });
 });
 
 // Переключение карточек отзывов
@@ -149,42 +156,57 @@ leftArrowReview.addEventListener('click', () => moveReview(-1));
 rightArrowReview.addEventListener('click', () => moveReview(1));
 
 function moveReview(direction) {
-  const newIndex = currentIndexReview + direction;
-  if (newIndex >= 0 && newIndex < cardsReview.length) {
-    currentIndexReview = newIndex;
-    updateTransform();
-    ratingNumber.style.visibility = currentIndexReview > 0 ? 'hidden' : 'visible';
-  }
+    const newIndex = currentIndexReview + direction;
+    if (newIndex >= 0 && newIndex < cardsReview.length) {
+        currentIndexReview = newIndex;
+        updateTransform();
+
+        // Скрывать рейтинг только если ширина окна больше 1000px
+        if (window.innerWidth > 1000) {
+            ratingNumber.style.visibility = currentIndexReview > 0 ? 'hidden' : 'visible';
+        } else {
+            ratingNumber.style.visibility = 'visible';
+        }
+    }
 }
 
 function updateTransform() {
-  cardsContainer.style.transform = `translateX(${-cardWidthReview * currentIndexReview}px)`;
+    cardsContainer.style.transform = `translateX(${-cardWidthReview * currentIndexReview}px)`;
 }
+
+// Обработка ресайза окна — обновляем видимость рейтинга
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 1000) {
+        ratingNumber.style.visibility = currentIndexReview > 0 ? 'hidden' : 'visible';
+    } else {
+        ratingNumber.style.visibility = 'visible';
+    }
+});
 
 // Добавляем свайп
 let startReviewX = 0;
 let isDragging = false;
 
 cardsContainer.addEventListener('touchstart', e => {
-  startReviewX = e.touches[0].clientX;
-  isDragging = true;
+    startReviewX = e.touches[0].clientX;
+    isDragging = true;
 }, { passive: true });
 
-cardsContainer.addEventListener('touchmove', e => {
-}, { passive: true });
+cardsContainer.addEventListener('touchmove', e => {}, { passive: true });
 
 cardsContainer.addEventListener('touchend', e => {
-  if (!isDragging) return;
-  const endX = e.changedTouches[0].clientX;
-  const diffX = endX - startReviewX;
-  const threshold = 50; // минимальная дистанция свайпа
-  if (diffX > threshold) {
-    moveReview(-1); // свайп вправо
-  } else if (diffX < -threshold) {
-    moveReview(1);  // свайп влево
-  }
-  isDragging = false;
+    if (!isDragging) return;
+    const endX = e.changedTouches[0].clientX;
+    const diffX = endX - startReviewX;
+    const threshold = 50; // минимальная дистанция свайпа
+    if (diffX > threshold) {
+        moveReview(-1); // свайп вправо
+    } else if (diffX < -threshold) {
+        moveReview(1);  // свайп влево
+    }
+    isDragging = false;
 });
+
 
 
 
