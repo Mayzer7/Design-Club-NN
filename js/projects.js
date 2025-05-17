@@ -537,11 +537,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
 // Чётко считываем скроллы и скрываем/показываем header
 
-const stickyNav = document.querySelector('.sticky-nav');
+const stickyNavs = document.querySelectorAll('.sticky-nav');
 let lastScrollTop = 0;
 let scrollTimer = null;            // ← добавили для хранения таймера
 const scrollThreshold = 0;         // минимальный порог (можно даже 0)
@@ -563,22 +561,22 @@ window.addEventListener('scroll', () => {
 
     if (scrollDelta > 0) {
         // Скролл вниз — скрываем навигацию сразу
-        stickyNav.classList.remove('hidden');
+        stickyNavs.forEach(nav => nav.classList.remove('hidden'));
 
         header.classList.add('header-hidden');
         header.classList.remove('header-scrolled-up');
 
-        searchInput.blur(); 
-        searchInput.value = ''; 
-        searchItems.classList.remove('show'); 
+        searchInput.blur();
+        searchInput.value = '';
+        searchItems.classList.remove('show');
 
         // Убираем пустые отступы
         header.style.paddingBottom = '20px';
 
         // Сброс состояния
         blurContainers.forEach(container => {
-        container.style.filter = '';
-        container.style.cursor = '';
+            container.style.filter = '';
+            container.style.cursor = '';
         });
 
         header.style.backgroundColor = 'transparent';
@@ -596,7 +594,7 @@ window.addEventListener('scroll', () => {
         header.style.display = 'block';
 
         scrollTimer = setTimeout(() => {
-        stickyNav.classList.add('hidden');
+            stickyNavs.forEach(nav => nav.classList.add('hidden'));
         }, 300);
 
         header.classList.remove('header-hidden');

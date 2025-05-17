@@ -122,7 +122,6 @@ body {
 
 .header-hidden {
     transform: translateY(-100%);
-    transition: none !important;
 }
 
 .header-scrolled-up {
@@ -135,14 +134,20 @@ body {
 .header-container {
     padding-top: 5px;
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    text-align: center;
 }
 
 .logo {
     width: 128px;
     height: 97px;
+}
+
+.header-right {
+    margin-left: 13%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: center;    
+    width: 100%;    
 }
 
 .nav-container {
@@ -233,6 +238,11 @@ li.active .menu-plumbing-arrow {
 /* Основной отступ */
 .menu-navigation.default-margin {
     margin-top: 170px;
+}
+
+/* Отступ при активном поиске */
+.menu-navigation.search-active {
+    margin-top: 420px; 
 }
 
 .menu-navigation-container {
@@ -360,11 +370,6 @@ li.active .menu-plumbing-arrow {
     z-index: 5;
 }
 
-
-
-
-
-
 .search-items {
     margin-top: 20px;
     display: flex;
@@ -383,6 +388,11 @@ li.active .menu-plumbing-arrow {
     opacity: 1;
     visibility: visible;
     transition: opacity 0.3s ease-in-out, visibility 0s 0s;
+}
+
+.header-search-padding {
+    padding-bottom: 270px;
+    background-color: #151c28;
 }
 
 .search-item {
@@ -412,8 +422,6 @@ li.active .menu-plumbing-arrow {
     transform: translateY(10px);
     transition: opacity 0s, transform 0s;
 }
-
-
 
 .zoom-image {
     display: inline-block;
@@ -499,6 +507,7 @@ li.active .menu-plumbing-arrow {
 }
 
 .contact-button {
+    white-space: nowrap;
     font-family: 'SF Pro Display', sans-serif;
     font-weight: 900;
     margin-top: -15px;    
@@ -522,53 +531,70 @@ li.active .menu-plumbing-arrow {
     color: #fff;
 }
 
+
+
 /* Адаптив Шапки */
 
 
-/* Отступ при активном поиске */
-.menu-navigation.search-active {
-    margin-top: 420px; 
+.burger-menu {
+    display: none;
 }
 
+.burger-menu button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
 
+.burger-icon {
+    width: 50px;
+    height: 43px;
+}
 
+@media (max-width: 1560px) {
+    .header-right {
+        margin-left: 5%;
+    }
+}
 
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
     .nav-container {
         flex-direction: column;
         gap: 20px;
-    }
-
-    .catalog-nav {
-        margin-right: 30px;
-    }
-
-    .search-container {
-        max-width: 250px;
     }
 
     .menu-navigation.default-margin {
         margin-top: 210px;
     }
 
-    /* Отступ при активном поиске */
     .menu-navigation.search-active {
-        margin-top: 480px; 
+        margin-top: 460px; 
+    }
+
+    .catalog-nav {
+        margin-right: 25px;
     }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1160px) {
+    .search-container {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 1090px) {
+    .search-container {
+        max-width: 214px;
+    }
+}
+
+@media (max-width: 1030px) {
     .menu-navigation.default-margin {
         margin-top: 200px;
     }
 
-    /* Отступ при активном поиске */
     .menu-navigation.search-active {
-        margin-top: 450px; 
-    }
-
-    .search-container {
-        max-width: 214px;
+        margin-top: 460px; 
     }
 
     .main-nav a {
@@ -580,7 +606,7 @@ li.active .menu-plumbing-arrow {
     }
 
     .logo {
-        margin-right: 100px;
+        margin-right: 50px;
     }
 
     .contact-header a {
@@ -590,8 +616,371 @@ li.active .menu-plumbing-arrow {
     .main-nav ul {
         gap: 5px;
     }
-    
 }
+
+@media (max-width: 1010px) {
+    .contact-header button {
+        display: none;
+    }
+
+    .burger-menu {
+        display: block;
+    }
+}
+
+@media (max-width: 840px) {
+    .contact-header a {
+        display: none;
+    }
+
+    .logo {
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 730px) {
+    .nav-container {
+        display: none;
+    }
+
+    .menu-navigation-relative {
+        display: none;
+    }
+
+    .search-container {
+        margin-left: 10%;
+    }
+
+    .header-search-padding {
+        padding-bottom: 320px;
+        background-color: #151C28;
+    }
+}
+
+@media (max-width: 630px) {
+    .search-container {
+        margin-left: 7%;
+    }
+}
+
+@media (max-width: 550px) {
+    .search-container {
+        margin-left: 0%;
+    }
+}
+
+@media (max-width: 505px) {
+    .search-container {
+        display: none;
+    }
+}
+
+@media (max-width: 400px) {
+    .logo {
+        width: 82px;
+        height: 82px;
+    }
+}
+
+
+/* Бургер меню */
+
+.main-page-content, .burger-menu-open {
+    transition: all 0.3s ease;
+}
+
+.main-page-content.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-20px);
+}
+
+.burger-menu-open {
+    display: block; /* чтобы transition сработал */
+    position: fixed;
+    top: 0;
+    left: 0; /* фиксируем сверху слева */
+    width: 100vw;
+    height: 100vh;
+    padding: 15px;
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #EDE4D7;
+    z-index: 9999;
+    overflow-y: auto;
+
+    /* Начальное состояние — сдвинуто вверх за экран */
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.burger-menu-open.open {
+    /* При открытии сдвигаем в нормальное положение */
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.burger-menu-open svg {
+    vertical-align: middle;
+}
+
+.burger-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-burger-svg {
+    cursor: pointer;
+    width: 36px;
+    height: 31px;
+    color: #EDE4D7;  
+    transition: color 0.3s ease;
+}
+
+.close-burger-svg:hover {
+    color: #AE9877; 
+}
+
+.search-input {
+    margin-top: 0px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px 0px;
+}
+
+.search-input input {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    color: rgba(237, 228, 215, 0.4);
+    outline: none;
+}
+
+.search-input input:focus,
+.search-input input:not(:placeholder-shown) {
+    color: #EDE4D7; 
+}
+
+/* Карточки поиска в бургере */
+
+#searchItemsBurger {
+  opacity: 1;
+  max-height: 1000px; /* достаточно большое */
+  overflow: hidden;
+  transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+#searchItemsBurger.hidden {
+  opacity: 0;
+  max-height: 0;
+  pointer-events: none;
+}
+
+.burger-search-item {
+    display: flex;
+    gap: 13px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px 0;
+}
+
+.burger-search-item-left img {
+    max-width: 60px;
+    max-height: 67px;
+    height: 100%;
+    width: 100%;
+}
+
+.burger-search-item-right {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.burger-all-items-button {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.burger-all-items-button a svg {
+    vertical-align: middle;
+}
+
+/* Корзина */
+
+.burger-cart-link {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px 0;
+}
+
+.burger-cart-link a {
+    text-transform: uppercase;
+}
+
+/* Каталог */
+
+.burger-catalog {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px 0;
+}
+
+.burger-catalog button {
+    border: none;
+    background-color: transparent;
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #EDE4D7;
+    cursor: pointer;
+    text-transform: uppercase;
+    padding: 0;
+}
+
+.burger-catalog svg {
+    vertical-align: middle;
+}   
+
+.burger-catalog nav ul {
+    margin-left: 20px;
+    margin-top: 5px;
+}
+
+.burger-catalog nav ul li {
+    margin-bottom: 10px;
+}
+
+.burger-nav-title {
+    font-size: 20px;
+}
+
+.burger-catalog nav ul li {
+    font-size: 16px;
+}
+
+.burger-catalog nav {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.burger-catalog nav.open {
+  max-height: 1000px;
+}
+
+.burger-catalog > .has-submenu svg {
+  transition: transform 0.4s ease;
+  transform-origin: center;
+}
+
+.burger-catalog > .has-submenu svg.rotated {
+  transform: rotate(180deg);
+}
+
+
+/* Только для бургер‑меню */
+.burger-catalog nav ul ul {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.burger-catalog nav ul ul.open {
+  max-height: 1000px; 
+  opacity: 1;
+}
+
+.burger-nav-title,
+.burger-catalog nav > ul > li > span,
+.burger-catalog nav ul li > span {
+  cursor: pointer;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+}
+
+.burger-catalog svg,
+nav ul svg {
+  transition: transform 0.4s ease;
+  transform-origin: center;
+  margin-left: 8px;
+}
+
+.burger-catalog ul ul.open + svg,
+nav ul ul.open + svg {
+  transform: rotate(180deg);
+}
+
+.burger-nav-title svg.rotated {
+  transform: rotate(180deg);
+}
+
+.additional-switching svg.rotated {
+    transform: rotate(90deg);
+}
+
+.burger-catalog > .has-submenu.active,
+.burger-catalog nav .has-submenu.active {
+  color: #AE9877;
+}
+
+.burger-catalog > .has-submenu.active svg path,
+.burger-catalog nav .has-submenu.active svg path {
+  stroke: #AE9877;
+}
+
+/* Ссылки */
+
+.burger-other-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px 0;
+}
+
+.burger-other-links a {
+    text-transform: uppercase;
+}
+
+/* Кнопка связаться с нами в бургере */
+
+.burger-get-request-btn {
+    margin-top: 20px;
+    border: 1px solid #EDE4D7;
+}
+
+.burger-get-request-btn button {
+    display: flex;         
+    justify-content: space-between;  
+    align-items: center; 
+    width: 100%;
+    padding: 20px;
+    border: none;
+    background-color: transparent;
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #EDE4D7;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.burger-get-request-btn button:hover {
+    background-color: #AE9877;
+}
+
+
 
 
 
@@ -614,7 +1003,7 @@ li.active .menu-plumbing-arrow {
 }
 
 .under-header-container {
-    margin-top: 60px;
+    margin-top: 30px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -636,6 +1025,9 @@ li.active .menu-plumbing-arrow {
     font-size: 80px;
     font-weight: 600;
     text-transform: uppercase;
+    word-wrap: break-word;  
+    overflow-wrap: break-word; 
+    white-space: normal; 
 }
 
 .subtitle {
@@ -643,6 +1035,78 @@ li.active .menu-plumbing-arrow {
     margin-bottom: 40px;
     font-size: 20px;
 }
+
+/* Адаптив  заголовка под шапкой */
+
+@media (max-width: 1100px) {
+    .projects-header-container {
+        padding-left: 16%;
+    }
+}
+
+@media (max-width: 890px) {
+    .projects-header-container {
+        padding-left: 9%;
+    }
+}
+
+@media (max-width: 870px) {
+    .projects-header-container {
+        padding-left: 0%;
+    }
+}
+
+@media (max-width: 730px) {
+    .under-header {
+        top: 130px;
+    }
+
+    .main-page-top {
+        height: 650px;
+    }
+}
+
+@media (max-width: 670px) {
+    .title {
+        font-size: 60px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+    }   
+
+    .main-page-top {
+        height: 560px;
+    }
+}
+
+
+
+@media (max-width: 508px) {
+    .title {
+        font-size: 42px;
+    }
+
+}
+
+@media (max-width: 370px) {
+    .title {
+        font-size: 38px;
+    }
+}
+
+@media (max-width: 338px) {
+    .main-page-top {
+        height: 600px;
+    }
+}
+
+@media (max-width: 280px) {
+    .main-page-top {
+        height: 630px;
+    }
+}
+
 
 /* Для расширения контейнера под хедером */
 
@@ -682,20 +1146,43 @@ li.active .menu-plumbing-arrow {
 
 }
 
-/* Добавим, чтобы убрать горизонтальный скроллбар в некоторых браузерах */
 .sticky-nav::-webkit-scrollbar {
     display: none;
 }
 
 .sticky-nav.hidden {
-    top: 190px;
+    top: 185px;
 }
 
 /* Адаптивность появления навигации */
 
+@media (max-width: 1300px) {
+    .sticky-nav.hidden {
+        top: 205px;
+    }
+}
+
 @media (max-width: 1200px) {
     .nav-hidden {
         top: 230px;
+    }
+}
+
+@media (max-width: 870px) {
+    .sticky-nav.hidden {
+        top: 200px;
+    }
+}
+
+@media (max-width: 730px) {
+    .sticky-nav.hidden {
+        top: 140px;
+    }
+}
+
+@media (max-width: 400px) {
+    .sticky-nav.hidden {
+        top: 110px;
     }
 }
 
@@ -723,7 +1210,6 @@ li.active .menu-plumbing-arrow {
     padding: 20px 10px;
 }
 
-/* WebKit (Chrome, Edge, Safari) */
 .projects-navigation::-webkit-scrollbar {
     height: 6px;
 }
@@ -736,7 +1222,7 @@ li.active .menu-plumbing-arrow {
     background-color: #EDE4D7;
 }
 
-/* для всех секций с id в нашем блоке */
+
 .projects-content-container[id] {
   /* высота вашего headerOffset (110px) плюс желаемый дополнительный отступ */
   scroll-margin-top: 120px;
@@ -845,6 +1331,11 @@ li.active .menu-plumbing-arrow {
     margin-top: 60px;
     margin-bottom: 30px;
     padding-left: 26%;
+
+    overflow-wrap: break-word; 
+    word-wrap: break-word;    
+    word-break: break-word;    
+    white-space: normal; 
 }
 
 .little-up {
@@ -867,8 +1358,8 @@ li.active .menu-plumbing-arrow {
 }
 
 .project-content-second-left img {
-    width: 425px;
-    height: 533px;
+    max-width: 425px;
+    max-height: 533px;
 }
 
 .project-content-second-right {
@@ -912,7 +1403,85 @@ li.active .menu-plumbing-arrow {
 }
 
 
+
+
+
+
+
+
+
+
+
+
 /* Адаптив "Проекты" */
+
+.project-mobile {
+    display: none;
+}
+
+.project-mobile-title {
+    margin-top: 20px;
+}
+
+.project-mobile-subtitle {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    color: rgba(237, 228, 215, 0.4);
+}
+
+.mobile-prod-desc {
+    padding: 20px 0;
+    word-wrap: break-word;    
+    overflow-wrap: break-word; 
+    white-space: normal;
+}
+
+.mobile-open-project-link {
+    border: none;
+    background-color: transparent;
+    color: #EDE4D7;
+    font-family: 'Sf Pro Display', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 5px 0;
+    margin-bottom: 100px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.project-content-mobile {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding-bottom: 20px;
+}
+
+.project-content-mobile img {
+    width: 100%;
+    height: 100%;
+}
+
+.open-more-project-btn {
+    margin-top: 30px;
+}
+
+.open-more-project-btn button {
+    border: none;
+    background-color: transparent;
+    color: #EDE4D7;
+    font-family: 'Sf Pro Display', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
 
 @media (max-width: 1800px) {
     .project-content-second {
@@ -959,8 +1528,8 @@ li.active .menu-plumbing-arrow {
 
 @media (max-width: 1310px) {
     .project-content-second-left img {
-        width: 325px;
-        height: 433px;
+        max-width: 325px;
+        max-height: 433px;
     }
 
     .project-content-second {
@@ -1001,8 +1570,8 @@ li.active .menu-plumbing-arrow {
     }
 
     .project-content-second-left img {
-        width: 286px;
-        height: 358px;
+        max-width: 286px;
+        max-height: 358px;
     }
 
     .project-content-second {
@@ -1020,6 +1589,8 @@ li.active .menu-plumbing-arrow {
     }
 }
 
+
+
 @media (max-width: 890px) {
     .project-content-second {
         margin-left: 30px;
@@ -1030,12 +1601,40 @@ li.active .menu-plumbing-arrow {
     }
 }
 
+@media (max-width: 870px) {
+    .project-desktop {
+        display: none;
+    }
+
+    .project-mobile {
+        display: block;
+    }
+
+    .project-content-title {
+        padding-left: 0%;
+    }
+}
+
+@media (max-width: 500px) {
+    .project-content-title {
+        font-size: 38px;
+    }
+
+    .project-mobile-title {
+        font-size: 20px;
+    }
+    
+    .project-mobile-subtitle {
+        font-size: 14px;
+    }
+}
+
 
 
 /* Footer */
 
 .footer {
-    padding: 100px 20px 20px 20px;
+    padding: 0px 20px 20px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 
@@ -1123,11 +1722,11 @@ li.active .menu-plumbing-arrow {
     color: #AE9877;
 }
 
-
+/* Футер для 1024 разрешения */
 
 .footer-1024 {
     display: none;
-    padding: 100px 20px 20px 20px;
+    padding: 0px 20px 20px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 
@@ -1181,7 +1780,63 @@ li.active .menu-plumbing-arrow {
 }
 
 
-/* Адаптив */
+/* Футер при разрешении меньше 1024 (870px) */
+
+.footer-below-1024 {
+    display: none;
+    padding: 0px 20px 0px 20px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300; 
+}
+
+.footer-first-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.footer-second-line {
+    margin: 40px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-first-column {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.footer-design-club-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.copyright-lines {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.copyrigth-first-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.copyrigth-second-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+    
+}
+
+/* Адаптив для footer */
 
 @media (max-width: 1335px) {
     .footer {
@@ -1192,6 +1847,60 @@ li.active .menu-plumbing-arrow {
         display: block;
     }
 }
+
+@media (max-width: 870px) {
+    .footer-1024 {
+        display: none;
+    }
+
+    .footer-below-1024 {
+        display: block;
+    }
+
+}
+
+
+@media (max-width: 460px) {
+    .footer-nav-up h1 a {
+        font-size: 20px;
+    }
+
+    .footer-nav-up ul li a {
+        font-size: 16px;
+    }
+
+    .footer-nav-down p {
+        font-size: 14px;
+    }
+
+    .footer-nav-down h1 {
+        font-size: 20px;
+    }
+
+    .copyright-lines a {
+        font-size: 14px;
+    }
+
+    .design-club-logo {
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 440px) {
+    .footer-logo-below {
+        width: 120px;
+        height: 91px;
+    }
+
+    .footer-icons img {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+
+
+
 
 
 
