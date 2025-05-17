@@ -43,6 +43,11 @@ html, body {
     overflow-x: hidden;
 }
 
+/* 1. Убираем системный тап‑хайлайт */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 *,
 *::before,
 *::after {
@@ -682,6 +687,317 @@ li.active .menu-plumbing-arrow {
         height: 82px;
     }
 }
+
+
+/* Бургер меню */
+
+.main-page-content, .burger-menu-open {
+    transition: all 0.3s ease;
+}
+
+.main-page-content.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-20px);
+}
+
+.burger-menu-open {
+    display: block; /* чтобы transition сработал */
+    position: fixed;
+    top: 0;
+    left: 0; /* фиксируем сверху слева */
+    width: 100vw;
+    height: 100vh;
+    padding: 15px;
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #EDE4D7;
+    z-index: 9999;
+    overflow-y: auto;
+
+    /* Начальное состояние — сдвинуто вверх за экран */
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.burger-menu-open.open {
+    /* При открытии сдвигаем в нормальное положение */
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.burger-menu-open svg {
+    vertical-align: middle;
+}
+
+.burger-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-burger-svg {
+    cursor: pointer;
+    width: 36px;
+    height: 31px;
+    color: #EDE4D7;  
+    transition: color 0.3s ease;
+}
+
+.close-burger-svg:hover {
+    color: #AE9877; 
+}
+
+.search-input {
+    margin-top: 0px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px 0px;
+}
+
+.search-input input {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    color: rgba(237, 228, 215, 0.4);
+    outline: none;
+}
+
+.search-input input:focus,
+.search-input input:not(:placeholder-shown) {
+    color: #EDE4D7; 
+}
+
+/* Карточки поиска в бургере */
+
+#searchItemsBurger {
+  opacity: 1;
+  max-height: 1000px; /* достаточно большое */
+  overflow: hidden;
+  transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+#searchItemsBurger.hidden {
+  opacity: 0;
+  max-height: 0;
+  pointer-events: none;
+}
+
+.burger-search-item {
+    display: flex;
+    gap: 13px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px 0;
+}
+
+.burger-search-item-left img {
+    max-width: 60px;
+    max-height: 67px;
+    height: 100%;
+    width: 100%;
+}
+
+.burger-search-item-right {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.burger-all-items-button {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.burger-all-items-button a svg {
+    vertical-align: middle;
+}
+
+/* Корзина */
+
+.burger-cart-link {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px 0;
+}
+
+.burger-cart-link a {
+    text-transform: uppercase;
+}
+
+/* Каталог */
+
+.burger-catalog {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px 0;
+}
+
+.burger-catalog button {
+    border: none;
+    background-color: transparent;
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #EDE4D7;
+    cursor: pointer;
+    text-transform: uppercase;
+    padding: 0;
+}
+
+.burger-catalog svg {
+    vertical-align: middle;
+}   
+
+.burger-catalog nav ul {
+    margin-left: 20px;
+    margin-top: 5px;
+}
+
+.burger-catalog nav ul li {
+    margin-bottom: 10px;
+}
+
+.burger-nav-title {
+    font-size: 20px;
+}
+
+.burger-catalog nav ul li {
+    font-size: 16px;
+}
+
+.burger-catalog nav {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.burger-catalog nav.open {
+  max-height: 1000px;
+}
+
+.burger-catalog > .has-submenu svg {
+  transition: transform 0.4s ease;
+  transform-origin: center;
+}
+
+.burger-catalog > .has-submenu svg.rotated {
+  transform: rotate(180deg);
+}
+
+
+.burger-catalog nav ul ul,
+nav ul ul {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.burger-catalog nav ul ul.open,
+nav ul ul.open {
+  max-height: 1000px; 
+  opacity: 1;
+}
+
+.burger-nav-title,
+.burger-catalog nav > ul > li > span,
+.burger-catalog nav ul li > span {
+  cursor: pointer;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+}
+
+.burger-catalog svg,
+nav ul svg {
+  transition: transform 0.4s ease;
+  transform-origin: center;
+  margin-left: 8px;
+}
+
+.burger-catalog ul ul.open + svg,
+nav ul ul.open + svg {
+  transform: rotate(180deg);
+}
+
+.burger-nav-title svg.rotated {
+  transform: rotate(180deg);
+}
+
+.additional-switching svg.rotated {
+    transform: rotate(90deg);
+}
+
+.burger-catalog > .has-submenu.active,
+.burger-catalog nav .has-submenu.active {
+  color: #AE9877;
+}
+
+.burger-catalog > .has-submenu.active svg path,
+.burger-catalog nav .has-submenu.active svg path {
+  stroke: #AE9877;
+}
+
+/* Ссылки */
+
+.burger-other-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px 0;
+}
+
+.burger-other-links a {
+    text-transform: uppercase;
+}
+
+/* Кнопка связаться с нами в бургере */
+
+.burger-get-request-btn {
+    margin-top: 20px;
+    border: 1px solid #EDE4D7;
+}
+
+.burger-get-request-btn button {
+    display: flex;         
+    justify-content: space-between;  
+    align-items: center; 
+    width: 100%;
+    padding: 20px;
+    border: none;
+    background-color: transparent;
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #EDE4D7;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.burger-get-request-btn button:hover {
+    background-color: #AE9877;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .page-wrapper {
@@ -4130,6 +4446,13 @@ li.active .menu-plumbing-arrow {
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     min-width: 300px;
     position: relative;
+    overflow-y: auto;
+    scrollbar-width: none;  
+    -ms-overflow-style: none;  
+}
+
+.modal-content::-webkit-scrollbar {
+    display: none;  
 }
 
 .close-btn {
