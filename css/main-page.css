@@ -236,7 +236,6 @@ li.active .menu-plumbing-arrow {
     padding: 20px;
     font-family: 'SF Pro Display', sans-serif;
     font-weight: 900;
-    transition: margin-top 0.5s ease, background-color 0.5s ease;
     background-color: #151c28;
     /* min-height: 250px; */
 }
@@ -678,6 +677,11 @@ li.active .menu-plumbing-arrow {
 @media (max-width: 505px) {
     .search-container {
         display: none;
+    }
+
+    .header-search-padding {
+        padding-bottom: 20px;
+        background-color: transparent;
     }
 }
 

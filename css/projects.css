@@ -42,6 +42,10 @@ html, body {
     padding: 0;
 }
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 *,
 *::before,
 *::after {
@@ -103,6 +107,8 @@ body {
     height: 800px;
     background-color: #151c28;
 }
+
+
 
 
 
@@ -230,7 +236,6 @@ li.active .menu-plumbing-arrow {
     padding: 20px;
     font-family: 'SF Pro Display', sans-serif;
     font-weight: 900;
-    transition: margin-top 0.5s ease, background-color 0.5s ease;
     background-color: #151c28;
     /* min-height: 250px; */
 }
@@ -673,6 +678,11 @@ li.active .menu-plumbing-arrow {
     .search-container {
         display: none;
     }
+
+    .header-search-padding {
+        padding-bottom: 20px;
+        background-color: transparent;
+    }
 }
 
 @media (max-width: 400px) {
@@ -980,6 +990,38 @@ nav ul ul.open + svg {
     background-color: #AE9877;
 }
 
+
+/* Анимации на странице */
+
+/* Появление заголовка через анимацию через маску вверх */
+
+.reveal-mask {
+    overflow: hidden;
+    position: relative;
+}
+
+.reveal-mask h1 {
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.6s ease;
+}
+
+.reveal-mask.active h1 {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Появление пунктов блока через фейд */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.active {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 
 
@@ -1904,6 +1946,7 @@ nav ul ul.open + svg {
 
 
 
+
 /* Модальное окно "Связаться с нами" */
 
 .modal {
@@ -1925,12 +1968,21 @@ nav ul ul.open + svg {
 }
 
 .modal-content {
-    width: 725px;
-    height: 849px;
+    max-width: 725px;
+    width: 100%;
+    max-height: 895px;
+    height: 100%;
     background-color: #151C28;
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     min-width: 300px;
     position: relative;
+    overflow-y: auto;
+    scrollbar-width: none;  
+    -ms-overflow-style: none;  
+}
+
+.modal-content::-webkit-scrollbar {
+    display: none;  
 }
 
 .close-btn {
@@ -1948,8 +2000,7 @@ nav ul ul.open + svg {
     align-items: center;
     text-align: center;
     padding: 40px;
-
-    position: relative;
+    
 }
 
 
@@ -2105,7 +2156,7 @@ nav ul ul.open + svg {
 }
 
 
-/* Адаптив модального окна */
+/* Адаптив модального окна "Связаться с нами"*/
 
 @media (max-width: 1040px) {
     .contact-modal-title {
@@ -2126,10 +2177,95 @@ nav ul ul.open + svg {
     }
 
     .modal-content {
-        width: 731px;
-        height: 659px;
+        max-width: 731px;
+        max-height: 659px;
     }
 }
+
+@media (max-width: 785px) {
+    .modal-content {
+        max-width: 95%; 
+    }
+}
+
+@media (max-width: 642px) {
+    .modal-content {
+        max-height: 710px;
+    }
+}
+
+@media (max-width: 544px) {
+    .modal-content {
+        max-height: 730px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-form-modal {
+        padding: 0 20px;
+    }
+
+    .modal-content-info {
+        padding: 40px 20px;
+    }
+}
+
+@media (max-width: 427px) {
+    .get-request-button-modal {
+        margin-top: 20px;
+    }
+
+    .modal-content {
+        max-height: 740px;
+    }
+}
+
+
+@media (max-width: 410px) {
+    .modal-content-info-inner img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .phone-number {
+        font-size: 16px;
+    }
+
+    .res-1024 {
+        font-size: 38px;
+    }
+
+    .modal-description {
+        font-size: 16px;
+    }
+
+    .accept-politics-modal p {
+        font-size: 14px;
+    }
+
+    .accept-politics-modal p span a {
+        font-size: 14px;
+    }
+
+    .modal-content {
+        max-height: 650px;
+    }
+}
+
+@media (max-width: 395px) {
+    .modal-content {
+        max-height: 690px;
+    }
+}
+
+@media (max-width: 363px) {
+    .modal-content {
+        max-height: 700px;
+    }
+}
+
+
+
 
 
 /* Модальное окно "Спасибо за заявку" */
@@ -2153,23 +2289,30 @@ nav ul ul.open + svg {
 }
 
 .modal-content-thanks {
-    width: 618px;
-    height: 377px;
+    max-width: 618px;
+    max-height: 377px;
+    width: 100%;
     background-color: #151C28;
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     min-width: 300px;
     position: relative;
+    overflow-wrap: break-word; 
 }
 
 .modal-content-info-thanks {
+    
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     text-align: center;
     padding: 30px;
-
     position: relative;
+}
+
+.modal-content-info-inner-thanks {
+    max-width: 100%;
+    width: 100%;
 }
 
 .modal-content-info-thanks h1 {
@@ -2197,6 +2340,43 @@ nav ul ul.open + svg {
     font-weight: 300;
 }
 
+.thanks-svg {
+    width: 79px;
+    height: 79px;
+}
+
+
+/* Адаптив модального окна "Спасибо за заявку" */
+
+@media (max-width: 670px) {
+    .modal-content-thanks {
+        max-width: 95%;
+    }
+}
+
+
+@media (max-width: 585px) {
+    .modal-content-info-inner-thanks h1 {
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 400px) {
+    .modal-content-info-inner-thanks h1 {
+        font-size: 38px;
+    }
+
+    .modal-description-info {
+        font-size: 16px;
+    }
+
+    .thanks-svg {
+        width: 56px;
+        height: 56px;
+    }
+
+}
+
 
 /* Модальное окно "Произошла ошибка" */
 
@@ -2212,6 +2392,11 @@ nav ul ul.open + svg {
     transition: opacity 0.5s ease, transform 0.5s ease;  
 }
 
+.error-svg {
+    width: 79px;
+    height: 79px;
+}
+
 .modal-error.open {
     display: flex;
     opacity: 1;  
@@ -2219,12 +2404,65 @@ nav ul ul.open + svg {
 }
 
 .modal-content-error {
-    width: 618px;
-    height: 377px;
+    max-width: 618px;
+    max-height: 377px;
+    width: 100%;
     background-color: #151C28;
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     min-width: 300px;
     position: relative;
+    overflow-wrap: break-word; 
+}
+
+.modal-content-info-inner-error {
+    max-width: 100%;
+    width: 100%;
+}
+
+
+.modal-content-info-inner-error button {
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    cursor: pointer;
+}
+
+.modal-content-info-inner-error svg {
+    margin-bottom: 25px;
+}
+
+
+/* Адаптив модального окна "Произошла ошибка"*/
+
+
+@media (max-width: 670px) {
+    .modal-content-error {
+        max-width: 95%;
+    }
+}
+
+@media (max-width: 585px) {
+    .modal-content-info-inner-error h1 {
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 400px) {
+    .modal-content-info-inner-error h1 {
+        font-size: 38px;
+    }
+
+    .modal-description-info {
+        font-size: 16px;
+    }
+
+    .error-svg {
+        width: 56px;
+        height: 56px;
+    }
+
 }
 
 

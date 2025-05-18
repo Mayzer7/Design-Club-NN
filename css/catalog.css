@@ -116,6 +116,10 @@ input[type="number"] {
 }
 
 
+
+
+
+
 /* Шапка */
 
 .header-top {
@@ -238,7 +242,6 @@ li.active .menu-plumbing-arrow {
     padding: 20px;
     font-family: 'SF Pro Display', sans-serif;
     font-weight: 900;
-    transition: margin-top 0.5s ease, background-color 0.5s ease;
     background-color: #151c28;
     /* min-height: 250px; */
 }
@@ -663,8 +666,6 @@ li.active .menu-plumbing-arrow {
         padding-bottom: 320px;
         background-color: #151C28;
     }
-
-    
 }
 
 @media (max-width: 630px) {
@@ -683,6 +684,11 @@ li.active .menu-plumbing-arrow {
     .search-container {
         display: none;
     }
+
+    .header-search-padding {
+        padding-bottom: 20px;
+        background-color: transparent;
+    }
 }
 
 @media (max-width: 400px) {
@@ -691,6 +697,338 @@ li.active .menu-plumbing-arrow {
         height: 82px;
     }
 }
+
+
+/* Бургер меню */
+
+.main-page-content, .burger-menu-open {
+    transition: all 0.3s ease;
+}
+
+.main-page-content.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-20px);
+}
+
+.burger-menu-open {
+    display: block; /* чтобы transition сработал */
+    position: fixed;
+    top: 0;
+    left: 0; /* фиксируем сверху слева */
+    width: 100vw;
+    height: 100vh;
+    padding: 15px;
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #EDE4D7;
+    z-index: 9999;
+    overflow-y: auto;
+
+    /* Начальное состояние — сдвинуто вверх за экран */
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.burger-menu-open.open {
+    /* При открытии сдвигаем в нормальное положение */
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.burger-menu-open svg {
+    vertical-align: middle;
+}
+
+.burger-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-burger-svg {
+    cursor: pointer;
+    width: 36px;
+    height: 31px;
+    color: #EDE4D7;  
+    transition: color 0.3s ease;
+}
+
+.close-burger-svg:hover {
+    color: #AE9877; 
+}
+
+.search-input {
+    margin-top: 0px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px 0px;
+}
+
+.search-input input {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    color: rgba(237, 228, 215, 0.4);
+    outline: none;
+}
+
+.search-input input:focus,
+.search-input input:not(:placeholder-shown) {
+    color: #EDE4D7; 
+}
+
+/* Карточки поиска в бургере */
+
+#searchItemsBurger {
+  opacity: 1;
+  max-height: 1000px; /* достаточно большое */
+  overflow: hidden;
+  transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+#searchItemsBurger.hidden {
+  opacity: 0;
+  max-height: 0;
+  pointer-events: none;
+}
+
+.burger-search-item {
+    display: flex;
+    gap: 13px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px 0;
+}
+
+.burger-search-item-left img {
+    max-width: 60px;
+    max-height: 67px;
+    height: 100%;
+    width: 100%;
+}
+
+.burger-search-item-right {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.burger-all-items-button {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.burger-all-items-button a svg {
+    vertical-align: middle;
+}
+
+/* Корзина */
+
+.burger-cart-link {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px 0;
+}
+
+.burger-cart-link a {
+    text-transform: uppercase;
+}
+
+/* Каталог */
+
+.burger-catalog {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px 0;
+}
+
+.burger-catalog button {
+    border: none;
+    background-color: transparent;
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #EDE4D7;
+    cursor: pointer;
+    text-transform: uppercase;
+    padding: 0;
+}
+
+.burger-catalog svg {
+    vertical-align: middle;
+}   
+
+.burger-catalog nav ul {
+    margin-left: 20px;
+    margin-top: 5px;
+}
+
+.burger-catalog nav ul li {
+    margin-bottom: 10px;
+}
+
+.burger-nav-title {
+    font-size: 20px;
+}
+
+.burger-catalog nav ul li {
+    font-size: 16px;
+}
+
+.burger-catalog nav {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.burger-catalog nav.open {
+  max-height: 1000px;
+}
+
+.burger-catalog > .has-submenu svg {
+  transition: transform 0.4s ease;
+  transform-origin: center;
+}
+
+.burger-catalog > .has-submenu svg.rotated {
+  transform: rotate(180deg);
+}
+
+
+/* Только для бургер‑меню */
+.burger-catalog nav ul ul {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.burger-catalog nav ul ul.open {
+  max-height: 1000px; 
+  opacity: 1;
+}
+
+.burger-nav-title,
+.burger-catalog nav > ul > li > span,
+.burger-catalog nav ul li > span {
+  cursor: pointer;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+}
+
+.burger-catalog svg,
+nav ul svg {
+  transition: transform 0.4s ease;
+  transform-origin: center;
+  margin-left: 8px;
+}
+
+.burger-catalog ul ul.open + svg,
+nav ul ul.open + svg {
+  transform: rotate(180deg);
+}
+
+.burger-nav-title svg.rotated {
+  transform: rotate(180deg);
+}
+
+.additional-switching svg.rotated {
+    transform: rotate(90deg);
+}
+
+.burger-catalog > .has-submenu.active,
+.burger-catalog nav .has-submenu.active {
+  color: #AE9877;
+}
+
+.burger-catalog > .has-submenu.active svg path,
+.burger-catalog nav .has-submenu.active svg path {
+  stroke: #AE9877;
+}
+
+/* Ссылки */
+
+.burger-other-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px 0;
+}
+
+.burger-other-links a {
+    text-transform: uppercase;
+}
+
+/* Кнопка связаться с нами в бургере */
+
+.burger-get-request-btn {
+    margin-top: 20px;
+    border: 1px solid #EDE4D7;
+}
+
+.burger-get-request-btn button {
+    display: flex;         
+    justify-content: space-between;  
+    align-items: center; 
+    width: 100%;
+    padding: 20px;
+    border: none;
+    background-color: transparent;
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #EDE4D7;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.burger-get-request-btn button:hover {
+    background-color: #AE9877;
+}
+
+
+/* Анимации на странице */
+
+/* Появление заголовка через анимацию через маску вверх */
+
+.reveal-mask {
+    overflow: hidden;
+    position: relative;
+}
+
+.reveal-mask h1 {
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.6s ease;
+}
+
+.reveal-mask.active h1 {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Появление пунктов блока через фейд */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 
 /* Секция 'Под шапкой' */
@@ -3065,6 +3403,9 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
 
 
+
+
+
 /* Модальное окно "Связаться с нами" */
 
 .modal {
@@ -3086,12 +3427,21 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 }
 
 .modal-content {
-    width: 725px;
-    height: 849px;
+    max-width: 725px;
+    width: 100%;
+    max-height: 895px;
+    height: 100%;
     background-color: #151C28;
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     min-width: 300px;
     position: relative;
+    overflow-y: auto;
+    scrollbar-width: none;  
+    -ms-overflow-style: none;  
+}
+
+.modal-content::-webkit-scrollbar {
+    display: none;  
 }
 
 .close-btn {
@@ -3109,8 +3459,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     align-items: center;
     text-align: center;
     padding: 40px;
-
-    position: relative;
+    
 }
 
 
@@ -3266,7 +3615,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 }
 
 
-/* Адаптив модального окна */
+/* Адаптив модального окна "Связаться с нами"*/
 
 @media (max-width: 1040px) {
     .contact-modal-title {
@@ -3287,10 +3636,95 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     }
 
     .modal-content {
-        width: 731px;
-        height: 659px;
+        max-width: 731px;
+        max-height: 659px;
     }
 }
+
+@media (max-width: 785px) {
+    .modal-content {
+        max-width: 95%; 
+    }
+}
+
+@media (max-width: 642px) {
+    .modal-content {
+        max-height: 710px;
+    }
+}
+
+@media (max-width: 544px) {
+    .modal-content {
+        max-height: 730px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-form-modal {
+        padding: 0 20px;
+    }
+
+    .modal-content-info {
+        padding: 40px 20px;
+    }
+}
+
+@media (max-width: 427px) {
+    .get-request-button-modal {
+        margin-top: 20px;
+    }
+
+    .modal-content {
+        max-height: 740px;
+    }
+}
+
+
+@media (max-width: 410px) {
+    .modal-content-info-inner img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .phone-number {
+        font-size: 16px;
+    }
+
+    .res-1024 {
+        font-size: 38px;
+    }
+
+    .modal-description {
+        font-size: 16px;
+    }
+
+    .accept-politics-modal p {
+        font-size: 14px;
+    }
+
+    .accept-politics-modal p span a {
+        font-size: 14px;
+    }
+
+    .modal-content {
+        max-height: 650px;
+    }
+}
+
+@media (max-width: 395px) {
+    .modal-content {
+        max-height: 690px;
+    }
+}
+
+@media (max-width: 363px) {
+    .modal-content {
+        max-height: 700px;
+    }
+}
+
+
+
 
 
 /* Модальное окно "Спасибо за заявку" */
@@ -3314,23 +3748,30 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 }
 
 .modal-content-thanks {
-    width: 618px;
-    height: 377px;
+    max-width: 618px;
+    max-height: 377px;
+    width: 100%;
     background-color: #151C28;
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     min-width: 300px;
     position: relative;
+    overflow-wrap: break-word; 
 }
 
 .modal-content-info-thanks {
+    
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     text-align: center;
     padding: 30px;
-
     position: relative;
+}
+
+.modal-content-info-inner-thanks {
+    max-width: 100%;
+    width: 100%;
 }
 
 .modal-content-info-thanks h1 {
@@ -3358,6 +3799,43 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     font-weight: 300;
 }
 
+.thanks-svg {
+    width: 79px;
+    height: 79px;
+}
+
+
+/* Адаптив модального окна "Спасибо за заявку" */
+
+@media (max-width: 670px) {
+    .modal-content-thanks {
+        max-width: 95%;
+    }
+}
+
+
+@media (max-width: 585px) {
+    .modal-content-info-inner-thanks h1 {
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 400px) {
+    .modal-content-info-inner-thanks h1 {
+        font-size: 38px;
+    }
+
+    .modal-description-info {
+        font-size: 16px;
+    }
+
+    .thanks-svg {
+        width: 56px;
+        height: 56px;
+    }
+
+}
+
 
 /* Модальное окно "Произошла ошибка" */
 
@@ -3373,6 +3851,11 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     transition: opacity 0.5s ease, transform 0.5s ease;  
 }
 
+.error-svg {
+    width: 79px;
+    height: 79px;
+}
+
 .modal-error.open {
     display: flex;
     opacity: 1;  
@@ -3380,14 +3863,66 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 }
 
 .modal-content-error {
-    width: 618px;
-    height: 377px;
+    max-width: 618px;
+    max-height: 377px;
+    width: 100%;
     background-color: #151C28;
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     min-width: 300px;
     position: relative;
+    overflow-wrap: break-word; 
 }
 
+.modal-content-info-inner-error {
+    max-width: 100%;
+    width: 100%;
+}
+
+
+.modal-content-info-inner-error button {
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    cursor: pointer;
+}
+
+.modal-content-info-inner-error svg {
+    margin-bottom: 25px;
+}
+
+
+/* Адаптив модального окна "Произошла ошибка"*/
+
+
+@media (max-width: 670px) {
+    .modal-content-error {
+        max-width: 95%;
+    }
+}
+
+@media (max-width: 585px) {
+    .modal-content-info-inner-error h1 {
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 400px) {
+    .modal-content-info-inner-error h1 {
+        font-size: 38px;
+    }
+
+    .modal-description-info {
+        font-size: 16px;
+    }
+
+    .error-svg {
+        width: 56px;
+        height: 56px;
+    }
+
+}
 
 
 

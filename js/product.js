@@ -708,7 +708,6 @@ document.querySelectorAll('.shower-program').forEach(link => {
 document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('.header-top');
     const initialScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    console.log('Начальное положение прокрутки:', initialScrollTop);
   
     if (!header) return;
   

@@ -1,3 +1,116 @@
+// Анимации на странице
+document.addEventListener("DOMContentLoaded", () => {
+    const revealElements = document.querySelectorAll(".reveal-mask, .fade-in");
+
+    const revealOnScroll = () => {
+        revealElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            
+            if (rect.top <= window.innerHeight * 0.8) {
+                el.classList.add("active");
+            }
+        });
+    };
+
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+});
+
+// Открытие бургер меню
+
+
+const openBurgerMenu = document.getElementById('openBurgerMenu');
+const burgerMenuContent = document.getElementById('burgerMenuContent');
+const mainContent = document.getElementById('mainContent');
+const closeBurgerBtn = document.getElementById('closeBurgerBtn');
+
+function openMenu() {
+    burgerMenuContent.classList.add('open');
+    mainContent.classList.add('hidden');
+}
+
+function closeMenu() {
+    burgerMenuContent.classList.remove('open');
+            
+    // Показать контент чуть раньше — через 250 мс (половина анимации)
+    setTimeout(() => {
+        mainContent.classList.remove('hidden');
+    }, 250);
+}
+
+function onTransitionEnd(event) {
+    if (event.propertyName === 'transform' || event.propertyName === 'opacity') {
+        mainContent.classList.remove('hidden');
+        // Чтобы не накопились обработчики, удаляем слушатель
+        burgerMenuContent.removeEventListener('transitionend', onTransitionEnd);
+    }
+}
+
+// Кнопка открытия меню
+openBurgerMenu.addEventListener('click', () => {
+    if (burgerMenuContent.classList.contains('open')) {
+        closeMenu();
+    } else {
+        openMenu();
+    }
+});
+
+// Кнопка закрытия меню
+closeBurgerBtn.addEventListener('click', () => {
+    closeMenu();
+});
+
+// Переключение менюшек в Бургере
+
+const catalogToggle = document.querySelector('.burger-catalog > .has-submenu');
+const catalogNav = document.querySelector('.burger-catalog nav');
+
+catalogToggle.addEventListener('click', () => {
+  catalogNav.classList.toggle('open');
+
+  const arrow = catalogToggle.querySelector('svg');
+  if (arrow) arrow.classList.toggle('rotated');
+
+  catalogToggle.classList.toggle('active');
+});
+
+
+const submenuTitles = document.querySelectorAll('.burger-catalog nav .has-submenu');
+
+submenuTitles.forEach(title => {
+  title.addEventListener('click', () => {
+    const submenu = title.nextElementSibling;
+    if (!submenu || submenu.tagName !== 'UL') return;
+
+    submenu.classList.toggle('open');
+
+    const arrow = title.querySelector('svg');
+    if (arrow) {
+      arrow.classList.toggle('rotated');
+    }
+
+    title.classList.toggle('active');
+  });
+});
+
+
+
+// Поиск в бургер меню
+
+const inputBurger = document.getElementById('inputBurger');
+const searchItemsBurger = document.getElementById('searchItemsBurger');
+
+// По умолчанию скрываем
+searchItemsBurger.classList.add('hidden');
+
+inputBurger.addEventListener('input', () => {
+  if (inputBurger.value.length > 0) {
+    searchItemsBurger.classList.remove('hidden');
+  } else {
+    searchItemsBurger.classList.add('hidden');
+  }
+});
+
 // Валидация модального окна формы "Связаться с нами"
 
 const thanksModal = document.getElementById('thanksModal');
@@ -70,8 +183,11 @@ function validateFormModal(event, formId) {
 }
 
 
+
+
 // Модальное окно "Связаться с нами"
 const openBtn = document.getElementById('openModalBtn');
+const openBtnInBurger = document.getElementById('burger-get-request');
 const closeBtn = document.getElementById('closeModalBtn');
 const closeBtnThanks = document.getElementById('closeModalBtnThanks');
 const closeBtnError = document.getElementById('closeModalBtnError');
@@ -83,6 +199,15 @@ const container = document.querySelector('.container');
 
 // Открытие
 openBtn.addEventListener('click', () => {
+    contactModal.style.display = 'flex';
+    container.style.filter = 'blur(5px)';
+    setTimeout(() => {
+        contactModal.classList.add('open');  
+    }, 10); 
+});
+
+// Открытие через кнопку в бургер меню
+openBtnInBurger.addEventListener('click', () => {
     contactModal.style.display = 'flex';
     container.style.filter = 'blur(5px)';
     setTimeout(() => {
@@ -151,7 +276,6 @@ errorModal.addEventListener('click', (e) => {
 
 
 
-
 // Переадрисация на страницу "Результаты поиска" после того как 
 // пользователь ввел название товарава в поиске и нажал Enter
 
@@ -172,7 +296,8 @@ document.querySelector('.search-icon-button').addEventListener('click', function
 
 
 
-// Валидация формы "Остались вопросы?"
+
+// Валидация форм на странице
 
 function validateForm(event, formId) {
     event.preventDefault();
@@ -188,7 +313,6 @@ function validateForm(event, formId) {
     // Поля внутри своей формы
     const nameInput = form.querySelector('input[name="name"]');
     const phoneInput = form.querySelector('input[name="phone"]');
-    const questionInput = form.querySelector('input[name="your-question"]');
     const acceptInput = form.querySelector('input[name="accept"]');
     const errorSpans = form.querySelectorAll('.error-contact');
 
@@ -206,17 +330,10 @@ function validateForm(event, formId) {
         valid = false;
     }
 
-    // Проверка поля "Ваш вопрос"
-    if (!questionInput.value.trim()) {
-        errorSpans[2].textContent = 'Пожалуйста, введите ваш вопрос.';
-        errorSpans[2].style.display = 'block';
-        valid = false;
-    }
-
     // Проверка чекбокса "Согласие"
     if (!acceptInput.checked) {
-        errorSpans[3].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
-        errorSpans[3].style.display = 'block';
+        errorSpans[2].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
+        errorSpans[2].style.display = 'block';
         valid = false;
     }
 
@@ -225,6 +342,7 @@ function validateForm(event, formId) {
         form.submit();
     }
 }
+
 
 
 
@@ -251,7 +369,7 @@ searchInput.addEventListener('input', function () {
         menuNavigation.classList.add('search-active');
         underHeader.style.filter = 'blur(5px)';
         blurContainers.forEach(container => container.style.filter = 'blur(5px)');
-        header.style.paddingBottom = '270px';
+        header.classList.add('header-search-padding');
         header.style.backgroundColor = '#151c28';
         searchItems.classList.add('show');
     } else {
@@ -260,13 +378,13 @@ searchInput.addEventListener('input', function () {
 
         if (!isCatalogActive) {
             header.style.backgroundColor = 'transparent';
-            header.style.paddingBottom = '20px';
+            header.classList.remove('header-search-padding');
             searchItems.classList.remove('show');
             underHeader.style.filter = 'none';
             blurContainers.forEach(container => container.style.filter = '');
         } else {
             searchItems.classList.remove('show');
-            header.style.paddingBottom = '20px';
+            header.classList.remove('header-search-padding');
             underHeader.style.filter = 'blur(5px)';
         }
     }
@@ -373,7 +491,6 @@ openCatalog.addEventListener('click', function (e) {
         }
     }
 });
-
 
 
 // Отображение меню Сантехники
@@ -503,7 +620,6 @@ document.querySelectorAll('.shower-program').forEach(link => {
 document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('.header-top');
     const initialScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    console.log('Начальное положение прокрутки:', initialScrollTop);
   
     if (!header) return;
   
@@ -541,8 +657,9 @@ window.addEventListener('scroll', () => {
     searchInput.value = ''; // очищает текст
     searchItems.classList.remove('show'); // скрывает блок
     
+    header.classList.remove('header-search-padding');
     // Убираем пустые отступы
-    header.style.paddingBottom = '20px';
+    
 
     // Сброс состояния
     blurContainers.forEach(container => {
@@ -561,6 +678,7 @@ window.addEventListener('scroll', () => {
     openCatalog.style.color = '';
     
   } else if (scrollDelta < 0) {
+    
     header.style.display = 'block';
     // Скролл вверх
 

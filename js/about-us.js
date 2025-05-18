@@ -1,3 +1,118 @@
+// Анимации на странице
+document.addEventListener("DOMContentLoaded", () => {
+    const revealElements = document.querySelectorAll(".reveal-mask, .fade-in");
+
+    const revealOnScroll = () => {
+        revealElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            
+            if (rect.top <= window.innerHeight * 0.8) {
+                el.classList.add("active");
+            }
+        });
+    };
+
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+});
+
+// Открытие бургер меню
+
+
+const openBurgerMenu = document.getElementById('openBurgerMenu');
+const burgerMenuContent = document.getElementById('burgerMenuContent');
+const mainContent = document.getElementById('mainContent');
+const closeBurgerBtn = document.getElementById('closeBurgerBtn');
+
+function openMenu() {
+    burgerMenuContent.classList.add('open');
+    mainContent.classList.add('hidden');
+}
+
+function closeMenu() {
+    burgerMenuContent.classList.remove('open');
+            
+    // Показать контент чуть раньше — через 250 мс (половина анимации)
+    setTimeout(() => {
+        mainContent.classList.remove('hidden');
+    }, 250);
+}
+
+function onTransitionEnd(event) {
+    if (event.propertyName === 'transform' || event.propertyName === 'opacity') {
+        mainContent.classList.remove('hidden');
+        // Чтобы не накопились обработчики, удаляем слушатель
+        burgerMenuContent.removeEventListener('transitionend', onTransitionEnd);
+    }
+}
+
+// Кнопка открытия меню
+openBurgerMenu.addEventListener('click', () => {
+    if (burgerMenuContent.classList.contains('open')) {
+        closeMenu();
+    } else {
+        openMenu();
+    }
+});
+
+// Кнопка закрытия меню
+closeBurgerBtn.addEventListener('click', () => {
+    closeMenu();
+});
+
+// Переключение менюшек в Бургере
+
+const catalogToggle = document.querySelector('.burger-catalog > .has-submenu');
+const catalogNav = document.querySelector('.burger-catalog nav');
+
+catalogToggle.addEventListener('click', () => {
+  catalogNav.classList.toggle('open');
+
+  const arrow = catalogToggle.querySelector('svg');
+  if (arrow) arrow.classList.toggle('rotated');
+
+  catalogToggle.classList.toggle('active');
+});
+
+
+const submenuTitles = document.querySelectorAll('.burger-catalog nav .has-submenu');
+
+submenuTitles.forEach(title => {
+  title.addEventListener('click', () => {
+    const submenu = title.nextElementSibling;
+    if (!submenu || submenu.tagName !== 'UL') return;
+
+    submenu.classList.toggle('open');
+
+    const arrow = title.querySelector('svg');
+    if (arrow) {
+      arrow.classList.toggle('rotated');
+    }
+
+    title.classList.toggle('active');
+  });
+});
+
+
+
+// Поиск в бургер меню
+
+const inputBurger = document.getElementById('inputBurger');
+const searchItemsBurger = document.getElementById('searchItemsBurger');
+
+// По умолчанию скрываем
+searchItemsBurger.classList.add('hidden');
+
+inputBurger.addEventListener('input', () => {
+  if (inputBurger.value.length > 0) {
+    searchItemsBurger.classList.remove('hidden');
+  } else {
+    searchItemsBurger.classList.add('hidden');
+  }
+});
+
+
+
 // Для переключение карточек "Почему выбирают нас" с помощью стрелок
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -130,8 +245,10 @@ function validateFormModal(event, formId) {
 }
 
 
+
 // Модальное окно "Связаться с нами"
 const openBtn = document.getElementById('openModalBtn');
+const openBtnInBurger = document.getElementById('burger-get-request');
 const closeBtn = document.getElementById('closeModalBtn');
 const closeBtnThanks = document.getElementById('closeModalBtnThanks');
 const closeBtnError = document.getElementById('closeModalBtnError');
@@ -143,6 +260,15 @@ const container = document.querySelector('.container');
 
 // Открытие
 openBtn.addEventListener('click', () => {
+    contactModal.style.display = 'flex';
+    container.style.filter = 'blur(5px)';
+    setTimeout(() => {
+        contactModal.classList.add('open');  
+    }, 10); 
+});
+
+// Открытие через кнопку в бургер меню
+openBtnInBurger.addEventListener('click', () => {
     contactModal.style.display = 'flex';
     container.style.filter = 'blur(5px)';
     setTimeout(() => {
@@ -370,7 +496,6 @@ cardsContainer.addEventListener('touchend', e => {
 
 
 
-
 // Поиск в хедере
 
 const searchInput = document.getElementById('search-input');
@@ -440,10 +565,6 @@ function resetHeaderState() {
     underHeader.style.backdropFilter = 'none';
     searchInput.value = '';
     underHeader.style.cursor = '';
-    header.style.paddingBottom = '20px';
-    menuNavigation.classList.add('default-margin');
-    menuNavigation.classList.remove('search-active');
-    
 
     // Сбрасываем blur, если поле поиска пустое
     blurContainers.forEach(container => {
@@ -503,11 +624,13 @@ openCatalog.addEventListener('click', function (e) {
             header.style.backgroundColor = 'transparent';
             menuNavigation.style.display = 'none';
 
+            // Убираем блюр со всех контейнеров, когда выходим из каталога
             blurContainers.forEach(container => {
                 container.style.filter = 'none';
                 container.style.cursor = '';
             });
     
+            // underHeaderContainer.style.marginTop = '250px';
             underHeader.style.filter = 'none';
             underHeader.style.backdropFilter = 'none';
     
@@ -650,7 +773,6 @@ document.querySelectorAll('.shower-program').forEach(link => {
 document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('.header-top');
     const initialScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    console.log('Начальное положение прокрутки:', initialScrollTop);
   
     if (!header) return;
   

@@ -9,7 +9,9 @@
 </head>
 <body>
     <div class="container">
-        <section class="page-wrapper">
+        <!-- Основной контент страницы -->
+        <div class="main-page-content" id="mainContent">
+            <section class="page-wrapper">
             <main class="under-header">
                 <hr class="line">
     
@@ -267,7 +269,7 @@
                                 Покупатель
                             </h1>
     
-                            <form action="">
+                            <form action="" id="order-form-1">
                                 <div class="order-input">
                                     <input type="text" name="name" placeholder="ВАШЕ ИМЯ">
                                     <span class="error-contact"></span>
@@ -855,7 +857,7 @@
                                 Покупатель
                             </h1>
     
-                            <form action="">
+                            <form action="" id="order-form-2">
                                 <div class="order-input">
                                     <input type="text" name="name" placeholder="ВАШЕ ИМЯ">
                                     <span class="error-contact"></span>
@@ -1227,7 +1229,7 @@
                                 Покупатель
                             </h1>
     
-                            <form action="">
+                            <form action="" id="order-form-3">
                                 <div class="order-input">
                                     <input type="text" name="name" placeholder="ВАШЕ ИМЯ">
                                     <span class="error-contact"></span>
@@ -1545,6 +1547,172 @@
                     </footer>
                 </div>
             </section>
+        </div>
+
+        <!-- Бургер меню -->
+        <div class="burger-menu-open" id="burgerMenuContent">
+            <div class="burger-menu-header">
+                <a href="main-page.html" class="logo-link">
+                    <img src="images/svg/logo.svg" alt="Логотип" class="logo logo-img">
+                </a>
+
+                <svg id="closeBurgerBtn" class="close-burger-svg" viewBox="0 0 36 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 6.88478L27.3848 25.2696L26.6777 25.9767L8.29289 7.59188L9 6.88478Z"/>
+                    <path d="M8 24.8848L26.3848 6.5L27.0919 7.20711L8.70711 25.5919L8 24.8848Z"/>
+                </svg>
+
+            </div>
+
+            <div id="burgerMenu" class="burger-menu-content">
+                <div class="search-items-burger">
+                    <div class="search-input">
+                        <input id="inputBurger" type="text" placeholder="Искать">
+
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 19L15.85 15.85M17.6 11.3C17.6 14.7794 14.7794 17.6 11.3 17.6C7.82061 17.6 5 14.7794 5 11.3C5 7.82061 7.82061 5 11.3 5C14.7794 5 17.6 7.82061 17.6 11.3Z" stroke="#EDE4D7" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+
+                    <div id="searchItemsBurger" class="burger-search-items">
+                        <a href="product-page.html" class="burger-search-item">
+                            <div class="burger-search-item-left">
+                                <img src="images/main-page/product-card-crane.png" alt="">
+                            </div>
+
+                            <div class="burger-search-item-right">
+                                <p>Раковина Ornella</p>
+        
+                                <p>27 000 ₽</p>
+                            </div>
+                        </a>
+
+                        <a href="product-page.html" class="burger-search-item">
+                            <div class="burger-search-item-left">
+                                <img src="images/main-page/product-card-crane.png" alt="">
+                            </div>
+
+                            <div class="burger-search-item-right">
+                                <p>Раковина Ornella</p>
+        
+                                <p>27 000 ₽</p>
+                            </div>
+                        </a>
+
+                        <a href="product-page.html" class="burger-search-item">
+                            <div class="burger-search-item-left">
+                                <img src="images/main-page/product-card-crane.png" alt="">
+                            </div>
+
+                            <div class="burger-search-item-right">
+                                <p>Раковина Ornella</p>
+        
+                                <p>27 000 ₽</p>
+                            </div>
+                        </a>
+
+                        <div class="burger-all-items-button">
+                            <a href="catalog-page.html">
+                                Все результаты
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 5L16 12L9 19" stroke="#EDE4D7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="burger-cart-link">
+                    <a href="cart-page.html">
+                        Корзина (1)
+                    </a>
+                </div>
+
+                <div class="burger-catalog">
+                    <button class="has-submenu">
+                        Каталог
+
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 11L14.7071 16.6854C14.3166 17.1049 13.6834 17.1049 13.2929 16.6854L8 11" stroke="#EDE4D7" stroke-linecap="round"/>
+                        </svg>
+
+                    </button>
+
+                    <nav>
+                        <ul>
+                            <li>
+                                <span class="burger-nav-title has-submenu">
+                                    Сантехника
+
+                                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20 11L14.7071 16.6854C14.3166 17.1049 13.6834 17.1049 13.2929 16.6854L8 11" stroke="#EDE4D7" stroke-linecap="round"/>
+                                    </svg>
+                                </span>
+
+                                <ul>
+                                    <li><a href="catalog-page.html">Инсталляции и клавиши</a></li>
+                                    <li><a href="catalog-page.html">Унитазы и биде</a></li>
+                                    <li><a href="catalog-page.html">Раковины</a></li>
+                                    <li><a href="catalog-page.html">Биде</a></li>
+                                    
+                                    <li>
+                                        <span class="additional-switching has-submenu">
+                                            Душевые ограждения и поддоны
+
+                                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
+                                            </svg>
+                                        </span> 
+
+                                        <ul>
+                                            <li><a href="catalog-page.html">Инсталляции и клавиши</a></li>
+                                            <li><a href="catalog-page.html">Унитазы и биде</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <span class="burger-nav-title has-submenu">
+                                    Мебель
+
+                                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20 11L14.7071 16.6854C14.3166 17.1049 13.6834 17.1049 13.2929 16.6854L8 11" stroke="#EDE4D7" stroke-linecap="round"/>
+                                    </svg>
+                                </span>
+
+                                <ul>
+                                    <li><a href="catalog-page.html">Шкаф</a></li>
+                                    <li><a href="catalog-page.html">Шкаф</a></li>
+                                    <li><a href="catalog-page.html">Шкаф</a></li>
+                                    
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="burger-other-links">
+                    <a href="about-us-page.html">О нас</a>
+                    <a href="projects-page.html">Проекты</a>
+                    <a href="customers-page.html">Покупателям</a>
+                    <a href="services-page.html">Услуги</a>
+                </div>
+
+                <div class="burger-get-request-btn">
+                    <button id="burger-get-request">
+                        Связаться с нами
+
+                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="1.46665" height="8.79992" transform="matrix(1 0 0 -1 13.2656 11.8008)" fill="#EDE4D7"/>
+                            <rect width="1.46665" height="8.79992" transform="matrix(1 0 0 -1 13.2656 25)" fill="#EDE4D7"/>
+                            <rect width="1.46665" height="8.79992" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 25 14.7344)" fill="#EDE4D7"/>
+                            <rect width="1.46665" height="8.79992" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 11.8008 14.7344)" fill="#EDE4D7"/>
+                        </svg>
+
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Модальное окно "Связаться с нами"-->
@@ -1615,7 +1783,7 @@
                         </svg>
                     </button>
 
-                    <svg width="79" height="79" viewBox="0 0 79 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="thanks-svg" viewBox="0 0 79 79" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="39.5" cy="39.5" r="39.5" fill="#3A8E99"/>
                         <path d="M64 27L37.6245 52.2806C36.6237 53.2398 35.0013 53.2398 34.0005 52.2806L23 41.7367" stroke="white" stroke-opacity="0.6" stroke-width="4" stroke-linecap="square"/>
                     </svg>
@@ -1636,14 +1804,14 @@
     <div class="modal-error" id="errorModal">
         <div class="modal-content-error">
             <div class="modal-content-info-thanks">
-                <div class="modal-content-info-inner-thanks">
+                <div class="modal-content-info-inner-error">
                     <button id="closeModalBtnError" class="close-modal">
                         <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M22.8549 9.64285L9.14062 23.3571M22.8549 23.3572L9.14063 9.64287" stroke="#EDE4D7" stroke-linecap="square"/>
                         </svg>
                     </button>
 
-                    <svg width="79" height="79" viewBox="0 0 79 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="error-svg" viewBox="0 0 79 79" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="79" height="79" rx="39.5" fill="#924141"/>
                         <path d="M56.4275 22.5715L22.5703 56.4287M56.4275 56.4287L22.5703 22.5716" stroke="white" stroke-opacity="0.6" stroke-width="4" stroke-linecap="square"/>
                     </svg>    

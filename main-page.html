@@ -307,7 +307,7 @@
                                     </h4>
                                 </div>
 
-                                <div class="rigth-title-group fade-in">
+                                <div class="rigth-title-group">
                                     <div class="nav-arrows-products why-arrows">
                                         <button class="left-arrow" id="why-left-arrow">
                                             <svg width="55" height="33" viewBox="0 0 55 33" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1877,24 +1877,6 @@
         </div>
     </div>
 
-    <script>
-        // Анимации на странице
-        document.addEventListener("DOMContentLoaded", () => {
-            const revealElements = document.querySelectorAll(".reveal-mask, .fade-in");
-
-            const revealOnScroll = () => {
-                revealElements.forEach(el => {
-                    const rect = el.getBoundingClientRect();
-                    if (rect.top <= window.innerHeight * 0.8) {
-                        el.classList.add("active");
-                    }
-                });
-            };
-
-            window.addEventListener("scroll", revealOnScroll);
-            revealOnScroll();
-        });
-    </script>
 
     <!-- Cookie -->
     <div id="cookie-container"></div>

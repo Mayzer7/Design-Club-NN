@@ -1,3 +1,21 @@
+// Анимации на странице
+document.addEventListener("DOMContentLoaded", () => {
+    const revealElements = document.querySelectorAll(".reveal-mask, .fade-in");
+
+    const revealOnScroll = () => {
+        revealElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            
+            if (rect.top <= window.innerHeight * 0.8) {
+                el.classList.add("active");
+            }
+        });
+    };
+
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+});
+
 // Открытие бургер меню
 
 
