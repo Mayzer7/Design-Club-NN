@@ -983,14 +983,13 @@ nav ul ul.open + svg {
 /* Появление заголовка через анимацию через маску вверх */
 
 .reveal-mask {
-    overflow: hidden;
     position: relative;
 }
 
 .reveal-mask h1 {
     transform: translateY(100%);
     opacity: 0;
-    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.6s ease;
+    transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.8s ease;
 }
 
 .reveal-mask.active h1 {
@@ -999,6 +998,7 @@ nav ul ul.open + svg {
 }
 
 /* Появление пунктов блока через фейд */
+
 .fade-in {
     opacity: 0;
     transform: translateY(20px);
@@ -1009,6 +1009,7 @@ nav ul ul.open + svg {
     opacity: 1;
     transform: translateY(0);
 }
+
 
 
 
@@ -1138,6 +1139,12 @@ nav ul ul.open + svg {
 
 /* Адаптив Результаты поиска */
 
+@media (max-width: 1100px) {
+    .search-result-container {
+        background-image: url('../images/catalog/adaptive/background-1024.png');
+    }
+}
+
 @media (max-width: 1060px) {
     .search-result-container-inner {
         padding-left: 23%;
@@ -1174,9 +1181,6 @@ nav ul ul.open + svg {
         margin-bottom: 30px;
     }
 
-    .search-result-container {
-        padding: 300px 20px 10px 20px;
-    }
 }
 
 @media (max-width: 410px) {
@@ -1197,17 +1201,8 @@ nav ul ul.open + svg {
         top: -35px;
         left: 0px;
     }
-
-    .search-result-container {
-        padding: 250px 20px 10px 20px;
-    }
 }
 
-@media (max-width: 400px) {
-    .search-result-container {
-        padding: 200px 20px 10px 20px;
-    }
-}
 
 /* Секция "Не нашли что искали?" */
 

@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
         revealElements.forEach(el => {
             const rect = el.getBoundingClientRect();
             
-            if (rect.top <= window.innerHeight * 0.8) {
+            if (rect.top <= window.innerHeight) {
                 el.classList.add("active");
             }
         });
@@ -974,8 +974,9 @@ window.addEventListener('scroll', () => {
     searchInput.value = ''; // очищает текст
     searchItems.classList.remove('show'); // скрывает блок
     
+    header.classList.remove('header-search-padding');
     // Убираем пустые отступы
-    header.style.paddingBottom = '20px';
+    
 
     // Сброс состояния
     blurContainers.forEach(container => {
@@ -994,6 +995,7 @@ window.addEventListener('scroll', () => {
     openCatalog.style.color = '';
     
   } else if (scrollDelta < 0) {
+    
     header.style.display = 'block';
     // Скролл вверх
 
