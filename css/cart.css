@@ -756,6 +756,7 @@ li.active .menu-plumbing-arrow {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .title-items {
@@ -764,7 +765,7 @@ li.active .menu-plumbing-arrow {
 }
 
 .clear-cart-button {
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     border: none;
     background-color: transparent;
     cursor: pointer;
@@ -778,13 +779,14 @@ li.active .menu-plumbing-arrow {
     text-transform: uppercase;
     font-size: 142px;
     margin-bottom: 20px;
+    word-wrap: break-word; 
+    overflow-wrap: break-word;
 }
 
-.line-cart {
-    border: none;
-    height: 1px;   
-    background-color: rgba(255, 255, 255, 0.2);
-    margin: 0; 
+
+
+.cart-container {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .product-item {
@@ -946,14 +948,20 @@ li.active .menu-plumbing-arrow {
 }
 
 .total-calc-price {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
     margin-top: 20px;
     margin-bottom: 30px;
+    padding: 20px 0;
 }
 
 .total-calc-price h1:first-child {
-    font-size: 34px;
+    font-size: 26px;
     text-transform: uppercase;
     font-family: 'Future New Bold', sans-serif;
+}
+
+.total-price-cart {
+    font-size: 30px;
 }
 
 
@@ -1028,6 +1036,12 @@ li.active .menu-plumbing-arrow {
     }
 }
 
+@media (max-width: 1260px) {
+    .buy-button {
+        max-width: 100%;
+    }
+}
+
 @media (max-width: 1241px) {
     .product-info {
         margin-right: 0%;
@@ -1084,117 +1098,192 @@ li.active .menu-plumbing-arrow {
     }
 }
 
-
-@media (max-width: 780px) {
-    .product-info {
-        flex-direction: column;
-    }
-
-    .product-info-left img {
-        max-width: 100%;
-        max-height: 100%;
-    }
-
-    .total-price-side {
-        flex-direction: row;  
-    }
-
-    .product-item {
-        flex-direction: column;
-    }
-
-    .product-dess {
-        max-width: 300px;
-        width: 100%;
-    }
-}
-
 @media (max-width: 730px) {
     .cart {
-        padding: 250px 20px 100px 20px;
+        padding: 260px 20px 100px 20px;
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 460px) {
     .title {
-        font-size: 60px;
-    }
-
-    .clear-cart-button {
-        font-size: 16px;
-        margin-bottom: 30px;
-    }
-}
-
-
-@media (max-width: 470px) {
-    .cart-section {
-        flex-direction: column;
-        align-items: self-start;
-    }
-}
-
-@media (max-width: 430px) {
-    .product-name {
-        font-size: 20px;
-    }
-
-    .product-dess p {
-        font-size: 14px;
-    }
-
-    .total-price {
-        font-size: 24px;
-    }
-
-    .discount {
-        font-size: 16px;
+        font-size: 70px;
     }
 }
 
 @media (max-width: 400px) {
     .cart {
-        padding: 200px 20px 100px 20px;
+        padding: 210px 20px 100px 20px;
     }
 }
 
-/* 
-@media (max-width: 670px) {
-    .product-info {
+@media (max-width: 360px) {
+    .title {
+        font-size: 42px;
+    }
+
+    .clear-cart-button {
+        font-size: 16px;
+    }
+}
+
+/* Мобильная версия корзины */
+
+.cart-items-750 {
+    display: none;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300;
+}
+
+.cart-item-750 {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px 0;
+}
+
+.cart-item-750-image img {
+    width: 100%;
+    height: 100%;
+}
+
+.cart-item-750-info {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.cart-item-750-name {
+    font-size: 34px;
+    max-width: 400px;
+    width: 100%;
+}
+
+.delete-item-btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.cart-item-750-desc {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cart-item-750-desc-line {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-item-750-desc-line p:first-child {
+    color: rgba(237, 228, 215, 0.7);
+}
+
+.cart-item-750-price {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.price-per-piece,
+.item-discount {
+    color: #615F5B;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 900;
+}
+
+.item-discount {
+    text-decoration: line-through;
+    font-size: 20px;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 900;
+}
+
+.cart-item-750-total-price {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.change-count-750 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.change-count-750 p {
+    font-size: 20px;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 900;
+}
+
+.change-count-750 button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.total-price-750 {
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+}
+
+@media (max-width: 750px) {
+    .cart-items-desktop {
+        display: none;
+    }
+
+    .cart-items-750 {
+        display: block;
+    }
+}
+
+@media (max-width: 650px) {
+    .cart-section {
         flex-direction: column;
+        align-items: flex-start;
     }
+}
 
-    .product-item {
-        border: 1px solid red;
-        flex-direction: column;
-        
-    }
-
-    .product-info-left img {
-        max-width: 100%;
-        max-height: 100%;
-    }
-
-    .product-info-left {
+@media (max-width: 530px) {
+    .cart-item-750-name {
+        font-size: 20px;
+        max-width: 230px;
         width: 100%;
-        height: 100%;
     }
 
-    .product-item {
-        width: 100%;
-        height: 100%;
+    .cart-item-750-desc-line {
+        font-size: 14px;
     }
-} */
 
+    .price-per-piece {
+        font-size: 16px;
+    }
 
+    .item-discount {
+        font-size: 18px;
+    }
 
+    .total-price-750 {
+        font-size: 24px;
+    }
 
+    .no-discount p,
+    .with-discount p {
+        font-size: 16px;
+    }
 
+    .total-calc-price h1:first-child {
+        font-size: 24px;
+    }
 
-
-
-
-
+    .total-price-cart {
+        font-size: 28px;
+    }
+}
 
 
 
