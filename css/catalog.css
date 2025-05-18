@@ -43,6 +43,10 @@ html, body {
     overflow-x: hidden;
 }
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 *,
 *::before,
 *::after {
@@ -1423,6 +1427,285 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     .filter-container-2 {
         top: 80px;
     }
+}
+
+
+
+
+
+
+
+
+
+/* Фильтры на телефоне */
+
+.filters-mobile {
+    display: none;
+}
+
+@media (max-width: 650px) {
+    .filters-desktop {
+        display: none;
+    }
+
+    .filters-mobile {
+        display: block;
+    }
+}
+
+.filter-first-button-mobile {
+    margin-top: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px 0;
+}
+
+.filter-first-btn-left-side {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+
+.filter-first-btn-left-side span {
+    background-color: #AE9877;
+    padding: 3px 10px;
+    border-radius: 50%;
+}
+
+.filter-first-button-mobile {
+    display: flex;
+    justify-content: space-between;
+}
+
+.clear-filters-btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.filter-second-button-mobile {
+    position: relative;
+}
+
+.filter-second-button {
+    margin-top: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filter-second-btn-left-side {
+    display: flex;
+    gap: 5px;
+}
+
+.open-filters-menu {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+
+.filter-second-button-menu {
+    background-color: #171F2E;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    position: absolute;
+    top: 70px;
+    width: 100%;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.filter-second-button-menu.active {
+    max-height: 300px; /* Достаточно для всех элементов */
+    opacity: 1;
+}
+
+.arrow-icon-mobile {
+    transition: transform 0.3s ease;
+}
+
+.arrow-icon-mobile.active {
+    transform: rotate(180deg);
+}
+
+
+.radio-group-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.radio-label-mobile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.radio-input {
+    display: none;
+}
+
+.custom-radio {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #555;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.3s;
+}
+
+.radio-input:checked + .custom-radio {
+    border-color: #EDE4D7;
+}
+
+.custom-radio::after {
+    content: "";
+    width: 14px;
+    height: 14px;
+    background-color: #EDE4D7;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.radio-input:checked + .custom-radio::after {
+    opacity: 1;
+}
+
+
+
+/* Всплывающие меню фильтров на телефоне */
+
+
+.filter-menu {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #171F2E;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  color: #fff;
+  padding: 16px;
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+    overflow-x: auto;
+  transform: translateY(100%);
+  opacity: 0;
+  pointer-events: none; 
+  
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Класс для видимого меню */
+.filter-menu.active {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.close-filters {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+
+.filter-menu h2 {
+    margin: 30px 0px;
+    font-family: 'Future New Bold', sans-serif;
+}
+
+.filter-group {
+    margin-bottom: 16px;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.price-input {
+    display: flex;
+    gap: 20px;
+}
+
+.price-input-left,
+.price-input-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.price-input-left p,
+.price-input-right p {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.price-input input {
+    outline: none;
+    max-width: 70px;
+    font-size: 16px;
+    width: 100%;
+    padding: 5px 0;
+    margin: 0;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: transparent;
+    color: #fff;
+}
+
+.filter-mobile-menu-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.reset-filters-btn {
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: #EDE4D7; 
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 1px solid #EDE4D7;
+    padding: 14px 35px;
+    width: 100%;
+    background-color: transparent;
+}
+
+.apply-filters-btn {
+    white-space: nowrap;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: #EDE4D7; 
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    background-color: #AE9877;
+    padding: 16px 35px;
+    width: 100%;
 }
 
 @media (max-width: 490px) {
@@ -3104,4 +3387,22 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     min-width: 300px;
     position: relative;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

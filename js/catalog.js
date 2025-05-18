@@ -1,3 +1,120 @@
+// Кнопка фильтровать на телефоне
+
+// Клик на первую кнопку — переключаем первое меню фильтров
+document.getElementById('filterFirstButtonMobile').addEventListener('click', () => {
+    const mainPageContent = document.querySelector('.main-page-content');
+    const filterMenu = document.querySelector('.filter-menu');
+    const secondMenu = document.querySelector('.filter-second-button-menu');
+    const secondButton = document.getElementById('filterSecondButtonMobile');
+    const arrowIconMobile = secondButton.querySelector('.arrow-icon-mobile');
+
+    // Закрываем второе меню, если оно открыто
+    if (secondMenu.classList.contains('active')) {
+        secondMenu.classList.remove('active');
+        arrowIconMobile.classList.remove('active');
+    }
+
+    filterMenu.classList.toggle('active');    
+    
+    if (filterMenu.classList.contains('active')) {
+        mainPageContent.style.filter = 'blur(5px)';
+    } else {
+        mainPageContent.style.filter = '';
+    }
+});
+
+// Свайп филтров на телефоне вниз
+
+let startY = 0;
+let currentY = 0;
+let isSwiping = false;
+
+const filterMenu = document.querySelector('.filter-menu');
+
+filterMenu.addEventListener('touchstart', (e) => {
+    startY = e.touches[0].clientY;
+        isSwiping = true;
+    });
+
+filterMenu.addEventListener('touchmove', (e) => {
+    if (!isSwiping) return;
+
+    currentY = e.touches[0].clientY;
+
+    if (currentY - startY > 50 && filterMenu.classList.contains('active')) {
+        closeFilterMenu();
+        isSwiping = false;
+    }
+});
+
+filterMenu.addEventListener('touchend', () => {
+    isSwiping = false;
+});
+
+document.querySelector('.close-filters').addEventListener('click', () => {
+    closeFilterMenu();
+});
+
+document.addEventListener('click', (e) => {
+    const filterMenu = document.querySelector('.filter-menu');
+    const firstButton = document.getElementById('filterFirstButtonMobile');
+
+    const secondButton = document.getElementById('filterSecondButtonMobile');
+    const secondMenu = secondButton.querySelector('.filter-second-button-menu');
+
+    const isClickInsideFirstMenu = filterMenu.contains(e.target);
+    const isClickOnFirstButton = e.target.closest('#filterFirstButtonMobile');
+    const isClickOnSecondButtonOrMenu = secondButton.contains(e.target) || secondMenu.contains(e.target);
+
+    if (filterMenu.classList.contains('active') && 
+        !isClickInsideFirstMenu && 
+        !isClickOnFirstButton && 
+        !isClickOnSecondButtonOrMenu) {
+        closeFilterMenu();
+    }
+});
+
+function closeFilterMenu() {
+    const mainPageContent = document.querySelector('.main-page-content');
+    const filterMenu = document.querySelector('.filter-menu');
+
+    filterMenu.classList.remove('active');
+    mainPageContent.style.filter = '';
+}
+
+// Всплывающие меню фильтров на телефоне
+// Клик на вторую кнопку — переключаем второе меню фильтров и закрываем первое меню
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButton = document.getElementById('filterSecondButtonMobile');
+    const menu = filterButton.querySelector('.filter-second-button-menu');
+    const arrowIconMobile = filterButton.querySelector('.arrow-icon-mobile');
+    const filterMenu = document.querySelector('.filter-menu');
+    const mainPageContent = document.querySelector('.main-page-content');
+
+    filterButton.addEventListener('click', function(event) {
+        event.stopPropagation();
+
+        // Закрываем первое меню, если оно открыто
+        if (filterMenu.classList.contains('active')) {
+            filterMenu.classList.remove('active');
+            mainPageContent.style.filter = '';
+        }
+
+        const isActive = menu.classList.contains('active');
+        menu.classList.toggle('active', !isActive);
+        arrowIconMobile.classList.toggle('active', !isActive);
+    });
+
+    document.addEventListener('click', function(event) {
+        if (!filterButton.contains(event.target)) {
+            menu.classList.remove('active');
+            arrowIconMobile.classList.remove('active');
+        }
+    });
+});
+
+
+
 // Переключение категорий с помощью стрелочек
 
 function smoothScroll(element, change, duration) {
@@ -201,6 +318,8 @@ const closeAllDropdowns = () => {
     dropdown.classList.remove('active');
     dropdown2.classList.remove('active');
 };
+
+
 
 // Открытие/закрытие меню по кнопке
 toggleBtn.addEventListener('click', (event) => {
