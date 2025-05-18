@@ -111,38 +111,67 @@ inputBurger.addEventListener('input', () => {
   }
 });
 
+
 // Переключение по навигации 
 // (isScrollingProgrammatically - состояние нужно, 
 // чтобы при переключении навигации браузер считывал скролл,
 // но не показывал шапку в этот момент)
 
 let isScrollingProgrammatically = false;
+let isScrolling = false;
 
 document.querySelectorAll('.projects-nav button').forEach(button => {
   button.addEventListener('click', () => {
     const targetId = button.getAttribute('data-target');
     if (!targetId) return;
-    const targetEl = document.querySelector(targetId);
-    if (!targetEl) return;
 
     const headerOffset = 110;
-    const elementPosition = targetEl.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.scrollY - headerOffset;
+    const section = button.closest('.projects-section');
+    if (!section) return;
 
+    const candidates = section.querySelectorAll(targetId);
+    if (!candidates.length) return;
+
+    const targetEl = Array.from(candidates).find(el => {
+      const style = window.getComputedStyle(el);
+      return style.display !== 'none';
+    }) || candidates[0];
+
+    const topPosition = targetEl.getBoundingClientRect().top + window.scrollY - headerOffset;
+    
     isScrollingProgrammatically = true;
 
+    header.classList.add('header-hidden');
+    header.classList.remove('header-scrolled-up');
+    stickyNavs.forEach(nav => nav.classList.remove('hidden'));
+
     window.scrollTo({
-      top: offsetPosition,
+      top: topPosition,
       behavior: 'smooth'
     });
 
-    // Добавляем якорь в адресную строку без перезагрузки
-    history.pushState(null, '', targetId);  
+    // Установим якорь в URL
+    setTimeout(() => {
+      window.history.pushState(null, '', targetId);
+      isScrollingProgrammatically = false;
+    }, 600); // Время совпадает с анимацией scroll
+  });
+});
+
+window.addEventListener('scroll', () => {
+  if (isScrollingProgrammatically) return;
+
+  if (window.scrollY < 100) {
+    header.classList.remove('header-hidden');
+    header.classList.remove('header-scrolled-up');
+  } else if (!isScrolling) {
+    isScrolling = true;
+    header.classList.add('header-hidden');
 
     setTimeout(() => {
-      isScrollingProgrammatically = false;
+      isScrolling = false;
     }, 100);
-  });
+  }
 });
 
 // Валидация модального окна формы "Связаться с нами"

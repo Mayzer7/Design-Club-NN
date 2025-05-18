@@ -109,7 +109,10 @@ body {
 }
 
 
-
+.projects-display-mobile {
+    overflow-y: auto;        
+    scroll-behavior: smooth; 
+}
 
 
 
