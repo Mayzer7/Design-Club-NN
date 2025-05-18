@@ -543,6 +543,7 @@ li.active .menu-plumbing-arrow {
 
 .burger-menu {
     display: none;
+    margin-top: 20px;
 }
 
 .burger-menu button {
@@ -996,14 +997,14 @@ nav ul ul.open + svg {
 /* Появление заголовка через анимацию через маску вверх */
 
 .reveal-mask {
-    overflow: hidden;
+    overflow: visible;
     position: relative;
 }
 
 .reveal-mask h1 {
     transform: translateY(100%);
     opacity: 0;
-    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.6s ease;
+    transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.8s ease;
 }
 
 .reveal-mask.active h1 {
@@ -1012,6 +1013,7 @@ nav ul ul.open + svg {
 }
 
 /* Появление пунктов блока через фейд */
+
 .fade-in {
     opacity: 0;
     transform: translateY(20px);
@@ -2729,6 +2731,10 @@ nav ul ul.open + svg {
     display: none;
 }
 
+.desc-low-res  p {
+    margin-bottom: 10px;
+}
+
 .subtitle-low-res {
     display: none;
     text-transform: none;
@@ -4139,8 +4145,8 @@ nav ul ul.open + svg {
 
     .get-up-title {
         position: absolute;
-        top: 120px;
-        left: 20px;
+        top: -30px;
+        left: 5px;
     }
 
     .main-side-wrapper {
@@ -4151,6 +4157,12 @@ nav ul ul.open + svg {
 @media (max-width: 565px) {
     .main-side-wrapper h1 {
         white-space: normal;
+    }
+}
+
+@media (max-width: 550px) {
+    .get-contact {
+        padding: 150px 0 300px 20px;
     }
 }
 
@@ -4168,6 +4180,13 @@ nav ul ul.open + svg {
     .contact-input-fields input::placeholder,
     .contact-input input::placeholder {
         font-size: 14px;
+    }
+}
+
+
+@media (max-width: 281px) {
+    .get-contact {
+        padding: 150px 0 350px 20px;
     }
 }
 
@@ -4468,7 +4487,7 @@ nav ul ul.open + svg {
 .modal-content {
     max-width: 725px;
     width: 100%;
-    max-height: 895px;
+    max-height: 849px;
     height: 100%;
     background-color: #151C28;
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);

@@ -2524,6 +2524,9 @@ nav ul ul.open + svg {
     max-height: 0;
     transition: max-height 0.4s ease, opacity 0.4s ease;
 }
+.menu-contact-method.open {
+    overflow: visible;
+}
 
 .dropdown-arrow {
     transition: transform 0.3s ease;
@@ -2570,7 +2573,6 @@ nav ul ul.open + svg {
 
     .get-contact {
         background-image: url("../images/project-info/get-contact/background-1030.png");
-        padding: 100px 0 100px 20px;
     }
 
     .main-side-wrapper h1 {

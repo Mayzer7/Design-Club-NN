@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
         revealElements.forEach(el => {
             const rect = el.getBoundingClientRect();
             
-            if (rect.top <= window.innerHeight * 0.8) {
+            if (rect.top <= window.innerHeight) {
                 el.classList.add("active");
             }
         });
@@ -548,16 +548,16 @@ function validateFormContact(event, formId) {
     }
 
     // Проверка поля "Способ связи"
-    if (!methodInput.value.trim()) {
-        errorSpans[2].textContent = 'Пожалуйста, выберите способ связи.';
-        errorSpans[2].style.display = 'block';
-        valid = false;
-    }
+    // if (!methodInput.value.trim()) {
+    //     errorSpans[2].textContent = 'Пожалуйста, выберите способ связи.';
+    //     errorSpans[2].style.display = 'block';
+    //     valid = false;
+    // }
 
     // Проверка чекбокса "Согласие"
     if (!acceptInput.checked) {
-        errorSpans[3].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
-        errorSpans[3].style.display = 'block';
+        errorSpans[2].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
+        errorSpans[2].style.display = 'block';
         valid = false;
     }
 
