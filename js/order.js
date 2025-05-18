@@ -1,3 +1,29 @@
+// Раскрытие и скрытие меню товаров при оформлении заказа на мобильном устройстве
+document.addEventListener('DOMContentLoaded', function() {
+    const toggles = document.querySelectorAll('.right-side-items-600');
+
+    toggles.forEach(function(header) {
+        header.addEventListener('click', function() {
+            const content = header.nextElementSibling;
+            
+            if (!content || !content.classList.contains('order-items-600')) {
+                return;
+            }
+
+            const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+
+            if (!isOpen) {
+                const fullHeight = content.scrollHeight + 'px';
+                content.style.maxHeight = fullHeight;
+                header.classList.add('open');
+            } else {
+                content.style.maxHeight = '0';
+                header.classList.remove('open');
+            }
+        });
+    });
+});
+
 // Валидация модального окна формы "Связаться с нами"
 
 const thanksModal = document.getElementById('thanksModal');

@@ -33,14 +33,6 @@
     font-style: normal;
 }
 
-
-@font-face {
-    font-family: 'SF UI Display Thin';
-    src: url('../fonts/sf-ui-display-8.otf');
-    font-weight: 900;
-    font-style: normal;
-}
-
 html {
     box-sizing: border-box;
 }
@@ -95,26 +87,29 @@ body {
     width: 100%;  
 }
 
+
+/*
+Для того чтобы когда в input вводятся только цифры, 
+браузер не отображал некрасивый ползунок увелечения числа
+*/
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Для Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
 .line {
     width: 100%;
     height: 1px;
     border: none;
     background-color: rgba(255, 255, 255, 0.2);
 }
-
-
-
-/* Верхрняя секция главной страницы */
-
-.main-page-top {
-    min-height: 350px;
-}
-
-
-
-
-
-
 
 
 /* Шапка */
@@ -241,7 +236,6 @@ li.active .menu-plumbing-arrow {
     font-weight: 900;
     transition: margin-top 0.5s ease, background-color 0.5s ease;
     background-color: #151c28;
-    /* min-height: 250px; */
 }
 
 /* Основной отступ */
@@ -664,6 +658,8 @@ li.active .menu-plumbing-arrow {
         padding-bottom: 320px;
         background-color: #151C28;
     }
+
+    
 }
 
 @media (max-width: 630px) {
@@ -692,6 +688,7 @@ li.active .menu-plumbing-arrow {
 }
 
 
+/* Секция 'Под шапкой' */
 
 .page-wrapper {
     position: relative; 
@@ -708,172 +705,40 @@ li.active .menu-plumbing-arrow {
 }
 
 .under-header-container {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    transition: margin-top 0.5s ease;
-}
-
-.links {
     margin-top: 30px;
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     gap: 10px;
-    text-align: center;
 }
 
-.links a:nth-child(1),
-.links a:nth-child(3) {
+.under-header-container > a:not(:last-child) {
     color: #7B8292;
 }
 
-.title-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-}
+/* Адаптив секции под шапкой */
 
-.title-container h1 {
-    white-space: nowrap;
-    font-family: 'Future New Light', sans-serif;
-    font-size: 250px;
-    text-transform: uppercase;
-}
-
-.under-header-content {
-    display: flex;
-    align-items: self-end;
-    justify-content: space-between;
-}
-
-.video-container {
-    position: relative;
-    display: inline-block;
-}
-
-.video-container img {
-    display: block;
-    width: 634px;
-    height: 356px;
-}
-
-.video-button {    
-    font-family: 'SF UI Display Thin', sans-serif;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    padding: 0;
-    font-size: 16px;
-    transform: translate(-50%, -50%);
-    width: 100px;
-    height: 100px;
-    border: 1px solid white;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    color: white;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.video-button:hover {
-    transform: translate(-50%, -50%) scale(1.05);
-}
-
-.nn {
-    font-family: 'Future New Light', sans-serif;
-    font-size: 372px;
-    line-height: 250px;
-}
-
-
-/* Адаптив */
-
-.under-header-content p {
-    max-width: 407px;
-    width: 100%;
-    font-size: 20px;
-}
-
-@media (max-width: 1200px) {
-    .nav-container {
-        flex-direction: column;
-        gap: 20px;
+@media (max-width: 730px) {
+    .under-header {
+        top: 130px;
     }
+}
 
-    .catalog-nav {
-        margin-right: 30px;
-    }
-
-    .search-container {
-        max-width: 250px;
-    }
-
-    .under-header-container {
-        gap: 186px;
-    }
-
-    .menu-navigation {
-        margin-top: 210px;
+@media (max-width: 400px) {
+    .under-header {
+        top: 90px;
     }
 }
 
 
-@media (max-width: 1050px) {
-    .under-header-container {
-        gap: 120px;
-    }
 
-    .contact-header {
-        gap: 20px;
-    }
-}
-
-
-@media (max-width: 1024px) {
-    /* Шапка */
-
-    .menu-navigation {
-        margin-top: 200px;
-    }
-
-    .search-container {
-        max-width: 214px;
-    }
-
-    .main-nav a {
-        font-size: 16px;
-    }
-    
-    .catalog-nav ul li a {
-        font-size: 16px;
-    }
-
-    .logo {
-        margin-right: 100px;
-    }
-
-    .contact-header a {
-        font-size: 16px;
-    }
-
-    .main-nav ul {
-        gap: 5px;
-    }
-    
-}
 
 
 
 /* Секция "Оформить заказ" */
 
 .buy-products {
-    padding: 20px 20px 100px 20px;
+    padding: 400px 20px 0px 20px;
     background-color: #151c28;
 
     position: relative;
@@ -1046,7 +911,6 @@ li.active .menu-plumbing-arrow {
     font-weight: 600;
     text-transform: uppercase;
     font-size: 34px;
-    margin-bottom: 40px;
 }
 
 /* Для прокрутки товаров оформления заказа */
@@ -1244,6 +1108,10 @@ li.active .menu-plumbing-arrow {
     gap: 115px;
 }
 
+.buy-products-content-600 {
+    display: none;
+}
+
 .down-side-1024 {
     display: flex;
     flex-direction: column;
@@ -1284,6 +1152,210 @@ li.active .menu-plumbing-arrow {
         font-size: 14px;
     }
 }
+
+@media (max-width: 950px) {
+    .buy-products-section {
+        padding-left: 0%;
+    }
+}
+
+@media (max-width: 865px) {
+    .title {
+        font-size: 70px;
+    }
+}
+
+@media (max-width: 730px) {
+    .buy-products {
+        padding: 265px 20px 0px 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .buy-products {
+        padding: 210px 20px 0px 20px;
+    }
+
+}
+
+@media (max-width: 377px) {
+    .buy-products {
+        padding: 240px 20px 0px 20px;
+    }
+}
+
+@media (max-width: 630px) {
+    .title {
+        font-size: 60px;
+    }
+}
+
+@media (max-width: 400px) {
+    .title {
+        font-size: 38px;
+    }
+}
+
+
+/* Контейнер корзины на 600px */
+
+
+.right-side-items-600 {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 20px 0;
+    border-top: 1px solid rgba(237, 228, 215, 0.2);
+    border-bottom: 1px solid rgba(237, 228, 215, 0.2);
+}
+
+/* Товары */
+
+.order-item-img-600 img {
+    width: 100%;
+    height: 100%;
+}
+
+.order-items-600 {
+    max-height: 0;              
+    overflow: hidden;           
+    transition: max-height 0.3s ease;
+}
+
+.arrow-icon {
+  transition: transform 0.3s ease;
+  transform-origin: center center;
+}
+
+.right-side-items-600.open .arrow-icon {
+  transform: rotate(180deg);
+}
+
+.right-side-items-600 {
+  cursor: pointer;
+}
+
+.order-item-600 {
+    
+    border-bottom: 1px solid rgba(237, 228, 215, 0.2);
+    padding: 20px 0;
+}
+
+.product-header-600 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.product-title-600 {
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    max-width: 240px;
+}
+
+.delete-product-btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+.product-desc-600 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.product-desc-line {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-desc-line p:first-child {
+    color: rgba(237, 228, 215, 0.7);
+}
+
+.product-desc-line p {
+    font-size: 14px;
+} 
+
+
+
+.product-price-container-600 {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-price-container-600 .discount {
+    font-size: 18px;
+}
+
+.total-price-600 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.total-price-600 .change-count p {
+    font-size: 18px;
+}
+
+.total-price-600 .total-price {
+    font-size: 24px;
+}
+
+.order-total-price {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0px;
+    border-bottom: 1px solid rgba(237, 228, 215, 0.2);
+}
+
+.order-total-price h1 {
+    text-transform: uppercase;
+    font-family: 'Future New Bold', sans-serif;
+    font-size: 24px;
+}
+
+.down-600 {
+    margin-top: 20px;
+}
+
+.buyer-600 {
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.order-input-600 textarea {
+    height: 200px;
+}
+
+@media (max-width: 600px) {
+    .buy-products-content-1024 {
+        display: none;
+    }
+
+    .buy-products-content-600 {
+        display: block;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* Footer */
@@ -1377,7 +1449,7 @@ li.active .menu-plumbing-arrow {
     color: #AE9877;
 }
 
-
+/* Футер для 1024 разрешения */
 
 .footer-1024 {
     display: none;
@@ -1435,7 +1507,63 @@ li.active .menu-plumbing-arrow {
 }
 
 
-/* Адаптив */
+/* Футер при разрешении меньше 1024 (870px) */
+
+.footer-below-1024 {
+    display: none;
+    padding: 100px 20px 0px 20px;
+    background-color: #151c28;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300; 
+}
+
+.footer-first-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.footer-second-line {
+    margin: 40px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-first-column {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.footer-design-club-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.copyright-lines {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.copyrigth-first-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.copyrigth-second-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+    
+}
+
+/* Адаптив для footer */
 
 @media (max-width: 1335px) {
     .footer {
@@ -1446,6 +1574,60 @@ li.active .menu-plumbing-arrow {
         display: block;
     }
 }
+
+@media (max-width: 870px) {
+    .footer-1024 {
+        display: none;
+    }
+
+    .footer-below-1024 {
+        display: block;
+    }
+
+}
+
+
+@media (max-width: 460px) {
+    .footer-nav-up h1 a {
+        font-size: 20px;
+    }
+
+    .footer-nav-up ul li a {
+        font-size: 16px;
+    }
+
+    .footer-nav-down p {
+        font-size: 14px;
+    }
+
+    .footer-nav-down h1 {
+        font-size: 20px;
+    }
+
+    .copyright-lines a {
+        font-size: 14px;
+    }
+
+    .design-club-logo {
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 440px) {
+    .footer-logo-below {
+        width: 120px;
+        height: 91px;
+    }
+
+    .footer-icons img {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+
+
+
 
 /* Модальное окно "Связаться с нами" */
 
@@ -1769,6 +1951,4 @@ li.active .menu-plumbing-arrow {
     min-width: 300px;
     position: relative;
 }
-
-
 

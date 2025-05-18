@@ -13,10 +13,10 @@
         <div class="main-page-content" id="mainContent">
             <section class="page-wrapper">
                 <main class="under-header">
-                    <div class="under-header-container">
-                        <p>01  —  03</p>
+                    <div class="under-header-container fade-in">
+                        <p class="fade-in">01  —  03</p>
                         
-                        <div class="invite-container">
+                        <div class="invite-container fade-in">
                             <h4>Приглашаем<br> посетить наш шоурум</h4>
         
                             <a href="about-us-page.html" class="invite-link">
@@ -26,7 +26,7 @@
                         </div>
                     </div>
 
-                    <div class="for-mobile-switch">
+                    <div class="for-mobile-switch fade-in">
                         <div class="title-images">
                             <a href="#"><img src="images/main-page/bath.png" alt="Ванна"></a>
                             <a href="#"><img src="images/main-page/table.png" alt="Стол"></a>
@@ -35,25 +35,25 @@
                         <p>01  —  03</p>
                     </div>
         
-                    <div class="title-container">
+                    <div class="title-container reveal-mask">
                         <h1>Премиальные интерьерные<br> решения для вашего дома</h1>
                         
-                        <div class="title-images desctop-images">
+                        <div class="title-images desctop-images fade-in">
                             <a href="#"><img src="images/main-page/bath.png" alt="Ванна"></a>
                             <a href="#"><img src="images/main-page/table.png" alt="Стол"></a>
                         </div>
                     </div>
 
                     <div class="subtitle-mobile">
-                        <p class="paragraph-mobile">
+                        <p class="paragraph-mobile fade-in">
                             Приглашаем посетить наш шоурум
                         </p>
 
-                        <p class="paragraph-340">
+                        <p class="paragraph-340 fade-in">
                             Приглашаем<br> посетить наш шоурум
                         </p>
 
-                        <a href="about-us-page.html" class="invite-link">
+                        <a href="about-us-page.html" class="invite-link fade-in">
                             ПОДРОБНЕЕ
                             <img src="images/svg/contact.svg" alt="Связаться" class="contact-icon">
                         </a>
@@ -64,12 +64,12 @@
             <section class="main-page-top">
                 <header class="header-top">
                     <div class="container">
-                        <div class="header-container">
+                        <div class="header-container fade-in">
                             <a href="main-page.html" class="logo-link">
                                 <img src="images/svg/logo.svg" alt="Логотип" class="logo logo-img">
                             </a>
                 
-                            <div class="header-right">
+                            <div class="header-right fade-in">
                                 <div class="nav-container">
                                     <nav class="catalog-nav">
                                         <ul>
@@ -293,21 +293,21 @@
             <div class="sections">
                 <section class="why-choose-us">
                     <div class="blur-container">
-                        <p class="block-title why-up-title">О нас</p>
+                        <p class="block-title why-up-title fade-in">О нас</p>
             
                         <header class="middle-title">
                             <div class="title-group">
-                                <div class="left-title-group">
+                                <div class="left-title-group reveal-mask">
                                     <h1>Почему выбирают нас</h1>
 
-                                    <h4>
+                                    <h4 class="fade-in">
                                         Дизайн клуб – место, где каждая деталь
                                         подбирается под ваш стиль, а проблемы
                                         с ремонтом исчезают с первого шага
                                     </h4>
                                 </div>
 
-                                <div class="rigth-title-group">
+                                <div class="rigth-title-group fade-in">
                                     <div class="nav-arrows-products why-arrows">
                                         <button class="left-arrow" id="why-left-arrow">
                                             <svg width="55" height="33" viewBox="0 0 55 33" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -327,7 +327,7 @@
                             </div>
                         </header>
             
-                        <main class="why-choose-us-content">
+                        <main class="why-choose-us-content fade-in">
                             <div class="card down-card">
                                 <h2>Персональный<br>подход</h2>
                                 <p>Мы ценим каждого клиента и предлагаем индивидуальные решения, которые соответствуют вашим потребностям и предпочтениям, обеспечивая лучший опыт покупки. Мы ценим каждого клиента </p>
@@ -1876,6 +1876,25 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Анимации на странице
+        document.addEventListener("DOMContentLoaded", () => {
+            const revealElements = document.querySelectorAll(".reveal-mask, .fade-in");
+
+            const revealOnScroll = () => {
+                revealElements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top <= window.innerHeight * 0.8) {
+                        el.classList.add("active");
+                    }
+                });
+            };
+
+            window.addEventListener("scroll", revealOnScroll);
+            revealOnScroll();
+        });
+    </script>
 
     <!-- Cookie -->
     <div id="cookie-container"></div>
