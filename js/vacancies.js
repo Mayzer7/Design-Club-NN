@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
         revealElements.forEach(el => {
             const rect = el.getBoundingClientRect();
             
-            if (rect.top <= window.innerHeight * 0.8) {
+            if (rect.top <= window.innerHeight) {
                 el.classList.add("active");
             }
         });

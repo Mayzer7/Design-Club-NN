@@ -384,6 +384,7 @@ function validateFormContact(event, formId) {
 function toggleContactMethodMenu() {
     const menu = document.getElementById('menu-contact-method');
     const arrow = document.getElementById('dropdown-arrow');
+    const getContact = document.querySelector('.get-contact');
 
     if (menu.classList.contains('open')) {
         // Закрытие меню с анимацией
@@ -391,12 +392,14 @@ function toggleContactMethodMenu() {
         menu.style.opacity = '0';
         arrow.classList.remove('rotated');
         menu.classList.remove('open');
+        getContact.style.padding = '150px 0px 250px 20px';
     } else {
         // Открытие меню с анимацией до нужной высоты
         menu.style.maxHeight = menu.scrollHeight + 'px';
         menu.style.opacity = '1';
         arrow.classList.add('rotated');
         menu.classList.add('open');
+        getContact.style.padding = '150px 0px 350px 20px';
     }
 }
 

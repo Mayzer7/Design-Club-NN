@@ -676,10 +676,6 @@ li.active .menu-plumbing-arrow {
     .search-container {
         margin-left: 0%;
     }
-
-    .get-contact {
-        padding: 150px 0 350px 20px;
-    }
 }
 
 @media (max-width: 505px) {
@@ -700,11 +696,6 @@ li.active .menu-plumbing-arrow {
     }
 }
 
-@media (max-width: 340px) {
-    .get-contact {
-        padding: 150px 0 350px 20px;
-    }
-}
 
 
 /* Бургер меню */
