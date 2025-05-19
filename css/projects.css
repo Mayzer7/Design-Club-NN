@@ -100,7 +100,7 @@ body {
 /* Верхрняя секция главной страницы */
 
 .main-page-top {
-    background-image: url('../images/projects/background.png');
+    background-image: url('../images/projects/background.webp');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 70px 0px;

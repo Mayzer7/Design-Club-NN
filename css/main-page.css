@@ -2739,6 +2739,13 @@ nav ul ul.open + svg {
     text-transform: none;
 } 
 
+.visible-image {
+    max-width: 150px;
+    max-height: 150px;
+    width: 100%;
+    height: 100%
+}
+
 @media (max-width: 1530px) {
     .visible-image {
         display: none;

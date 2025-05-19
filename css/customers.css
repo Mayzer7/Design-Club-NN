@@ -1269,7 +1269,7 @@ nav ul ul.open + svg {
 }
 
 @media (max-width: 675px) {
-   
+    
 
     .customers-navigation {
         padding: 40px 5px;
@@ -1548,8 +1548,8 @@ nav ul ul.open + svg {
 
     .get-contact-up-title {
         position: absolute;
-        top: 50px;
-        left: 20px;
+        top: -30px;
+        left: 5px;
     }
 
     .main-side-wrapper {
