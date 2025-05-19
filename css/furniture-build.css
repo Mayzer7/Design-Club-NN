@@ -1280,7 +1280,7 @@ nav ul ul.open + svg {
     }
 
     .services-title-section-container {
-        padding: 240px 20px 100px 20px;
+        padding: 300px 20px 100px 20px;
     }
 
     .video-container img {
@@ -1308,7 +1308,14 @@ nav ul ul.open + svg {
 
 @media (max-width: 730px) {
     .services-title-section-container {
-        padding: 170px 20px 100px 20px;
+        padding: 220px 20px 100px 20px;
+    }
+
+    .under-header-container p,
+    .under-header-container a, 
+    .under-header-container a:nth-child(1),
+    .under-header-container a:nth-child(3){
+        font-size: 14px;
     }
 }
 
@@ -1341,7 +1348,7 @@ nav ul ul.open + svg {
 
 @media (max-width: 400px) {
     .services-title-section-container {
-        padding: 170px 20px 100px 20px;
+        padding: 180px 20px 100px 20px;
     }
     
 }

@@ -1095,7 +1095,7 @@ nav ul ul.open + svg {
 
 .search-result-container {
     padding: 100px 20px 100px 20px;
-    background-image: url('../images/page-not-found-404/background.png');
+    background-image: url('../images/page-not-found-404/background.webp');
     background-repeat: no-repeat;
     background-position: center top;
 }
