@@ -1368,6 +1368,7 @@ nav ul ul.open + svg {
 
 .projects-content-container {
     scroll-margin-top: 300px;
+    overflow-y: hidden;
 }
 
 .project-content-title {
