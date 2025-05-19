@@ -2590,9 +2590,10 @@ nav ul ul.open + svg {
     }
 
     .get-up-title {
+        white-space: nowrap;
         position: absolute;
-        top: 110px;
-        left: 27px;
+        top: -40px;
+        left: 5px;
     }
 
     .main-side-wrapper {
@@ -2614,6 +2615,7 @@ nav ul ul.open + svg {
     .get-up-title {
         font-size: 14px;
     }
+
 }
 
 @media (max-width: 370px) {
