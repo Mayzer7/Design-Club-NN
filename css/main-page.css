@@ -1706,13 +1706,12 @@ nav ul ul.open + svg {
     .why-choose-us-content {
         padding-bottom: 60px;
     }
-}
 
-@media (max-width: 500px) {
     .why-up-title {
         top: 400px;
     }
 }
+
 
 
 @media (max-width: 430px) {
@@ -1936,7 +1935,7 @@ nav ul ul.open + svg {
     top: -20px;
     left: 20px;
     color: rgba(255, 255, 255, 0.6);
-    font-size: 14px;
+    font-size: 18px;
 }
 
 .project-products-title {
@@ -2390,6 +2389,11 @@ nav ul ul.open + svg {
     .our-up-title {
         font-size: 14px;
         left: 2px;
+    }
+
+    .why-up-title,
+    .up-title {
+        font-size: 14px;
     }
 
     .our-brands {
