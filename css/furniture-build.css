@@ -1346,81 +1346,70 @@ nav ul ul.open + svg {
     
 }
 
-/* Секция "Запишитесь на персональную консультацию" */
 
-.get-request {
-    padding: 60px 20px 90px 20px;
+
+
+/* Секция "Остались вопросы?" */
+
+.get-contact {
+    padding: 80px 0 150px 20px;
     background-color: #151c28;
-    font-family: 'SF Pro Display Thin', sans-serif;
-    background-image: url("../images/main-page/get-request-bg.png");
+    font-family: 'SF Pro Display Thin', sans-serif; 
+    background-image: url("../images/customers-page/background.png");
     background-repeat: no-repeat;
     background-size: cover; 
-    background-position: center right;
+    background-position: center right; 
+    position: relative;
+}
+
+.get-contact-container {
+    display: flex;
+}
+
+.left-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 580px;
+}
+
+.block-title {
+    white-space: nowrap;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.left-side img {
+    width: 56px;
+    height: 56px;
 }
 
 
-.get-request-title {
+
+.main-side-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 910px;
+    padding-left: 38%;  
+}
+
+.main-side-wrapper h1 {
     font-family: 'Future New Light', sans-serif;
     font-size: 76px;
+    white-space: nowrap;
     text-transform: uppercase;
 }
 
-.get-request-content {
-    margin-top: 60px;
-    display: flex; 
-}
-
-.maps {
-    margin-top: 120px;
-    width: 337px;
-    height: 381px;
-}
-
-.maps-mobile {
-    display: none;
-    width: 310px;
-    height: 200px;
-}
-
-.get-request-container {
-    width: 100%;
-    padding-left: 7%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.content-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 40px;
-    margin-top: -90px;
-    width: 100%;
-}
-
-.content-wrapper h1 {
-  overflow-wrap: break-word;
-  word-break: break-word; 
-  font-family: 'Future New Light', sans-serif;
-    text-transform: uppercase;
-}
-
-.get-title-request-desctop {
-    font-size: 76px;
-}
-
-.content-wrapper p {
-    font-family: 'SF Pro Display Thin', sans-serif;
-    font-weight: 300;
-}
-
-.content-wrapper form {
+.main-side-wrapper form {
     display: flex;
     flex-direction: column;
     gap: 35px;
-    max-width: 645px;
-    width: 100%;
+    width: 105%;
+}
+
+.opacity {
+    opacity: 0;
 }
 
 .contact-input {
@@ -1432,12 +1421,7 @@ nav ul ul.open + svg {
     background: transparent;
     padding: 5px 0;
     gap: 8px;
-    width: 100%;
-    transition: all 0.3s ease;
-}
-
-.contact-input:hover {
-    background-color: rgba(255, 255, 255, 0.02);
+    width: 95%;
 }
 
 .contact-input input {
@@ -1450,10 +1434,12 @@ nav ul ul.open + svg {
     padding: 5px 0; 
 }
 
-
+.contact-input input::placeholder {
+    color: #555D6F;
+}
 
 .error-contact {
-    font-family: 'SF Pro Display', sans-serif; 
+    font-family: 'SF Pro Display Thin', sans-serif; 
     position: absolute;
     top: 100%;
     left: 0;
@@ -1473,17 +1459,17 @@ nav ul ul.open + svg {
 }
 
 .accept-politics p {
+    white-space: nowrap;
     font-size: 14px;
 }
 
 .accept-politics p span {
-    font-size: 14px;
     color: #AE9877;
     border-bottom: 1px solid #AE9877;
 }
 
 .get-request-button {
-    margin-top: 5px;
+    margin-top: 25px;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-size: 18px;
     position: relative;
@@ -1498,7 +1484,7 @@ nav ul ul.open + svg {
     border: none;
     color: #fff;
     transition: all 0.3s ease;
-    width: 100%;
+    width: 95%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
@@ -1545,154 +1531,116 @@ nav ul ul.open + svg {
     background-image: url('../images/svg/check-mark.svg');
 }
 
-
-
-/* Адаптив секции "Запишитесь на персональную консультацию" */
-
-.get-title-request-mobile {
-    display: none;
+.main-side-text {
+    font-size: 18px;
 }
 
-@media (max-width: 1660px) {
-    .maps {
-        margin-top: 210px;
-    }
-}
+/* Адаптив "Остались вопросы" */
 
-@media (max-width: 1400px) {
-    .maps {
-        margin-top: 300px;
-        width: 250px;
-        height: 300px;
+@media (max-width: 1770px) {
+    .main-side-wrapper {
+        padding-left: 33%;
     }
 }
 
-@media (max-width: 1230px) {
-    .get-request {
-        background-image: url("../images/main-page/adaptive/request-background-1024.png");
+@media (max-width: 1655px) {
+    .main-side-wrapper {
+        padding-left: 30%;
     }
 }
 
-@media (max-width: 1150px) {
-    .get-request-container {
-        margin-top: 50px;
-    }
-
-    .get-request-title-test {
-        font-size: 60px;    
-    }
-
-    .maps {
-        margin-top: 350px;
-        width: 200px;
-        height: 250px;
+@media (max-width: 1555px) {
+    .main-side-wrapper {
+        padding-left: 25%;  
     }
 }
 
-@media (max-width: 920px) {
-    .maps {
-        display: none;
-    }
-
-    .maps-mobile {
-        display: block;
-        width: 500px;
-        height: 250px;
-    }
-
-    .get-request-container {
-        padding-left: 13%;
-    }
-
-    .get-title-request-desctop {
-        display: none;
-    }
-
-    .get-title-request-mobile {
-        display: block;
-        font-size: 76px;
+@media (max-width: 1390px) {
+    .main-side-wrapper {
+        padding-left: 20%;  
     }
 }
 
-@media (max-width: 900px) {
-    .get-request-container {
-        padding-left: 10%;
+@media (max-width: 1200px) {
+    .main-side-wrapper form {
+        width: 100%;
+    }
+
+    .main-side-text {
+        max-width: 420px;
+        width: 100%;
     }
 }
 
-@media (max-width: 855px) {
-    .get-request-container {
-        padding-left: 5%;
+@media (max-width: 1128px) {
+    .main-side-wrapper {
+        padding-left: 17%;  
     }
 }
 
-@media (max-width: 810px) {
-    .get-request-container {
-        padding-left: 0;
+@media (max-width: 1100px) {
+    .get-contact {
+        background-image: url("../images/furniture-build/adaptive/background-contact-1024.png");
+        padding: 80px 0 80px 20px;
     }
-}
 
-@media (max-width: 630px) {
-    .get-title-request-mobile {
+
+    .main-side-wrapper {
+        padding-left: 15%;  
+    }
+
+    .main-side-wrapper h1 {
         font-size: 60px;
     }
-}
 
-@media (max-width: 550px) {
-    .maps-mobile {
-        display: block;
-        width: 450px;
-        height: 250px;
-    }
-}
-
-@media (max-width: 510px) {
-    .get-title-request-mobile {
-        font-size: 50px;
+    .main-side-wrapper form {
+        width: 105%;
     }
 
-    .under-header-container a,
-    .under-header-container p,
-    .under-header-container a:nth-child(1),
-    .under-header-container a:nth-child(3) {
-        font-size: 14px;
-    }
-
-    .maps-mobile {
-        width: 400px;
-        height: 250px;
-    }
-}
-
-@media (max-width: 430px) {
-    .get-title-request-mobile {
-        font-size: 38px;
-    }
-
-    .get-request-text {
+    .main-side-text {
         font-size: 16px;
     }
+}
 
-    .get-request-up-title {
+@media (max-width: 950px) {
+    .left-side div {
+        display: none;
+    }
+
+    .get-contact-up-title {
+        position: absolute;
+        top: -30px;
+        left: 5px;
+    }
+
+    .main-side-wrapper {
+        padding-left: 0%;  
+    }
+}
+
+@media (max-width: 660px) {
+    .main-side-wrapper h1 {
+        white-space: normal;
+    }
+
+    .main-side-wrapper form {
+        width: 100%;
+    }
+
+    .accept-politics p {
+        white-space: normal;
+    }
+}
+
+@media (max-width: 450px) {
+    .get-contact-up-title {
         font-size: 14px;
     }
 
-    .maps-mobile {
-        width: 350px;
-        height: 250px;
+    .main-side-wrapper h1 {
+        font-size: 50px;
     }
 }
-
-@media (max-width: 380px) {
-    .maps-mobile {
-        width: 310px;
-        height: 200px;
-    }
-    
-}
-
-
-
 
 
 /* Footer */

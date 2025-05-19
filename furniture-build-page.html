@@ -436,42 +436,59 @@
             </div>
         </section>
 
-        <section class="get-request">
-                <div class="blur-container">
-                    <p class="block-title get-request-up-title fade-in">Оставить заявку</p>
-                
-                    <main class="get-request-content">
-                        <iframe class="maps fade-in" src="https://yandex.ru/map-widget/v1/?um=constructor%3A100deec2f5ba1d94dcde01cf3e88bde4b9f635509455260016b7e85bb0472c44&amp;source=constructor" frameborder="0"></iframe>
-                
-                        <div class="get-request-container">
-                            <div class="content-wrapper reveal-mask">
-                                <h1 class="get-title-request-desctop">Запишитесь на <br> персональную консультацию</h1>
+        <section class="get-contact">
+            <div class="blur-container">
+                <main class="get-contant-content">
+                    <div class="get-contact-container">
+                        <div class="left-side fade-in">
+                            <p class="block-title get-contact-up-title">
+                                Оставить заявку
+                            </p>
 
-                                <h1 class="get-title-request-mobile">Запишитесь на персональную консультацию</h1>
+                            <div>
+                                <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="2.93331" height="17.5998" transform="matrix(1 0 0 -1 26.5312 23.6016)" fill="white" fill-opacity="0.2"/>
+                                    <rect width="2.93331" height="17.5998" transform="matrix(1 0 0 -1 26.5312 50)" fill="white" fill-opacity="0.2"/>
+                                    <rect width="2.93331" height="17.5998" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 50 29.4688)" fill="white" fill-opacity="0.2"/>
+                                    <rect width="2.93331" height="17.5998" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 23.6016 29.4688)" fill="white" fill-opacity="0.2"/>
+                                </svg>
+                            </div>
 
-                                <p class="get-request-text fade-in">
-                                    В нашем шоуруме вас встретит атмосфера тепла и уюта, а также<br>
-                                    индивидуальный подход к каждому клиенту. Насладитесь чашечкой<br>
-                                    ароматного чая, пока мы поможем вам создать пространство мечты!
+                        </div>
+        
+                        <div class="main-side">
+                            <div class="main-side-wrapper reveal-mask">
+                                <h1>Остались вопросы?</h1>
+        
+                                <p class="main-side-text fade-in">
+                                    Если вам нужна помощь с разгрузкой, подъемом или сборкой мебели, не 
+                                    стесняйтесь обращаться к нам! Мы готовы ответить на все ваши вопросы 
+                                    и предложить индивидуальные решения в зависимости от ваших
+                                    потребностей.
                                 </p>
-
-                                <iframe class="maps-mobile fade-in" src="https://yandex.ru/map-widget/v1/?um=constructor%3A100deec2f5ba1d94dcde01cf3e88bde4b9f635509455260016b7e85bb0472c44&amp;source=constructor" frameborder="0"></iframe>
                 
-                                <form id="contact-form-1" class="contact-form fade-in" onsubmit="return validateForm(event, 'contact-form-1')">
+                                <form id="contact-form" class="contact-form fade-in" onsubmit="return validateForm(event, 'contact-form')">
                                     <div class="contact-input fade-in">
                                         <input type="text" name="name" placeholder="ВАШЕ ИМЯ">
                                         <span class="error-contact"></span>
-                                    </div>  
+                                    </div>
+    
                                     <div class="contact-input fade-in">
-                                        <input type="text" name="phone" placeholder="ТЕЛЕФОН">
+                                        <input type="number" name="phone" placeholder="ТЕЛЕФОН">
                                         <span class="error-contact"></span>
                                     </div>
+                                    
+                                    <div class="contact-input fade-in">
+                                        <input type="text" name="your-question" placeholder="ВАШ ВОПРОС">
+                                        <span class="error-contact"></span>
+                                    </div>
+    
                                     <div class="accept-politics fade-in">
                                         <label class="custom-checkbox">
                                             <input type="checkbox" name="accept" />
                                             <div class="checkbox-img"></div>
                                         </label>
-                                        <p>Согласен <span><a href="privacy-policy-page.html">с политикой конфиденциальности и обработки персональных данных</a></span></p>
+                                        <p>Согласен <span><a href="#">с политикой конфиденциальности и обработки персональных данных</a></span></p>
                                         <span class="error-contact"></span>
                                     </div>
                                     <button type="submit" class="get-request-button fade-in">
@@ -481,9 +498,10 @@
                                 </form>
                             </div>
                         </div>
-                    </main>
-                </div>
-            </section>
+                    </div>
+                </main>
+            </div>
+        </section>
         
         <section class="footer">
                 <div class="blur-container">
