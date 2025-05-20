@@ -1343,8 +1343,8 @@ nav ul ul.open + svg {
 
     .left-side p {
         position: absolute;
-        top: 35px;
-        left: 23px;
+        top: -20px;
+        left: 5px;
     }
 
     .right-side {
@@ -1355,6 +1355,11 @@ nav ul ul.open + svg {
 @media (max-width: 420px) {
     .right-side-title {
         font-size: 38px;
+    }
+
+    .left-side p {
+        font-size: 14px;
+        left: 2px;
     }
 }
 
