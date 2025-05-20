@@ -1660,6 +1660,11 @@ nav ul ul.open + svg {
     .right-side-title {
         font-size: 38px;
     }
+
+    .left-side p {
+        font-size: 14px;
+        left: 2px;
+    }
 }
 
 
