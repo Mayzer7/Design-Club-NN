@@ -1856,11 +1856,12 @@ nav ul ul.open + svg {
 
 
 
+
 /* Секция "Отзывы от покупателей" */
 
 
 .reviews {
-    padding: 100px 20px 100px 20px;
+    padding: 130px 20px 100px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;  
     overflow: hidden;
@@ -2244,10 +2245,6 @@ nav ul ul.open + svg {
 
     .review-up-title {
         font-size: 14px;
-    }
-
-    .reviews {
-        padding: 0px 20px 100px 20px;
     }
 }
 
