@@ -1251,6 +1251,8 @@ nav ul ul.open + svg {
     .main-page-top {
         min-height: 460px;
     }
+
+    
 }
 
 @media (max-width: 400px) {

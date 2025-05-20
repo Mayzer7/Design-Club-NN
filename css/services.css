@@ -1281,6 +1281,12 @@ nav ul ul.open + svg {
     .services-subtitle {
         font-size: 16px;
     }
+
+    .under-header-container p,
+    .under-header-container a,
+    .under-header-container a:nth-child(1) {
+        font-size: 14px;
+    }
 }
 
 
