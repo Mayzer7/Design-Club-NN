@@ -1955,7 +1955,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
   padding: 16px;
   box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
   z-index: 9999;
-    overflow-x: auto;
+    overflow-x: hidden;
   transform: translateY(100%);
   opacity: 0;
   pointer-events: none; 
@@ -2061,7 +2061,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     cursor: pointer;
     border: none;
     background-color: #AE9877;
-    padding: 16px 35px;
+    padding: 16px 25px;
     width: 100%;
 }
 
@@ -2112,7 +2112,11 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
 }
 
-
+@media (max-width: 335px) {
+    .filter-mobile-menu-buttons {
+        flex-direction: column;
+    }
+}
 
 
 
