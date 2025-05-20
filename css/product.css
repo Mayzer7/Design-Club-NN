@@ -2059,7 +2059,7 @@ nav ul ul.open + svg {
     top: -20px;
     left: 20px;
     color: rgba(255, 255, 255, 0.6);
-    font-size: 14px;
+    font-size: 18px;
 }
 
 .project-products-title {
@@ -2872,6 +2872,18 @@ nav ul ul.open + svg {
 @media (max-width: 420px) {
     .right-side-title {
         font-size: 38px;
+    }
+
+    .up-title{
+        font-size: 14px;
+    }
+
+    .left-side p {
+        font-size: 14px;
+    }
+
+    .why-up-title {
+        font-size: 14px;
     }
 }
 

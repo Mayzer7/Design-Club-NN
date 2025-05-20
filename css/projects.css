@@ -1134,6 +1134,39 @@ nav ul ul.open + svg {
         font-size: 42px;
     }
 
+    .projects-header-container {
+        margin-top: 30px;
+    }
+
+    .under-header-container p,
+    .under-header-container a,
+    .under-header-container a:first-child {
+        font-size: 14px;
+    }
+
+    .subtitle {
+        margin-top: 15px;
+    }
+
+    .main-page-top {
+        height: 500px;
+    }
+
+}
+
+@media (max-width: 400px) {
+    .under-header {
+        top: 90px;
+    }
+
+    .under-header-container {
+        margin-top: 30px;
+    }
+
+    .main-page-top {
+        height: 450px;
+    }
+
 }
 
 @media (max-width: 370px) {
@@ -1144,13 +1177,13 @@ nav ul ul.open + svg {
 
 @media (max-width: 338px) {
     .main-page-top {
-        height: 600px;
+        height: 500px;
     }
 }
 
 @media (max-width: 280px) {
     .main-page-top {
-        height: 630px;
+        height: 550px;
     }
 }
 
@@ -1686,7 +1719,7 @@ nav ul ul.open + svg {
 /* Footer */
 
 .footer {
-    padding: 0px 20px 20px 20px;
+    padding: 100px 20px 20px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 
@@ -1778,7 +1811,7 @@ nav ul ul.open + svg {
 
 .footer-1024 {
     display: none;
-    padding: 0px 20px 20px 20px;
+    padding: 100px 20px 20px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 
@@ -1836,7 +1869,7 @@ nav ul ul.open + svg {
 
 .footer-below-1024 {
     display: none;
-    padding: 0px 20px 0px 20px;
+    padding: 100px 20px 0px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 

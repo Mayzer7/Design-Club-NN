@@ -1330,7 +1330,6 @@ nav ul ul.open + svg {
     overflow: hidden;
     max-width: 645px;
     width: 100%;
-    white-space: nowrap;
     text-transform: uppercase;
 
 }
@@ -1469,6 +1468,12 @@ nav ul ul.open + svg {
 
     .clear-cart-button {
         font-size: 16px;
+    }
+
+    .under-header-container p,
+    .under-header-container a,
+    .under-header-container a:nth-child(1) {
+        font-size: 14px;
     }
 }
 

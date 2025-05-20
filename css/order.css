@@ -1509,11 +1509,7 @@ nav ul ul.open + svg {
 
 }
 
-@media (max-width: 377px) {
-    .buy-products {
-        padding: 240px 20px 0px 20px;
-    }
-}
+
 
 @media (max-width: 630px) {
     .title {
@@ -1524,6 +1520,13 @@ nav ul ul.open + svg {
 @media (max-width: 400px) {
     .title {
         font-size: 38px;
+        margin-bottom: 30px;
+    }
+
+    .under-header-container p,
+    .under-header-container a,
+    .under-header-container > a:not(:last-child) {
+        font-size: 14px;
     }
 }
 
