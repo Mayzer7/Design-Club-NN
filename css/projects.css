@@ -1360,6 +1360,10 @@ nav ul ul.open + svg {
     color: #AE9877;  /* Меняем цвет текста при ховере на кнопку */
 }
 
+[id] {
+  scroll-margin-top: 110px;
+}
+
 .project-content {
     padding: 20px 0;
     display: flex;
