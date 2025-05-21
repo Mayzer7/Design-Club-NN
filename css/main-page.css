@@ -96,12 +96,52 @@ body {
 /* Верхрняя секция главной страницы */
 
 .main-page-top {
+    position: relative;
+    overflow: hidden;
     background-image: url('../images/main-page/background-webp.webp');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: top center;
+    background-position: center;
     min-height: 1000px;
 }
+/* Изображения для автоматического переключения на заднем плане */
+.main-page-top {
+  --bg-1: url('../images/main-page/background-webp.webp');
+  --bg-2: url('../images/main-page/backgrounds/background-image-switch-1.png');
+  --bg-3: url('../images/main-page/backgrounds/background-image-switch-2.jpg');
+}
+
+.temp-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    z-index: 0;
+    transition: opacity 1s ease;
+    pointer-events: none;
+}
+
+/* Затемнение фонового изображения */
+.bg-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.2);
+    mix-blend-mode: darken;
+    opacity: 1;
+    transition: background-image 0.3s ease, opacity 0.3s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+
 
 @media (max-width: 1880px) {
     .main-page-top {
@@ -115,6 +155,11 @@ body {
 
 
 /* Шапка */
+
+.menu-toggle-plumbing.open,
+.menu-toggle-furniture.open {
+    color: #AE9877;
+}
 
 .header-top {
     position: fixed;
@@ -169,16 +214,12 @@ body {
     transition: transform 0.3s ease;
 }
 
-.menu-plumbing-arrow {
-    transition: transform 0.3s ease;
-}
-
 li.active .down-arrow {
     transform: rotate(180deg);
     color: #AE9877;
 }
 
-li.active .menu-plumbing-arrow {
+li.active .menu-arrow {
     transform: rotate(180deg);
     color: #AE9877;
 }
@@ -187,24 +228,30 @@ li.active .menu-plumbing-arrow {
     color: #D4B28C;
 }
 
-.menu-toggle-plumbing:hover + .menu-plumbing-arrow {
+.menu-arrow {
+    transition: transform 0.3s ease;
+}
+
+.menu-toggle:hover + .menu-arrow {
     color: #D4B28C;
 }
 
-.menu-item.active .menu-plumbing-arrow  {
+.menu-item.active .menu-arrow {
     transform: rotate(180deg);
     color: #AE9877;
 }
 
-.menu-item.active .menu-toggle-plumbing {
+.menu-item.active .menu-toggle {
     color: #AE9877;
 }
 
 
+
+
 /* Всплывающее меню при нажатии на Каталог */
 
-.menu-toggle-furniture,
-.menu-toggle-plumbing {
+.menu-toggle,
+.menu-toggle {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -213,13 +260,9 @@ li.active .menu-plumbing-arrow {
     color: #EDE4D7;
     transition: color 0.3s ease;
 }
-  
-.menu-arrow {
-    transition: stroke 0.3s ease;
-}
 
-.menu-toggle-furniture:hover,
-.menu-toggle-plumbing:hover {
+.menu-toggle:hover,
+.menu-toggle:hover {
     color: #AE9877;
 }
 
@@ -254,16 +297,56 @@ li.active .menu-plumbing-arrow {
     display: flex;
 }
 
+.catalog-up-nav {
+    max-height: 500px; 
+    min-width: 350px;
+    width: 100%;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+.right-menu {
+    margin-top: 10px;
+    max-height: 500px; 
+    width: 100%;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+.right-menu::-webkit-scrollbar {
+    width: 6px;
+}
+  
+.right-menu::-webkit-scrollbar-track {
+    background-color: rgba(237, 228, 215, 0.4);
+}
+  
+.right-menu::-webkit-scrollbar-thumb {
+    background-color: #EDE4D7;
+}
+
+.catalog-up-nav::-webkit-scrollbar {
+    width: 6px;
+}
+  
+.catalog-up-nav::-webkit-scrollbar-track {
+    background-color: rgba(237, 228, 215, 0.4);
+}
+  
+.catalog-up-nav::-webkit-scrollbar-thumb {
+    background-color: #EDE4D7;
+}
+
 .left-menu {
     position: relative; 
-    margin-right: 100px;
+    margin-right: 20px;
 }
   
 .left-menu::after {
     content: '';
     position: absolute;
     top: 0;
-    right: -100px; 
+    right: 0px; 
     width: 1px;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.4); 
@@ -274,14 +357,7 @@ li.active .menu-plumbing-arrow {
     font-weight: 300;
 }
 
-.submenu-furniture {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    padding: 10px;
-}
-
-.submenu-plumbing {
+.submenu {
     display: none;
     flex-direction: column;
     gap: 5px;
@@ -308,11 +384,11 @@ li.active .menu-plumbing-arrow {
 }
 
 .right-menu-content {
-    margin-top: 30px;
     display: none;
     flex-direction: column;
     gap: 5px;
 }
+
 
 .right-menu-content a {
     font-family: 'SF Pro Display Thin', sans-serif;
@@ -323,7 +399,16 @@ li.active .menu-plumbing-arrow {
 .all-categories-link {
     margin-top: 15px;
     display: flex;
+    gap: 10px;
     align-items: center;
+}
+
+.all-categories-link svg {
+    transition: transform 0.3s ease;
+}
+
+.all-categories-link:hover svg {
+    color: #AE9877;
 }
 
 .all-categories-link a {
@@ -1120,6 +1205,14 @@ nav ul ul.open + svg {
     gap: 10px;
 }
 
+.title-images a {
+    transition: all 0.3s ease;
+}
+
+.title-images a:hover {
+    transform: scale(1.1);
+}
+
 .title-images img {
     width: 76px;
     height: 75px;
@@ -1466,13 +1559,13 @@ nav ul ul.open + svg {
 }
 
 .card img {
-    margin-top: 250px;
+    margin-top: 150px;
     width: 288px;
     height: 288px;
 }
 
 .down-card {
-    top: 200px;
+    top: 150px;
 }
 
 
@@ -1879,7 +1972,7 @@ nav ul ul.open + svg {
 
 .badges {
     position: absolute;
-    top: 20px;
+    top: 10px;
     right: 10px;
     display: flex;
     gap: 10px; 
@@ -1954,6 +2047,11 @@ nav ul ul.open + svg {
     background-color: transparent;
     border: none;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-arrows-products button:hover {
+    transform: scale(1.1);
 }
 
 .open-all-catalog {
@@ -4202,6 +4300,11 @@ nav ul ul.open + svg {
 
 /* Footer */
 
+#brands {
+  scroll-margin-top: 130px; 
+  scroll-behavior: smooth;
+}
+
 .footer {
     padding: 0px 20px 20px 20px;
     background-color: #151c28;
@@ -4227,7 +4330,9 @@ nav ul ul.open + svg {
     gap: 10px;
 }
 
-.footer-navigation h1 {
+.footer-navigation p {
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 600;
     white-space: nowrap;
     padding-bottom: 10px;
     text-transform: uppercase;
@@ -4254,17 +4359,25 @@ nav ul ul.open + svg {
     color: #AE9877;
 }
 
+.footer-address {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
 .footer-address p {
     margin-bottom: 5px;
     color: rgba(237, 228, 215, 0.7);
 }
 
-.footer-address h1 {
-    font-size: 38px;
-    margin-bottom: 40px;
-    font-family: 'SF Pro Display Thin', sans-serif; 
+.footer-address a {
+    font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 600;
+    font-size: 38px;
+    cursor: pointer;
 }
+
+
 
 .footer-icons {
     display: flex;
@@ -4276,11 +4389,15 @@ nav ul ul.open + svg {
     width: 36px;
 }
 
+.footer-last {
+    margin-top: 40px;
+}
+
 .footer-copyright {
     display: grid;
     grid-template-columns: 0.81fr 1.5fr 1fr auto;
-    gap: 10px;
-    padding: 20px 0;
+    padding-top: 10px;
+
 }
 
 .footer-copyright a {
@@ -4337,9 +4454,11 @@ nav ul ul.open + svg {
     padding-top: 20px;
 }
 
-.footer-nav-down h1 {
+.footer-nav-down a {
     text-transform: uppercase;
     font-size: 24px;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 600;
 }
 
 .footer-nav-down p {

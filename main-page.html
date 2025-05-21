@@ -12,6 +12,7 @@
         <!-- Основной контент страницы -->
         <div class="main-page-content" id="mainContent">
             <section class="page-wrapper">
+                
                 <main class="under-header">
                     <div class="under-header-container">
                         <p class="fade-in">01  —  03</p>
@@ -37,10 +38,14 @@
         
                     <div class="title-container reveal-mask">
                         <h1>Премиальные интерьерные<br> решения для вашего дома</h1>
-                        
+
                         <div class="title-images desctop-images fade-in">
-                            <a href="#"><img src="images/main-page/bath.webp" alt="Ванна"></a>
-                            <a href="#"><img src="images/main-page/table.png" alt="Стол"></a>
+                            <a href="#" data-bg="images/main-page/backgrounds/background-image-switch-1.png">
+                                <img src="images/main-page/backgrounds/background-image-switch-1.png" alt="Ванна">
+                            </a>
+                            <a href="#" data-bg="images/main-page/backgrounds/background-image-switch-2.jpg">
+                                <img src="images/main-page/backgrounds/background-image-switch-2.jpg" alt="Стол">
+                            </a>
                         </div>
                     </div>
 
@@ -62,6 +67,7 @@
             </section>
         
             <section class="main-page-top">
+                <div class="bg-overlay"></div>
                 <header class="header-top">
                     <div class="container">
                         <div class="header-container fade-in">
@@ -185,97 +191,127 @@
             
                             <div class="left-menu">
                                 <nav>
-                                <ul>
-                                    <!-- Меню Сантехника -->
-                                    <li class="menu-item-plumbing">
-                                    <a href="#" class="menu-toggle-plumbing">
-                                        Сантехника
-                                        <svg class="menu-plumbing-arrow" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
-                                        </svg>     
-                                    </a>
-                                    <ul class="submenu-plumbing">
-                                        <li><a href="catalog-page.html">Инсталляции и клавиши</a></li>
-                                        <li><a href="catalog-page.html">Унитазы и биде</a></li>
-                                        <li><a href="catalog-page.html">Раковины</a></li>
-                                        <li><a href="catalog-page.html">Биде</a></li>
-                                        
-                                        <li class="submenu-items">
-                                            <div class="submenu-item">
-                                                <a href="#" class="shower-enclosures-and-pallets">
-                                                    Душевые ограждения и поддоны
-                                                </a>
+                                    <ul class="catalog-up-nav">
+                                        <!-- Меню Сантехника -->
+                                        <li class="menu-item" data-category="plumbing">
+                                            <a href="#" class="menu-toggle" data-category="plumbing">
+                                                Сантехника
+                                                <svg class="menu-arrow" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
+                                                </svg>     
+                                            </a>
+
+                                            <ul class="submenu" data-category="plumbing">
+                                                <li><a href="catalog-page.html">Инсталляции и клавиши</a></li>
+                                                <li><a href="catalog-page.html">Унитазы и биде</a></li>
+                                                <li><a href="catalog-page.html">Раковины</a></li>
+                                                <li><a href="catalog-page.html">Биде</a></li>
                                                 
-                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
-                                                </svg>
-                                            </div>
+                                                <li class="submenu-items">
+                                                    <div class="submenu-item">
+                                                        <a href="#" class="menu-button" data-id="shower-enclosures">
+                                                            Душевые ограждения и поддоны
+                                                        </a>
+                                                        
+                                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
+                                                        </svg>
+                                                    </div>
+                                                </li>
+                    
+                                                <li class="submenu-items">
+                                                    <div class="submenu-item">
+                                                        <a href="#" class="menu-button" data-id="mixers">
+                                                            Смесители
+                                                        </a>
+                                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
+                                                        </svg>
+                                                    </div>
+                                                </li>
+                    
+                                                <li class="submenu-items">
+                                                    <div class="submenu-item">
+                                                        <a href="#" class="menu-button" data-id="shower-program">
+                                                            Душевая программа
+                                                        </a>
+                                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
+                                                        </svg>
+                                                    </div>
+                                                </li>
+                    
+                                                <li class="submenu-items">
+                                                    <div class="submenu-item">
+                                                        <a href="#" class="menu-button" data-id="mixers">
+                                                            Смесители
+                                                        </a>
+                                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
+                                                        </svg>
+                                                    </div>
+                                                </li>
+                    
+                                                <li><a href="catalog-page.html">Аксессуары и декор</a></li>
+                                                <li><a href="catalog-page.html">Дополнительные комплектующие</a></li>
+                                            </ul>
                                         </li>
-            
-                                        <li class="submenu-items">
-                                            <div class="submenu-item">
-                                                <a href="#" class="plumbing">
-                                                    Смесители
-                                                </a>
-                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
-                                                </svg>
-                                            </div>
+                                    
+                                        <!-- Меню Мебель -->
+                                        <li class="menu-item" data-category="furniture">
+                                            <a href="#" class="menu-toggle" data-category="furniture">
+                                                Мебель
+                                                <svg class="menu-arrow" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
+                                                </svg>     
+                                            </a>
+
+                                            <ul class="submenu" data-category="furniture">
+                                                <li><a href="catalog-page.html">Шкафы и стеллажи</a></li>
+                                                <li><a href="catalog-page.html">Тумбы и комоды</a></li>
+                                                <li><a href="catalog-page.html">Кровати</a></li>
+                                                <li><a href="catalog-page.html">Столы и стулья</a></li>
+                                                <li><a href="catalog-page.html">Диваны</a></li>
+                                                <li><a href="catalog-page.html">Мебель для ванной</a></li>
+                                            </ul>
                                         </li>
-            
-                                        <li class="submenu-items">
-                                            <div class="submenu-item">
-                                                <a href="#" class="shower-program">
-                                                    Душевая программа
-                                                </a>
-                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
-                                                </svg>
-                                            </div>
-                                        </li>
-            
-                                        <li class="submenu-items">
-                                            <div class="submenu-item">
-                                                <a href="#" class="plumbing">
-                                                    Смесители
-                                                </a>
-                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
-                                                </svg>
-                                            </div>
-                                        </li>
-            
-                                        <li><a href="catalog-page.html">Аксессуары и декор</a></li>
-                                        <li><a href="catalog-page.html">Дополнительные комплектующие</a></li>
                                     </ul>
-                                    </li>
-                                
-                                    <!-- Меню Мебель -->
-                                    <li class="menu-item-furniture">
-                                        <a href="#" class="menu-toggle-furniture">
-                                            Мебель
-                                            <svg class="menu-plumbing-arrow" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
-                                            </svg>     
-                                        </a>
-                                    <ul class="submenu-furniture">
-                                        <li><a href="catalog-page.html">Шкафы и стеллажи</a></li>
-                                        <li><a href="catalog-page.html">Тумбы и комоды</a></li>
-                                        <li><a href="catalog-page.html">Кровати</a></li>
-                                        <li><a href="catalog-page.html">Столы и стулья</a></li>
-                                        <li><a href="catalog-page.html">Диваны</a></li>
-                                        <li><a href="catalog-page.html">Мебель для ванной</a></li>
-                                    </ul>
-                                    </li>
-                                </ul>
                                 </nav>
                             </div>
             
                             <div class="right-menu">
-                                <div class="right-menu-content">
-                                    <a href="#">Душевые уголки, двери и перегородки</a>
-                                    <a href="#">Поддоны</a>
-                                    <a href="#">Шторки для ванны</a>
+                                <div class="right-menu-content" data-id="shower-enclosures">
+                                    <a href="catalog-page.html">Душевые уголки, двери и перегородки</a>
+                                    <a href="catalog-page.html">Поддоны</a>
+                                    <a href="catalog-page.html">Шторки для ванны</a>
+                                    
+                                    <div class="all-categories-link">
+                                        <a href="#">Все товары категории</a>
+                                        
+                                        <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
+                                        </svg>    
+                                    </div>
+                                </div>
+
+                                <div class="right-menu-content" data-id="mixers">
+                                    <a href="#">Для раковины</a>
+                                    <a href="#">Для ванны</a>
+                                    <a href="#">Для душа</a>
+                                    <div class="all-categories-link">
+                                        <a href="#">Все товары категории</a>
+                                        
+                                        <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
+                                        </svg>    
+                                    </div>
+                                </div>
+
+                                <div class="right-menu-content" data-id="shower-program">
+                                    <a href="#">Верхний душ</a>
+                                    <a href="#">Душевая система</a>
+                                    <a href="#">Гигиенический душ</a>
+                                    <a href="#">Лейки и держатели</a>
                                     <div class="all-categories-link">
                                         <a href="#">Все товары категории</a>
                                         
@@ -673,7 +709,7 @@
                     </div>
                 </section>
             
-                <section class="our-brands">
+                <section id="brands" class="our-brands">
                     <div class="blur-container">
                         <p class="block-title our-up-title fade-in">Партнеры</p>
             
@@ -830,9 +866,9 @@
                                             времени эксплуатации нашей мебели.
                                         </p>
 
-                                        <p class="about-company-address fade-in">
+                                        <a href="https://yandex.ru/maps/-/CHCE6VNj" target="_blank" class="about-company-address fade-in">
                                             Нижний Новогород, Эльтонская, 8
-                                        </p>
+                                        </a>
                                     </div>
                                 </div>
             
@@ -1313,22 +1349,24 @@
                         
                             <div class="footer-grid">
                                 <div class="footer-container">
-                                    <img class="footer-logo fade-in" src="images/svg/logo.svg" alt="footer-logo">
+                                    <a href="main-page.html">
+                                        <img class="footer-logo fade-in" src="images/svg/logo.svg" alt="footer-logo">
+                                    </a>
                         
                                     <nav class="footer-navigation fade-in">
-                                        <h1><a href="">Каталог</a></h1>
+                                        <p>Каталог</p>
                                         <ul>
-                                            <li><a href="#">Ванны</a></li>
-                                            <li><a href="#">Диваны</a></li>
-                                            <li><a href="#">Обеденные зоны</a></li>
-                                            <li><a href="#">Декор</a></li>
-                                            <li><a href="#">Декор</a></li>
-                                            <li><a href="page-not-found-404.html">404</a></li>
+                                            <li><a href="catalog-page.html">Ванны</a></li>
+                                            <li><a href="catalog-page.html">Диваны</a></li>
+                                            <li><a href="catalog-page.html">Обеденные зоны</a></li>
+                                            <li><a href="catalog-page.html">Декор</a></li>
+                                            <li><a href="catalog-page.html">Декор</a></li>
+                                            <li><a href="catalog-page.html">Декор</a></li>
                                         </ul>
                                     </nav>
                         
                                     <nav class="footer-navigation fade-in">
-                                        <h1><a href="about-us-page.html">О компании</a></h1>
+                                        <p>О компании</p>
                                         <ul>
                                             <li><a href="about-us-page.html">О нас</a></li>
                                             <li><a href="projects-page.html">Проекты</a></li>
@@ -1341,29 +1379,35 @@
                                     </nav>
                         
                                     <nav class="footer-navigation fade-in">
-                                        <h1><a href="customers-page.html">Покупателям</a></h1>
+                                        <p>Покупателям</p>
                                         <ul>
-                                            <li><a href="#">Бренды</a></li>
+                                            <li><a href="#brands">Бренды</a></li>
                                             <li><a href="services-page.html">Услуги</a></li>
                                             <li><a href="#">Доставка и оплата</a></li>
                                         </ul>
                                     </nav>
                         
                                     <div class="footer-address fade-in">
-                                        <p>Наш магазин по адресу</p>
+                                        <div class="footer-address-first">
+                                            <p>Наш магазин по адресу</p>
                     
-                                        <h1 class="address">
-                                            Нижний Новогород,<br>
-                                            Эльтонская, 8
-                                        </h1>
+                                            <a href="https://yandex.ru/maps/-/CHCE6VNj" target="_blank" class="address">
+                                                Нижний Новогород,<br>
+                                                Эльтонская, 8
+                                            </a>
+                                        </div>
                         
-                                        <p>По различным вопросам</p>
-                    
-                                        <h1>email@mail.ru</h1>
+                                        <div class="footer-address-second">
+                                            <p>По различным вопросам</p>
+
+                                            <a href="mailto:email@mail.ru">email@mail.ru</a>
+                                        </div>
                         
-                                        <p>Связаться с нами</p>
-                    
-                                        <h1>+ 7 999 482 82 10</h1>
+                                        <div class="footer-address-second">
+                                            <p>Связаться с нами</p>
+
+                                            <a href="tel:+79994828210">+7 999 482 82 10</a>
+                                        </div>
                                     </div>
                         
                                     <div class="footer-icons fade-in">
@@ -1372,13 +1416,15 @@
                                     </div>
                                 </div>
                         
-                                <hr class="line">
+                                <div class="footer-last">
+                                    <hr class="line">
                         
-                                <div class="footer-copyright fade-in">
-                                    <a href="#">© Design Club NN</a>
-                                    <a href="privacy-policy-page.html">Политика конфиденциальности</a>
-                                    <a href="https://omniagency.ru/">Сделано в OmniAgency</a>
-                                    <a href="#">2025</a>
+                                    <div class="footer-copyright fade-in">
+                                        <p>© Design Club NN</p>
+                                        <a href="privacy-policy-page.html">Политика конфиденциальности</a>
+                                        <a href="https://omniagency.ru/" target="_blank">Сделано в OmniAgency</a>
+                                        <p>2025</p>
+                                    </div>
                                 </div>
                             </div>
                         </footer>
@@ -1394,27 +1440,29 @@
                             <div class="footer-grid-up">
                                 <div class="footer-container-1024">
                                     <div class="footer-logo-container">
-                                        <img class="footer-logo fade-in" src="images/svg/logo.svg" alt="footer-logo">
+                                        <a href="main-page.html">
+                                            <img class="footer-logo fade-in" src="images/svg/logo.svg" alt="footer-logo">
+                                        </a>
                                     </div>
 
                                     <nav class="footer-navigation fade-in">
                                         <div class="footer-nav-up">
-                                            <h1><a href="">Каталог</a></h1>
+                                            <p>Каталог</p>
 
                                             <ul>
-                                                <li><a href="#">Ванны</a></li>
-                                                <li><a href="#">Диваны</a></li>
-                                                <li><a href="#">Обеденные зоны</a></li>
-                                                <li><a href="#">Декор</a></li>
-                                                <li><a href="#">Декор</a></li>
-                                                <li><a href="page-not-found-404.html">Декор</a></li>
+                                                <li><a href="catalog-page.html">Ванны</a></li>
+                                                <li><a href="catalog-page.html">Диваны</a></li>
+                                                <li><a href="catalog-page.html">Обеденные зоны</a></li>
+                                                <li><a href="catalog-page.html">Декор</a></li>
+                                                <li><a href="catalog-page.html">Декор</a></li>
+                                                <li><a href="catalog-page.html">Декор</a></li>
                                             </ul>
                                         </div>
                                     </nav>
                         
                                     <nav class="footer-navigation fade-in">
                                         <div class="footer-nav-up">
-                                            <h1><a href="about-us-page.html">О компании</a></h1>
+                                            <p>О компании</p>
                                             
                                             <ul>
                                                 <li><a href="about-us-page.html">О нас</a></li>
@@ -1428,10 +1476,10 @@
                         
                                     <nav class="footer-navigation fade-in">
                                         <div class="footer-nav-up">
-                                            <h1><a href="customers-page.html">Покупателям</a></h1>
+                                            <p>Покупателям</p>
                                             
                                             <ul>
-                                                <li><a href="#">Бренды</a></li>
+                                                <li><a href="#brands">Бренды</a></li>
                                                 <li><a href="services-page.html">Услуги</a></li>
                                                 <li><a href="#">Доставка и оплата</a></li>
                                             </ul>
@@ -1451,32 +1499,32 @@
                                 <div class="footer-nav-down fade-in">
                                     <p>Наш магазин по адресу</p>
 
-                                    <h1 class="address fade-in">
+                                    <a href="https://yandex.ru/maps/-/CHCE6VNj" target="_blank" class="address fade-in">
                                         Нижний Новогород,<br>
                                         Эльтонская, 8
-                                    </h1>
+                                    </a>
                                 </div>
 
                                 <div class="footer-nav-down fade-in">
                                     <p>По различным вопросам</p>
                     
-                                    <h1>email@mail.ru</h1>
+                                    <a href="mailto:email@mail.ru">email@mail.ru</a>
                                 </div>
 
                                 <div class="footer-nav-down fade-in">
                                     <p>Связаться с нами</p>
                     
-                                    <h1>+ 7 999 482 82 10</h1>
+                                    <a href="tel:+79994828210">+ 7 999 482 82 10</a>
                                 </div>
                             </div>
 
                             <hr class="line">
                         
                             <div class="footer-copyright-1024 fade-in">
-                                <a href="#">© Design Club NN</a>
+                                <p>© Design Club NN</p>
                                 <a href="privacy-policy-page.html">Политика конфиденциальности</a>
-                                <a href="https://omniagency.ru/">Сделано в OmniAgency</a>
-                                <a href="#" class="last-column">2025</a>
+                                <a href="https://omniagency.ru/" target="_blank">Сделано в OmniAgency</a>
+                                <p class="last-column">2025</p>
                             </div>
                         </footer>
                     </div>
@@ -1500,14 +1548,14 @@
                                 <div class="footer-first-column">
                                     <nav class="footer-navigation">
                                         <div class="footer-nav-up fade-in">
-                                            <h1><a href="">Каталог</a></h1>
+                                            <p>Каталог</p>
 
                                             <ul>
-                                                <li><a href="#">Ванны</a></li>
-                                                <li><a href="#">Диваны</a></li>
-                                                <li><a href="#">Обеденные зоны</a></li>
-                                                <li><a href="#">Декор</a></li>
-                                                <li><a href="#">Декор</a></li>
+                                                <li><a href="catalog-page.html">Ванны</a></li>
+                                                <li><a href="catalog-page.html">Диваны</a></li>
+                                                <li><a href="catalog-page.html">Обеденные зоны</a></li>
+                                                <li><a href="catalog-page.html">Декор</a></li>
+                                                <li><a href="catalog-page.html">Декор</a></li>
                                                 <li><a href="page-not-found-404.html">Декор</a></li>
                                             </ul>
                                         </div>
@@ -1515,10 +1563,10 @@
 
                                     <nav class="footer-navigation fade-in">
                                         <div class="footer-nav-up">
-                                            <h1><a href="customers-page.html">Покупателям</a></h1>
+                                            <p>Покупателям</p>
                                             
                                             <ul>
-                                                <li><a href="#">Бренды</a></li>
+                                                <li><a href="#brands">Бренды</a></li>
                                                 <li><a href="services-page.html">Услуги</a></li>
                                                 <li><a href="#">Доставка и оплата</a></li>
                                             </ul>
@@ -1529,22 +1577,22 @@
                                         <div class="footer-nav-down fade-in">
                                             <p>Наш магазин по адресу</p>
 
-                                            <h1 class="address">
+                                            <a href="https://yandex.ru/maps/-/CHCE6VNj" target="_blank" class="address">
                                                 Нижний Новогород,<br>
                                                 Эльтонская, 8
-                                            </h1>
+                                            </a>
                                         </div>
 
                                         <div class="footer-nav-down fade-in">
                                             <p>По различным вопросам</p>
                             
-                                            <h1>email@mail.ru</h1>
+                                            <a href="mailto:email@mail.ru">email@mail.ru</a>
                                         </div>
 
                                         <div class="footer-nav-down fade-in">
                                             <p>Связаться с нами</p>
                             
-                                            <h1>+ 7 999 482 82 10</h1>
+                                            <a href="tel:+79994828210">+ 7 999 482 82 10</a>
                                         </div>
                                     </div>
                                 </div>
@@ -1552,7 +1600,7 @@
                                 <div class="footer-second-column">
                                     <nav class="footer-navigation">
                                         <div class="footer-nav-up fade-in">
-                                            <h1><a href="about-us-page.html">О компании</a></h1>
+                                            <p>О компании</p>
                                             
                                             <ul>
                                                 <li><a href="about-us-page.html">О нас</a></li>
@@ -1868,7 +1916,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- Cookie -->
     <div id="cookie-container"></div>

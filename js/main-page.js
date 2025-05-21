@@ -1,3 +1,18 @@
+
+// В самом верху делаем header прозрачным при старте страницы
+document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('.header-top');
+    const initialScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  
+    if (!header) return;
+    
+    if (initialScrollTop === 0) {
+      header.style.backgroundColor = 'transparent';
+    } else {
+      header.style.display = 'none';
+    }
+  });
+
 // Анимации на странице
 document.addEventListener("DOMContentLoaded", () => {
     const revealElements = document.querySelectorAll(".reveal-mask, .fade-in");
@@ -17,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Открытие бургер меню
-
 
 const openBurgerMenu = document.getElementById('openBurgerMenu');
 const burgerMenuContent = document.getElementById('burgerMenuContent');
@@ -113,17 +127,24 @@ inputBurger.addEventListener('input', () => {
 
 // Для переключение карточек "Почему выбирают нас" с помощью стрелок
 
-document.addEventListener("DOMContentLoaded", function () {
-    const whyCards = document.querySelectorAll('.why-choose-us-content .card');
-    const rigthTitleGroup = document.querySelector('.rigth-title-group');
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('.why-choose-us-content');
+    const leftArrow = document.getElementById('why-left-arrow');
+    const rightArrow = document.getElementById('why-right-arrow');
 
-    const isSmallScreen = window.innerWidth <= 600;
+    const minWidth = parseInt(
+        window.getComputedStyle(document.querySelector('.card')).getPropertyValue('min-width'), 10
+    );
 
-    if (whyCards.length > 4 && !isSmallScreen) {
-        rigthTitleGroup.classList.add('visible');
-    } else {
-        rigthTitleGroup.classList.remove('visible');
-    }
+    const scrollAmount = minWidth; // ширина + отступ
+
+    rightArrow.addEventListener('click', () => {
+        animateScroll(container, scrollAmount, 300);
+    });
+
+    leftArrow.addEventListener('click', () => {
+        animateScroll(container, -scrollAmount, 300);
+    });
 });
 
 // Плавная анимация для переключения
@@ -149,38 +170,34 @@ function animateScroll(container, delta, duration = 800) {
     requestAnimationFrame(tick);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const container = document.querySelector('.why-choose-us-content');
-    const leftArrow = document.getElementById('why-left-arrow');
-    const rightArrow = document.getElementById('why-right-arrow');
+// Отображаем стрелочки для переключения карточек "Почему выбирают нас", если карточек больше 4 
 
-    const minWidth = parseInt(
-        window.getComputedStyle(document.querySelector('.card')).getPropertyValue('min-width'), 10
-    );
+document.addEventListener("DOMContentLoaded", function () {
+    const whyCards = document.querySelectorAll('.why-choose-us-content .card');
+    const rigthTitleGroup = document.querySelector('.rigth-title-group');
 
-    const scrollAmount = minWidth; // ширина + отступ
+    const isSmallScreen = window.innerWidth <= 600;
 
-    rightArrow.addEventListener('click', () => {
-        animateScroll(container, scrollAmount, 300);
-    });
-
-    leftArrow.addEventListener('click', () => {
-        animateScroll(container, -scrollAmount, 300);
-    });
+    if (whyCards.length > 4 && !isSmallScreen) {
+        rigthTitleGroup.classList.add('visible');
+    } else {
+        rigthTitleGroup.classList.remove('visible');
+    }
 });
 
 
-// Переключение карточек товара
+
+// Переключение карточек товара с зацикливанием
 
 const track = document.getElementById('track');
 const cards = Array.from(track.querySelectorAll('.popular-product-card'));
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
-    
-let currentIndex = 2; // стартуем с Product 3 (индекс 2)
-let cardWidth, visibleCount;
 
-// Привязываем клики к статическим карточкам
+let currentIndex = 2; // стартуем с Product 3 (индекс 2)
+let cardWidth = 0;
+let visibleCount = 0;
+
 cards.forEach((card, idx) => {
     if (idx === currentIndex) card.classList.add('active');
     card.addEventListener('click', () => goTo(idx));
@@ -188,7 +205,7 @@ cards.forEach((card, idx) => {
 
 function updateSizes() {
     const contW = document.querySelector('.carousel-container').clientWidth;
-    
+
     if (contW < 600) visibleCount = 3;
     else if (contW < 900) visibleCount = 4;
     else visibleCount = 5;
@@ -202,36 +219,41 @@ function updateSizes() {
 }
 
 function moveTrack() {
-    // читаем CSS-переменную и парсим в число
     const shiftValue = getComputedStyle(track)
-                         .getPropertyValue('--manual-shift')
-                         .trim();
-    const manualShift = parseFloat(shiftValue);
+        .getPropertyValue('--manual-shift')
+        .trim();
+    const manualShift = parseFloat(shiftValue) || 0;
 
-    // рассчитываем смещение
     const x = -currentIndex * cardWidth + manualShift;
     track.style.transform = `translateX(${x}px)`;
+
     cards.forEach((c, i) => c.classList.toggle('active', i === currentIndex));
 }
 
 function goTo(idx) {
-    currentIndex = Math.max(0, Math.min(cards.length - 1, idx));
+    // Зацикливание индекса
+    if (idx < 0) {
+        currentIndex = cards.length - 1;
+    } else if (idx >= cards.length) {
+        currentIndex = 0;
+    } else {
+        currentIndex = idx;
+    }
     moveTrack();
     updateButtons();
 }
 
 function updateButtons() {
-    prevBtn.disabled = currentIndex === 0;
-    nextBtn.disabled = currentIndex === cards.length - 1;
+    // Если зацикливание — кнопки не дизейблить
+    prevBtn.disabled = false;
+    nextBtn.disabled = false;
 }
 
 prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
 nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
+
 window.addEventListener('resize', updateSizes);
 window.addEventListener('load', updateSizes);
-
-
-// Свайпы карточек товара
 
 let startX = 0;
 let endX = 0;
@@ -242,10 +264,11 @@ track.addEventListener('touchstart', (e) => {
 
 track.addEventListener('touchmove', (e) => {
     endX = e.touches[0].clientX;
-});
+    e.preventDefault();
+}, { passive: false });
 
 track.addEventListener('touchend', () => {
-    const swipeThreshold = 50;  // Минимальная длина свайпа для смены карточки
+    const swipeThreshold = 50;
     const diff = startX - endX;
 
     if (diff > swipeThreshold) {
@@ -418,7 +441,7 @@ errorModal.addEventListener('click', (e) => {
 
 
 // Переадрисация на страницу "Результаты поиска" после того как 
-// пользователь ввел название товарава в поиске и нажал Enter
+// пользователь ввел название товара в поиске и нажал Enter
 
 function performSearch() {
     const query = document.getElementById('search-input').value;
@@ -568,9 +591,6 @@ function validateFormContact(event, formId) {
 }
 
 
-
-
-
 // Секция "Наши Отзывы от покупателей"
 
 // Раскрытие отзыва по больше если нужно 
@@ -672,66 +692,76 @@ const marginTopStart = parseFloat(getComputedStyle(document.querySelector('.menu
 const marginTopUseSearch = marginTopStart + 250;
 
 
+searchInput.addEventListener('input', handleSearchInput);
 
-// Обработчик ввода в поле поиска
-searchInput.addEventListener('input', function () {
+function handleSearchInput() {
     const isSearching = searchInput.value.trim() !== '';
+  if (isSearching) {
+    activateSearchMode();
+  } else {
+    deactivateSearchMode();
+  }
+}
 
-    if (isSearching) {
-        menuNavigation.classList.remove('default-margin');
-        menuNavigation.classList.add('search-active');
-        underHeader.style.filter = 'blur(5px)';
-        blurContainers.forEach(container => container.style.filter = 'blur(5px)');
-        header.classList.add('header-search-padding');
-        header.style.backgroundColor = '#151c28';
-        searchItems.classList.add('show');
-    } else {
-        menuNavigation.classList.remove('search-active');
-        menuNavigation.classList.add('default-margin');
+function activateSearchMode() {
+  menuNavigation.classList.remove('default-margin');
+  menuNavigation.classList.add('search-active');
+  underHeader.style.filter = 'blur(5px)';
+  blurContainers.forEach(container => container.style.filter = 'blur(5px)');
+  header.classList.add('header-search-padding');
+  header.style.backgroundColor = '#151c28';
+  searchItems.classList.add('show');
+}
 
-        if (!isCatalogActive) {
-            header.style.backgroundColor = 'transparent';
-            header.classList.remove('header-search-padding');
-            searchItems.classList.remove('show');
-            underHeader.style.filter = 'none';
-            blurContainers.forEach(container => container.style.filter = '');
-        } else {
-            searchItems.classList.remove('show');
-            header.classList.remove('header-search-padding');
-            underHeader.style.filter = 'blur(5px)';
-        }
-    }
-});
+function deactivateSearchMode() {
+  menuNavigation.classList.remove('search-active');
+  menuNavigation.classList.add('default-margin');
+
+  searchItems.classList.remove('show');
+  header.classList.remove('header-search-padding');
+
+  // Всегда сбрасываем blur у blurContainers
+  blurContainers.forEach(container => container.style.filter = '');
+
+  if (!isCatalogActive) {
+    header.style.backgroundColor = 'transparent';
+    underHeader.style.filter = 'none';
+    
+  } else {
+    underHeader.style.filter = 'none';
+    header.style.backgroundColor = 'transparent';
+  }
+}
 
 
-
-
-
-
-
-const blurContainers = document.querySelectorAll('.blur-container');
 
 // Функция когда клик вне хедера
+const blurContainers = document.querySelectorAll('.blur-container');
+
 function resetHeaderState() {
-    // Удаляем активность каталога, если он открыт
     if (isCatalogActive) {
         openCatalog.parentElement.classList.remove('active');
         isCatalogActive = false;
         menuNavigation.style.display = 'none';
+        menuNavigation.classList.remove('default-margin');
+        menuNavigation.style.backgroundColor = '';
+
         openCatalog.style.color = '';
     }
 
-    // Сбрасываем фон и стили
+    header.classList.remove('header-search-padding');
+    menuNavigation.classList.remove('search-active');
     header.style.backgroundColor = 'transparent';
     searchItems.classList.remove('show');
     underHeader.style.filter = 'none';
     underHeader.style.backdropFilter = 'none';
-    searchInput.value = '';
     underHeader.style.cursor = '';
 
-    // Сбрасываем blur, если поле поиска пустое
+    searchInput.value = '';
+
     blurContainers.forEach(container => {
-        container.style.filter = '';
+        container.style.filter = 'none';
+        container.style.cursor = '';
     });
 }
 
@@ -740,11 +770,7 @@ blurContainers.forEach(container => {
     container.addEventListener('click', resetHeaderState);
 });
 
-// Обработчик на underHeader, если он есть
 underHeader.addEventListener('click', resetHeaderState);
-
-
-
 
 
 // Нажатие на кнопку каталог в хедере
@@ -752,26 +778,21 @@ underHeader.addEventListener('click', resetHeaderState);
 const menuNavigation = document.querySelector('.menu-navigation');
 const openCatalog = document.querySelector('.open-catalog');
 
-openCatalog.addEventListener('click', function (e) {    
-    
-    e.preventDefault(); // чтобы не перезагружалась страница
-    this.parentElement.classList.toggle('active');
+function toggleCatalogMenu() {
+    openCatalog.parentElement.classList.toggle('active');
 
-    underHeader.style.filter = 'blur(5px)';
-    underHeader.style.cursor = 'pointer';
-
-    // Накидываем blur на все контейнеры
-    blurContainers.forEach(container => {
-        container.style.filter = 'blur(5px)';
-        container.style.cursor = 'pointer';
-    });
-
-    // Проверяем, активирован ли класс и выводим результат в консоль
-    const isActive = this.parentElement.classList.contains('active');
+    const isActive = openCatalog.parentElement.classList.contains('active');
     isCatalogActive = isActive;
 
-    if (isCatalogActive) {
-        // Когда каталог активирован, меняем фон и показываем меню
+    if (isActive) {
+        underHeader.style.filter = 'blur(5px)';
+        underHeader.style.cursor = 'pointer';
+
+        blurContainers.forEach(container => {
+            container.style.filter = 'blur(5px)';
+            container.style.cursor = 'pointer';
+        });
+
         openCatalog.style.color = '#D4B28C';
         header.style.backgroundColor = '#151c28';
         menuNavigation.style.backgroundColor = '#151c28';
@@ -782,234 +803,419 @@ openCatalog.addEventListener('click', function (e) {
             menuNavigation.style.display = 'none';
             openCatalog.style.color = '';
         } else {
-            // Когда каталог деактивирован, скрываем меню и сбрасываем стиль
             openCatalog.style.color = '';
             header.style.backgroundColor = 'transparent';
             menuNavigation.style.display = 'none';
 
-            // Убираем блюр со всех контейнеров, когда выходим из каталога
             blurContainers.forEach(container => {
                 container.style.filter = 'none';
                 container.style.cursor = '';
             });
-    
-            // underHeaderContainer.style.marginTop = '250px';
+
             underHeader.style.filter = 'none';
             underHeader.style.backdropFilter = 'none';
-    
+
             searchItems.classList.remove('show');
-    
-            // Сбросить поле поиска
+
             searchInput.value = '';
         }
     }
+}
+
+openCatalog.addEventListener('click', function(e) {
+    e.preventDefault();
+    toggleCatalogMenu();
 });
 
 
+// Открытие подкатегорий в меню в хедере и отображение содержимого
+// меню справа + скрытие всех подменю при наведении на header
 
+function setupDropdownToggle() {
+  // Наведение на header — скрываем все подменю и сбрасываем активные состояния
+  const header = document.querySelector('header');
 
+  if (header) {
+        header.addEventListener('mouseenter', () => {
+        const searchActive = searchInput.value.trim() !== '';
 
-
-// Отображение меню Сантехники
-document.querySelectorAll('.menu-toggle-plumbing').forEach(toggle => {
-    toggle.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        const menuItem = toggle.closest('.menu-item-plumbing');
-        const subMenu = menuItem.querySelector('.submenu-plumbing');
-
-        const isOpen = subMenu.style.display === 'flex';
-        subMenu.style.display = isOpen ? 'none' : 'flex';
-        menuItem.classList.toggle('active', !isOpen);
-
-        // underHeaderContainer.style.marginTop = isOpen ? '0px' : '0px';
-    });
-});
-
-
-// Закрытие всех подменю при наведении на header
-header.addEventListener('mouseenter', function () {
-    document.querySelectorAll('.submenu-plumbing').forEach(subMenu => {
+        // Закрываем все подменю и правые меню, сбрасываем активные классы
+        document.querySelectorAll('.submenu').forEach(subMenu => {
         subMenu.style.display = 'none';
-    });
+        });
 
-    document.querySelectorAll('.submenu-furniture').forEach(subMenu => {
-        subMenu.style.display = 'none';
-    });
+        document.querySelectorAll('.right-menu-content').forEach(menu => {
+        menu.style.display = 'none';
+        });
 
-    document.querySelectorAll('.right-menu-content').forEach(subMenu => {
-        subMenu.style.display = 'none';
-    });
-
-    document.querySelectorAll('.menu-item-furniture').forEach(menuItem => {
+        document.querySelectorAll('.menu-item').forEach(menuItem => {
         menuItem.classList.remove('active');
+        });
+
+        document.querySelectorAll('.menu-toggle').forEach(toggle => {
+        toggle.classList.remove('open');
+        });
+
+        document.querySelectorAll('.menu-button').forEach(btn => {
+        btn.style.color = '';
+        const svg = btn.parentElement.querySelector('svg');
+        if (svg) {
+            svg.querySelector('path').setAttribute('stroke', '#EDE4D7');
+        }
+        });
+
+        // Закрываем сам каталог, если он открыт
+       if (openCatalog && openCatalog.parentElement.classList.contains('active')) {
+        openCatalog.parentElement.classList.remove('active');
+
+        // Если поиск не активен — снимаем blur у underHeader и blurContainers
+        if (!searchActive) {
+            underHeader.style.filter = 'none';
+            underHeader.style.backdropFilter = 'none';
+            underHeader.style.cursor = '';
+
+            blurContainers.forEach(container => {
+                container.style.filter = 'none';
+                container.style.cursor = '';
+            });
+        }
+
+        const initialScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (initialScrollTop === 0 && !searchActive) {
+            header.style.backgroundColor = 'transparent';
+        } else {
+            header.style.backgroundColor = '#151c28';
+        }
+
+        if (menuNavigation) {
+            menuNavigation.style.display = 'none';
+            menuNavigation.classList.remove('default-margin');
+        }
+
+        if (openCatalog) {
+            openCatalog.style.color = '';
+        }
+    }
     });
-
-    document.querySelectorAll('.menu-item-plumbing').forEach(menuItem => {
-        menuItem.classList.remove('active');
-    });
-});
-
-
-
-
-document.querySelectorAll('.menu-toggle-furniture').forEach(toggle => {
-    toggle.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        const menuItem = toggle.closest('.menu-item-furniture');
-        const subMenu = menuItem.querySelector('.submenu-furniture');
-
-        const isOpen = subMenu.style.display === 'flex';
-        subMenu.style.display = isOpen ? 'none' : 'flex';
-        menuItem.classList.toggle('active', !isOpen);
-    });
-});
-
-
-// Делегирование для правого меню
-const rightMenuContent = document.querySelector('.right-menu-content');
-
-// Назначаем обработчики на все .shower-enclosures-and-pallets
-document.querySelectorAll('.shower-enclosures-and-pallets').forEach(link => {
-    link.addEventListener('click', function (e) {
-        e.preventDefault();
-        rightMenuContent.innerHTML = `
-            <a href="catalog-page.html">Душевые уголки, двери и перегородки</a>
-            <a href="catalog-page.html">Поддоны</a>
-            <a href="catalog-page.html">Шторки для ванны</a>
-            <div class="all-categories-link">
-                <a href="catalog-page.html">Все товары категории</a>
-                            
-                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
-                </svg>  
-            </div>
-        `;
-        rightMenuContent.style.display = 'flex';
-    });
-});
-
-// Назначаем обработчики на все .plumbing
-document.querySelectorAll('.plumbing').forEach(link => {
-    link.addEventListener('click', function (e) {
-        e.preventDefault();
-        rightMenuContent.innerHTML = `
-            <a href="catalog-page.html">Новые душевые кабины</a>
-            <a href="catalog-page.html">Новые поддоны</a>
-            <a href="catalog-page.html">Новые шторки</a>
-            <div class="all-categories-link">
-                <a href="catalog-page.html">Все товары категории</a>
-                            
-                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
-                </svg>  
-            </div>
-        `;
-        rightMenuContent.style.display = 'flex';
-    });
-});
-
-
-// Назначаем обработчики на все .shower-program
-document.querySelectorAll('.shower-program').forEach(link => {
-    link.addEventListener('click', function (e) {
-        e.preventDefault();
-        rightMenuContent.innerHTML = `
-            <a href="catalog-page.html">Лейки и держатели</a>
-            <a href="catalog-page.html">Душевые стойки и штанги</a>
-            <a href="catalog-page.html">Гибкие шланги</a>
-            <a href="catalog-page.html">Верхний душ</a>
-            <a href="catalog-page.html">Готовые душевые комплекты</a>
-            <div class="all-categories-link">
-                <a href="catalog-page.html">Все товары категории</a>
-                            
-                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
-                </svg>  
-            </div>
-        `;
-        rightMenuContent.style.display = 'flex';
-    });
-});
-
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    const header = document.querySelector('.header-top');
-    const initialScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  
-    if (!header) return;
+    }
     
-    if (initialScrollTop === 0) {
-      header.style.backgroundColor = 'transparent';
-    } else {
-      header.style.display = 'none';
+
+    // Главное меню - открытие по наведению
+document.querySelectorAll('.menu-item').forEach(menuItem => {
+  menuItem.addEventListener('mouseenter', () => {
+    // Скрываем все правые меню при наведении на главное меню
+    document.querySelectorAll('.right-menu-content').forEach(menu => {
+        menu.style.display = 'none';
+    });
+
+    // Закрываем другие подменю
+    document.querySelectorAll('.submenu').forEach(subMenu => {
+      if (!menuItem.contains(subMenu)) {
+        subMenu.style.display = 'none';
+      }
+    });
+    // Убираем активность с других пунктов
+    document.querySelectorAll('.menu-item').forEach(item => {
+      if (item !== menuItem) {
+        item.classList.remove('active');
+        const toggle = item.querySelector('.menu-toggle');
+        if (toggle) toggle.classList.remove('open');
+      }
+    });
+
+    const subMenu = menuItem.querySelector('.submenu');
+    if (subMenu) {
+      subMenu.style.display = 'flex';
+      menuItem.classList.add('active');
+      const toggle = menuItem.querySelector('.menu-toggle');
+      if (toggle) toggle.classList.add('open');
+    }
+  });
+});
+
+
+// Вложенные подменю - открытие по наведению
+document.querySelectorAll('.submenu-items').forEach(submenuItem => {
+  submenuItem.addEventListener('mouseenter', () => {
+    const button = submenuItem.querySelector('.menu-button');
+    if (!button) return;
+
+    document.querySelectorAll('.menu-button').forEach(btn => {
+      btn.style.color = '';
+      const svg = btn.parentElement.querySelector('svg');
+      if (svg) svg.querySelector('path').setAttribute('stroke', '#EDE4D7');
+    });
+
+    button.style.color = '#AE9877';
+    const svg = button.parentElement.querySelector('svg');
+    if (svg) svg.querySelector('path').setAttribute('stroke', '#AE9877');
+
+    const id = button.dataset.id;
+    if (!id) return;
+
+    document.querySelectorAll('.right-menu-content').forEach(menu => {
+      menu.style.display = 'none';
+    });
+
+    const rightMenu = document.querySelector(`.right-menu-content[data-id="${id}"]`);
+    if (rightMenu) {
+      rightMenu.style.display = 'flex';
     }
   });
 
+});
+
+// Скрываем все меню при уходе мыши с .header-top
+document.querySelector('.header-top').addEventListener('mouseleave', () => {
+    
+  // Скрываем подменю
+  document.querySelectorAll('.submenu').forEach(subMenu => {
+    subMenu.style.display = 'none';
+  });
+
+  // Скрываем правые меню
+  document.querySelectorAll('.right-menu-content').forEach(menu => {
+    menu.style.display = 'none';
+  });
+
+  // Убираем активные классы
+  document.querySelectorAll('.menu-item').forEach(item => {
+    item.classList.remove('active');
+    const toggle = item.querySelector('.menu-toggle');
+    if (toggle) toggle.classList.remove('open');
+  });
+
+  // Сбрасываем стили кнопок
+  document.querySelectorAll('.menu-button').forEach(button => {
+    button.style.color = '';
+    const svg = button.parentElement.querySelector('svg');
+    if (svg) svg.querySelector('path').setAttribute('stroke', '#EDE4D7');
+  });
+});
+
+  // Переключение подменю по клику на категорию
+  document.querySelectorAll('.menu-toggle').forEach(toggle => {
+    toggle.addEventListener('click', e => {
+      e.preventDefault();
+
+      const category = toggle.dataset.category;
+      if (!category) return;
+
+      const menuItem = toggle.closest(`.menu-item[data-category="${category}"]`);
+      const subMenu = document.querySelector(`.submenu[data-category="${category}"]`);
+      if (!menuItem || !subMenu) return;
+
+      const isOpen = subMenu.style.display === 'flex';
+      const nowOpen = !isOpen;
+
+      // Закрываем все подменю, кроме текущего
+      document.querySelectorAll('.submenu').forEach(ul => {
+        if (ul !== subMenu) ul.style.display = 'none';  
+      });
+      document.querySelectorAll('.menu-item').forEach(li => {
+        if (li !== menuItem) li.classList.remove('active');
+      });
+      document.querySelectorAll('.menu-toggle').forEach(t => {
+        if (t !== toggle) t.classList.remove('open');
+      });
+      // Скрываем все правые меню
+      document.querySelectorAll('.right-menu-content').forEach(menu => {
+        menu.style.display = 'none';
+      });
+      // Сбрасываем стили кнопок в подменю
+      document.querySelectorAll('.menu-button').forEach(btn => {
+        btn.style.color = '';
+        const svg = btn.parentElement.querySelector('svg');
+        if (svg) {
+          svg.querySelector('path').setAttribute('stroke', '#EDE4D7');
+        }
+      });
+
+      if (nowOpen) {
+        subMenu.style.display = 'flex';
+        menuItem.classList.add('active');
+        toggle.classList.add('open');
+      } else {
+        subMenu.style.display = 'none';
+        menuItem.classList.remove('active');
+        toggle.classList.remove('open');
+      }
+    });
+  });
+
+  // Клик по кнопкам в подменю для открытия правого меню
+  document.querySelectorAll('.menu-button').forEach(button => {
+    button.addEventListener('click', e => {
+      e.preventDefault();
+
+      // Сбросим стили у всех кнопок
+      document.querySelectorAll('.menu-button').forEach(btn => {
+        btn.style.color = '';
+        const svg = btn.parentElement.querySelector('svg');
+        if (svg) {
+          svg.querySelector('path').setAttribute('stroke', '#EDE4D7');
+        }
+      });
+
+      // Поставим активный стиль текущей кнопке
+      button.style.color = '#AE9877';
+      const svg = button.parentElement.querySelector('svg');
+      if (svg) {
+        svg.querySelector('path').setAttribute('stroke', '#AE9877');
+      }
+
+      const id = button.dataset.id;
+      if (!id) return;
+
+      // Скрываем все правые меню
+      document.querySelectorAll('.right-menu-content').forEach(menu => {
+        menu.style.display = 'none';
+      });
+
+      // Показываем нужное правое меню по data-id
+      const rightMenu = document.querySelector(`.right-menu-content[data-id="${id}"]`);
+      if (rightMenu) {
+        rightMenu.style.display = 'flex';
+      }
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', setupDropdownToggle);
 
 
-
-// Чётко считываем скроллы и скрываем/показываем header
+// Считываем скроллы и скрываем/показываем header
 
 let lastScrollTop = 0;
-const scrollThreshold = 1; // минимальный порог (можно даже 0, если нужно всё отслеживать)
+const scrollThreshold = 1; // минимальный порог 
 
-window.addEventListener('scroll', () => {
+function handleScroll() {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   const scrollDelta = scrollTop - lastScrollTop;
 
-  // Учитываем любые изменения скролла, даже при scrollTop === 0
   if (Math.abs(scrollDelta) < scrollThreshold) {
-    lastScrollTop = scrollTop; // всё равно обновим позицию
+    lastScrollTop = scrollTop;
     return;
   }
 
   if (scrollDelta > 0) {
-    // Скролл вниз
-    header.classList.add('header-hidden');
-    header.classList.remove('header-scrolled-up');
-    
-    searchInput.blur(); // убирает фокус с поля ввода
-    searchInput.value = ''; // очищает текст
-    searchItems.classList.remove('show'); // скрывает блок
-    
-    header.classList.remove('header-search-padding');
-    // Убираем пустые отступы
-    
-
-    // Сброс состояния
-    blurContainers.forEach(container => {
-        container.style.filter = ''
-        container.style.cursor = ''
-    });
-    
-    header.style.backgroundColor = 'transparent';
-    underHeader.style.filter = 'none';
-    underHeader.style.cursor = '';
-    openCatalog.parentElement.classList.remove('active');
-    isCatalogActive = false;
-    menuNavigation.style.display = 'none';
-    menuNavigation.classList.add('default-margin');
-    menuNavigation.classList.remove('search-active');
-    openCatalog.style.color = '';
-    
-  } else if (scrollDelta < 0) {
-    
-    header.style.display = 'block';
-    // Скролл вверх
-
-    menuNavigation.classList.add('default-margin');
-
-    header.classList.remove('header-hidden');
-    header.classList.add('header-scrolled-up');
+    handleScrollDown();
+  } else {
+    handleScrollUp();
   }
 
-  // Если в самом верху — убираем "скролл вверх" класс
   if (scrollTop <= 0) {
     header.classList.remove('header-scrolled-up');
   }
 
   lastScrollTop = scrollTop;
-});
+}
+
+window.addEventListener('scroll', handleScroll);
+
+
+function handleScrollDown() {
+  header.classList.add('header-hidden');
+  header.classList.remove('header-scrolled-up');
+
+  searchInput.blur();
+  searchInput.value = '';
+  searchItems.classList.remove('show');
+  header.classList.remove('header-search-padding');
+
+  blurContainers.forEach(container => {
+    container.style.filter = '';
+    container.style.cursor = '';
+  });
+
+  header.style.backgroundColor = 'transparent';
+  underHeader.style.filter = 'none';
+  underHeader.style.cursor = '';
+  openCatalog.parentElement.classList.remove('active');
+  isCatalogActive = false;
+  menuNavigation.style.display = 'none';
+  menuNavigation.classList.add('default-margin');
+  menuNavigation.classList.remove('search-active');
+  openCatalog.style.color = '';
+}
+
+function handleScrollUp() {
+  header.style.display = 'block';
+  header.classList.remove('header-hidden');
+  header.classList.add('header-scrolled-up');
+  menuNavigation.classList.add('default-margin');
+}
+
+
+
+
+// Скрипт для автоматического переключения изображений на заднем плане главной страницы
+
+
+const section = document.querySelector('.main-page-top');
+        const styles = getComputedStyle(section);
+
+        // Получаем значения CSS-переменных (они возвращаются в формате url("..."))
+        const bg1 = styles.getPropertyValue('--bg-1').trim();
+        const bg2 = styles.getPropertyValue('--bg-2').trim();
+        const bg3 = styles.getPropertyValue('--bg-3').trim();
+
+        // Функция для очистки значения из url("...")
+        function extractUrl(cssUrl) {
+            return cssUrl.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+        }
+
+        // Храним изображения для автоматического переключения
+        const bgImages = [bg1, bg2, bg3].map(extractUrl).map(path => path.replace(/^\.\.\//, ''));
+
+        let currentBgIndex = 0;
+        let intervalId = null;
+
+        function changeBackground(index) {
+            const newBg = bgImages[index];
+
+            const tempBg = document.createElement('div');
+            tempBg.classList.add('temp-bg');
+            tempBg.style.backgroundImage = `url('${newBg}')`;
+            tempBg.style.opacity = '0';
+
+            section.appendChild(tempBg);
+            void tempBg.offsetHeight;
+
+            tempBg.style.opacity = '1';
+
+            setTimeout(() => {
+                section.style.backgroundImage = `url('${newBg}')`;
+                if (tempBg.parentNode) tempBg.remove();
+            }, 1000);
+        }
+
+        function startAutoChange() {
+            if (intervalId) clearInterval(intervalId);
+            intervalId = setInterval(() => {
+                currentBgIndex = (currentBgIndex + 1) % bgImages.length;
+                changeBackground(currentBgIndex);
+            }, 3000);
+        }
+
+        // Запускаем автосмену
+        startAutoChange();
+
+
+        document.querySelectorAll('.title-images a').forEach((link) => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Определяем индекс по data-bg
+                const bgUrl = this.getAttribute('data-bg');
+                const index = bgImages.indexOf(bgUrl);
+                if (index !== -1) {
+                    currentBgIndex = index;
+                    changeBackground(currentBgIndex);
+
+                    // Перезапускаем интервал, чтобы отсчёт начинался заново
+                    startAutoChange();
+                }
+            });
+        });
