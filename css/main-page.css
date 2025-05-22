@@ -82,7 +82,7 @@ body {
     font-size: 18px;
     font-weight: 300;
     color: #EDE4D7;
-    background-color: #151c28;
+    background-color: #141b28;
 }
 
 .container {
@@ -104,6 +104,7 @@ body {
     background-position: center;
     min-height: 1000px;
 }
+
 /* Изображения для автоматического переключения на заднем плане */
 .main-page-top {
   --bg-1: url('../images/main-page/background-webp.webp');
@@ -142,13 +143,31 @@ body {
 }
 
 
-
-@media (max-width: 1880px) {
-    .main-page-top {
-        min-height: 800px;
-    }
-    
+.thumb {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
 }
+
+.progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background-color: #EDE4D7;
+    transition: width 3s linear;
+}
+
+.for-mobile-switch .title-images a.thumb {
+    position: relative;  
+    display: inline-block; 
+    max-width: 80px;
+}
+
+
+
+
 
 
 
@@ -679,6 +698,10 @@ li.active .menu-arrow {
 }
 
 @media (max-width: 1030px) {
+    .main-page-top {
+        --bg-1: url('../images/main-page/adaptive/background-1024.webp');
+    }
+
     .menu-navigation.default-margin {
         margin-top: 200px;
     }
@@ -1110,12 +1133,19 @@ nav ul ul.open + svg {
 }
 
 
-
-
-
+/* Переключение контента на странице смена контента
+в main-page-top + меняется фон */
 
 .page-wrapper {
     position: relative; 
+    display: none;
+    transition: opacity 0.5s ease;
+    opacity: 0;
+}
+
+.page-wrapper.active {
+  display: block;
+  opacity: 1;
 }
 
 .under-header {
@@ -1197,12 +1227,19 @@ nav ul ul.open + svg {
     font-size: 100px;
     font-weight: 600;
     text-transform: uppercase;
+    margin-bottom: 70px;
 }
 
 .title-images {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-bottom: 70px;
+    max-width: 80px;
+}
+
+.title-images::-webkit-scrollbar {
+    display: none;
 }
 
 .title-images a {
@@ -1243,36 +1280,38 @@ nav ul ul.open + svg {
     display: none;
 }
 
-@media (max-width: 1900px) {
-    .under-header {
-        top: 200px;
-    }
+.desctop-images-1024 {
+    display: none;
 }
 
-@media (max-width: 1615px) {
-    .title-container {
-        align-items: center;
-    }
-
-    .title-images img {
-        width: 80px;
-        height: 80px;
-    }
+.info-button button {
+    border: none;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 300px;
+    width: 100%;
+    background-color: #AE9877;
+    color: #EDE4D7;
+    font-size: 16px;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 600;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
+
 
 @media (max-width: 1450px) {
     .title-container h1 {
         font-size: 80px;
     }
-
-    .main-page-top {
-        min-height: 730px;
-    }
-
     
     .under-header-container {
         gap: 300px;
     }
+
 }
 
 @media (max-width: 1284px) {
@@ -1280,22 +1319,25 @@ nav ul ul.open + svg {
         font-size: 70px;
     }
 
-    .under-header-container {
-        gap: 186px;
+    .title-container {
+        margin-top: 0px;
     }
 
-    .main-page-top {
-        min-height: 730px;
+    .under-header-container {
+        gap: 186px;
+        margin-top: 150px;
     }
+
+    
 
     .title-container h1 {
         margin-top: 30px;
     }
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1125px) {
     .title-container h1 {
-        font-size: 60px;
+        font-size: 65px;
     }
 
     .under-header-container {
@@ -1307,139 +1349,144 @@ nav ul ul.open + svg {
     }
 }
 
-@media (max-width: 933px) {
-    .title-container h1 {
-        font-size: 50px;
-    }
-
-    .invite-container h4 {
-        font-size: 20px;
-    }
-}
-
-
-@media (max-width: 810px) {
-    .title-container h1 {
-        font-size: 42px;
-    }
-}
-
-@media (max-width: 710px) {
-    .for-mobile-switch {
-        display: flex;
+@media (max-width: 1030px) {
+    .main-page-top {
+        background-image: url("../images/main-page/adaptive/background-1024.webp");
     }
 
     .desctop-images {
         display: none;
     }
 
+    .desctop-images-1024 {
+        display: flex;
+    }
+}
+
+@media (max-width: 1010px) {
+    .desctop-images-1024 {
+        display: none;
+    }
+
+    .for-mobile-switch {
+        display: flex;
+    }
+
     .under-header-container {
         display: none;
     }
 
+    .title-container h1 {
+        margin-top: 50px;
+    }
+
     .under-header {
-        top: 470px;
+        top: 590px;
     }
 
-    .main-page-top {
-        background-image: url("../images/main-page/adaptive/mobile/background-710.png");
-        
+    .title-images {
+        overflow-y: auto;
+        max-height: 170px;
     }
 
-    .title-container {
-        margin-top: -30px;
-    }
-
-    .subtitle-mobile {
-        display: flex;
-    }
-
-    .invite-link {
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    .paragraph-mobile {
-        display: none;
-    }
-
-    .paragraph-340 {
-        display: block;
+    .title-images {
+        margin-bottom: 20px;
     }
 }
 
-@media (max-width: 530px) {
-    .under-header {
-        top: 450px;
-    }
-}
 
-@media (max-width: 511px) {
-    .under-header {
-        top: 435px;
-    }
-}
 
-@media (max-width: 507px) {
-    .under-header {
-        top: 430px;
+@media (max-width: 520px) {
+    .title-container h1 {
+        font-size: 42px;
     }
-}
+}   
 
-@media (max-width: 495px) {
-    .under-header {
-        top: 420px;
-    }
-}
-
-@media (max-width: 487px) {
-    .under-header {
-        top: 410px;
-    }
-}
-
-@media (max-width: 470px) {
-    .main-page-top {
-        background-image: url("../images/main-page/adaptive/mobile/background-470.png");
-        background-size: auto;
-    }
-
-    .under-header {
-        top: 390px;
-    }
-    
+.for-mobile-switch-340 {
+    display: none;
+    flex-direction: column;
+    gap: 20px;
 }
 
 @media (max-width: 400px) {
+    .temp-bg {
+        background-size: contain !important;
+        background-position: top center !important;
+        background-repeat: no-repeat !important;
+    }
+
     .main-page-top {
-        background-image: url("../images/main-page/adaptive/mobile/background-400.png");
-        background-size: auto;
+        background-image: url("../images/main-page/adaptive/mobile/background-340.png");    
+        background-size: contain;
+        background-position: top center;
+        min-height: 870px;
+    }
+
+    .main-page-top {
+        --bg-1: url("../images/main-page/adaptive/mobile/background-340.png");
+        --bg-2: url('../images/main-page/adaptive/mobile/mobile-1.webp');
+        --bg-3: url('../images/main-page/adaptive/mobile/mobile-2.webp');
     }
 
     .under-header {
-        top: 290px;
-    }
-}
-
-@media (max-width: 345px) {
-    .main-page-top {
-        background-image: url("../images/main-page/adaptive/mobile/background-340.png");
-        background-size: auto;
-    }
-
-     .under-header {
-        top: 195px;
+        top: 185px;
     }
 
     .for-mobile-switch {
-        margin-top: 45px;
+        display: none;
     }
 
-    .for-mobile-switch img {
-        width: 66px;
-        height: 66px;
+    .for-mobile-switch-340 {
+        display: flex;
     }
+}
 
+@media (max-width: 385px) {
+    .under-header {
+        top: 250px;
+    }
+}
+
+@media (max-width: 380px) {
+    .under-header {
+        top: 240px;
+    }
+}
+
+@media (max-width: 375px) {
+    .under-header {
+        top: 230px;
+    }
+}
+
+@media (max-width: 370px) {
+    .under-header {
+        top: 220px;
+    }
+}
+
+@media (max-width: 361px) {
+    .under-header {
+        top: 210px;
+    }
+}
+
+@media (max-width: 355px) {
+    .under-header {
+        top: 200px;
+    }
+}
+
+@media (max-width: 347px) {
+    .under-header {
+        top: 190px;
+    }
+}
+
+@media (max-width: 341px) {
+    .under-header {
+        top: 180px;
+    }
 }
 
 /* Секция "Почему выбирают нас" */
@@ -1455,6 +1502,7 @@ nav ul ul.open + svg {
 .why-up-title {
     position: absolute;
     top: 150px;
+    left: 25px;
 }
 
 .block-title {
@@ -1687,6 +1735,21 @@ nav ul ul.open + svg {
     }
 }
 
+
+@media (max-width: 1010px) {
+    .why-choose-us {
+        padding: 400px 20px 200px 20px;
+    }
+
+    .why-arrows {
+        top: 550px;
+    }
+
+    .why-up-title {
+        top: 400px;
+    }
+}
+
 @media (max-width: 1000px) {
     .title-group {
         padding-left: 20%;
@@ -1699,41 +1762,35 @@ nav ul ul.open + svg {
     }
 }
 
+@media (max-width: 881px) {
+    .why-choose-us {
+        padding: 450px 20px 200px 20px;
+    }
+
+    .why-up-title {
+        top: 450px;
+    }
+
+    .why-arrows {
+        top: 600px;
+    }
+}
+
 @media (max-width: 840px) {
     .title-group h1 {
         font-size: 50px;
     }
     
-    .why-arrows {
-        top: 270px;
-    }
 
     .title-group h4 {
         font-size: 20px;
     }
 }
 
-@media (max-width: 730px) {
-    .title-group {
-        padding-left: 10%;
-    }
-
-    .why-up-title {
-        top: 120px;
-    }
-}
-
 @media (max-width: 710px) {
-    .why-choose-us {
-        padding: 400px 20px 200px 20px;
-    }
-
-    .why-arrows {
-        top: 500px;
-    }
 
     .why-up-title {
-        top: 370px;
+        top: 420px;
     }
 
     .title-group h4 {
@@ -1769,7 +1826,7 @@ nav ul ul.open + svg {
     }
 }
 
-@media (max-width: 515px) {
+@media (max-width: 520px) {
     .down-card {
         top: 0px;
     }
@@ -1793,7 +1850,7 @@ nav ul ul.open + svg {
     }
 
     .why-choose-us {
-        padding: 430px 20px 20px 20px;
+        padding: 350px 20px 20px 20px;
     }
 
     .why-choose-us-content {
@@ -1801,7 +1858,7 @@ nav ul ul.open + svg {
     }
 
     .why-up-title {
-        top: 400px;
+        top: 320px;
     }
 }
 
@@ -1818,27 +1875,35 @@ nav ul ul.open + svg {
         font-size: 38px;
     }
 
-    .why-choose-us {
-        padding: 320px 20px 20px 20px;
+    .why-up-title {
+        top: 40px;
     }
 
-    .why-up-title {
-        top: 290px;
+    .why-choose-us {
+        padding: 70px 20px 20px 20px;
     }
 }
 
-@media (max-width: 345px) {
+@media (max-width: 385px) {
     .why-choose-us {
-        padding: 250px 20px 20px 20px;
+        padding: 150px 20px 20px 20px;
     }
 
     .why-up-title {
-        top: 220px;
+        top: 120px;
     }
 }
 
 
+@media (max-width: 355px) {
+    .why-choose-us {
+        padding: 50px 20px 20px 20px;
+    }
 
+    .why-up-title {
+        top: 30px;
+    }
+}
 
 
 

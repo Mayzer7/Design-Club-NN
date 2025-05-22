@@ -686,6 +686,7 @@ const header = document.querySelector('.header-top');
 const searchItems = document.querySelector('.search-items');
 const underHeaderContainer = document.querySelector('.under-header-container');
 const underHeader = document.querySelector('.under-header');
+const underHeaders = document.querySelectorAll('.under-header');
 let isCatalogActive = false;
 
 const marginTopStart = parseFloat(getComputedStyle(document.querySelector('.menu-navigation')).marginTop);
@@ -706,7 +707,7 @@ function handleSearchInput() {
 function activateSearchMode() {
   menuNavigation.classList.remove('default-margin');
   menuNavigation.classList.add('search-active');
-  underHeader.style.filter = 'blur(5px)';
+ underHeaders.forEach(el => el.style.filter = 'blur(5px)');
   blurContainers.forEach(container => container.style.filter = 'blur(5px)');
   header.classList.add('header-search-padding');
   header.style.backgroundColor = '#151c28';
@@ -725,10 +726,10 @@ function deactivateSearchMode() {
 
   if (!isCatalogActive) {
     header.style.backgroundColor = 'transparent';
-    underHeader.style.filter = 'none';
+    underHeaders.forEach(el => el.style.filter = 'none');
     
   } else {
-    underHeader.style.filter = 'none';
+    underHeaders.forEach(el => el.style.filter = 'none');
     header.style.backgroundColor = 'transparent';
   }
 }
@@ -753,9 +754,9 @@ function resetHeaderState() {
     menuNavigation.classList.remove('search-active');
     header.style.backgroundColor = 'transparent';
     searchItems.classList.remove('show');
-    underHeader.style.filter = 'none';
-    underHeader.style.backdropFilter = 'none';
-    underHeader.style.cursor = '';
+    underHeaders.forEach(el => el.style.filter = 'none');
+    underHeaders.forEach(el => el.style.backdropFilter = 'none');
+underHeaders.forEach(el => el.style.cursor = '');
 
     searchInput.value = '';
 
@@ -785,8 +786,8 @@ function toggleCatalogMenu() {
     isCatalogActive = isActive;
 
     if (isActive) {
-        underHeader.style.filter = 'blur(5px)';
-        underHeader.style.cursor = 'pointer';
+        underHeaders.forEach(el => el.style.filter = 'blur(5px)');
+        underHeaders.forEach(el => el.style.cursor = 'pointer');
 
         blurContainers.forEach(container => {
             container.style.filter = 'blur(5px)';
@@ -812,8 +813,8 @@ function toggleCatalogMenu() {
                 container.style.cursor = '';
             });
 
-            underHeader.style.filter = 'none';
-            underHeader.style.backdropFilter = 'none';
+            underHeaders.forEach(el => el.style.filter = 'none');
+            underHeaders.forEach(el => el.style.backdropFilter = 'none');
 
             searchItems.classList.remove('show');
 
@@ -870,9 +871,9 @@ function setupDropdownToggle() {
 
         // Если поиск не активен — снимаем blur у underHeader и blurContainers
         if (!searchActive) {
-            underHeader.style.filter = 'none';
-            underHeader.style.backdropFilter = 'none';
-            underHeader.style.cursor = '';
+            underHeaders.forEach(el => el.style.filter = 'none');
+            underHeaders.forEach(el => el.style.backdropFilter = 'none');
+            underHeaders.forEach(el => el.style.cursor = '');
 
             blurContainers.forEach(container => {
                 container.style.filter = 'none';
@@ -1130,8 +1131,8 @@ function handleScrollDown() {
   });
 
   header.style.backgroundColor = 'transparent';
-  underHeader.style.filter = 'none';
-  underHeader.style.cursor = '';
+  underHeaders.forEach(el => el.style.filter = 'none');
+ underHeaders.forEach(el => el.style.cursor = '');
   openCatalog.parentElement.classList.remove('active');
   isCatalogActive = false;
   menuNavigation.style.display = 'none';
@@ -1150,72 +1151,120 @@ function handleScrollUp() {
 
 
 
-// Скрипт для автоматического переключения изображений на заднем плане главной страницы
-
+// Скрипт для автоматического переключения контента на главной странице + переключение изображений на заднем плане
 
 const section = document.querySelector('.main-page-top');
-        const styles = getComputedStyle(section);
+const pageWrappers = document.querySelectorAll('.page-wrapper');
 
-        // Получаем значения CSS-переменных (они возвращаются в формате url("..."))
-        const bg1 = styles.getPropertyValue('--bg-1').trim();
-        const bg2 = styles.getPropertyValue('--bg-2').trim();
-        const bg3 = styles.getPropertyValue('--bg-3').trim();
+const mobileProgressBars = document.querySelectorAll('.for-mobile-switch .progress-bar');
+const mobileProgressBars340 = document.querySelectorAll('.for-mobile-switch-340 .progress-bar');
+const progressBars1024 = document.querySelectorAll('.desctop-images-1024 .progress-bar');
+const desktopProgressBars = document.querySelectorAll('.desctop-images .progress-bar');
 
-        // Функция для очистки значения из url("...")
-        function extractUrl(cssUrl) {
-            return cssUrl.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+const styles = getComputedStyle(section);
+const bg1 = styles.getPropertyValue('--bg-1').trim();
+const bg2 = styles.getPropertyValue('--bg-2').trim();
+const bg3 = styles.getPropertyValue('--bg-3').trim();
+
+function extractUrl(cssUrl) {
+    return cssUrl.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+}
+
+const bgImages = [bg1, bg2, bg3].map(extractUrl).map(path => path.replace(/^\.\.\//, ''));
+
+let currentBgIndex = 0;
+let intervalId = null;
+
+// Определяем текущие прогресс-бары по ширине окна
+function getCurrentProgressBars() {
+    const width = window.innerWidth;
+    if (width <= 400) {
+        return mobileProgressBars340;
+    } else if (width <= 1010) {
+        return mobileProgressBars;
+    } else if (width <= 1024) {
+        return progressBars1024;
+    } else {
+        return desktopProgressBars;
+    }
+}
+
+// Сброс анимации прогресс-бара
+function resetProgressBars() {
+    const bars = getCurrentProgressBars();
+    bars.forEach(bar => {
+        bar.style.transition = 'none';
+        bar.style.width = '0%';
+        void bar.offsetWidth; // принудительный reflow для сброса
+        bar.style.transition = 'width 3s linear';
+    });
+}
+
+// Анимация текущего прогресс-бара
+function animateCurrentProgressBar(index) {
+    resetProgressBars();
+    const bars = getCurrentProgressBars();
+    if (bars[index]) {
+        bars[index].style.width = '100%';
+    }
+}
+
+// Смена фона
+function changeBackground(index) {
+    const newBg = bgImages[index];
+
+    const tempBg = document.createElement('div');
+    tempBg.classList.add('temp-bg');
+    tempBg.style.backgroundImage = `url('${newBg}')`;
+    tempBg.style.opacity = '0';
+
+    section.appendChild(tempBg);
+    void tempBg.offsetHeight; // рефлоу
+    tempBg.style.opacity = '1';
+
+    setTimeout(() => {
+        section.style.backgroundImage = `url('${newBg}')`;
+        if (tempBg.parentNode) tempBg.remove();
+    }, 1000);
+
+    pageWrappers.forEach((wrapper, i) => {
+        wrapper.classList.toggle('active', i === index);
+    });
+
+    animateCurrentProgressBar(index);
+}
+
+// Автоматическое переключение
+function startAutoChange() {
+    if (intervalId) clearInterval(intervalId);
+
+    animateCurrentProgressBar(currentBgIndex);
+
+    intervalId = setInterval(() => {
+        currentBgIndex = (currentBgIndex + 1) % bgImages.length;
+        changeBackground(currentBgIndex);
+    }, 3000);
+}
+
+// Инициализация
+startAutoChange();
+
+// Повторная инициализация прогресс-бара при ресайзе
+window.addEventListener('resize', () => {
+    animateCurrentProgressBar(currentBgIndex);
+});
+
+// Обработка кликов на миниатюрах
+document.querySelectorAll('.title-images a').forEach((link, index) => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const bgUrl = this.getAttribute('data-bg');
+        const foundIndex = bgImages.indexOf(bgUrl);
+        if (foundIndex !== -1) {
+            currentBgIndex = foundIndex;
+            changeBackground(currentBgIndex);
+            startAutoChange();
         }
-
-        // Храним изображения для автоматического переключения
-        const bgImages = [bg1, bg2, bg3].map(extractUrl).map(path => path.replace(/^\.\.\//, ''));
-
-        let currentBgIndex = 0;
-        let intervalId = null;
-
-        function changeBackground(index) {
-            const newBg = bgImages[index];
-
-            const tempBg = document.createElement('div');
-            tempBg.classList.add('temp-bg');
-            tempBg.style.backgroundImage = `url('${newBg}')`;
-            tempBg.style.opacity = '0';
-
-            section.appendChild(tempBg);
-            void tempBg.offsetHeight;
-
-            tempBg.style.opacity = '1';
-
-            setTimeout(() => {
-                section.style.backgroundImage = `url('${newBg}')`;
-                if (tempBg.parentNode) tempBg.remove();
-            }, 1000);
-        }
-
-        function startAutoChange() {
-            if (intervalId) clearInterval(intervalId);
-            intervalId = setInterval(() => {
-                currentBgIndex = (currentBgIndex + 1) % bgImages.length;
-                changeBackground(currentBgIndex);
-            }, 3000);
-        }
-
-        // Запускаем автосмену
-        startAutoChange();
-
-
-        document.querySelectorAll('.title-images a').forEach((link) => {
-            link.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                // Определяем индекс по data-bg
-                const bgUrl = this.getAttribute('data-bg');
-                const index = bgImages.indexOf(bgUrl);
-                if (index !== -1) {
-                    currentBgIndex = index;
-                    changeBackground(currentBgIndex);
-
-                    // Перезапускаем интервал, чтобы отсчёт начинался заново
-                    startAutoChange();
-                }
-            });
-        });
+    });
+});
