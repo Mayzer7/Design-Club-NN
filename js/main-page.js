@@ -1,3 +1,31 @@
+// Переключение карточек "Популярные товары"
+
+const swiper = new Swiper('.mySwiper', {
+    slidesPerView: 'auto',
+    spaceBetween: 20,
+    initialSlide: 2,
+    loop: true,
+    loopedSlides: 8,
+    centeredSlides: true,
+    grabCursor: true,
+    speed: 700,
+    navigation: {
+        nextEl: '.popular-right-arrow',
+        prevEl: '.popular-left-arrow',
+    },
+
+    breakpoints: {
+        // gap между карточками
+        // от 0 до 399px
+        0: {
+            spaceBetween: 10
+        },
+        // от 400px и выше 
+        400: {
+            spaceBetween: 20
+        }
+    }
+});
 
 // В самом верху делаем header прозрачным при старте страницы
 document.addEventListener('DOMContentLoaded', () => {
@@ -187,96 +215,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// Переключение карточек товара с зацикливанием
-
-const track = document.getElementById('track');
-const cards = Array.from(track.querySelectorAll('.popular-product-card'));
-const prevBtn = document.getElementById('prev');
-const nextBtn = document.getElementById('next');
-
-let currentIndex = 2; // стартуем с Product 3 (индекс 2)
-let cardWidth = 0;
-let visibleCount = 0;
-
-cards.forEach((card, idx) => {
-    if (idx === currentIndex) card.classList.add('active');
-    card.addEventListener('click', () => goTo(idx));
-});
-
-function updateSizes() {
-    const contW = document.querySelector('.carousel-container').clientWidth;
-
-    if (contW < 600) visibleCount = 3;
-    else if (contW < 900) visibleCount = 4;
-    else visibleCount = 5;
-
-    const style = getComputedStyle(cards[0]);
-    const margin = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
-    cardWidth = cards[0].clientWidth + margin;
-
-    moveTrack();
-    updateButtons();
-}
-
-function moveTrack() {
-    const shiftValue = getComputedStyle(track)
-        .getPropertyValue('--manual-shift')
-        .trim();
-    const manualShift = parseFloat(shiftValue) || 0;
-
-    const x = -currentIndex * cardWidth + manualShift;
-    track.style.transform = `translateX(${x}px)`;
-
-    cards.forEach((c, i) => c.classList.toggle('active', i === currentIndex));
-}
-
-function goTo(idx) {
-    // Зацикливание индекса
-    if (idx < 0) {
-        currentIndex = cards.length - 1;
-    } else if (idx >= cards.length) {
-        currentIndex = 0;
-    } else {
-        currentIndex = idx;
-    }
-    moveTrack();
-    updateButtons();
-}
-
-function updateButtons() {
-    // Если зацикливание — кнопки не дизейблить
-    prevBtn.disabled = false;
-    nextBtn.disabled = false;
-}
-
-prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
-nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
-
-window.addEventListener('resize', updateSizes);
-window.addEventListener('load', updateSizes);
-
-let startX = 0;
-let endX = 0;
-
-track.addEventListener('touchstart', (e) => {
-    startX = e.touches[0].clientX;
-});
-
-track.addEventListener('touchmove', (e) => {
-    endX = e.touches[0].clientX;
-    e.preventDefault();
-}, { passive: false });
-
-track.addEventListener('touchend', () => {
-    const swipeThreshold = 50;
-    const diff = startX - endX;
-
-    if (diff > swipeThreshold) {
-        goTo(currentIndex + 1);
-    } else if (diff < -swipeThreshold) {
-        goTo(currentIndex - 1);
-    }
-});
 
 
 // Валидация модального окна формы "Связаться с нами"
