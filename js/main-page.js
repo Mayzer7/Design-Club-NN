@@ -643,33 +643,69 @@ function handleSearchInput() {
 }
 
 function activateSearchMode() {
-  menuNavigation.classList.remove('default-margin');
-  menuNavigation.classList.add('search-active');
- underHeaders.forEach(el => el.style.filter = 'blur(5px)');
+  // Удаляем старые классы отступа
+  menuNavigation.classList.remove('default-margin', 'search-active', 'search-active-down');
+
+  const isTop = window.scrollY < 100;
+
+  if (isTop) {
+    menuNavigation.classList.add('search-active');
+    header.classList.add('header-search-padding');
+    header.style.paddingBottom = '270px';
+  } else {
+    menuNavigation.classList.add('search-active-down');
+    header.classList.add('header-search-padding');
+    header.style.paddingBottom = '330px';
+  }
+
+  // Общая логика
+  underHeaders.forEach(el => el.style.filter = 'blur(5px)');
   blurContainers.forEach(container => container.style.filter = 'blur(5px)');
-  header.classList.add('header-search-padding');
   header.style.backgroundColor = '#151c28';
   searchItems.classList.add('show');
+
+  // Скрытие навигации "О компании"
+  const aboutToggle = document.querySelector('.about-toggle');
+  if (aboutToggle && aboutToggle.classList.contains('open')) {
+    aboutToggle.classList.remove('open');
+
+    // Убираем блюры, которые мог активировать about-toggle
+    blurContainers.forEach(container => {
+      container.style.filter = '';
+      container.style.cursor = '';
+    });
+
+    underHeaders.forEach(el => {
+      el.style.filter = '';
+      el.style.cursor = '';
+    });
+  }
 }
 
+
 function deactivateSearchMode() {
-  menuNavigation.classList.remove('search-active');
+  // Сброс всех классов, связанных с поиском
+  menuNavigation.classList.remove('search-active', 'search-active-down');
   menuNavigation.classList.add('default-margin');
 
+  // Скрытие результатов поиска
   searchItems.classList.remove('show');
+
+  // Сброс паддинга и фона хедера
   header.classList.remove('header-search-padding');
+  header.style.paddingBottom = '';
+  header.style.backgroundColor = 'transparent';
 
-  // Всегда сбрасываем blur у blurContainers
-  blurContainers.forEach(container => container.style.filter = '');
+  // Сброс фильтров (blur)
+  underHeaders.forEach(el => {
+    el.style.filter = 'none';
+    el.style.backdropFilter = 'none';
+  });
 
-  if (!isCatalogActive) {
-    header.style.backgroundColor = 'transparent';
-    underHeaders.forEach(el => el.style.filter = 'none');
-    
-  } else {
-    underHeaders.forEach(el => el.style.filter = 'none');
-    header.style.backgroundColor = 'transparent';
-  }
+  blurContainers.forEach(container => {
+    container.style.filter = '';
+    container.style.cursor = '';
+  });
 }
 
 
@@ -689,12 +725,14 @@ function resetHeaderState() {
     }
 
     header.classList.remove('header-search-padding');
+    header.style.paddingBottom = '';
+    
     menuNavigation.classList.remove('search-active');
     header.style.backgroundColor = 'transparent';
     searchItems.classList.remove('show');
     underHeaders.forEach(el => el.style.filter = 'none');
     underHeaders.forEach(el => el.style.backdropFilter = 'none');
-underHeaders.forEach(el => el.style.cursor = '');
+    underHeaders.forEach(el => el.style.cursor = '');
 
     searchInput.value = '';
 
@@ -702,6 +740,13 @@ underHeaders.forEach(el => el.style.cursor = '');
         container.style.filter = 'none';
         container.style.cursor = '';
     });
+
+    // Закрываем меню "О компании", если оно открыто
+    if (toggleItem.classList.contains('open')) {
+      toggleItem.classList.remove('open');
+      menuNavigation.classList.remove('about-open');
+    }
+
 }
 
 // Назначаем обработчики на все blur-контейнеры
@@ -763,6 +808,18 @@ function toggleCatalogMenu() {
 
 openCatalog.addEventListener('click', function(e) {
     e.preventDefault();
+
+    // Если в поиске есть текст, сначала отключаем поиск
+    if (searchInput.value.trim() !== '') {
+        searchInput.value = '';
+        deactivateSearchMode();
+    }
+
+    // Проверяем, открыт ли меню "О компании"
+    if (toggleItem.classList.contains('open')) {
+        toggleItem.classList.remove('open');
+    }
+
     toggleCatalogMenu();
 });
 
@@ -838,40 +895,39 @@ function setupDropdownToggle() {
     }
     });
     }
-    
+
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
     // Главное меню - открытие по наведению
-document.querySelectorAll('.menu-item').forEach(menuItem => {
-  menuItem.addEventListener('mouseenter', () => {
-    // Скрываем все правые меню при наведении на главное меню
-    document.querySelectorAll('.right-menu-content').forEach(menu => {
-        menu.style.display = 'none';
-    });
+    document.querySelectorAll('.menu-item').forEach(menuItem => {
+        if (isTouchDevice) {
+            console.log("IsTouchDevice");
+            menuItem.addEventListener('click', (e) => {
+            e.preventDefault(); // Предотвращаем переход по ссылке, если есть
 
-    // Закрываем другие подменю
-    document.querySelectorAll('.submenu').forEach(subMenu => {
-      if (!menuItem.contains(subMenu)) {
-        subMenu.style.display = 'none';
-      }
-    });
-    // Убираем активность с других пунктов
-    document.querySelectorAll('.menu-item').forEach(item => {
-      if (item !== menuItem) {
-        item.classList.remove('active');
-        const toggle = item.querySelector('.menu-toggle');
-        if (toggle) toggle.classList.remove('open');
-      }
-    });
+            const subMenu = menuItem.querySelector('.submenu');
+            const toggle = menuItem.querySelector('.menu-toggle');
 
-    const subMenu = menuItem.querySelector('.submenu');
-    if (subMenu) {
-      subMenu.style.display = 'flex';
-      menuItem.classList.add('active');
-      const toggle = menuItem.querySelector('.menu-toggle');
-      if (toggle) toggle.classList.add('open');
-    }
-  });
-});
+            // Закрыть другие
+            document.querySelectorAll('.submenu').forEach(ul => {
+                if (ul !== subMenu) ul.style.display = 'none';
+            });
+            document.querySelectorAll('.menu-item').forEach(item => {
+                if (item !== menuItem) item.classList.remove('active');
+            });
+            document.querySelectorAll('.menu-toggle').forEach(t => {
+                if (t !== toggle) t.classList.remove('open');
+            });
+
+            if (subMenu) {
+                const isOpen = subMenu.style.display === 'flex';
+                subMenu.style.display = isOpen ? 'none' : 'flex';
+                menuItem.classList.toggle('active', !isOpen);
+                if (toggle) toggle.classList.toggle('open', !isOpen);
+            }
+            });
+        }
+        });
 
 
 // Вложенные подменю - открытие по наведению
@@ -1024,6 +1080,67 @@ document.querySelector('.header-top').addEventListener('mouseleave', () => {
 document.addEventListener('DOMContentLoaded', setupDropdownToggle);
 
 
+// Открытие меню "О компании" в хедере
+const toggleItem = document.querySelector('.about-toggle');
+const toggleHeader = toggleItem.querySelector('.about-header');
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    toggleHeader.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        // 1. Очищаем поиск и сбрасываем UI поиска
+        if (searchInput.value.trim() !== '') {
+            searchInput.value = '';
+            deactivateSearchMode();
+        }
+
+        // 2. Закрываем активный каталог, если он открыт
+        if (openCatalog.parentElement.classList.contains('active')) {
+            openCatalog.parentElement.classList.remove('active');
+            isCatalogActive = false;
+
+            // Сброс UI каталога
+            openCatalog.style.color = '';
+            header.style.backgroundColor = 'transparent';
+            menuNavigation.style.display = 'none';
+            menuNavigation.classList.remove('default-margin');
+
+            blurContainers.forEach(container => {
+                container.style.filter = 'none';
+                container.style.cursor = '';
+            });
+
+            underHeaders.forEach(el => el.style.filter = 'none');
+            underHeaders.forEach(el => el.style.backdropFilter = 'none');
+        }
+
+        // 3. Переключаем меню "О компании"
+        toggleItem.classList.toggle('open');
+
+        // 4. Применяем/снимаем blur в зависимости от состояния
+        if (toggleItem.classList.contains('open')) {
+            blurContainers.forEach(container => {
+                container.style.filter = 'blur(5px)';
+                container.style.cursor = 'pointer';
+            });
+            underHeaders.forEach(el => {
+                el.style.filter = 'blur(5px)';
+                el.style.cursor = 'pointer';
+            });
+        } else {
+            blurContainers.forEach(container => {
+                container.style.filter = '';
+                container.style.cursor = '';
+            });
+            underHeaders.forEach(el => {
+                el.style.filter = '';
+                el.style.cursor = '';
+            });
+        }
+    });
+});
+ 
 // Считываем скроллы и скрываем/показываем header
 
 let lastScrollTop = 0;
@@ -1055,6 +1172,12 @@ window.addEventListener('scroll', handleScroll);
 
 
 function handleScrollDown() {
+    // Закрываем меню "О компании", если оно открыто
+    if (toggleItem.classList.contains('open')) {
+      toggleItem.classList.remove('open');
+      menuNavigation.classList.remove('about-open');
+    }
+
   header.classList.add('header-hidden');
   header.classList.remove('header-scrolled-up');
 
@@ -1074,17 +1197,29 @@ function handleScrollDown() {
   openCatalog.parentElement.classList.remove('active');
   isCatalogActive = false;
   menuNavigation.style.display = 'none';
-  menuNavigation.classList.add('default-margin');
-  menuNavigation.classList.remove('search-active');
+  menuNavigation.classList.remove('default-margin', 'search-active', 'search-active-down');
   openCatalog.style.color = '';
+  header.style.paddingBottom = '';
 }
 
 function handleScrollUp() {
   header.style.display = 'block';
   header.classList.remove('header-hidden');
   header.classList.add('header-scrolled-up');
-  menuNavigation.classList.add('default-margin');
+
+  if (window.scrollY === 0) {
+    // Если в самом верху страницы
+    menuNavigation.classList.add('default-margin');
+    menuNavigation.classList.remove('scrolled-margin');
+  } else {
+    // Если прокрутка вниз
+
+    menuNavigation.classList.add('scrolled-margin');
+    menuNavigation.classList.remove('default-margin');
+  }
 }
+
+
 
 
 

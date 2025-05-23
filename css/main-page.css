@@ -175,6 +175,19 @@ body {
 
 /* Шапка */
 
+.about-company-nav {
+    display: none;
+}
+
+.about-company-nav.active {
+    display: block;
+}
+
+.main-nav.hidden {
+    display: none;
+}
+
+
 .menu-toggle-plumbing.open,
 .menu-toggle-furniture.open {
     color: #AE9877;
@@ -207,16 +220,15 @@ body {
 }
 
 .logo {
-    width: 128px;
-    height: 97px;
+    width: 110px;
+    height: 83px;
 }
 
 .header-right {
     margin-left: 13%;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    text-align: center;    
+    align-items: flex-start;  
     width: 100%;    
 }
 
@@ -226,6 +238,53 @@ body {
     gap: 40px;
 }
 
+.nav-scrolled {
+    margin-top: 10px;
+}
+
+.about-submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    padding-left: 0;
+}
+
+.about-toggle {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+
+.about-toggle.open .about-submenu {
+    max-height: 500px; /* максимальное значение, чтобы влез весь список */
+    opacity: 1;
+}
+
+.about-header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 6px;
+}
+
+.down-arrow {
+    transition: transform 0.3s ease;
+}
+
+.about-toggle.open .down-arrow {
+    transform: rotate(180deg);
+}
+
+.about-toggle.open .about-header > a,
+.about-toggle.open .about-header .down-arrow {
+    color: #AE9877;
+    stroke: #AE9877; /* для SVG стрелки */
+}
 
 /* Ховеры и анимации для стрелок */
 
@@ -307,13 +366,35 @@ li.active .menu-arrow {
     margin-top: 170px;
 }
 
+/* Когда скролим вверх */
+.menu-navigation.scrolled-margin {
+    margin-top: 130px !important;
+}
+
+/* Когда меню "О компании" открыто */
+.menu-navigation.scrolled-margin.about-open {
+    margin-top: 200px !important;
+}
+
 /* Отступ при активном поиске */
 .menu-navigation.search-active {
     margin-top: 420px; 
 }
 
+/* Отступ при активном поиске снизу страницы*/
+.menu-navigation.search-active-down {
+    margin-top: 500px; 
+}
+
 .menu-navigation-container {
     display: flex;
+}
+
+@media (hover: none) {
+  /* Отключить стили hover */
+  .menu-item:hover .submenu {
+    display: none !important;
+  }
 }
 
 .catalog-up-nav {
@@ -443,7 +524,7 @@ li.active .menu-arrow {
 
 .catalog-nav ul li {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 10px;
 }

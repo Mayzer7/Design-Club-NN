@@ -492,6 +492,28 @@
                                             <li><a href="services-page.html">УСЛУГИ</a></li>
                                         </ul>
                                     </nav>
+
+                                    <nav class="catalog-nav about-company-nav">
+                                        <ul>
+                                            <li class="about-toggle">
+                                                <div class="about-header">
+                                                    <a class="open-catalog" href="#">О КОМПАНИИ</a>
+                                                    <svg class="down-arrow" width="14" height="8" viewBox="0 0 14 8" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1"
+                                                            stroke="currentColor" stroke-linecap="round"/>
+                                                    </svg>
+                                                </div>
+                                                <ul class="about-submenu">
+                                                    <li><a href="about-us-page.html">О нас</a></li>
+                                                    <li><a href="projects-page.html">Проекты</a></li>
+                                                    <li><a href="customers-page.html">Покупателям</a></li>
+                                                    <li><a href="reviews-page.html">Отзывы</a></li>
+                                                    <li><a href="services-page.html">Услуги</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </nav>
                                 </div>
                 
                                 <div class="search-container">
@@ -2369,6 +2391,46 @@
             </div>
         </div>
     </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const mainNav = document.querySelector('.main-nav');
+    const aboutNav = document.querySelector('.about-company-nav');
+    const navContainer = document.querySelector('.nav-container');
+    const menuNavigation = document.querySelector('.menu-navigation.default-margin');
+
+    const blurContainers = document.querySelectorAll('.blur-container'); 
+    const underHeaders = document.querySelectorAll('.under-header'); 
+
+    function toggleNavOnScroll() {
+        if (window.scrollY > 50) {
+            mainNav.classList.add('hidden');
+            aboutNav.classList.add('active');
+            navContainer.classList.add('nav-scrolled');
+        } else {
+            mainNav.classList.remove('hidden');
+            aboutNav.classList.remove('active');
+            navContainer.classList.remove('nav-scrolled');
+
+            // Очистка blur при скролле вверх
+            blurContainers.forEach(container => {
+                container.style.filter = '';
+                container.style.cursor = '';
+            });
+            underHeaders.forEach(el => {
+                el.style.filter = '';
+                el.style.cursor = '';
+            });
+        }
+    }
+
+    window.addEventListener('scroll', toggleNavOnScroll);
+});
+</script>
+
+<script>
+
+</script>
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
