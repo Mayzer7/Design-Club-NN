@@ -692,7 +692,7 @@ li.active .menu-arrow {
 
 .zoom-image {
     display: inline-block;
-  }
+}
 
 .zoom-image img {
     transition: transform 0.3s ease;
@@ -1765,13 +1765,13 @@ nav ul ul.open + svg {
 }
 
 .card img {
-    margin-top: 150px;
+    margin-top: 100px;
     width: 288px;
     height: 288px;
 }
 
 .down-card {
-    top: 150px;
+    top: 100px;
 }
 
 
@@ -2199,6 +2199,11 @@ nav ul ul.open + svg {
   gap: 5px;
 }
 
+a .popular-product-desc p,
+.popular-product-desc-text {
+    color: #EDE4D7; 
+}
+
 .swiper {
   width: 100%;
   padding-bottom: 50px;
@@ -2211,7 +2216,7 @@ nav ul ul.open + svg {
 }
 
 .swiper-slide {
- margin-top: -100px;
+    margin-top: -100px;
   max-width: 265px;
   width: 100%;
   transition: none; 
@@ -2687,7 +2692,7 @@ nav ul ul.open + svg {
 
 .popular-categories-cards {
     display: flex;
-    margin-top: 60px;
+    margin-top: 20px;
     gap: 15px;
 }
 
@@ -2699,25 +2704,14 @@ nav ul ul.open + svg {
 
 .popular-categories-card img {
     width: 455px;
-    height: 376px;
-}
+    height: 340px;
 
-.services-image {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
 }
-
-.services-image img {
-    width: 411px;
-    height: 376px;
-}
-
 .popular-categories-card a {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.popular-categories-card a:hover {
+.popular-categories-card a:hover {  
     transform: scale(1.03);
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
@@ -2740,8 +2734,8 @@ nav ul ul.open + svg {
 
 @media (max-width: 1435px) {
     .popular-categories-card img {
-        width: 335px;
-        height: 280px;
+        max-width: 335px;
+        max-height: 280px;
     }
     
 }
@@ -2754,8 +2748,8 @@ nav ul ul.open + svg {
 
 @media (max-width: 1075px) {
     .popular-categories-card img {
-        width: 245px;
-        height: 220px;
+        max-width: 245px;
+        max-height: 220px;
     }
 }
 
@@ -2861,8 +2855,8 @@ nav ul ul.open + svg {
     }
 
     .popular-categories-card img {
-        width: 400px;
-        height: 376px;
+        max-width: 400px;
+        max-height: 376px;
     }
 }
 
@@ -2876,8 +2870,8 @@ nav ul ul.open + svg {
     }
 
     .popular-categories-card img {
-        width: 350px;
-        height: 326px;
+        max-width: 350px;
+        max-height: 326px;
     }
 }
 
@@ -2889,15 +2883,15 @@ nav ul ul.open + svg {
 
 @media (max-width: 400px) {
     .popular-categories-card img {
-        width: 300px;
-        height: 260px;
+        max-width: 300px;
+        max-height: 260px;
     }
 }
 
 @media (max-width: 370px) {
     .popular-categories-card img {
-        width: 280px;
-        height: 240px;
+        max-width: 280px;
+        max-height: 240px;
     }
 }
 
@@ -2970,6 +2964,8 @@ nav ul ul.open + svg {
 
 .about-company-subtitle {
     font-size: 30px;
+    max-width: 380px;
+    width: 100%;
     text-transform: uppercase;
 }
 
