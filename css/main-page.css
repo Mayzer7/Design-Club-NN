@@ -412,7 +412,6 @@ li.active .menu-arrow {
     font-family: 'SF Pro Display', sans-serif;
     font-weight: 900;
     background-color: #151c28;
-    /* min-height: 250px; */
 }
 
 /* Основной отступ */
@@ -444,11 +443,6 @@ li.active .menu-arrow {
     display: flex;
 }
 
-/* @media (hover: hover) and (pointer: fine) {
-    .menu-item:hover .submenu {
-        display: block;
-    }
-} */
 
 /* Открывает подменю при наведении (только для ПК) */
 @media (hover: hover) and (pointer: fine) {
@@ -3805,7 +3799,6 @@ a .popular-product-desc p,
 
 
 
-
 /* Секция "Отзывы от покупателей" */
 
 
@@ -4201,7 +4194,6 @@ a .popular-product-desc p,
 
 
 
-
 /* Секция "Связаться с нами" */
 
 .get-contact {
@@ -4450,7 +4442,7 @@ a .popular-product-desc p,
 /* Footer */
 
 #brands {
-  scroll-margin-top: 130px; 
+  scroll-margin-top: 100px; 
   scroll-behavior: smooth;
 }
 
