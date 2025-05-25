@@ -175,6 +175,7 @@ body {
 
 /* Шапка */
 
+
 .about-company-nav {
     display: none;
 }
@@ -323,6 +324,19 @@ li.active .menu-arrow {
     color: #AE9877;
 }
 
+.menu-item button {
+    border: none;
+    background-color: transparent;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300;
+    cursor: pointer;
+    color: #EDE4D7;
+    transition: color 0.3s ease;
+}
+
+.menu-item button:hover {
+    color: #AE9877;
+}
 
 
 
@@ -342,6 +356,46 @@ li.active .menu-arrow {
 .menu-toggle:hover,
 .menu-toggle:hover {
     color: #AE9877;
+}
+
+.menu-toggle {
+  cursor: pointer;
+  transition: color 0.3s ease;
+  color: #EDE4D7; /* базовый цвет */
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 26px;
+}
+
+.menu-toggle svg path {
+  transition: stroke 0.3s ease, transform 0.3s ease;
+  stroke: currentColor; /* цвет стрелки наследуется от текста */
+}
+
+/* При наведении меняем цвет текста и стрелки */
+.menu-toggle:hover,
+.menu-toggle:focus {
+  color: #AE9877;
+}
+
+/* Стрелка меняет цвет при наведении */
+.menu-toggle:hover svg path,
+.menu-toggle:focus svg path {
+  stroke: #AE9877;
+}
+
+/* Когда меню открыто — добавим класс active кнопке, для поворота и цвета */
+.menu-toggle.active {
+  color: #AE9877;
+}
+
+.menu-toggle.active svg {
+  transform: rotate(180deg);
+}
+
+.menu-toggle.active svg path {
+  stroke: #AE9877;
 }
 
 .menu-navigation-relative {
@@ -386,19 +440,34 @@ li.active .menu-arrow {
     margin-top: 500px; 
 }
 
-.menu-navigation-container {
+.menu-container {
     display: flex;
 }
 
-@media (hover: none) {
-  /* Отключить стили hover */
-  .menu-item:hover .submenu {
-    display: none !important;
+/* @media (hover: hover) and (pointer: fine) {
+    .menu-item:hover .submenu {
+        display: block;
+    }
+} */
+
+/* Открывает подменю при наведении (только для ПК) */
+@media (hover: hover) and (pointer: fine) {
+  .menu-item:hover > .menu-toggle {
+    color: #AE9877;
+  }
+
+  .menu-item:hover > .menu-toggle svg {
+    transform: rotate(180deg);
+  }
+
+  .menu-item:hover > .menu-toggle svg path {
+    stroke: #AE9877;
   }
 }
 
+
 .catalog-up-nav {
-    max-height: 500px; 
+    max-height: 400px; 
     min-width: 350px;
     width: 100%;
     overflow-y: auto;
@@ -464,8 +533,8 @@ li.active .menu-arrow {
     padding: 10px;
 }
 
-.submenu-content {
-    display: none;
+.submenu.open {
+    display: flex;
 }
 
 .submenu-item {
@@ -475,6 +544,14 @@ li.active .menu-arrow {
 
 .submenu-item svg {
     margin-top: 4px;
+}
+
+.submenu-item.active > a.menu-button {
+  color: #AE9877;
+}
+
+.submenu-item.active svg path {
+  stroke: #AE9877;
 }
 
 .right-menu {
