@@ -1642,6 +1642,10 @@ nav ul ul.open + svg {
     .under-header {
         top: 250px;
     }
+
+    .main-page-top {
+        min-height: 900px;
+    }
 }
 
 @media (max-width: 380px) {
@@ -2078,7 +2082,7 @@ nav ul ul.open + svg {
 
 @media (max-width: 385px) {
     .why-choose-us {
-        padding: 150px 20px 20px 20px;
+        padding: 80px 20px 20px 20px;
     }
 
     .why-up-title {
@@ -2109,6 +2113,8 @@ nav ul ul.open + svg {
     font-family: 'SF Pro Display', sans-serif;
     position: relative;
 }
+
+
 
 .project-products-header {
     margin-bottom: 50px;
@@ -2238,26 +2244,35 @@ a .popular-product-desc p,
     color: #EDE4D7; 
 }
 
+
 .swiper {
   width: 100%;
   padding-bottom: 50px;
   padding-top: 0px;
 }
 
-.swiper-wrapper {
-  align-items: center;
-  margin-left: -280px
+.swiper-slide {
+  width: 100%; 
+  max-width: 265px;
+  transition-timing-function: ease-in-out !important;
 }
 
-.swiper-slide {
-    margin-top: -100px;
-  max-width: 265px;
-  width: 100%;
-  transition: none; 
-  display: flex;
-  justify-content: center;
-  
-}
+.swiper-wrapper {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.3s; 
+  margin-left: -280px;
+}   
+
+/* .mySwiper .swiper-wrapper {
+  margin-left: -280px;
+} */
+/* 
+.swiper-wrapper {
+  padding-left: 500px; 
+  padding-right: 20px; 
+} */
+
+
 
 .swiper-slide img {
   width: 100%;
@@ -3203,13 +3218,6 @@ a .popular-product-desc p,
 .get-request-content {
     margin-top: 60px;
     display: flex; 
-}
-
-/* Темная яндекс карта */
-
-#map-desktop,
-#map-mobile {
-	filter: grayscale(1) invert(100%);
 }
 
 .maps {

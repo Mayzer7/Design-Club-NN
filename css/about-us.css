@@ -118,6 +118,9 @@ body {
     min-height: 1000px;
 }
 
+
+
+
 /* Шапка */
 
 
@@ -216,9 +219,17 @@ body {
     align-items: center;
     cursor: pointer;
     gap: 6px;
+    position: relative;
+    z-index: 1000;
+    pointer-events: auto;
 }
 
 .down-arrow {
+    transition: transform 0.3s ease;
+}
+
+.about-toggle.open .down-arrow {
+    transform: rotate(180deg);
     transition: transform 0.3s ease;
 }
 
@@ -229,7 +240,11 @@ body {
 .about-toggle.open .about-header > a,
 .about-toggle.open .about-header .down-arrow {
     color: #AE9877;
-    stroke: #AE9877; /* для SVG стрелки */
+    stroke: #AE9877; 
+}
+
+.about-toggle.open .open-catalog {
+    color: #D4B28C;
 }
 
 /* Ховеры и анимации для стрелок */
@@ -246,6 +261,22 @@ li.active .down-arrow {
 li.active .menu-arrow {
     transform: rotate(180deg);
     color: #AE9877;
+}
+
+.open-catalog {
+    border: none;
+    background-color: transparent;
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #EDE4D7;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 0;
+}
+
+.open-catalog:hover {
+    color: #D4B28C;
 }
 
 .open-catalog:hover + .down-arrow {
@@ -350,6 +381,7 @@ li.active .menu-arrow {
 .menu-navigation {
     margin-top: 170px;
     position: fixed;
+    max-width: 1920px;
     width: 100%;
     display: none;
     z-index: 5;
@@ -357,7 +389,6 @@ li.active .menu-arrow {
     font-family: 'SF Pro Display', sans-serif;
     font-weight: 900;
     background-color: #151c28;
-    /* min-height: 250px; */
 }
 
 /* Основной отступ */
@@ -389,11 +420,6 @@ li.active .menu-arrow {
     display: flex;
 }
 
-/* @media (hover: hover) and (pointer: fine) {
-    .menu-item:hover .submenu {
-        display: block;
-    }
-} */
 
 /* Открывает подменю при наведении (только для ПК) */
 @media (hover: hover) and (pointer: fine) {
@@ -603,7 +629,12 @@ li.active .menu-arrow {
 }
 
 .header-search-padding {
-    padding-bottom: 270px;
+    padding-bottom: 280px;
+    background-color: #151c28;
+}
+
+.header-search-padding-down {
+    padding-bottom: 340px;
     background-color: #151c28;
 }
 
@@ -615,6 +646,12 @@ li.active .menu-arrow {
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.search-icon {
+    width: 24px;
+    height: 24px;
+    display: block;
 }
 
 .search-items.show .search-item {
@@ -679,6 +716,7 @@ li.active .menu-arrow {
 .search-bar {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     background: transparent;
     padding: 5px 0;
@@ -694,6 +732,8 @@ li.active .menu-arrow {
     outline: none;
     color: #fff;
     font-size: 18px;
+    max-width: 300px;
+    width: 100%;
 }
 
 .search-icon-button {
@@ -868,9 +908,10 @@ li.active .menu-arrow {
     }
 
     .header-search-padding {
-        padding-bottom: 320px;
-        background-color: #151C28;
+        padding-bottom: 330px;
     }
+
+
 }
 
 @media (max-width: 630px) {
@@ -890,7 +931,8 @@ li.active .menu-arrow {
         display: none;
     }
 
-    .header-search-padding {
+    .header-search-padding,
+    .header-search-padding-down {
         padding-bottom: 20px;
         background-color: transparent;
     }
@@ -1200,7 +1242,6 @@ nav ul ul.open + svg {
 .burger-get-request-btn button:hover {
     background-color: #AE9877;
 }
-
 
 /* Анимации на странице */
 

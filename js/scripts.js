@@ -961,68 +961,71 @@ function handleScrollUp() {
   // Переключение карточек отзывов
 
   const cardsContainer = document.querySelector('.reviews-cards');
-  const leftArrowReview = document.getElementById('left-arrow-review');
-  const rightArrowReview = document.getElementById('right-arrow-review');
-  const ratingNumber = document.querySelector('.rating-number');
-  const cardsReview = document.querySelectorAll('.review-card');
-  const cardWidthReview = cardsReview[0].offsetWidth + 20; 
+  
+  if (cardsContainer) {
+    const leftArrowReview = document.getElementById('left-arrow-review');
+    const rightArrowReview = document.getElementById('right-arrow-review');
+    const ratingNumber = document.querySelector('.rating-number');
+    const cardsReview = document.querySelectorAll('.review-card');
+    const cardWidthReview = cardsReview[0].offsetWidth + 20; 
 
-  let currentIndexReview = 0;
+    let currentIndexReview = 0;
 
-  leftArrowReview.addEventListener('click', () => moveReview(-1));
-  rightArrowReview.addEventListener('click', () => moveReview(1));
+    leftArrowReview.addEventListener('click', () => moveReview(-1));
+    rightArrowReview.addEventListener('click', () => moveReview(1));
 
-  function moveReview(direction) {
-      const newIndex = currentIndexReview + direction;
-      if (newIndex >= 0 && newIndex < cardsReview.length) {
-          currentIndexReview = newIndex;
-          updateTransform();
+    function moveReview(direction) {
+        const newIndex = currentIndexReview + direction;
+        if (newIndex >= 0 && newIndex < cardsReview.length) {
+            currentIndexReview = newIndex;
+            updateTransform();
 
-          // Скрывать рейтинг только если ширина окна больше 1000px
-          if (window.innerWidth > 1000) {
-              ratingNumber.style.visibility = currentIndexReview > 0 ? 'hidden' : 'visible';
-          } else {
-              ratingNumber.style.visibility = 'visible';
-          }
-      }
+            // Скрывать рейтинг только если ширина окна больше 1000px
+            if (window.innerWidth > 1000) {
+                ratingNumber.style.visibility = currentIndexReview > 0 ? 'hidden' : 'visible';
+            } else {
+                ratingNumber.style.visibility = 'visible';
+            }
+        }
+    }
+
+    function updateTransform() {
+        cardsContainer.style.transform = `translateX(${-cardWidthReview * currentIndexReview}px)`;
+    }
+
+    // Обработка ресайза окна — обновляем видимость рейтинга
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 1000) {
+            ratingNumber.style.visibility = currentIndexReview > 0 ? 'hidden' : 'visible';
+        } else {
+            ratingNumber.style.visibility = 'visible';
+        }
+    });
+
+    // Добавляем свайп
+    let startReviewX = 0;
+    let isDragging = false;
+
+    cardsContainer.addEventListener('touchstart', e => {
+        startReviewX = e.touches[0].clientX;
+        isDragging = true;
+    }, { passive: true });
+
+    cardsContainer.addEventListener('touchmove', e => {}, { passive: true });
+
+    cardsContainer.addEventListener('touchend', e => {
+        if (!isDragging) return;
+        const endX = e.changedTouches[0].clientX;
+        const diffX = endX - startReviewX;
+        const threshold = 50; // минимальная дистанция свайпа
+        if (diffX > threshold) {
+            moveReview(-1); // свайп вправо
+        } else if (diffX < -threshold) {
+            moveReview(1);  // свайп влево
+        }
+        isDragging = false;
+    });
   }
-
-  function updateTransform() {
-      cardsContainer.style.transform = `translateX(${-cardWidthReview * currentIndexReview}px)`;
-  }
-
-  // Обработка ресайза окна — обновляем видимость рейтинга
-  window.addEventListener('resize', () => {
-      if (window.innerWidth > 1000) {
-          ratingNumber.style.visibility = currentIndexReview > 0 ? 'hidden' : 'visible';
-      } else {
-          ratingNumber.style.visibility = 'visible';
-      }
-  });
-
-  // Добавляем свайп
-  let startReviewX = 0;
-  let isDragging = false;
-
-  cardsContainer.addEventListener('touchstart', e => {
-      startReviewX = e.touches[0].clientX;
-      isDragging = true;
-  }, { passive: true });
-
-  cardsContainer.addEventListener('touchmove', e => {}, { passive: true });
-
-  cardsContainer.addEventListener('touchend', e => {
-      if (!isDragging) return;
-      const endX = e.changedTouches[0].clientX;
-      const diffX = endX - startReviewX;
-      const threshold = 50; // минимальная дистанция свайпа
-      if (diffX > threshold) {
-          moveReview(-1); // свайп вправо
-      } else if (diffX < -threshold) {
-          moveReview(1);  // свайп влево
-      }
-      isDragging = false;
-  });
 
   // Для переключение карточек "Почему выбирают нас" с помощью стрелок
 
@@ -1212,36 +1215,36 @@ if (window.location.pathname.endsWith('main-page.html')) {
 
   // Переключение карточек "Популярные товары"
 
-  const swiper = new Swiper('.mySwiper', {
-      slidesPerView: 'auto',
-      spaceBetween: 20,
-      initialSlide: 2,
-      loop: true,
-      loopedSlides: 8,
-      centeredSlides: true,
-      grabCursor: true,
-      speed: 700,
-      navigation: {
-          nextEl: '.popular-right-arrow',
-          prevEl: '.popular-left-arrow',
+    const swiper = new Swiper('.mySwiper', {
+    slidesPerView: 'auto',
+    spaceBetween: 20,
+    initialSlide: 2,
+    slidesPerGroup: 1,
+    loop: true,
+    loopAdditionalSlides: 1,
+    touchRatio: 0.2,
+    centeredSlides: true,
+    speed: 700,
+    effect: 'slide',
+    grabCursor: true,
+    navigation: {
+      nextEl: '.popular-right-arrow',
+      prevEl: '.popular-left-arrow',
+    },
+    breakpoints: {
+      0: {
+        spaceBetween: 10
       },
-
-      breakpoints: {
-          // gap между карточками
-          // от 0 до 399px
-          0: {
-              spaceBetween: 10
-          },
-          // от 400px и выше 
-          400: {
-              spaceBetween: 20
-          }
+      400: {
+        spaceBetween: 20
       }
+    },
   });
 
-  // Выбор способа связи в форме "Связаться с нами"
 
-  function toggleContactMethodMenu() {
+// Выбор способа связи в форме "Связаться с нами"
+
+function toggleContactMethodMenu() {
       const menu = document.getElementById('menu-contact-method');
       const arrow = document.getElementById('dropdown-arrow');
 
@@ -1558,3 +1561,103 @@ if (window.location.pathname.endsWith('catalog-page.html')) {
     });
 }
 
+
+// Скрипты для контента на странице "product-page.html"
+
+const addToCardProduct = document.querySelector('.add-to-card-product');
+
+if (addToCardProduct) {
+  // Добавление товара в корзину
+  const elements = {
+    desktop: {
+      addBtn: document.getElementById('add-btn'),
+      qtyBlock: document.getElementById('qty-block'),
+      notifyBlock: document.getElementById('notify-block'),
+      minusBtn: document.getElementById('minus-btn'),
+      plusBtn: document.getElementById('plus-btn'),
+      addToCartBtn: document.querySelector('.add-to-cart'),
+    },
+    mobile: {
+      addBtn: document.getElementById('add-btn-mobile'),
+      qtyBlock: document.getElementById('qty-block-mobile'),
+      notifyBlock: document.getElementById('notify-block-mobile'),
+      minusBtn: document.getElementById('minus-btn-mobile'),
+      plusBtn: document.getElementById('plus-btn-mobile'),
+      addToCartBtn: document.querySelector('.add-to-cart-mobile'),
+    },
+  };
+
+  const qtyLabel = document.getElementById('qty-label');
+  let quantity = 1;
+
+  function updateQtyLabel() {
+    qtyLabel.textContent = quantity;
+  }
+
+  function toggleCartState(container) {
+    container.addToCartBtn.style.display = container.qtyBlock.classList.contains('active') ? '' : 'none';
+    container.qtyBlock.classList.toggle('active');
+    container.notifyBlock.classList.toggle('active');
+    updateQtyLabel();
+  }
+
+  function initContainer(container) {
+    container.addBtn.addEventListener('click', () => {
+      if (!container.qtyBlock.classList.contains('active')) {
+        container.addToCartBtn.style.display = 'none';
+        container.qtyBlock.classList.add('active');
+        container.notifyBlock.classList.add('active');
+        quantity = 1;
+        updateQtyLabel();
+      }
+    });
+
+    container.plusBtn.addEventListener('click', () => {
+      quantity++;
+      updateQtyLabel();
+    });
+
+    container.minusBtn.addEventListener('click', () => {
+      if (quantity > 1) {
+        quantity--;
+        updateQtyLabel();
+      } else {
+        quantity = 1;
+        container.qtyBlock.classList.remove('active');
+        container.notifyBlock.classList.remove('active');
+        container.addToCartBtn.style.display = '';
+        updateQtyLabel();
+      }
+    });
+  }
+
+  initContainer(elements.desktop);
+  initContainer(elements.mobile);
+
+  // Навигация (раскрытие менюшек)
+  document.addEventListener("DOMContentLoaded", function () {
+      const navBlocks = document.querySelectorAll(".customers-navigation");
+
+      navBlocks.forEach(nav => {
+          // Навешиваем клик на всю навигационную секцию
+          nav.addEventListener("click", () => {
+              const section = nav.querySelector(".customers-section");
+              section.classList.toggle("active");
+          });
+
+          // Дополнительно: клик по кнопке (стрелке) тоже открывает
+          const button = nav.querySelector(".open-button");
+          if (button) {
+              button.addEventListener("click", (event) => {
+                  event.stopPropagation(); // предотвращает всплытие
+                  const section = nav.querySelector(".customers-section");
+                  section.classList.toggle("active");
+              });
+          }
+      });
+  });
+}
+
+
+
+  
