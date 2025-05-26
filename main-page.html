@@ -1415,7 +1415,7 @@
                             <p class="block-title get-request-up-title fade-in">Оставить заявку</p>
                         
                             <main class="get-request-content">
-                                <iframe class="maps fade-in" src="https://yandex.ru/map-widget/v1/?um=constructor%3A100deec2f5ba1d94dcde01cf3e88bde4b9f635509455260016b7e85bb0472c44&amp;source=constructor" frameborder="0"></iframe>
+                                <div id="map-desktop" class="maps fade-in"></div>
                         
                                 <div class="get-request-container">
                                     <div class="content-wrapper reveal-mask">
@@ -1429,8 +1429,8 @@
                                             ароматного чая, пока мы поможем вам создать пространство мечты!
                                         </p>
 
-                                        <iframe class="maps-mobile fade-in" src="https://yandex.ru/map-widget/v1/?um=constructor%3A100deec2f5ba1d94dcde01cf3e88bde4b9f635509455260016b7e85bb0472c44&amp;source=constructor" frameborder="0"></iframe>
-                        
+                                        <div id="map-mobile" class="maps-mobile fade-in"></div>
+                                       
                                         <form id="contact-form-1" class="contact-form" onsubmit="return validateForm(event, 'contact-form-1')">
                                             <div class="contact-input fade-in">
                                                 <input type="text" name="name" placeholder="ВАШЕ ИМЯ">
@@ -2417,6 +2417,33 @@
             </div>
         </div>
     </div>
+
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=6a0a70e3-b1fe-4c23-ab8b-779377082ed2&lang=ru_RU" type="text/javascript"></script>
+    
+    <script>
+        ymaps.ready(init);
+        function init(){
+            // Проверяем, есть ли контейнер для десктопа
+            if (document.getElementById('map-desktop')) {
+                var mapDesktop = new ymaps.Map("map-desktop", {
+                    center: [56.299511, 44.022444],
+                    zoom: 18
+                });
+                var placemarkDesktop = new ymaps.Placemark([56.299511, 44.022444]);
+                mapDesktop.geoObjects.add(placemarkDesktop);
+            }
+
+            // Проверяем, есть ли контейнер для мобильной карты
+            if (document.getElementById('map-mobile')) {
+                var mapMobile = new ymaps.Map("map-mobile", {
+                    center: [56.299511, 44.022444],
+                    zoom: 18
+                });
+                var placemarkMobile = new ymaps.Placemark([56.299511, 44.022444]);
+                mapMobile.geoObjects.add(placemarkMobile);
+            }
+        }
+        </script>
 
     <!-- Swiper -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

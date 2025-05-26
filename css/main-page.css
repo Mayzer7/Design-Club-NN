@@ -3199,6 +3199,13 @@ a .popular-product-desc p,
     display: flex; 
 }
 
+/* Темная яндекс карта */
+
+#map-desktop,
+#map-mobile {
+	filter: grayscale(1) invert(100%);
+}
+
 .maps {
     margin-top: 120px;
     width: 337px;
