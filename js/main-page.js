@@ -71,7 +71,7 @@ function activateSearchMode() {
   if (isTop) {
     header.classList.add('header-search-padding');
   } else {
-    header.classList.add('header-search-padding');
+    header.classList.add('header-search-padding-down');
   }
 
   // Общая логика
@@ -110,6 +110,7 @@ function deactivateSearchMode() {
 
   // Сброс паддинга и фона хедера
   header.classList.remove('header-search-padding');
+  header.classList.remove('header-search-padding-down');
   header.style.paddingBottom = '';
   header.style.backgroundColor = 'transparent';
 
@@ -161,6 +162,7 @@ function resetHeaderState() {
     }
 
     header.classList.remove('header-search-padding');
+    header.classList.remove('header-search-padding-down');
     header.style.paddingBottom = '';
     
     menuNavigation.classList.remove('search-active');
@@ -851,11 +853,12 @@ function handleScrollDown() {
 
   header.classList.add('header-hidden');
   header.classList.remove('header-scrolled-up');
+  header.classList.remove('header-search-padding');
+  header.classList.remove('header-search-padding-down');
 
   searchInput.blur();
   searchInput.value = '';
   searchItems.classList.remove('show');
-  header.classList.remove('header-search-padding');
 
   blurContainers.forEach(container => {
     container.style.filter = '';

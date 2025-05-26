@@ -685,6 +685,11 @@ li.active .menu-arrow {
     background-color: #151c28;
 }
 
+.header-search-padding-down {
+    padding-bottom: 340px;
+    background-color: #151c28;
+}
+
 .search-item {
     display: flex;
     align-items: flex-start;
@@ -978,7 +983,8 @@ li.active .menu-arrow {
         display: none;
     }
 
-    .header-search-padding {
+    .header-search-padding,
+    .header-search-padding-down {
         padding-bottom: 20px;
         background-color: transparent;
     }
