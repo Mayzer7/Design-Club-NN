@@ -70,10 +70,8 @@ function activateSearchMode() {
 
   if (isTop) {
     header.classList.add('header-search-padding');
-    header.style.paddingBottom = '270px';
   } else {
     header.classList.add('header-search-padding');
-    header.style.paddingBottom = '330px';
   }
 
   // Общая логика
