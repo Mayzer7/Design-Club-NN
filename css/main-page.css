@@ -271,9 +271,17 @@ body {
     align-items: center;
     cursor: pointer;
     gap: 6px;
+    position: relative;
+    z-index: 1000;
+    pointer-events: auto;
 }
 
 .down-arrow {
+    transition: transform 0.3s ease;
+}
+
+.about-toggle.open .down-arrow {
+    transform: rotate(180deg);
     transition: transform 0.3s ease;
 }
 
@@ -284,7 +292,11 @@ body {
 .about-toggle.open .about-header > a,
 .about-toggle.open .about-header .down-arrow {
     color: #AE9877;
-    stroke: #AE9877; /* для SVG стрелки */
+    stroke: #AE9877; 
+}
+
+.about-toggle.open .open-catalog {
+    color: #D4B28C;
 }
 
 /* Ховеры и анимации для стрелок */
@@ -301,6 +313,22 @@ li.active .down-arrow {
 li.active .menu-arrow {
     transform: rotate(180deg);
     color: #AE9877;
+}
+
+.open-catalog {
+    border: none;
+    background-color: transparent;
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #EDE4D7;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 0;
+}
+
+.open-catalog:hover {
+    color: #D4B28C;
 }
 
 .open-catalog:hover + .down-arrow {
@@ -405,6 +433,7 @@ li.active .menu-arrow {
 .menu-navigation {
     margin-top: 170px;
     position: fixed;
+    max-width: 1920px;
     width: 100%;
     display: none;
     z-index: 5;
@@ -1651,11 +1680,6 @@ nav ul ul.open + svg {
 }
 
 
-.why-up-title {
-    position: absolute;
-    top: 150px;
-    left: 25px;
-}
 
 .block-title {
     color: rgba(255, 255, 255, 0.6);

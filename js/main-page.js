@@ -58,23 +58,27 @@ function handleSearchInput() {
 }
 
 function activateSearchMode() {
+  // Если каталог открыт — закрываем
+  if (isCatalogActive) {
+    toggleCatalogMenu();
+  }
+
   // Удаляем старые классы отступа
   menuNavigation.classList.remove('default-margin', 'search-active', 'search-active-down');
 
   const isTop = window.scrollY < 100;
 
   if (isTop) {
-    menuNavigation.classList.add('search-active');
     header.classList.add('header-search-padding');
     header.style.paddingBottom = '270px';
   } else {
-    menuNavigation.classList.add('search-active-down');
     header.classList.add('header-search-padding');
     header.style.paddingBottom = '330px';
   }
 
   // Общая логика
   underHeaders.forEach(el => el.style.filter = 'blur(5px)');
+  underHeaders.forEach(el => el.style.cursor = 'pointer');
   blurContainers.forEach(container => container.style.filter = 'blur(5px)');
   header.style.backgroundColor = '#151c28';
   searchItems.classList.add('show');
@@ -144,6 +148,7 @@ document.querySelector('.search-icon-button').addEventListener('click', function
 
 
 // Функция когда клик вне хедера
+
 const blurContainers = document.querySelectorAll('.blur-container');
 
 function resetHeaderState() {
@@ -168,6 +173,7 @@ function resetHeaderState() {
     underHeaders.forEach(el => el.style.cursor = '');
 
     searchInput.value = '';
+    
 
     blurContainers.forEach(container => {
         container.style.filter = 'none';
@@ -182,41 +188,75 @@ function resetHeaderState() {
 
 }
 
-// Предотвращаем переход по ссылке если нажимаем на ссылочный объект
-// чтобы закрыть менюшки и сам Каталог
+// Предотвращаем действия по ссылкам и кнопкам при открытом поиске или меню
+
+let disableClick = false;
 
 blurContainers.forEach(container => {
     container.addEventListener('click', function(event) {
-        const target = event.target;
-        const link = target.closest('a');
+        const isSearchActive = searchItems.classList.contains('show');
 
-        if (link && isMenuOpen()) {
-            // Если меню открыто — закрываем и НЕ переходим
+        if (isMenuOpen() || isSearchActive) {
             event.preventDefault();
-            resetHeaderState();
-            return;
-        }
+            event.stopPropagation();
 
-        // Если клик вне меню — просто закрываем
-        resetHeaderState();
-    });
+            // Устанавливаем блокировку кликов
+            disableClick = true;
+
+            resetHeaderState();
+
+            // Снимаем блокировку через небольшой таймаут
+            setTimeout(() => {
+                disableClick = false;
+            }, 100);
+        } else if (disableClick) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+    }, true); // Захват
 });
 
-
 // Обработка кликов по under-header
+
 underHeaders.forEach(header => {
     header.addEventListener('click', function(event) {
         const target = event.target;
         const link = target.closest('a');
+        const button = target.closest('button');
+        const isSearchActive = searchItems.classList.contains('show');
 
-        if (link && isMenuOpen()) {
+        if ((link || button) && (isMenuOpen() || isSearchActive)) {
             event.preventDefault();
+            event.stopPropagation();
+
+            disableClick = true;
+
             resetHeaderState();
+
+            setTimeout(() => {
+                disableClick = false;
+            }, 100);
+
             return;
         }
 
-        resetHeaderState();
-    });
+        if (isMenuOpen() || isSearchActive) {
+            // Клик в underHeaders, но не по ссылке/кнопке — просто закрываем меню
+            resetHeaderState();
+        }
+    }, true); // захват для надёжности
+});
+
+// Теперь на кнопках добавьте проверку disableClick:
+
+document.querySelectorAll('button, a').forEach(el => {
+    el.addEventListener('click', (event) => {
+        if (disableClick) {
+            event.preventDefault();
+            event.stopPropagation();
+            return false;
+        }
+    }, true);
 });
 
 // Проверка, открыт ли каталог или любое меню
@@ -289,6 +329,91 @@ openCatalog.addEventListener('click', function(e) {
     }
 
     toggleCatalogMenu();
+});
+
+
+// Появление компактного хедера при скроле вверх на странице 
+
+document.addEventListener('DOMContentLoaded', () => {
+  const mainNav = document.querySelector('.main-nav');
+  const aboutNav = document.querySelector('.about-company-nav');
+  const navContainer = document.querySelector('.nav-container');
+
+  function toggleNavOnScroll() {
+    if (window.scrollY > 50) {
+      mainNav.classList.add('hidden');
+      aboutNav.classList.add('active');
+      navContainer.classList.add('nav-scrolled');
+    } else {
+      mainNav.classList.remove('hidden');
+      aboutNav.classList.remove('active');
+      navContainer.classList.remove('nav-scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', toggleNavOnScroll);
+});
+
+
+// Открытие меню "О компании" в хедере
+const toggleItem = document.querySelector('.about-toggle');
+const toggleHeader = toggleItem.querySelector('.about-header');
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    toggleHeader.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        // 1. Очищаем поиск и сбрасываем UI поиска
+        if (searchInput.value.trim() !== '') {
+            searchInput.value = '';
+            deactivateSearchMode();
+        }
+
+        // 2. Закрываем активный каталог, если он открыт
+        if (openCatalog.parentElement.classList.contains('active')) {
+            openCatalog.parentElement.classList.remove('active');
+            isCatalogActive = false;
+
+            // Сброс UI каталога
+            openCatalog.style.color = '';
+            header.style.backgroundColor = 'transparent';
+            menuNavigation.style.display = 'none';
+            menuNavigation.classList.remove('default-margin');
+
+            blurContainers.forEach(container => {
+                container.style.filter = 'none';
+                container.style.cursor = '';
+            });
+
+            underHeaders.forEach(el => el.style.filter = 'none');
+            underHeaders.forEach(el => el.style.backdropFilter = 'none');
+        }
+
+        // 3. Переключаем меню "О компании"
+        toggleItem.classList.toggle('open');
+
+        // 4. Применяем/снимаем blur в зависимости от состояния
+        if (toggleItem.classList.contains('open')) {
+            blurContainers.forEach(container => {
+                container.style.filter = 'blur(5px)';
+                container.style.cursor = 'pointer';
+            });
+            underHeaders.forEach(el => {
+                el.style.filter = 'blur(5px)';
+                el.style.cursor = 'pointer';
+            });
+        } else {
+            blurContainers.forEach(container => {
+                container.style.filter = '';
+                container.style.cursor = '';
+            });
+            underHeaders.forEach(el => {
+                el.style.filter = '';
+                el.style.cursor = '';
+            });
+        }
+    });
 });
 
 
@@ -418,91 +543,6 @@ function onSubmitForm(event) {
   formReset(form);
 }
 
-
-// Появление компактного хедера при скроле вверх на странице 
-
-document.addEventListener('DOMContentLoaded', () => {
-  const mainNav = document.querySelector('.main-nav');
-  const aboutNav = document.querySelector('.about-company-nav');
-  const navContainer = document.querySelector('.nav-container');
-
-  function toggleNavOnScroll() {
-    if (window.scrollY > 50) {
-      mainNav.classList.add('hidden');
-      aboutNav.classList.add('active');
-      navContainer.classList.add('nav-scrolled');
-    } else {
-      mainNav.classList.remove('hidden');
-      aboutNav.classList.remove('active');
-      navContainer.classList.remove('nav-scrolled');
-    }
-  }
-
-  window.addEventListener('scroll', toggleNavOnScroll);
-});
-
-// Открытие меню "О компании" в хедере
-const toggleItem = document.querySelector('.about-toggle');
-const toggleHeader = toggleItem.querySelector('.about-header');
-
-document.addEventListener('DOMContentLoaded', () => {
-
-    toggleHeader.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        // 1. Очищаем поиск и сбрасываем UI поиска
-        if (searchInput.value.trim() !== '') {
-            searchInput.value = '';
-            deactivateSearchMode();
-        }
-
-        // 2. Закрываем активный каталог, если он открыт
-        if (openCatalog.parentElement.classList.contains('active')) {
-            openCatalog.parentElement.classList.remove('active');
-            isCatalogActive = false;
-
-            // Сброс UI каталога
-            openCatalog.style.color = '';
-            header.style.backgroundColor = 'transparent';
-            menuNavigation.style.display = 'none';
-            menuNavigation.classList.remove('default-margin');
-
-            blurContainers.forEach(container => {
-                container.style.filter = 'none';
-                container.style.cursor = '';
-            });
-
-            underHeaders.forEach(el => el.style.filter = 'none');
-            underHeaders.forEach(el => el.style.backdropFilter = 'none');
-        }
-
-        // 3. Переключаем меню "О компании"
-        toggleItem.classList.toggle('open');
-
-        // 4. Применяем/снимаем blur в зависимости от состояния
-        if (toggleItem.classList.contains('open')) {
-            blurContainers.forEach(container => {
-                container.style.filter = 'blur(5px)';
-                container.style.cursor = 'pointer';
-            });
-            underHeaders.forEach(el => {
-                el.style.filter = 'blur(5px)';
-                el.style.cursor = 'pointer';
-            });
-        } else {
-            blurContainers.forEach(container => {
-                container.style.filter = '';
-                container.style.cursor = '';
-            });
-            underHeaders.forEach(el => {
-                el.style.filter = '';
-                el.style.cursor = '';
-            });
-        }
-    });
-});
-
-
 // Раскрытие менюшек при нажатии на каталог в хедере
 
 // Определяем, есть ли поддержка hover и fine pointer (т.е. мышь, ПК)
@@ -628,6 +668,37 @@ document.querySelectorAll('.right-menu-content').forEach(menu => {
   menu.addEventListener('mouseenter', () => clearTimeout(hideTimeout));
 });
 
+// Обработчик правого меню по клику, чтобы работало на touch устройствах
+document.querySelectorAll('.submenu-item .menu-button').forEach(button => {
+  const openRightMenu = () => {
+    const submenuItem = button.closest('.submenu-item');
+    const id = button.dataset.id;
+
+    document.querySelectorAll('.submenu-item').forEach(item => item.classList.remove('active'));
+    submenuItem.classList.add('active');
+
+    document.querySelectorAll('.right-menu-content').forEach(content => {
+      content.style.display = 'none';
+    });
+    const rightMenu = document.querySelector(`.right-menu-content[data-id="${id}"]`);
+    if (rightMenu) rightMenu.style.display = 'flex';
+
+    clearTimeout(hideTimeout);
+  };
+
+  button.addEventListener('mouseenter', () => {
+    if (hasHover) openRightMenu();
+  });
+
+  button.addEventListener('click', (e) => {
+    if (!hasHover) {
+      e.preventDefault(); // отключить переход по ссылке
+      openRightMenu();
+    }
+  });
+});
+
+
 
 
 // Открытие бургер меню
@@ -747,6 +818,20 @@ function handleScroll() {
 
   if (scrollTop <= 0) {
     header.classList.remove('header-scrolled-up');
+
+    // Убираем блюры в самом верху страницы
+    blurContainers.forEach(container => {
+      container.style.filter = 'none';
+      container.style.cursor = '';
+    });
+
+    underHeaders.forEach(header => {
+      header.style.filter = 'none';
+      header.style.cursor = '';
+    });
+
+    // Закрываем всё при достижении самого верха
+    resetHeaderState();
   }
 
   lastScrollTop = scrollTop;
@@ -781,7 +866,7 @@ function handleScrollDown() {
 
   header.style.backgroundColor = 'transparent';
   underHeaders.forEach(el => el.style.filter = 'none');
- underHeaders.forEach(el => el.style.cursor = '');
+  underHeaders.forEach(el => el.style.cursor = '');
   openCatalog.parentElement.classList.remove('active');
   isCatalogActive = false;
   menuNavigation.style.display = 'none';
