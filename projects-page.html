@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/projects.css">
     <link rel="icon" href="images/svg/favicon.svg" type="image/svg+xml">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <title>Дизайн клуб - Проекты</title>
 </head>
 <body>
@@ -36,1419 +39,1496 @@
                     </p>
                 </div>
             </main>
-        </section>
-    
-        <section class="main-page-top">
-                <header class="header-top">
-                    <div class="container">
-                        <div class="header-container fade-in">
-                            <a href="main-page.html" class="logo-link">
-                                <img src="images/svg/logo.svg" alt="Логотип" class="logo logo-img">
-                            </a>
-                
-                            <div class="header-right">
-                                <div class="nav-container">
-                                    <nav class="catalog-nav">
-                                        <ul>
-                                            <li>
-                                                <a class="open-catalog" href="#">КАТАЛОГ</a>
-                                                
-                                                <svg class="down-arrow" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
-                                                </svg>
-                                            </li>
-                                        </ul>
-                                    </nav>
+            </section>
+        
+            <!-- Шапка -->
+            <section class="main-page-top">
+                    <div class="bg-overlay"></div>
+                    <header class="header-top">
+                        <div class="container">
+                            <div class="header-container fade-in">
+                                <a href="main-page.html" class="logo-link">
+                                    <img src="images/svg/logo.svg" alt="Логотип" class="logo logo-img">
+                                </a>
                     
-                                    <nav class="main-nav">
-                                        <ul>
-                                            <li><a href="about-us-page.html">О НАС</a></li>
-                                            <li><a href="projects-page.html">ПРОЕКТЫ</a></li>
-                                            <li><a href="customers-page.html">ПОКУПАТЕЛЯМ</a></li>
-                                            <li><a href="reviews-page.html">ОТЗЫВЫ</a></li>
-                                            <li><a href="services-page.html">УСЛУГИ</a></li>
+                                <div class="header-right">
+                                    <div class="nav-container">
+                                        <nav class="catalog-nav">
+                                            <ul>
+                                                <li>
+                                                    <button class="open-catalog" href="#">КАТАЛОГ</button>
+                                                    
+                                                    <svg class="down-arrow" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
+                                                    </svg>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                        
+                                        <nav class="main-nav">
+                                            <ul>
+                                                <li><a href="about-us-page.html">О НАС</a></li>
+                                                <li><a href="projects-page.html">ПРОЕКТЫ</a></li>
+                                                <li><a href="customers-page.html">ПОКУПАТЕЛЯМ</a></li>
+                                                <li><a href="reviews-page.html">ОТЗЫВЫ</a></li>
+                                                <li><a href="services-page.html">УСЛУГИ</a></li>
+                                            </ul>
+                                        </nav>
+
+                                        <nav class="catalog-nav about-company-nav">
+                                            <ul>
+                                                <li class="about-toggle">
+                                                    <div class="about-header">
+                                                        <button class="open-catalog" href="#">О КОМПАНИИ</button>
+                                                        <svg class="down-arrow" width="14" height="8" viewBox="0 0 14 8" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1"
+                                                                stroke="currentColor" stroke-linecap="round"/>
+                                                        </svg>
+                                                    </div>
+                                                    <ul class="about-submenu">
+                                                        <li><a href="about-us-page.html">О нас</a></li>
+                                                        <li><a href="projects-page.html">Проекты</a></li>
+                                                        <li><a href="customers-page.html">Покупателям</a></li>
+                                                        <li><a href="reviews-page.html">Отзывы</a></li>
+                                                        <li><a href="services-page.html">Услуги</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                    
+                                    <div class="search-container">
+                                        <div class="search-bar">
+                                            <input id="search-input" type="text" placeholder="Искать">
+                                            
+                                            <button class="search-icon-button">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M19 19L15.85 15.85M17.6 11.3C17.6 14.7794 14.7794 17.6 11.3 17.6C7.82061 17.6 5 14.7794 5 11.3C5 7.82061 7.82061 5 11.3 5C14.7794 5 17.6 7.82061 17.6 11.3Z" stroke="#EDE4D7" stroke-linecap="round"/>
+                                                </svg>
+
+                                            </button>
+                                        </div>
+                    
+                                        <div class="search-items">
+                                            <div class="search-item">
+                                                <a href="product-page.html" class="zoom-image">
+                                                    <img src="images/main-page/product-card-crane.png" alt="">
+                                                </a>
+                                            
+                                                <div class="search-item-info">
+                                                    <a href="product-page.html">Раковина Ornella</a>
+                    
+                                                    <a href="product-page.html">27 000 ₽</a>
+                                                </div>
+                                            </div>
+                    
+                                            <hr class="line">
+                    
+                                            <div class="search-item">
+                                                <a href="product-page.html" class="zoom-image">
+                                                    <img src="images/main-page/product-card-crane.png" alt="">
+                                                </a>
+                                            
+                                                <div class="search-item-info">
+                                                    <a href="product-page.html">Раковина Ornella</a>
+                    
+                                                    <a href="product-page.html">27 000 ₽</a>
+                                                </div>
+                                            </div>
+                    
+                                            <hr class="line">
+                    
+                                            <div class="search-item">
+                                                <a href="product-page.html" class="zoom-image">
+                                                    <img src="images/main-page/product-card-crane.png" alt="">
+                                                </a>
+                                            
+                                                <div class="search-item-info">
+                                                    <a href="product-page.html">Раковина Ornella</a>
+                    
+                                                    <a href="product-page.html">27 000 ₽</a>
+                                                </div>
+                                            </div>
+                    
+                                            <hr class="line">
+                    
+                                            <div class="all-result-link">
+                                                <h4><a href="search-result-page.html">Все результаты</a></h4>
+                                                
+                                                <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M1 1L6.68539 6.29289C7.10487 6.68342 7.10487 7.31658 6.68539 7.70711L1 13" stroke="#EDE4D7" stroke-linecap="round"/>
+                                                </svg>    
+                                            </div>
+                                        </div>
+                                    </div>
+                    
+                                    <div class="contact-header">
+                                        <a href="cart-page.html">КОРЗИНА (1)</a>
+                    
+                                        <button class="contact-button" id="openModalBtn">
+                                            СВЯЗАТЬСЯ С НАМИ
+                                            <img src="images/svg/contact.svg" alt="Связаться" class="contact-icon">
+                                        </button>
+                                    </div>
+
+                                    <div class="burger-menu">
+                                        <button id="openBurgerMenu">
+                                            <svg class="burger-icon" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <rect x="5" y="6.5" width="26" height="1" fill="#EDE4D7"/>
+                                                <rect x="5" y="15.5" width="26" height="1" fill="#EDE4D7"/>
+                                                <rect x="5" y="24.5" width="26" height="1" fill="#EDE4D7"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+            
+                    <div class="menu-navigation-relative">
+                        <div class="menu-navigation">
+                            <hr class="line">
+                            <div class="menu-container">
+                
+                                <div class="left-menu">
+                                    <nav>
+                                        <ul class="catalog-up-nav">
+                                            <!-- Меню Сантехника -->
+                                            <li class="menu-item" data-category="plumbing">
+                                                <button class="menu-toggle" data-category="plumbing">
+                                                    Сантехника
+                                                    <svg class="menu-arrow" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
+                                                    </svg>     
+                                                </button>
+
+                                                <ul class="submenu" data-category="plumbing">
+                                                    <li><a href="catalog-page.html">Инсталляции и клавиши</a></li>
+                                                    <li><a href="catalog-page.html">Унитазы и биде</a></li>
+                                                    <li><a href="catalog-page.html">Раковины</a></li>
+                                                    <li><a href="catalog-page.html">Биде</a></li>
+                                                    
+                                                    <li class="submenu-items">
+                                                        <div class="submenu-item">
+                                                            <a href="#" class="menu-button" data-id="shower-enclosures">
+                                                                Душевые ограждения и поддоны
+                                                            </a>
+                                                            
+                                                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
+                                                            </svg>
+                                                        </div>
+                                                    </li>
+                        
+                                                    <li class="submenu-items">
+                                                        <div class="submenu-item">
+                                                            <a href="#" class="menu-button" data-id="mixers">
+                                                                Смесители
+                                                            </a>
+                                                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
+                                                            </svg>
+                                                        </div>
+                                                    </li>
+                        
+                                                    <li class="submenu-items">
+                                                        <div class="submenu-item">
+                                                            <a href="#" class="menu-button" data-id="shower-program">
+                                                                Душевая программа
+                                                            </a>
+                                                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
+                                                            </svg>
+                                                        </div>
+                                                    </li>
+                        
+                                                    <li class="submenu-items">
+                                                        <div class="submenu-item">
+                                                            <a href="#" class="menu-button" data-id="mixers">
+                                                                Смесители
+                                                            </a>
+                                                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
+                                                            </svg>
+                                                        </div>
+                                                    </li>
+                        
+                                                    <li><a href="catalog-page.html">Аксессуары и декор</a></li>
+                                                    <li><a href="catalog-page.html">Дополнительные комплектующие</a></li>
+                                                </ul>
+                                            </li>
+                                        
+                                            <!-- Меню Мебель -->
+                                            <li class="menu-item" data-category="furniture">
+                                                <button class="menu-toggle" data-category="furniture">
+                                                    Мебель
+                                                    <svg class="menu-arrow" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
+                                                    </svg>     
+                                                </button>
+
+                                                <ul class="submenu" data-category="furniture">
+                                                    <li><a href="catalog-page.html">Шкафы и стеллажи</a></li>
+                                                    <li><a href="catalog-page.html">Тумбы и комоды</a></li>
+                                                    <li><a href="catalog-page.html">Кровати</a></li>
+                                                    <li><a href="catalog-page.html">Столы и стулья</a></li>
+                                                    <li><a href="catalog-page.html">Диваны</a></li>
+                                                    <li><a href="catalog-page.html">Мебель для ванной</a></li>
+                                                </ul>
+                                            </li>
                                         </ul>
                                     </nav>
                                 </div>
                 
-                                <div class="search-container">
-                                    <div class="search-bar">
-                                        <input id="search-input" type="text" placeholder="Искать">
-                                        <button class="search-icon-button">
-                                            <img src="images/svg/search.svg" alt="Поиск" class="search-icon">
-                                        </button>
-                                    </div>
-                
-                                    <div class="search-items">
-                                        <div class="search-item">
-                                            <a href="product-page.html" class="zoom-image">
-                                                <img src="images/main-page/product-card-crane.png" alt="">
-                                            </a>
+                                <div class="right-menu">
+                                    <div class="right-menu-content" data-id="shower-enclosures">
+                                        <a href="catalog-page.html">Душевые уголки, двери и перегородки</a>
+                                        <a href="catalog-page.html">Поддоны</a>
+                                        <a href="catalog-page.html">Шторки для ванны</a>
                                         
-                                            <div class="search-item-info">
-                                                <a href="product-page.html">Раковина Ornella</a>
-                
-                                                <a href="product-page.html">27 000 ₽</a>
-                                            </div>
-                                        </div>
-                
-                                        <hr class="line">
-                
-                                        <div class="search-item">
-                                            <a href="product-page.html" class="zoom-image">
-                                                <img src="images/main-page/product-card-crane.png" alt="">
-                                            </a>
-                                        
-                                            <div class="search-item-info">
-                                                <a href="product-page.html">Раковина Ornella</a>
-                
-                                                <a href="product-page.html">27 000 ₽</a>
-                                            </div>
-                                        </div>
-                
-                                        <hr class="line">
-                
-                                        <div class="search-item">
-                                            <a href="product-page.html" class="zoom-image">
-                                                <img src="images/main-page/product-card-crane.png" alt="">
-                                            </a>
-                                        
-                                            <div class="search-item-info">
-                                                <a href="product-page.html">Раковина Ornella</a>
-                
-                                                <a href="product-page.html">27 000 ₽</a>
-                                            </div>
-                                        </div>
-                
-                                        <hr class="line">
-                
-                                        <div class="all-result-link">
-                                            <h4><a href="search-result-page.html">Все результаты</a></h4>
+                                        <div class="all-categories-link">
+                                            <a href="catalog-page.html">Все товары категории</a>
                                             
-                                            <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1 1L6.68539 6.29289C7.10487 6.68342 7.10487 7.31658 6.68539 7.70711L1 13" stroke="#EDE4D7" stroke-linecap="round"/>
+                                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
+                                            </svg>    
+                                        </div>
+                                    </div>
+
+                                    <div class="right-menu-content" data-id="mixers">
+                                        <a href="catalog-page.html">Для раковины</a>
+                                        <a href="catalog-page.html">Для ванны</a>
+                                        <a href="catalog-page.html">Для душа</a>
+                                        <div class="all-categories-link">
+                                            <a href="catalog-page.html">Все товары категории</a>
+                                            
+                                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
+                                            </svg>    
+                                        </div>
+                                    </div>
+
+                                    <div class="right-menu-content" data-id="shower-program">
+                                        <a href="catalog-page.html">Верхний душ</a>
+                                        <a href="catalog-page.html">Душевая система</a>
+                                        <a href="catalog-page.html">Гигиенический душ</a>
+                                        <a href="catalog-page.html">Лейки и держатели</a>
+                                        <div class="all-categories-link">
+                                            <a href="catalog-page.html">Все товары категории</a>
+                                            
+                                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
                                             </svg>    
                                         </div>
                                     </div>
                                 </div>
-                
-                                <div class="contact-header">
-                                    <a href="cart-page.html">КОРЗИНА (1)</a>
-                
-                                    <button class="contact-button" id="openModalBtn">
-                                        СВЯЗАТЬСЯ С НАМИ
-                                        <img src="images/svg/contact.svg" alt="Связаться" class="contact-icon">
-                                    </button>
-                                </div>
-
-                                <div class="burger-menu">
-                                    <button id="openBurgerMenu">
-                                        <svg class="burger-icon" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <rect x="5" y="6.5" width="26" height="1" fill="#EDE4D7"/>
-                                            <rect x="5" y="15.5" width="26" height="1" fill="#EDE4D7"/>
-                                            <rect x="5" y="24.5" width="26" height="1" fill="#EDE4D7"/>
-                                        </svg>
-                                    </button>
-                                </div>
                             </div>
                         </div>
                     </div>
-                </header>
+            </section>
         
-                <div class="menu-navigation-relative">
-                    <div class="menu-navigation">
-                        <hr class="line">
-                        <div class="menu-navigation-container">
-            
-                            <div class="left-menu">
-                                <nav>
-                                <ul>
-                                    <!-- Меню Сантехника -->
-                                    <li class="menu-item-plumbing">
-                                    <a href="#" class="menu-toggle-plumbing">
-                                        Сантехника
-                                        <svg class="menu-plumbing-arrow" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
-                                        </svg>     
-                                    </a>
-                                    <ul class="submenu-plumbing">
-                                        <li><a href="catalog-page.html">Инсталляции и клавиши</a></li>
-                                        <li><a href="catalog-page.html">Унитазы и биде</a></li>
-                                        <li><a href="catalog-page.html">Раковины</a></li>
-                                        <li><a href="catalog-page.html">Биде</a></li>
-                                        
-                                        <li class="submenu-items">
-                                            <div class="submenu-item">
-                                                <a href="#" class="shower-enclosures-and-pallets">
-                                                    Душевые ограждения и поддоны
-                                                </a>
-                                                
-                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
-                                                </svg>
+            <div class="blur-container">
+                <div class="sections">
+                    <section class="expansion-up">
+                        <div class="blur-container">
+                        </div>
+                    </section>
+                
+                    <section class="projects-section project-desktop">
+                        <div class="projects-section-container fade-in">
+                            <div class="blur-container">
+                                <div class="sticky-nav">
+                                    <div class="projects-navigation">
+                                        <div class="projects-nav">
+                                            <button data-target="#complexes">комлексы</button>
+                                        </div>
+                            
+                                        <div class="projects-nav">
+                                            <button data-target="#dining-areas">обеденные зоны</button>
+                                        </div>
+                            
+                                        <div class="projects-nav">
+                                            <button data-target="#tables-and-chairs">столы и стулья</button>
+                                        </div>
+                            
+                                        <div class="projects-nav">
+                                            <button>ванны</button>
+                                        </div>
+                            
+                                        <div class="projects-nav">
+                                            <button>санузел</button>
+                                        </div>
+                            
+                                        <div class="projects-nav">
+                                            <button>гостиная</button>
+                                        </div>
+                            
+                                        <div class="projects-nav">
+                                            <button>декор</button>
+                                        </div>
+
+                                        <div class="projects-nav">
+                                            <button>декор</button>
+                                        </div>
+
+                                        <div class="projects-nav">
+                                            <button>декор</button>
+                                        </div>
+
+                                        <div class="projects-nav">
+                                            <button>декор</button>
+                                        </div>
+                                    </div>            
+                                </div>
+                    
+                                <div class="projects-content-container" id="complexes">
+                                    <div class="reveal-mask">
+                                        <h1 class="project-content-title">
+                                            Комплексы
+                                        </h1>
+                                    </div>
+                    
+                                    <hr class="line fade-in">
+                    
+                                    <div class="project-content fade-in">
+                                        <div class="project-content-first">
+                                            <p>Гостиная</p>
+                                        </div>
+                    
+                                        <div class="project-content-second">
+                                            <div class="project-content-second-left">
+                                                <img src="images/projects/image-1.png" alt="">
                                             </div>
-                                        </li>
-            
-                                        <li class="submenu-items">
-                                            <div class="submenu-item">
-                                                <a href="#" class="plumbing">
-                                                    Смесители
-                                                </a>
-                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
-                                                </svg>
+                                            
+                                            <div class="project-content-second-right">
+                                                <h1 class="project-title">
+                                                    Стеллаж и тумба Brand<br> 
+                                                    в интерьере гостиной
+                                                </h1>
+                    
+                                                <p class="project-desc">
+                                                    Посмотрите проекты, в которых наша
+                                                    мебель стала неотъемлемой частью 
+                                                    уникальных интерьерных решений. Мы 
+                                                    внимательно учитывали пожелания
+                                                </p>
                                             </div>
-                                        </li>
-            
-                                        <li class="submenu-items">
-                                            <div class="submenu-item">
-                                                <a href="#" class="shower-program">
-                                                    Душевая программа
-                                                </a>
-                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
-                                                </svg>
+                                        </div>
+                    
+                                        <div class="project-content-last">
+                                            <div class="project-content-last-up">
+                                                <p>2024</p>
                                             </div>
-                                        </li>
-            
-                                        <li class="submenu-items">
-                                            <div class="submenu-item">
-                                                <a href="#" class="plumbing">
-                                                    Смесители
+                    
+                                            <div class="project-content-last-down">
+                                                <a href="project-info-page.html">
+                                                    <button>открыть проект</button>
                                                 </a>
-                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
-                                                </svg>
+                                            
+                                                <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 5.90039)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 12.5)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 13 7.36719)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 6.39844 7.36719)" fill="#EDE4D7"/>
+                                                </svg>    
                                             </div>
-                                        </li>
-            
-                                        <li><a href="catalog-page.html">Аксессуары и декор</a></li>
-                                        <li><a href="catalog-page.html">Дополнительные комплектующие</a></li>
-                                    </ul>
-                                    </li>
-                                
-                                    <!-- Меню Мебель -->
-                                    <li class="menu-item-furniture">
-                                        <a href="#" class="menu-toggle-furniture">
-                                            Мебель
-                                            <svg class="menu-plumbing-arrow" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
-                                            </svg>     
-                                        </a>
-                                    <ul class="submenu-furniture">
-                                        <li><a href="catalog-page.html">Шкафы и стеллажи</a></li>
-                                        <li><a href="catalog-page.html">Тумбы и комоды</a></li>
-                                        <li><a href="catalog-page.html">Кровати</a></li>
-                                        <li><a href="catalog-page.html">Столы и стулья</a></li>
-                                        <li><a href="catalog-page.html">Диваны</a></li>
-                                        <li><a href="catalog-page.html">Мебель для ванной</a></li>
-                                    </ul>
-                                    </li>
-                                </ul>
-                                </nav>
-                            </div>
-            
-                            <div class="right-menu">
-                                <div class="right-menu-content">
-                                    <a href="#">Душевые уголки, двери и перегородки</a>
-                                    <a href="#">Поддоны</a>
-                                    <a href="#">Шторки для ванны</a>
-                                    <div class="all-categories-link">
-                                        <a href="#">Все товары категории</a>
-                                        
-                                        <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
-                                        </svg>    
+                                        </div>
+                                    </div>
+                    
+                                    <hr class="line fade-in">
+                    
+                                    <div class="project-content fade-in">
+                                        <div class="project-content-first">
+                                            <p>Гостиная</p>
+                                        </div>
+                    
+                                        <div class="project-content-second">
+                                            <div class="project-content-second-left">
+                                                <img src="images/projects/image-2.png" alt="">
+                                            </div>
+                                            
+                                            <div class="project-content-second-right">
+                                                <h1 class="project-title">
+                                                    Стеллаж и тумба Brand<br> 
+                                                    в интерьере гостиной
+                                                </h1>
+                    
+                                                <p class="project-desc">
+                                                    Посмотрите проекты, в которых наша 
+                                                    мебель стала неотъемлемой частью 
+                                                    уникальных интерьерных решений. Мы 
+                                                    внимательно учитывали пожелания
+                                                </p>
+                                            </div>
+                                        </div>
+                    
+                                        <div class="project-content-last">
+                                            <div class="project-content-last-up">
+                                                <p>2024</p>
+                                            </div>
+                    
+                                            <div class="project-content-last-down">
+                                                <a href="project-info-page.html">
+                                                    <button>открыть проект</button>
+                                                </a>
+                                            
+                                                <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 5.90039)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 12.5)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 13 7.36719)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 6.39844 7.36719)" fill="#EDE4D7"/>
+                                                </svg>    
+                                            </div>
+                                        </div>
+                                    </div>
+                    
+                                    <hr class="line fade-in">
+                    
+                                    <div class="project-content fade-in">
+                                        <div class="project-content-first">
+                                            <p>Гостиная</p>
+                                        </div>
+                    
+                                        <div class="project-content-second">
+                                            <div class="project-content-second-left">
+                                                <img src="images/projects/image-3.png" alt="">
+                                            </div>
+                                            
+                                            <div class="project-content-second-right">
+                                                <h1 class="project-title">
+                                                    Стеллаж и тумба Brand<br> 
+                                                    в интерьере гостиной
+                                                </h1>
+                    
+                                                <p class="project-desc">
+                                                    Посмотрите проекты, в которых наша
+                                                    мебель стала неотъемлемой частью
+                                                    уникальных интерьерных решений. Мы
+                                                    внимательно учитывали пожелания
+                                                </p>
+                                            </div>
+                                        </div>
+                    
+                                        <div class="project-content-last">
+                                            <div class="project-content-last-up">
+                                                <p>2024</p>
+                                            </div>
+                    
+                                            <div class="project-content-last-down">
+                                                <a href="project-info-page.html">
+                                                    <button>открыть проект</button>
+                                                </a>
+                                            
+                                                <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 5.90039)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 12.5)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 13 7.36719)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 6.39844 7.36719)" fill="#EDE4D7"/>
+                                                </svg>    
+                                            </div>
+                                        </div>
+                                    </div>
+                    
+                                    <hr class="line fade-in">
+                    
+                                    <div class="project-content fade-in">
+                                        <div class="project-content-first">
+                                            <p>Гостиная</p>
+                                        </div>
+                    
+                                        <div class="project-content-second">
+                                            <div class="project-content-second-left">
+                                                <img src="images/projects/image-4.png" alt="">
+                                            </div>
+                                            
+                                            <div class="project-content-second-right">
+                                                <h1 class="project-title">
+                                                    Стеллаж и тумба Brand<br> 
+                                                    в интерьере гостиной
+                                                </h1>
+                    
+                                                <p class="project-desc">
+                                                    Посмотрите проекты, в которых наша 
+                                                    мебель стала неотъемлемой частью
+                                                    уникальных интерьерных решений. Мы
+                                                    внимательно учитывали пожелания
+                                                </p>
+                                            </div>
+                                        </div>
+                    
+                                        <div class="project-content-last">
+                                            <div class="project-content-last-up">
+                                                <p>2024</p>
+                                            </div>
+                    
+                                            <div class="project-content-last-down">
+                                                <a href="project-info-page.html">
+                                                    <button>открыть проект</button>
+                                                </a>
+                                            
+                                                <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 5.90039)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 12.5)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 13 7.36719)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 6.39844 7.36719)" fill="#EDE4D7"/>
+                                                </svg>    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="projects-content-container" id="dining-areas">
+                                    <div class="reveal-mask">
+                                            <h1 class="project-content-title little-up">
+                                            Обеденные зоны
+                                        </h1>
+                                    </div>
+                    
+                                    <hr class="line fade-in">
+                    
+                                    <div class="project-content fade-in">
+                                        <div class="project-content-first">
+                                            <p>Гостиная</p>
+                                        </div>
+                    
+                                        <div class="project-content-second">
+                                            <div class="project-content-second-left">
+                                                <img src="images/projects/image-1.png" alt="">
+                                            </div>
+                                            
+                                            <div class="project-content-second-right">
+                                                <h1 class="project-title">
+                                                    Стеллаж и тумба Brand<br> 
+                                                    в интерьере гостиной
+                                                </h1>
+                    
+                                                <p class="project-desc">
+                                                    Посмотрите проекты, в которых наша 
+                                                    мебель стала неотъемлемой частью
+                                                    уникальных интерьерных решений. Мы 
+                                                    внимательно учитывали пожелания
+                                                </p>
+                                            </div>
+                                        </div>
+                    
+                                        <div class="project-content-last">
+                                            <div class="project-content-last-up">
+                                                <p>2024</p>
+                                            </div>
+                    
+                                            <div class="project-content-last-down">
+                                                <a href="project-info-page.html">
+                                                    <button>открыть проект</button>
+                                                </a>
+                                            
+                                                <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 5.90039)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 12.5)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 13 7.36719)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 6.39844 7.36719)" fill="#EDE4D7"/>
+                                                </svg>    
+                                            </div>
+                                        </div>
+                                    </div>
+                    
+                                    <hr class="line fade-in">
+                    
+                                    <div class="project-content fade-in">
+                                        <div class="project-content-first">
+                                            <p>Гостиная</p>
+                                        </div>
+                    
+                                        <div class="project-content-second">
+                                            <div class="project-content-second-left">
+                                                <img src="images/projects/image-2.png" alt="">
+                                            </div>
+                                            
+                                            <div class="project-content-second-right">
+                                                <h1 class="project-title">
+                                                    Стеллаж и тумба Brand<br> 
+                                                    в интерьере гостиной
+                                                </h1>
+                    
+                                                <p class="project-desc">
+                                                    Посмотрите проекты, в которых наша 
+                                                    мебель стала неотъемлемой частью 
+                                                    уникальных интерьерных решений. Мы 
+                                                    внимательно учитывали пожелания
+                                                </p>
+                                            </div>
+                                        </div>
+                    
+                                        <div class="project-content-last">
+                                            <div class="project-content-last-up">
+                                                <p>2024</p>
+                                            </div>
+                    
+                                            <div class="project-content-last-down">
+                                                <a href="project-info-page.html">
+                                                    <button>открыть проект</button>
+                                                </a>
+                                            
+                                                <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 5.90039)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 12.5)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 13 7.36719)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 6.39844 7.36719)" fill="#EDE4D7"/>
+                                                </svg>    
+                                            </div>
+                                        </div>
+                                    </div>
+                    
+                                    <hr class="line fade-in">
+                    
+                                    <div class="project-content fade-in">
+                                        <div class="project-content-first">
+                                            <p>Гостиная</p>
+                                        </div>
+                    
+                                        <div class="project-content-second">
+                                            <div class="project-content-second-left">
+                                                <img src="images/projects/image-3.png" alt="">
+                                            </div>
+                                            
+                                            <div class="project-content-second-right">
+                                                <h1 class="project-title">
+                                                    Стеллаж и тумба Brand<br> 
+                                                    в интерьере гостиной
+                                                </h1>
+                    
+                                                <p class="project-desc">
+                                                    Посмотрите проекты, в которых наша> 
+                                                    мебель стала неотъемлемой частью
+                                                    уникальных интерьерных решений. Мы 
+                                                    внимательно учитывали пожелания
+                                                </p>
+                                            </div>
+                                        </div>
+                    
+                                        <div class="project-content-last">
+                                            <div class="project-content-last-up">
+                                                <p>2024</p>
+                                            </div>
+                    
+                                            <div class="project-content-last-down">
+                                                <a href="project-info-page.html">
+                                                    <button>открыть проект</button>
+                                                </a>
+                                            
+                                                <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 5.90039)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 12.5)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 13 7.36719)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 6.39844 7.36719)" fill="#EDE4D7"/>
+                                                </svg>    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                    
+                                <div class="projects-content-container" id="tables-and-chairs">
+                                    <div class="reveal-mask">
+                                        <h1 class="project-content-title little-up">
+                                            Столы и стулья
+                                        </h1>
+                                    </div>
+                    
+                                    <hr class="line fade-in">
+                    
+                                    <div class="project-content fade-in">
+                                        <div class="project-content-first">
+                                            <p>Гостиная</p>
+                                        </div>
+                    
+                                        <div class="project-content-second">
+                                            <div class="project-content-second-left">
+                                                <img src="images/projects/image-1.png" alt="">
+                                            </div>
+                                            
+                                            <div class="project-content-second-right">
+                                                <h1 class="project-title">
+                                                    Стеллаж и тумба Brand<br> 
+                                                    в интерьере гостиной
+                                                </h1>
+                    
+                                                <p class="project-desc">
+                                                    Посмотрите проекты, в которых наша 
+                                                    мебель стала неотъемлемой частью 
+                                                    уникальных интерьерных решений. Мы 
+                                                    внимательно учитывали пожелания
+                                                </p>
+                                            </div>
+                                        </div>
+                    
+                                        <div class="project-content-last">
+                                            <div class="project-content-last-up">
+                                                <p>2024</p>
+                                            </div>
+                    
+                                            <div class="project-content-last-down">
+                                                <a href="project-info-page.html">
+                                                    <button>открыть проект</button>
+                                                </a>
+                                            
+                                                <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 5.90039)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 12.5)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 13 7.36719)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 6.39844 7.36719)" fill="#EDE4D7"/>
+                                                </svg>    
+                                            </div>
+                                        </div>
+                                    </div>
+                    
+                                    <hr class="line fade-in">
+                    
+                                    <div class="project-content fade-in">
+                                        <div class="project-content-first">
+                                            <p>Гостиная</p>
+                                        </div>
+                    
+                                        <div class="project-content-second">
+                                            <div class="project-content-second-left">
+                                                <img src="images/projects/image-2.png" alt="">
+                                            </div>
+                                            
+                                            <div class="project-content-second-right">
+                                                <h1 class="project-title">
+                                                    Стеллаж и тумба Brand<br> 
+                                                    в интерьере гостиной
+                                                </h1>
+                    
+                                                <p class="project-desc">
+                                                    Посмотрите проекты, в которых наша 
+                                                    мебель стала неотъемлемой частью
+                                                    уникальных интерьерных решений. Мы 
+                                                    внимательно учитывали пожелания
+                                                </p>
+                                            </div>
+                                        </div>
+                    
+                                        <div class="project-content-last">
+                                            <div class="project-content-last-up">
+                                                <p>2024</p>
+                                            </div>
+                    
+                                            <div class="project-content-last-down">
+                                                <a href="project-info-page.html">
+                                                    <button>открыть проект</button>
+                                                </a>
+                                            
+                                                <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 5.90039)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 12.5)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 13 7.36719)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 6.39844 7.36719)" fill="#EDE4D7"/>
+                                                </svg>    
+                                            </div>
+                                        </div>
+                                    </div>
+                    
+                                    <hr class="line fade-in">
+                    
+                                    <div class="project-content fade-in">
+                                        <div class="project-content-first">
+                                            <p>Гостиная</p>
+                                        </div>
+                    
+                                        <div class="project-content-second">
+                                            <div class="project-content-second-left">
+                                                <img src="images/projects/image-3.png" alt="">
+                                            </div>
+                                            
+                                            <div class="project-content-second-right">
+                                                <h1 class="project-title">
+                                                    Стеллаж и тумба Brand<br> 
+                                                    в интерьере гостиной
+                                                </h1>
+                    
+                                                <p class="project-desc">
+                                                    Посмотрите проекты, в которых наша 
+                                                    мебель стала неотъемлемой частью 
+                                                    уникальных интерьерных решений. Мы 
+                                                    внимательно учитывали пожелания
+                                                </p>
+                                            </div>
+                                        </div>
+                    
+                                        <div class="project-content-last">
+                                            <div class="project-content-last-up">
+                                                <p>2024</p>
+                                            </div>
+                    
+                                            <div class="project-content-last-down">
+                                                <a href="project-info-page.html">
+                                                    <button>открыть проект</button>
+                                                </a>
+                                            
+                                                <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 5.90039)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 12.5)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 13 7.36719)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 6.39844 7.36719)" fill="#EDE4D7"/>
+                                                </svg>    
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </section>
-    
-        <section class="expansion-up">
-            <div class="blur-container">
-            </div>
-        </section>
-    
-        <section class="projects-section project-desktop">
-            <div class="projects-section-container fade-in">
-                <div class="blur-container">
-                    <div class="sticky-nav ">
-                        <div class="projects-navigation">
-                            <div class="projects-nav">
-                                <button data-target="#complexes">комлексы</button>
-                            </div>
-                
-                            <div class="projects-nav">
-                                <button data-target="#dining-areas">обеденные зоны</button>
-                            </div>
-                
-                            <div class="projects-nav">
-                                <button data-target="#tables-and-chairs">столы и стулья</button>
-                            </div>
-                
-                            <div class="projects-nav">
-                                <button>ванны</button>
-                            </div>
-                
-                            <div class="projects-nav">
-                                <button>санузел</button>
-                            </div>
-                
-                            <div class="projects-nav">
-                                <button>гостиная</button>
-                            </div>
-                
-                            <div class="projects-nav">
-                                <button>декор</button>
-                            </div>
+                    </section>
 
-                            <div class="projects-nav">
-                                <button>декор</button>
-                            </div>
+                    <section class="projects-section project-mobile">
+                        <div class="projects-section-container">
+                            <div class="blur-container">
+                                <div class="sticky-nav">
+                                    <div class="projects-navigation">
+                                        <div class="projects-nav">
+                                            <button data-target="#complexes">комлексы</button>
+                                        </div>
+                            
+                                        <div class="projects-nav">
+                                            <button data-target="#dining-areas">обеденные зоны</button>
+                                        </div>
+                            
+                                        <div class="projects-nav">
+                                            <button data-target="#tables-and-chairs">столы и стулья</button>
+                                        </div>
+                            
+                                        <div class="projects-nav">
+                                            <button>ванны</button>
+                                        </div>
+                            
+                                        <div class="projects-nav">
+                                            <button>санузел</button>
+                                        </div>
+                            
+                                        <div class="projects-nav">
+                                            <button>гостиная</button>
+                                        </div>
+                            
+                                        <div class="projects-nav">
+                                            <button>декор</button>
+                                        </div>
 
-                            <div class="projects-nav">
-                                <button>декор</button>
-                            </div>
+                                        <div class="projects-nav">
+                                            <button>декор</button>
+                                        </div>
 
-                            <div class="projects-nav">
-                                <button>декор</button>
-                            </div>
-                        </div>            
-                    </div>
-        
-                    <div class="projects-content-container" id="complexes">
-                        <div class="reveal-mask">
-                            <h1 class="project-content-title">
-                                Комплексы
-                            </h1>
-                        </div>
-        
-                        <hr class="line fade-in">
-        
-                        <div class="project-content fade-in">
-                            <div class="project-content-first">
-                                <p>Гостиная</p>
-                            </div>
-        
-                            <div class="project-content-second">
-                                <div class="project-content-second-left">
-                                    <img src="images/projects/image-1.png" alt="">
+                                        <div class="projects-nav">
+                                            <button>декор</button>
+                                        </div>
+
+                                        <div class="projects-nav">
+                                            <button>декор</button>
+                                        </div>
+                                    </div>            
                                 </div>
-                                
-                                <div class="project-content-second-right">
-                                    <h1 class="project-title">
-                                        Стеллаж и тумба Brand<br> 
-                                        в интерьере гостиной
-                                    </h1>
-        
-                                    <p class="project-desc">
-                                        Посмотрите проекты, в которых наша
-                                        мебель стала неотъемлемой частью 
-                                        уникальных интерьерных решений. Мы 
-                                        внимательно учитывали пожелания
-                                    </p>
-                                </div>
-                            </div>
-        
-                            <div class="project-content-last">
-                                <div class="project-content-last-up">
-                                    <p>2024</p>
-                                </div>
-        
-                                <div class="project-content-last-down">
-                                    <a href="project-info-page.html">
-                                        <button>открыть проект</button>
-                                    </a>
-                                
-                                    <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 5.90039)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 12.5)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 13 7.36719)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 6.39844 7.36719)" fill="#EDE4D7"/>
-                                    </svg>    
-                                </div>
-                            </div>
-                        </div>
-        
-                        <hr class="line fade-in">
-        
-                        <div class="project-content fade-in">
-                            <div class="project-content-first">
-                                <p>Гостиная</p>
-                            </div>
-        
-                            <div class="project-content-second">
-                                <div class="project-content-second-left">
-                                    <img src="images/projects/image-2.png" alt="">
-                                </div>
-                                
-                                <div class="project-content-second-right">
-                                    <h1 class="project-title">
-                                        Стеллаж и тумба Brand<br> 
-                                        в интерьере гостиной
-                                    </h1>
-        
-                                    <p class="project-desc">
-                                        Посмотрите проекты, в которых наша 
-                                        мебель стала неотъемлемой частью 
-                                        уникальных интерьерных решений. Мы 
-                                        внимательно учитывали пожелания
-                                    </p>
-                                </div>
-                            </div>
-        
-                            <div class="project-content-last">
-                                <div class="project-content-last-up">
-                                    <p>2024</p>
-                                </div>
-        
-                                <div class="project-content-last-down">
-                                    <a href="project-info-page.html">
-                                        <button>открыть проект</button>
-                                    </a>
-                                
-                                    <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 5.90039)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 12.5)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 13 7.36719)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 6.39844 7.36719)" fill="#EDE4D7"/>
-                                    </svg>    
-                                </div>
-                            </div>
-                        </div>
-        
-                        <hr class="line fade-in">
-        
-                        <div class="project-content fade-in">
-                            <div class="project-content-first">
-                                <p>Гостиная</p>
-                            </div>
-        
-                            <div class="project-content-second">
-                                <div class="project-content-second-left">
-                                    <img src="images/projects/image-3.png" alt="">
-                                </div>
-                                
-                                <div class="project-content-second-right">
-                                    <h1 class="project-title">
-                                        Стеллаж и тумба Brand<br> 
-                                        в интерьере гостиной
-                                    </h1>
-        
-                                    <p class="project-desc">
-                                        Посмотрите проекты, в которых наша
-                                        мебель стала неотъемлемой частью
-                                        уникальных интерьерных решений. Мы
-                                        внимательно учитывали пожелания
-                                    </p>
-                                </div>
-                            </div>
-        
-                            <div class="project-content-last">
-                                <div class="project-content-last-up">
-                                    <p>2024</p>
-                                </div>
-        
-                                <div class="project-content-last-down">
-                                    <a href="project-info-page.html">
-                                        <button>открыть проект</button>
-                                    </a>
-                                
-                                    <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 5.90039)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 12.5)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 13 7.36719)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 6.39844 7.36719)" fill="#EDE4D7"/>
-                                    </svg>    
-                                </div>
-                            </div>
-                        </div>
-        
-                        <hr class="line fade-in">
-        
-                        <div class="project-content fade-in">
-                            <div class="project-content-first">
-                                <p>Гостиная</p>
-                            </div>
-        
-                            <div class="project-content-second">
-                                <div class="project-content-second-left">
-                                    <img src="images/projects/image-4.png" alt="">
-                                </div>
-                                
-                                <div class="project-content-second-right">
-                                    <h1 class="project-title">
-                                        Стеллаж и тумба Brand<br> 
-                                        в интерьере гостиной
-                                    </h1>
-        
-                                    <p class="project-desc">
-                                        Посмотрите проекты, в которых наша 
-                                        мебель стала неотъемлемой частью
-                                        уникальных интерьерных решений. Мы
-                                        внимательно учитывали пожелания
-                                    </p>
-                                </div>
-                            </div>
-        
-                            <div class="project-content-last">
-                                <div class="project-content-last-up">
-                                    <p>2024</p>
-                                </div>
-        
-                                <div class="project-content-last-down">
-                                    <a href="project-info-page.html">
-                                        <button>открыть проект</button>
-                                    </a>
-                                
-                                    <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 5.90039)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 12.5)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 13 7.36719)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 6.39844 7.36719)" fill="#EDE4D7"/>
-                                    </svg>    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="projects-content-container" id="dining-areas">
-                        <div class="reveal-mask">
-                                <h1 class="project-content-title little-up">
-                                Обеденные зоны
-                            </h1>
-                        </div>
-        
-                        <hr class="line fade-in">
-        
-                        <div class="project-content fade-in">
-                            <div class="project-content-first">
-                                <p>Гостиная</p>
-                            </div>
-        
-                            <div class="project-content-second">
-                                <div class="project-content-second-left">
-                                    <img src="images/projects/image-1.png" alt="">
-                                </div>
-                                
-                                <div class="project-content-second-right">
-                                    <h1 class="project-title">
-                                        Стеллаж и тумба Brand<br> 
-                                        в интерьере гостиной
-                                    </h1>
-        
-                                    <p class="project-desc">
-                                        Посмотрите проекты, в которых наша 
-                                        мебель стала неотъемлемой частью
-                                        уникальных интерьерных решений. Мы 
-                                        внимательно учитывали пожелания
-                                    </p>
-                                </div>
-                            </div>
-        
-                            <div class="project-content-last">
-                                <div class="project-content-last-up">
-                                    <p>2024</p>
-                                </div>
-        
-                                <div class="project-content-last-down">
-                                    <a href="project-info-page.html">
-                                        <button>открыть проект</button>
-                                    </a>
-                                
-                                    <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 5.90039)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 12.5)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 13 7.36719)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 6.39844 7.36719)" fill="#EDE4D7"/>
-                                    </svg>    
-                                </div>
-                            </div>
-                        </div>
-        
-                        <hr class="line fade-in">
-        
-                        <div class="project-content fade-in">
-                            <div class="project-content-first">
-                                <p>Гостиная</p>
-                            </div>
-        
-                            <div class="project-content-second">
-                                <div class="project-content-second-left">
-                                    <img src="images/projects/image-2.png" alt="">
-                                </div>
-                                
-                                <div class="project-content-second-right">
-                                    <h1 class="project-title">
-                                        Стеллаж и тумба Brand<br> 
-                                        в интерьере гостиной
-                                    </h1>
-        
-                                    <p class="project-desc">
-                                        Посмотрите проекты, в которых наша 
-                                        мебель стала неотъемлемой частью 
-                                        уникальных интерьерных решений. Мы 
-                                        внимательно учитывали пожелания
-                                    </p>
-                                </div>
-                            </div>
-        
-                            <div class="project-content-last">
-                                <div class="project-content-last-up">
-                                    <p>2024</p>
-                                </div>
-        
-                                <div class="project-content-last-down">
-                                    <a href="project-info-page.html">
-                                        <button>открыть проект</button>
-                                    </a>
-                                
-                                    <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 5.90039)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 12.5)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 13 7.36719)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 6.39844 7.36719)" fill="#EDE4D7"/>
-                                    </svg>    
-                                </div>
-                            </div>
-                        </div>
-        
-                        <hr class="line fade-in">
-        
-                        <div class="project-content fade-in">
-                            <div class="project-content-first">
-                                <p>Гостиная</p>
-                            </div>
-        
-                            <div class="project-content-second">
-                                <div class="project-content-second-left">
-                                    <img src="images/projects/image-3.png" alt="">
-                                </div>
-                                
-                                <div class="project-content-second-right">
-                                    <h1 class="project-title">
-                                        Стеллаж и тумба Brand<br> 
-                                        в интерьере гостиной
-                                    </h1>
-        
-                                    <p class="project-desc">
-                                        Посмотрите проекты, в которых наша> 
-                                        мебель стала неотъемлемой частью
-                                        уникальных интерьерных решений. Мы 
-                                        внимательно учитывали пожелания
-                                    </p>
-                                </div>
-                            </div>
-        
-                            <div class="project-content-last">
-                                <div class="project-content-last-up">
-                                    <p>2024</p>
-                                </div>
-        
-                                <div class="project-content-last-down">
-                                    <a href="project-info-page.html">
-                                        <button>открыть проект</button>
-                                    </a>
-                                
-                                    <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 5.90039)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 12.5)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 13 7.36719)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 6.39844 7.36719)" fill="#EDE4D7"/>
-                                    </svg>    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-        
-                    <div class="projects-content-container" id="tables-and-chairs">
-                        <div class="reveal-mask">
-                            <h1 class="project-content-title little-up">
-                                Столы и стулья
-                            </h1>
-                        </div>
-        
-                        <hr class="line fade-in">
-        
-                        <div class="project-content fade-in">
-                            <div class="project-content-first">
-                                <p>Гостиная</p>
-                            </div>
-        
-                            <div class="project-content-second">
-                                <div class="project-content-second-left">
-                                    <img src="images/projects/image-1.png" alt="">
-                                </div>
-                                
-                                <div class="project-content-second-right">
-                                    <h1 class="project-title">
-                                        Стеллаж и тумба Brand<br> 
-                                        в интерьере гостиной
-                                    </h1>
-        
-                                    <p class="project-desc">
-                                        Посмотрите проекты, в которых наша 
-                                        мебель стала неотъемлемой частью 
-                                        уникальных интерьерных решений. Мы 
-                                        внимательно учитывали пожелания
-                                    </p>
-                                </div>
-                            </div>
-        
-                            <div class="project-content-last">
-                                <div class="project-content-last-up">
-                                    <p>2024</p>
-                                </div>
-        
-                                <div class="project-content-last-down">
-                                    <a href="project-info-page.html">
-                                        <button>открыть проект</button>
-                                    </a>
-                                
-                                    <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 5.90039)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 12.5)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 13 7.36719)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 6.39844 7.36719)" fill="#EDE4D7"/>
-                                    </svg>    
-                                </div>
-                            </div>
-                        </div>
-        
-                        <hr class="line fade-in">
-        
-                        <div class="project-content fade-in">
-                            <div class="project-content-first">
-                                <p>Гостиная</p>
-                            </div>
-        
-                            <div class="project-content-second">
-                                <div class="project-content-second-left">
-                                    <img src="images/projects/image-2.png" alt="">
-                                </div>
-                                
-                                <div class="project-content-second-right">
-                                    <h1 class="project-title">
-                                        Стеллаж и тумба Brand<br> 
-                                        в интерьере гостиной
-                                    </h1>
-        
-                                    <p class="project-desc">
-                                        Посмотрите проекты, в которых наша 
-                                        мебель стала неотъемлемой частью
-                                        уникальных интерьерных решений. Мы 
-                                        внимательно учитывали пожелания
-                                    </p>
-                                </div>
-                            </div>
-        
-                            <div class="project-content-last">
-                                <div class="project-content-last-up">
-                                    <p>2024</p>
-                                </div>
-        
-                                <div class="project-content-last-down">
-                                    <a href="project-info-page.html">
-                                        <button>открыть проект</button>
-                                    </a>
-                                
-                                    <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 5.90039)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 12.5)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 13 7.36719)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 6.39844 7.36719)" fill="#EDE4D7"/>
-                                    </svg>    
-                                </div>
-                            </div>
-                        </div>
-        
-                        <hr class="line fade-in">
-        
-                        <div class="project-content fade-in">
-                            <div class="project-content-first">
-                                <p>Гостиная</p>
-                            </div>
-        
-                            <div class="project-content-second">
-                                <div class="project-content-second-left">
-                                    <img src="images/projects/image-3.png" alt="">
-                                </div>
-                                
-                                <div class="project-content-second-right">
-                                    <h1 class="project-title">
-                                        Стеллаж и тумба Brand<br> 
-                                        в интерьере гостиной
-                                    </h1>
-        
-                                    <p class="project-desc">
-                                        Посмотрите проекты, в которых наша 
-                                        мебель стала неотъемлемой частью 
-                                        уникальных интерьерных решений. Мы 
-                                        внимательно учитывали пожелания
-                                    </p>
-                                </div>
-                            </div>
-        
-                            <div class="project-content-last">
-                                <div class="project-content-last-up">
-                                    <p>2024</p>
-                                </div>
-        
-                                <div class="project-content-last-down">
-                                    <a href="project-info-page.html">
-                                        <button>открыть проект</button>
-                                    </a>
-                                
-                                    <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 5.90039)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 7.13281 12.5)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 13 7.36719)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 6.39844 7.36719)" fill="#EDE4D7"/>
-                                    </svg>    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="projects-section project-mobile">
-            <div class="projects-section-container">
-                <div class="blur-container">
-                    <div class="sticky-nav">
-                        <div class="projects-navigation">
-                            <div class="projects-nav">
-                                <button data-target="#complexes">комлексы</button>
-                            </div>
-                
-                            <div class="projects-nav">
-                                <button data-target="#dining-areas">обеденные зоны</button>
-                            </div>
-                
-                            <div class="projects-nav">
-                                <button data-target="#tables-and-chairs">столы и стулья</button>
-                            </div>
-                
-                            <div class="projects-nav">
-                                <button>ванны</button>
-                            </div>
-                
-                            <div class="projects-nav">
-                                <button>санузел</button>
-                            </div>
-                
-                            <div class="projects-nav">
-                                <button>гостиная</button>
-                            </div>
-                
-                            <div class="projects-nav">
-                                <button>декор</button>
-                            </div>
-
-                            <div class="projects-nav">
-                                <button>декор</button>
-                            </div>
-
-                            <div class="projects-nav">
-                                <button>декор</button>
-                            </div>
-
-                            <div class="projects-nav">
-                                <button>декор</button>
-                            </div>
-                        </div>            
-                    </div>
-        
-                    <div class="projects-display-mobile fade-in">
-                        <div class="projects-content-container" id="complexes">
-                            <div class="reveal-mask">
-                                <h1 class="project-content-title">
-                                    Комплексы
-                                </h1>
-                            </div>
-            
-                            <hr class="line">
-            
-                            <div class="project-content-mobile fade-in">
-                                <h1 class="project-mobile-title">
-                                    Стеллаж и тумба Brandв интерьере гостиной
-                                </h1>
-
-                                <div class="project-mobile-subtitle">
-                                    <p>Гостиная</p>
-
-                                    <p>2024</p>
-                                </div>
-
-                                <img src="images/projects/image-2.png" alt="">
-
-                                <p class="mobile-prod-desc">
-                                    Посмотрите проекты, в которых наша мебель стала неотъемлемой частью уникальных интерьерных решений. Мы внимательно учитывали пожелания
-                                </p>
-
-                                <a href="project-info-page.html" class="mobile-open-project-link">
-                                    Открыть проект
-
-                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 5.90039)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 12.5)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 12.5 7.36719)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 5.90039 7.36719)" fill="#EDE4D7"/>
-                                    </svg>
-
-                                </a>
-                            </div>
-
-                            <div class="project-content-mobile fade-in">
-                                <h1 class="project-mobile-title">
-                                    Стеллаж и тумба Brandв интерьере гостиной
-                                </h1>
-
-                                <div class="project-mobile-subtitle">
-                                    <p>Гостиная</p>
-
-                                    <p>2024</p>
-                                </div>
-
-                                <img src="images/projects/image-2.png" alt="">
-
-                                <p class="mobile-prod-desc">
-                                    Посмотрите проекты, в которых наша мебель стала неотъемлемой частью уникальных интерьерных решений. Мы внимательно учитывали пожелания
-                                </p>
-
-                                <a href="project-info-page.html" class="mobile-open-project-link">
-                                    Открыть проект
-
-                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 5.90039)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 12.5)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 12.5 7.36719)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 5.90039 7.36719)" fill="#EDE4D7"/>
-                                    </svg>
-                                </a>
-                            </div>
-
-                            <div class="project-content-mobile fade-in">
-                                <h1 class="project-mobile-title">
-                                    Стеллаж и тумба Brandв интерьере гостиной
-                                </h1>
-
-                                <div class="project-mobile-subtitle">
-                                    <p>Гостиная</p>
-
-                                    <p>2024</p>
-                                </div>
-
-                                <img src="images/projects/image-2.png" alt="">
-
-                                <p class="mobile-prod-desc">
-                                    Посмотрите проекты, в которых наша мебель стала неотъемлемой частью уникальных интерьерных решений. Мы внимательно учитывали пожелания
-                                </p>
-
-                                <a href="project-info-page.html" class="mobile-open-project-link">
-                                    Открыть проект
-
-                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 5.90039)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 12.5)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 12.5 7.36719)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 5.90039 7.36719)" fill="#EDE4D7"/>
-                                    </svg>
-
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="projects-content-container" id="dining-areas">
-                            <div class="reveal-mask">
-                                <h1 class="project-content-title">
-                                    Обеденные зоны
-                                </h1>
-                            </div>
-            
-                            <hr class="line">
-            
-                            <div class="project-content-mobile fade-in">
-                                <h1 class="project-mobile-title">
-                                    Стеллаж и тумба Brandв интерьере гостиной
-                                </h1>
-
-                                <div class="project-mobile-subtitle">
-                                    <p>Гостиная</p>
-
-                                    <p>2024</p>
-                                </div>
-
-                                <img src="images/projects/image-2.png" alt="">
-
-                                <p class="mobile-prod-desc">
-                                    Посмотрите проекты, в которых наша мебель стала неотъемлемой частью уникальных интерьерных решений. Мы внимательно учитывали пожелания
-                                </p>
-
-                                <a href="project-info-page.html" class="mobile-open-project-link">
-                                    Открыть проект
-
-                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 5.90039)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 12.5)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 12.5 7.36719)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 5.90039 7.36719)" fill="#EDE4D7"/>
-                                    </svg>
-
-                                </a>
-                            </div>
-
-                            <div class="project-content-mobile fade-in">
-                                <h1 class="project-mobile-title">
-                                    Стеллаж и тумба Brandв интерьере гостиной
-                                </h1>
-
-                                <div class="project-mobile-subtitle">
-                                    <p>Гостиная</p>
-
-                                    <p>2024</p>
-                                </div>
-
-                                <img src="images/projects/image-2.png" alt="">
-
-                                <p class="mobile-prod-desc">
-                                    Посмотрите проекты, в которых наша мебель стала неотъемлемой частью уникальных интерьерных решений. Мы внимательно учитывали пожелания
-                                </p>
-
-                                <a href="project-info-page.html" class="mobile-open-project-link">
-                                    Открыть проект
-
-                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 5.90039)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 12.5)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 12.5 7.36719)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 5.90039 7.36719)" fill="#EDE4D7"/>
-                                    </svg>
-                                </a>
-                            </div>
-
-                            <div class="project-content-mobile fade-in">
-                                <h1 class="project-mobile-title">
-                                    Стеллаж и тумба Brandв интерьере гостиной
-                                </h1>
-
-                                <div class="project-mobile-subtitle">
-                                    <p>Гостиная</p>
-
-                                    <p>2024</p>
-                                </div>
-
-                                <img src="images/projects/image-2.png" alt="">
-
-                                <p class="mobile-prod-desc">
-                                    Посмотрите проекты, в которых наша мебель стала неотъемлемой частью уникальных интерьерных решений. Мы внимательно учитывали пожелания
-                                </p>
-
-                                <a href="project-info-page.html" class="mobile-open-project-link">
-                                    Открыть проект
-
-                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 5.90039)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 12.5)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 12.5 7.36719)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 5.90039 7.36719)" fill="#EDE4D7"/>
-                                    </svg>
-
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="projects-content-container" id="tables-and-chairs">
-                            <div class="reveal-mask">
-                                <h1 class="project-content-title">
-                                    Стол и стулья
-                                </h1>
-                            </div>
-            
-                            <hr class="line">
-            
-                            <div class="project-content-mobile fade-in">
-                                <h1 class="project-mobile-title">
-                                    Стеллаж и тумба Brandв интерьере гостиной
-                                </h1>
-
-                                <div class="project-mobile-subtitle">
-                                    <p>Гостиная</p>
-
-                                    <p>2024</p>
-                                </div>
-
-                                <img src="images/projects/image-2.png" alt="">
-
-                                <p class="mobile-prod-desc">
-                                    Посмотрите проекты, в которых наша мебель стала неотъемлемой частью уникальных интерьерных решений. Мы внимательно учитывали пожелания
-                                </p>
-
-                                <a href="project-info-page.html" class="mobile-open-project-link">
-                                    Открыть проект
-
-                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 5.90039)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 12.5)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 12.5 7.36719)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 5.90039 7.36719)" fill="#EDE4D7"/>
-                                    </svg>
-
-                                </a>
-                            </div>
-
-                            <div class="project-content-mobile fade-in">
-                                <h1 class="project-mobile-title">
-                                    Стеллаж и тумба Brandв интерьере гостиной
-                                </h1>
-
-                                <div class="project-mobile-subtitle">
-                                    <p>Гостиная</p>
-
-                                    <p>2024</p>
-                                </div>
-
-                                <img src="images/projects/image-2.png" alt="">
-
-                                <p class="mobile-prod-desc">
-                                    Посмотрите проекты, в которых наша мебель стала неотъемлемой частью уникальных интерьерных решений. Мы внимательно учитывали пожелания
-                                </p>
-
-                                <a href="project-info-page.html" class="mobile-open-project-link">
-                                    Открыть проект
-
-                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 5.90039)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 12.5)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 12.5 7.36719)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 5.90039 7.36719)" fill="#EDE4D7"/>
-                                    </svg>
-                                </a>
-                            </div>
-
-                            <div class="project-content-mobile fade-in">
-                                <h1 class="project-mobile-title">
-                                    Стеллаж и тумба Brandв интерьере гостиной
-                                </h1>
-
-                                <div class="project-mobile-subtitle">
-                                    <p>Гостиная</p>
-
-                                    <p>2024</p>
-                                </div>
-
-                                <img src="images/projects/image-2.png" alt="">
-
-                                <p class="mobile-prod-desc">
-                                    Посмотрите проекты, в которых наша мебель стала неотъемлемой частью уникальных интерьерных решений. Мы внимательно учитывали пожелания
-                                </p>
-
-                                <a href="project-info-page.html" class="mobile-open-project-link">
-                                    Открыть проект
-
-                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 5.90039)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 12.5)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 12.5 7.36719)" fill="#EDE4D7"/>
-                                        <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 5.90039 7.36719)" fill="#EDE4D7"/>
-                                    </svg>
-
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="open-more-project-btn">
-                        <button>Показать ещё</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    
-        <section class="footer">
-                    <div class="blur-container">
-                        <footer>
-                            <hr class="line fade-in">
-                        
-                            <div class="footer-grid">
-                                <div class="footer-container">
-                                    <img class="footer-logo fade-in" src="images/svg/logo.svg" alt="footer-logo">
-                        
-                                    <nav class="footer-navigation fade-in">
-                                        <h1><a href="">Каталог</a></h1>
-                                        <ul>
-                                            <li><a href="#">Ванны</a></li>
-                                            <li><a href="#">Диваны</a></li>
-                                            <li><a href="#">Обеденные зоны</a></li>
-                                            <li><a href="#">Декор</a></li>
-                                            <li><a href="#">Декор</a></li>
-                                            <li><a href="page-not-found-404.html">404</a></li>
-                                        </ul>
-                                    </nav>
-                        
-                                    <nav class="footer-navigation fade-in">
-                                        <h1><a href="about-us-page.html">О компании</a></h1>
-                                        <ul>
-                                            <li><a href="about-us-page.html">О нас</a></li>
-                                            <li><a href="projects-page.html">Проекты</a></li>
-                                            <li><a href="customers-page.html">Покупателям</a></li>
-                                            <li><a href="reviews-page.html">Отзывы</a></li>
-                                            <li><a href="services-page.html">Услуги</a></li>
-                                            <li><a href="vacancies-page.html">Вакансии</a></li>
-                                            <li><a href="no-vacancies-page.html">Нет вакансий</a></li>
-                                        </ul>
-                                    </nav>
-                        
-                                    <nav class="footer-navigation fade-in">
-                                        <h1><a href="customers-page.html">Покупателям</a></h1>
-                                        <ul>
-                                            <li><a href="#">Бренды</a></li>
-                                            <li><a href="services-page.html">Услуги</a></li>
-                                            <li><a href="#">Доставка и оплата</a></li>
-                                        </ul>
-                                    </nav>
-                        
-                                    <div class="footer-address fade-in">
-                                        <p>Наш магазин по адресу</p>
                     
-                                        <h1 class="address">
+                                <div class="projects-display-mobile fade-in">
+                                    <div class="projects-content-container" id="complexes">
+                                        <div class="reveal-mask">
+                                            <h1 class="project-content-title">
+                                                Комплексы
+                                            </h1>
+                                        </div>
+                        
+                                        <hr class="line">
+                        
+                                        <div class="project-content-mobile fade-in">
+                                            <h1 class="project-mobile-title">
+                                                Стеллаж и тумба Brandв интерьере гостиной
+                                            </h1>
+
+                                            <div class="project-mobile-subtitle">
+                                                <p>Гостиная</p>
+
+                                                <p>2024</p>
+                                            </div>
+
+                                            <img src="images/projects/image-2.png" alt="">
+
+                                            <p class="mobile-prod-desc">
+                                                Посмотрите проекты, в которых наша мебель стала неотъемлемой частью уникальных интерьерных решений. Мы внимательно учитывали пожелания
+                                            </p>
+
+                                            <a href="project-info-page.html" class="mobile-open-project-link">
+                                                Открыть проект
+
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 5.90039)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 12.5)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 12.5 7.36719)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 5.90039 7.36719)" fill="#EDE4D7"/>
+                                                </svg>
+
+                                            </a>
+                                        </div>
+
+                                        <div class="project-content-mobile fade-in">
+                                            <h1 class="project-mobile-title">
+                                                Стеллаж и тумба Brandв интерьере гостиной
+                                            </h1>
+
+                                            <div class="project-mobile-subtitle">
+                                                <p>Гостиная</p>
+
+                                                <p>2024</p>
+                                            </div>
+
+                                            <img src="images/projects/image-2.png" alt="">
+
+                                            <p class="mobile-prod-desc">
+                                                Посмотрите проекты, в которых наша мебель стала неотъемлемой частью уникальных интерьерных решений. Мы внимательно учитывали пожелания
+                                            </p>
+
+                                            <a href="project-info-page.html" class="mobile-open-project-link">
+                                                Открыть проект
+
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 5.90039)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 12.5)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 12.5 7.36719)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 5.90039 7.36719)" fill="#EDE4D7"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+
+                                        <div class="project-content-mobile fade-in">
+                                            <h1 class="project-mobile-title">
+                                                Стеллаж и тумба Brandв интерьере гостиной
+                                            </h1>
+
+                                            <div class="project-mobile-subtitle">
+                                                <p>Гостиная</p>
+
+                                                <p>2024</p>
+                                            </div>
+
+                                            <img src="images/projects/image-2.png" alt="">
+
+                                            <p class="mobile-prod-desc">
+                                                Посмотрите проекты, в которых наша мебель стала неотъемлемой частью уникальных интерьерных решений. Мы внимательно учитывали пожелания
+                                            </p>
+
+                                            <a href="project-info-page.html" class="mobile-open-project-link">
+                                                Открыть проект
+
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 5.90039)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 12.5)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 12.5 7.36719)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 5.90039 7.36719)" fill="#EDE4D7"/>
+                                                </svg>
+
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="projects-content-container" id="dining-areas">
+                                        <div class="reveal-mask">
+                                            <h1 class="project-content-title">
+                                                Обеденные зоны
+                                            </h1>
+                                        </div>
+                        
+                                        <hr class="line">
+                        
+                                        <div class="project-content-mobile fade-in">
+                                            <h1 class="project-mobile-title">
+                                                Стеллаж и тумба Brandв интерьере гостиной
+                                            </h1>
+
+                                            <div class="project-mobile-subtitle">
+                                                <p>Гостиная</p>
+
+                                                <p>2024</p>
+                                            </div>
+
+                                            <img src="images/projects/image-2.png" alt="">
+
+                                            <p class="mobile-prod-desc">
+                                                Посмотрите проекты, в которых наша мебель стала неотъемлемой частью уникальных интерьерных решений. Мы внимательно учитывали пожелания
+                                            </p>
+
+                                            <a href="project-info-page.html" class="mobile-open-project-link">
+                                                Открыть проект
+
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 5.90039)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 12.5)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 12.5 7.36719)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 5.90039 7.36719)" fill="#EDE4D7"/>
+                                                </svg>
+
+                                            </a>
+                                        </div>
+
+                                        <div class="project-content-mobile fade-in">
+                                            <h1 class="project-mobile-title">
+                                                Стеллаж и тумба Brandв интерьере гостиной
+                                            </h1>
+
+                                            <div class="project-mobile-subtitle">
+                                                <p>Гостиная</p>
+
+                                                <p>2024</p>
+                                            </div>
+
+                                            <img src="images/projects/image-2.png" alt="">
+
+                                            <p class="mobile-prod-desc">
+                                                Посмотрите проекты, в которых наша мебель стала неотъемлемой частью уникальных интерьерных решений. Мы внимательно учитывали пожелания
+                                            </p>
+
+                                            <a href="project-info-page.html" class="mobile-open-project-link">
+                                                Открыть проект
+
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 5.90039)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 12.5)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 12.5 7.36719)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 5.90039 7.36719)" fill="#EDE4D7"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+
+                                        <div class="project-content-mobile fade-in">
+                                            <h1 class="project-mobile-title">
+                                                Стеллаж и тумба Brandв интерьере гостиной
+                                            </h1>
+
+                                            <div class="project-mobile-subtitle">
+                                                <p>Гостиная</p>
+
+                                                <p>2024</p>
+                                            </div>
+
+                                            <img src="images/projects/image-2.png" alt="">
+
+                                            <p class="mobile-prod-desc">
+                                                Посмотрите проекты, в которых наша мебель стала неотъемлемой частью уникальных интерьерных решений. Мы внимательно учитывали пожелания
+                                            </p>
+
+                                            <a href="project-info-page.html" class="mobile-open-project-link">
+                                                Открыть проект
+
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 5.90039)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 12.5)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 12.5 7.36719)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 5.90039 7.36719)" fill="#EDE4D7"/>
+                                                </svg>
+
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="projects-content-container" id="tables-and-chairs">
+                                        <div class="reveal-mask">
+                                            <h1 class="project-content-title">
+                                                Стол и стулья
+                                            </h1>
+                                        </div>
+                        
+                                        <hr class="line">
+                        
+                                        <div class="project-content-mobile fade-in">
+                                            <h1 class="project-mobile-title">
+                                                Стеллаж и тумба Brandв интерьере гостиной
+                                            </h1>
+
+                                            <div class="project-mobile-subtitle">
+                                                <p>Гостиная</p>
+
+                                                <p>2024</p>
+                                            </div>
+
+                                            <img src="images/projects/image-2.png" alt="">
+
+                                            <p class="mobile-prod-desc">
+                                                Посмотрите проекты, в которых наша мебель стала неотъемлемой частью уникальных интерьерных решений. Мы внимательно учитывали пожелания
+                                            </p>
+
+                                            <a href="project-info-page.html" class="mobile-open-project-link">
+                                                Открыть проект
+
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 5.90039)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 12.5)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 12.5 7.36719)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 5.90039 7.36719)" fill="#EDE4D7"/>
+                                                </svg>
+
+                                            </a>
+                                        </div>
+
+                                        <div class="project-content-mobile fade-in">
+                                            <h1 class="project-mobile-title">
+                                                Стеллаж и тумба Brandв интерьере гостиной
+                                            </h1>
+
+                                            <div class="project-mobile-subtitle">
+                                                <p>Гостиная</p>
+
+                                                <p>2024</p>
+                                            </div>
+
+                                            <img src="images/projects/image-2.png" alt="">
+
+                                            <p class="mobile-prod-desc">
+                                                Посмотрите проекты, в которых наша мебель стала неотъемлемой частью уникальных интерьерных решений. Мы внимательно учитывали пожелания
+                                            </p>
+
+                                            <a href="project-info-page.html" class="mobile-open-project-link">
+                                                Открыть проект
+
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 5.90039)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 12.5)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 12.5 7.36719)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 5.90039 7.36719)" fill="#EDE4D7"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+
+                                        <div class="project-content-mobile fade-in">
+                                            <h1 class="project-mobile-title">
+                                                Стеллаж и тумба Brandв интерьере гостиной
+                                            </h1>
+
+                                            <div class="project-mobile-subtitle">
+                                                <p>Гостиная</p>
+
+                                                <p>2024</p>
+                                            </div>
+
+                                            <img src="images/projects/image-2.png" alt="">
+
+                                            <p class="mobile-prod-desc">
+                                                Посмотрите проекты, в которых наша мебель стала неотъемлемой частью уникальных интерьерных решений. Мы внимательно учитывали пожелания
+                                            </p>
+
+                                            <a href="project-info-page.html" class="mobile-open-project-link">
+                                                Открыть проект
+
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 5.90039)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(1 0 0 -1 6.63281 12.5)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 12.5 7.36719)" fill="#EDE4D7"/>
+                                                    <rect width="0.733327" height="4.39996" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 5.90039 7.36719)" fill="#EDE4D7"/>
+                                                </svg>
+
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="open-more-project-btn">
+                                    <button>Показать ещё</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                
+                    <section class="footer">
+                        <div class="blur-container">
+                            <footer>
+                                <hr class="line">
+                            
+                                <div class="footer-grid">
+                                    <div class="footer-container">
+                                        <div>
+                                            <a href="main-page.html">
+                                                <img class="footer-logo fade-in" src="images/svg/logo.svg" alt="footer-logo">
+                                            </a>
+                                        </div>
+                            
+                                        <nav class="footer-navigation fade-in">
+                                            <p>Каталог</p>
+                                            <ul>
+                                                <li><a href="catalog-page.html">Ванны</a></li>
+                                                <li><a href="catalog-page.html">Диваны</a></li>
+                                                <li><a href="catalog-page.html">Обеденные зоны</a></li>
+                                                <li><a href="catalog-page.html">Декор</a></li>
+                                                <li><a href="catalog-page.html">Декор</a></li>
+                                                <li><a href="catalog-page.html">Декор</a></li>
+                                            </ul>
+                                        </nav>
+                            
+                                        <nav class="footer-navigation fade-in">
+                                            <p>О компании</p>
+                                            <ul>
+                                                <li><a href="about-us-page.html">О нас</a></li>
+                                                <li><a href="projects-page.html">Проекты</a></li>
+                                                <li><a href="customers-page.html">Покупателям</a></li>
+                                                <li><a href="reviews-page.html">Отзывы</a></li>
+                                                <li><a href="services-page.html">Услуги</a></li>
+                        
+                                            </ul>
+                                        </nav>
+                            
+                                        <nav class="footer-navigation fade-in">
+                                            <p>Покупателям</p>
+                                            <ul>
+                                                <li><a href="main-page.html#brands">Бренды</a></li>
+                                                <li><a href="services-page.html">Услуги</a></li>
+                                                <li><a href="#">Доставка и оплата</a></li>
+                                            </ul>
+                                        </nav>
+                            
+                                        <div class="footer-address fade-in">
+                                            <div class="footer-address-first">
+                                                <p>Наш магазин по адресу</p>
+                        
+                                                <a href="https://yandex.ru/maps/-/CHCE6VNj" target="_blank" class="address">
+                                                    Нижний Новогород,<br>
+                                                    Эльтонская, 8
+                                                </a>
+                                            </div>
+                            
+                                            <div class="footer-address-second">
+                                                <p>По различным вопросам</p>
+
+                                                <a href="mailto:email@mail.ru">email@mail.ru</a>
+                                            </div>
+                            
+                                            <div class="footer-address-second">
+                                                <p>Связаться с нами</p>
+
+                                                <a href="tel:+79994828210">+7 999 482 82 10</a>
+                                            </div>
+                                        </div>
+                            
+                                        <div class="footer-icons fade-in">
+                                            <a href="#"><img class="footer-icon" src="images/svg/telegram.svg" alt="telegram-icon"></a>
+                                            <a href="#"><img class="footer-icon" src="images/svg/phone.svg" alt="phone-icon"></a>
+                                        </div>
+                                    </div>
+                            
+                                    <div class="footer-last">
+                                        <hr class="line">
+                            
+                                        <div class="footer-copyright fade-in">
+                                            <p>© Design Club NN</p>
+                                            <a href="privacy-policy-page.html">Политика конфиденциальности</a>
+                                            <a href="https://omniagency.ru/" target="_blank">Сделано в OmniAgency</a>
+                                            <p>2025</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>
+                    </section>
+
+
+                    <section class="footer-1024">
+                        <div class="blur-container">
+                            <footer>
+                                <hr class="line">
+                            
+                                <div class="footer-grid-up">
+                                    <div class="footer-container-1024">
+                                        <div class="footer-logo-container">
+                                            <a href="main-page.html">
+                                                <img class="footer-logo fade-in" src="images/svg/logo.svg" alt="footer-logo">
+                                            </a>
+                                        </div>
+
+                                        <nav class="footer-navigation fade-in">
+                                            <div class="footer-nav-up">
+                                                <p>Каталог</p>
+
+                                                <ul>
+                                                    <li><a href="catalog-page.html">Ванны</a></li>
+                                                    <li><a href="catalog-page.html">Диваны</a></li>
+                                                    <li><a href="catalog-page.html">Обеденные зоны</a></li>
+                                                    <li><a href="catalog-page.html">Декор</a></li>
+                                                    <li><a href="catalog-page.html">Декор</a></li>
+                                                    <li><a href="catalog-page.html">Декор</a></li>
+                                                </ul>
+                                            </div>
+                                        </nav>
+                            
+                                        <nav class="footer-navigation fade-in">
+                                            <div class="footer-nav-up">
+                                                <p>О компании</p>
+                                                
+                                                <ul>
+                                                    <li><a href="about-us-page.html">О нас</a></li>
+                                                    <li><a href="projects-page.html">Проекты</a></li>
+                                                    <li><a href="customers-page.html">Покупателям</a></li>
+                                                    <li><a href="reviews-page.html">Отзывы</a></li>
+                                                    <li><a href="services-page.html">Услуги</a></li>
+                                                </ul>
+                                            </div>                                    
+                                        </nav>
+                            
+                                        <nav class="footer-navigation fade-in">
+                                            <div class="footer-nav-up">
+                                                <p>Покупателям</p>
+                                                
+                                                <ul>
+                                                    <li><a href="main-page.html#brands">Бренды</a></li>
+                                                    <li><a href="services-page.html">Услуги</a></li>
+                                                    <li><a href="#">Доставка и оплата</a></li>
+                                                </ul>
+                                            </div>
+                                        </nav>
+                                    </div>
+                                </div>
+
+                                <div class="footer-grid-down fade-in">
+                                    <div class="footer-nav-down">
+                                        <div class="footer-icons ">
+                                            <a href="#"><img class="footer-icon" src="images/svg/telegram.svg" alt="telegram-icon"></a>
+                                            <a href="#"><img class="footer-icon" src="images/svg/phone.svg" alt="phone-icon"></a>
+                                        </div>
+                                    </div>
+
+                                    <div class="footer-nav-down fade-in">
+                                        <p>Наш магазин по адресу</p>
+
+                                        <a href="https://yandex.ru/maps/-/CHCE6VNj" target="_blank" class="address fade-in">
                                             Нижний Новогород,<br>
                                             Эльтонская, 8
-                                        </h1>
-                        
-                                        <p>По различным вопросам</p>
-                    
-                                        <h1>email@mail.ru</h1>
-                        
-                                        <p>Связаться с нами</p>
-                    
-                                        <h1>+ 7 999 482 82 10</h1>
+                                        </a>
                                     </div>
+
+                                    <div class="footer-nav-down fade-in">
+                                        <p>По различным вопросам</p>
                         
+                                        <a href="mailto:email@mail.ru">email@mail.ru</a>
+                                    </div>
+
+                                    <div class="footer-nav-down fade-in">
+                                        <p>Связаться с нами</p>
+                        
+                                        <a href="tel:+79994828210">+ 7 999 482 82 10</a>
+                                    </div>
+                                </div>
+
+                                <hr class="line">
+                            
+                                <div class="footer-copyright-1024 fade-in">
+                                    <p>© Design Club NN</p>
+                                    <a href="privacy-policy-page.html">Политика конфиденциальности</a>
+                                    <a href="https://omniagency.ru/" target="_blank">Сделано в OmniAgency</a>
+                                    <p class="last-column">2025</p>
+                                </div>
+                            </footer>
+                        </div>
+                    </section>
+
+                    <section class="footer-below-1024">
+                        <div class="blur-container">
+                            <footer>
+                                <hr class="line">
+
+                                <div class="footer-first-line">
+                                    <a href="main-page.html">
+                                        <img class="footer-logo footer-logo-below fade-in" src="images/svg/logo.svg" alt="footer-logo">
+                                    </a>
+                                
                                     <div class="footer-icons fade-in">
                                         <a href="#"><img class="footer-icon" src="images/svg/telegram.svg" alt="telegram-icon"></a>
                                         <a href="#"><img class="footer-icon" src="images/svg/phone.svg" alt="phone-icon"></a>
                                     </div>
                                 </div>
-                        
-                                <hr class="line fade-in">
-                        
-                                <div class="footer-copyright fade-in">
-                                    <a href="#">© Design Club NN</a>
-                                    <a href="privacy-policy-page.html">Политика конфиденциальности</a>
-                                    <a href="https://omniagency.ru/">Сделано в OmniAgency</a>
-                                    <a href="#">2025</a>
-                                </div>
-                            </div>
-                        </footer>
-                    </div>
-                </section>
 
+                                <div class="footer-second-line ">
+                                    <div class="footer-first-column">
+                                        <nav class="footer-navigation">
+                                            <div class="footer-nav-up fade-in">
+                                                <p>Каталог</p>
 
-                <section class="footer-1024">
-                    <div class="blur-container">
-                        <footer>
-                            <hr class="line fade-in">
-                        
-                            <div class="footer-grid-up fade-in">
-                                <div class="footer-container-1024">
-                                    <div class="footer-logo-container">
-                                        <img class="footer-logo" src="images/svg/logo.svg" alt="footer-logo">
+                                                <ul>
+                                                    <li><a href="catalog-page.html">Ванны</a></li>
+                                                    <li><a href="catalog-page.html">Диваны</a></li>
+                                                    <li><a href="catalog-page.html">Обеденные зоны</a></li>
+                                                    <li><a href="catalog-page.html">Декор</a></li>
+                                                    <li><a href="catalog-page.html">Декор</a></li>
+                                                    <li><a href="page-not-found-404.html">Декор</a></li>
+                                                </ul>
+                                            </div>
+                                        </nav>
+
+                                        <nav class="footer-navigation fade-in">
+                                            <div class="footer-nav-up">
+                                                <p>Покупателям</p>
+                                                
+                                                <ul>
+                                                    <li><a href="main-page.html#brands">Бренды</a></li>
+                                                    <li><a href="services-page.html">Услуги</a></li>
+                                                    <li><a href="#">Доставка и оплата</a></li>
+                                                </ul>
+                                            </div>
+                                        </nav>
+
+                                        <div class="footer-design-club-info">
+                                            <div class="footer-nav-down fade-in">
+                                                <p>Наш магазин по адресу</p>
+
+                                                <a href="https://yandex.ru/maps/-/CHCE6VNj" target="_blank" class="address">
+                                                    Нижний Новогород,<br>
+                                                    Эльтонская, 8
+                                                </a>
+                                            </div>
+
+                                            <div class="footer-nav-down fade-in">
+                                                <p>По различным вопросам</p>
+                                
+                                                <a href="mailto:email@mail.ru">email@mail.ru</a>
+                                            </div>
+
+                                            <div class="footer-nav-down fade-in">
+                                                <p>Связаться с нами</p>
+                                
+                                                <a href="tel:+79994828210">+ 7 999 482 82 10</a>
+                                            </div>
+                                        </div>
                                     </div>
 
-                                    <nav class="footer-navigation">
-                                        <div class="footer-nav-up">
-                                            <h1><a href="">Каталог</a></h1>
+                                    <div class="footer-second-column">
+                                        <nav class="footer-navigation">
+                                            <div class="footer-nav-up fade-in">
+                                                <p>О компании</p>
+                                                
+                                                <ul>
+                                                    <li><a href="about-us-page.html">О нас</a></li>
+                                                    <li><a href="projects-page.html">Проекты</a></li>
+                                                    <li><a href="customers-page.html">Покупателям</a></li>
+                                                    <li><a href="reviews-page.html">Отзывы</a></li>
+                                                    <li><a href="services-page.html">Услуги</a></li>
+                                                </ul>
+                                            </div>                                    
+                                        </nav>
+                                    </div>
+                                </div>
 
-                                            <ul>
-                                                <li><a href="#">Ванны</a></li>
-                                                <li><a href="#">Диваны</a></li>
-                                                <li><a href="#">Обеденные зоны</a></li>
-                                                <li><a href="#">Декор</a></li>
-                                                <li><a href="#">Декор</a></li>
-                                                <li><a href="page-not-found-404.html">Декор</a></li>
-                                            </ul>
-                                        </div>
-                                    </nav>
-                        
-                                    <nav class="footer-navigation">
-                                        <div class="footer-nav-up">
-                                            <h1><a href="about-us-page.html">О компании</a></h1>
+                                <div class="footer-copyright-last-line">
+                                    <hr class="line">
+
+                                    <div class="copyright-lines fade-in">
+                                        <div class="copyrigth-first-column">
+                                            <a href="privacy-policy-page.html">Политика конфиденциальности</a>
                                             
-                                            <ul>
-                                                <li><a href="about-us-page.html">О нас</a></li>
-                                                <li><a href="projects-page.html">Проекты</a></li>
-                                                <li><a href="customers-page.html">Покупателям</a></li>
-                                                <li><a href="reviews-page.html">Отзывы</a></li>
-                                                <li><a href="services-page.html">Услуги</a></li>
-                                            </ul>
-                                        </div>                                    
-                                    </nav>
-                        
-                                    <nav class="footer-navigation">
-                                        <div class="footer-nav-up">
-                                            <h1><a href="customers-page.html">Покупателям</a></h1>
-                                            
-                                            <ul>
-                                                <li><a href="#">Бренды</a></li>
-                                                <li><a href="services-page.html">Услуги</a></li>
-                                                <li><a href="#">Доставка и оплата</a></li>
-                                            </ul>
-                                        </div>
-                                    </nav>
-                                </div>
-                            </div>
-
-                            <div class="footer-grid-down fade-in">
-                                <div class="footer-nav-down">
-                                    <div class="footer-icons">
-                                        <a href="#"><img class="footer-icon" src="images/svg/telegram.svg" alt="telegram-icon"></a>
-                                        <a href="#"><img class="footer-icon" src="images/svg/phone.svg" alt="phone-icon"></a>
-                                    </div>
-                                </div>
-
-                                <div class="footer-nav-down">
-                                    <p>Наш магазин по адресу</p>
-
-                                    <h1 class="address">
-                                        Нижний Новогород,<br>
-                                        Эльтонская, 8
-                                    </h1>
-                                </div>
-
-                                <div class="footer-nav-down">
-                                    <p>По различным вопросам</p>
-                    
-                                    <h1>email@mail.ru</h1>
-                                </div>
-
-                                <div class="footer-nav-down">
-                                    <p>Связаться с нами</p>
-                    
-                                    <h1>+ 7 999 482 82 10</h1>
-                                </div>
-                            </div>
-
-                            <hr class="line fade-in">
-                        
-                            <div class="footer-copyright-1024 fade-in">
-                                <a href="#">© Design Club NN</a>
-                                <a href="privacy-policy-page.html">Политика конфиденциальности</a>
-                                <a href="https://omniagency.ru/">Сделано в OmniAgency</a>
-                                <a href="#" class="last-column">2025</a>
-                            </div>
-                        </footer>
-                    </div>
-                </section>
-
-                <section class="footer-below-1024">
-                    <div class="blur-container">
-                        <footer>
-                            <hr class="line fade-in">
-
-                            <div class="footer-first-line fade-in">
-                                <img class="footer-logo footer-logo-below" src="images/svg/logo.svg" alt="footer-logo">
-                            
-                                <div class="footer-icons">
-                                    <a href="#"><img class="footer-icon" src="images/svg/telegram.svg" alt="telegram-icon"></a>
-                                    <a href="#"><img class="footer-icon" src="images/svg/phone.svg" alt="phone-icon"></a>
-                                </div>
-                            </div>
-
-                            <div class="footer-second-line fade-in">
-                                <div class="footer-first-column">
-                                    <nav class="footer-navigation">
-                                        <div class="footer-nav-up">
-                                            <h1><a href="">Каталог</a></h1>
-
-                                            <ul>
-                                                <li><a href="#">Ванны</a></li>
-                                                <li><a href="#">Диваны</a></li>
-                                                <li><a href="#">Обеденные зоны</a></li>
-                                                <li><a href="#">Декор</a></li>
-                                                <li><a href="#">Декор</a></li>
-                                                <li><a href="page-not-found-404.html">Декор</a></li>
-                                            </ul>
-                                        </div>
-                                    </nav>
-
-                                    <nav class="footer-navigation">
-                                        <div class="footer-nav-up">
-                                            <h1><a href="customers-page.html">Покупателям</a></h1>
-                                            
-                                            <ul>
-                                                <li><a href="#">Бренды</a></li>
-                                                <li><a href="services-page.html">Услуги</a></li>
-                                                <li><a href="#">Доставка и оплата</a></li>
-                                            </ul>
-                                        </div>
-                                    </nav>
-
-                                    <div class="footer-design-club-info">
-                                        <div class="footer-nav-down">
-                                            <p>Наш магазин по адресу</p>
-
-                                            <h1 class="address">
-                                                Нижний Новогород,<br>
-                                                Эльтонская, 8
-                                            </h1>
+                                            <a href="https://omniagency.ru/" target="_blank">Сделано в OmniAgency</a>
                                         </div>
 
-                                        <div class="footer-nav-down">
-                                            <p>По различным вопросам</p>
-                            
-                                            <h1>email@mail.ru</h1>
-                                        </div>
+                                        <div class="copyrigth-second-column">
+                                            <p class="design-club-logo">© Design Club NN</p>
 
-                                        <div class="footer-nav-down">
-                                            <p>Связаться с нами</p>
-                            
-                                            <h1>+ 7 999 482 82 10</h1>
+                                            <p class="last-column">2025</p>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="footer-second-column">
-                                    <nav class="footer-navigation">
-                                        <div class="footer-nav-up">
-                                            <h1><a href="about-us-page.html">О компании</a></h1>
-                                            
-                                            <ul>
-                                                <li><a href="about-us-page.html">О нас</a></li>
-                                                <li><a href="projects-page.html">Проекты</a></li>
-                                                <li><a href="customers-page.html">Покупателям</a></li>
-                                                <li><a href="reviews-page.html">Отзывы</a></li>
-                                                <li><a href="services-page.html">Услуги</a></li>
-                                            </ul>
-                                        </div>                                    
-                                    </nav>
-                                </div>
-                            </div>
-
-                            <div class="footer-copyright-last-line fade-in">
-                                <hr class="line">
-
-                                <div class="copyright-lines">
-                                    <div class="copyrigth-first-column">
-                                        <a href="privacy-policy-page.html">Политика конфиденциальности</a>
-                                        
-                                        <a href="https://omniagency.ru/">Сделано в OmniAgency</a>
-                                    </div>
-
-                                    <div class="copyrigth-second-column">
-                                        <a class="design-club-logo" href="#">© Design Club NN</a>
-
-                                        <a href="#" class="last-column">2025</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </footer>
-                    </div>
-                </section>
+                            </footer>
+                        </div>
+                    </section>
+                </div>
+            </div>
         </div>
 
         <!-- Бургер меню -->
@@ -1648,7 +1728,7 @@
             </div>
 
             <div class="modal-inputs">
-                <form id="contact-form-modal" class="contact-form-modal" onsubmit="return validateFormModal(event, 'contact-form-modal')">
+                <form id="contact-form-modal" class="contact-form-modal" onsubmit="onSubmitForm(event)">
                     <div class="contact-input-modal">
                         <input type="text" name="name" placeholder="ВАШЕ ИМЯ">
                         <span class="error-contact"></span>
@@ -1731,12 +1811,15 @@
         </div>
     </div>
 
+    <!-- Swiper -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
     <!-- Cookie -->
     <div id="cookie-container"></div>
 
     <!-- Cookie -->
     <script src="js/cookie.js"></script>
 
-    <script src="js/projects.js"></script>
+    <script src="js/scripts.js"></script>
 </body>
 </html>

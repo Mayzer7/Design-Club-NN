@@ -77,7 +77,12 @@ function activateSearchMode() {
   // Общая логика
   underHeaders.forEach(el => el.style.filter = 'blur(5px)');
   underHeaders.forEach(el => el.style.cursor = 'pointer');
-  blurContainers.forEach(container => container.style.filter = 'blur(5px)');
+  blurContainers.forEach(container => {
+    container.style.filter = 'blur(5px)';
+    container.style.cursor = 'pointer';
+  });
+  
+  
   header.style.backgroundColor = '#151c28';
   searchItems.classList.add('show');
 
@@ -797,9 +802,14 @@ inputBurger.addEventListener('input', () => {
 
 
 // Считываем скроллы и скрываем/показываем header
+// + на странице проекты показываем навигацию по странице
 
 let lastScrollTop = 0;
-const scrollThreshold = 1; // минимальный порог 
+const scrollThreshold = 0; // минимальный порог 
+
+const projectsSection = document.querySelector('.projects-section');
+const stickyNavs = document.querySelectorAll('.sticky-nav');
+let hideStickyTimeout = null;
 
 function handleScroll() {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -841,15 +851,24 @@ window.addEventListener('scroll', handleScroll);
 
 
 function handleScrollDown() {
-    menuNavigation.classList.add('scrolled-margin');
+  // Прерываем скрытие, если начался скролл вниз
+  if (hideStickyTimeout) {
+    clearTimeout(hideStickyTimeout);
+    hideStickyTimeout = null;
+  }
 
-    if (isCatalogActive) return;
+  if (projectsSection) {
+    stickyNavs.forEach(nav => nav.classList.remove('hidden'));
+  }
 
-    // Закрываем меню "О компании", если оно открыто
-    if (toggleItem.classList.contains('open')) {
-      toggleItem.classList.remove('open');
-      menuNavigation.classList.remove('about-open');
-    }
+  menuNavigation.classList.add('scrolled-margin');
+
+  if (isCatalogActive) return;
+
+  if (toggleItem.classList.contains('open')) {
+    toggleItem.classList.remove('open');
+    menuNavigation.classList.remove('about-open');
+  }
 
   header.classList.add('header-hidden');
   header.classList.remove('header-scrolled-up');
@@ -877,17 +896,25 @@ function handleScrollDown() {
 }
 
 function handleScrollUp() {
+  // Если есть активный таймер — сбрасываем
+  if (hideStickyTimeout) {
+    clearTimeout(hideStickyTimeout);
+    hideStickyTimeout = null;
+  }
+
+  hideStickyTimeout = setTimeout(() => {
+    stickyNavs.forEach(nav => nav.classList.add('hidden'));
+    hideStickyTimeout = null;
+  }, 300); 
+
   header.style.display = 'block';
   header.classList.remove('header-hidden');
   header.classList.add('header-scrolled-up');
 
   if (window.scrollY === 0) {
-    // Если в самом верху страницы
     menuNavigation.classList.add('default-margin');
     menuNavigation.classList.remove('scrolled-margin');
   } else {
-    // Если прокрутка вниз
-
     menuNavigation.classList.add('scrolled-margin');
     menuNavigation.classList.remove('default-margin');
   }
@@ -1236,7 +1263,7 @@ if (window.location.pathname.endsWith('main-page.html')) {
           spaceBetween: 20
         }
       },
-    });
+  });
 
 
 // Выбор способа связи в форме "Связаться с нами"
@@ -1768,5 +1795,78 @@ if (buyProducts) {
               }
           });
       });
+  });
+}
+
+
+// Скрипты для контента на странице "projects-page.html"
+
+if (projectsSection) {
+  // Переключение по навигации 
+
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  const HEADER_OFFSET = 250;  // учитываем высоту шапки
+  let isScrollingProgrammatically = false;
+  let isInitialHashScroll = false;
+
+  function adjustHashScroll() {
+    const hash = window.location.hash;
+    if (!hash) return;
+    const target = document.querySelector(hash);
+    if (!target) return;
+
+    const top = target.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+    window.scrollTo({ top, behavior: 'auto' });
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    if (window.location.hash) {
+      isInitialHashScroll = true;
+      // сначала даём браузеру открутить на элемент...
+      setTimeout(() => {
+        // ...а потом подвинем ровно на HEADER_OFFSET
+        adjustHashScroll();
+        isInitialHashScroll = false;
+      }, 0);
+    }
+  });
+
+  window.addEventListener('hashchange', () => {
+    setTimeout(adjustHashScroll, 0);
+  });
+
+  // клики по кнопкам навигации
+  document.querySelectorAll('.projects-nav button').forEach(button => {
+    button.addEventListener('click', () => {
+      const targetId = button.getAttribute('data-target');
+      if (!targetId) return;
+
+      const section = button.closest('.projects-section');
+      if (!section) return;
+
+      const candidates = section.querySelectorAll(targetId);
+      if (!candidates.length) return;
+
+      const targetEl = Array.from(candidates)
+        .find(el => getComputedStyle(el).display !== 'none') || candidates[0];
+
+      const topPosition = targetEl.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+
+      isScrollingProgrammatically = true;
+      header.classList.add('header-hidden');
+      header.classList.remove('header-scrolled-up');
+      stickyNavs.forEach(nav => nav.classList.remove('hidden'));
+
+      window.scrollTo({ top: topPosition, behavior: 'smooth' });
+
+      setTimeout(() => {
+        // ставим hash после анимации
+        window.history.pushState(null, '', targetId);
+        isScrollingProgrammatically = false;
+      }, 600);
+    });
   });
 }
