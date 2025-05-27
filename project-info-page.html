@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/project-info.css">
     <link rel="icon" href="images/svg/favicon.svg" type="image/svg+xml">
+    <!-- swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <title>Дизайн клуб - Подробности проекта</title>
 </head>
 <body>
@@ -25,234 +27,292 @@
             </main>
         </section>
     
-        <section class="main-page-top">
-            <header class="header-top">
-                <div class="container">
-                    <div class="header-container fade-in">
-                        <a href="main-page.html" class="logo-link">
-                            <img src="images/svg/logo.svg" alt="Логотип" class="logo logo-img">
-                        </a>
-            
-                        <div class="header-right">
-                            <div class="nav-container">
-                                <nav class="catalog-nav">
-                                    <ul>
-                                        <li>
-                                            <a class="open-catalog" href="#">КАТАЛОГ</a>
-                                            
-                                            <svg class="down-arrow" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
-                                            </svg>
-                                        </li>
-                                    </ul>
-                                </nav>
+        <!-- Шапка -->
+            <section class="main-page-top">
+                <div class="bg-overlay"></div>
+                <header class="header-top">
+                    <div class="container">
+                        <div class="header-container fade-in">
+                            <a href="main-page.html" class="logo-link">
+                                <img src="images/svg/logo.svg" alt="Логотип" class="logo logo-img">
+                            </a>
                 
-                                <nav class="main-nav">
-                                    <ul>
-                                        <li><a href="about-us-page.html">О НАС</a></li>
-                                        <li><a href="projects-page.html">ПРОЕКТЫ</a></li>
-                                        <li><a href="customers-page.html">ПОКУПАТЕЛЯМ</a></li>
-                                        <li><a href="reviews-page.html">ОТЗЫВЫ</a></li>
-                                        <li><a href="services-page.html">УСЛУГИ</a></li>
+                            <div class="header-right">
+                                <div class="nav-container">
+                                    <nav class="catalog-nav">
+                                        <ul>
+                                            <li>
+                                                <button class="open-catalog" href="#">КАТАЛОГ</button>
+                                                
+                                                <svg class="down-arrow" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
+                                                </svg>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                    
+                                    <nav class="main-nav">
+                                        <ul>
+                                            <li><a href="about-us-page.html">О НАС</a></li>
+                                            <li><a href="projects-page.html">ПРОЕКТЫ</a></li>
+                                            <li><a href="customers-page.html">ПОКУПАТЕЛЯМ</a></li>
+                                            <li><a href="reviews-page.html">ОТЗЫВЫ</a></li>
+                                            <li><a href="services-page.html">УСЛУГИ</a></li>
+                                        </ul>
+                                    </nav>
+
+                                    <nav class="catalog-nav about-company-nav">
+                                        <ul>
+                                            <li class="about-toggle">
+                                                <div class="about-header">
+                                                    <button class="open-catalog" href="#">О КОМПАНИИ</button>
+                                                    <svg class="down-arrow" width="14" height="8" viewBox="0 0 14 8" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1"
+                                                            stroke="currentColor" stroke-linecap="round"/>
+                                                    </svg>
+                                                </div>
+                                                <ul class="about-submenu">
+                                                    <li><a href="about-us-page.html">О нас</a></li>
+                                                    <li><a href="projects-page.html">Проекты</a></li>
+                                                    <li><a href="customers-page.html">Покупателям</a></li>
+                                                    <li><a href="reviews-page.html">Отзывы</a></li>
+                                                    <li><a href="services-page.html">Услуги</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                
+                                <div class="search-container">
+                                    <div class="search-bar">
+                                        <input id="search-input" type="text" placeholder="Искать">
+                                        
+                                        <button class="search-icon-button">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M19 19L15.85 15.85M17.6 11.3C17.6 14.7794 14.7794 17.6 11.3 17.6C7.82061 17.6 5 14.7794 5 11.3C5 7.82061 7.82061 5 11.3 5C14.7794 5 17.6 7.82061 17.6 11.3Z" stroke="#EDE4D7" stroke-linecap="round"/>
+                                            </svg>
+
+                                        </button>
+                                    </div>
+                
+                                    <div class="search-items">
+                                        <div class="search-item">
+                                            <a href="product-page.html" class="zoom-image">
+                                                <img src="images/main-page/product-card-crane.png" alt="">
+                                            </a>
+                                        
+                                            <div class="search-item-info">
+                                                <a href="product-page.html">Раковина Ornella</a>
+                
+                                                <a href="product-page.html">27 000 ₽</a>
+                                            </div>
+                                        </div>
+                
+                                        <hr class="line">
+                
+                                        <div class="search-item">
+                                            <a href="product-page.html" class="zoom-image">
+                                                <img src="images/main-page/product-card-crane.png" alt="">
+                                            </a>
+                                        
+                                            <div class="search-item-info">
+                                                <a href="product-page.html">Раковина Ornella</a>
+                
+                                                <a href="product-page.html">27 000 ₽</a>
+                                            </div>
+                                        </div>
+                
+                                        <hr class="line">
+                
+                                        <div class="search-item">
+                                            <a href="product-page.html" class="zoom-image">
+                                                <img src="images/main-page/product-card-crane.png" alt="">
+                                            </a>
+                                        
+                                            <div class="search-item-info">
+                                                <a href="product-page.html">Раковина Ornella</a>
+                
+                                                <a href="product-page.html">27 000 ₽</a>
+                                            </div>
+                                        </div>
+                
+                                        <hr class="line">
+                
+                                        <div class="all-result-link">
+                                            <h4><a href="search-result-page.html">Все результаты</a></h4>
+                                            
+                                            <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M1 1L6.68539 6.29289C7.10487 6.68342 7.10487 7.31658 6.68539 7.70711L1 13" stroke="#EDE4D7" stroke-linecap="round"/>
+                                            </svg>    
+                                        </div>
+                                    </div>
+                                </div>
+                
+                                <div class="contact-header">
+                                    <a href="cart-page.html">КОРЗИНА (1)</a>
+                
+                                    <button class="contact-button" id="openModalBtn">
+                                        СВЯЗАТЬСЯ С НАМИ
+                                        <img src="images/svg/contact.svg" alt="Связаться" class="contact-icon">
+                                    </button>
+                                </div>
+
+                                <div class="burger-menu">
+                                    <button id="openBurgerMenu">
+                                        <svg class="burger-icon" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="5" y="6.5" width="26" height="1" fill="#EDE4D7"/>
+                                            <rect x="5" y="15.5" width="26" height="1" fill="#EDE4D7"/>
+                                            <rect x="5" y="24.5" width="26" height="1" fill="#EDE4D7"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+        
+                <div class="menu-navigation-relative">
+                    <div class="menu-navigation">
+                        <hr class="line">
+                        <div class="menu-container">
+            
+                            <div class="left-menu">
+                                <nav>
+                                    <ul class="catalog-up-nav">
+                                        <!-- Меню Сантехника -->
+                                        <li class="menu-item" data-category="plumbing">
+                                            <button class="menu-toggle" data-category="plumbing">
+                                                Сантехника
+                                                <svg class="menu-arrow" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
+                                                </svg>     
+                                            </button>
+
+                                            <ul class="submenu" data-category="plumbing">
+                                                <li><a href="catalog-page.html">Инсталляции и клавиши</a></li>
+                                                <li><a href="catalog-page.html">Унитазы и биде</a></li>
+                                                <li><a href="catalog-page.html">Раковины</a></li>
+                                                <li><a href="catalog-page.html">Биде</a></li>
+                                                
+                                                <li class="submenu-items">
+                                                    <div class="submenu-item">
+                                                        <a href="#" class="menu-button" data-id="shower-enclosures">
+                                                            Душевые ограждения и поддоны
+                                                        </a>
+                                                        
+                                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
+                                                        </svg>
+                                                    </div>
+                                                </li>
+                    
+                                                <li class="submenu-items">
+                                                    <div class="submenu-item">
+                                                        <a href="#" class="menu-button" data-id="mixers">
+                                                            Смесители
+                                                        </a>
+                                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
+                                                        </svg>
+                                                    </div>
+                                                </li>
+                    
+                                                <li class="submenu-items">
+                                                    <div class="submenu-item">
+                                                        <a href="#" class="menu-button" data-id="shower-program">
+                                                            Душевая программа
+                                                        </a>
+                                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
+                                                        </svg>
+                                                    </div>
+                                                </li>
+                    
+                                                <li class="submenu-items">
+                                                    <div class="submenu-item">
+                                                        <a href="#" class="menu-button" data-id="mixers">
+                                                            Смесители
+                                                        </a>
+                                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
+                                                        </svg>
+                                                    </div>
+                                                </li>
+                    
+                                                <li><a href="catalog-page.html">Аксессуары и декор</a></li>
+                                                <li><a href="catalog-page.html">Дополнительные комплектующие</a></li>
+                                            </ul>
+                                        </li>
+                                    
+                                        <!-- Меню Мебель -->
+                                        <li class="menu-item" data-category="furniture">
+                                            <button class="menu-toggle" data-category="furniture">
+                                                Мебель
+                                                <svg class="menu-arrow" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
+                                                </svg>     
+                                            </button>
+
+                                            <ul class="submenu" data-category="furniture">
+                                                <li><a href="catalog-page.html">Шкафы и стеллажи</a></li>
+                                                <li><a href="catalog-page.html">Тумбы и комоды</a></li>
+                                                <li><a href="catalog-page.html">Кровати</a></li>
+                                                <li><a href="catalog-page.html">Столы и стулья</a></li>
+                                                <li><a href="catalog-page.html">Диваны</a></li>
+                                                <li><a href="catalog-page.html">Мебель для ванной</a></li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </nav>
                             </div>
             
-                            <div class="search-container">
-                                <div class="search-bar">
-                                    <input id="search-input" type="text" placeholder="Искать">
-                                    <button class="search-icon-button">
-                                        <img src="images/svg/search.svg" alt="Поиск" class="search-icon">
-                                    </button>
-                                </div>
-            
-                                <div class="search-items">
-                                    <div class="search-item">
-                                        <a href="product-page.html" class="zoom-image">
-                                            <img src="images/main-page/product-card-crane.png" alt="">
-                                        </a>
+                            <div class="right-menu">
+                                <div class="right-menu-content" data-id="shower-enclosures">
+                                    <a href="catalog-page.html">Душевые уголки, двери и перегородки</a>
+                                    <a href="catalog-page.html">Поддоны</a>
+                                    <a href="catalog-page.html">Шторки для ванны</a>
                                     
-                                        <div class="search-item-info">
-                                            <a href="product-page.html">Раковина Ornella</a>
-            
-                                            <a href="product-page.html">27 000 ₽</a>
-                                        </div>
-                                    </div>
-            
-                                    <hr class="line">
-            
-                                    <div class="search-item">
-                                        <a href="product-page.html" class="zoom-image">
-                                            <img src="images/main-page/product-card-crane.png" alt="">
-                                        </a>
-                                    
-                                        <div class="search-item-info">
-                                            <a href="product-page.html">Раковина Ornella</a>
-            
-                                            <a href="product-page.html">27 000 ₽</a>
-                                        </div>
-                                    </div>
-            
-                                    <hr class="line">
-            
-                                    <div class="search-item">
-                                        <a href="product-page.html" class="zoom-image">
-                                            <img src="images/main-page/product-card-crane.png" alt="">
-                                        </a>
-                                    
-                                        <div class="search-item-info">
-                                            <a href="product-page.html">Раковина Ornella</a>
-            
-                                            <a href="product-page.html">27 000 ₽</a>
-                                        </div>
-                                    </div>
-            
-                                    <hr class="line">
-            
-                                    <div class="all-result-link">
-                                        <h4><a href="search-result-page.html">Все результаты</a></h4>
+                                    <div class="all-categories-link">
+                                        <a href="catalog-page.html">Все товары категории</a>
                                         
-                                        <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M1 1L6.68539 6.29289C7.10487 6.68342 7.10487 7.31658 6.68539 7.70711L1 13" stroke="#EDE4D7" stroke-linecap="round"/>
+                                        <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
+                                        </svg>    
+                                    </div>
+                                </div>
+
+                                <div class="right-menu-content" data-id="mixers">
+                                    <a href="catalog-page.html">Для раковины</a>
+                                    <a href="catalog-page.html">Для ванны</a>
+                                    <a href="catalog-page.html">Для душа</a>
+                                    <div class="all-categories-link">
+                                        <a href="catalog-page.html">Все товары категории</a>
+                                        
+                                        <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
+                                        </svg>    
+                                    </div>
+                                </div>
+
+                                <div class="right-menu-content" data-id="shower-program">
+                                    <a href="catalog-page.html">Верхний душ</a>
+                                    <a href="catalog-page.html">Душевая система</a>
+                                    <a href="catalog-page.html">Гигиенический душ</a>
+                                    <a href="catalog-page.html">Лейки и держатели</a>
+                                    <div class="all-categories-link">
+                                        <a href="catalog-page.html">Все товары категории</a>
+                                        
+                                        <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
                                         </svg>    
                                     </div>
                                 </div>
                             </div>
-            
-                            <div class="contact-header">
-                                <a href="cart-page.html">КОРЗИНА (1)</a>
-            
-                                <button class="contact-button" id="openModalBtn">
-                                    СВЯЗАТЬСЯ С НАМИ
-                                    <img src="images/svg/contact.svg" alt="Связаться" class="contact-icon">
-                                </button>
-                            </div>
-
-                            <div class="burger-menu">
-                                <button id="openBurgerMenu">
-                                    <svg class="burger-icon" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="5" y="6.5" width="26" height="1" fill="#EDE4D7"/>
-                                        <rect x="5" y="15.5" width="26" height="1" fill="#EDE4D7"/>
-                                        <rect x="5" y="24.5" width="26" height="1" fill="#EDE4D7"/>
-                                    </svg>
-                                </button>
-                            </div>
                         </div>
                     </div>
                 </div>
-            </header>
-    
-            <div class="menu-navigation-relative">
-                <div class="menu-navigation">
-                    <hr class="line">
-                    <div class="menu-navigation-container">
-        
-                        <div class="left-menu">
-                            <nav>
-                              <ul>
-                                <!-- Меню Сантехника -->
-                                <li class="menu-item-plumbing">
-                                  <a href="#" class="menu-toggle-plumbing">
-                                    Сантехника
-                                    <svg class="menu-plumbing-arrow" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
-                                    </svg>     
-                                  </a>
-                                  <ul class="submenu-plumbing">
-                                    <li><a href="catalog-page.html">Инсталляции и клавиши</a></li>
-                                    <li><a href="catalog-page.html">Унитазы и биде</a></li>
-                                    <li><a href="catalog-page.html">Раковины</a></li>
-                                    <li><a href="catalog-page.html">Биде</a></li>
-                                    
-                                    <li class="submenu-items">
-                                        <div class="submenu-item">
-                                            <a href="#" class="shower-enclosures-and-pallets">
-                                                Душевые ограждения и поддоны
-                                            </a>
-                                            
-                                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
-                                            </svg>
-                                        </div>
-                                    </li>
-        
-                                    <li class="submenu-items">
-                                        <div class="submenu-item">
-                                            <a href="#" class="plumbing">
-                                                Смесители
-                                            </a>
-                                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
-                                            </svg>
-                                        </div>
-                                    </li>
-        
-                                    <li class="submenu-items">
-                                        <div class="submenu-item">
-                                            <a href="#" class="shower-program">
-                                                Душевая программа
-                                            </a>
-                                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
-                                            </svg>
-                                        </div>
-                                    </li>
-        
-                                    <li class="submenu-items">
-                                        <div class="submenu-item">
-                                            <a href="#" class="plumbing">
-                                                Смесители
-                                            </a>
-                                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
-                                            </svg>
-                                        </div>
-                                    </li>
-        
-                                    <li><a href="catalog-page.html">Аксессуары и декор</a></li>
-                                    <li><a href="catalog-page.html">Дополнительные комплектующие</a></li>
-                                  </ul>
-                                </li>
-                              
-                                <!-- Меню Мебель -->
-                                <li class="menu-item-furniture">
-                                    <a href="#" class="menu-toggle-furniture">
-                                        Мебель
-                                        <svg class="menu-plumbing-arrow" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
-                                        </svg>     
-                                      </a>
-                                  <ul class="submenu-furniture">
-                                    <li><a href="catalog-page.html">Шкафы и стеллажи</a></li>
-                                    <li><a href="catalog-page.html">Тумбы и комоды</a></li>
-                                    <li><a href="catalog-page.html">Кровати</a></li>
-                                    <li><a href="catalog-page.html">Столы и стулья</a></li>
-                                    <li><a href="catalog-page.html">Диваны</a></li>
-                                    <li><a href="catalog-page.html">Мебель для ванной</a></li>
-                                  </ul>
-                                </li>
-                              </ul>
-                            </nav>
-                        </div>
-        
-                        <div class="right-menu">
-                            <div class="right-menu-content">
-                                <a href="#">Душевые уголки, двери и перегородки</a>
-                                <a href="#">Поддоны</a>
-                                <a href="#">Шторки для ванны</a>
-                                <div class="all-categories-link">
-                                    <a href="#">Все товары категории</a>
-                                    
-                                    <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M13 1L7.70711 6.68539C7.31658 7.10487 6.68342 7.10487 6.29289 6.68539L1 1" stroke="currentColor" stroke-linecap="round"/>
-                                    </svg>    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
 
         
 
@@ -348,7 +408,7 @@
             </div>
         </section>
     
-        <section class="project-gallery project-gallery-desktop">
+        <section class="project-gallery">
             <div class="project-gallery-container">
                 <div class="blur-container">
                     <div class="project-gallery-header">
@@ -376,48 +436,14 @@
                     </div>
     
                     <div class="carousel-wrapper fade-in">
-                        <div class="project-gallery-images">
-                            <img src="images/project-info/project-galerry-images/image-2.webp" alt="">
-                            <img src="images/project-info/project-galerry-images/image-1.webp" alt="">
-                            <img src="images/project-info/project-galerry-images/image-2.webp" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="project-gallery project-gallery-mobile">
-            <div class="project-gallery-container">
-                <div class="blur-container">
-                    <div class="project-gallery-header">
-                        <div class="reveal-mask">
-                            <h1 class="project-gallery-title">
-                                Галерея проекта
-                            </h1>
-                        </div>
-    
-                        <div class="nav-arrows fade-in">
-                            <button class="left-arrow">
-                                <svg width="55" height="33" viewBox="0 0 55 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M18.9414 30L4.94141 16L18.9414 2" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
-                                    <path d="M48.9414 16L5.94141 16" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
-                                </svg>        
-                            </button>
-        
-                            <button class="right-arrow">
-                                <svg width="55" height="33" viewBox="0 0 55 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M35.9414 31L49.9414 17L35.9414 3" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
-                                    <path d="M5.94141 17L48.9414 17" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
-                                </svg>      
-                            </button>
-                        </div>
-                    </div>
-    
-                    <div class="carousel-wrapper fade-in">
-                        <div class="project-gallery-images-mobile">
-                            <img src="images/project-info/mobile/mobile.png" alt="">
-                            <img src="images/project-info/mobile/mobile.png" alt="">
-                            <img src="images/project-info/mobile/mobile.png" alt="">
+                        <div class="swiper project-gallery-swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide"><img src="images/project-info/project-galerry-images/image-2.webp" alt=""></div>
+                                <div class="swiper-slide"><img src="images/project-info/project-galerry-images/image-1.webp" alt=""></div>
+                                <div class="swiper-slide"><img src="images/project-info/project-galerry-images/image-2.webp" alt=""></div>
+                                <div class="swiper-slide"><img src="images/project-info/project-galerry-images/image-1.webp" alt=""></div>
+                                <div class="swiper-slide"><img src="images/project-info/project-galerry-images/image-2.webp" alt=""></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -718,148 +744,666 @@
                 </div>
             </section>
 
-        <section class="reviews">
-                    <div class="blur-container">
-                        <div class="reviews-container">
-                            <div class="reviews-header reveal-mask">
-                                <p class="block-title review-up-title fade-in">
-                                    Отзывы
-                                </p>
+            <section class="reviews">
+                            <div class="blur-container">
+                                <div class="reviews-container">
+                                    <div class="reviews-header reveal-mask">
+                                        <p class="block-title review-up-title fade-in">
+                                            Отзывы
+                                        </p>
 
-                                <h1 class="reviews-title">
-                                    Отзывы от покупателей
-                                </h1>
+                                        <h1 class="reviews-title">
+                                            Отзывы от покупателей
+                                        </h1>
 
-                                <div class="nav-arrows-reviews fade-in">
-                                    <button id="left-arrow-review"><img src="images/svg/left-arrow.svg" alt="Стерлка влево"></button>
-                                    <button id="right-arrow-review"><img src="images/svg/right-arrow.svg" alt="Стерлка вправо"></button>
-                                </div>
-                            </div>
-
-                            <div class="reviews-content fade-in">
-                                <div class="rating-number fade-in">
-                                    <h1>4,9</h1>
-                        
-                                    <p class="fade-in">на Яндекс.Картах</p>
-                        
-                                    <div class="stars fade-in">
-                                        <img src="images/svg/star.svg" alt="Звезда">
-                                        <img src="images/svg/star.svg" alt="Звезда">
-                                        <img src="images/svg/star.svg" alt="Звезда">
-                                        <img src="images/svg/star.svg" alt="Звезда">
-                                        <img src="images/svg/star.svg" alt="Звезда">
+                                        <div class="nav-arrows-reviews">
+                                            <button class="left-arrow-review"><img src="images/svg/left-arrow.svg" alt="Стерлка влево"></button>
+                                            <button class="right-arrow-review"><img src="images/svg/right-arrow.svg" alt="Стерлка вправо"></button>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="reviews-cards">
-                                    <div class="review-card fade-in">
-                                        <div class="review-text fade-in">
-                                            Недавно приобрели в Дизайн клуб НН мебель
-                                            для нашей гостиной, включая диван и журнальный 
-                                            столик. Хочу отметить высокое качество продукции 
-                                            и отличный сервис. Доставка была выполнена точно 
-                                            в срок, а сборка прошла быстро и без проблем. 
-                                            Команда профессионалов действительно знает своё дело 
-                                            и всегда готова помочь с выбором. Также хочу отметить, 
-                                            что они предложили несколько интересных идей по оформлению 
-                                            интер
+                                    <div class="reviews-content">
+                                        <div class="rating-number fade-in">
+                                            <h1 class="fade-in">4,9</h1>
+                                
+                                            <a href="https://yandex.ru/maps/org/dizayn_klub_nn/43110755341/reviews/?ll=44.022507%2C56.299496&utm_source=review&z=17" 
+                                                target="_blank" class="fade-in">
+                                                на Яндекс.Картах
+                                            </a>
+                                
+                                            <div class="stars fade-in">
+                                                <img src="images/svg/star.svg" alt="Звезда">
+                                                <img src="images/svg/star.svg" alt="Звезда">
+                                                <img src="images/svg/star.svg" alt="Звезда">
+                                                <img src="images/svg/star.svg" alt="Звезда">
+                                                <img src="images/svg/star.svg" alt="Звезда">
+                                            </div>
+                                        </div>
 
-                                            <span class="read-full-review fade-in">
-                                                ...
-                                                <button class="read-full-btn">
-                                                    читать весь
-                                                </button>
-                                            </span>
-                                            
-                                            <span class="review-continue-text fade-in">
-                                                ьера, что было очень полезно. Рекомендую всем, кто ищет стильную и качественную мебель!
-                                            </span>
-                                        </div>
-                        
-                                        <div class="review-author fade-in">
-                                            Анна Смирнова
-                                        </div>
-                        
-                                        <div class="review-link fade-in">
-                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=zxknujh4wyr33rnryg53ehqrd0&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review" target="_blank">Отзыв из Яндекс.Карт</a>
+                                        <div class="swiper reviews-cards reviews-cards-swiper">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Недавно приобрели в Дизайн клуб НН мебель
+                                                                для нашей гостиной, включая диван и журнальный 
+                                                                столик. Хочу отметить высокое качество продукции 
+                                                                и отличный сервис. Доставка была выполнена точно 
+                                                                в срок, а сборка прошла быстро и без проблем. 
+                                                                Команда профессионалов действительно знает своё дело 
+                                                                и всегда готова помочь с выбором. Также хочу отметить, 
+                                                                что они предложили несколько интересных идей по оформлению 
+                                                                интерьера, что было очень полезно. Рекомендую всем, 
+                                                                кто ищет стильную и качественную мебель!
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
                                                     
-                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
-                                            </svg>   
-                                        </div>
-                                    </div>
-                        
-                                    <div class="review-card fade-in">
-                                        <div class="review-text fade-in">
-                                            Заказывали в Дизайн клубе оборудование и 
-                                            мебель для кухни. Привезено всё было ровно в 
-                                            обещаный срок. Клуб смог предоставить хранение 
-                                            на складе на период отделки помещения. Представители - очень 
-                                            лёгкие в общении люди, при этом являющиеся пофессионалами 
-                                            своего дела, за что выражаю им отдельную благодарность. О
-                                            стался очень доволен результатом нашего сотрудничества
-                                        </div>
-                        
-                                        <div class="review-author fade-in">
-                                            Заглумонин Владислав
-                                        </div>
-                        
-                                        <div class="review-link fade-in">
-                                            <a href="#">Отзыв из Яндекс.Карт</a>
-                                                    
-                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
-                                            </svg>   
-                                        </div>
-                                    </div>
-                        
-                                    <div class="review-card fade-in">
-                                        <div class="review-text fade-in">
-                                            Недавно приобрели в Дизайн клуб НН мебель
-                                            для нашей гостиной, включая диван и журнальный 
-                                            столик. Хочу отметить высокое качество продукции 
-                                            и отличный сервис. Доставка была выполнена точно 
-                                            в срок, а сборка прошла быстро и без проблем. 
-                                            Команда профессионалов действительно знает своё дело 
-                                            и всегда готова помочь с выбором. Также хочу отметить, 
-                                            что они предложили несколько интересных идей по оформлению 
-                                            интер
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Анна Смирнова
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=zxknujh4wyr33rnryg53ehqrd0&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review" target="_blank">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                    
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Заказывали в Дизайн клубе оборудование и мебель для кухни. 
+                                                                Привезено всё было ровно в обещаный срок. 
+                                                                Клуб смог предоставить хранение на складе на период отделки 
+                                                                помещения. Представители - очень лёгкие в общении люди, 
+                                                                при этом являющиеся пофессионалами своего дела, 
+                                                                за что выражаю им отдельную благодарность. 
+                                                                Остался очень доволен результатом нашего сотрудничества.
+                                                            </div>
 
-                                            <span class="read-full-review fade-in">
-                                                ...
-                                                
-                                                <button class="read-full-btn fade-in">
-                                                    читать весь
-                                                </button>
-                                            </span>
-                                                
-                                            <span class="review-continue-text fade-in">
-                                                ьера, что было очень полезно. Рекомендую всем, кто ищет стильную и качественную мебель!
-                                            </span>
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Заглумонин Владислав
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=ktjwdh6dpce6x84hyvwd2q34qr&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                    
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Недавно приобрели в Дизайн клуб НН мебель
+                                                                для нашей гостиной, включая диван и журнальный 
+                                                                столик. Хочу отметить высокое качество продукции 
+                                                                и отличный сервис. Доставка была выполнена точно 
+                                                                в срок, а сборка прошла быстро и без проблем. 
+                                                                Команда профессионалов действительно знает своё дело 
+                                                                и всегда готова помочь с выбором. Также хочу отметить, 
+                                                                что они предложили несколько интересных идей по оформлению 
+                                                                интерьера, что было очень полезно. Рекомендую всем, 
+                                                                кто ищет стильную и качественную мебель!
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                                    
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Анна Смирнова
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=zxknujh4wyr33rnryg53ehqrd0&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review" target="_blank">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                    
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Заказывали в Дизайн клубе оборудование и мебель для кухни. 
+                                                                Привезено всё было ровно в обещаный срок. 
+                                                                Клуб смог предоставить хранение на складе на период отделки 
+                                                                помещения. Представители - очень лёгкие в общении люди, 
+                                                                при этом являющиеся пофессионалами своего дела, 
+                                                                за что выражаю им отдельную благодарность. 
+                                                                Остался очень доволен результатом нашего сотрудничества.
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Заглумонин Владислав
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=ktjwdh6dpce6x84hyvwd2q34qr&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Недавно приобрели в Дизайн клуб НН мебель
+                                                                для нашей гостиной, включая диван и журнальный 
+                                                                столик. Хочу отметить высокое качество продукции 
+                                                                и отличный сервис. Доставка была выполнена точно 
+                                                                в срок, а сборка прошла быстро и без проблем. 
+                                                                Команда профессионалов действительно знает своё дело 
+                                                                и всегда готова помочь с выбором. Также хочу отметить, 
+                                                                что они предложили несколько интересных идей по оформлению 
+                                                                интерьера, что было очень полезно. Рекомендую всем, 
+                                                                кто ищет стильную и качественную мебель!
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                                    
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Анна Смирнова
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=zxknujh4wyr33rnryg53ehqrd0&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review" target="_blank">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                    
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Заказывали в Дизайн клубе оборудование и мебель для кухни. 
+                                                                Привезено всё было ровно в обещаный срок. 
+                                                                Клуб смог предоставить хранение на складе на период отделки 
+                                                                помещения. Представители - очень лёгкие в общении люди, 
+                                                                при этом являющиеся пофессионалами своего дела, 
+                                                                за что выражаю им отдельную благодарность. 
+                                                                Остался очень доволен результатом нашего сотрудничества.
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Заглумонин Владислав
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=ktjwdh6dpce6x84hyvwd2q34qr&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Недавно приобрели в Дизайн клуб НН мебель
+                                                                для нашей гостиной, включая диван и журнальный 
+                                                                столик. Хочу отметить высокое качество продукции 
+                                                                и отличный сервис. Доставка была выполнена точно 
+                                                                в срок, а сборка прошла быстро и без проблем. 
+                                                                Команда профессионалов действительно знает своё дело 
+                                                                и всегда готова помочь с выбором. Также хочу отметить, 
+                                                                что они предложили несколько интересных идей по оформлению 
+                                                                интерьера, что было очень полезно. Рекомендую всем, 
+                                                                кто ищет стильную и качественную мебель!
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                                    
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Анна Смирнова
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=zxknujh4wyr33rnryg53ehqrd0&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review" target="_blank">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                    
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Заказывали в Дизайн клубе оборудование и мебель для кухни. 
+                                                                Привезено всё было ровно в обещаный срок. 
+                                                                Клуб смог предоставить хранение на складе на период отделки 
+                                                                помещения. Представители - очень лёгкие в общении люди, 
+                                                                при этом являющиеся пофессионалами своего дела, 
+                                                                за что выражаю им отдельную благодарность. 
+                                                                Остался очень доволен результатом нашего сотрудничества.
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Заглумонин Владислав
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=ktjwdh6dpce6x84hyvwd2q34qr&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Недавно приобрели в Дизайн клуб НН мебель
+                                                                для нашей гостиной, включая диван и журнальный 
+                                                                столик. Хочу отметить высокое качество продукции 
+                                                                и отличный сервис. Доставка была выполнена точно 
+                                                                в срок, а сборка прошла быстро и без проблем. 
+                                                                Команда профессионалов действительно знает своё дело 
+                                                                и всегда готова помочь с выбором. Также хочу отметить, 
+                                                                что они предложили несколько интересных идей по оформлению 
+                                                                интерьера, что было очень полезно. Рекомендую всем, 
+                                                                кто ищет стильную и качественную мебель!
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                                    
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Анна Смирнова
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=zxknujh4wyr33rnryg53ehqrd0&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review" target="_blank">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                    
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Заказывали в Дизайн клубе оборудование и мебель для кухни. 
+                                                                Привезено всё было ровно в обещаный срок. 
+                                                                Клуб смог предоставить хранение на складе на период отделки 
+                                                                помещения. Представители - очень лёгкие в общении люди, 
+                                                                при этом являющиеся пофессионалами своего дела, 
+                                                                за что выражаю им отдельную благодарность. 
+                                                                Остался очень доволен результатом нашего сотрудничества.
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Заглумонин Владислав
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=ktjwdh6dpce6x84hyvwd2q34qr&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Недавно приобрели в Дизайн клуб НН мебель
+                                                                для нашей гостиной, включая диван и журнальный 
+                                                                столик. Хочу отметить высокое качество продукции 
+                                                                и отличный сервис. Доставка была выполнена точно 
+                                                                в срок, а сборка прошла быстро и без проблем. 
+                                                                Команда профессионалов действительно знает своё дело 
+                                                                и всегда готова помочь с выбором. Также хочу отметить, 
+                                                                что они предложили несколько интересных идей по оформлению 
+                                                                интерьера, что было очень полезно. Рекомендую всем, 
+                                                                кто ищет стильную и качественную мебель!
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                                    
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Анна Смирнова
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=zxknujh4wyr33rnryg53ehqrd0&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review" target="_blank">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                    
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Заказывали в Дизайн клубе оборудование и мебель для кухни. 
+                                                                Привезено всё было ровно в обещаный срок. 
+                                                                Клуб смог предоставить хранение на складе на период отделки 
+                                                                помещения. Представители - очень лёгкие в общении люди, 
+                                                                при этом являющиеся пофессионалами своего дела, 
+                                                                за что выражаю им отдельную благодарность. 
+                                                                Остался очень доволен результатом нашего сотрудничества.
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Заглумонин Владислав
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=ktjwdh6dpce6x84hyvwd2q34qr&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Недавно приобрели в Дизайн клуб НН мебель
+                                                                для нашей гостиной, включая диван и журнальный 
+                                                                столик. Хочу отметить высокое качество продукции 
+                                                                и отличный сервис. Доставка была выполнена точно 
+                                                                в срок, а сборка прошла быстро и без проблем. 
+                                                                Команда профессионалов действительно знает своё дело 
+                                                                и всегда готова помочь с выбором. Также хочу отметить, 
+                                                                что они предложили несколько интересных идей по оформлению 
+                                                                интерьера, что было очень полезно. Рекомендую всем, 
+                                                                кто ищет стильную и качественную мебель!
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                                    
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Анна Смирнова
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=zxknujh4wyr33rnryg53ehqrd0&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review" target="_blank">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                    
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Заказывали в Дизайн клубе оборудование и мебель для кухни. 
+                                                                Привезено всё было ровно в обещаный срок. 
+                                                                Клуб смог предоставить хранение на складе на период отделки 
+                                                                помещения. Представители - очень лёгкие в общении люди, 
+                                                                при этом являющиеся пофессионалами своего дела, 
+                                                                за что выражаю им отдельную благодарность. 
+                                                                Остался очень доволен результатом нашего сотрудничества.
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Заглумонин Владислав
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=ktjwdh6dpce6x84hyvwd2q34qr&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Недавно приобрели в Дизайн клуб НН мебель
+                                                                для нашей гостиной, включая диван и журнальный 
+                                                                столик. Хочу отметить высокое качество продукции 
+                                                                и отличный сервис. Доставка была выполнена точно 
+                                                                в срок, а сборка прошла быстро и без проблем. 
+                                                                Команда профессионалов действительно знает своё дело 
+                                                                и всегда готова помочь с выбором. Также хочу отметить, 
+                                                                что они предложили несколько интересных идей по оформлению 
+                                                                интерьера, что было очень полезно. Рекомендую всем, 
+                                                                кто ищет стильную и качественную мебель!
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                                    
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Анна Смирнова
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=zxknujh4wyr33rnryg53ehqrd0&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review" target="_blank">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                    
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Заказывали в Дизайн клубе оборудование и мебель для кухни. 
+                                                                Привезено всё было ровно в обещаный срок. 
+                                                                Клуб смог предоставить хранение на складе на период отделки 
+                                                                помещения. Представители - очень лёгкие в общении люди, 
+                                                                при этом являющиеся пофессионалами своего дела, 
+                                                                за что выражаю им отдельную благодарность. 
+                                                                Остался очень доволен результатом нашего сотрудничества.
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Заглумонин Владислав
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=ktjwdh6dpce6x84hyvwd2q34qr&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Недавно приобрели в Дизайн клуб НН мебель
+                                                                для нашей гостиной, включая диван и журнальный 
+                                                                столик. Хочу отметить высокое качество продукции 
+                                                                и отличный сервис. Доставка была выполнена точно 
+                                                                в срок, а сборка прошла быстро и без проблем. 
+                                                                Команда профессионалов действительно знает своё дело 
+                                                                и всегда готова помочь с выбором. Также хочу отметить, 
+                                                                что они предложили несколько интересных идей по оформлению 
+                                                                интерьера, что было очень полезно. Рекомендую всем, 
+                                                                кто ищет стильную и качественную мебель!
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                                    
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Анна Смирнова
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=zxknujh4wyr33rnryg53ehqrd0&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review" target="_blank">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                    
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Заказывали в Дизайн клубе оборудование и мебель для кухни. 
+                                                                Привезено всё было ровно в обещаный срок. 
+                                                                Клуб смог предоставить хранение на складе на период отделки 
+                                                                помещения. Представители - очень лёгкие в общении люди, 
+                                                                при этом являющиеся пофессионалами своего дела, 
+                                                                за что выражаю им отдельную благодарность. 
+                                                                Остался очень доволен результатом нашего сотрудничества.
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Заглумонин Владислав
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=ktjwdh6dpce6x84hyvwd2q34qr&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                            
-                                        <div class="review-author fade-in">
-                                            Анна Смирнова
-                                        </div>
-                            
-                                        <div class="review-link">
-                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=zxknujh4wyr33rnryg53ehqrd0&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review" target="_blank">Отзыв из Яндекс.Карт</a>
-                                                        
-                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
-                                            </svg>   
-                                        </div>
+                                    </div>
+
+                                    <div class="open-all-catalog-reviews fade-in">
+                                        <a href="reviews-page.html">ВСЕ ОТЗЫВЫ</a>
+                                        <img src="images/svg/scope.svg" alt="">
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="open-all-catalog-reviews fade-in">
-                                <a href="reviews-page.html">ВСЕ ОТЗЫВЫ</a>
-                                <img src="images/svg/scope.svg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                    </section>
 
         <section class="get-contact">
                 <div class="blur-container">
@@ -1567,12 +2111,14 @@
         });
     </script>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
     <!-- Cookie -->
     <div id="cookie-container"></div>
 
     <!-- Cookie -->
     <script src="js/cookie.js"></script>
 
-    <script src="js/project-info.js"></script>
+    <script src="js/scripts.js"></script>
 </body>
 </html>

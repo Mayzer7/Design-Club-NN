@@ -987,72 +987,74 @@ function handleScrollUp() {
 
   // Переключение карточек отзывов
 
-  const cardsContainer = document.querySelector('.reviews-cards');
+  // const cardsContainer = document.querySelector('.reviews-cards');
   
-  if (cardsContainer) {
-    const leftArrowReview = document.getElementById('left-arrow-review');
-    const rightArrowReview = document.getElementById('right-arrow-review');
-    const ratingNumber = document.querySelector('.rating-number');
-    const cardsReview = document.querySelectorAll('.review-card');
-    const cardWidthReview = cardsReview[0].offsetWidth + 20; 
+  // if (cardsContainer) {
+  //   const leftArrowReview = document.getElementById('left-arrow-review');
+  //   const rightArrowReview = document.getElementById('right-arrow-review');
+  //   const ratingNumber = document.querySelector('.rating-number');
+  //   const cardsReview = document.querySelectorAll('.review-card');
+  //   const cardWidthReview = cardsReview[0].offsetWidth + 20; 
 
-    let currentIndexReview = 0;
+  //   let currentIndexReview = 0;
 
-    leftArrowReview.addEventListener('click', () => moveReview(-1));
-    rightArrowReview.addEventListener('click', () => moveReview(1));
+  //   leftArrowReview.addEventListener('click', () => moveReview(-1));
+  //   rightArrowReview.addEventListener('click', () => moveReview(1));
 
-    function moveReview(direction) {
-        const newIndex = currentIndexReview + direction;
-        if (newIndex >= 0 && newIndex < cardsReview.length) {
-            currentIndexReview = newIndex;
-            updateTransform();
+  //   function moveReview(direction) {
+  //       const newIndex = currentIndexReview + direction;
+  //       if (newIndex >= 0 && newIndex < cardsReview.length) {
+  //           currentIndexReview = newIndex;
+  //           updateTransform();
 
-            // Скрывать рейтинг только если ширина окна больше 1000px
-            if (window.innerWidth > 1000) {
-                ratingNumber.style.visibility = currentIndexReview > 0 ? 'hidden' : 'visible';
-            } else {
-                ratingNumber.style.visibility = 'visible';
-            }
-        }
-    }
+  //           // Скрывать рейтинг только если ширина окна больше 1000px
+  //           if (window.innerWidth > 1000) {
+  //               ratingNumber.style.visibility = currentIndexReview > 0 ? 'hidden' : 'visible';
+  //           } else {
+  //               ratingNumber.style.visibility = 'visible';
+  //           }
+  //       }
+  //   }
 
-    function updateTransform() {
-        cardsContainer.style.transform = `translateX(${-cardWidthReview * currentIndexReview}px)`;
-    }
+  //   function updateTransform() {
+  //       cardsContainer.style.transform = `translateX(${-cardWidthReview * currentIndexReview}px)`;
+  //   }
 
-    // Обработка ресайза окна — обновляем видимость рейтинга
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 1000) {
-            ratingNumber.style.visibility = currentIndexReview > 0 ? 'hidden' : 'visible';
-        } else {
-            ratingNumber.style.visibility = 'visible';
-        }
-    });
+  //   // Обработка ресайза окна — обновляем видимость рейтинга
+  //   window.addEventListener('resize', () => {
+  //       if (window.innerWidth > 1000) {
+  //           ratingNumber.style.visibility = currentIndexReview > 0 ? 'hidden' : 'visible';
+  //       } else {
+  //           ratingNumber.style.visibility = 'visible';
+  //       }
+  //   });
 
-    // Добавляем свайп
-    let startReviewX = 0;
-    let isDragging = false;
+  //   // Добавляем свайп
+  //   let startReviewX = 0;
+  //   let isDragging = false;
 
-    cardsContainer.addEventListener('touchstart', e => {
-        startReviewX = e.touches[0].clientX;
-        isDragging = true;
-    }, { passive: true });
+  //   cardsContainer.addEventListener('touchstart', e => {
+  //       startReviewX = e.touches[0].clientX;
+  //       isDragging = true;
+  //   }, { passive: true });
 
-    cardsContainer.addEventListener('touchmove', e => {}, { passive: true });
+  //   cardsContainer.addEventListener('touchmove', e => {}, { passive: true });
 
-    cardsContainer.addEventListener('touchend', e => {
-        if (!isDragging) return;
-        const endX = e.changedTouches[0].clientX;
-        const diffX = endX - startReviewX;
-        const threshold = 50; // минимальная дистанция свайпа
-        if (diffX > threshold) {
-            moveReview(-1); // свайп вправо
-        } else if (diffX < -threshold) {
-            moveReview(1);  // свайп влево
-        }
-        isDragging = false;
-    });
-  }
+  //   cardsContainer.addEventListener('touchend', e => {
+  //       if (!isDragging) return;
+  //       const endX = e.changedTouches[0].clientX;
+  //       const diffX = endX - startReviewX;
+  //       const threshold = 50; // минимальная дистанция свайпа
+  //       if (diffX > threshold) {
+  //           moveReview(-1); // свайп вправо
+  //       } else if (diffX < -threshold) {
+  //           moveReview(1);  // свайп влево
+  //       }
+  //       isDragging = false;
+  //   });
+  // }
+
+  
 
   // Для переключение карточек "Почему выбирают нас" с помощью стрелок
 
@@ -1239,7 +1241,7 @@ if (window.location.pathname.endsWith('main-page.html')) {
 
   // Переключение карточек "Популярные товары"
 
-  const swiper = new Swiper('.mySwiper', {
+  const swiper = new Swiper('.popular-products-swiper', {
       slidesPerView: 'auto',
       spaceBetween: 20,
       initialSlide: 2,
@@ -1248,9 +1250,9 @@ if (window.location.pathname.endsWith('main-page.html')) {
       loopAdditionalSlides: 1,
       touchRatio: 0.2,
       centeredSlides: true,
-      speed: 1000,
+      speed: 800,
       effect: 'slide',
-      grabCursor: true,
+      grabCursor: false,
       navigation: {
         nextEl: '.popular-right-arrow',
         prevEl: '.popular-left-arrow',
@@ -1264,12 +1266,42 @@ if (window.location.pathname.endsWith('main-page.html')) {
         }
       },
   });
+}
 
+  // Свайп карточек отзывов
+
+  const reviewsSection = document.querySelector('.reviews');
+
+  if (reviewsSection) {
+    const swiperReview = new Swiper('.reviews-cards-swiper', {
+        slidesPerView: 'auto',
+        centeredSlides: false, 
+        spaceBetween: 20,
+        grabCursor: false,
+        loop: true,
+        speed: 800,
+        initialSlide: 0,
+        navigation: {
+          nextEl: '.right-arrow-review',
+          prevEl: '.left-arrow-review',
+        },
+        breakpoints: {
+          0: {
+            spaceBetween: 10
+          },
+          430: {
+            spaceBetween: 20
+          }
+        },
+      });
+  } 
 
 // Выбор способа связи в форме "Связаться с нами"
 
+const menu = document.getElementById('menu-contact-method');
+
+if (menu) {
 function toggleContactMethodMenu() {
-      const menu = document.getElementById('menu-contact-method');
       const arrow = document.getElementById('dropdown-arrow');
 
       if (menu.classList.contains('open')) {
@@ -1349,8 +1381,7 @@ function toggleContactMethodMenu() {
           form.submit();
       }
   }
-}
-
+} 
 
 // Скрипты для контента на странице "about-us-page.html"
 
@@ -1869,4 +1900,41 @@ if (projectsSection) {
       }, 600);
     });
   });
+}
+
+// Скрипты для контента на странице "project-info-page.html"
+
+const gallerySwiper = document.querySelector('.project-gallery-swiper');
+
+  if (gallerySwiper) {
+    // Переключение карточек "Галерея проекта"
+    let swiper;
+
+    function initSwiper() {
+      const isMobile = window.matchMedia('(max-width: 830px)').matches;
+
+      if (swiper) swiper.destroy(true, true); // удаляем старый instance
+
+      swiper = new Swiper('.project-gallery-swiper', {
+        slidesPerView: 'auto',
+        centeredSlides: !isMobile, // если не мобильный — центрируем
+        spaceBetween: 20,
+        grabCursor: false,
+        loop: true,
+        speed: 800,
+        initialSlide: 1,
+        navigation: {
+          nextEl: '.right-arrow',
+          prevEl: '.left-arrow',
+        },
+      });
+    }
+
+    // Инициализация
+    initSwiper();
+
+    // Обновляем при изменении размера окна
+    window.addEventListener('resize', () => {
+      initSwiper();
+    });
 }
