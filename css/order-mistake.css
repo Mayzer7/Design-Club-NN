@@ -114,8 +114,26 @@ body {
 
 
 
-
 /* Шапка */
+
+
+.about-company-nav {
+    display: none;
+}
+
+.about-company-nav.active {
+    display: block;
+}
+
+.main-nav.hidden {
+    display: none;
+}
+
+
+.menu-toggle-plumbing.open,
+.menu-toggle-furniture.open {
+    color: #AE9877;
+}
 
 .header-top {
     position: fixed;
@@ -144,16 +162,15 @@ body {
 }
 
 .logo {
-    width: 128px;
-    height: 97px;
+    width: 110px;
+    height: 83px;
 }
 
 .header-right {
     margin-left: 13%;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    text-align: center;    
+    align-items: flex-start;  
     width: 100%;    
 }
 
@@ -163,14 +180,69 @@ body {
     gap: 40px;
 }
 
+.nav-scrolled {
+    margin-top: 10px;
+}
 
-/* Ховеры и анимации для стрелок */
+.about-submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    padding-left: 0;
+}
+
+.about-toggle {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+
+.about-toggle.open .about-submenu {
+    max-height: 500px; /* максимальное значение, чтобы влез весь список */
+    opacity: 1;
+}
+
+.about-header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 6px;
+    position: relative;
+    z-index: 1000;
+    pointer-events: auto;
+}
 
 .down-arrow {
     transition: transform 0.3s ease;
 }
 
-.menu-plumbing-arrow {
+.about-toggle.open .down-arrow {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+}
+
+.about-toggle.open .down-arrow {
+    transform: rotate(180deg);
+}
+
+.about-toggle.open .about-header > a,
+.about-toggle.open .about-header .down-arrow {
+    color: #AE9877;
+    stroke: #AE9877; 
+}
+
+.about-toggle.open .open-catalog {
+    color: #D4B28C;
+}
+
+/* Ховеры и анимации для стрелок */
+
+.down-arrow {
     transition: transform 0.3s ease;
 }
 
@@ -179,33 +251,68 @@ li.active .down-arrow {
     color: #AE9877;
 }
 
-li.active .menu-plumbing-arrow {
+li.active .menu-arrow {
     transform: rotate(180deg);
     color: #AE9877;
+}
+
+.open-catalog {
+    border: none;
+    background-color: transparent;
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #EDE4D7;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 0;
+}
+
+.open-catalog:hover {
+    color: #D4B28C;
 }
 
 .open-catalog:hover + .down-arrow {
     color: #D4B28C;
 }
 
-.menu-toggle-plumbing:hover + .menu-plumbing-arrow {
+.menu-arrow {
+    transition: transform 0.3s ease;
+}
+
+.menu-toggle:hover + .menu-arrow {
     color: #D4B28C;
 }
 
-.menu-item.active .menu-plumbing-arrow  {
+.menu-item.active .menu-arrow {
     transform: rotate(180deg);
     color: #AE9877;
 }
 
-.menu-item.active .menu-toggle-plumbing {
+.menu-item.active .menu-toggle {
+    color: #AE9877;
+}
+
+.menu-item button {
+    border: none;
+    background-color: transparent;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300;
+    cursor: pointer;
+    color: #EDE4D7;
+    transition: color 0.3s ease;
+}
+
+.menu-item button:hover {
     color: #AE9877;
 }
 
 
+
 /* Всплывающее меню при нажатии на Каталог */
 
-.menu-toggle-furniture,
-.menu-toggle-plumbing {
+.menu-toggle,
+.menu-toggle {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -214,14 +321,50 @@ li.active .menu-plumbing-arrow {
     color: #EDE4D7;
     transition: color 0.3s ease;
 }
-  
-.menu-arrow {
-    transition: stroke 0.3s ease;
+
+.menu-toggle:hover,
+.menu-toggle:hover {
+    color: #AE9877;
 }
 
-.menu-toggle-furniture:hover,
-.menu-toggle-plumbing:hover {
-    color: #AE9877;
+.menu-toggle {
+  cursor: pointer;
+  transition: color 0.3s ease;
+  color: #EDE4D7; /* базовый цвет */
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 26px;
+}
+
+.menu-toggle svg path {
+  transition: stroke 0.3s ease, transform 0.3s ease;
+  stroke: currentColor; /* цвет стрелки наследуется от текста */
+}
+
+/* При наведении меняем цвет текста и стрелки */
+.menu-toggle:hover,
+.menu-toggle:focus {
+  color: #AE9877;
+}
+
+/* Стрелка меняет цвет при наведении */
+.menu-toggle:hover svg path,
+.menu-toggle:focus svg path {
+  stroke: #AE9877;
+}
+
+/* Когда меню открыто — добавим класс active кнопке, для поворота и цвета */
+.menu-toggle.active {
+  color: #AE9877;
+}
+
+.menu-toggle.active svg {
+  transform: rotate(180deg);
+}
+
+.menu-toggle.active svg path {
+  stroke: #AE9877;
 }
 
 .menu-navigation-relative {
@@ -231,6 +374,7 @@ li.active .menu-plumbing-arrow {
 .menu-navigation {
     margin-top: 170px;
     position: fixed;
+    max-width: 1920px;
     width: 100%;
     display: none;
     z-index: 5;
@@ -238,7 +382,6 @@ li.active .menu-plumbing-arrow {
     font-family: 'SF Pro Display', sans-serif;
     font-weight: 900;
     background-color: #151c28;
-    /* min-height: 250px; */
 }
 
 /* Основной отступ */
@@ -246,25 +389,97 @@ li.active .menu-plumbing-arrow {
     margin-top: 170px;
 }
 
+/* Когда скролим вверх */
+.menu-navigation.scrolled-margin {
+    margin-top: 130px !important;
+}
+
+/* Когда меню "О компании" открыто */
+.menu-navigation.scrolled-margin.about-open {
+    margin-top: 200px !important;
+}
+
 /* Отступ при активном поиске */
 .menu-navigation.search-active {
     margin-top: 420px; 
 }
 
-.menu-navigation-container {
+/* Отступ при активном поиске снизу страницы*/
+.menu-navigation.search-active-down {
+    margin-top: 500px; 
+}
+
+.menu-container {
     display: flex;
+}
+
+
+/* Открывает подменю при наведении (только для ПК) */
+@media (hover: hover) and (pointer: fine) {
+  .menu-item:hover > .menu-toggle {
+    color: #AE9877;
+  }
+
+  .menu-item:hover > .menu-toggle svg {
+    transform: rotate(180deg);
+  }
+
+  .menu-item:hover > .menu-toggle svg path {
+    stroke: #AE9877;
+  }
+}
+
+
+.catalog-up-nav {
+    max-height: 400px; 
+    min-width: 350px;
+    width: 100%;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+.right-menu {
+    margin-top: 10px;
+    max-height: 500px; 
+    width: 100%;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+.right-menu::-webkit-scrollbar {
+    width: 6px;
+}
+  
+.right-menu::-webkit-scrollbar-track {
+    background-color: rgba(237, 228, 215, 0.4);
+}
+  
+.right-menu::-webkit-scrollbar-thumb {
+    background-color: #EDE4D7;
+}
+
+.catalog-up-nav::-webkit-scrollbar {
+    width: 6px;
+}
+  
+.catalog-up-nav::-webkit-scrollbar-track {
+    background-color: rgba(237, 228, 215, 0.4);
+}
+  
+.catalog-up-nav::-webkit-scrollbar-thumb {
+    background-color: #EDE4D7;
 }
 
 .left-menu {
     position: relative; 
-    margin-right: 100px;
+    margin-right: 20px;
 }
   
 .left-menu::after {
     content: '';
     position: absolute;
     top: 0;
-    right: -100px; 
+    right: 0px; 
     width: 1px;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.4); 
@@ -275,22 +490,15 @@ li.active .menu-plumbing-arrow {
     font-weight: 300;
 }
 
-.submenu-furniture {
+.submenu {
     display: none;
     flex-direction: column;
     gap: 5px;
     padding: 10px;
 }
 
-.submenu-plumbing {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    padding: 10px;
-}
-
-.submenu-content {
-    display: none;
+.submenu.open {
+    display: flex;
 }
 
 .submenu-item {
@@ -302,6 +510,14 @@ li.active .menu-plumbing-arrow {
     margin-top: 4px;
 }
 
+.submenu-item.active > a.menu-button {
+  color: #AE9877;
+}
+
+.submenu-item.active svg path {
+  stroke: #AE9877;
+}
+
 .right-menu {
     position: relative;
     top: -9px;
@@ -309,11 +525,11 @@ li.active .menu-plumbing-arrow {
 }
 
 .right-menu-content {
-    margin-top: 30px;
     display: none;
     flex-direction: column;
     gap: 5px;
 }
+
 
 .right-menu-content a {
     font-family: 'SF Pro Display Thin', sans-serif;
@@ -324,7 +540,16 @@ li.active .menu-plumbing-arrow {
 .all-categories-link {
     margin-top: 15px;
     display: flex;
+    gap: 10px;
     align-items: center;
+}
+
+.all-categories-link svg {
+    transition: transform 0.3s ease;
+}
+
+.all-categories-link:hover svg {
+    color: #AE9877;
 }
 
 .all-categories-link a {
@@ -340,7 +565,7 @@ li.active .menu-plumbing-arrow {
 
 .catalog-nav ul li {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 10px;
 }
@@ -397,7 +622,12 @@ li.active .menu-plumbing-arrow {
 }
 
 .header-search-padding {
-    padding-bottom: 270px;
+    padding-bottom: 280px;
+    background-color: #151c28;
+}
+
+.header-search-padding-down {
+    padding-bottom: 340px;
     background-color: #151c28;
 }
 
@@ -409,6 +639,12 @@ li.active .menu-plumbing-arrow {
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.search-icon {
+    width: 24px;
+    height: 24px;
+    display: block;
 }
 
 .search-items.show .search-item {
@@ -431,7 +667,7 @@ li.active .menu-plumbing-arrow {
 
 .zoom-image {
     display: inline-block;
-  }
+}
 
 .zoom-image img {
     transition: transform 0.3s ease;
@@ -473,6 +709,7 @@ li.active .menu-plumbing-arrow {
 .search-bar {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     background: transparent;
     padding: 5px 0;
@@ -488,6 +725,8 @@ li.active .menu-plumbing-arrow {
     outline: none;
     color: #fff;
     font-size: 18px;
+    max-width: 300px;
+    width: 100%;
 }
 
 .search-icon-button {
@@ -595,6 +834,10 @@ li.active .menu-plumbing-arrow {
 }
 
 @media (max-width: 1030px) {
+    .main-page-top {
+        --bg-1: url('../images/main-page/adaptive/background-1024.webp');
+    }
+
     .menu-navigation.default-margin {
         margin-top: 200px;
     }
@@ -658,9 +901,10 @@ li.active .menu-plumbing-arrow {
     }
 
     .header-search-padding {
-        padding-bottom: 320px;
-        background-color: #151C28;
+        padding-bottom: 330px;
     }
+
+
 }
 
 @media (max-width: 630px) {
@@ -680,7 +924,8 @@ li.active .menu-plumbing-arrow {
         display: none;
     }
 
-    .header-search-padding {
+    .header-search-padding,
+    .header-search-padding-down {
         padding-bottom: 20px;
         background-color: transparent;
     }
@@ -991,7 +1236,6 @@ nav ul ul.open + svg {
     background-color: #AE9877;
 }
 
-
 /* Анимации на странице */
 
 /* Появление заголовка через анимацию через маску вверх */
@@ -1023,8 +1267,6 @@ nav ul ul.open + svg {
     opacity: 1;
     transform: translateY(0);
 }
-
-
 
 
 
@@ -1071,6 +1313,11 @@ nav ul ul.open + svg {
     font-size: 100px;
     font-weight: 600;
     text-transform: uppercase;
+
+    /* Добавленные свойства для переноса */
+    word-wrap: break-word;        /* Поддержка старых браузеров */
+    overflow-wrap: break-word;    /* Современный стандарт */
+    hyphens: auto;     
 }
 
 .subtitle {
@@ -1109,22 +1356,20 @@ nav ul ul.open + svg {
     width: 178px;
     height: 135px;
 }
-
 .footer-navigation {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.footer-navigation h1 {
+.footer-navigation p {
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 600;
+    white-space: nowrap;
     padding-bottom: 10px;
     text-transform: uppercase;
-    font-size: 24px;
+    font-size: 20px;
     transition: color 0.3s ease;
-}
-
-.footer-navigation h1:hover {
-    color: #AE9877;
 }
 
 .footer-navigation ul {
@@ -1142,16 +1387,22 @@ nav ul ul.open + svg {
     color: #AE9877;
 }
 
+.footer-address {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
 .footer-address p {
     margin-bottom: 5px;
     color: rgba(237, 228, 215, 0.7);
 }
 
-.footer-address h1 {
-    font-size: 38px;
-    margin-bottom: 40px;
-    font-family: 'SF Pro Display Thin', sans-serif; 
+.footer-address a {
+    font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 600;
+    font-size: 38px;
+    cursor: pointer;
 }
 
 .footer-icons {
@@ -1163,6 +1414,11 @@ nav ul ul.open + svg {
     height: 36px;
     width: 36px;
 }
+
+.footer-last {
+    margin-top: 40px;
+}
+
 
 .footer-copyright {
     display: grid;
@@ -1186,7 +1442,7 @@ nav ul ul.open + svg {
 
 .footer-1024 {
     display: none;
-    padding: 100px 20px 0 20px;
+    padding: 185px 20px 0 20px;
     background-color: transparent;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 
@@ -1208,7 +1464,7 @@ nav ul ul.open + svg {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 40px;
-    padding-top: 20px;
+    padding: 20px 0px;
 }
 
 .last-column {
@@ -1233,9 +1489,11 @@ nav ul ul.open + svg {
     padding-top: 20px;
 }
 
-.footer-nav-down h1 {
+.footer-nav-down a {
     text-transform: uppercase;
-    font-size: 24px;
+    font-size: 20px;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 600;
 }
 
 .footer-nav-down p {
@@ -1303,10 +1561,19 @@ nav ul ul.open + svg {
     flex-direction: column;
     gap: 10px;
     align-items: flex-end;
-    
+}
+
+.copyrigth-second-column p {
+    font-size: 14px;
 }
 
 /* Адаптив для footer */
+
+@media (max-width: 1426px) {
+    .footer {
+        padding: 185px 20px 0 20px;
+    }
+}
 
 @media (max-width: 1335px) {
     .footer {
@@ -1367,7 +1634,6 @@ nav ul ul.open + svg {
         height: 32px;
     }
 }
-
 
 
 
@@ -1807,8 +2073,6 @@ nav ul ul.open + svg {
 
 /* Модальное окно "Произошла ошибка" */
 
-
-
 .error-contact {
     font-family: 'SF Pro Display', sans-serif; 
     position: absolute;
@@ -1908,7 +2172,8 @@ nav ul ul.open + svg {
 }
 
 
-/* Адаптив "Произошла ошибка" */
+
+/* Адаптив спасибо за заказ */
 
 @media (max-width: 1274px) {
     .footer-1024 {
@@ -1946,21 +2211,19 @@ nav ul ul.open + svg {
 }
 
 @media (max-width: 510px) {
-    .title {
-        font-size: 60px;
-    }
-
-    .footer-below-1024 {
-        padding: 0px 20px 0px 20px;
-    }
-}
-
-@media (max-width: 400px) {
     .under-header {
         top: 90px;
     }
 
     .title {
         font-size: 42px;
+    }
+
+    .footer-below-1024 {
+        padding: 0px 20px 0px 20px;
+    }
+
+    .subtitle {
+        font-size: 16px;
     }
 }
