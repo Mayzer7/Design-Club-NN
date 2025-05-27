@@ -1061,47 +1061,47 @@ function handleScrollUp() {
   const containerWhy = document.querySelector('.why-choose-us-content');
 
   if (containerWhy) {
-    document.addEventListener('DOMContentLoaded', () => {
-      const leftArrow = document.getElementById('why-left-arrow');
-      const rightArrow = document.getElementById('why-right-arrow');
+    // document.addEventListener('DOMContentLoaded', () => {
+    //   const leftArrow = document.getElementById('why-left-arrow');
+    //   const rightArrow = document.getElementById('why-right-arrow');
 
-      const minWidth = parseInt(
-          window.getComputedStyle(document.querySelector('.card')).getPropertyValue('min-width'), 10
-      );
+    //   const minWidth = parseInt(
+    //       window.getComputedStyle(document.querySelector('.card')).getPropertyValue('min-width'), 10
+    //   );
 
-      const scrollAmount = minWidth; // ширина + отступ
+    //   const scrollAmount = minWidth; // ширина + отступ
 
-      rightArrow.addEventListener('click', () => {
-          animateScroll(containerWhy, scrollAmount, 300);
-      });
+    //   rightArrow.addEventListener('click', () => {
+    //       animateScroll(containerWhy, scrollAmount, 300);
+    //   });
 
-      leftArrow.addEventListener('click', () => {
-          animateScroll(containerWhy, -scrollAmount, 300);
-      });
-    });
+    //   leftArrow.addEventListener('click', () => {
+    //       animateScroll(containerWhy, -scrollAmount, 300);
+    //   });
+    // });
 
-    // Плавная анимация для переключения
-    function easeInOutQuad(t) {
-        return t < 0.5
-            ? 2 * t * t
-            : -1 + (4 - 2 * t) * t;
-    }
+    // // Плавная анимация для переключения
+    // function easeInOutQuad(t) {
+    //     return t < 0.5
+    //         ? 2 * t * t
+    //         : -1 + (4 - 2 * t) * t;
+    // }
 
-    function animateScroll(container, delta, duration = 800) {
-        const start = container.scrollLeft;
-        const end = start + delta;
-        const t0 = performance.now();
+    // function animateScroll(container, delta, duration = 800) {
+    //     const start = container.scrollLeft;
+    //     const end = start + delta;
+    //     const t0 = performance.now();
 
-        function tick(t) {
-            const elapsed = t - t0;
-            const progress = Math.min(elapsed / duration, 1);
-            container.scrollLeft = start + (end - start) * easeInOutQuad(progress);
+    //     function tick(t) {
+    //         const elapsed = t - t0;
+    //         const progress = Math.min(elapsed / duration, 1);
+    //         container.scrollLeft = start + (end - start) * easeInOutQuad(progress);
 
-            if (progress < 1) requestAnimationFrame(tick);
-        }
+    //         if (progress < 1) requestAnimationFrame(tick);
+    //     }
 
-        requestAnimationFrame(tick);
-    }
+    //     requestAnimationFrame(tick);
+    // }
 
     // Отображаем стрелочки для переключения карточек "Почему выбирают нас", если карточек больше 4 
     const whyCards = document.querySelectorAll('.why-choose-us-content .card');
@@ -1295,6 +1295,51 @@ if (window.location.pathname.endsWith('main-page.html')) {
         },
       });
   } 
+
+
+// Свайп "Почему выбирают нас"
+
+const whyChooseUs = document.querySelector('.why-choose-us');
+
+if (whyChooseUs) {
+  const swiper = new Swiper('.why-choose-us-swiper', {
+    slidesPerView: 4,
+    spaceBetween: 20,
+    grabCursor: false,
+    speed: 600,
+    slidesPerGroup: 2,
+    loop: true,
+    navigation: {
+      nextEl: '.why-right-arrow',
+      prevEl: '.why-left-arrow',
+    },
+
+    breakpoints: {
+      1020: {
+        slidesPerView: 4,
+        slidesPerGroup: 2,
+        spaceBetween: 20,
+      },
+      765: {
+        slidesPerView: 3,
+        slidesPerGroup: 2,
+        spaceBetween: 20,
+      },
+      541: {
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+        spaceBetween: 20,
+      },
+      0: {
+        slidesPerView: 'auto',
+        slidesPerGroup: 1,
+        spaceBetween: 10,
+      },
+    },
+  });
+}
+
+
 
 // Выбор способа связи в форме "Связаться с нами"
 

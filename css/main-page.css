@@ -1593,7 +1593,7 @@ nav ul ul.open + svg {
 
 
 
-@media (max-width: 520px) {
+@media (max-width: 540px) {
     .title-container h1 {
         font-size: 42px;
     }
@@ -1699,7 +1699,9 @@ nav ul ul.open + svg {
     position: relative;
 }
 
-
+.why-up-title {
+    margin-left: 3px;
+}
 
 .block-title {
     color: rgba(255, 255, 255, 0.6);
@@ -1721,7 +1723,7 @@ nav ul ul.open + svg {
 
 .why-arrows {
     position: absolute;
-    top: 300px;
+    top: 400px;
     right: 20px;
 }
 
@@ -1746,19 +1748,14 @@ nav ul ul.open + svg {
     width: 100%;    
 }
 
-
 .why-choose-us-content {
-    display: flex;
-    overflow-x: auto;
-    overflow-y: hidden;
     padding-top: 100px;
-    padding-bottom: 200px;
-    scroll-behavior: smooth;
-    gap: 10px;
 }
 
-.why-choose-us-content::-webkit-scrollbar {
-    display: none;
+.swiper-slide {
+    padding: 0px; 
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .card {
@@ -1766,17 +1763,19 @@ nav ul ul.open + svg {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 0 20px;
-    min-width: 455px;
+    max-width: 414px;
+    padding: 20px;
     width: 100%;
     background-color: transparent;
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
     cursor: pointer; 
+    z-index: 0;
 }
 
 .card:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+    z-index: 10;
 }
 
 .card::before {
@@ -1800,6 +1799,8 @@ nav ul ul.open + svg {
 .card p {
     margin-bottom: 40px;
     color: #EDE4D7;
+    max-width: 350px;
+    width: 100%;
 }
 
 .card img {
@@ -1809,7 +1810,7 @@ nav ul ul.open + svg {
 }
 
 .down-card {
-    top: 100px;
+    margin-top: 100px;
 }
 
 
@@ -1938,7 +1939,7 @@ nav ul ul.open + svg {
     }
 
     .why-arrows {
-        top: 550px;
+        top: 650px;
     }
 
     .why-up-title {
@@ -1958,7 +1959,7 @@ nav ul ul.open + svg {
     }
 }
 
-@media (max-width: 881px) {
+@media (max-width: 870px) {
     .why-choose-us {
         padding: 450px 20px 200px 20px;
     }
@@ -1967,8 +1968,10 @@ nav ul ul.open + svg {
         top: 450px;
     }
 
-    .why-arrows {
-        top: 600px;
+
+
+    .title-group {
+        padding-left: 0%;
     }
 }
 
@@ -1994,17 +1997,6 @@ nav ul ul.open + svg {
     }
 }
 
-@media (max-width: 675px) {
-    .title-group {
-        padding-left: 5%;
-    }
-}
-
-@media (max-width: 635px) {
-    .title-group {
-        padding-left: 0%;
-    }
-}
 
 @media (max-width: 600px) {
     .rigth-title-group.visible {
@@ -2022,9 +2014,9 @@ nav ul ul.open + svg {
     }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 540px) {
     .down-card {
-        top: 0px;
+        margin-top: 0px;
     }
 
     .card {
@@ -2055,6 +2047,10 @@ nav ul ul.open + svg {
 
     .why-up-title {
         top: 320px;
+    }
+
+    .swiper-slide {
+        max-width: 265px;
     }
 }
 
@@ -3958,6 +3954,7 @@ a .popular-product-desc p,
     display: flex;
     gap: 20px;
     overflow-x: visible; 
+    cursor: pointer;
     padding-bottom: 20px;
    
     transition: transform 0.5s ease; 
