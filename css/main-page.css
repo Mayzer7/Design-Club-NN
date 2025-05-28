@@ -4244,6 +4244,7 @@ a .popular-product-desc p,
 
     .reviews-cards-swiper .swiper-slide {
         width: 282px;
+        min-width: 282px;
         height: 364px;
     }
 
