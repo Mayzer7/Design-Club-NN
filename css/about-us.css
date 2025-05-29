@@ -3236,9 +3236,29 @@ nav ul ul.open + svg {
 /* Секция "Отзывы от покупателей" */
 
 
+.reviews-cards-swiper {
+  width: 100%;
+  overflow: hidden; 
+}
+
+.reviews-cards-swiper .swiper-wrapper {
+  align-items: center;
+  margin-left: 10px;
+}
+
+.reviews-cards-swiper .swiper-slide {
+  width: 645px;
+  height: 353px;
+  transition: transform 0.8s ease-in-out;
+  flex-shrink: 0;
+  display: flex;
+}
+
+
+
 .reviews {
     padding: 130px 20px 100px 20px;
-    background-color: #151c28;
+    background-color: #171F2E;
     font-family: 'SF Pro Display Thin', sans-serif;  
     overflow: hidden;
     
@@ -3275,6 +3295,7 @@ nav ul ul.open + svg {
 
 
 .rating-number {
+    margin-right: 200px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -3305,9 +3326,9 @@ nav ul ul.open + svg {
     background-size: 100% 1px; 
 }
 
-
-.rating-number p {
+.rating-number a {
     white-space: nowrap;
+    transition: color 0.3s ease;
 }
 
 .rating-number h1 {
@@ -3334,22 +3355,19 @@ nav ul ul.open + svg {
     display: flex;
     gap: 20px;
     overflow-x: visible; 
+    cursor: pointer;
     padding-bottom: 20px;
-    padding-left: 10%;
+   
     transition: transform 0.5s ease; 
 }
 
 .review-card {
     position: relative;
-    min-width: 600px;
-    width: 100%;
-    min-height: 353px;
-    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 20px;
+    justify-content: space-between;
+    padding: 40px;
     border-left: 1px solid rgba(255, 255, 255, 0.4);
     border-right: 1px solid rgba(255, 255, 255, 0.4);
     background-color: transparent;
@@ -3376,33 +3394,24 @@ nav ul ul.open + svg {
     transform-origin: center; 
 }
 
-.review-card:hover {
+/* .review-card:hover {
     transform: scale(1.05); 
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2); 
     cursor: pointer;
-}
+} */
 
 .review-text {
     text-align: left;
+    font-size: 20px;
     max-width: 500px;
+    display: -webkit-box;
+    -webkit-line-clamp: 7; /* максимальное кол-во строк */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-.review-text span button {
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    font-size: 18px;
-    font-family: 'SF Pro Display Thin', sans-serif;
-    font-weight: 300;   
-    color: rgba(237, 228, 215, 0.4);
-}
-
-.read-full-review {
-    display: block;
-}
-
-.review-continue-text {
-    display: none;
+.read-more-link {
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .review-author {
@@ -3416,6 +3425,11 @@ nav ul ul.open + svg {
     font-size: 16px;
     margin-right: 10px;
     color: #BBB5AC;
+    transition: all 0.3s ease;
+}
+
+.review-link a:hover {
+    color: #AE9877;
 }
 
 .hide {
@@ -3454,45 +3468,64 @@ nav ul ul.open + svg {
 
 /* Адаптив Отзывы от покупателей */
 
-@media (max-width: 1845px) {
-    .reviews-cards {
-        padding-left: 9%;
+@media (max-width: 1800px) {
+    .rating-number {
+        margin-right: 170px;
     }
 }
 
-@media (max-width: 1700px) {
-    .reviews-cards {
-        padding-left: 8%;
+@media (max-width: 1690px) {
+    .rating-number {
+        margin-right: 150px;
     }
 }
 
-@media (max-width: 1525px) {
-    .reviews-cards {
-        padding-left: 7%;
+@media (max-width: 1600px) {
+    .rating-number {
+        margin-right: 130px;
     }
 }
 
-@media (max-width: 1426px) {
-    .reviews-cards {
-        padding-left: 6%;
+@media (max-width: 1520px) {
+    .rating-number {
+        margin-right: 100px;
     }
 }
 
-@media (max-width: 1415px) {
-    .reviews-cards {
-        padding-left: 5%;
+@media (max-width: 1430px) {
+    .reviews-title {
+        max-width: 1000px;
+        width: 100%;
+    }
+
+    .rating-number {
+        margin-right: 90px;
     }
 }
 
-@media (max-width: 1280px) {
-    .reviews-cards {
-        padding-left: 4%;
+@media (max-width: 1350px) {
+    .rating-number {
+        margin-right: 10px;
+    }
+
+    .rating-number {
+        margin-right: 50px;
+    }
+}
+
+@media (max-width: 1250px) {
+    .rating-number {
+        margin-right: 50px;
     }
 }
 
 @media (max-width: 1200px) {
     .reviews-title {
         padding-left: 25%;
+    }
+
+    .open-all-catalog-reviews {
+        margin-left: 25%;
     }
 }
 
@@ -3523,6 +3556,7 @@ nav ul ul.open + svg {
 
     .rating-number {
         padding: 35px 43px;
+        margin-right: 30px;
     }
 
     .reviews-title {
@@ -3546,9 +3580,12 @@ nav ul ul.open + svg {
         margin-top: 0px;
     }
 
-    .reviews-title,
-    .reviews-cards {
+    .reviews-title {
         padding-left: 0%;
+    }
+
+    .reviews-cards-swiper .swiper-wrapper {
+        margin-left: 0px;
     }
 
     .open-all-catalog-reviews {
@@ -3573,38 +3610,57 @@ nav ul ul.open + svg {
     .rating-number {
         padding: 23px 73px;
     }
+}
 
-    .open-all-catalog-reviews {
-        margin-top: 20px;
+@media (max-width: 830px) {
+    .reviews-cards-swiper .swiper-slide {
+        width: 545px;
+        height: 364px;
     }
 }
 
-@media (max-width: 740px) {
+@media (max-width: 739px) {
     .nav-arrows-reviews {
         top: 320px;
     }
 }
 
-@media (max-width: 651px) {
-    .review-card {
-        min-width: 282px;
-        min-height: 400px;
+@media (max-width: 730px) {
+    .reviews-cards-swiper .swiper-slide {
+        width: 445px;
+        height: 364px;
     }
 
     .review-author {
         font-size: 24px;
     }
 
-    .review-text {
+    
+}
+
+@media (max-width: 630px) {
+    .review-author {
+        font-size: 24px;
+    }
+
+    .reviews-cards-swiper .swiper-slide {
+        width: 282px;
+        min-width: 282px;
+        height: 364px;
+    }
+
+    .read-more-link {
         font-size: 16px;
     }
 
     .review-card {
         align-items: flex-start;
+        padding: 15px;
     }
 
-    .open-all-catalog-reviews {
-        margin-top: 10px;
+    .review-text {
+        font-size: 16px;
+        -webkit-line-clamp: 11;  
     }
 }
 
@@ -3622,6 +3678,8 @@ nav ul ul.open + svg {
     .review-up-title {
         font-size: 14px;
     }
+
+
 }
 
 
