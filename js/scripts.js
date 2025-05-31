@@ -1352,15 +1352,18 @@ if (window.location.pathname.endsWith('main-page.html')) {
   const swiper = new Swiper('.popular-products-swiper', {
       slidesPerView: 'auto',
       spaceBetween: 20,
-      initialSlide: 2,
       slidesPerGroup: 1,
-      loop: true,
-      loopAdditionalSlides: 1,
-      touchRatio: 0.2,
-      centeredSlides: true,
       speed: 800,
+      grabCursor: true,
       effect: 'slide',
-      grabCursor: false,
+      loop: true,
+      loopedSlides: 4,
+      touchRatio: 0.5,
+      initialSlide: 2,
+      centeredSlides: true,
+      longSwipesRatio: 0.05, 
+      longSwipesMs: 300,   
+      
       navigation: {
         nextEl: '.popular-right-arrow',
         prevEl: '.popular-left-arrow',
@@ -1414,7 +1417,7 @@ if (whyChooseUs) {
     slidesPerView: 4,
     spaceBetween: 20,
     grabCursor: false,
-    speed: 600,
+    speed: 800,
     slidesPerGroup: 2,
     loop: true,
     navigation: {
