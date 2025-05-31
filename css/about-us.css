@@ -3258,12 +3258,12 @@ nav ul ul.open + svg {
 
 .reviews {
     padding: 130px 20px 100px 20px;
-    background-color: #171F2E;
+    background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;  
     overflow: hidden;
     
     
-}
+}   
 
 .review-up-title {
     position: absolute;

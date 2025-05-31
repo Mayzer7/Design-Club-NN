@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/catalog.css">
+    <!-- Swiper -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="icon" href="images/svg/favicon.svg" type="image/svg+xml">
     <link rel="icon" href="images/svg/favicon.svg" type="image/svg+xml">
     <title>Дизайн клуб - Каталог</title>
 </head>
@@ -341,14 +346,14 @@
                                         </p>
 
                                         <div class="nav-arrows-products">
-                                            <button class="left-arrow" id="prev">
+                                            <button class="left-arrow left-arrow-categories" id="prev">
                                                 <svg width="55" height="33" viewBox="0 0 55 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M18.9414 30L4.94141 16L18.9414 2" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
                                                     <path d="M48.9414 16L5.94141 16" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
                                                 </svg>        
                                             </button>
                         
-                                            <button class="right-arrow" id="next">
+                                            <button class="right-arrow right-arrow-categories" id="next">
                                                 <svg width="55" height="33" viewBox="0 0 55 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M35.9414 31L49.9414 17L35.9414 3" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
                                                     <path d="M5.94141 17L48.9414 17" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
@@ -364,9 +369,9 @@
                     <section class="categories-section">
                         <div class="blur-container">
                             <div class="catalog-container">
-                                <div class="categories-wrapper fade-in">
-                                    <div class="categories">
-                                        <div class="category">
+                                <div class="categories-wrapper swiper categories-swiper fade-in">
+                                    <div class="swiper-wrapper">
+                                        <div class="category swiper-slide">
                                             <a href="#">
                                                 <img src="images/catalog/categories/image-1.png" alt="">
                                         
@@ -376,11 +381,11 @@
                                             </a>
                                         </div>
 
-                                        <div class="category-non-field">
+                                        <div class="category-non-field swiper-slide">
                                             <img src="images/catalog/categories/non-field.png" alt="">
                                         </div>
 
-                                        <div class="category">
+                                        <div class="category swiper-slide">
                                             <a href="#">
                                                 <img src="images/catalog/categories/image-2.png" alt="">
                                         
@@ -390,7 +395,7 @@
                                             </a>
                                         </div>
 
-                                        <div class="category">
+                                        <div class="category swiper-slide">
                                             <a href="#">
                                                 <img src="images/catalog/categories/image-3.png" alt="">
                                         
@@ -400,7 +405,7 @@
                                             </a>
                                         </div>
 
-                                        <div class="category">
+                                        <div class="category swiper-slide">
                                             <a href="#">
                                                 <img src="images/catalog/categories/image-4.png" alt="">
                                         
@@ -410,7 +415,7 @@
                                             </a>
                                         </div>
 
-                                        <div class="category">
+                                        <div class="category swiper-slide">
                                             <a href="#">
                                                 <img src="images/catalog/categories/image-5.png" alt="">
                                         
@@ -420,11 +425,11 @@
                                             </a>
                                         </div>
 
-                                        <div class="category-non-field">
+                                        <div class="category-non-field swiper-slide">
                                             <img src="images/catalog/categories/non-field.png" alt="">
                                         </div>
 
-                                        <div class="category">
+                                        <div class="category swiper-slide">
                                             <a href="#">
                                                 <img src="images/catalog/categories/image-6.png" alt="">
                                         
@@ -434,7 +439,7 @@
                                             </a>
                                         </div>
 
-                                        <div class="category">
+                                        <div class="category swiper-slide">
                                             <a href="#">
                                                 <img src="images/catalog/categories/image-6.png" alt="">
                                         
@@ -444,7 +449,7 @@
                                             </a>
                                         </div>
 
-                                        <div class="category">
+                                        <div class="category swiper-slide">
                                             <a href="#">
                                                 <img src="images/catalog/categories/image-6.png" alt="">
                                         
@@ -454,7 +459,7 @@
                                             </a>
                                         </div>
 
-                                        <div class="category">
+                                        <div class="category swiper-slide">
                                             <a href="#">
                                                 <img src="images/catalog/categories/image-6.png" alt="">
                                         
@@ -464,7 +469,7 @@
                                             </a>
                                         </div>
 
-                                        <div class="category">
+                                        <div class="category swiper-slide">
                                             <a href="#">
                                                 <img src="images/catalog/categories/image-6.png" alt="">
                                         
@@ -474,7 +479,7 @@
                                             </a>
                                         </div>
 
-                                        <div class="category">
+                                        <div class="category swiper-slide">
                                             <a href="#">
                                                 <img src="images/catalog/categories/image-6.png" alt="">
                                         
@@ -1488,8 +1493,8 @@
                                         </h1>
 
                                         <div class="nav-arrows-reviews">
-                                            <button id="left-arrow-review"><img src="images/svg/left-arrow.svg" alt="Стерлка влево"></button>
-                                            <button id="right-arrow-review"><img src="images/svg/right-arrow.svg" alt="Стерлка вправо"></button>
+                                            <button class="left-arrow-review"><img src="images/svg/left-arrow.svg" alt="Стерлка влево"></button>
+                                            <button class="right-arrow-review"><img src="images/svg/right-arrow.svg" alt="Стерлка вправо"></button>
                                         </div>
                                     </div>
 
@@ -1497,7 +1502,10 @@
                                         <div class="rating-number fade-in">
                                             <h1 class="fade-in">4,9</h1>
                                 
-                                            <p class="fade-in">на Яндекс.Картах</p>
+                                            <a href="https://yandex.ru/maps/org/dizayn_klub_nn/43110755341/reviews/?ll=44.022507%2C56.299496&utm_source=review&z=17" 
+                                                target="_blank" class="fade-in">
+                                                на Яндекс.Картах
+                                            </a>
                                 
                                             <div class="stars fade-in">
                                                 <img src="images/svg/star.svg" alt="Звезда">
@@ -1508,103 +1516,618 @@
                                             </div>
                                         </div>
 
-                                        <div class="reviews-cards">
-                                            <div class="review-card fade-in">
-                                                <div class="review-text fade-in">
-                                                    Недавно приобрели в Дизайн клуб НН мебель
-                                                    для нашей гостиной, включая диван и журнальный 
-                                                    столик. Хочу отметить высокое качество продукции 
-                                                    и отличный сервис. Доставка была выполнена точно 
-                                                    в срок, а сборка прошла быстро и без проблем. 
-                                                    Команда профессионалов действительно знает своё дело 
-                                                    и всегда готова помочь с выбором. Также хочу отметить, 
-                                                    что они предложили несколько интересных идей по оформлению 
-                                                    интер
+                                        <div class="swiper reviews-cards reviews-cards-swiper">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Недавно приобрели в Дизайн клуб НН мебель
+                                                                для нашей гостиной, включая диван и журнальный 
+                                                                столик. Хочу отметить высокое качество продукции 
+                                                                и отличный сервис. Доставка была выполнена точно 
+                                                                в срок, а сборка прошла быстро и без проблем. 
+                                                                Команда профессионалов действительно знает своё дело 
+                                                                и всегда готова помочь с выбором. Также хочу отметить, 
+                                                                что они предложили несколько интересных идей по оформлению 
+                                                                интерьера, что было очень полезно. Рекомендую всем, 
+                                                                кто ищет стильную и качественную мебель!
+                                                            </div>
 
-                                                    <span class="read-full-review fade-in">
-                                                        ...
-                                                        <button class="read-full-btn">
-                                                            читать весь
-                                                        </button>
-                                                    </span>
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
                                                     
-                                                    <span class="review-continue-text fade-in">
-                                                        ьера, что было очень полезно. Рекомендую всем, кто ищет стильную и качественную мебель!
-                                                    </span>
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Анна Смирнова
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=zxknujh4wyr33rnryg53ehqrd0&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review" target="_blank">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                
-                                                <div class="review-author fade-in">
-                                                    Анна Смирнова
-                                                </div>
-                                
-                                                <div class="review-link fade-in">
-                                                    <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=zxknujh4wyr33rnryg53ehqrd0&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review" target="_blank">Отзыв из Яндекс.Карт</a>
-                                                            
-                                                    <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
-                                                    </svg>   
-                                                </div>
-                                            </div>
-                                
-                                            <div class="review-card fade-in">
-                                                <div class="review-text fade-in">
-                                                    Заказывали в Дизайн клубе оборудование и 
-                                                    мебель для кухни. Привезено всё было ровно в 
-                                                    обещаный срок. Клуб смог предоставить хранение 
-                                                    на складе на период отделки помещения. Представители - очень 
-                                                    лёгкие в общении люди, при этом являющиеся пофессионалами 
-                                                    своего дела, за что выражаю им отдельную благодарность. О
-                                                    стался очень доволен результатом нашего сотрудничества
-                                                </div>
-                                
-                                                <div class="review-author fade-in">
-                                                    Заглумонин Владислав
-                                                </div>
-                                
-                                                <div class="review-link fade-in">
-                                                    <a href="#">Отзыв из Яндекс.Карт</a>
-                                                            
-                                                    <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
-                                                    </svg>   
-                                                </div>
-                                            </div>
-                                
-                                            <div class="review-card fade-in">
-                                                <div class="review-text fade-in">
-                                                    Недавно приобрели в Дизайн клуб НН мебель
-                                                    для нашей гостиной, включая диван и журнальный 
-                                                    столик. Хочу отметить высокое качество продукции 
-                                                    и отличный сервис. Доставка была выполнена точно 
-                                                    в срок, а сборка прошла быстро и без проблем. 
-                                                    Команда профессионалов действительно знает своё дело 
-                                                    и всегда готова помочь с выбором. Также хочу отметить, 
-                                                    что они предложили несколько интересных идей по оформлению 
-                                                    интер
+                                    
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Заказывали в Дизайн клубе оборудование и мебель для кухни. 
+                                                                Привезено всё было ровно в обещаный срок. 
+                                                                Клуб смог предоставить хранение на складе на период отделки 
+                                                                помещения. Представители - очень лёгкие в общении люди, 
+                                                                при этом являющиеся пофессионалами своего дела, 
+                                                                за что выражаю им отдельную благодарность. 
+                                                                Остался очень доволен результатом нашего сотрудничества.
+                                                            </div>
 
-                                                    <span class="read-full-review fade-in">
-                                                        ...
-                                                        
-                                                        <button class="read-full-btn">
-                                                            читать весь
-                                                        </button>
-                                                    </span>
-                                                        
-                                                    <span class="review-continue-text fade-in">
-                                                        ьера, что было очень полезно. Рекомендую всем, кто ищет стильную и качественную мебель!
-                                                    </span>
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Заглумонин Владислав
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=ktjwdh6dpce6x84hyvwd2q34qr&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
                                                 </div>
                                     
-                                                <div class="review-author fade-in">
-                                                    Анна Смирнова
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Недавно приобрели в Дизайн клуб НН мебель
+                                                                для нашей гостиной, включая диван и журнальный 
+                                                                столик. Хочу отметить высокое качество продукции 
+                                                                и отличный сервис. Доставка была выполнена точно 
+                                                                в срок, а сборка прошла быстро и без проблем. 
+                                                                Команда профессионалов действительно знает своё дело 
+                                                                и всегда готова помочь с выбором. Также хочу отметить, 
+                                                                что они предложили несколько интересных идей по оформлению 
+                                                                интерьера, что было очень полезно. Рекомендую всем, 
+                                                                кто ищет стильную и качественную мебель!
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                                    
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Анна Смирнова
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=zxknujh4wyr33rnryg53ehqrd0&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review" target="_blank">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
                                                 </div>
                                     
-                                                <div class="review-link fade-in">
-                                                    <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=zxknujh4wyr33rnryg53ehqrd0&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review" target="_blank">Отзыв из Яндекс.Карт</a>
-                                                                
-                                                    <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
-                                                    </svg>   
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Заказывали в Дизайн клубе оборудование и мебель для кухни. 
+                                                                Привезено всё было ровно в обещаный срок. 
+                                                                Клуб смог предоставить хранение на складе на период отделки 
+                                                                помещения. Представители - очень лёгкие в общении люди, 
+                                                                при этом являющиеся пофессионалами своего дела, 
+                                                                за что выражаю им отдельную благодарность. 
+                                                                Остался очень доволен результатом нашего сотрудничества.
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Заглумонин Владислав
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=ktjwdh6dpce6x84hyvwd2q34qr&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Недавно приобрели в Дизайн клуб НН мебель
+                                                                для нашей гостиной, включая диван и журнальный 
+                                                                столик. Хочу отметить высокое качество продукции 
+                                                                и отличный сервис. Доставка была выполнена точно 
+                                                                в срок, а сборка прошла быстро и без проблем. 
+                                                                Команда профессионалов действительно знает своё дело 
+                                                                и всегда готова помочь с выбором. Также хочу отметить, 
+                                                                что они предложили несколько интересных идей по оформлению 
+                                                                интерьера, что было очень полезно. Рекомендую всем, 
+                                                                кто ищет стильную и качественную мебель!
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                                    
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Анна Смирнова
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=zxknujh4wyr33rnryg53ehqrd0&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review" target="_blank">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                    
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Заказывали в Дизайн клубе оборудование и мебель для кухни. 
+                                                                Привезено всё было ровно в обещаный срок. 
+                                                                Клуб смог предоставить хранение на складе на период отделки 
+                                                                помещения. Представители - очень лёгкие в общении люди, 
+                                                                при этом являющиеся пофессионалами своего дела, 
+                                                                за что выражаю им отдельную благодарность. 
+                                                                Остался очень доволен результатом нашего сотрудничества.
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Заглумонин Владислав
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=ktjwdh6dpce6x84hyvwd2q34qr&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Недавно приобрели в Дизайн клуб НН мебель
+                                                                для нашей гостиной, включая диван и журнальный 
+                                                                столик. Хочу отметить высокое качество продукции 
+                                                                и отличный сервис. Доставка была выполнена точно 
+                                                                в срок, а сборка прошла быстро и без проблем. 
+                                                                Команда профессионалов действительно знает своё дело 
+                                                                и всегда готова помочь с выбором. Также хочу отметить, 
+                                                                что они предложили несколько интересных идей по оформлению 
+                                                                интерьера, что было очень полезно. Рекомендую всем, 
+                                                                кто ищет стильную и качественную мебель!
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                                    
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Анна Смирнова
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=zxknujh4wyr33rnryg53ehqrd0&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review" target="_blank">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                    
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Заказывали в Дизайн клубе оборудование и мебель для кухни. 
+                                                                Привезено всё было ровно в обещаный срок. 
+                                                                Клуб смог предоставить хранение на складе на период отделки 
+                                                                помещения. Представители - очень лёгкие в общении люди, 
+                                                                при этом являющиеся пофессионалами своего дела, 
+                                                                за что выражаю им отдельную благодарность. 
+                                                                Остался очень доволен результатом нашего сотрудничества.
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Заглумонин Владислав
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=ktjwdh6dpce6x84hyvwd2q34qr&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Недавно приобрели в Дизайн клуб НН мебель
+                                                                для нашей гостиной, включая диван и журнальный 
+                                                                столик. Хочу отметить высокое качество продукции 
+                                                                и отличный сервис. Доставка была выполнена точно 
+                                                                в срок, а сборка прошла быстро и без проблем. 
+                                                                Команда профессионалов действительно знает своё дело 
+                                                                и всегда готова помочь с выбором. Также хочу отметить, 
+                                                                что они предложили несколько интересных идей по оформлению 
+                                                                интерьера, что было очень полезно. Рекомендую всем, 
+                                                                кто ищет стильную и качественную мебель!
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                                    
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Анна Смирнова
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=zxknujh4wyr33rnryg53ehqrd0&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review" target="_blank">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                    
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Заказывали в Дизайн клубе оборудование и мебель для кухни. 
+                                                                Привезено всё было ровно в обещаный срок. 
+                                                                Клуб смог предоставить хранение на складе на период отделки 
+                                                                помещения. Представители - очень лёгкие в общении люди, 
+                                                                при этом являющиеся пофессионалами своего дела, 
+                                                                за что выражаю им отдельную благодарность. 
+                                                                Остался очень доволен результатом нашего сотрудничества.
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Заглумонин Владислав
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=ktjwdh6dpce6x84hyvwd2q34qr&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Недавно приобрели в Дизайн клуб НН мебель
+                                                                для нашей гостиной, включая диван и журнальный 
+                                                                столик. Хочу отметить высокое качество продукции 
+                                                                и отличный сервис. Доставка была выполнена точно 
+                                                                в срок, а сборка прошла быстро и без проблем. 
+                                                                Команда профессионалов действительно знает своё дело 
+                                                                и всегда готова помочь с выбором. Также хочу отметить, 
+                                                                что они предложили несколько интересных идей по оформлению 
+                                                                интерьера, что было очень полезно. Рекомендую всем, 
+                                                                кто ищет стильную и качественную мебель!
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                                    
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Анна Смирнова
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=zxknujh4wyr33rnryg53ehqrd0&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review" target="_blank">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                    
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Заказывали в Дизайн клубе оборудование и мебель для кухни. 
+                                                                Привезено всё было ровно в обещаный срок. 
+                                                                Клуб смог предоставить хранение на складе на период отделки 
+                                                                помещения. Представители - очень лёгкие в общении люди, 
+                                                                при этом являющиеся пофессионалами своего дела, 
+                                                                за что выражаю им отдельную благодарность. 
+                                                                Остался очень доволен результатом нашего сотрудничества.
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Заглумонин Владислав
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=ktjwdh6dpce6x84hyvwd2q34qr&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Недавно приобрели в Дизайн клуб НН мебель
+                                                                для нашей гостиной, включая диван и журнальный 
+                                                                столик. Хочу отметить высокое качество продукции 
+                                                                и отличный сервис. Доставка была выполнена точно 
+                                                                в срок, а сборка прошла быстро и без проблем. 
+                                                                Команда профессионалов действительно знает своё дело 
+                                                                и всегда готова помочь с выбором. Также хочу отметить, 
+                                                                что они предложили несколько интересных идей по оформлению 
+                                                                интерьера, что было очень полезно. Рекомендую всем, 
+                                                                кто ищет стильную и качественную мебель!
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                                    
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Анна Смирнова
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=zxknujh4wyr33rnryg53ehqrd0&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review" target="_blank">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                    
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Заказывали в Дизайн клубе оборудование и мебель для кухни. 
+                                                                Привезено всё было ровно в обещаный срок. 
+                                                                Клуб смог предоставить хранение на складе на период отделки 
+                                                                помещения. Представители - очень лёгкие в общении люди, 
+                                                                при этом являющиеся пофессионалами своего дела, 
+                                                                за что выражаю им отдельную благодарность. 
+                                                                Остался очень доволен результатом нашего сотрудничества.
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Заглумонин Владислав
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=ktjwdh6dpce6x84hyvwd2q34qr&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Недавно приобрели в Дизайн клуб НН мебель
+                                                                для нашей гостиной, включая диван и журнальный 
+                                                                столик. Хочу отметить высокое качество продукции 
+                                                                и отличный сервис. Доставка была выполнена точно 
+                                                                в срок, а сборка прошла быстро и без проблем. 
+                                                                Команда профессионалов действительно знает своё дело 
+                                                                и всегда готова помочь с выбором. Также хочу отметить, 
+                                                                что они предложили несколько интересных идей по оформлению 
+                                                                интерьера, что было очень полезно. Рекомендую всем, 
+                                                                кто ищет стильную и качественную мебель!
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                                    
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Анна Смирнова
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=zxknujh4wyr33rnryg53ehqrd0&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review" target="_blank">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                    
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Заказывали в Дизайн клубе оборудование и мебель для кухни. 
+                                                                Привезено всё было ровно в обещаный срок. 
+                                                                Клуб смог предоставить хранение на складе на период отделки 
+                                                                помещения. Представители - очень лёгкие в общении люди, 
+                                                                при этом являющиеся пофессионалами своего дела, 
+                                                                за что выражаю им отдельную благодарность. 
+                                                                Остался очень доволен результатом нашего сотрудничества.
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Заглумонин Владислав
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=ktjwdh6dpce6x84hyvwd2q34qr&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Недавно приобрели в Дизайн клуб НН мебель
+                                                                для нашей гостиной, включая диван и журнальный 
+                                                                столик. Хочу отметить высокое качество продукции 
+                                                                и отличный сервис. Доставка была выполнена точно 
+                                                                в срок, а сборка прошла быстро и без проблем. 
+                                                                Команда профессионалов действительно знает своё дело 
+                                                                и всегда готова помочь с выбором. Также хочу отметить, 
+                                                                что они предложили несколько интересных идей по оформлению 
+                                                                интерьера, что было очень полезно. Рекомендую всем, 
+                                                                кто ищет стильную и качественную мебель!
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                                    
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Анна Смирнова
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=zxknujh4wyr33rnryg53ehqrd0&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review" target="_blank">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                    
+                                                <div class="swiper-slide review-card fade-in">
+                                                    <div class="review-card-up">
+                                                        <div class="review-texts">
+                                                            <div class="review-text fade-in">
+                                                                Заказывали в Дизайн клубе оборудование и мебель для кухни. 
+                                                                Привезено всё было ровно в обещаный срок. 
+                                                                Клуб смог предоставить хранение на складе на период отделки 
+                                                                помещения. Представители - очень лёгкие в общении люди, 
+                                                                при этом являющиеся пофессионалами своего дела, 
+                                                                за что выражаю им отдельную благодарность. 
+                                                                Остался очень доволен результатом нашего сотрудничества.
+                                                            </div>
+
+                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                        </div>
+                                                    </div>
+                                    
+                                                    <div class="review-card-down">
+                                                        <div class="review-author fade-in">
+                                                            Заглумонин Владислав
+                                                        </div>
+                                        
+                                                        <div class="review-link fade-in">
+                                                            <a href="https://yandex.ru/maps/org/43110755341/reviews?reviews%5BpublicId%5D=ktjwdh6dpce6x84hyvwd2q34qr&si=x0uu8r6z8qq8py8941tpnz0kz4&utm_source=review">Отзыв из Яндекс.Карт</a>
+                                                                    
+                                                            <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M1.05421 10.5542L9.71649 1.7832M3.21664 1.28336L10.2165 1.28336L10.2165 7.2832" stroke="#BBB5AC" stroke-linecap="square"/>
+                                                            </svg>   
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -2324,6 +2847,9 @@
             </div>
         </div>
     </div>
+    
+    <!-- Swiper -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <!-- Cookie -->
     <div id="cookie-container"></div>

@@ -269,7 +269,6 @@ function isMenuOpen() {
     return isCatalogActive || toggleItem.classList.contains('open');
 }
 
-
 // Нажатие на кнопку каталог в хедере
 
 const menuNavigation = document.querySelector('.menu-navigation');
@@ -500,7 +499,7 @@ function formReset(form) {
   errorElements.forEach(error => (error.style.display = 'none'));
 }
 
-// Валидация формы — возвращает true/false, не открывает модалки
+// Валидация формы модалки
 function validateFormModal(form) {
   let valid = true;
 
@@ -704,8 +703,6 @@ document.querySelectorAll('.submenu-item .menu-button').forEach(button => {
 });
 
 
-
-
 // Открытие бургер меню
 
 const openBurgerMenu = document.getElementById('openBurgerMenu');
@@ -781,7 +778,6 @@ submenuTitles.forEach(title => {
     title.classList.toggle('active');
   });
 });
-
 
 
 // Поиск в бургер меню
@@ -1013,6 +1009,42 @@ function handleScrollUp() {
     });
   }
 
+  // Переключение карточек "Популярные товары"
+
+  const popularProductCard = document.querySelector('.popular-product-card');
+
+  if (popularProductCard) {
+    // Переключение карточек "Популярные товары"
+    const swiper = new Swiper('.popular-products-swiper', {
+        slidesPerView: 'auto',
+        spaceBetween: 20,
+        slidesPerGroup: 1,
+        speed: 800,
+        grabCursor: true,
+        effect: 'slide',
+        loop: true,
+        loopedSlides: 4,
+        touchRatio: 0.5,
+        initialSlide: 2,
+        centeredSlides: true,
+        longSwipesRatio: 0.05, 
+        longSwipesMs: 300,   
+        
+        navigation: {
+          nextEl: '.popular-right-arrow',
+          prevEl: '.popular-left-arrow',
+        },
+        breakpoints: {
+          0: {
+            spaceBetween: 10
+          },
+          400: {
+            spaceBetween: 20
+          }
+        },
+    });
+  }
+
   // Скрипты для контента на странице "reviews-page.html"
 
   const reviewsPageSection = document.querySelector('.reviews-section');
@@ -1075,141 +1107,74 @@ function handleScrollUp() {
     });
   }
 
-  // Секция "Наши Отзывы от покупателей"
+  // Свайп карточек отзывов
 
-  // Раскрытие отзыва по больше если нужно 
-  const readFullButton = document.getElementById('read-full-btn');
-  const reviewContinueText = document.querySelector('.review-continue-text');
-  const readFullReview = document.querySelector('.read-full-review');
+  const reviewsSection = document.querySelector('.reviews');
 
-  document.querySelectorAll('.read-full-btn').forEach(button => {
-      button.addEventListener('click', () => {
-          const review = button.closest('.review-text');
-          const continueText = review.querySelector('.review-continue-text');
-          const readMore = review.querySelector('.read-full-review');
-
-          continueText.style.display = 'inline';
-          readMore.style.display = 'none';
+  if (reviewsSection) {
+    const swiperReview = new Swiper('.reviews-cards-swiper', {
+        slidesPerView: 'auto',
+        centeredSlides: false, 
+        spaceBetween: 20,
+        grabCursor: false,
+        loop: true,
+        speed: 800,
+        initialSlide: 0,
+        navigation: {
+          nextEl: '.right-arrow-review',
+          prevEl: '.left-arrow-review',
+        },
+        breakpoints: {
+          0: {
+            spaceBetween: 10
+          },
+          430: {
+            spaceBetween: 20
+          }
+        },
       });
-  });
+  } 
 
-  // Переключение карточек отзывов
-
-  // const cardsContainer = document.querySelector('.reviews-cards');
-  
-  // if (cardsContainer) {
-  //   const leftArrowReview = document.getElementById('left-arrow-review');
-  //   const rightArrowReview = document.getElementById('right-arrow-review');
-  //   const ratingNumber = document.querySelector('.rating-number');
-  //   const cardsReview = document.querySelectorAll('.review-card');
-  //   const cardWidthReview = cardsReview[0].offsetWidth + 20; 
-
-  //   let currentIndexReview = 0;
-
-  //   leftArrowReview.addEventListener('click', () => moveReview(-1));
-  //   rightArrowReview.addEventListener('click', () => moveReview(1));
-
-  //   function moveReview(direction) {
-  //       const newIndex = currentIndexReview + direction;
-  //       if (newIndex >= 0 && newIndex < cardsReview.length) {
-  //           currentIndexReview = newIndex;
-  //           updateTransform();
-
-  //           // Скрывать рейтинг только если ширина окна больше 1000px
-  //           if (window.innerWidth > 1000) {
-  //               ratingNumber.style.visibility = currentIndexReview > 0 ? 'hidden' : 'visible';
-  //           } else {
-  //               ratingNumber.style.visibility = 'visible';
-  //           }
-  //       }
-  //   }
-
-  //   function updateTransform() {
-  //       cardsContainer.style.transform = `translateX(${-cardWidthReview * currentIndexReview}px)`;
-  //   }
-
-  //   // Обработка ресайза окна — обновляем видимость рейтинга
-  //   window.addEventListener('resize', () => {
-  //       if (window.innerWidth > 1000) {
-  //           ratingNumber.style.visibility = currentIndexReview > 0 ? 'hidden' : 'visible';
-  //       } else {
-  //           ratingNumber.style.visibility = 'visible';
-  //       }
-  //   });
-
-  //   // Добавляем свайп
-  //   let startReviewX = 0;
-  //   let isDragging = false;
-
-  //   cardsContainer.addEventListener('touchstart', e => {
-  //       startReviewX = e.touches[0].clientX;
-  //       isDragging = true;
-  //   }, { passive: true });
-
-  //   cardsContainer.addEventListener('touchmove', e => {}, { passive: true });
-
-  //   cardsContainer.addEventListener('touchend', e => {
-  //       if (!isDragging) return;
-  //       const endX = e.changedTouches[0].clientX;
-  //       const diffX = endX - startReviewX;
-  //       const threshold = 50; // минимальная дистанция свайпа
-  //       if (diffX > threshold) {
-  //           moveReview(-1); // свайп вправо
-  //       } else if (diffX < -threshold) {
-  //           moveReview(1);  // свайп влево
-  //       }
-  //       isDragging = false;
-  //   });
-  // }
-
-  
-
-  // Для переключение карточек "Почему выбирают нас" с помощью стрелок
+  // Свайп карточек "Почему выбирают нас"
 
   const containerWhy = document.querySelector('.why-choose-us-content');
 
   if (containerWhy) {
-    // document.addEventListener('DOMContentLoaded', () => {
-    //   const leftArrow = document.getElementById('why-left-arrow');
-    //   const rightArrow = document.getElementById('why-right-arrow');
+    const swiper = new Swiper('.why-choose-us-swiper', {
+      slidesPerView: 4,
+      spaceBetween: 20,
+      grabCursor: false,
+      speed: 800,
+      slidesPerGroup: 2,
+      loop: true,
+      navigation: {
+        nextEl: '.why-right-arrow',
+        prevEl: '.why-left-arrow',
+      },
 
-    //   const minWidth = parseInt(
-    //       window.getComputedStyle(document.querySelector('.card')).getPropertyValue('min-width'), 10
-    //   );
-
-    //   const scrollAmount = minWidth; // ширина + отступ
-
-    //   rightArrow.addEventListener('click', () => {
-    //       animateScroll(containerWhy, scrollAmount, 300);
-    //   });
-
-    //   leftArrow.addEventListener('click', () => {
-    //       animateScroll(containerWhy, -scrollAmount, 300);
-    //   });
-    // });
-
-    // // Плавная анимация для переключения
-    // function easeInOutQuad(t) {
-    //     return t < 0.5
-    //         ? 2 * t * t
-    //         : -1 + (4 - 2 * t) * t;
-    // }
-
-    // function animateScroll(container, delta, duration = 800) {
-    //     const start = container.scrollLeft;
-    //     const end = start + delta;
-    //     const t0 = performance.now();
-
-    //     function tick(t) {
-    //         const elapsed = t - t0;
-    //         const progress = Math.min(elapsed / duration, 1);
-    //         container.scrollLeft = start + (end - start) * easeInOutQuad(progress);
-
-    //         if (progress < 1) requestAnimationFrame(tick);
-    //     }
-
-    //     requestAnimationFrame(tick);
-    // }
+      breakpoints: {
+        1020: {
+          slidesPerView: 4,
+          slidesPerGroup: 2,
+          spaceBetween: 20,
+        },
+        765: {
+          slidesPerView: 3,
+          slidesPerGroup: 2,
+          spaceBetween: 20,
+        },
+        541: {
+          slidesPerView: 2,
+          slidesPerGroup: 2,
+          spaceBetween: 20,
+        },
+        0: {
+          slidesPerView: 'auto',
+          slidesPerGroup: 1,
+          spaceBetween: 10,
+        },
+      },
+    });
 
     // Отображаем стрелочки для переключения карточек "Почему выбирают нас", если карточек больше 4 
     const whyCards = document.querySelectorAll('.why-choose-us-content .card');
@@ -1224,11 +1189,75 @@ function handleScrollUp() {
       }
   }
 
+// Выбор способа связи в форме "Связаться с нами"
+
+const menu = document.getElementById('menu-contact-method');
+
+if (menu) {
+  function toggleContactMethodMenu() {
+      const arrow = document.getElementById('dropdown-arrow');
+
+      if (menu.classList.contains('open')) {
+          // Закрытие меню с анимацией
+          menu.style.maxHeight = '0px';
+          menu.style.opacity = '0';
+          arrow.classList.remove('rotated');
+          menu.classList.remove('open');
+      } else {
+          // Открытие меню с анимацией до нужной высоты
+          menu.style.maxHeight = menu.scrollHeight + 'px';
+          menu.style.opacity = '1';
+          arrow.classList.add('rotated');
+          menu.classList.add('open');
+      }
+  }
+
+  // Обработка выбора пункта меню
+  document.querySelectorAll('.input-field').forEach(item => {
+      item.addEventListener('click', function () {
+          const selected = document.getElementById('selected-contact-method');
+          selected.value = this.placeholder;
+          toggleContactMethodMenu(); // Скрываем меню после выбора
+      });
+  });
+} 
+
+// Модальное окно для просмотра видео
+
+const modalVideo = document.querySelector(".modal-video");
+
+if (modalVideo) {
+  const btns = document.querySelectorAll(".video-button");
+  const closeBtnVideo = document.querySelector(".close-video");
+  const video = document.getElementById("modalVideo");
+
+  btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      modalVideo.style.display = "flex";
+      video.play();
+    });
+  });
+
+  closeBtnVideo.addEventListener("click", () => {
+    modalVideo.style.display = "none";
+    video.pause();
+    video.currentTime = 0;
+  });
+
+  window.addEventListener("click", (event) => {
+    if (event.target === modalVideo) {
+      modalVideo.style.display = "none";
+      video.pause();
+      video.currentTime = 0;
+    }
+  });
+}
 
 // Скрипты для контента на странице "main-page.html"
 
-if (window.location.pathname.endsWith('main-page.html')) {
-  
+const pageWrapper3 = document.querySelector('.page-wrapper-3');
+
+if (pageWrapper3) {
   // Скрипт для автоматического переключения контента на главной странице + переключение изображений на заднем плане
 
   const section = document.querySelector('.main-page-top');
@@ -1346,181 +1375,14 @@ if (window.location.pathname.endsWith('main-page.html')) {
           }
       });
   });
-
-  // Переключение карточек "Популярные товары"
-
-  const swiper = new Swiper('.popular-products-swiper', {
-      slidesPerView: 'auto',
-      spaceBetween: 20,
-      slidesPerGroup: 1,
-      speed: 800,
-      grabCursor: true,
-      effect: 'slide',
-      loop: true,
-      loopedSlides: 4,
-      touchRatio: 0.5,
-      initialSlide: 2,
-      centeredSlides: true,
-      longSwipesRatio: 0.05, 
-      longSwipesMs: 300,   
-      
-      navigation: {
-        nextEl: '.popular-right-arrow',
-        prevEl: '.popular-left-arrow',
-      },
-      breakpoints: {
-        0: {
-          spaceBetween: 10
-        },
-        400: {
-          spaceBetween: 20
-        }
-      },
-  });
 }
-
-  // Свайп карточек отзывов
-
-  const reviewsSection = document.querySelector('.reviews');
-
-  if (reviewsSection) {
-    const swiperReview = new Swiper('.reviews-cards-swiper', {
-        slidesPerView: 'auto',
-        centeredSlides: false, 
-        spaceBetween: 20,
-        grabCursor: false,
-        loop: true,
-        speed: 800,
-        initialSlide: 0,
-        navigation: {
-          nextEl: '.right-arrow-review',
-          prevEl: '.left-arrow-review',
-        },
-        breakpoints: {
-          0: {
-            spaceBetween: 10
-          },
-          430: {
-            spaceBetween: 20
-          }
-        },
-      });
-  } 
-
-
-// Свайп "Почему выбирают нас"
-
-const whyChooseUs = document.querySelector('.why-choose-us');
-
-if (whyChooseUs) {
-  const swiper = new Swiper('.why-choose-us-swiper', {
-    slidesPerView: 4,
-    spaceBetween: 20,
-    grabCursor: false,
-    speed: 800,
-    slidesPerGroup: 2,
-    loop: true,
-    navigation: {
-      nextEl: '.why-right-arrow',
-      prevEl: '.why-left-arrow',
-    },
-
-    breakpoints: {
-      1020: {
-        slidesPerView: 4,
-        slidesPerGroup: 2,
-        spaceBetween: 20,
-      },
-      765: {
-        slidesPerView: 3,
-        slidesPerGroup: 2,
-        spaceBetween: 20,
-      },
-      541: {
-        slidesPerView: 2,
-        slidesPerGroup: 2,
-        spaceBetween: 20,
-      },
-      0: {
-        slidesPerView: 'auto',
-        slidesPerGroup: 1,
-        spaceBetween: 10,
-      },
-    },
-  });
-}
-
-
-
-// Выбор способа связи в форме "Связаться с нами"
-
-const menu = document.getElementById('menu-contact-method');
-
-if (menu) {
-function toggleContactMethodMenu() {
-      const arrow = document.getElementById('dropdown-arrow');
-
-      if (menu.classList.contains('open')) {
-          // Закрытие меню с анимацией
-          menu.style.maxHeight = '0px';
-          menu.style.opacity = '0';
-          arrow.classList.remove('rotated');
-          menu.classList.remove('open');
-      } else {
-          // Открытие меню с анимацией до нужной высоты
-          menu.style.maxHeight = menu.scrollHeight + 'px';
-          menu.style.opacity = '1';
-          arrow.classList.add('rotated');
-          menu.classList.add('open');
-      }
-  }
-
-  // Обработка выбора пункта меню
-  document.querySelectorAll('.input-field').forEach(item => {
-      item.addEventListener('click', function () {
-          const selected = document.getElementById('selected-contact-method');
-          selected.value = this.placeholder;
-          toggleContactMethodMenu(); // Скрываем меню после выбора
-      });
-  });
-} 
-
-// Модальное окно для просмотра видео
-
-const modalVideo = document.querySelector(".modal-video");
-
-if (modalVideo) {
-  const btns = document.querySelectorAll(".video-button");
-  const closeBtnVideo = document.querySelector(".close-video");
-  const video = document.getElementById("modalVideo");
-
-  btns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      modalVideo.style.display = "flex";
-      video.play();
-    });
-  });
-
-  closeBtnVideo.addEventListener("click", () => {
-    modalVideo.style.display = "none";
-    video.pause();
-    video.currentTime = 0;
-  });
-
-  window.addEventListener("click", (event) => {
-    if (event.target === modalVideo) {
-      modalVideo.style.display = "none";
-      video.pause();
-      video.currentTime = 0;
-    }
-  });
-}
-
 
 // Скрипты для контента на странице "catalog-page.html"
 
-if (window.location.pathname.endsWith('catalog-page.html')) {
-    // Кнопка фильтровать на телефоне
+const categoriesSection = document.querySelector('.categories-section');
+
+if (categoriesSection) {
+  // Кнопка фильтровать на телефоне
 
     // Клик на первую кнопку — переключаем первое меню фильтров
     document.getElementById('filterFirstButtonMobile').addEventListener('click', () => {
@@ -1545,7 +1407,7 @@ if (window.location.pathname.endsWith('catalog-page.html')) {
         }
     });
 
-    // Свайп филтров на телефоне вниз
+    // Свайп фильтров на телефоне вниз
 
     let startY = 0;
     let currentY = 0;
@@ -1635,39 +1497,17 @@ if (window.location.pathname.endsWith('catalog-page.html')) {
         });
     });
 
-    // Переключение категорий с помощью стрелочек
+    // Свайп категорий
 
-    function smoothScroll(element, change, duration) {
-        const start = element.scrollLeft;
-        const startTime = performance.now();
-
-        function animateScroll(currentTime) {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            const ease = 0.5 * (1 - Math.cos(Math.PI * progress)); // easeInOut
-
-            element.scrollLeft = start + change * ease;
-
-            if (progress < 1) {
-                requestAnimationFrame(animateScroll);
-            }
-        }
-
-        requestAnimationFrame(animateScroll);
-    }
-            
-    const categories = document.querySelector('.categories');
-    const nextBtn = document.getElementById('next');
-    const prevBtn = document.getElementById('prev');
-
-    const scrollAmount = 300; 
-
-    nextBtn.addEventListener('click', () => {
-        smoothScroll(categories, 470, 300);
-    });
-
-    prevBtn.addEventListener('click', () => {
-        smoothScroll(categories, -470, 300);
+    const swiper = new Swiper('.categories-swiper', {
+      slidesPerView: 'auto',
+      spaceBetween: 20,
+      freeMode: true,
+      grabCursor: false,
+      navigation: {
+        nextEl: '.right-arrow-categories',
+        prevEl: '.left-arrow-categories',
+      }
     });
 
     // Выплывающие меню фильтров
@@ -1720,7 +1560,6 @@ if (window.location.pathname.endsWith('catalog-page.html')) {
         }
     });
 }
-
 
 // Скрипты для контента на странице "product-page.html"
 
