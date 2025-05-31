@@ -922,6 +922,9 @@ function handleScrollUp() {
 
 // Валидация форм на странице
 
+  const questionInput = document.querySelector('[name="your-question"]');
+  const desiredPositionInput = document.querySelector('[name="desired-position"]'); 
+
   function validateForm(event, formId) {
       event.preventDefault();
 
@@ -953,11 +956,39 @@ function handleScrollUp() {
           valid = false;
       }
 
-      // Проверка чекбокса "Согласие"
-      if (!acceptInput.checked) {
-          errorSpans[2].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
-          errorSpans[2].style.display = 'block';
-          valid = false;
+      // Проверка поля "Ваш вопрос"
+      if (questionInput) {
+        if (!questionInput.value.trim()) {
+            errorSpans[2].textContent = 'Пожалуйста, введите ваш вопрос.';
+            errorSpans[2].style.display = 'block';
+            valid = false;
+        }
+
+        if (!acceptInput.checked) {
+            errorSpans[3].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
+            errorSpans[3].style.display = 'block';
+            valid = false;
+        }
+
+      } else if (desiredPositionInput) {
+        if (!desiredPositionInput.value.trim()) {
+            errorSpans[2].textContent = 'Пожалуйста, введите желаемую должность.';
+            errorSpans[2].style.display = 'block';
+            valid = false;
+        }
+
+        if (!acceptInput.checked) {
+            errorSpans[3].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
+            errorSpans[3].style.display = 'block';
+            valid = false;
+        }
+      } else {
+        // Проверка чекбокса "Согласие"
+        if (!acceptInput.checked) {
+            errorSpans[2].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
+            errorSpans[2].style.display = 'block';
+            valid = false;
+        }
       }
 
       // Если всё ок — отправляем форму
@@ -966,6 +997,83 @@ function handleScrollUp() {
       }
   }
 
+  // Отображение загруженного файла 
+  // в форме "Оставьте ваше резюме"
+  
+  if (desiredPositionInput) {
+    const input = document.getElementById('resume-upload-input');
+    const fileNameSpan = document.querySelector('.file-name');
+        
+    input.addEventListener('change', () => {
+        if (input.files.length > 0) {
+            fileNameSpan.textContent = `Файл выбран: ${input.files[0].name}`;
+        } else {
+            fileNameSpan.textContent = '';
+        }
+    });
+  }
+
+  // Скрипты для контента на странице "reviews-page.html"
+
+  const reviewsPageSection = document.querySelector('.reviews-section');
+
+  if (reviewsPageSection) {
+    // Раскрытие отзывов на кнопку "Больше"
+    const moreButton = document.getElementById('more-button');
+    const reviewContainers = document.querySelectorAll('.more-reviews');
+          
+    // Индекс текущего контейнера, который будет показан
+    let currentIndex = 0;
+          
+    function showNextReviewContainer() {
+        if (currentIndex < reviewContainers.length) {
+            const block = reviewContainers[currentIndex];
+          
+            block.classList.add('show');
+            block.style.maxHeight = block.scrollHeight + 'px';
+            block.style.opacity = '1';
+          
+            currentIndex++;
+            }
+          
+        // Скрываем кнопку, если все блоки показаны
+        if (currentIndex >= reviewContainers.length) {
+            const moreContainer = document.querySelector('.more');
+                
+            moreButton.style.display = 'none';
+            moreContainer.style.display = 'none';
+        }
+    }
+          
+    moreButton.addEventListener('click', showNextReviewContainer);
+  }
+
+  // Скрипты для контента на странице "customers-page.html"
+
+  if (questionInput) {
+    // Навигация (раскрытие менюшек)
+    document.addEventListener("DOMContentLoaded", function () {
+        const navBlocks = document.querySelectorAll(".customers-navigation");
+
+        navBlocks.forEach(nav => {
+            // Навешиваем клик на всю навигационную секцию
+            nav.addEventListener("click", () => {
+                const section = nav.querySelector(".customers-section");
+                section.classList.toggle("active");
+            });
+
+            // Дополнительно: клик по кнопке (стрелке) тоже открывает
+            const button = nav.querySelector(".open-button");
+            if (button) {
+                button.addEventListener("click", (event) => {
+                    event.stopPropagation(); // предотвращает всплытие
+                    const section = nav.querySelector(".customers-section");
+                    section.classList.toggle("active");
+                });
+            }
+        });
+    });
+  }
 
   // Секция "Наши Отзывы от покупателей"
 
@@ -1372,67 +1480,13 @@ function toggleContactMethodMenu() {
           toggleContactMethodMenu(); // Скрываем меню после выбора
       });
   });
-
-  // Валидация формы "Связаться с нами"
-
-  function validateFormContact(event, formId) {
-      event.preventDefault();
-
-      const form = document.getElementById(formId);
-
-      // Скрыть все ошибки только внутри своей формы
-      const errorElements = form.querySelectorAll('.error-contact');
-      errorElements.forEach(error => error.style.display = 'none');
-
-      let valid = true;
-
-      // Поля внутри своей формы
-      const nameInput = form.querySelector('input[name="name"]');
-      const phoneInput = form.querySelector('input[name="phone"]');
-      const acceptInput = form.querySelector('input[name="accept"]');
-      const errorSpans = form.querySelectorAll('.error-contact');
-      const methodInput = form.querySelector('input[name="contact_method"]');
-
-      // Проверка поля "Ваше имя"
-      if (!nameInput.value.trim()) {
-          errorSpans[0].textContent = 'Пожалуйста, введите ваше имя.';
-          errorSpans[0].style.display = 'block';
-          valid = false;
-      }
-
-      // Проверка поля "Телефон"
-      if (!phoneInput.value.trim()) {
-          errorSpans[1].textContent = 'Пожалуйста, введите ваш телефон.';
-          errorSpans[1].style.display = 'block';
-          valid = false;
-      }
-
-      // Проверка поля "Способ связи"
-      // if (!methodInput.value.trim()) {
-      //     errorSpans[2].textContent = 'Пожалуйста, выберите способ связи.';
-      //     errorSpans[2].style.display = 'block';
-      //     valid = false;
-      // }
-
-      // Проверка чекбокса "Согласие"
-      if (!acceptInput.checked) {
-          errorSpans[2].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
-          errorSpans[2].style.display = 'block';
-          valid = false;
-      }
-
-      // Если всё ок — отправляем форму
-      if (valid) {
-          form.submit();
-      }
-  }
 } 
 
-// Скрипты для контента на странице "about-us-page.html"
+// Модальное окно для просмотра видео
 
-if (window.location.pathname.endsWith('about-us-page.html')) {
-  // Модальное окно для просмотра видео
-  const modalVideo = document.getElementById("videoModal");
+const modalVideo = document.querySelector(".modal-video");
+
+if (modalVideo) {
   const btns = document.querySelectorAll(".video-button");
   const closeBtnVideo = document.querySelector(".close-video");
   const video = document.getElementById("modalVideo");
@@ -1457,7 +1511,7 @@ if (window.location.pathname.endsWith('about-us-page.html')) {
       video.currentTime = 0;
     }
   });
-} 
+}
 
 
 // Скрипты для контента на странице "catalog-page.html"

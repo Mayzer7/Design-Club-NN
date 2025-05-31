@@ -3692,7 +3692,7 @@ nav ul ul.open + svg {
 }
 
 .footer {
-    padding: 0px 20px 20px 20px;
+    padding: 100px 20px 20px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 
@@ -3795,7 +3795,7 @@ nav ul ul.open + svg {
 
 .footer-1024 {
     display: none;
-    padding: 0px 20px 20px 20px;
+    padding: 100px 20px 20px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 
@@ -3855,7 +3855,7 @@ nav ul ul.open + svg {
 
 .footer-below-1024 {
     display: none;
-    padding: 0px 20px 0px 20px;
+    padding: 100px 20px 0px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 

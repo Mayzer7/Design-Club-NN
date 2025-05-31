@@ -3066,6 +3066,11 @@ nav ul ul.open + svg {
 
 /* Footer */
 
+#brands {
+  scroll-margin-top: 100px; 
+  scroll-behavior: smooth;
+}
+
 .footer {
     padding: 100px 20px 20px 20px;
     background-color: #151c28;
@@ -3091,16 +3096,14 @@ nav ul ul.open + svg {
     gap: 10px;
 }
 
-.footer-navigation h1 {
+.footer-navigation p {
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 600;
     white-space: nowrap;
     padding-bottom: 10px;
     text-transform: uppercase;
-    font-size: 24px;
+    font-size: 20px;
     transition: color 0.3s ease;
-}
-
-.footer-navigation h1:hover {
-    color: #AE9877;
 }
 
 .footer-navigation ul {
@@ -3112,10 +3115,17 @@ nav ul ul.open + svg {
 
 .footer-navigation ul li a {
     transition: color 0.3s ease;
+    font-size: 16px;
 }
 
 .footer-navigation ul li a:hover {
     color: #AE9877;
+}
+
+.footer-address {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 }
 
 .footer-address p {
@@ -3123,12 +3133,14 @@ nav ul ul.open + svg {
     color: rgba(237, 228, 215, 0.7);
 }
 
-.footer-address h1 {
-    font-size: 38px;
-    margin-bottom: 40px;
-    font-family: 'SF Pro Display Thin', sans-serif; 
+.footer-address a {
+    font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 600;
+    font-size: 38px;
+    cursor: pointer;
 }
+
+
 
 .footer-icons {
     display: flex;
@@ -3140,11 +3152,15 @@ nav ul ul.open + svg {
     width: 36px;
 }
 
+.footer-last {
+    margin-top: 40px;
+}
+
 .footer-copyright {
     display: grid;
     grid-template-columns: 0.81fr 1.5fr 1fr auto;
-    gap: 10px;
-    padding: 20px 0;
+    padding-top: 10px;
+
 }
 
 .footer-copyright a {
@@ -3201,13 +3217,15 @@ nav ul ul.open + svg {
     padding-top: 20px;
 }
 
-.footer-nav-down h1 {
+.footer-nav-down a {
     text-transform: uppercase;
-    font-size: 24px;
+    font-size: 20px;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 600;
 }
 
 .footer-nav-down p {
-    font-size: 16px;
+    font-size: 14px;
     color: rgba(237, 228, 215, 0.7);
     margin-bottom: 5px;
 }
@@ -3266,7 +3284,10 @@ nav ul ul.open + svg {
     flex-direction: column;
     gap: 10px;
     align-items: flex-end;
-    
+}
+
+.copyrigth-second-column p {
+    font-size: 14px;
 }
 
 /* Адаптив для footer */
@@ -3330,7 +3351,6 @@ nav ul ul.open + svg {
         height: 32px;
     }
 }
-
 
 
 
@@ -3908,5 +3928,3 @@ nav ul ul.open + svg {
     }
 
 }
-
-
