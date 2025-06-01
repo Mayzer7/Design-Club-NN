@@ -1454,7 +1454,7 @@
                                 <h1 class="title-popular-categories">Популярные категории</h1>
                             </header>
                 
-                            <main class="popular-categories-content fade-in">
+                            <div class="popular-categories-content-desktop fade-in">
                                 <div class="two-lines-cards">
                                     <div class="popular-categories-cards">
                                         <div class="popular-categories-card fade-in">
@@ -1526,7 +1526,112 @@
                                         </div>
                                     </div>
                                 </div>
-                            </main>
+                            </div>
+
+                            <div class="popular-categories-content-mobile fade-in">
+                                <div class="swiper popular-categories-swiper">
+                                    <div class="swiper-wrapper">
+                                        <div class="popular-cat-mobile-card swiper-slide">
+                                            <a href="catalog-page.html">
+                                                <img src="images/main-page/popular-categories/adaptive/category-card-img-340.png" alt="Популярная категория">
+            
+                                                <div class="popular-categories-card-desc">
+                                                    <h4>Обеденная группа</h4>
+                                                    <p>(124)</p>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="popular-cat-mobile-card swiper-slide">
+                                            <a href="catalog-page.html">
+                                                <img src="images/main-page/popular-categories/adaptive/category-card-img-340.png" alt="Популярная категория">
+            
+                                                <div class="popular-categories-card-desc">
+                                                    <h4>Ванны</h4>
+                                                    <p>(124)</p>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="popular-cat-mobile-card swiper-slide">
+                                            <a href="catalog-page.html">
+                                                <img src="images/main-page/popular-categories/adaptive/category-card-img-340.png" alt="Популярная категория">
+            
+                                                <div class="popular-categories-card-desc">
+                                                    <h4>Обеденная группа</h4>
+                                                    <p>(124)</p>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="popular-cat-mobile-card swiper-slide">
+                                            <a href="catalog-page.html">
+                                                <img src="images/main-page/popular-categories/adaptive/category-card-img-340.png" alt="Популярная категория">
+            
+                                                <div class="popular-categories-card-desc">
+                                                    <h4>Ванны</h4>
+                                                    <p>(124)</p>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="popular-cat-mobile-card swiper-slide">
+                                            <a href="catalog-page.html">
+                                                <img src="images/main-page/popular-categories/adaptive/category-card-img-340.png" alt="Популярная категория">
+            
+                                                <div class="popular-categories-card-desc">
+                                                    <h4>Обеденная группа</h4>
+                                                    <p>(124)</p>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="popular-cat-mobile-card swiper-slide">
+                                            <a href="catalog-page.html">
+                                                <img src="images/main-page/popular-categories/adaptive/category-card-img-340.png" alt="Популярная категория">
+            
+                                                <div class="popular-categories-card-desc">
+                                                    <h4>Ванны</h4>
+                                                    <p>(124)</p>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="popular-cat-mobile-card swiper-slide">
+                                            <a href="catalog-page.html">
+                                                <img src="images/main-page/popular-categories/adaptive/category-card-img-340.png" alt="Популярная категория">
+            
+                                                <div class="popular-categories-card-desc">
+                                                    <h4>Обеденная группа</h4>
+                                                    <p>(124)</p>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="popular-cat-mobile-card swiper-slide">
+                                            <a href="catalog-page.html">
+                                                <img src="images/main-page/popular-categories/adaptive/category-card-img-340.png" alt="Популярная категория">
+            
+                                                <div class="popular-categories-card-desc">
+                                                    <h4>Ванны</h4>
+                                                    <p>(124)</p>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="popular-cat-mobile-card swiper-slide">
+                                            <a href="catalog-page.html">
+                                                <img src="images/main-page/popular-categories/adaptive/category-card-img-340.png" alt="Популярная категория">
+            
+                                                <div class="popular-categories-card-desc">
+                                                    <h4>Обеденная группа</h4>
+                                                    <p>(124)</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </section>
                 
@@ -1610,16 +1715,18 @@
                 
                     <section class="get-request">
                         <div class="blur-container">
-                            <p class="block-title get-request-up-title fade-in">Оставить заявку</p>
-                        
                             <main class="get-request-content">
-                                <iframe class="maps fade-in" src="https://yandex.ru/map-widget/v1/?um=constructor%3A100deec2f5ba1d94dcde01cf3e88bde4b9f635509455260016b7e85bb0472c44&amp;source=constructor" frameborder="0"></iframe>
-                        
-                                <div class="get-request-container">
-                                    <div class="content-wrapper reveal-mask">
-                                        <h1 class="get-title-request-desctop">Запишитесь на <br> персональную консультацию</h1>
+                                <div class="get-request-left-side">
+                                    <p class="block-title fade-in">Оставить заявку</p>
 
-                                        <h1 class="get-title-request-mobile">Запишитесь на персональную консультацию</h1>
+                                    <div class="maps fade-in" id="map"></div>
+                                </div>
+                        
+                                <div class="get-request-right-side">
+                                    <div class="content-wrapper reveal-mask">
+                                        <h1 class="get-title-request">
+                                            Запишитесь на <br> персональную консультацию
+                                        </h1>
 
                                         <p class="get-request-text fade-in">
                                             В нашем шоуруме вас встретит атмосфера тепла и уюта, а также<br>
@@ -1627,17 +1734,72 @@
                                             ароматного чая, пока мы поможем вам создать пространство мечты!
                                         </p>
 
-                                        <iframe class="maps-mobile fade-in" src="https://yandex.ru/map-widget/v1/?um=constructor%3A100deec2f5ba1d94dcde01cf3e88bde4b9f635509455260016b7e85bb0472c44&amp;source=constructor" frameborder="0"></iframe>
+                                        <div class="maps-mobile" id="map-mobile"></div>
                         
                                         <form id="contact-form-1" class="contact-form" onsubmit="return validateForm(event, 'contact-form-1')">
                                             <div class="contact-input fade-in">
                                                 <input type="text" name="name" placeholder="ВАШЕ ИМЯ">
                                                 <span class="error-contact"></span>
                                             </div>  
+
                                             <div class="contact-input fade-in">
                                                 <input type="text" name="phone" placeholder="ТЕЛЕФОН">
                                                 <span class="error-contact"></span>
                                             </div>
+
+                                            <div class="contact-input-wrapper">
+                                                <div class="contact-input contact-method-selector fade-in">
+                                                    <div class="contact-input-fields">
+                                                        <input
+                                                            type="text"
+                                                            name="contact_method"
+                                                            placeholder="КАК УДОБНЕЕ СВЯЗАТЬСЯ"
+                                                            readonly
+                                                        />
+
+                                                        <input type="hidden" name="contact_method_value" />
+
+                                                        <svg class="dropdown-arrow" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M20 11L14.7071 16.6854C14.3166 17.1049 13.6834 17.1049 13.2929 16.6854L8 11" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="round"/>
+                                                        </svg>
+                                                    </div>
+
+                                                    <span class="error-contact"></span>
+                                                </div>
+
+                                                <div class="contact-input-menu menu-contact-method">
+                                                    <div class="contact-input contact-method-selector">
+                                                        <div class="contact-input-fields-menu" data-value="CALL">
+                                                            <span>СОЗВОНИТЬСЯ</span>
+                                                            
+                                                            <svg class="checkmark" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M21.5 9.5L13.7931 19.7401C13.4699 20.0866 13.2887 20.0866 12.9655 19.7401L7.5 13.5" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="contact-input contact-method-selector">
+                                                        <div class="contact-input-fields-menu" data-value="TELEGRAM">
+                                                            <span>НАПИСАТЬ В TELEGRAM</span>
+                                                            
+                                                            <svg class="checkmark" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M21.5 9.5L13.7931 19.7401C13.4699 20.0866 13.2887 20.0866 12.9655 19.7401L7.5 13.5" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="contact-input contact-method-selector">
+                                                        <div class="contact-input-fields-menu" data-value="WHATSAPP">
+                                                            <span>НАПИСАТЬ В WHAT'S APP</span>
+                                                            
+                                                            <svg class="checkmark" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M21.5 9.5L13.7931 19.7401C13.4699 20.0866 13.2887 20.0866 12.9655 19.7401L7.5 13.5" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                             <div class="accept-politics fade-in">
                                                 <label class="custom-checkbox">
                                                     <input type="checkbox" name="accept" />
@@ -1646,6 +1808,7 @@
                                                 <p>Согласен <span><a href="privacy-policy-page.html">с политикой конфиденциальности и обработки персональных данных</a></span></p>
                                                 <span class="error-contact"></span>
                                             </div>
+
                                             <button type="submit" class="get-request-button fade-in">
                                                 ОСТАВИТЬ ЗАЯВКУ
                                                 <img src="images/svg/contact.svg" alt="Связаться" class="contact-icon">
@@ -2466,92 +2629,108 @@
                 
                     <section class="get-contact">
                         <div class="blur-container">
-                            <main class="get-contant-content">
-                                <div class="get-contact-container">
-                                    <div class="left-side fade-in">
-                                        <p class="block-title get-up-title fade-in">Оставить заявку</p>
-                    
-                                        <img class="fade-in" src="images/svg/gray-scope.svg" alt="Gray scope">
-                                    </div>
-                    
-                                    <div class="main-side">
-                                        <div class="main-side-wrapper">
-                                            <div class="reveal-mask">
-                                                <h1>СВЯЗАТЬСЯ С НАМИ</h1>
-                                            </div>
-                    
-                                            <div class="get-contact-form">
-                                                <p class="main-side-text fade-in">
-                                                    В нашем шоуруме вас встретит атмосфера тепла и уюта, а также
-                                                    индивидуальный подход к каждому клиенту. Насладитесь чашечкой
-                                                    ароматного чая, пока мы поможем вам создать пространство мечты!
-                                                </p>
-                                
-                                                <form id="contact-form-2" class="contact-form" onsubmit="return validateForm(event, 'contact-form-2')">
-                                                    <div class="contact-input fade-in">
-                                                        <input type="text" name="name" placeholder="ВАШЕ ИМЯ">
-                                                        <span class="error-contact"></span>
-                                                    </div>  
-                                                    
-                                                    <div class="contact-input fade-in">
-                                                        <input type="text" name="phone" placeholder="ТЕЛЕФОН">
-                                                        <span class="error-contact"></span>
-                                                    </div>
+                            <main class="get-request-content">
+                                <div class="get-contact-left-side">
+                                    <p class="block-title fade-in">Оставить заявку</p>
 
-                                                    <div class="contact-input contact-method-selector fade-in" onclick="toggleContactMethodMenu()">
-                                                        <div class="contact-input-fields">
-                                                            <input
+                                    <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="2.93331" height="17.5998" transform="matrix(1 0 0 -1 26.5312 23.6016)" fill="white" fill-opacity="0.2"/>
+                                        <rect width="2.93331" height="17.5998" transform="matrix(1 0 0 -1 26.5312 50)" fill="white" fill-opacity="0.2"/>
+                                        <rect width="2.93331" height="17.5998" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 50 29.4688)" fill="white" fill-opacity="0.2"/>
+                                        <rect width="2.93331" height="17.5998" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 23.6016 29.4688)" fill="white" fill-opacity="0.2"/>
+                                    </svg>
+                                </div>
+                        
+                                <div class="get-contact-right-side">
+                                    <div class="content-wrapper reveal-mask">
+                                        <h1 class="get-title-request">
+                                            Связаться с нами
+                                        </h1>
+
+                                        <p class="main-side-text fade-in">
+                                            В нашем шоуруме вас встретит атмосфера тепла и уюта, а также
+                                            индивидуальный подход к каждому клиенту. Насладитесь чашечкой
+                                            ароматного чая, пока мы поможем вам создать пространство мечты!
+                                        </p>
+                        
+                                        <form id="contact-form-2" class="contact-form" onsubmit="return validateForm(event, 'contact-form-2')">
+                                            <div class="contact-input fade-in">
+                                                <input type="text" name="name" placeholder="ВАШЕ ИМЯ">
+                                                <span class="error-contact"></span>
+                                            </div>  
+
+                                            <div class="contact-input fade-in">
+                                                <input type="text" name="phone" placeholder="ТЕЛЕФОН">
+                                                <span class="error-contact"></span>
+                                            </div>
+
+                                            <div class="contact-input-wrapper">
+                                                <div class="contact-input contact-method-selector fade-in">
+                                                    <div class="contact-input-fields">
+                                                        <input
                                                             type="text"
                                                             name="contact_method"
                                                             placeholder="КАК УДОБНЕЕ СВЯЗАТЬСЯ"
                                                             readonly
-                                                            id="selected-contact-method"
-                                                            />
+                                                        />
 
-                                                            <svg id="dropdown-arrow" class="dropdown-arrow" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <path d="M20 11L14.7071 16.6854C14.3166 17.1049 13.6834 17.1049 13.2929 16.6854L8 11" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="round"/>
-                                                            </svg>
+                                                        <input type="hidden" name="contact_method_value" />
 
+                                                        <svg class="dropdown-arrow" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M20 11L14.7071 16.6854C14.3166 17.1049 13.6834 17.1049 13.2929 16.6854L8 11" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="round"/>
+                                                        </svg>
+                                                    </div>
+
+                                                    <span class="error-contact"></span>
+                                                </div>
+
+                                                <div class="contact-input-menu menu-contact-method">
+                                                    <div class="contact-input contact-method-selector">
+                                                        <div class="contact-input-fields-menu" data-value="CALL">
+                                                            <span>СОЗВОНИТЬСЯ</span>
                                                             
-                                                        </div>
-                                                        
-                                                    </div>
-
-                                                    <div class="contact-input-menu menu-contact-method" id="menu-contact-method">
-                                                        <div class="contact-input contact-method-selector">
-                                                            <div class="contact-input-fields-menu">
-                                                                <input class="input-field" type="text" name="contact_method" placeholder="СОЗВОНИТЬСЯ" readonly id="selected-contact-method">   
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="contact-input contact-method-selector">
-                                                            <div class="contact-input-fields-menu">
-                                                                <input class="input-field" type="text" name="contact_method" placeholder="НАПИСАТЬ В TELEGRAM" readonly id="selected-contact-method">  
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="contact-input contact-method-selector">
-                                                            <div class="contact-input-fields-menu">
-                                                                <input class="input-field" type="text" name="contact_method" placeholder="НАПИСАТЬ В WHAT'S APP" readonly id="selected-contact-method">  
-                                                            </div>
+                                                            <svg class="checkmark" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M21.5 9.5L13.7931 19.7401C13.4699 20.0866 13.2887 20.0866 12.9655 19.7401L7.5 13.5" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                            </svg>
                                                         </div>
                                                     </div>
 
-                                                    <div class="accept-politics fade-in">
-                                                        <label class="custom-checkbox">
-                                                            <input type="checkbox" name="accept" />
-                                                            <div class="checkbox-img"></div>
-                                                        </label>
-                                                        <p>Согласен <span><a href="#">с политикой конфиденциальности и обработки персональных данных</a></span></p>
-                                                        <span class="error-contact"></span>
+                                                    <div class="contact-input contact-method-selector">
+                                                        <div class="contact-input-fields-menu" data-value="TELEGRAM">
+                                                            <span>НАПИСАТЬ В TELEGRAM</span>
+                                                            
+                                                            <svg class="checkmark" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M21.5 9.5L13.7931 19.7401C13.4699 20.0866 13.2887 20.0866 12.9655 19.7401L7.5 13.5" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                            </svg>
+                                                        </div>
                                                     </div>
-                                                    <button type="submit" class="get-request-button fade-in">
-                                                        ОСТАВИТЬ ЗАЯВКУ
-                                                        <img src="images/svg/contact.svg" alt="Связаться" class="contact-icon">
-                                                    </button>
-                                                </form>
+
+                                                    <div class="contact-input contact-method-selector">
+                                                        <div class="contact-input-fields-menu" data-value="WHATSAPP">
+                                                            <span>НАПИСАТЬ В WHAT'S APP</span>
+                                                            
+                                                            <svg class="checkmark" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M21.5 9.5L13.7931 19.7401C13.4699 20.0866 13.2887 20.0866 12.9655 19.7401L7.5 13.5" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
+
+                                            <div class="accept-politics fade-in">
+                                                <label class="custom-checkbox">
+                                                    <input type="checkbox" name="accept" />
+                                                    <div class="checkbox-img"></div>
+                                                </label>
+                                                <p>Согласен <span><a href="privacy-policy-page.html">с политикой конфиденциальности и обработки персональных данных</a></span></p>
+                                                <span class="error-contact"></span>
+                                            </div>
+
+                                            <button type="submit" class="get-request-button fade-in">
+                                                ОСТАВИТЬ ЗАЯВКУ
+                                                <img src="images/svg/contact.svg" alt="Связаться" class="contact-icon">
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                             </main>
@@ -3134,6 +3313,9 @@
         </div>
     </div>
 
+    <!-- Яндекс карта -->
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=6a0a70e3-b1fe-4c23-ab8b-779377082ed2" type="text/javascript"></script>
+
     <!-- Swiper -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
@@ -3144,5 +3326,6 @@
     <script src="js/cookie.js"></script>
 
     <script src="js/scripts.js"></script>
+
 </body>
 </html>

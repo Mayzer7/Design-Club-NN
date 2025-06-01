@@ -922,75 +922,112 @@ function handleScrollUp() {
   const desiredPositionInput = document.querySelector('[name="desired-position"]'); 
 
   function validateForm(event, formId) {
-      event.preventDefault();
+    event.preventDefault();
 
-      const form = document.getElementById(formId);
+    const form = document.getElementById(formId);
 
-      // Скрыть все ошибки только внутри своей формы
-      const errorElements = form.querySelectorAll('.error-contact');
-      errorElements.forEach(error => error.style.display = 'none');
+    if (!form) return;
 
-      let valid = true;
+    const errorElements = form.querySelectorAll('.error-contact');
+    errorElements.forEach(error => error.style.display = 'none');
 
-      // Поля внутри своей формы
-      const nameInput = form.querySelector('input[name="name"]');
-      const phoneInput = form.querySelector('input[name="phone"]');
-      const acceptInput = form.querySelector('input[name="accept"]');
-      const errorSpans = form.querySelectorAll('.error-contact');
+    let valid = true;
 
-      // Проверка поля "Ваше имя"
-      if (!nameInput.value.trim()) {
-          errorSpans[0].textContent = 'Пожалуйста, введите ваше имя.';
-          errorSpans[0].style.display = 'block';
-          valid = false;
-      }
+    const nameInput = form.querySelector('input[name="name"]');
+    const phoneInput = form.querySelector('input[name="phone"]');
+    const acceptInput = form.querySelector('input[name="accept"]');
+    const contactMethodHiddenInput = form.querySelector('input[name="contact_method_value"]');
+    const questionInput = form.querySelector('input[name="your-question"]');
+    const desiredPositionInput = form.querySelector('input[name="desired-position"]');
+    const errorSpans = form.querySelectorAll('.error-contact');
 
-      // Проверка поля "Телефон"
-      if (!phoneInput.value.trim()) {
-          errorSpans[1].textContent = 'Пожалуйста, введите ваш телефон.';
-          errorSpans[1].style.display = 'block';
-          valid = false;
-      }
+    // Проверки
+    if (!nameInput.value.trim()) {
+        errorSpans[0].textContent = 'Пожалуйста, введите ваше имя.';
+        errorSpans[0].style.display = 'block';
+        valid = false;
+    }
 
-      // Проверка поля "Ваш вопрос"
-      if (questionInput) {
-        if (!questionInput.value.trim()) {
-            errorSpans[2].textContent = 'Пожалуйста, введите ваш вопрос.';
-            errorSpans[2].style.display = 'block';
-            valid = false;
-        }
+    if (!phoneInput.value.trim()) {
+        errorSpans[1].textContent = 'Пожалуйста, введите ваш телефон.';
+        errorSpans[1].style.display = 'block';
+        valid = false;
+    }
 
-        if (!acceptInput.checked) {
-            errorSpans[3].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
-            errorSpans[3].style.display = 'block';
-            valid = false;
-        }
+    if (!contactMethodHiddenInput.value.trim()) {
+        const errorSpan = form.querySelector('.contact-input-wrapper .error-contact');
+        errorSpan.textContent = 'Выберите способ связи';
+        errorSpan.style.display = 'block';
+        valid = false;
+    }
 
-      } else if (desiredPositionInput) {
-        if (!desiredPositionInput.value.trim()) {
-            errorSpans[2].textContent = 'Пожалуйста, введите желаемую должность.';
-            errorSpans[2].style.display = 'block';
-            valid = false;
-        }
+    if (questionInput && !questionInput.value.trim()) {
+        errorSpans[2].textContent = 'Пожалуйста, введите ваш вопрос.';
+        errorSpans[2].style.display = 'block';
+        valid = false;
+    }
 
-        if (!acceptInput.checked) {
-            errorSpans[3].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
-            errorSpans[3].style.display = 'block';
-            valid = false;
-        }
-      } else {
-        // Проверка чекбокса "Согласие"
-        if (!acceptInput.checked) {
-            errorSpans[2].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
-            errorSpans[2].style.display = 'block';
-            valid = false;
-        }
-      }
+    if (desiredPositionInput && !desiredPositionInput.value.trim()) {
+        errorSpans[2].textContent = 'Пожалуйста, введите желаемую должность.';
+        errorSpans[2].style.display = 'block';
+        valid = false;
+    }
 
-      // Если всё ок — отправляем форму
-      if (valid) {
-          form.submit();
-      }
+    if (!acceptInput.checked) {
+        errorSpans[3].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
+        errorSpans[3].style.display = 'block';
+        valid = false;
+    }
+
+    if (valid) form.submit();
+  }
+
+  // Выбор способа связи в форме "Связаться с нами"
+
+  const menu = document.querySelector('.contact-input-wrapper');
+
+  if (menu) {
+    document.querySelectorAll('.contact-form').forEach(form => {
+        const wrapper = form.querySelector('.contact-input-wrapper');
+        if (!wrapper) return;
+
+        const toggleButton = wrapper.querySelector('.contact-method-selector');
+        const menu = wrapper.querySelector('.menu-contact-method');
+        const arrow = wrapper.querySelector('.dropdown-arrow');
+        const contactMethodInput = form.querySelector('input[name="contact_method"]');
+        const contactMethodValueInput = form.querySelector('input[name="contact_method_value"]');
+
+        toggleButton.addEventListener('click', () => {
+            const isOpen = menu.classList.contains('open');
+            if (isOpen) {
+                menu.style.maxHeight = '0px';
+                menu.style.opacity = '0';
+                menu.classList.remove('open');
+                arrow?.classList.remove('rotated');
+            } else {
+                menu.style.maxHeight = menu.scrollHeight + 'px';
+                menu.style.opacity = '1';
+                menu.classList.add('open');
+                arrow?.classList.add('rotated');
+            }
+        });
+
+        menu.querySelectorAll('.contact-input-fields-menu').forEach(item => {
+            item.addEventListener('click', () => {
+              const russianText = item.querySelector('span').innerText;
+              const englishValue = item.getAttribute('data-value');
+
+              contactMethodInput.value = russianText;
+              contactMethodValueInput.value = englishValue;
+
+              // Сброс выделения
+              menu.querySelectorAll('.contact-input-fields-menu').forEach(el => {
+                  el.classList.remove('selected');
+              });
+              item.classList.add('selected');
+          });
+        });
+    });
   }
 
   // Отображение загруженного файла 
@@ -1014,34 +1051,199 @@ function handleScrollUp() {
   const popularProductCard = document.querySelector('.popular-product-card');
 
   if (popularProductCard) {
-    // Переключение карточек "Популярные товары"
-    const swiper = new Swiper('.popular-products-swiper', {
+    let swiper;
+
+    function initSwiper() {
+      const popularProductCard = document.querySelector('.popular-product-card');
+
+      if (popularProductCard) {
+        if (swiper) swiper.destroy(true, true);
+        
+        const isSmallScreen = window.innerWidth <= 870;
+
+        swiper = new Swiper('.popular-products-swiper', {
+          slidesPerView: 'auto',
+          spaceBetween: window.innerWidth <= 400 ? 10 : 20,
+          slidesPerGroup: 1,
+          speed: 800,
+          grabCursor: true,
+          effect: 'slide',
+          loop: true,
+          loopedSlides: 4,
+          touchRatio: 0.5,
+          initialSlide: 2,
+          centeredSlides: !isSmallScreen, // Отключаем при маленьком экране
+          longSwipesRatio: 0.05,
+          longSwipesMs: 300,
+
+          navigation: {
+            nextEl: '.popular-right-arrow',
+            prevEl: '.popular-left-arrow',
+          },
+        });
+      }
+    }
+
+    // Инициализация при загрузке
+    initSwiper();
+
+    // Переинициализация при изменении ширины окна
+    window.addEventListener('resize', () => {
+      initSwiper();
+    });
+  }
+
+  // Переключение карточек "Наши бренды" мобильная версия
+
+  const ourBrands = document.querySelector('.our-brands');
+
+  if (ourBrands) {
+    const swiper = new Swiper('.our-brands-swiper', {
         slidesPerView: 'auto',
         spaceBetween: 20,
         slidesPerGroup: 1,
         speed: 800,
-        grabCursor: true,
+        grabCursor: false,
         effect: 'slide',
         loop: true,
-        loopedSlides: 4,
-        touchRatio: 0.5,
-        initialSlide: 2,
-        centeredSlides: true,
-        longSwipesRatio: 0.05, 
-        longSwipesMs: 300,   
-        
-        navigation: {
-          nextEl: '.popular-right-arrow',
-          prevEl: '.popular-left-arrow',
-        },
-        breakpoints: {
-          0: {
-            spaceBetween: 10
+        centeredSlides: false,
+  
+    });
+  }
+
+  // Переключение карточек "Популярные категории" мобильная версия
+
+  const popularCategoriesContentMobile = document.querySelector('.popular-categories-content-mobile');
+
+  if (popularCategoriesContentMobile) {
+    const swiper = new Swiper('.popular-categories-swiper', {
+        slidesPerView: 'auto',
+        spaceBetween: 20,
+        slidesPerGroup: 1,
+        speed: 800,
+        grabCursor: false,
+        effect: 'slide',
+        loop: true,
+        centeredSlides: false,
+  
+    });
+  }
+  
+
+  // Яндекс карта
+
+  const maps = document.querySelector('.maps');
+  const mapsMobile = document.querySelector('.maps-mobile');
+
+  if (maps || mapsMobile) {
+    let center = [56.29952353059907, 44.02247565459635];
+
+    function createMap(mapId) {
+      let map = new ymaps.Map(mapId, {
+        center: center,
+        zoom: 17.5,
+      });
+
+      let balloonLayout = ymaps.templateLayoutFactory.createClass(
+        `<div class="custom-balloon-wrapper">
+          <div class="custom-balloon">
+            <div class="balloon-content">
+              <a href="https://yandex.ru/maps/-/CHCE6VNj" target="_blank" class="balloon__title">
+                Дизайн клуб
+              </a>
+              <div class="balloon__address">
+                <p>Адресс</p> 
+                <a href="https://yandex.ru/maps/-/CHCE6VNj" target="_blank">ул. Эльтонская, 8</a>
+              </div>
+              <div class="balloon__contacts">
+                <p>Телефон</p>
+                <a href="tel:+79809224697">+7 (980) 922-46-97</a>
+              </div>
+              <div class="balloon__working__info">
+                <p>Режим работы</p>
+                <a href="https://yandex.ru/maps/-/CHCE6VNj" target="_blank">Пн-пт: 10:00 - 19:00</a>
+              </div>
+            </div>
+            <div class="custom-balloon__close" title="Закрыть">
+              <svg fill="#FFFFFF" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="16" height="16">
+                <path d="M 7.71875 6.28125 L 6.28125 7.71875 L 23.5625 25 L 6.28125 42.28125 L 7.71875 43.71875 L 25 26.4375 L 42.28125 43.71875 L 43.71875 42.28125 L 26.4375 25 L 43.71875 7.71875 L 42.28125 6.28125 L 25 23.5625 Z"/>
+              </svg>
+            </div>
+            <div class="custom-balloon__arrow"></div>
+          </div>
+        </div>`,
+        {
+          build: function () {
+            balloonLayout.superclass.build.call(this);
+
+            const balloonElement = this.getElement().querySelector('.custom-balloon');
+            const closeBtn = balloonElement.querySelector('.custom-balloon__close');
+
+            if (window.innerWidth <= 1330) {
+              balloonElement.style.transform = 'translate(-50%, -60%)';
+            } else {
+              balloonElement.style.transform = 'translate(-50%, -80%)';
+            }
+
+            closeBtn.addEventListener('click', this.onCloseClick.bind(this));
           },
-          400: {
-            spaceBetween: 20
+
+          clear: function () {
+            const closeBtn = this.getElement().querySelector('.custom-balloon__close');
+            if (closeBtn) closeBtn.removeEventListener('click', this.onCloseClick.bind(this));
+            balloonLayout.superclass.clear.call(this);
+          },
+
+          onCloseClick: function (e) {
+            e.preventDefault();
+            this.events.fire('userclose');
+          },
+
+          getShape: function () {
+            const element = this.getElement();
+            if (!element) return null;
+            const rect = element.getBoundingClientRect();
+            return new ymaps.shape.Rectangle(
+              new ymaps.geometry.pixel.Rectangle([[0, 0], [rect.width, rect.height]])
+            );
+          },
+
+          getOffset: function () {
+            const balloon = this.getElement().querySelector('.custom-balloon');
+            const height = balloon.offsetHeight;
+            const width = balloon.offsetWidth;
+            return [-width / 2, -height - 10];
           }
-        },
+        }
+      );
+
+      let placemark = new ymaps.Placemark(center, {}, {
+        iconLayout: 'default#image',
+        iconImageHref: 'images/svg/marker.svg',
+        iconImageSize: [40, 40],
+        iconImageOffset: [-19, -44],
+        balloonLayout: balloonLayout,
+        balloonPanelMaxMapArea: 0
+      });
+
+      map.controls.remove('geolocationControl'); // удаляем геолокацию
+      map.controls.remove('searchControl'); // удаляем поиск
+      map.controls.remove('trafficControl'); // удаляем контроль трафика
+      map.controls.remove('typeSelector'); // удаляем тип
+      map.controls.remove('fullscreenControl'); // удаляем кнопку перехода в полноэкранный режим
+      map.controls.remove('zoomControl'); // удаляем контрол зуммирования
+      map.controls.remove('rulerControl'); // удаляем контрол правил
+
+      map.geoObjects.add(placemark);
+    }
+
+    ymaps.ready(() => {
+      if (maps) {
+        createMap('map');
+      }
+      if (mapsMobile) {
+        createMap('map-mobile');
+      }
     });
   }
 
@@ -1189,38 +1391,6 @@ function handleScrollUp() {
       }
   }
 
-// Выбор способа связи в форме "Связаться с нами"
-
-const menu = document.getElementById('menu-contact-method');
-
-if (menu) {
-  function toggleContactMethodMenu() {
-      const arrow = document.getElementById('dropdown-arrow');
-
-      if (menu.classList.contains('open')) {
-          // Закрытие меню с анимацией
-          menu.style.maxHeight = '0px';
-          menu.style.opacity = '0';
-          arrow.classList.remove('rotated');
-          menu.classList.remove('open');
-      } else {
-          // Открытие меню с анимацией до нужной высоты
-          menu.style.maxHeight = menu.scrollHeight + 'px';
-          menu.style.opacity = '1';
-          arrow.classList.add('rotated');
-          menu.classList.add('open');
-      }
-  }
-
-  // Обработка выбора пункта меню
-  document.querySelectorAll('.input-field').forEach(item => {
-      item.addEventListener('click', function () {
-          const selected = document.getElementById('selected-contact-method');
-          selected.value = this.placeholder;
-          toggleContactMethodMenu(); // Скрываем меню после выбора
-      });
-  });
-} 
 
 // Модальное окно для просмотра видео
 
