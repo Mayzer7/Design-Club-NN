@@ -1733,6 +1733,10 @@ nav ul ul.open + svg {
     .project-gallery-header {
         padding-left: 0%;
     }
+
+    .project-gallery {
+        padding: 90px 20px 90px 20px;
+    }
 }
 
 @media (max-width: 650px) {
@@ -2800,7 +2804,7 @@ a .popular-product-desc p,
 }
 
 .get-request-button {
-    margin-top: 5px;
+    margin-top: 15px;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-size: 18px;
     position: relative;
