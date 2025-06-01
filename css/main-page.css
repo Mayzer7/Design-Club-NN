@@ -4476,11 +4476,6 @@ a .popular-product-desc p,
 }
 
 
-@media (max-width: 565px) {
-
-}
-
-
 @media (max-width: 410px) {
     .main-side-wrapper h1 {
         font-size: 40px;

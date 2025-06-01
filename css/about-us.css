@@ -1641,17 +1641,10 @@ nav ul ul.open + svg {
 
 
 
-
-
-
-
-
-
-
 /* Секция "Уникальные решения для вашего дома" */
 
 .unique-solutions {
-    padding: 100px 20px 200px 20px;
+    padding: 100px 20px 90px 20px;
     background-color: #151c28;
     font-family: 'SF UI Display Thin', sans-serif;
     font-size: 20px;
@@ -1884,6 +1877,20 @@ nav ul ul.open + svg {
 
 /* 520px */
 
+.unique-swiper .swiper-slide {
+    width: auto !important;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+}
+
+.unique-swiper .swiper-wrapper .swiper-slide img {
+    max-width: 238px;
+    width: 100%;
+    height: 264px;
+}
+
 .unique-solutions-520px {
     display: none;
     padding: 100px 20px 100px 20px;
@@ -1935,7 +1942,7 @@ nav ul ul.open + svg {
     width: 100%;
     height: 100%;
     display: block;
-}
+}   
 
 
 @media (max-width: 520px) {
@@ -2010,25 +2017,22 @@ nav ul ul.open + svg {
 
 /* Секция "Почему выбирают нас" */
 
-
-
-/* Секция "Почему выбирают нас" */
-
 .why-choose-us {
-    padding: 150px 20px 200px 20px;
+    padding: 90px 20px 90px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display', sans-serif;
     position: relative;
 }
 
-
 .why-up-title {
-    position: absolute;
-    top: 150px;
+    margin-left: 3px;
 }
 
 .block-title {
     color: rgba(255, 255, 255, 0.6);
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
     white-space: nowrap;
 }
 
@@ -2049,12 +2053,6 @@ nav ul ul.open + svg {
     position: absolute;
     top: 300px;
     right: 20px;
-}
-
-.why-arrows button {
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
 }
 
 .title-group {
@@ -2078,19 +2076,14 @@ nav ul ul.open + svg {
     width: 100%;    
 }
 
-
 .why-choose-us-content {
-    display: flex;
-    overflow-x: auto;
-    overflow-y: hidden;
     padding-top: 100px;
-    padding-bottom: 200px;
-    scroll-behavior: smooth;
-    gap: 10px;
 }
 
-.why-choose-us-content::-webkit-scrollbar {
-    display: none;
+.swiper-slide {
+    padding: 0px; 
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .card {
@@ -2098,17 +2091,19 @@ nav ul ul.open + svg {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 0 20px;
-    min-width: 455px;
+    max-width: 414px;
+    padding: 20px;
     width: 100%;
     background-color: transparent;
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
     cursor: pointer; 
+    z-index: 0;
 }
 
 .card:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+    z-index: 10;
 }
 
 .card::before {
@@ -2132,6 +2127,8 @@ nav ul ul.open + svg {
 .card p {
     margin-bottom: 40px;
     color: #EDE4D7;
+    max-width: 350px;
+    width: 100%;
 }
 
 .card img {
@@ -2141,7 +2138,24 @@ nav ul ul.open + svg {
 }
 
 .down-card {
-    top: 100px;
+    margin-top: 100px;
+}
+
+
+.nav-arrows-products {
+    white-space: nowrap;
+}
+
+.nav-arrows-products button {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.nav-arrows-products button:hover {
+    transform: scale(1.1);
 }
 
 
@@ -2263,6 +2277,9 @@ nav ul ul.open + svg {
     }
 }
 
+
+
+
 @media (max-width: 1000px) {
     .title-group {
         padding-left: 20%;
@@ -2275,55 +2292,36 @@ nav ul ul.open + svg {
     }
 }
 
+@media (max-width: 870px) {
+    
+
+
+
+    .title-group {
+        padding-left: 0%;
+    }
+}
+
 @media (max-width: 840px) {
     .title-group h1 {
         font-size: 50px;
     }
     
-  
 
     .title-group h4 {
         font-size: 20px;
     }
 }
 
-@media (max-width: 730px) {
-    .title-group {
-        padding-left: 10%;
-    }
-
-    .why-up-title {
-        top: 120px;
-    }
-}
-
 @media (max-width: 710px) {
-    .why-choose-us {
-        padding: 150px 20px 200px 20px;
-    }
+
+    
 
     .title-group h4 {
         max-width: 450px;
     }
 }
 
-@media (max-width: 705px) {
-    .why-up-title {
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 675px) {
-    .title-group {
-        padding-left: 5%;
-    }
-}
-
-@media (max-width: 635px) {
-    .title-group {
-        padding-left: 0%;
-    }
-}
 
 @media (max-width: 600px) {
     .rigth-title-group.visible {
@@ -2332,14 +2330,12 @@ nav ul ul.open + svg {
 }
 
 @media (max-width: 590px) {
-    .why-choose-us {
-        padding: 150px 20px 200px 20px;
-    }
+    
 }
 
-@media (max-width: 515px) {
+@media (max-width: 540px) {
     .down-card {
-        top: 0px;
+        margin-top: 0px;
     }
 
     .card {
@@ -2360,21 +2356,12 @@ nav ul ul.open + svg {
         padding-top: 20px;
     }
 
-    .why-choose-us {
-        padding: 100px 15px 20px 15px;
-    }
+    
 
-    .why-up-title {
-        top: 70px;
-    }
-
-    .why-choose-us-content {
-        padding-bottom: 60px;
+    .swiper-slide {
+        max-width: 265px;
     }
 }
-
-
-
 
 @media (max-width: 430px) {
     .title-group h1 {
@@ -2386,19 +2373,8 @@ nav ul ul.open + svg {
     .title-group h1 {
         font-size: 38px;
     }
-
-    .why-choose-us {
-        padding: 100px 20px 20px 20px;
-    }
 }
 
-@media (max-width: 345px) {
-    .why-choose-us {
-        padding: 100px 20px 20px 20px;
-    }
-
-
-}
 
 
 
@@ -2878,26 +2854,11 @@ nav ul ul.open + svg {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Секция "Запишитесь на персональную консультацию" */
 
 .get-request {
-    padding: 60px 20px 90px 20px;
-    background-color: #151c28;
+    padding: 20px 20px 82px 20px;
+    background-color: #171F2E;
     font-family: 'SF Pro Display Thin', sans-serif;
     background-image: url("../images/main-page/get-request-bg.png");
     background-repeat: no-repeat;
@@ -2915,23 +2876,116 @@ nav ul ul.open + svg {
 .get-request-content {
     margin-top: 60px;
     display: flex; 
+    position: relative;
 }
 
 .maps {
-    margin-top: 120px;
-    width: 337px;
-    height: 381px;
+    width: 261px;
+    height: 322px;
 }
 
 .maps-mobile {
+    margin-bottom: 30px;
     display: none;
-    width: 310px;
-    height: 200px;
+    max-width: 530px;
+    width: 100%;
+    height: 210px;
+} 
+
+/* Отключаем стили Яндекс Карты */
+
+[class*="copyrights-pane"] {
+	display: none !important;
 }
 
-.get-request-container {
+/* Темная Яндекс карта */
+[class*="ground-pane"] {
+	filter: grayscale(60%);
+}
+
+/* Сброс стилей дефолтного балуна */
+.ymaps-b-balloon, .ymaps-b-balloon__layout, .ymaps-b-balloon__tail {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Кастомный балун */
+.custom-balloon-wrapper {
+  position: relative;
+}
+
+.custom-balloon {
+  background-color: #171F2E;
+  color: #EDE4D7;
+  padding: 10px 20px;
+
+  position: relative;
+  width: 130px;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.balloon-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.balloon-content div p:first-child {
+   font-size: 12px;
+   color: #8e8e8e;
+}
+
+.balloon__title {
+    font-size: 18px;
+}
+
+.custom-balloon__arrow {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -10px;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: #171F2E;
+}
+
+/* Кастомный крестик */
+.custom-balloon__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 16px;
+  height: 16px;
+  background-image: url('../images/svg/close.svg');
+  background-size: cover;
+  cursor: pointer;
+}
+
+.custom-balloon__close svg {
+  fill: #fff;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.custom-balloon__close:hover svg {
+  fill: #AE9877
+}
+
+.custom-balloon__close:hover {
+  filter: brightness(0.5);
+}
+
+.get-request-left-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.get-request-right-side {
     width: 100%;
-    padding-left: 7%;
+    padding-left: 11%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -2941,8 +2995,6 @@ nav ul ul.open + svg {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 40px;
-    margin-top: -90px;
     width: 100%;
 }
 
@@ -2953,8 +3005,17 @@ nav ul ul.open + svg {
     text-transform: uppercase;
 }
 
-.get-title-request-desctop {
+.get-request-up-title {
+    font-size: 14px;
+}
+
+.get-title-request {
     font-size: 76px;
+    margin-bottom: 60px;
+}
+
+.get-request-text {
+    margin-bottom: 40px;
 }
 
 .content-wrapper p {
@@ -2965,7 +3026,7 @@ nav ul ul.open + svg {
 .content-wrapper form {
     display: flex;
     flex-direction: column;
-    gap: 35px;
+    gap: 25px;
     max-width: 645px;
     width: 100%;
 }
@@ -2975,12 +3036,18 @@ nav ul ul.open + svg {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     background: transparent;
     padding: 5px 0;
     gap: 8px;
     width: 100%;
     transition: all 0.3s ease;
+}
+
+.contact-input-fields-menu span {
+    font-size: 18px;
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 600;
 }
 
 .contact-input:hover {
@@ -3093,119 +3160,192 @@ nav ul ul.open + svg {
 }
 
 
+/* Как удобнее связаться */
 
-/* Адаптив */
-
-.get-title-request-mobile {
-    display: none;
+.contact-input-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: transparent;
+    padding: 5px 0;
+    gap: 8px;
+    width: 100%;
 }
 
-@media (max-width: 1660px) {
-    .maps {
-        margin-top: 210px;
-    }
+.contact-input-menu input {
+    width: 100%; 
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #FFF;
+    font-size: 18px;
+    padding: 5px 0; 
 }
 
-@media (max-width: 1400px) {
-    .maps {
-        margin-top: 300px;
-        width: 250px;
-        height: 300px;
-    }
+
+.contact-input-fields {
+    width: 100%;
+    padding-right: 40px;
+    box-sizing: border-box; 
+
 }
 
-@media (max-width: 1230px) {
+.contact-input-fields input {
+    width: 100%;
+    padding-right: 40px; 
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.contact-input-fields svg {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; 
+}
+
+.contact-input-fields-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 0;
+  width: 100%;
+}
+
+.checkmark {
+  color: #EDE4D7;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.contact-input-fields-menu.selected .checkmark {
+  opacity: 1;
+}
+
+.contact-input-fields-menu input {
+    width: 100%;
+    padding-right: 40px; 
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.contact-input-fields-menu svg {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; 
+}
+
+.menu-contact-method {
+    margin-top: 10px;
+    overflow: hidden;
+    opacity: 0;
+    max-height: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.dropdown-arrow {
+    transition: transform 0.3s ease;
+}
+
+.dropdown-arrow.rotated {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+
+.input-field::placeholder {
+    color: #fff;
+}
+
+
+
+
+
+/* Адаптив ""Запишитесь на персональную консультацию"" */
+
+@media (max-width: 1430px) {
     .get-request {
-        background-image: url("../images/main-page/adaptive/request-background-1024.png");
+        background-image: url("../images/main-page/get-request/background-1024.png");
     }
 }
 
-@media (max-width: 1150px) {
-    .get-request-container {
-        margin-top: 50px;
-    }
-
-    .get-request-title-test {
-        font-size: 60px;    
-    }
-
+@media (max-width: 1330px) {
     .maps {
-        margin-top: 350px;
-        width: 200px;
-        height: 250px;
-    }
-}
-
-@media (max-width: 920px) {
-    .maps {
-        display: none;
+        width: 163px;
+        height: 202px;
     }
 
-    .maps-mobile {
-        display: block;
-        width: 500px;
-        height: 250px;
+    .custom-balloon {
+        width: 110px;
+        font-size: 10px;
     }
 
-    .get-request-container {
-        padding-left: 13%;
+    .balloon-content div p:first-child {
+        font-size: 8px;
     }
 
-    .get-title-request-desctop {
-        display: none;
+    .balloon__title {
+        font-size: 14px;
     }
 
-    .get-title-request-mobile {
-        display: block;
-        font-size: 76px;
-    }
-}
-
-@media (max-width: 900px) {
-    .get-request-container {
-        padding-left: 10%;
-    }
-}
-
-@media (max-width: 855px) {
-    .get-request-container {
-        padding-left: 5%;
-    }
-}
-
-@media (max-width: 810px) {
-    .get-request-container {
-        padding-left: 0;
-    }
-}
-
-@media (max-width: 630px) {
-    .get-title-request-mobile {
+    .get-title-request {
         font-size: 60px;
     }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 1230px) {
+    .content-wrapper form {
+        max-width: 530px;
+    }
+}
+
+
+@media (max-width: 1007px) {
+    .maps {
+        display: none;
+    }
+
     .maps-mobile {
         display: block;
-        width: 450px;
-        height: 250px;
+    }
+
+    .get-request {
+        background-image: none;
+    }
+
+    .get-request-right-side {
+        padding-left: 14%;
+    }
+
+    .get-title-request {
+        margin-bottom: 15px;
     }
 }
 
-@media (max-width: 510px) {
-    .get-title-request-mobile {
-        font-size: 50px;
-    }
-
-    .maps-mobile {
-        width: 400px;
-        height: 250px;
+@media (max-width: 855px) {
+    .get-request-right-side {
+        padding-left: 13%;
     }
 }
 
-@media (max-width: 430px) {
-    .get-title-request-mobile {
+
+@media (max-width: 840px) {
+    .get-request-right-side {
+        padding-left: 0%;
+    }
+
+    .get-request-left-side {
+        position: absolute;
+        top: -20px;
+        left: 5px;
+    }
+}
+
+@media (max-width: 575px) {
+    .get-title-request {
         font-size: 38px;
     }
 
@@ -3213,23 +3353,12 @@ nav ul ul.open + svg {
         font-size: 16px;
     }
 
-    .get-request-up-title {
-        font-size: 14px;
-    }
-
-    .maps-mobile {
-        width: 350px;
-        height: 250px;
+    .get-request {
+        padding: 45px 20px 45px 20px;
     }
 }
 
-@media (max-width: 380px) {
-    .maps-mobile {
-        width: 310px;
-        height: 200px;
-    }
-    
-}
+
 
 
 

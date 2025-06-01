@@ -782,53 +782,111 @@
                         </section>
 
                         <section class="get-request">
-                            <div class="blur-container">
-                                <p class="block-title get-request-up-title fade-in">Оставить заявку</p>
-                            
-                                <main class="get-request-content">
-                                    <iframe class="maps fade-in" src="https://yandex.ru/map-widget/v1/?um=constructor%3A100deec2f5ba1d94dcde01cf3e88bde4b9f635509455260016b7e85bb0472c44&amp;source=constructor" frameborder="0"></iframe>
-                            
-                                    <div class="get-request-container">
-                                        <div class="content-wrapper reveal-mask">
-                                            <h1 class="get-title-request-desctop">Запишитесь на <br> персональную консультацию</h1>
+                        <div class="blur-container">
+                            <main class="get-request-content">
+                                <div class="get-request-left-side">
+                                    <p class="block-title fade-in">Оставить заявку</p>
 
-                                            <h1 class="get-title-request-mobile">Запишитесь на персональную консультацию</h1>
+                                    <div class="maps fade-in" id="map"></div>
+                                </div>
+                        
+                                <div class="get-request-right-side">
+                                    <div class="content-wrapper reveal-mask">
+                                        <h1 class="get-title-request">
+                                            Запишитесь на <br> персональную консультацию
+                                        </h1>
 
-                                            <p class="get-request-text fade-in">
-                                                В нашем шоуруме вас встретит атмосфера тепла и уюта, а также<br>
-                                                индивидуальный подход к каждому клиенту. Насладитесь чашечкой<br>
-                                                ароматного чая, пока мы поможем вам создать пространство мечты!
-                                            </p>
+                                        <p class="get-request-text fade-in">
+                                            В нашем шоуруме вас встретит атмосфера тепла и уюта, а также<br>
+                                            индивидуальный подход к каждому клиенту. Насладитесь чашечкой<br>
+                                            ароматного чая, пока мы поможем вам создать пространство мечты!
+                                        </p>
 
-                                            <iframe class="maps-mobile fade-in" src="https://yandex.ru/map-widget/v1/?um=constructor%3A100deec2f5ba1d94dcde01cf3e88bde4b9f635509455260016b7e85bb0472c44&amp;source=constructor" frameborder="0"></iframe>
-                            
-                                            <form id="contact-form-1" class="contact-form fade-in" onsubmit="return validateForm(event, 'contact-form-1')">
-                                                <div class="contact-input fade-in">
-                                                    <input type="text" name="name" placeholder="ВАШЕ ИМЯ">
-                                                    <span class="error-contact"></span>
-                                                </div>  
-                                                <div class="contact-input fade-in">
-                                                    <input type="text" name="phone" placeholder="ТЕЛЕФОН">
+                                        <div class="maps-mobile" id="map-mobile"></div>
+                        
+                                        <form id="contact-form-1" class="contact-form" onsubmit="return validateForm(event, 'contact-form-1')">
+                                            <div class="contact-input fade-in">
+                                                <input type="text" name="name" placeholder="ВАШЕ ИМЯ">
+                                                <span class="error-contact"></span>
+                                            </div>  
+
+                                            <div class="contact-input fade-in">
+                                                <input type="text" name="phone" placeholder="ТЕЛЕФОН">
+                                                <span class="error-contact"></span>
+                                            </div>
+
+                                            <div class="contact-input-wrapper">
+                                                <div class="contact-input contact-method-selector fade-in">
+                                                    <div class="contact-input-fields">
+                                                        <input
+                                                            type="text"
+                                                            name="contact_method"
+                                                            placeholder="КАК УДОБНЕЕ СВЯЗАТЬСЯ"
+                                                            readonly
+                                                        />
+
+                                                        <input type="hidden" name="contact_method_value" />
+
+                                                        <svg class="dropdown-arrow" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M20 11L14.7071 16.6854C14.3166 17.1049 13.6834 17.1049 13.2929 16.6854L8 11" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="round"/>
+                                                        </svg>
+                                                    </div>
+
                                                     <span class="error-contact"></span>
                                                 </div>
-                                                <div class="accept-politics fade-in">
-                                                    <label class="custom-checkbox">
-                                                        <input type="checkbox" name="accept" />
-                                                        <div class="checkbox-img"></div>
-                                                    </label>
-                                                    <p>Согласен <span><a href="privacy-policy-page.html">с политикой конфиденциальности и обработки персональных данных</a></span></p>
-                                                    <span class="error-contact"></span>
+
+                                                <div class="contact-input-menu menu-contact-method">
+                                                    <div class="contact-input contact-method-selector">
+                                                        <div class="contact-input-fields-menu" data-value="CALL">
+                                                            <span>СОЗВОНИТЬСЯ</span>
+                                                            
+                                                            <svg class="checkmark" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M21.5 9.5L13.7931 19.7401C13.4699 20.0866 13.2887 20.0866 12.9655 19.7401L7.5 13.5" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="contact-input contact-method-selector">
+                                                        <div class="contact-input-fields-menu" data-value="TELEGRAM">
+                                                            <span>НАПИСАТЬ В TELEGRAM</span>
+                                                            
+                                                            <svg class="checkmark" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M21.5 9.5L13.7931 19.7401C13.4699 20.0866 13.2887 20.0866 12.9655 19.7401L7.5 13.5" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="contact-input contact-method-selector">
+                                                        <div class="contact-input-fields-menu" data-value="WHATSAPP">
+                                                            <span>НАПИСАТЬ В WHAT'S APP</span>
+                                                            
+                                                            <svg class="checkmark" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M21.5 9.5L13.7931 19.7401C13.4699 20.0866 13.2887 20.0866 12.9655 19.7401L7.5 13.5" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <button type="submit" class="get-request-button fade-in">
-                                                    ОСТАВИТЬ ЗАЯВКУ
-                                                    <img src="images/svg/contact.svg" alt="Связаться" class="contact-icon">
-                                                </button>
-                                            </form>
-                                        </div>
+                                            </div>
+
+                                            <div class="accept-politics fade-in">
+                                                <label class="custom-checkbox">
+                                                    <input type="checkbox" name="accept" />
+                                                    <div class="checkbox-img"></div>
+                                                </label>
+                                                <p>Согласен <span><a href="privacy-policy-page.html">с политикой конфиденциальности и обработки персональных данных</a></span></p>
+                                                <span class="error-contact"></span>
+                                            </div>
+
+                                            <button type="submit" class="get-request-button fade-in">
+                                                ОСТАВИТЬ ЗАЯВКУ
+                                                <img src="images/svg/contact.svg" alt="Связаться" class="contact-icon">
+                                            </button>
+                                        </form>
                                     </div>
-                                </main>
-                            </div>
-                        </section>
+                                </div>
+                            </main>
+                        </div>
+                    </section>
                 
                         <section class="footer">
                         <div class="blur-container">
@@ -1405,6 +1463,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Яндекс карта -->
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=6a0a70e3-b1fe-4c23-ab8b-779377082ed2" type="text/javascript"></script>
 
     <!-- Cookie -->
     <div id="cookie-container"></div>

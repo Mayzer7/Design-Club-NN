@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/product.css">
+    <!-- Swiper -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="icon" href="images/svg/favicon.svg" type="image/svg+xml">
     <title>Дизайн клуб - Страница товара</title>
 </head>
@@ -958,387 +962,622 @@
                         </div>
                         </section>
 
-                        <section class="project-products">
-                                <div class="project-products-container">
-                                    <div class="blur-container">
-                                        <div class="project-products-header">
-                                            <p class="up-title fade-in">
-                                                Товары
-                                            </p>
-                        
-                                            <div class="reveal-mask">
-                                                <h1 class="project-products-title">
-                                                    С этим товаром покупают
-                                                </h1>
-                                            </div>
-                        
-                                            <div class="nav-arrows-products products-arrows fade-in">
-                                                <button class="left-arrow" id="prev">
-                                                    <svg width="55" height="33" viewBox="0 0 55 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M18.9414 30L4.94141 16L18.9414 2" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
-                                                        <path d="M48.9414 16L5.94141 16" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
-                                                    </svg>        
-                                                </button>
-                            
-                                                <button class="right-arrow" id="next">
-                                                    <svg width="55" height="33" viewBox="0 0 55 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M35.9414 31L49.9414 17L35.9414 3" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
-                                                        <path d="M5.94141 17L48.9414 17" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
-                                                    </svg>      
-                                                </button>
-                                            </div>
+                        <section class="project-products fade-in">
+                        <div class="project-products-container">
+                            <div class="blur-container">
+                                <div class="project-products-header">
+                                    <p class="block-title up-title fade-in">
+                                        Товары
+                                    </p>
+                
+                                    <div class="popular-products-title">
+                                        <div class="div reveal-mask">
+                                            <h1 class="project-products-title">
+                                                С этим товаром покупают
+                                            </h1>
                                         </div>
+                    
+                                        <div class="nav-arrows-products products-arrows fade-in">
+                                            <button class="left-arrow popular-left-arrow" id="prev">
+                                                <svg width="55" height="33" viewBox="0 0 55 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M18.9414 30L4.94141 16L18.9414 2" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
+                                                    <path d="M48.9414 16L5.94141 16" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
+                                                </svg>        
+                                            </button>
                         
-                                        <div class="carousel-container fade-in">
-                                            <div class="carousel-track" id="track">
-                                                <div class="popular-product-card">
-                                                    <a href="product-page.html">
-                                                        <img src="images/project-info/project-products-images/image.png" alt="Product 1">
-                                                    
-                                                        <div class="popular-product-info">
-                                                            <h1 class="popular-product-title">
-                                                                Раковина Ornella
-                                                            </h1>
-                                                            
-                                                            <p class="popular-product-description">
-                                                                Описание товара
-                                                            </p>
-
-                                                            <div class="popular-product-desc-first">
-                                                                <p>Бренд</p>
-
-                                                                <h3>WaserKraft</h3>
-                                                            </div>
-
-                                                            <div class="popular-product-desc-second">
-                                                                <p>Цвет</p>
-
-                                                                <h3>Серый</h3>
-                                                            </div>
-
-                                                            <div class="popular-product-desc-last">
-                                                                <p>Цена</p>
-
-                                                                <h3>14 680 ₽</h3>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                                
-                                                <div class="popular-product-card">
-                                                    <a href="product-page.html">
-                                                        <img src="images/project-info/project-products-images/image.png" alt="Product 1">
-                                                    
-                                                        <div class="popular-product-info">
-                                                            <h1 class="popular-product-title">
-                                                                Раковина Ornella
-                                                            </h1>
-                                                            
-                                                            <p class="popular-product-description">
-                                                                Описание товара
-                                                            </p>
-
-                                                            <div class="popular-product-desc-first">
-                                                                <p>Бренд</p>
-
-                                                                <h3>WaserKraft</h3>
-                                                            </div>
-
-                                                            <div class="popular-product-desc-second">
-                                                                <p>Цвет</p>
-
-                                                                <h3>Серый</h3>
-                                                            </div>
-
-                                                            <div class="popular-product-desc-last">
-                                                                <p>Цена</p>
-
-                                                                <h3>14 680 ₽</h3>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-                                                <div class="popular-product-card">
-                                                    <a href="product-page.html">
-                                                        <div class="image-wrapper">
-                                                            <img src="images/project-info/project-products-images/image-scope.png" alt="Product 1">
-
-                                                            <div class="badges">
-                                                                <div class="badge delivery">
-                                                                    <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                        <path d="M0.753346 3.35553L1.18209 3.61278L0.753346 3.35553ZM1.6488 1.86312L2.07754 2.12037V2.12037L1.6488 1.86312ZM9.3512 1.86312L8.92246 2.12037V2.12037L9.3512 1.86312ZM10.2467 3.35553L10.6754 3.09829L10.2467 3.35553ZM8.54225 1.05266L8.39014 1.52896L8.39014 1.52896L8.54225 1.05266ZM8.93794 1.2767L9.26811 0.901212L9.2681 0.901212L8.93794 1.2767ZM2.06206 1.2767L2.39223 1.65218L2.39223 1.65218L2.06206 1.2767ZM2.45775 1.05266L2.30564 0.576361L2.30564 0.576361L2.45775 1.05266ZM10.4854 3.90619L9.99199 3.9869V3.9869L10.4854 3.90619ZM10.4214 3.67517L10.8861 3.4905L10.8861 3.4905L10.4214 3.67517ZM9.89332 10.8789L9.66633 10.4334H9.66633L9.89332 10.8789ZM10.3789 10.3933L9.93339 10.1663V10.1663L10.3789 10.3933ZM0.621104 10.3933L0.1756 10.6203H0.175601L0.621104 10.3933ZM1.10668 10.8789L1.33367 10.4334H1.33367L1.10668 10.8789ZM0.514571 3.90619L0.0211275 3.82548L0.514571 3.90619ZM0.57856 3.67517L0.113912 3.4905L0.113912 3.4905L0.57856 3.67517ZM1.05556 3.27778C0.779413 3.27778 0.555556 3.50164 0.555556 3.77778C0.555556 4.05392 0.779413 4.27778 1.05556 4.27778V3.27778ZM9.94444 4.27778C10.2206 4.27778 10.4444 4.05392 10.4444 3.77778C10.4444 3.50164 10.2206 3.27778 9.94444 3.27778V4.27778ZM5 3.77778C5 4.05392 5.22386 4.27778 5.5 4.27778C5.77614 4.27778 6 4.05392 6 3.77778H5ZM6 1C6 0.723858 5.77614 0.5 5.5 0.5C5.22386 0.5 5 0.723858 5 1H6ZM0.5 4.27019H0V9.22222H0.5H1V4.27019H0.5ZM2.27778 11V11.5H8.72222V11V10.5H2.27778V11ZM10.5 9.22222H11V4.27019H10.5H10V9.22222H10.5ZM0.753346 3.35553L1.18209 3.61278L2.07754 2.12037L1.6488 1.86312L1.22005 1.60587L0.324599 3.09829L0.753346 3.35553ZM3.17323 1V1.5H7.82677V1V0.5H3.17323V1ZM9.3512 1.86312L8.92246 2.12037L9.81791 3.61278L10.2467 3.35553L10.6754 3.09829L9.77995 1.60587L9.3512 1.86312ZM7.82677 1V1.5C8.22686 1.5 8.31703 1.50562 8.39014 1.52896L8.54225 1.05266L8.69436 0.576361C8.43765 0.494382 8.16078 0.5 7.82677 0.5V1ZM9.3512 1.86312L9.77995 1.60587C9.60811 1.31946 9.47047 1.07916 9.26811 0.901212L8.93794 1.2767L8.60777 1.65218C8.6654 1.70286 8.71662 1.7773 8.92246 2.12037L9.3512 1.86312ZM8.54225 1.05266L8.39014 1.52896C8.4704 1.5546 8.5445 1.59655 8.60777 1.65218L8.93794 1.2767L9.2681 0.901212C9.10129 0.754534 8.90595 0.643935 8.69435 0.57636L8.54225 1.05266ZM1.6488 1.86312L2.07754 2.12037C2.28338 1.7773 2.3346 1.70286 2.39223 1.65218L2.06206 1.2767L1.7319 0.901212C1.52953 1.07916 1.39189 1.31946 1.22005 1.60587L1.6488 1.86312ZM3.17323 1V0.5C2.83922 0.5 2.56235 0.494382 2.30564 0.576361L2.45775 1.05266L2.60986 1.52896C2.68297 1.50562 2.77314 1.5 3.17323 1.5V1ZM2.06206 1.2767L2.39223 1.65218C2.4555 1.59655 2.5296 1.5546 2.60986 1.52896L2.45775 1.05266L2.30564 0.576361C2.09405 0.643935 1.89871 0.754534 1.7319 0.901212L2.06206 1.2767ZM10.5 4.27019H11C11 4.10262 11.0015 3.96385 10.9789 3.82548L10.4854 3.90619L9.99199 3.9869C9.9985 4.02669 10 4.0712 10 4.27019H10.5ZM10.2467 3.35553L9.81791 3.61278C9.92029 3.78342 9.9419 3.82236 9.95679 3.85983L10.4214 3.67517L10.8861 3.4905C10.8343 3.3602 10.7616 3.24198 10.6754 3.09829L10.2467 3.35553ZM10.4854 3.90619L10.9789 3.82548C10.9601 3.7108 10.929 3.59849 10.8861 3.4905L10.4214 3.67517L9.95679 3.85983C9.97307 3.90079 9.98487 3.9434 9.99199 3.9869L10.4854 3.90619ZM8.72222 11V11.5C9.02511 11.5 9.28235 11.5004 9.49271 11.4832C9.70891 11.4655 9.91924 11.4269 10.1203 11.3244L9.89332 10.8789L9.66633 10.4334C9.62972 10.452 9.56564 10.4739 9.41128 10.4865C9.25109 10.4996 9.04161 10.5 8.72222 10.5V11ZM10.5 9.22222H10C10 9.54161 9.99961 9.75109 9.98652 9.91128C9.97391 10.0656 9.95204 10.1297 9.93339 10.1663L10.3789 10.3933L10.8244 10.6203C10.9269 10.4192 10.9655 10.2089 10.9832 9.99271C11.0004 9.78235 11 9.52511 11 9.22222H10.5ZM9.89332 10.8789L10.1203 11.3244C10.4235 11.1699 10.6699 10.9235 10.8244 10.6203L10.3789 10.3933L9.93339 10.1663C9.8748 10.2813 9.78132 10.3748 9.66633 10.4334L9.89332 10.8789ZM0.5 9.22222H0C0 9.52511 -0.000388861 9.78235 0.0167985 9.99271C0.0344628 10.2089 0.0731484 10.4192 0.1756 10.6203L0.621104 10.3933L1.06661 10.1663C1.04796 10.1297 1.02609 10.0656 1.01348 9.91128C1.00039 9.75109 1 9.54161 1 9.22222H0.5ZM2.27778 11V10.5C1.95839 10.5 1.74891 10.4996 1.58872 10.4865C1.43436 10.4739 1.37028 10.452 1.33367 10.4334L1.10668 10.8789L0.879682 11.3244C1.08076 11.4269 1.29109 11.4655 1.50729 11.4832C1.71765 11.5004 1.97489 11.5 2.27778 11.5V11ZM0.621104 10.3933L0.175601 10.6203C0.330063 10.9235 0.576532 11.1699 0.879683 11.3244L1.10668 10.8789L1.33367 10.4334C1.21868 10.3748 1.1252 10.2813 1.06661 10.1663L0.621104 10.3933ZM0.5 4.27019H1C1 4.0712 1.0015 4.02669 1.00801 3.98689L0.514571 3.90619L0.0211275 3.82548C-0.00150442 3.96385 0 4.10262 0 4.27019H0.5ZM0.753346 3.35553L0.324599 3.09829C0.238384 3.24198 0.165696 3.3602 0.113912 3.4905L0.57856 3.67517L1.04321 3.85983C1.0581 3.82236 1.07971 3.78342 1.18209 3.61278L0.753346 3.35553ZM0.514571 3.90619L1.00801 3.98689C1.01513 3.9434 1.02693 3.90079 1.04321 3.85983L0.57856 3.67517L0.113912 3.4905C0.0709937 3.59848 0.0398846 3.7108 0.0211275 3.82548L0.514571 3.90619ZM1.05556 3.77778V4.27778H9.94444V3.77778V3.27778H1.05556V3.77778ZM5.5 3.77778H6V1H5.5H5V3.77778H5.5Z" fill="white" fill-opacity="0.4"/>
-                                                                    </svg>
-                                                                        
-                                                                    привезем завтра
-                                                                </div>
-                                                                <div class="badge discount">-15%</div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="popular-product-info">
-                                                            <h1 class="popular-product-title">
-                                                                Раковина Ornella
-                                                            </h1>
-                                                            
-                                                            <p class="popular-product-description">
-                                                                Описание товара
-                                                            </p>
-
-                                                            <div class="popular-product-desc-first">
-                                                                <p>Бренд</p>
-
-                                                                <h3>WaserKraft</h3>
-                                                            </div>
-
-                                                            <div class="popular-product-desc-second">
-                                                                <p>Цвет</p>
-
-                                                                <h3>Серый</h3>
-                                                            </div>
-
-                                                            <div class="popular-product-desc-last">
-                                                                <p>Цена</p>
-
-                                                                <h3>14 680 ₽</h3>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-                                                <div class="popular-product-card">
-                                                    <a href="product-page.html">
-                                                        <img src="images/project-info/project-products-images/image.png" alt="Product 1">
-                                                    
-                                                        <div class="popular-product-info">
-                                                            <h1 class="popular-product-title">
-                                                                Раковина Ornella
-                                                            </h1>
-                                                            
-                                                            <p class="popular-product-description">
-                                                                Описание товара
-                                                            </p>
-
-                                                            <div class="popular-product-desc-first">
-                                                                <p>Бренд</p>
-
-                                                                <h3>WaserKraft</h3>
-                                                            </div>
-
-                                                            <div class="popular-product-desc-second">
-                                                                <p>Цвет</p>
-
-                                                                <h3>Серый</h3>
-                                                            </div>
-
-                                                            <div class="popular-product-desc-last">
-                                                                <p>Цена</p>
-
-                                                                <h3>14 680 ₽</h3>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-                                                <div class="popular-product-card">
-                                                    <a href="product-page.html">
-                                                        <img src="images/project-info/project-products-images/image.png" alt="Product 1">
-                                                    
-                                                        <div class="popular-product-info">
-                                                            <h1 class="popular-product-title">
-                                                                Раковина Ornella
-                                                            </h1>
-                                                            
-                                                            <p class="popular-product-description">
-                                                                Описание товара
-                                                            </p>
-
-                                                            <div class="popular-product-desc-first">
-                                                                <p>Бренд</p>
-
-                                                                <h3>WaserKraft</h3>
-                                                            </div>
-
-                                                            <div class="popular-product-desc-second">
-                                                                <p>Цвет</p>
-
-                                                                <h3>Серый</h3>
-                                                            </div>
-
-                                                            <div class="popular-product-desc-last">
-                                                                <p>Цена</p>
-
-                                                                <h3>14 680 ₽</h3>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-                                                <div class="popular-product-card">
-                                                    <a href="product-page.html">
-                                                        <img src="images/project-info/project-products-images/image.png" alt="Product 1">
-                                                    
-                                                        <div class="popular-product-info">
-                                                            <h1 class="popular-product-title">
-                                                                Раковина Ornella
-                                                            </h1>
-                                                            
-                                                            <p class="popular-product-description">
-                                                                Описание товара
-                                                            </p>
-
-                                                            <div class="popular-product-desc-first">
-                                                                <p>Бренд</p>
-
-                                                                <h3>WaserKraft</h3>
-                                                            </div>
-
-                                                            <div class="popular-product-desc-second">
-                                                                <p>Цвет</p>
-
-                                                                <h3>Серый</h3>
-                                                            </div>
-
-                                                            <div class="popular-product-desc-last">
-                                                                <p>Цена</p>
-
-                                                                <h3>14 680 ₽</h3>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-                                                <div class="popular-product-card">
-                                                    <a href="product-page.html">
-                                                        <img src="images/project-info/project-products-images/image.png" alt="Product 1">
-                                                    
-                                                        <div class="popular-product-info">
-                                                            <h1 class="popular-product-title">
-                                                                Раковина Ornella
-                                                            </h1>
-                                                            
-                                                            <p class="popular-product-description">
-                                                                Описание товара
-                                                            </p>
-
-                                                            <div class="popular-product-desc-first">
-                                                                <p>Бренд</p>
-
-                                                                <h3>WaserKraft</h3>
-                                                            </div>
-
-                                                            <div class="popular-product-desc-second">
-                                                                <p>Цвет</p>
-
-                                                                <h3>Серый</h3>
-                                                            </div>
-
-                                                            <div class="popular-product-desc-last">
-                                                                <p>Цена</p>
-
-                                                                <h3>14 680 ₽</h3>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="open-all-catalog fade-in">
-                                            <a href="catalog-page.html">ОТКРЫТЬ ВЕСЬ КАТАЛОГ</a>
-                                            <img src="images/svg/scope.svg" alt="">
+                                            <button class="right-arrow popular-right-arrow" id="next">
+                                                <svg width="55" height="33" viewBox="0 0 55 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M35.9414 31L49.9414 17L35.9414 3" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
+                                                    <path d="M5.94141 17L48.9414 17" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
+                                                </svg>      
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
-                        </section>
+                
+                                <div class="popular-products-swiper-container">
+                                    <div class="swiper popular-products-swiper">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide popular-product-card">
+                                                <a href="product-page.html">
+                                                    <img src="images/main-page/product-card-shower.png" alt="Image 1" />
 
-                        <section class="why-choose-us">
-                                <div class="blur-container">
-                                    <p class="block-title why-up-title fade-in">О нас</p>
-                        
-                                    <header class="middle-title">
-                                        <div class="title-group">
-                                            <div class="left-title-group reveal-mask">
-                                                <h1>Почему выбирают нас</h1>
+                                                    <div class="popular-product-info">
+                                                        <p class="popular-product-name">Раковина Ornella</p>
 
-                                                <h4 class="fade-in">
-                                                    Дизайн клуб – место, где каждая деталь
-                                                    подбирается под ваш стиль, а проблемы
-                                                    с ремонтом исчезают с первого шага
-                                                </h4>
+                                                        <p class="popular-product-desc-text">Описание товара</p>
+
+                                                        <div class="popular-product-desc">
+                                                        <div class="popular-product-desc-first-line">
+                                                            <p>Бренд</p>
+
+                                                            <p>WaserKraft</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-second-line">
+                                                            <p>Цвет</p>
+
+                                                            <p>Серый</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-last-line">
+                                                            <p>Цена</p>
+
+                                                            <p>14 680 ₽</p>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
                                             </div>
 
-                                            <div class="rigth-title-group">
-                                                <div class="nav-arrows-products why-arrows">
-                                                    <button class="left-arrow" id="why-left-arrow">
-                                                        <svg width="55" height="33" viewBox="0 0 55 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M18.9414 30L4.94141 16L18.9414 2" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
-                                                            <path d="M48.9414 16L5.94141 16" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
-                                                        </svg>        
-                                                    </button>
-                                
-                                                    <button class="right-arrow" id="why-right-arrow">
-                                                        <svg width="55" height="33" viewBox="0 0 55 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M35.9414 31L49.9414 17L35.9414 3" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
-                                                            <path d="M5.94141 17L48.9414 17" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
-                                                        </svg>      
-                                                    </button>
-                                                </div>
+                                            <div class="swiper-slide popular-product-card">
+                                                <a href="product-page.html">
+                                                    <img src="images/main-page/product-card-shower.png" alt="Image 1" />
+
+                                                    <div class="popular-product-info">
+                                                        <p class="popular-product-name">Раковина Ornella</p>
+
+                                                        <p class="popular-product-desc-text">Описание товара</p>
+
+                                                        <div class="popular-product-desc">
+                                                        <div class="popular-product-desc-first-line">
+                                                            <p>Бренд</p>
+
+                                                            <p>WaserKraft</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-second-line">
+                                                            <p>Цвет</p>
+
+                                                            <p>Серый</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-last-line">
+                                                            <p>Цена</p>
+
+                                                            <p>14 680 ₽</p>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <div class="swiper-slide popular-product-card">
+                                                <a href="product-page.html">
+                                                    <div class="popular-image-wrapper">
+                                                        <img src="images/main-page/product-card-crane.png" alt="Image 1" />
+                                                        <div class="badges">
+                                                            <div class="delivery-badge">
+                                                                <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M0.753346 3.35553L1.18209 3.61278L0.753346 3.35553ZM1.6488 1.86312L2.07754 2.12037V2.12037L1.6488 1.86312ZM9.3512 1.86312L8.92246 2.12037V2.12037L9.3512 1.86312ZM10.2467 3.35553L10.6754 3.09829L10.2467 3.35553ZM8.54225 1.05266L8.39014 1.52896L8.39014 1.52896L8.54225 1.05266ZM8.93794 1.2767L9.26811 0.901212L9.2681 0.901212L8.93794 1.2767ZM2.06206 1.2767L2.39223 1.65218L2.39223 1.65218L2.06206 1.2767ZM2.45775 1.05266L2.30564 0.576361L2.30564 0.576361L2.45775 1.05266ZM10.4854 3.90619L9.99199 3.9869V3.9869L10.4854 3.90619ZM10.4214 3.67517L10.8861 3.4905L10.8861 3.4905L10.4214 3.67517ZM9.89332 10.8789L9.66633 10.4334H9.66633L9.89332 10.8789ZM10.3789 10.3933L9.93339 10.1663V10.1663L10.3789 10.3933ZM0.621104 10.3933L0.1756 10.6203H0.175601L0.621104 10.3933ZM1.10668 10.8789L1.33367 10.4334H1.33367L1.10668 10.8789ZM0.514571 3.90619L0.0211275 3.82548L0.514571 3.90619ZM0.57856 3.67517L0.113912 3.4905L0.113912 3.4905L0.57856 3.67517ZM1.05556 3.27778C0.779413 3.27778 0.555556 3.50164 0.555556 3.77778C0.555556 4.05392 0.779413 4.27778 1.05556 4.27778V3.27778ZM9.94444 4.27778C10.2206 4.27778 10.4444 4.05392 10.4444 3.77778C10.4444 3.50164 10.2206 3.27778 9.94444 3.27778V4.27778ZM5 3.77778C5 4.05392 5.22386 4.27778 5.5 4.27778C5.77614 4.27778 6 4.05392 6 3.77778H5ZM6 1C6 0.723858 5.77614 0.5 5.5 0.5C5.22386 0.5 5 0.723858 5 1H6ZM0.5 4.27019H0V9.22222H0.5H1V4.27019H0.5ZM2.27778 11V11.5H8.72222V11V10.5H2.27778V11ZM10.5 9.22222H11V4.27019H10.5H10V9.22222H10.5ZM0.753346 3.35553L1.18209 3.61278L2.07754 2.12037L1.6488 1.86312L1.22005 1.60587L0.324599 3.09829L0.753346 3.35553ZM3.17323 1V1.5H7.82677V1V0.5H3.17323V1ZM9.3512 1.86312L8.92246 2.12037L9.81791 3.61278L10.2467 3.35553L10.6754 3.09829L9.77995 1.60587L9.3512 1.86312ZM7.82677 1V1.5C8.22686 1.5 8.31703 1.50562 8.39014 1.52896L8.54225 1.05266L8.69436 0.576361C8.43765 0.494382 8.16078 0.5 7.82677 0.5V1ZM9.3512 1.86312L9.77995 1.60587C9.60811 1.31946 9.47047 1.07916 9.26811 0.901212L8.93794 1.2767L8.60777 1.65218C8.6654 1.70286 8.71662 1.7773 8.92246 2.12037L9.3512 1.86312ZM8.54225 1.05266L8.39014 1.52896C8.4704 1.5546 8.5445 1.59655 8.60777 1.65218L8.93794 1.2767L9.2681 0.901212C9.10129 0.754534 8.90595 0.643935 8.69435 0.57636L8.54225 1.05266ZM1.6488 1.86312L2.07754 2.12037C2.28338 1.7773 2.3346 1.70286 2.39223 1.65218L2.06206 1.2767L1.7319 0.901212C1.52953 1.07916 1.39189 1.31946 1.22005 1.60587L1.6488 1.86312ZM3.17323 1V0.5C2.83922 0.5 2.56235 0.494382 2.30564 0.576361L2.45775 1.05266L2.60986 1.52896C2.68297 1.50562 2.77314 1.5 3.17323 1.5V1ZM2.06206 1.2767L2.39223 1.65218C2.4555 1.59655 2.5296 1.5546 2.60986 1.52896L2.45775 1.05266L2.30564 0.576361C2.09405 0.643935 1.89871 0.754534 1.7319 0.901212L2.06206 1.2767ZM10.5 4.27019H11C11 4.10262 11.0015 3.96385 10.9789 3.82548L10.4854 3.90619L9.99199 3.9869C9.9985 4.02669 10 4.0712 10 4.27019H10.5ZM10.2467 3.35553L9.81791 3.61278C9.92029 3.78342 9.9419 3.82236 9.95679 3.85983L10.4214 3.67517L10.8861 3.4905C10.8343 3.3602 10.7616 3.24198 10.6754 3.09829L10.2467 3.35553ZM10.4854 3.90619L10.9789 3.82548C10.9601 3.7108 10.929 3.59849 10.8861 3.4905L10.4214 3.67517L9.95679 3.85983C9.97307 3.90079 9.98487 3.9434 9.99199 3.9869L10.4854 3.90619ZM8.72222 11V11.5C9.02511 11.5 9.28235 11.5004 9.49271 11.4832C9.70891 11.4655 9.91924 11.4269 10.1203 11.3244L9.89332 10.8789L9.66633 10.4334C9.62972 10.452 9.56564 10.4739 9.41128 10.4865C9.25109 10.4996 9.04161 10.5 8.72222 10.5V11ZM10.5 9.22222H10C10 9.54161 9.99961 9.75109 9.98652 9.91128C9.97391 10.0656 9.95204 10.1297 9.93339 10.1663L10.3789 10.3933L10.8244 10.6203C10.9269 10.4192 10.9655 10.2089 10.9832 9.99271C11.0004 9.78235 11 9.52511 11 9.22222H10.5ZM9.89332 10.8789L10.1203 11.3244C10.4235 11.1699 10.6699 10.9235 10.8244 10.6203L10.3789 10.3933L9.93339 10.1663C9.8748 10.2813 9.78132 10.3748 9.66633 10.4334L9.89332 10.8789ZM0.5 9.22222H0C0 9.52511 -0.000388861 9.78235 0.0167985 9.99271C0.0344628 10.2089 0.0731484 10.4192 0.1756 10.6203L0.621104 10.3933L1.06661 10.1663C1.04796 10.1297 1.02609 10.0656 1.01348 9.91128C1.00039 9.75109 1 9.54161 1 9.22222H0.5ZM2.27778 11V10.5C1.95839 10.5 1.74891 10.4996 1.58872 10.4865C1.43436 10.4739 1.37028 10.452 1.33367 10.4334L1.10668 10.8789L0.879682 11.3244C1.08076 11.4269 1.29109 11.4655 1.50729 11.4832C1.71765 11.5004 1.97489 11.5 2.27778 11.5V11ZM0.621104 10.3933L0.175601 10.6203C0.330063 10.9235 0.576532 11.1699 0.879683 11.3244L1.10668 10.8789L1.33367 10.4334C1.21868 10.3748 1.1252 10.2813 1.06661 10.1663L0.621104 10.3933ZM0.5 4.27019H1C1 4.0712 1.0015 4.02669 1.00801 3.98689L0.514571 3.90619L0.0211275 3.82548C-0.00150442 3.96385 0 4.10262 0 4.27019H0.5ZM0.753346 3.35553L0.324599 3.09829C0.238384 3.24198 0.165696 3.3602 0.113912 3.4905L0.57856 3.67517L1.04321 3.85983C1.0581 3.82236 1.07971 3.78342 1.18209 3.61278L0.753346 3.35553ZM0.514571 3.90619L1.00801 3.98689C1.01513 3.9434 1.02693 3.90079 1.04321 3.85983L0.57856 3.67517L0.113912 3.4905C0.0709937 3.59848 0.0398846 3.7108 0.0211275 3.82548L0.514571 3.90619ZM1.05556 3.77778V4.27778H9.94444V3.77778V3.27778H1.05556V3.77778ZM5.5 3.77778H6V1H5.5H5V3.77778H5.5Z" fill="white" fill-opacity="0.4"/>
+                                                                </svg>
+
+
+                                                                привезем завтра
+                                                            </div>
+
+                                                            <div class="discount-badge">-15%</div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="popular-product-info">
+                                                        <p class="popular-product-name">Раковина Ornella</p>
+
+                                                        <p class="popular-product-desc-text">Описание товара</p>
+
+                                                        <div class="popular-product-desc">
+                                                        <div class="popular-product-desc-first-line">
+                                                            <p>Бренд</p>
+
+                                                            <p>WaserKraft</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-second-line">
+                                                            <p>Цвет</p>
+
+                                                            <p>Серый</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-last-line">
+                                                            <p>Цена</p>
+
+                                                            <p>14 680 ₽</p>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <div class="swiper-slide popular-product-card">
+                                                <a href="product-page.html">
+                                                    <img src="images/main-page/product-card-shower.png" alt="Image 1" />
+
+                                                    <div class="popular-product-info">
+                                                        <p class="popular-product-name">Раковина Ornella</p>
+
+                                                        <p class="popular-product-desc-text">Описание товара</p>
+
+                                                        <div class="popular-product-desc">
+                                                        <div class="popular-product-desc-first-line">
+                                                            <p>Бренд</p>
+
+                                                            <p>WaserKraft</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-second-line">
+                                                            <p>Цвет</p>
+
+                                                            <p>Серый</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-last-line">
+                                                            <p>Цена</p>
+
+                                                            <p>14 680 ₽</p>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <div class="swiper-slide popular-product-card">
+                                                <a href="product-page.html">
+                                                    <img src="images/main-page/product-card-shower.png" alt="Image 1" />
+
+                                                    <div class="popular-product-info">
+                                                        <p class="popular-product-name">Раковина Ornella</p>
+
+                                                        <p class="popular-product-desc-text">Описание товара</p>
+
+                                                        <div class="popular-product-desc">
+                                                        <div class="popular-product-desc-first-line">
+                                                            <p>Бренд</p>
+
+                                                            <p>WaserKraft</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-second-line">
+                                                            <p>Цвет</p>
+
+                                                            <p>Серый</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-last-line">
+                                                            <p>Цена</p>
+
+                                                            <p>14 680 ₽</p>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <div class="swiper-slide popular-product-card">
+                                                <a href="product-page.html">
+                                                    <img src="images/main-page/product-card-shower.png" alt="Image 1" />
+
+                                                    <div class="popular-product-info">
+                                                        <p class="popular-product-name">Раковина Ornella</p>
+
+                                                        <p class="popular-product-desc-text">Описание товара</p>
+
+                                                        <div class="popular-product-desc">
+                                                        <div class="popular-product-desc-first-line">
+                                                            <p>Бренд</p>
+
+                                                            <p>WaserKraft</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-second-line">
+                                                            <p>Цвет</p>
+
+                                                            <p>Серый</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-last-line">
+                                                            <p>Цена</p>
+
+                                                            <p>14 680 ₽</p>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <div class="swiper-slide popular-product-card">
+                                                <a href="product-page.html">
+                                                    <img src="images/main-page/product-card-shower.png" alt="Image 1" />
+
+                                                    <div class="popular-product-info">
+                                                        <p class="popular-product-name">Раковина Ornella</p>
+
+                                                        <p class="popular-product-desc-text">Описание товара</p>
+
+                                                        <div class="popular-product-desc">
+                                                        <div class="popular-product-desc-first-line">
+                                                            <p>Бренд</p>
+
+                                                            <p>WaserKraft</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-second-line">
+                                                            <p>Цвет</p>
+
+                                                            <p>Серый</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-last-line">
+                                                            <p>Цена</p>
+
+                                                            <p>14 680 ₽</p>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <div class="swiper-slide popular-product-card">
+                                                <a href="product-page.html">
+                                                    <img src="images/main-page/product-card-shower.png" alt="Image 1" />
+
+                                                    <div class="popular-product-info">
+                                                        <p class="popular-product-name">Раковина Ornella</p>
+
+                                                        <p class="popular-product-desc-text">Описание товара</p>
+
+                                                        <div class="popular-product-desc">
+                                                        <div class="popular-product-desc-first-line">
+                                                            <p>Бренд</p>
+
+                                                            <p>WaserKraft</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-second-line">
+                                                            <p>Цвет</p>
+
+                                                            <p>Серый</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-last-line">
+                                                            <p>Цена</p>
+
+                                                            <p>14 680 ₽</p>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <div class="swiper-slide popular-product-card">
+                                                <a href="product-page.html">
+                                                    <img src="images/main-page/product-card-shower.png" alt="Image 1" />
+
+                                                    <div class="popular-product-info">
+                                                        <p class="popular-product-name">Раковина Ornella</p>
+
+                                                        <p class="popular-product-desc-text">Описание товара</p>
+
+                                                        <div class="popular-product-desc">
+                                                        <div class="popular-product-desc-first-line">
+                                                            <p>Бренд</p>
+
+                                                            <p>WaserKraft</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-second-line">
+                                                            <p>Цвет</p>
+
+                                                            <p>Серый</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-last-line">
+                                                            <p>Цена</p>
+
+                                                            <p>14 680 ₽</p>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <div class="swiper-slide popular-product-card">
+                                                <a href="product-page.html">
+                                                    <img src="images/main-page/product-card-shower.png" alt="Image 1" />
+
+                                                    <div class="popular-product-info">
+                                                        <p class="popular-product-name">Раковина Ornella</p>
+
+                                                        <p class="popular-product-desc-text">Описание товара</p>
+
+                                                        <div class="popular-product-desc">
+                                                        <div class="popular-product-desc-first-line">
+                                                            <p>Бренд</p>
+
+                                                            <p>WaserKraft</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-second-line">
+                                                            <p>Цвет</p>
+
+                                                            <p>Серый</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-last-line">
+                                                            <p>Цена</p>
+
+                                                            <p>14 680 ₽</p>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <div class="swiper-slide popular-product-card">
+                                                <a href="product-page.html">
+                                                    <img src="images/main-page/product-card-shower.png" alt="Image 1" />
+
+                                                    <div class="popular-product-info">
+                                                        <p class="popular-product-name">Раковина Ornella</p>
+
+                                                        <p class="popular-product-desc-text">Описание товара</p>
+
+                                                        <div class="popular-product-desc">
+                                                        <div class="popular-product-desc-first-line">
+                                                            <p>Бренд</p>
+
+                                                            <p>WaserKraft</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-second-line">
+                                                            <p>Цвет</p>
+
+                                                            <p>Серый</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-last-line">
+                                                            <p>Цена</p>
+
+                                                            <p>14 680 ₽</p>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <div class="swiper-slide popular-product-card">
+                                                <a href="product-page.html">
+                                                    <img src="images/main-page/product-card-shower.png" alt="Image 1" />
+
+                                                    <div class="popular-product-info">
+                                                        <p class="popular-product-name">Раковина Ornella</p>
+
+                                                        <p class="popular-product-desc-text">Описание товара</p>
+
+                                                        <div class="popular-product-desc">
+                                                        <div class="popular-product-desc-first-line">
+                                                            <p>Бренд</p>
+
+                                                            <p>WaserKraft</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-second-line">
+                                                            <p>Цвет</p>
+
+                                                            <p>Серый</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-last-line">
+                                                            <p>Цена</p>
+
+                                                            <p>14 680 ₽</p>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <div class="swiper-slide popular-product-card">
+                                                <a href="product-page.html">
+                                                    <img src="images/main-page/product-card-shower.png" alt="Image 1" />
+
+                                                    <div class="popular-product-info">
+                                                        <p class="popular-product-name">Раковина Ornella</p>
+
+                                                        <p class="popular-product-desc-text">Описание товара</p>
+
+                                                        <div class="popular-product-desc">
+                                                        <div class="popular-product-desc-first-line">
+                                                            <p>Бренд</p>
+
+                                                            <p>WaserKraft</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-second-line">
+                                                            <p>Цвет</p>
+
+                                                            <p>Серый</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-last-line">
+                                                            <p>Цена</p>
+
+                                                            <p>14 680 ₽</p>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                            <div class="swiper-slide popular-product-card">
+                                                <a href="product-page.html">
+                                                    <img src="images/main-page/product-card-shower.png" alt="Image 1" />
+
+                                                    <div class="popular-product-info">
+                                                        <p class="popular-product-name">Раковина Ornella</p>
+
+                                                        <p class="popular-product-desc-text">Описание товара</p>
+
+                                                        <div class="popular-product-desc">
+                                                        <div class="popular-product-desc-first-line">
+                                                            <p>Бренд</p>
+
+                                                            <p>WaserKraft</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-second-line">
+                                                            <p>Цвет</p>
+
+                                                            <p>Серый</p>
+                                                        </div>
+
+                                                        <div class="popular-product-desc-last-line">
+                                                            <p>Цена</p>
+
+                                                            <p>14 680 ₽</p>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
                                             </div>
                                         </div>
-                                    </header>
-                        
-                                    <main class="why-choose-us-content">
-                                        <div class="card down-card fade-in">
-                                            <h2 class="fade-in">Персональный<br>подход</h2>
-                                            <p class="fade-in">Мы ценим каждого клиента и предлагаем индивидуальные решения, которые соответствуют вашим потребностям и предпочтениям, обеспечивая лучший опыт покупки. Мы ценим каждого клиента </p>
-                                            <img class="fade-in" src="images/main-page/why-choose-us-1.png" alt="Подход">
+                                    </div>
+                                </div>
+
+                                <div class="open-all-catalog fade-in">
+                                    <a href="catalog-page.html">ОТКРЫТЬ ВЕСЬ КАТАЛОГ</a>
+                                    <img src="images/svg/scope.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="why-choose-us">
+                        <div class="blur-container">
+                            <p class="block-title why-up-title fade-in">О нас</p>
+                
+                            <header class="middle-title">
+                                <div class="title-group">
+                                    <div class="left-title-group reveal-mask">
+                                        <h1>Почему выбирают нас</h1>
+
+                                        <h4 class="fade-in">
+                                            Дизайн клуб – место, где каждая деталь
+                                            подбирается под ваш стиль, а проблемы
+                                            с ремонтом исчезают с первого шага
+                                        </h4>
+                                    </div>
+
+                                    <div class="rigth-title-group">
+                                        <div class="nav-arrows-products why-arrows fade-in">
+                                            <button class="left-arrow why-left-arrow" id="why-left-arrow">
+                                                <svg width="55" height="33" viewBox="0 0 55 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M18.9414 30L4.94141 16L18.9414 2" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
+                                                    <path d="M48.9414 16L5.94141 16" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
+                                                </svg>        
+                                            </button>
+
+                                            <button class="right-arrow why-right-arrow" id="why-right-arrow">
+                                                <svg width="55" height="33" viewBox="0 0 55 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M35.9414 31L49.9414 17L35.9414 3" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
+                                                    <path d="M5.94141 17L48.9414 17" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
+                                                </svg>      
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </header>
+                
+                            <div class="why-choose-us-content">
+                                <div class="swiper why-choose-us-swiper">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <div class="card down-card fade-in">
+                                                <h2 class="fade-in">Персональный<br>подход</h2>
+                                                <p class="fade-in">Мы ценим каждого клиента и предлагаем индивидуальные решения, которые соответствуют вашим потребностям и предпочтениям, обеспечивая лучший опыт покупки. Мы ценим каждого клиента </p>
+                                                <img class="fade-in" src="images/main-page/why-choose-us-1.png" alt="Подход">
+                                            </div>
                                         </div>
                                     
-                                        <div class="card fade-in">
-                                            <h2 class="fade-in">Качество<br>и надежность</h2>
-                                            <p class="fade-in">Мы ценим каждого клиента и предлагаем индивидуальные решения, которые соответствуют вашим потребностям и предпочтениям, обеспечивая лучший опыт покупки. Мы ценим каждого клиента</p>
-                                            <img class="fade-in" src="images/main-page/why-choose-us-2.png" alt="Подход">
+                                        <div class="swiper-slide">
+                                            <div class="card fade-in">
+                                                <h2 class="fade-in">Качество<br>и надежность</h2>
+                                                <p class="fade-in">Мы ценим каждого клиента и предлагаем индивидуальные решения, которые соответствуют вашим потребностям и предпочтениям, обеспечивая лучший опыт покупки. Мы ценим каждого клиента</p>
+                                                <img class="fade-in" src="images/main-page/why-choose-us-2.png" alt="Подход">
+                                            </div>
                                         </div>
                         
-                                        <div class="card down-card fade-in">
-                                            <h2 class="fade-in">Постпродажная<br>поддержка</h2>
-                                            <p class="fade-in">Мы ценим каждого клиента и предлагаем индивидуальные решения, которые соответствуют вашим потребностям и предпочтениям, обеспечивая лучший опыт покупки. Мы ценим каждого клиента</p>
-                                            <img class="fade-in" src="images/main-page/why-choose-us-3.png" alt="Подход">
+                                        <div class="swiper-slide">
+                                            <div class="card down-card fade-in">
+                                                <h2 class="fade-in">Постпродажная<br>поддержка</h2>
+                                                <p class="fade-in">Мы ценим каждого клиента и предлагаем индивидуальные решения, которые соответствуют вашим потребностям и предпочтениям, обеспечивая лучший опыт покупки. Мы ценим каждого клиента</p>
+                                                <img class="fade-in" src="images/main-page/why-choose-us-3.png" alt="Подход">
+                                            </div>
                                         </div>
                         
-                                        <div class="card fade-in">
-                                            <h2 class="fade-in">Хранение<br>на складе</h2>
-                                            <p class="fade-in">Мы ценим каждого клиента и предлагаем индивидуальные решения, которые соответствуют вашим потребностям и предпочтениям, обеспечивая лучший опыт покупки. Мы ценим каждого клиента </p>
-                                            <img class="fade-in" src="images/main-page/why-choose-us-4.png" alt="Подход">
+                                        <div class="swiper-slide">
+                                            <div class="card fade-in">
+                                                <h2 class="fade-in">Хранение<br>на складе</h2>
+                                                <p class="fade-in">Мы ценим каждого клиента и предлагаем индивидуальные решения, которые соответствуют вашим потребностям и предпочтениям, обеспечивая лучший опыт покупки. Мы ценим каждого клиента </p>
+                                                <img class="fade-in" src="images/main-page/why-choose-us-4.png" alt="Подход">
+                                            </div>
                                         </div>
 
-                                        <div class="card down-card fade-in">
-                                            <h2 class="fade-in">Персональный<br>подход</h2>
-                                            <p class="fade-in">Мы ценим каждого клиента и предлагаем индивидуальные решения, которые соответствуют вашим потребностям и предпочтениям, обеспечивая лучший опыт покупки. Мы ценим каждого клиента</p>
-                                            <img class="fade-in" src="images/main-page/why-choose-us-1.png" alt="Подход">
+                                        <div class="swiper-slide">
+                                            <div class="card down-card fade-in">
+                                                <h2 class="fade-in">Персональный<br>подход</h2>
+                                                <p class="fade-in">Мы ценим каждого клиента и предлагаем индивидуальные решения, которые соответствуют вашим потребностям и предпочтениям, обеспечивая лучший опыт покупки. Мы ценим каждого клиента </p>
+                                                <img class="fade-in" src="images/main-page/why-choose-us-1.png" alt="Подход">
+                                            </div>
                                         </div>
-
-                                        <div class="card fade-in">
-                                            <h2 class="fade-in">Хранение<br>на складе</h2>
-                                            <p class="fade-in">Мы ценим каждого клиента и предлагаем индивидуальные решения, которые соответствуют вашим потребностям и предпочтениям, обеспечивая лучший опыт покупки. Мы ценим каждого клиента </p>
-                                            <img class="fade-in" src="images/main-page/why-choose-us-4.png" alt="Подход">
+                                    
+                                        <div class="swiper-slide">
+                                            <div class="card fade-in">
+                                                <h2 class="fade-in">Качество<br>и надежность</h2>
+                                                <p class="fade-in">Мы ценим каждого клиента и предлагаем индивидуальные решения, которые соответствуют вашим потребностям и предпочтениям, обеспечивая лучший опыт покупки. Мы ценим каждого клиента</p>
+                                                <img class="fade-in" src="images/main-page/why-choose-us-2.png" alt="Подход">
+                                            </div>
                                         </div>
-
-                                        <div class="card down-card fade-in">
-                                            <h2 class="fade-in">Персональный<br>подход</h2>
-                                            <p class="fade-in">Мы ценим каждого клиента и предлагаем индивидуальные решения, которые соответствуют вашим потребностям и предпочтениям, обеспечивая лучший опыт покупки. Мы ценим каждого клиента</p>
-                                            <img class="fade-in" src="images/main-page/why-choose-us-1.png" alt="Подход">
+                        
+                                        <div class="swiper-slide">
+                                            <div class="card down-card fade-in">
+                                                <h2 class="fade-in">Постпродажная<br>поддержка</h2>
+                                                <p class="fade-in">Мы ценим каждого клиента и предлагаем индивидуальные решения, которые соответствуют вашим потребностям и предпочтениям, обеспечивая лучший опыт покупки. Мы ценим каждого клиента</p>
+                                                <img class="fade-in" src="images/main-page/why-choose-us-3.png" alt="Подход">
+                                            </div>
                                         </div>
-
-                                        <div class="card fade-in">
-                                            <h2 class="fade-in">Хранение<br>на складе</h2>
-                                            <p class="fade-in">Мы ценим каждого клиента и предлагаем индивидуальные решения, которые соответствуют вашим потребностям и предпочтениям, обеспечивая лучший опыт покупки. Мы ценим каждого клиента </p>
-                                            <img class="fade-in" src="images/main-page/why-choose-us-4.png" alt="Подход">
+                        
+                                        <div class="swiper-slide">
+                                            <div class="card fade-in">
+                                                <h2 class="fade-in">Хранение<br>на складе</h2>
+                                                <p class="fade-in">Мы ценим каждого клиента и предлагаем индивидуальные решения, которые соответствуют вашим потребностям и предпочтениям, обеспечивая лучший опыт покупки. Мы ценим каждого клиента </p>
+                                                <img class="fade-in" src="images/main-page/why-choose-us-4.png" alt="Подход">
+                                            </div>
                                         </div>
-                                    </main>
+                                    </div>
                                 </div>
-                        </section>
+                            </div>
+                        </div>
+                    </section>
 
 
                         <section class="get-request">
@@ -1953,6 +2192,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Swiper -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <!-- Cookie -->
     <div id="cookie-container"></div>

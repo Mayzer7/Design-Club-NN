@@ -954,11 +954,13 @@ function handleScrollUp() {
         valid = false;
     }
 
-    if (!contactMethodHiddenInput.value.trim()) {
-        const errorSpan = form.querySelector('.contact-input-wrapper .error-contact');
-        errorSpan.textContent = 'Выберите способ связи';
-        errorSpan.style.display = 'block';
-        valid = false;
+    if (contactMethodHiddenInput) {
+      if (!contactMethodHiddenInput.value.trim()) {
+          const errorSpan = form.querySelector('.contact-input-wrapper .error-contact');
+          errorSpan.textContent = 'Выберите способ связи';
+          errorSpan.style.display = 'block';
+          valid = false;
+      }
     }
 
     if (questionInput && !questionInput.value.trim()) {
@@ -1126,6 +1128,20 @@ function handleScrollUp() {
         loop: true,
         centeredSlides: false,
   
+    });
+  }
+
+  // Переключение карточек "Уникальные решения для вашего дома" мобильная версия
+
+  const uniqueSolutions520px = document.querySelector('.unique-solutions-520px');
+
+  if (uniqueSolutions520px) {
+    const swiper = new Swiper('.unique-swiper', {
+      slidesPerView: 'auto',
+      slidesPerGroup: 1,
+      loop: false,
+      speed: 800,
+      spaceBetween: 10,
     });
   }
   
