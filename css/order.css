@@ -1583,9 +1583,9 @@ nav ul ul.open + svg {
 .price-per-piece {
     font-family: 'SF Pro Display', sans-serif;
     font-weight: 900;
-    margin-bottom: 15px;
     color: #615F5B;
     font-size: 16px;
+    transform: translateY(20px);
 }
 
 .product-last-line {

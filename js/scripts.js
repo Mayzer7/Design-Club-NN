@@ -1843,7 +1843,47 @@ if (addToCardProduct) {
   });
 }
 
+// Скрипты для контента на странице "cart-page.html"
 
+const cart = document.querySelector('.cart');
+
+if (cart) {
+  // Увелечение количества товара на кнопки
+  // И отображение товара за 1шт
+
+  document.querySelectorAll('.product-item').forEach(product => {
+        const minusBtn = product.querySelector('.product-count button:first-of-type');
+        const plusBtn = product.querySelector('.product-count button:last-of-type');
+        const countEl = product.querySelector('.product-count p');
+        const priceContainer = product.querySelector('.product-price-container');
+
+        const updatePriceVisibility = (count) => {
+            if (count > 1) {
+                priceContainer.classList.add('visible');
+            } else {
+                priceContainer.classList.remove('visible');
+            }
+        };
+
+        let count = parseInt(countEl.textContent);
+
+        plusBtn.addEventListener('click', () => {
+            count++;
+            countEl.textContent = count;
+            updatePriceVisibility(count);
+        });
+
+        minusBtn.addEventListener('click', () => {
+            if (count > 1) {
+                count--;
+                countEl.textContent = count;
+                updatePriceVisibility(count);
+            }
+        });
+
+        updatePriceVisibility(count);
+    });
+}
 
 // Скрипты для контента на странице "order-page.html"
 
