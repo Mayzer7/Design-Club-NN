@@ -2065,3 +2065,7 @@ const gallerySwiper = document.querySelector('.project-gallery-swiper');
       initSwiper();
     });
 }
+
+
+
+

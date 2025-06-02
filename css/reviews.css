@@ -1422,6 +1422,11 @@ nav ul ul.open + svg {
 
 .review-text span a {
     color: rgba(237, 228, 215, 0.4);
+    transition: all 0.3s ease;
+}
+
+.review-text span a:hover {
+    color: #AE9877;
 }
 
 .review-author-and-yandex-link {
@@ -1440,11 +1445,36 @@ nav ul ul.open + svg {
     padding: 0px 10px;
 }
 
-.review-link a {
-    font-size: 16px;
-    margin-right: 10px;
-    color: #BBB5AC;
+.review-link {
+    margin-top: 5px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
 }
+
+.review-link a {
+  font-size: 16px;
+  margin-right: 10px;
+  color: #BBB5AC;
+  font-family: 'SF Pro Display', sans-serif;
+  font-weight: 300;
+  transition: color 0.3s ease;
+}
+
+.review-link svg path {
+  stroke: #BBB5AC;
+  transition: stroke 0.3s ease;
+}
+
+.review-link:hover a {
+  color: #AE9877;
+}
+
+.review-link:hover svg path {
+  stroke: #AE9877;
+}
+
+
 
 .hide {
     display: none;
@@ -1646,6 +1676,10 @@ nav ul ul.open + svg {
 @media (max-width: 1230px) {
     .review-card {
         max-width: 356px;
+    }
+
+    .review-text {
+        font-size: 16px;
     }
 }
 
