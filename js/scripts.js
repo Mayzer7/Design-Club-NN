@@ -1446,121 +1446,121 @@ const pageWrapper3 = document.querySelector('.page-wrapper-3');
 if (pageWrapper3) {
   // Скрипт для автоматического переключения контента на главной странице + переключение изображений на заднем плане
 
-  const section = document.querySelector('.main-page-top');
-  const pageWrappers = document.querySelectorAll('.page-wrapper');
+  // const section = document.querySelector('.main-page-top');
+  // const pageWrappers = document.querySelectorAll('.page-wrapper');
 
-  const mobileProgressBars = document.querySelectorAll('.for-mobile-switch .progress-bar');
-  const mobileProgressBars340 = document.querySelectorAll('.for-mobile-switch-340 .progress-bar');
-  const progressBars1024 = document.querySelectorAll('.desctop-images-1024 .progress-bar');
-  const desktopProgressBars = document.querySelectorAll('.desctop-images .progress-bar');
+  // const mobileProgressBars = document.querySelectorAll('.for-mobile-switch .progress-bar');
+  // const mobileProgressBars340 = document.querySelectorAll('.for-mobile-switch-340 .progress-bar');
+  // const progressBars1024 = document.querySelectorAll('.desctop-images-1024 .progress-bar');
+  // const desktopProgressBars = document.querySelectorAll('.desctop-images .progress-bar');
 
-  const styles = getComputedStyle(section);
-  const bg1 = styles.getPropertyValue('--bg-1').trim();
-  const bg2 = styles.getPropertyValue('--bg-2').trim();
-  const bg3 = styles.getPropertyValue('--bg-3').trim();
+  // const styles = getComputedStyle(section);
+  // const bg1 = styles.getPropertyValue('--bg-1').trim();
+  // const bg2 = styles.getPropertyValue('--bg-2').trim();
+  // const bg3 = styles.getPropertyValue('--bg-3').trim();
 
-  function extractUrl(cssUrl) {
-      return cssUrl.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
-  }
+  // function extractUrl(cssUrl) {
+  //     return cssUrl.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+  // }
 
-  const bgImages = [bg1, bg2, bg3].map(extractUrl).map(path => path.replace(/^\.\.\//, ''));
+  // const bgImages = [bg1, bg2, bg3].map(extractUrl).map(path => path.replace(/^\.\.\//, ''));
 
-  let currentBgIndex = 0;
-  let intervalId = null;
+  // let currentBgIndex = 0;
+  // let intervalId = null;
 
-  // Определяем текущие прогресс-бары по ширине окна
-  function getCurrentProgressBars() {
-      const width = window.innerWidth;
-      if (width <= 400) {
-          return mobileProgressBars340;
-      } else if (width <= 1010) {
-          return mobileProgressBars;
-      } else if (width <= 1024) {
-          return progressBars1024;
-      } else {
-          return desktopProgressBars;
-      }
-  }
+  // // Определяем текущие прогресс-бары по ширине окна
+  // function getCurrentProgressBars() {
+  //     const width = window.innerWidth;
+  //     if (width <= 400) {
+  //         return mobileProgressBars340;
+  //     } else if (width <= 1010) {
+  //         return mobileProgressBars;
+  //     } else if (width <= 1024) {
+  //         return progressBars1024;
+  //     } else {
+  //         return desktopProgressBars;
+  //     }
+  // }
 
-  // Сброс анимации прогресс-бара
-  function resetProgressBars() {
-      const bars = getCurrentProgressBars();
-      bars.forEach(bar => {
-          bar.style.transition = 'none';
-          bar.style.width = '0%';
-          void bar.offsetWidth; // принудительный reflow для сброса
-          bar.style.transition = 'width 3s linear';
-      });
-  }
+  // // Сброс анимации прогресс-бара
+  // function resetProgressBars() {
+  //     const bars = getCurrentProgressBars();
+  //     bars.forEach(bar => {
+  //         bar.style.transition = 'none';
+  //         bar.style.width = '0%';
+  //         void bar.offsetWidth; // принудительный reflow для сброса
+  //         bar.style.transition = 'width 3s linear';
+  //     });
+  // }
 
-  // Анимация текущего прогресс-бара
-  function animateCurrentProgressBar(index) {
-      resetProgressBars();
-      const bars = getCurrentProgressBars();
-      if (bars[index]) {
-          bars[index].style.width = '100%';
-      }
-  }
+  // // Анимация текущего прогресс-бара
+  // function animateCurrentProgressBar(index) {
+  //     resetProgressBars();
+  //     const bars = getCurrentProgressBars();
+  //     if (bars[index]) {
+  //         bars[index].style.width = '100%';
+  //     }
+  // }
 
-  // Смена фона
-  function changeBackground(index) {
-      const newBg = bgImages[index];
+  // // Смена фона
+  // function changeBackground(index) {
+  //     const newBg = bgImages[index];
 
-      const tempBg = document.createElement('div');
-      tempBg.classList.add('temp-bg');
-      tempBg.style.backgroundImage = `url('${newBg}')`;
-      tempBg.style.opacity = '0';
+  //     const tempBg = document.createElement('div');
+  //     tempBg.classList.add('temp-bg');
+  //     tempBg.style.backgroundImage = `url('${newBg}')`;
+  //     tempBg.style.opacity = '0';
 
-      section.appendChild(tempBg);
-      void tempBg.offsetHeight; // рефлоу
-      tempBg.style.opacity = '1';
+  //     section.appendChild(tempBg);
+  //     void tempBg.offsetHeight; // рефлоу
+  //     tempBg.style.opacity = '1';
 
-      setTimeout(() => {
-          section.style.backgroundImage = `url('${newBg}')`;
-          if (tempBg.parentNode) tempBg.remove();
-      }, 1000);
+  //     setTimeout(() => {
+  //         section.style.backgroundImage = `url('${newBg}')`;
+  //         if (tempBg.parentNode) tempBg.remove();
+  //     }, 1000);
 
-      pageWrappers.forEach((wrapper, i) => {
-          wrapper.classList.toggle('active', i === index);
-      });
+  //     pageWrappers.forEach((wrapper, i) => {
+  //         wrapper.classList.toggle('active', i === index);
+  //     });
 
-      animateCurrentProgressBar(index);
-  }
+  //     animateCurrentProgressBar(index);
+  // }
 
-  // Автоматическое переключение
-  function startAutoChange() {
-      if (intervalId) clearInterval(intervalId);
+  // // Автоматическое переключение
+  // function startAutoChange() {
+  //     if (intervalId) clearInterval(intervalId);
 
-      animateCurrentProgressBar(currentBgIndex);
+  //     animateCurrentProgressBar(currentBgIndex);
 
-      intervalId = setInterval(() => {
-          currentBgIndex = (currentBgIndex + 1) % bgImages.length;
-          changeBackground(currentBgIndex);
-      }, 3000);
-  }
+  //     intervalId = setInterval(() => {
+  //         currentBgIndex = (currentBgIndex + 1) % bgImages.length;
+  //         changeBackground(currentBgIndex);
+  //     }, 3000);
+  // }
 
-  // Инициализация
-  startAutoChange();
+  // // Инициализация
+  // startAutoChange();
 
-  // Повторная инициализация прогресс-бара при ресайзе
-  window.addEventListener('resize', () => {
-      animateCurrentProgressBar(currentBgIndex);
-  });
+  // // Повторная инициализация прогресс-бара при ресайзе
+  // window.addEventListener('resize', () => {
+  //     animateCurrentProgressBar(currentBgIndex);
+  // });
 
-  // Обработка кликов на миниатюрах
-  document.querySelectorAll('.title-images a').forEach((link, index) => {
-      link.addEventListener('click', function (e) {
-          e.preventDefault();
+  // // Обработка кликов на миниатюрах
+  // document.querySelectorAll('.title-images a').forEach((link, index) => {
+  //     link.addEventListener('click', function (e) {
+  //         e.preventDefault();
 
-          const bgUrl = this.getAttribute('data-bg');
-          const foundIndex = bgImages.indexOf(bgUrl);
-          if (foundIndex !== -1) {
-              currentBgIndex = foundIndex;
-              changeBackground(currentBgIndex);
-              startAutoChange();
-          }
-      });
-  });
+  //         const bgUrl = this.getAttribute('data-bg');
+  //         const foundIndex = bgImages.indexOf(bgUrl);
+  //         if (foundIndex !== -1) {
+  //             currentBgIndex = foundIndex;
+  //             changeBackground(currentBgIndex);
+  //             startAutoChange();
+  //         }
+  //     });
+  // });
 }
 
 // Скрипты для контента на странице "catalog-page.html"

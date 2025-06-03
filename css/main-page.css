@@ -85,6 +85,11 @@ body {
     background-color: #141b28;
 }
 
+.blur-container {
+    position: relative; /* убедитесь, что задано */
+
+}
+
 .container {
     max-width: 1920px;
     margin: 0 auto;
@@ -93,54 +98,206 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Верхрняя секция главной страницы */
 
-.main-page-top {
-    position: relative;
-    overflow: hidden;
-    background-image: url('../images/main-page/background-webp.webp');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    min-height: 1000px;
+/* Главный экран */
+
+.main-hero {
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 16 / 9; 
+  min-height: 700px;
+  width: 100%;
+  max-height: 100vh;
+  position: relative;
+  overflow: visible;
 }
 
-/* Изображения для автоматического переключения на заднем плане */
-.main-page-top {
-  --bg-1: url('../images/main-page/background-webp.webp');
-  --bg-2: url('../images/main-page/backgrounds/background-image-switch-1.png');
-  --bg-3: url('../images/main-page/backgrounds/background-image-switch-2.jpg');
+.hero-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
 
-.temp-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
+.hero-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* или cover, если нужно */
+  object-position: top center;
+}
+
+.hero-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  padding: clamp(16px, 2vw, 40px) clamp(12px, 4vw, 20px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.hero-content-first-line {
+    display: flex;
+    align-items: center;
+    margin-bottom: 27px;
+
+}
+
+.invite-left {
+    white-space: nowrap;
+}
+
+.invite-right { 
     width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    z-index: 0;
-    transition: opacity 1s ease;
-    pointer-events: none;
+    padding-left: 21vw;
 }
 
-/* Затемнение фонового изображения */
-.bg-overlay {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: rgba(0, 0, 0, 0.2);
-    mix-blend-mode: darken;
-    opacity: 1;
-    transition: background-image 0.3s ease, opacity 0.3s ease;
-    z-index: 1;
-    pointer-events: none;
+.invite-right h4 {
+    font-size: clamp(18px, 2vw, 32px);
+    margin-bottom: 20px;
 }
+
+.hero-content-second-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.hero-left-side h1 {
+    font-family: 'Future New Light', sans-serif;
+    font-size: clamp(42px, 6vw, 110px);
+    line-height: 90%;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.hero-right-side {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    bottom: clamp(20px, 5vw, 30px);
+    right: clamp(10px, 3vw, 20px);
+}
+
+.hero-right-side img {
+    width: 76px;
+    height: 75px;
+}
+
+/* Мобильная версия главного экрана */
+
+.hero-content-mobile {
+    display: none;
+  position: absolute;
+  bottom: -220px;
+  left: 0;
+  z-index: 2;
+  padding: clamp(16px, 2vw, 40px) clamp(12px, 4vw, 20px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.mobile-miniatures {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.invite-left-mobile {
+    padding-top: 20px;
+    padding-bottom: 33px;
+}
+
+.invite-link-mobile {
+    margin-bottom: 25px;
+    font-size: 18px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px; 
+    text-align: center;
+    padding: 20px 20px;
+    background-color: #AE9877;
+    cursor: pointer;
+    border: none;
+    color: #fff;
+    transition: all 0.3s ease;
+    width: 60%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 310px;
+    max-height: 56px;
+    height: 100%;
+    width: 100%;
+    text-transform: uppercase;
+}
+
+.mobile-miniatures img {
+    width: 66px;
+    height: 66px;
+}
+
+.mobile-up p {
+    padding-top: 0px;
+    padding-bottom: 20px;
+    font-size: 20px;
+}
+
+/* Адаптив главного экрана */
+
+@media (max-width: 1030px) {
+    
+}
+
+@media (max-width: 1000px) {
+    .hero-content {
+        display: none;
+    }
+
+    .hero-content-mobile {
+        display: block;
+    }
+
+    .hero-left-side h1 {
+        font-size: 60px;
+    }
+}
+
+@media (max-width: 870px) {
+    .hero-left-side h1 {
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 730px) {
+    .main-hero {
+        min-height: 500px;
+    }
+
+    .hero-left-side h1 {
+        font-size: 42px;
+    }
+}
+
+@media (max-width: 590px) {
+    .hero-content-mobile {
+        bottom: -230px;
+    }
+}
+
+@media (max-width: 583px) {
+    .hero-content-mobile {
+        bottom: -260px;
+    }
+}
+
+@media (max-width: 470px) {
+    .hero-bg {
+        object-position: 70% top;
+    }
+}
+
 
 
 .thumb {
@@ -893,9 +1050,6 @@ li.active .menu-arrow {
 }
 
 @media (max-width: 1030px) {
-    .main-page-top {
-        --bg-1: url('../images/main-page/adaptive/background-1024.webp');
-    }
 
     .menu-navigation.default-margin {
         margin-top: 200px;
@@ -1393,6 +1547,9 @@ nav ul ul.open + svg {
     width: 60%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    max-width: 280px;
+    width: 100%;
+    text-transform: uppercase;
 }
 
 .invite-link:hover {
@@ -1547,10 +1704,6 @@ nav ul ul.open + svg {
 }
 
 @media (max-width: 1030px) {
-    .main-page-top {
-        background-image: url("../images/main-page/adaptive/background-1024.webp");
-    }
-
     .desctop-images {
         display: none;
     }
@@ -1604,7 +1757,7 @@ nav ul ul.open + svg {
     flex-direction: column;
     gap: 20px;
 }
-
+/* 
 @media (max-width: 400px) {
     .temp-bg {
         background-size: contain !important;
@@ -1636,15 +1789,11 @@ nav ul ul.open + svg {
     .for-mobile-switch-340 {
         display: flex;
     }
-}
+} */
 
 @media (max-width: 385px) {
     .under-header {
         top: 250px;
-    }
-
-    .main-page-top {
-        min-height: 900px;
     }
 }
 
@@ -1936,18 +2085,16 @@ nav ul ul.open + svg {
 }
 
 
-@media (max-width: 1010px) {
+@media (max-width: 1000px) {
     .why-choose-us {
-        padding: 400px 20px 200px 20px;
+        padding: 380px 20px 200px 20px;
     }
 
     .why-arrows {
-        top: 650px;
+        top: 600px;
     }
 
-    .why-up-title {
-        top: 400px;
-    }
+    
 }
 
 @media (max-width: 1000px) {
@@ -1964,14 +2111,16 @@ nav ul ul.open + svg {
 
 @media (max-width: 870px) {
     .why-choose-us {
-        padding: 450px 20px 200px 20px;
+        padding: 350px 20px 200px 20px;
     }
 
     .why-up-title {
         top: 450px;
     }
 
-
+    .why-arrows {
+        top: 570px;
+    }
 
     .title-group {
         padding-left: 0%;
@@ -1982,7 +2131,10 @@ nav ul ul.open + svg {
     .title-group h1 {
         font-size: 50px;
     }
-    
+
+    .why-arrows {
+        top: 530px;
+    }
 
     .title-group h4 {
         font-size: 20px;
@@ -2007,15 +2159,7 @@ nav ul ul.open + svg {
     }
 }
 
-@media (max-width: 590px) {
-    .why-choose-us {
-        padding: 500px 20px 200px 20px;
-    }
 
-    .why-up-title {
-        top: 470px;
-    }
-}
 
 @media (max-width: 540px) {
     .down-card {
@@ -2070,36 +2214,8 @@ nav ul ul.open + svg {
         font-size: 38px;
     }
 
-    .why-up-title {
-        top: 40px;
-    }
-
-    .why-choose-us {
-        padding: 70px 20px 20px 20px;
-    }
+    
 }
-
-@media (max-width: 385px) {
-    .why-choose-us {
-        padding: 80px 20px 20px 20px;
-    }
-
-    .why-up-title {
-        top: 120px;
-    }
-}
-
-
-@media (max-width: 355px) {
-    .why-choose-us {
-        padding: 50px 20px 20px 20px;
-    }
-
-    .why-up-title {
-        top: 30px;
-    }
-}
-
 
 /* Секция "Популярные товары" */
 
