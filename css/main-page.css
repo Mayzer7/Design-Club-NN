@@ -101,6 +101,10 @@ body {
 
 /* Главный экран */
 
+.main-hero-container {
+    min-height: 100%;
+}
+
 .main-hero {
   display: flex;
   flex-direction: column;
@@ -115,7 +119,7 @@ body {
 .hero-image {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 1;
 }
 
 .hero-bg {
@@ -129,7 +133,7 @@ body {
   position: absolute;
   bottom: 0;
   left: 0;
-  z-index: 1;
+  z-index: 2;
   padding: clamp(16px, 2vw, 40px) clamp(12px, 4vw, 20px);
   width: 100%;
   box-sizing: border-box;
@@ -191,7 +195,7 @@ body {
   position: absolute;
   bottom: -220px;
   left: 0;
-  z-index: 2;
+  z-index: 3;
   padding: clamp(16px, 2vw, 40px) clamp(12px, 4vw, 20px);
   width: 100%;
   box-sizing: border-box;
@@ -246,10 +250,6 @@ body {
 
 /* Адаптив главного экрана */
 
-@media (max-width: 1030px) {
-    
-}
-
 @media (max-width: 1000px) {
     .hero-content {
         display: none;
@@ -257,6 +257,10 @@ body {
 
     .hero-content-mobile {
         display: block;
+    }
+
+    .main-hero-container {
+        min-height: 900px;
     }
 
     .hero-left-side h1 {
@@ -278,6 +282,10 @@ body {
     .hero-left-side h1 {
         font-size: 42px;
     }
+
+    .main-hero-container {
+        min-height: 720px;
+    }
 }
 
 @media (max-width: 590px) {
@@ -289,6 +297,10 @@ body {
 @media (max-width: 583px) {
     .hero-content-mobile {
         bottom: -260px;
+    }
+
+    .main-hero-container {
+        min-height: 750px;
     }
 }
 
@@ -2087,7 +2099,7 @@ nav ul ul.open + svg {
 
 @media (max-width: 1000px) {
     .why-choose-us {
-        padding: 380px 20px 200px 20px;
+        padding: 180px 20px 90px 20px;
     }
 }
 
@@ -2105,14 +2117,12 @@ nav ul ul.open + svg {
 
 @media (max-width: 870px) {
     .why-choose-us {
-        padding: 350px 20px 200px 20px;
+        padding: 160px 20px 90px 20px;
     }
 
     .why-up-title {
         top: 450px;
     }
-
-    
 
     .title-group {
         padding-left: 0%;
@@ -2126,6 +2136,12 @@ nav ul ul.open + svg {
 
     .title-group h4 {
         font-size: 20px;
+    }
+}
+
+@media (max-width: 730px) {
+    .why-choose-us {
+        padding: 90px 20px 90px 20px;
     }
 }
 
@@ -2147,7 +2163,11 @@ nav ul ul.open + svg {
     }
 }
 
-
+@media (max-width: 593px) {
+    .why-choose-us {
+        padding: 90px 20px 90px 20px;
+    }
+}
 
 @media (max-width: 540px) {
     .down-card {
@@ -2172,9 +2192,6 @@ nav ul ul.open + svg {
         padding-top: 20px;
     }
 
-    .why-choose-us {
-        padding: 350px 20px 20px 20px;
-    }
 
     .why-choose-us-content {
         padding-bottom: 60px;
@@ -2186,6 +2203,10 @@ nav ul ul.open + svg {
 
     .swiper-slide {
         max-width: 265px;
+    }
+
+    .why-choose-us {
+        padding: 90px 20px 20px 20px;
     }
 }
 
@@ -2220,8 +2241,8 @@ nav ul ul.open + svg {
 
 .up-title {
     position: absolute;
-    top: 90px;
-    left: 25px;
+    top: -20px;
+    left: 2px;
 }
 
 .popular-products-title {
@@ -2507,10 +2528,6 @@ a .popular-product-desc p,
         padding: 50px 20px 50px 20px;
     }
 
-    .up-title {
-        top: 30px;
-    }
-
     .popular-products-swiper .swiper-wrapper  {
         margin-left: 0px;
     }
@@ -2668,6 +2685,7 @@ a .popular-product-desc p,
         padding-left: 0%;
     }
 }
+
 
 @media (max-width: 470px) {
     .our-brands {
