@@ -1321,6 +1321,88 @@ nav ul ul.open + svg {
 
 /* Секция Товара */
 
+/* Модальное окно для просмотра товара */
+
+.modal-product {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content-product {
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+}
+
+.modal-product .swiper {
+  width: 100%;
+  padding-bottom: 40px;
+  overflow: visible; /* важно! */
+}
+
+.modal-product .swiper-wrapper {
+  align-items: center;
+}
+
+.modal-product .swiper-slide {
+  width: 300px; /* ширина каждого слайда */
+  transition: transform 0.3s ease;
+  opacity: 0.5;
+  transform: scale(0.9);
+}
+
+.modal-product .swiper-slide-active {
+  transform: scale(1);
+  opacity: 1;
+  z-index: 2;
+}
+
+.modal-product .swiper-slide img {
+  max-height: 70vh;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-product .close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 32px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .product {
     padding: 400px 0px 100px 0px;
     background-color: #151c28;
@@ -1349,6 +1431,52 @@ nav ul ul.open + svg {
     width: 550px;
     height: 609px;
 }
+
+/* Свапер карточек товара */
+
+.product-swiper {
+  width: 100%;
+  /* можно добавить высоту, если нужно */
+}
+
+.product-swiper-wrapper {
+  display: flex; /* это ключевой момент */
+  margin-left: -50px;
+  max-width: 1920px; /* или задайте фиксированную ширину, если возможно */
+width: 100%;
+  transition: transform 0.3s ease; /* чтобы анимация была плавной */
+}
+
+.product-swiper-slide {
+  max-width: 550px !important;
+  flex-shrink: 0;
+  margin-right: 30px; /* отступ между карточками */
+}
+
+.product-swiper-slide img {
+  width: 550px;
+  height: 609px;
+  object-fit: cover; /* чтобы картинка не исказилась, а обрезалась при необходимости */
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .product-info {
     margin-top: 30px;

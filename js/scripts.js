@@ -1747,7 +1747,49 @@ if (categoriesSection) {
     });
 }
 
+
+
 // Скрипты для контента на странице "product-page.html"
+const productSwiper = new Swiper('.product-swiper', {
+  slidesPerView: 'auto',
+  spaceBetween: 20,
+  loop: false,
+  speed: 500,
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+  on: {
+    reachEnd: function () {
+      setTimeout(() => {
+        this.slideTo(0);
+      }, 1000);
+    }
+  }
+});
+
+// let productSwiper = null;
+
+// function openGallery(index) {
+//   const modal = document.getElementById('imageModal');
+//   modal.style.display = 'flex';
+
+//   if (!productSwiper) {
+//     productSwiper = new Swiper('.modal-product .mySwiper', {
+//       centeredSlides: true,
+//       slidesPerView: '5',
+//       spaceBetween: 30,
+//       loop: true,
+//       initialSlide: index,
+//     });
+//   } else {
+//     productSwiper.slideToLoop(index, 0);
+//   }
+// }
+
+// function closeModal() {
+//   document.getElementById('imageModal').style.display = 'none';
+// }
 
 const addToCardProduct = document.querySelector('.add-to-card-product');
 

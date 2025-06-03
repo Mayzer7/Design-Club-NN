@@ -323,21 +323,72 @@
                     <section class="product product-desktop">
                         <div class="product-section">
                             <div class="blur-container">
-                                <div class="product-images fade-in">
-                                    <div class="product-image">
-                                        <img src="images/product/image-1.webp" alt="">
-                                    </div>
-                                    
-                                    <div class="product-image">
-                                        <img src="images/product/image-2.webp" alt="">
-                                    </div>
-                                    
-                                    <div class="product-image">
-                                        <img src="images/product/image-3.webp" alt="">
-                                    </div>
-                                    
-                                    <div class="product-image">
-                                        <img src="images/product/image-4.webp" alt="">
+                                <!-- Галерея -->
+                                <div class="product-swiper swiper">
+                                    <div class="product-swiper-wrapper swiper-wrapper">
+                                        <div class="product-swiper-slide swiper-slide">
+                                            <img src="images/product/image-1.webp" alt="" />
+                                        </div>
+
+                                        <div class="product-swiper-slide swiper-slide">
+                                            <img src="images/product/image-2.webp" alt="" />
+                                        </div>
+
+                                        <div class="product-swiper-slide swiper-slide">
+                                            <img src="images/product/image-3.webp" alt="" />
+                                        </div>
+
+                                        <div class="product-swiper-slide swiper-slide">
+                                            <img src="images/product/image-4.webp" alt="" />
+                                        </div>
+
+                                        <div class="product-swiper-slide swiper-slide">
+                                            <img src="images/product/image-1.webp" alt="" />
+                                        </div>
+
+                                        <div class="product-swiper-slide swiper-slide">
+                                            <img src="images/product/image-2.webp" alt="" />
+                                        </div>
+
+                                        <div class="product-swiper-slide swiper-slide">
+                                            <img src="images/product/image-3.webp" alt="" />
+                                        </div>
+
+                                        <div class="product-swiper-slide swiper-slide">
+                                            <img src="images/product/image-4.webp" alt="" />
+                                        </div>
+
+                                        <div class="product-swiper-slide swiper-slide">
+                                            <img src="images/product/image-1.webp" alt="" />
+                                        </div>
+
+                                        <div class="product-swiper-slide swiper-slide">
+                                            <img src="images/product/image-2.webp" alt="" />
+                                        </div>
+
+                                        <div class="product-swiper-slide swiper-slide">
+                                            <img src="images/product/image-3.webp" alt="" />
+                                        </div>
+
+                                        <div class="product-swiper-slide swiper-slide">
+                                            <img src="images/product/image-4.webp" alt="" />
+                                        </div>
+
+                                        <div class="product-swiper-slide swiper-slide">
+                                            <img src="images/product/image-1.webp" alt="" />
+                                        </div>
+
+                                        <div class="product-swiper-slide swiper-slide">
+                                            <img src="images/product/image-2.webp" alt="" />
+                                        </div>
+
+                                        <div class="product-swiper-slide swiper-slide">
+                                            <img src="images/product/image-3.webp" alt="" />
+                                        </div>
+
+                                        <div class="product-swiper-slide swiper-slide">
+                                            <img src="images/product/image-4.webp" alt="" />
+                                        </div>
                                     </div>
                                 </div>
 
@@ -2076,6 +2127,21 @@
                     </button>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для просмотра товара -->
+    <div id="imageModal" class="modal-product">
+        <div class="modal-content-product">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="images/product/image-1.webp" /></div>
+                    <div class="swiper-slide"><img src="images/product/image-2.webp" /></div>
+                    <div class="swiper-slide"><img src="images/product/image-3.webp" /></div>
+                    <div class="swiper-slide"><img src="images/product/image-4.webp" /></div>
+                </div>
+            </div>
+            <span class="close" onclick="closeModal()">&times;</span>
         </div>
     </div>
 
