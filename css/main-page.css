@@ -1875,7 +1875,7 @@ nav ul ul.open + svg {
 
 .why-arrows {
     position: absolute;
-    top: 400px;
+    top: 200px;
     right: 20px;
 }
 
@@ -2089,12 +2089,6 @@ nav ul ul.open + svg {
     .why-choose-us {
         padding: 380px 20px 200px 20px;
     }
-
-    .why-arrows {
-        top: 600px;
-    }
-
-    
 }
 
 @media (max-width: 1000px) {
@@ -2118,9 +2112,7 @@ nav ul ul.open + svg {
         top: 450px;
     }
 
-    .why-arrows {
-        top: 570px;
-    }
+    
 
     .title-group {
         padding-left: 0%;
@@ -2130,10 +2122,6 @@ nav ul ul.open + svg {
 @media (max-width: 840px) {
     .title-group h1 {
         font-size: 50px;
-    }
-
-    .why-arrows {
-        top: 530px;
     }
 
     .title-group h4 {
