@@ -1756,13 +1756,20 @@ const productSwiper = new Swiper('.product-swiper', {
   loop: false,
   speed: 500,
   autoplay: {
-    delay: 3000,
+    delay: 2500,
     disableOnInteraction: false,
   },
   on: {
     reachEnd: function () {
+      // Останавливаем autoplay временно
+      this.autoplay.stop();
+
+      // Ждём немного, чтобы пользователь понял, что был конец
       setTimeout(() => {
-        this.slideTo(0);
+        this.slideTo(0); // Переход в начало
+
+        // После возвращения — снова запускаем autoplay
+        this.autoplay.start();
       }, 1000);
     }
   }
