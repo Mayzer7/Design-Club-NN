@@ -1529,6 +1529,29 @@ if (modalVideo) {
 
 // Скрипты для контента на странице "main-page.html"
 
+// Переключение изображений каждые 3 секунды
+
+const images = document.querySelectorAll('.hero-bg');
+
+if (images) {
+  let current = 0;
+
+    // При необходимости заменяем первый слайд на мобильный вариант
+    const screenWidth = window.innerWidth;
+    if (screenWidth <= 1030) {
+        images[0].src = 'images/main-page/bg-1030.webp';
+    }
+
+    setInterval(() => {
+        images[current].classList.remove('active');
+        current = (current + 1) % images.length;
+        images[current].classList.add('active');
+    }, 3000);
+
+
+}
+
+
 const pageWrapper3 = document.querySelector('.page-wrapper-3');
 
 if (pageWrapper3) {

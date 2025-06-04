@@ -133,10 +133,25 @@ body.no-scroll {
 }
 
 .hero-bg {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* или cover, если нужно */
+  object-fit: cover;
   object-position: top center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 1;
+}
+
+.hero-bg.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.hero-bg-2,
+.hero-bg-3 {
+    filter: brightness(80%);
 }
 
 .hero-content {
@@ -196,6 +211,19 @@ body.no-scroll {
 .hero-right-side img {
     width: 76px;
     height: 75px;
+}
+
+.hero-right-side button {
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.hero-right-side button:hover {
+    transform: scale(1.05);
 }
 
 /* Мобильная версия главного экрана */
@@ -260,6 +288,12 @@ body.no-scroll {
 
 /* Адаптив главного экрана */
 
+@media (max-width: 1210px) {
+    .hero-bg-3 {
+        object-position: left top;
+    }
+}
+
 @media (max-width: 1000px) {
     .hero-content {
         display: none;
@@ -315,9 +349,17 @@ body.no-scroll {
 }
 
 @media (max-width: 470px) {
-    .hero-bg {
-        object-position: 70% top;
-    }
+  .hero-bg-1 {
+    object-position: 70% top;
+  }
+
+  .hero-bg-2 {
+    object-position: 50% top;
+  }
+
+  .hero-bg-3 {
+    object-position: 20% top;
+  }
 }
 
 
