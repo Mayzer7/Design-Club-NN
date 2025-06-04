@@ -1499,6 +1499,20 @@ nav ul ul.open + svg {
     padding-right: 30px;
 }
 
+.desc-left-text a {
+    color: rgba(255, 255, 255, 0.6);
+    margin-left: 5px;
+    transition: all 0.3s ease;
+}
+
+.desc-left-text a:hover {
+    color: #AE9877;
+}
+
+.more-text {
+  transition: all 0.3s ease;
+}
+
 .desc-info {
     margin-top: 30px;
     display: flex;
@@ -1809,6 +1823,10 @@ nav ul ul.open + svg {
 
 .open-menu-settings p:first-child {
     color: rgba(237, 228, 215, 0.7);
+}
+
+.customers-section {
+    padding: 0px 5px;
 }
 
 /* Когда открыт */

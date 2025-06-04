@@ -1302,6 +1302,50 @@ function handleScrollUp() {
     });
   }
 
+  // Расркытие менюшек навигации на страницах
+
+  const customersNavigation = document.querySelector('.customers-navigation');
+
+    if (customersNavigation) {
+       // Навигация (раскрытие менюшек)
+      document.addEventListener("DOMContentLoaded", function () {
+        const navBlocks = document.querySelectorAll(".customers-navigation");
+        const HEADER_OFFSET = 160; 
+
+        navBlocks.forEach(nav => {
+            const button = nav.querySelector(".open-button");
+            const section = nav.querySelector(".customers-section");
+
+            function toggleCurrentMenu(event) {
+                event.stopPropagation();
+
+                const wasActive = section.classList.contains("active");
+
+                // Закрывает все меню
+                document.querySelectorAll(".customers-section.active").forEach(activeSection => {
+                    activeSection.classList.remove("active");
+                });
+
+                // Если секция была неактивной — открыть и проскроллить
+                if (!wasActive) {
+                    section.classList.add("active");
+
+                    const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+                    const scrollTo = sectionTop - HEADER_OFFSET;
+
+                    window.scrollTo({
+                        top: scrollTo,
+                        behavior: "smooth"
+                    });
+                }
+            }
+
+            nav.addEventListener("click", toggleCurrentMenu);
+            if (button) button.addEventListener("click", toggleCurrentMenu);
+        });
+      }); 
+    }  
+
   // Скрипты для контента на странице "reviews-page.html"
 
   const reviewsPageSection = document.querySelector('.reviews-section');
@@ -1339,30 +1383,28 @@ function handleScrollUp() {
 
   // Скрипты для контента на странице "customers-page.html"
 
-  if (questionInput) {
-    // Навигация (раскрытие менюшек)
-    document.addEventListener("DOMContentLoaded", function () {
-        const navBlocks = document.querySelectorAll(".customers-navigation");
+  const readMoreLink = document.querySelector('.read-more-link-product');
 
-        navBlocks.forEach(nav => {
-            // Навешиваем клик на всю навигационную секцию
-            nav.addEventListener("click", () => {
-                const section = nav.querySelector(".customers-section");
-                section.classList.toggle("active");
-            });
+  if (readMoreLink) {
+    document.querySelector('.read-more-link-product').addEventListener('click', function (e) {
+      e.preventDefault();
+      const moreText = document.querySelector('.more-text');
+      const dots = document.querySelector('.dots');
 
-            // Дополнительно: клик по кнопке (стрелке) тоже открывает
-            const button = nav.querySelector(".open-button");
-            if (button) {
-                button.addEventListener("click", (event) => {
-                    event.stopPropagation(); // предотвращает всплытие
-                    const section = nav.querySelector(".customers-section");
-                    section.classList.toggle("active");
-                });
-            }
-        });
+      if (moreText.style.display === "none") {
+        moreText.style.display = "inline";
+        dots.style.display = "none";
+        this.textContent = "скрыть";
+      } else {
+        moreText.style.display = "none";
+        dots.style.display = "inline";
+        this.textContent = "открыть весь";
+      }
     });
   }
+
+  
+
 
   // Свайп карточек отзывов
 
@@ -1962,28 +2004,7 @@ if (addToCardProduct) {
   initContainer(elements.desktop);
   initContainer(elements.mobile);
 
-  // Навигация (раскрытие менюшек)
-  document.addEventListener("DOMContentLoaded", function () {
-      const navBlocks = document.querySelectorAll(".customers-navigation");
-
-      navBlocks.forEach(nav => {
-          // Навешиваем клик на всю навигационную секцию
-          nav.addEventListener("click", () => {
-              const section = nav.querySelector(".customers-section");
-              section.classList.toggle("active");
-          });
-
-          // Дополнительно: клик по кнопке (стрелке) тоже открывает
-          const button = nav.querySelector(".open-button");
-          if (button) {
-              button.addEventListener("click", (event) => {
-                  event.stopPropagation(); // предотвращает всплытие
-                  const section = nav.querySelector(".customers-section");
-                  section.classList.toggle("active");
-              });
-          }
-      });
-  });
+  
 }
 
 // Скрипты для контента на странице "cart-page.html"
