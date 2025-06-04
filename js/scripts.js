@@ -1750,53 +1750,108 @@ if (categoriesSection) {
 
 
 // Скрипты для контента на странице "product-page.html"
-const productSwiper = new Swiper('.product-swiper', {
-  slidesPerView: 'auto',
-  spaceBetween: 20,
-  loop: false,
-  speed: 500,
-  autoplay: {
-    delay: 2500,
-    disableOnInteraction: false,
-  },
-  on: {
-    reachEnd: function () {
-      // Останавливаем autoplay временно
-      this.autoplay.stop();
 
-      // Ждём немного, чтобы пользователь понял, что был конец
-      setTimeout(() => {
-        this.slideTo(0); // Переход в начало
+const productSwiperContainer = document.querySelector('.product-swiper');
 
-        // После возвращения — снова запускаем autoplay
-        this.autoplay.start();
-      }, 1000);
+if (productSwiperContainer) {
+  const productSwiper = new Swiper('.product-swiper', {
+    slidesPerView: 'auto',
+    spaceBetween: 20, // Значение по умолчанию
+    loop: false,
+    speed: 500,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    breakpoints: {
+      0: {
+        spaceBetween: 10
+      },
+      1411: {
+        spaceBetween: 20
+      }
+    },
+    on: {
+      reachEnd: function () {
+        this.autoplay.stop();
+        setTimeout(() => {
+          this.slideTo(0);
+          this.autoplay.start();
+        }, 1000);
+      }
     }
-  }
-});
+  });
+}
 
-// let productSwiper = null;
 
-// function openGallery(index) {
-//   const modal = document.getElementById('imageModal');
-//   modal.style.display = 'flex';
+// Свайп карточек мобильная версиия
 
-//   if (!productSwiper) {
-//     productSwiper = new Swiper('.modal-product .mySwiper', {
-//       centeredSlides: true,
-//       slidesPerView: '5',
-//       spaceBetween: 30,
-//       loop: true,
-//       initialSlide: index,
-//     });
-//   } else {
-//     productSwiper.slideToLoop(index, 0);
-//   }
+const imagesMobileSwiper = document.querySelector('.images-mobile.swiper');
+
+if (imagesMobileSwiper) {
+  new Swiper('.images-mobile.swiper', {
+      slidesPerView: 'auto',
+      slidesPerGroup: 1,
+      initialSlide: 1,
+      spaceBetween: 10,
+      centeredSlides: false,
+      loop: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+    });
+}
+
+
+// // Создание нового Swiper в модалке
+// let modalSwiper;
+
+// function initModalSwiper(startIndex = 0) {
+//   if (modalSwiper) modalSwiper.destroy(true, true); // если уже был — удалить
+
+//   modalSwiper = new Swiper('.modal-product-swiper', {
+//     slidesPerView: 3,
+//     slidesPerGroup: 1,
+//     centeredSlides: true,
+//     spaceBetween: 50,
+//     loop: true,
+//     initialSlide: startIndex,
+//     speed: 800,
+//   });
 // }
 
+// // Открытие модалки при клике на изображение
+// document.querySelectorAll('.product-swiper-slide img').forEach((img, index) => {
+//   img.addEventListener('click', () => {
+//     const modal = document.getElementById('modal-product');
+//     modal.classList.add('show');
+//     productSwiper.autoplay.stop();
+//     document.body.classList.add('modal-open');
+
+//     // инициализируем модал-свайпер с нужного слайда
+//     initModalSwiper(index);
+//   });
+// });
+
+// // Закрытие модалки
 // function closeModal() {
-//   document.getElementById('imageModal').style.display = 'none';
+//   const modal = document.getElementById('modal-product');
+//   modal.classList.remove('show');
+
+//   // Возобновление autoplay при закрытии
+//   productSwiper.autoplay.start();
 // }
+
+// // Крестик
+// document.querySelector('.modal-product-close').addEventListener('click', closeModal);
+
+// // Клик по фону
+// document.querySelector('.modal-product-overlay').addEventListener('click', closeModal);
+
+
+
+
 
 const addToCardProduct = document.querySelector('.add-to-card-product');
 
