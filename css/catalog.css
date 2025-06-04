@@ -40,7 +40,7 @@ html {
 html, body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    
 }
 
 * {
@@ -82,6 +82,12 @@ body {
     font-weight: 300;
     color: #EDE4D7;
     background-color: #151c28;
+
+}
+
+body.no-scroll {
+  overflow: hidden;
+  touch-action: none;
 }
 
 .container {
@@ -2251,6 +2257,20 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
   
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
+
+.filters-container {
+    max-height: 420px;
+    overflow-y: scroll;
+
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+}
+
+.filters-container::-webkit-scrollbar {
+    display: none; 
+}
+
+
 
 /* Класс для видимого меню */
 .filter-menu.active {

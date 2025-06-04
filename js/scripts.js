@@ -1,3 +1,9 @@
+const bodyCont = document.querySelector('body');
+
+// if (bodyCont) {
+//   bodyCont.classList.add('no-scroll');
+// }
+
 // Общие скрипты для всех страниц (снизу будут под отдельные страницы)
 
 // Анимации на странице
@@ -1669,39 +1675,41 @@ if (categoriesSection) {
         filterMenu.classList.toggle('active');    
         
         if (filterMenu.classList.contains('active')) {
+            bodyCont.classList.add('no-scroll');
             mainPageContent.style.filter = 'blur(5px)';
         } else {
+            bodyCont.body.classList.remove('no-scroll');
             mainPageContent.style.filter = '';
         }
     });
 
     // Свайп фильтров на телефоне вниз
 
-    let startY = 0;
-    let currentY = 0;
-    let isSwiping = false;
+    // let startY = 0;
+    // let currentY = 0;
+    // let isSwiping = false;
 
-    const filterMenu = document.querySelector('.filter-menu');
+    // const filterMenu = document.querySelector('.filter-menu');
 
-    filterMenu.addEventListener('touchstart', (e) => {
-        startY = e.touches[0].clientY;
-            isSwiping = true;
-        });
+    // filterMenu.addEventListener('touchstart', (e) => {
+    //     startY = e.touches[0].clientY;
+    //         isSwiping = true;
+    //     });
 
-    filterMenu.addEventListener('touchmove', (e) => {
-        if (!isSwiping) return;
+    // filterMenu.addEventListener('touchmove', (e) => {
+    //     if (!isSwiping) return;
 
-        currentY = e.touches[0].clientY;
+    //     currentY = e.touches[0].clientY;
 
-        if (currentY - startY > 50 && filterMenu.classList.contains('active')) {
-            closeFilterMenu();
-            isSwiping = false;
-        }
-    });
+    //     if (currentY - startY > 50 && filterMenu.classList.contains('active')) {
+    //         closeFilterMenu();
+    //         isSwiping = false;
+    //     }
+    // });
 
-    filterMenu.addEventListener('touchend', () => {
-        isSwiping = false;
-    });
+    // filterMenu.addEventListener('touchend', () => {
+    //     isSwiping = false;
+    // });
 
     document.querySelector('.close-filters').addEventListener('click', () => {
         closeFilterMenu();
@@ -1732,6 +1740,7 @@ if (categoriesSection) {
 
         filterMenu.classList.remove('active');
         mainPageContent.style.filter = '';
+        bodyCont.classList.remove('no-scroll');
     }
 
     // Всплывающие меню фильтров на телефоне
