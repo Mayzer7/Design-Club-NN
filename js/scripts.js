@@ -150,6 +150,45 @@ document.querySelector('.search-icon-button').addEventListener('click', function
     performSearch();
 });
 
+// Появление крестика при поиске
+
+const input = document.getElementById('search-input-on-page');
+
+if (input) {
+  const iconSearch = document.querySelector('.icon-search');
+  const iconClear = document.querySelector('.icon-clear');
+
+  function toggleIcons() {
+    if (input.value.trim() !== '') {
+      iconSearch.classList.add('hide');
+      iconSearch.classList.remove('show');
+
+      iconClear.classList.add('show');
+      iconClear.classList.remove('hide');
+    } else {
+      iconSearch.classList.add('show');
+      iconSearch.classList.remove('hide');
+
+      iconClear.classList.add('hide');
+      iconClear.classList.remove('show');
+    }
+  }
+
+  // Событие при вводе текста
+  input.addEventListener('input', toggleIcons);
+
+  // Очистка текста при нажатии на крестик
+  iconClear.addEventListener('click', () => {
+    input.value = '';
+    toggleIcons();
+    input.focus();
+  });
+
+  // Инициализация состояния при загрузке
+  window.addEventListener('DOMContentLoaded', toggleIcons);
+}
+  
+
 
 // Функция когда клик вне хедера
 

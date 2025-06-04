@@ -1294,6 +1294,7 @@ nav ul ul.open + svg {
 
 
 
+
 .search-bar-on-page {
     display: flex;
     align-items: center;
@@ -1303,6 +1304,7 @@ nav ul ul.open + svg {
     width: 100%;
     padding: 5px 0;
     gap: 8px;
+    position: relative;
 }
 
 .search-bar-on-page input {
@@ -1315,6 +1317,44 @@ nav ul ul.open + svg {
     color: #fff;
     font-size: 18px;
 }
+
+.icons {
+  position: absolute;
+  right: 0px;
+  display: flex;
+  align-items: center;
+}
+
+.icon-search,
+.icon-clear {
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  position: absolute;
+  right: 0;
+}
+
+.icon-search {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.icon-clear {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.icon-search.show,
+.icon-clear.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.icon-search.hide,
+.icon-clear.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
 
 .services-subtitle {
     margin-top: 30px;
@@ -1344,7 +1384,7 @@ nav ul ul.open + svg {
 /* Секция "Результаты поиска" */
 
 .search-result-container {
-    padding: 500px 20px 90px 20px;
+    padding: 400px 20px 90px 20px;
     background-image: url('../images/search-no-result/background.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -1408,6 +1448,10 @@ nav ul ul.open + svg {
     .search-result-container-inner {
         padding-left: 0%;
     }
+
+     .search-bar-on-page {
+        max-width: 100%;
+    }
 }
 
 @media (max-width: 730px) {
@@ -1419,6 +1463,10 @@ nav ul ul.open + svg {
 @media (max-width: 610px) {
     .search-result-title {
         font-size: 90px;
+    }
+
+    .search-result-container {
+        padding: 255px 20px 50px 20px;
     }
 }
 
@@ -1447,6 +1495,12 @@ nav ul ul.open + svg {
     .product-count {
         top: -35px;
         left: 0px;
+    }
+}
+
+@media (max-width: 400px) {
+    .search-result-container {
+        padding: 200px 20px 40px 20px;
     }
 }
 
