@@ -3675,7 +3675,11 @@ a .popular-product-desc p,
     padding-bottom: 5px;
 
     border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.projects-content-container:last-child {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 20px;
 }
 
 .project-name {
