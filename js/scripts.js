@@ -470,7 +470,8 @@ const errorModal = document.getElementById('errorModal');
 // Кнопки открытия
 const openBtns = [
   document.getElementById('openModalBtn'),
-  document.getElementById('burger-get-request')
+  document.getElementById('burger-get-request'),
+  document.getElementById('sign-up-showroom')
 ];
 
 // Кнопки закрытия
