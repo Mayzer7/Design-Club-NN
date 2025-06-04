@@ -2982,8 +2982,8 @@ a .popular-product-desc p,
 
 .about-up-title {
     position: absolute;
-    top: 70px;
-    left: 25px;
+    top: -20px;
+    left: 5px;
 }
 
 .about-company-title {
@@ -3165,9 +3165,6 @@ a .popular-product-desc p,
         padding: 50px 20px 50px 20px;
     }
 
-    .about-up-title {
-        top: 30px;
-    }
 }
 
 @media (max-width: 720px) {
@@ -3673,9 +3670,9 @@ a .popular-product-desc p,
     margin-top: 20px;
     display: flex;
     align-items: stretch;
-    gap: 40px;
 
-    padding: 20px 0;
+    padding-top: 20px;
+    padding-bottom: 5px;
 
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -3683,7 +3680,7 @@ a .popular-product-desc p,
 
 .project-name {
     font-family: 'Future New Bold', sans-serif;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     font-size: 34px;
 }
 
@@ -3736,7 +3733,7 @@ a .popular-product-desc p,
     font-size: 18px;
     text-transform: uppercase;
     border-bottom: 1px solid #EDE4D7;
-    padding: 0;
+    padding: 5px 0;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -3820,12 +3817,6 @@ a .popular-product-desc p,
     }
 }
 
-@media (max-width: 1120px) {
-    .projects-content-container {
-        gap: 5px;
-    }
-}
-
 @media (max-width: 1070px) {
     .projects-title {
         font-size: 55px;
@@ -3844,7 +3835,6 @@ a .popular-product-desc p,
 
     .project-content-last {
         margin-left: 0;
-        margin-top: 20px;
         flex-direction: row;
         justify-content: space-between;
     }
