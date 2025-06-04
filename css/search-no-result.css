@@ -1400,12 +1400,13 @@ nav ul ul.open + svg {
     margin-top: 30px;
     max-width: 500px;
     width: 100%;
+    font-size: 20px;
 }
 
 .product-count {
     position: absolute;
-    top: -20px;
-    left: 5px;
+    top: -25px;
+    left: 0px;
 }
 
 .product-count p {
@@ -1426,21 +1427,21 @@ nav ul ul.open + svg {
 
 /* Адаптив Результаты поиска */
 
+@media (max-width: 1540px) {
+    .search-result-title {
+        font-size: 100px;
+    }
+}
+
+@media (max-width: 1360px) {
+    .search-result-title {
+        font-size: 90px;
+    }
+}
+
 @media (max-width: 1100px) {
     .search-result-container {
         background-image: url('../images/catalog/adaptive/background-1024.png');
-    }
-}
-
-@media (max-width: 1060px) {
-    .search-result-container-inner {
-        padding-left: 23%;
-    }
-}
-
-@media (max-width: 875px) {
-    .search-result-container-inner {
-        padding-left: 17%;
     }
 }
 
@@ -1462,11 +1463,15 @@ nav ul ul.open + svg {
 
 @media (max-width: 610px) {
     .search-result-title {
-        font-size: 90px;
+        font-size: 80px;
     }
 
     .search-result-container {
         padding: 255px 20px 50px 20px;
+    }
+
+    .product-count p {
+        font-size: 18px;
     }
 }
 
@@ -1478,9 +1483,9 @@ nav ul ul.open + svg {
 
 }
 
-@media (max-width: 410px) {
+@media (max-width: 470px) {
     .search-result-title {
-        font-size: 42px;
+        font-size: 60px;
     }
 
     .under-header-container a,
@@ -1492,15 +1497,18 @@ nav ul ul.open + svg {
         font-size: 14px;
     }
 
-    .product-count {
-        top: -35px;
-        left: 0px;
+    .product-count p {
+        font-size: 16px;
     }
 }
 
 @media (max-width: 400px) {
     .search-result-container {
         padding: 200px 20px 40px 20px;
+    }
+
+    .search-result-title {
+        font-size: 42px;
     }
 }
 
@@ -1537,7 +1545,7 @@ nav ul ul.open + svg {
 }
 
 .right-side {
-    padding-left: 18.5%;
+    padding-left: 18%;
 }
 
 .right-side-title {
@@ -1599,9 +1607,15 @@ nav ul ul.open + svg {
 
 /* Адаптив "Не нашли что искали?" */
 
+@media (max-width: 1800px) {
+    .right-side {
+        padding-left: 18%;
+    }
+}
+
 @media (max-width: 1540px) {
     .right-side {
-        padding-left: 15%;
+        padding-left: 16%;
     }
 }
 
@@ -1617,7 +1631,7 @@ nav ul ul.open + svg {
 
 @media (max-width: 1270px) {
     .right-side {
-        padding-left: 13%;
+        padding-left: 14%;
     }
 }
 
@@ -1631,13 +1645,19 @@ nav ul ul.open + svg {
     }
 }
 
-@media (max-width: 875px) {
+@media (max-width: 1120px) {
     .right-side {
-        padding-left: 5%;
+        padding-left: 13%;
     }
 }
 
-@media (max-width: 790px) {
+@media (max-width: 1000px) {
+    .right-side {
+        padding-left: 10%;
+    }
+}
+
+@media (max-width: 835px) {
     .left-side svg {
         display: none;
     }

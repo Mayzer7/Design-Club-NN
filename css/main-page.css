@@ -3866,7 +3866,11 @@ a .popular-product-desc p,
     }
 
     .projects {
-        padding: 100px 20px 70px 20px;
+        padding: 100px 20px 45px 20px;
+    }
+
+    .open-all-catalog-projects {
+        margin-top: 30px;
     }
     
 }
@@ -3880,6 +3884,10 @@ a .popular-product-desc p,
 @media (max-width: 490px) {
     .projects-content-container {
         margin-top: 0px
+    }
+
+    .projects-content-container:last-child {
+        padding-bottom: 5px;
     }
 
     .projects-title {

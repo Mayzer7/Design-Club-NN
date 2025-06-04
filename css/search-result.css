@@ -1395,7 +1395,7 @@ nav ul ul.open + svg {
 
 .product-count {
     position: absolute;
-    top: -20px;
+    top: -35px;
     left: 5px;
 }
 
@@ -1417,13 +1417,7 @@ nav ul ul.open + svg {
 
 /* Адаптив Результаты поиска */
 
-@media (max-width: 875px) {
-    .search-result-container-inner {
-        padding-left: 17%;
-    }
-}
-
-@media (max-width: 835px) {
+@media (max-width: 1000px) {
     .search-result-container-inner {
         padding-left: 0%;
     }
@@ -1439,9 +1433,16 @@ nav ul ul.open + svg {
     }
 }
 
+@media (max-width: 670px) {
+    .search-result-title {
+        font-size: 80px;
+        margin-bottom: 30px;
+    }
+}
+
 @media (max-width: 610px) {
     .search-result-title {
-        font-size: 90px;
+        margin-bottom: 30px;
     }
 
     .search-result-container {
@@ -1453,10 +1454,15 @@ nav ul ul.open + svg {
     }
 }
 
-@media (max-width: 485px) {
+@media (max-width: 570px) {
     .search-result-title {
-        font-size: 72px;
-        margin-bottom: 30px;
+        font-size: 80px;
+    }
+}
+
+@media (max-width: 540px) {
+    .search-result-title {
+        font-size: 62px;
     }
 }
 
@@ -1481,6 +1487,10 @@ nav ul ul.open + svg {
 
     .search-result-container {
         padding: 250px 20px 10px 20px;
+    }
+
+    .product-count p {
+        font-size: 16px;
     }
 }
 
