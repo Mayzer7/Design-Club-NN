@@ -1658,6 +1658,7 @@ nav ul ul.open + svg {
 
 .project-content-last-down {
     white-space: nowrap;
+ 
 }
 
 .project-content-second {
@@ -1704,13 +1705,17 @@ nav ul ul.open + svg {
     font-weight: 600;
     text-transform: uppercase;
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
     padding: 5px 0;
     margin: 0;
 
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 }
 
+.project-content-last button:hover {
+    color: #AE9877;
+    border-bottom-color: #AE9877;
+}
 
 
 
