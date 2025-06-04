@@ -106,6 +106,10 @@ body {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
+.line-height {
+    line-height: 95%;
+}
+
 
 
 /* Верхрняя секция главной страницы */
@@ -1322,7 +1326,7 @@ nav ul ul.open + svg {
     white-space: nowrap;
     font-family: 'Future New Light', sans-serif;
     font-size: 250px;
-    text-transform: uppercase;
+    text-transform: uppercase;   
 }
 
 .under-header-content {
@@ -1588,6 +1592,8 @@ nav ul ul.open + svg {
 
     .title-container h1 {
         white-space: normal;
+        line-height: 84%;
+        margin-bottom: 20px;
     }
 
     .under-header-content-600px p {
@@ -1601,7 +1607,7 @@ nav ul ul.open + svg {
     }
 }
 
-@media (max-width: 510px) {
+@media (max-width: 520px) {
     .main-page-top {
         min-height: 800px;
     }
@@ -1839,7 +1845,7 @@ nav ul ul.open + svg {
     }
 }
 
-@media (max-width: 920px) {
+@media (max-width: 1000px) {
     .left img{
         display: none;
     }
@@ -1849,7 +1855,26 @@ nav ul ul.open + svg {
     }
 
     .center {
+        padding-left: 16%;
+    }
+}
+
+
+
+@media (max-width: 930px) {
+    .center {
+        padding-left: 11%;
+    }
+}
+
+@media (max-width: 870px) {
+    .grid-container {
+        justify-content: start;
+    }
+
+    .center {
         padding-left: 0%;
+        padding-right: 20px;
     }
 }
 
@@ -1869,7 +1894,7 @@ nav ul ul.open + svg {
     }
 }
 
-@media (max-width: 680px) {
+@media (max-width: 660px) {
     .right img{
         display: none;
     }
@@ -1963,6 +1988,14 @@ nav ul ul.open + svg {
         max-width: 450px;
         width: 100%;
     }
+
+    .unique-solutions-520px {
+        padding: 45px 20px 50px 20px;
+    }
+
+    .unique-up-title {
+        top: 80px;
+    }
 }
 
 @media (max-width: 435px) {
@@ -1995,10 +2028,6 @@ nav ul ul.open + svg {
 
     .slide {
         max-width: 280px;
-    }
-
-    .unique-solutions-520px {
-        padding: 100px 20px 50px 20px;
     }
 }
 
@@ -2329,10 +2358,6 @@ nav ul ul.open + svg {
     }
 }
 
-@media (max-width: 590px) {
-    
-}
-
 @media (max-width: 540px) {
     .down-card {
         margin-top: 0px;
@@ -2356,10 +2381,14 @@ nav ul ul.open + svg {
         padding-top: 20px;
     }
 
-    
-
     .swiper-slide {
         max-width: 265px;
+    }
+}
+
+@media (max-width: 520px) {
+    .why-choose-us {
+        padding: 45px 20px 45px 20px;
     }
 }
 
@@ -2633,6 +2662,16 @@ nav ul ul.open + svg {
     }
 }
 
+@media (max-width: 520px) {
+    .about-warehouse {
+        padding: 120px 20px 90px 20px;
+    }
+
+    .warehouse-up-title {
+        top: 50px;
+    }
+}
+
 @media (max-width: 390px) {
     .about-warehouse-title {
         font-size: 38px;
@@ -2668,7 +2707,7 @@ nav ul ul.open + svg {
 /* Секция "Шоурум" */
 
 .showroom {
-    padding: 100px 20px 200px 20px;
+    padding: 100px 20px 90px 20px;
     background-color: #151c28;
     font-family: 'SF UI Display Thin', sans-serif;
     position: relative;
@@ -2723,7 +2762,7 @@ nav ul ul.open + svg {
 /* Шоурум для 1024 */
 
 .showroom-1024 {
-    padding: 100px 20px 200px 20px;
+    padding: 100px 20px 90px 20px;
     background-color: #151c28;
     font-family: 'SF UI Display Thin', sans-serif;
     position: relative;
@@ -3403,7 +3442,7 @@ nav ul ul.open + svg {
 
 
 .reviews {
-    padding: 130px 20px 100px 20px;
+    padding: 130px 20px 90px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;  
     overflow: hidden;

@@ -98,6 +98,10 @@ body {
     transition: all 0.3s ease;
 }
 
+.line-height {
+    line-height: 95%;
+}
+
 
 /* Главный экран */
 
@@ -3642,7 +3646,7 @@ a .popular-product-desc p,
 .projects-title {
     font-family: 'Future New Light', sans-serif;
     font-size: 76px;
-    padding-left: 25%;
+    padding-left: 460px;
     text-transform: uppercase;
 }
     
@@ -3693,7 +3697,7 @@ a .popular-product-desc p,
 }
 
 .project-content-second {
-    padding-left: 7%;
+    padding-left: 9%;
     display: flex;
     gap: 20px;
 }
@@ -3764,12 +3768,20 @@ a .popular-product-desc p,
     .project-content-second {
         padding-left: 6%;
     }
+
+    .projects-title {
+        padding-left: 400px;
+    }
 }
 
 
 @media (max-width: 1670px) {
     .project-content-second {
         padding-left: 5%;
+    }
+
+    .projects-title {
+        padding-left: 370px;
     }
 }
 
@@ -3782,6 +3794,10 @@ a .popular-product-desc p,
 @media (max-width: 1500px) {
     .project-content-second {
         padding-left: 2%;
+    }
+
+    .projects-title {
+        padding-left: 320px;
     }
 }
 
@@ -3813,17 +3829,37 @@ a .popular-product-desc p,
     .project-name {
         font-size: 26px;
     }
+
+    .projects-title {
+        padding-left: 280px;
+    }
 }
 
 @media (max-width: 1227px) {
     .project-content-second {
         padding-left: 2%;
     }
+
+    .projects-title {
+        padding-left: 250px;
+    }
 }
 
 @media (max-width: 1070px) {
     .projects-title {
         font-size: 55px;
+    }
+}
+
+@media (max-width: 950px) {
+    .projects-title {
+        padding-left: 230px;
+    }
+}
+
+@media (max-width: 890px) {
+    .projects-title {
+        padding-left: 210px;
     }
 }
 
@@ -4415,7 +4451,7 @@ a .popular-product-desc p,
 /* Секция "Связаться с нами" */
 
 .get-contact {
-    padding: 100px 20px 200px 20px;
+    padding: 100px 20px 90px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif; 
     background-image: url("../images/main-page/get-contact-bg.png");
@@ -4636,7 +4672,7 @@ a .popular-product-desc p,
 }
 
 .footer {
-    padding: 0px 20px 20px 20px;
+    padding: 90px 20px 20px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 
@@ -4740,7 +4776,7 @@ a .popular-product-desc p,
 
 .footer-1024 {
     display: none;
-    padding: 0px 20px 20px 20px;
+    padding: 90px 20px 20px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 
@@ -4800,7 +4836,7 @@ a .popular-product-desc p,
 
 .footer-below-1024 {
     display: none;
-    padding: 0px 20px 0px 20px;
+    padding: 90px 20px 0px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 

@@ -97,7 +97,6 @@ body.no-scroll {
     width: 100%;  
 }
 
-
 /*
 Для того чтобы когда в input вводятся только цифры, 
 браузер не отображал некрасивый ползунок увелечения числа
@@ -119,6 +118,10 @@ input[type="number"] {
     height: 1px;
     border: none;
     background-color: rgba(255, 255, 255, 0.2);
+}
+
+.line-height {
+    line-height: 95%;
 }
 
 .block-title {
