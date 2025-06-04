@@ -1943,11 +1943,10 @@ if (imagesMobileSwiper) {
 
 
 
-
+// Добавление товара в корзину
 const addToCardProduct = document.querySelector('.add-to-card-product');
 
 if (addToCardProduct) {
-  // Добавление товара в корзину
   const elements = {
     desktop: {
       addBtn: document.getElementById('add-btn'),
@@ -1955,6 +1954,7 @@ if (addToCardProduct) {
       notifyBlock: document.getElementById('notify-block'),
       minusBtn: document.getElementById('minus-btn'),
       plusBtn: document.getElementById('plus-btn'),
+      qtyLabel: document.getElementById('qty-label-desktop'),
       addToCartBtn: document.querySelector('.add-to-cart'),
     },
     mobile: {
@@ -1963,41 +1963,55 @@ if (addToCardProduct) {
       notifyBlock: document.getElementById('notify-block-mobile'),
       minusBtn: document.getElementById('minus-btn-mobile'),
       plusBtn: document.getElementById('plus-btn-mobile'),
+      qtyLabel: document.getElementById('qty-label-mobile'),
       addToCartBtn: document.querySelector('.add-to-cart-mobile'),
     },
   };
 
-  const qtyLabel = document.getElementById('qty-label');
-  let quantity = 1;
-
-  function updateQtyLabel() {
-    qtyLabel.textContent = quantity;
-  }
-
-  function toggleCartState(container) {
-    container.addToCartBtn.style.display = container.qtyBlock.classList.contains('active') ? '' : 'none';
-    container.qtyBlock.classList.toggle('active');
-    container.notifyBlock.classList.toggle('active');
-    updateQtyLabel();
-  }
-
   function initContainer(container) {
-    container.addBtn.addEventListener('click', () => {
+    let quantity = 1;
+    let notifyTimeout = null; // для контроля времени уведомления
+
+    function updateQtyLabel() {
+      container.qtyLabel.textContent = quantity;
+    }
+
+    function showNotification() {
+      const notify = container.notifyBlock;
+
+      // Сбросить старый таймер, если пользователь спамит
+      if (notifyTimeout) {
+        clearTimeout(notifyTimeout);
+        notifyTimeout = null;
+      }
+
+      // Перезапускаем анимацию (если элемент уже активен)
+      notify.classList.remove('active');
+      void notify.offsetWidth; // ⏪ триггер рефлоу (хак для перезапуска CSS-анимации)
+      notify.classList.add('active');
+
+      notifyTimeout = setTimeout(() => {
+        notify.classList.remove('active');
+      }, 3000);
+    }
+
+    container.addBtn?.addEventListener('click', () => {
       if (!container.qtyBlock.classList.contains('active')) {
         container.addToCartBtn.style.display = 'none';
         container.qtyBlock.classList.add('active');
-        container.notifyBlock.classList.add('active');
         quantity = 1;
         updateQtyLabel();
       }
+
+      showNotification(); // всегда показываем
     });
 
-    container.plusBtn.addEventListener('click', () => {
+    container.plusBtn?.addEventListener('click', () => {
       quantity++;
       updateQtyLabel();
     });
 
-    container.minusBtn.addEventListener('click', () => {
+    container.minusBtn?.addEventListener('click', () => {
       if (quantity > 1) {
         quantity--;
         updateQtyLabel();
@@ -2007,14 +2021,18 @@ if (addToCardProduct) {
         container.notifyBlock.classList.remove('active');
         container.addToCartBtn.style.display = '';
         updateQtyLabel();
+
+        // Очистить таймер уведомления, если плашка выключена досрочно
+        if (notifyTimeout) {
+          clearTimeout(notifyTimeout);
+          notifyTimeout = null;
+        }
       }
     });
   }
 
   initContainer(elements.desktop);
   initContainer(elements.mobile);
-
-  
 }
 
 // Скрипты для контента на странице "cart-page.html"

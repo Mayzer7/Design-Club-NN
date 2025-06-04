@@ -1503,6 +1503,7 @@ nav ul ul.open + svg {
 
 .desc-left-text {
     padding-right: 30px;
+    max-width: 500px;
 }
 
 .desc-left-text a {
@@ -1707,13 +1708,18 @@ nav ul ul.open + svg {
 }
 
 .added-to-card-quantity {
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     gap: 5px;
     background-color: #AE9877;
     max-width: 300px;
+    min-width: 200px;
     width: 100%;
+}
+
+.added-to-card-quantity.active {
+    display: flex;
 }
 
 .added-to-card-quantity button {
@@ -1727,31 +1733,55 @@ nav ul ul.open + svg {
     font-size: 20px;
 }
 
+.quantity {
+    font-size: 24px;
+}
 
 
 .product-added-to-cart-notification {
     white-space: nowrap;
-    margin-top: 17px;
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 10px;
-    background-color: #171F2E;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 14px;
-    color: #fff;
-    font-family: 'SF Pro Display Thin', sans-serif;
-    font-weight: 300;
-    max-width: 300px;
-    width: 100%;
-    font-size: 20px;
+  margin-top: 17px;
+  background-color: #171F2E;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 14px;
+  color: #fff;
+  font-family: 'SF Pro Display Thin', sans-serif;
+  font-weight: 300;
+  max-width: 300px;
+  max-width: 300px;
+  width: 100%;
+  font-size: 20px;
+  overflow: hidden;
+
+  /* Добавим начальные значения */
+  opacity: 0;
+  transform: translateY(10px);
+  height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  visibility: hidden;
+
+  /* Плавность */
+  transition: 
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0.3s,
+    height 0.3s ease,
+    padding 0.3s ease;
 }
 
-.notification {
-    display: none;
-}
-
-.notification.active {
-    display: flex;
+/* Активное состояние */
+.product-added-to-cart-notification.active {
+  opacity: 1;
+  transform: translateY(0);
+  height: auto; /* Раскроем */
+  padding-top: 14px;
+  padding-bottom: 14px;
+  visibility: visible;
 }
 
 
