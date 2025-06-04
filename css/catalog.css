@@ -1502,6 +1502,10 @@ nav ul ul.open + svg {
 
 /* Категории */
 
+.categories-mobile {
+    display: none;
+}
+
 .categories-section {
     padding: 50px 20px 50px 20px;
 }
@@ -1549,6 +1553,37 @@ nav ul ul.open + svg {
 
 /* Адаптив категорий */
 
+@media (max-width: 900px) {
+    .categories-desktop {
+        display: none;
+    }
+
+    .categories-mobile {
+        display: flex;
+    }
+}
+
+@media (max-width: 635px) {
+    .categories-swiper .swiper-wrapper .category img,
+    .categories-swiper .swiper-wrapper .category-non-field img {
+        width: 114px;
+        height: 114px;
+    }
+
+    .categories-swiper .swiper-wrapper .swiper-slide {
+        max-width: 114px;
+        min-height: 114px;
+    }
+
+    .category-title {
+        font-size: 16px;
+    }
+
+    .categories-section {
+        padding: 10px 20px 10px 20px;
+    }
+}
+
 @media (max-width: 435px) {
     .categories-swiper .swiper-wrapper .category img,
     .categories-swiper .swiper-wrapper .category-non-field img {
@@ -1558,7 +1593,7 @@ nav ul ul.open + svg {
 
     .categories-swiper .swiper-wrapper .swiper-slide {
         max-width: 92px;
-        max-height: 92px;
+        min-height: 92px;
     }
 
     .category-title {
