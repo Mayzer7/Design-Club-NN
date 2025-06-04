@@ -84,6 +84,23 @@ body {
     background-color: #151c28;
 }
 
+
+/*
+Для того чтобы когда в input вводятся только цифры, 
+браузер не отображал некрасивый ползунок увелечения числа
+*/
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Для Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
 .container {
     max-width: 1920px;
     margin: 0 auto;
