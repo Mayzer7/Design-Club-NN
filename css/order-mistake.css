@@ -43,6 +43,12 @@ html, body {
     background-color: #151c28;
 }
 
+html.no-scroll,
+body.no-scroll {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
 * {
   -webkit-tap-highlight-color: transparent;
 }

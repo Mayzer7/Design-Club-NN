@@ -1,10 +1,5 @@
-const bodyCont = document.querySelector('body');
-
-// if (bodyCont) {
-//   bodyCont.classList.add('no-scroll');
-// }
-
 // Общие скрипты для всех страниц (снизу будут под отдельные страницы)
+const bodyCont = document.querySelector('body');
 
 // Анимации на странице
 document.addEventListener("DOMContentLoaded", () => {
@@ -141,60 +136,47 @@ function deactivateSearchMode() {
 // Переадрисация на страницу "Результаты поиска" после того как 
 // пользователь ввел название товара в поиске и нажал Enter
 
-function performSearch() {
-    const query = document.getElementById('search-input').value;
-    window.location.href = 'search-no-result-page.html?query=' + encodeURIComponent(query);
+
+
+// Первый input (где id="search-input")
+function performMainSearch() {
+    const query = document.getElementById('search-input').value.trim();
+    if (query) {
+        window.location.href = 'search-result-page.html?query=' + encodeURIComponent(query);
+    }
 }
 
 document.getElementById('search-input').addEventListener('keypress', function(event) {
     if (event.key === 'Enter') {
-        performSearch();
+        performMainSearch();
     }
 });
 
 document.querySelector('.search-icon-button').addEventListener('click', function() {
-    performSearch();
+    performMainSearch();
 });
 
-// Появление крестика при поиске
+const query = document.getElementById('search-input-on-page')
 
-const input = document.getElementById('search-input-on-page');
+if (query) {
+  // Второй input (где id="search-input-on-page")
+  function performOnPageSearch() {
 
-if (input) {
-  const iconSearch = document.querySelector('.icon-search');
-  const iconClear = document.querySelector('.icon-clear');
-
-  function toggleIcons() {
-    if (input.value.trim() !== '') {
-      iconSearch.classList.add('hide');
-      iconSearch.classList.remove('show');
-
-      iconClear.classList.add('show');
-      iconClear.classList.remove('hide');
-    } else {
-      iconSearch.classList.add('show');
-      iconSearch.classList.remove('hide');
-
-      iconClear.classList.add('hide');
-      iconClear.classList.remove('show');
-    }
+      if (query) {
+          window.location.href = 'search-result-page.html?query=' + encodeURIComponent(query);
+      }
   }
 
-  // Событие при вводе текста
-  input.addEventListener('input', toggleIcons);
-
-  // Очистка текста при нажатии на крестик
-  iconClear.addEventListener('click', () => {
-    input.value = '';
-    toggleIcons();
-    input.focus();
+  document.getElementById('search-input-on-page').addEventListener('keypress', function(event) {
+      if (event.key === 'Enter') {
+          performOnPageSearch();
+      }
   });
 
-  // Инициализация состояния при загрузке
-  window.addEventListener('DOMContentLoaded', toggleIcons);
+  document.querySelector('.search-icon-on-page').addEventListener('click', function() {
+      performOnPageSearch();
+  });
 }
-  
-
 
 // Функция когда клик вне хедера
 
@@ -495,6 +477,7 @@ function openModal(modal) {
   modal.style.display = 'flex';
   container.style.filter = 'blur(5px)';
   setTimeout(() => modal.classList.add('open'), 10);
+  document.documentElement.classList.add('no-scroll');
 }
 
 // Функция закрытия модалки и снятия блюра
@@ -510,6 +493,8 @@ function closeModal(modal) {
     if (!anyOpen) {
       container.style.filter = 'none';
     }
+    
+    document.documentElement.classList.remove('no-scroll');
   }, 500);
 }
 
@@ -751,6 +736,7 @@ document.querySelectorAll('.submenu-item .menu-button').forEach(button => {
 
 // Открытие бургер меню
 
+
 const openBurgerMenu = document.getElementById('openBurgerMenu');
 const burgerMenuContent = document.getElementById('burgerMenuContent');
 const mainContent = document.getElementById('mainContent');
@@ -758,13 +744,19 @@ const closeBurgerBtn = document.getElementById('closeBurgerBtn');
 
 function openMenu() {
     burgerMenuContent.classList.add('open');
+
+    document.documentElement.classList.add('no-scroll');
+
     mainContent.classList.add('hidden');
 }
 
 function closeMenu() {
-    burgerMenuContent.classList.remove('open');
-            
-    // Показать контент чуть раньше — через 250 мс (половина анимации)
+  document.documentElement.classList.remove('no-scroll');  
+  
+  burgerMenuContent.classList.remove('open');
+
+    
+    // Показывает контент чуть раньше 
     setTimeout(() => {
         mainContent.classList.remove('hidden');
     }, 250);
@@ -830,6 +822,8 @@ submenuTitles.forEach(title => {
 
 const inputBurger = document.getElementById('inputBurger');
 const searchItemsBurger = document.getElementById('searchItemsBurger');
+// Скрытие менюшек в бургере при поиске
+const burgerUnderSearch = document.querySelector('.burger-under-search-hide');
 
 // По умолчанию скрываем
 searchItemsBurger.classList.add('hidden');
@@ -837,8 +831,10 @@ searchItemsBurger.classList.add('hidden');
 inputBurger.addEventListener('input', () => {
   if (inputBurger.value.length > 0) {
     searchItemsBurger.classList.remove('hidden');
+    burgerUnderSearch.classList.add('hidden');
   } else {
     searchItemsBurger.classList.add('hidden');
+    burgerUnderSearch.classList.remove('hidden');
   }
 });
 
@@ -1116,18 +1112,22 @@ function handleScrollUp() {
           speed: 800,
           grabCursor: true,
           effect: 'slide',
-          loop: true,
-          loopedSlides: 4,
-          touchRatio: 0.5,
+          loop: false,
           initialSlide: 2,
-          centeredSlides: !isSmallScreen, // Отключаем при маленьком экране
-          longSwipesRatio: 0.05,
-          longSwipesMs: 300,
+          centeredSlides: !isSmallScreen,
 
           navigation: {
             nextEl: '.popular-right-arrow',
             prevEl: '.popular-left-arrow',
           },
+
+          on: {
+            reachEnd: function () {
+              setTimeout(() => {
+                this.slideTo(2); // Переход на карточку с индексом 2
+              }, 500); // можно убрать задержку или изменить по желанию
+            }
+          }
         });
       }
     }
