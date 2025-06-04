@@ -4102,6 +4102,12 @@ a .popular-product-desc p,
     transform-origin: center; 
 }
 
+.review-card-down {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 /* .review-card:hover {
     transform: scale(1.05); 
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2); 
@@ -4369,6 +4375,10 @@ a .popular-product-desc p,
     .review-text {
         font-size: 16px;
         -webkit-line-clamp: 11;  
+    }
+
+    .review-card-down {
+        align-items: flex-start;
     }
 }
 

@@ -2456,6 +2456,8 @@ nav ul ul.open + svg {
 .about-warehouse-second-content img {
     max-width: 361px;
     max-height: 440px;
+    min-width: 361px;
+    min-height: 440px;
     width: 100%;
     height: 100%;
 }
@@ -2472,7 +2474,7 @@ nav ul ul.open + svg {
 .about-warehouse-last {
     position: absolute;
     right: 20px;
-    bottom: 90px;
+    bottom: 0px;
 }
 
 .about-warehouse-last img {
@@ -2533,6 +2535,17 @@ nav ul ul.open + svg {
     .about-warehouse-last img {
         max-width: 95px;
         max-height: 103px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-warehouse-second-content img {
+        max-width: 258px;
+        max-height: 341px;
+        min-width: 258px;
+        min-height: 341px;
+        width: 100%;
+        height: 100%;
     }
 }
 
@@ -2598,6 +2611,10 @@ nav ul ul.open + svg {
     .about-warehouse-second-content img {
         max-width: 309px;
         max-height: 322px;
+        min-width: 309px;
+        min-height: 322px;
+        width: 100%;
+        height: 100%;
     }
 
     .about-warehouse-first-content p {
