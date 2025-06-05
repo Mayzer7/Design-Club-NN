@@ -4192,7 +4192,6 @@ a .popular-product-desc p,
 .reviews-cards-swiper .swiper-slide {
   width: 645px;
   height: 353px;
-  transition: transform 0.8s ease-in-out;
   flex-shrink: 0;
   display: flex;
 }
@@ -4300,7 +4299,7 @@ a .popular-product-desc p,
     overflow-x: visible; 
     cursor: pointer;
     padding-bottom: 20px;
-   
+    min-height: 360px;
     transition: transform 0.5s ease; 
 }
 
@@ -4343,11 +4342,11 @@ a .popular-product-desc p,
     align-items: center;
 }
 
-/* .review-card:hover {
-    transform: scale(1.05); 
+.review-card:hover {
+    transform: scale(1.01); 
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2); 
     cursor: pointer;
-} */
+} 
 
 .review-text {
     text-align: left;
@@ -4360,7 +4359,20 @@ a .popular-product-desc p,
 }
 
 .read-more-link {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
     color: rgba(255, 255, 255, 0.6);
+    transition: color 0.3s ease;
+}
+
+.read-more-link:hover {
+    color: #AE9877;
 }
 
 .review-author {
@@ -5665,3 +5677,202 @@ a .popular-product-desc p,
     }
 
 }
+
+
+/* Модальное окно отзыва */
+
+.modal-review {
+  padding: 0 20px;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  cursor: pointer;
+
+  opacity: 0;
+  pointer-events: none;     
+  transition: opacity 0.3s ease;
+}
+
+.modal-review.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content-review {
+  height: auto;
+  overflow-y: auto;
+  margin: 0 auto;
+  padding: 40px;
+  background: #151C28;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.modal-review.open .modal-content-review {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.modal-close {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+
+.modal-review.closing .modal-content-review {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.modal-close:hover svg path {
+  stroke: #AE9877;
+}
+
+.review-card-modal {
+    padding: 40px 0px 40px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-left: 1px solid rgba(255, 255, 255, 0.4);
+    border-right: 1px solid rgba(255, 255, 255, 0.4);
+    background-color: transparent;
+    background-image:
+        linear-gradient(to right, 
+            rgba(255, 255, 255, 0.4) 0%, 
+            rgba(255, 255, 255, 0.4) 7%, 
+            transparent 7%, 
+            transparent 93%, 
+            rgba(255, 255, 255, 0.4) 93%, 
+            rgba(255, 255, 255, 0.4) 100%),
+        linear-gradient(to right, 
+            rgba(255, 255, 255, 0.4) 0%, 
+            rgba(255, 255, 255, 0.4) 7%, 
+            transparent 7%, 
+            transparent 93%, 
+            rgba(255, 255, 255, 0.4) 93%, 
+            rgba(255, 255, 255, 0.4) 100%);
+    background-repeat: no-repeat;
+    background-position: top, bottom;
+    background-size: 100% 1px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box; 
+    transform-origin: center; 
+}
+
+.review-modal-text {
+    font-size: 20px;
+    line-height: 120%;
+    text-align: left;
+    overflow-y: auto;
+    max-height: 385px;
+    max-width: 700px;
+    padding-right: 20px;
+    scroll-behavior: smooth;
+    
+}
+
+.review-modal-text::-webkit-scrollbar {
+    width: 6px;
+}
+  
+.review-modal-text::-webkit-scrollbar-track {
+    background-color: rgba(237, 228, 215, 0.4);
+}
+  
+.review-modal-text::-webkit-scrollbar-thumb {
+    background-color: #EDE4D7;
+}
+
+.review-modal-author {
+    padding-top: 20px;
+    font-family: 'Future New Light', sans-serif;
+    font-size: 34px;
+    text-transform: uppercase;
+}
+
+.review-yandex-link svg {
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+.review-yandex-link a {
+    font-size: 14px;
+    color: rgba(237, 228, 215, 0.7);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.review-yandex-link a:hover {
+    color: #AE9877;
+}
+
+@keyframes fadeModalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Адаптив модального окна "Отзывов" */
+
+@media (max-width: 1030px) {
+
+    .review-modal-author {
+        font-size: 26px;
+    }
+
+    .review-modal-text {
+        font-size: 16px;
+        max-width: 571px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 750px) {
+    .modal-content-review {
+        padding: 20px;
+    }
+
+    .review-card-modal {
+        padding: 20px 0px 20px 20px;
+    }
+
+    .review-modal-text {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 440px) {
+    .review-card-modal {
+        padding: 20px 0px 20px 20px;
+    }
+
+    .review-modal-text {
+        padding-right: 15px;
+    }
+
+     .review-modal-author {
+        font-size: 24px;
+    }
+}
+
