@@ -427,7 +427,7 @@ body.no-scroll {
 
 @media (max-width: 730px) {
     .main-hero {
-        min-height: 500px;
+        min-height: 508px;
     }
 
     .hero-left-side h1 {
@@ -466,6 +466,10 @@ body.no-scroll {
 
   .hero-bg-3 {
     object-position: 20% top;
+  }
+
+  .invite-link-mobile {
+    max-width: 100%;
   }
 }
 
