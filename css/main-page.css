@@ -199,7 +199,8 @@ body.no-scroll {
   align-items: flex-end;
 }
 
-.hero-left-side h1 {
+.hero-left-side h1,
+.hero-left-side h2 {
   font-family: 'Future New Light', sans-serif;
   font-size: clamp(42px, 6vw, 110px);
   line-height: 90%;
@@ -417,13 +418,15 @@ body.no-scroll {
         min-height: 900px;
     }
 
-    .hero-left-side h1 {
+    .hero-left-side h1,
+    .hero-left-side h2 {
         font-size: 60px;
     }
 }
 
 @media (max-width: 870px) {
-    .hero-left-side h1 {
+    .hero-left-side h1,
+    .hero-left-side h2 {
         font-size: 50px;
     }
 }
@@ -433,7 +436,8 @@ body.no-scroll {
         min-height: 508px;
     }
 
-    .hero-left-side h1 {
+    .hero-left-side h1,
+    .hero-left-side h2 {
         font-size: 42px;
     }
 
