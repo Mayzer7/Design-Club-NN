@@ -5,10 +5,6 @@ window.addEventListener("load", () => {
   preloader.classList.add("hidden");
 });
 
-
-
-
-
 // Общие скрипты для всех страниц (снизу будут под отдельные страницы)
 const bodyCont = document.querySelector('body');
 
@@ -2122,10 +2118,12 @@ if (categoriesSection) {
 
 // Скрипты для контента на странице "product-page.html"
 
+let productSwiper;
+
 const productSwiperContainer = document.querySelector('.product-swiper');
 
 if (productSwiperContainer) {
-  const productSwiper = new Swiper('.product-swiper', {
+  productSwiper = new Swiper('.product-swiper', {
     slidesPerView: 'auto',
     spaceBetween: 20, // Значение по умолчанию
     loop: false,
@@ -2175,50 +2173,59 @@ if (imagesMobileSwiper) {
 }
 
 
-// // Создание нового Swiper в модалке
-// let modalSwiper;
+// Создание нового Swiper в модалке
+let modalSwiper;
 
-// function initModalSwiper(startIndex = 0) {
-//   if (modalSwiper) modalSwiper.destroy(true, true); // если уже был — удалить
+function initModalSwiper(startIndex = 0) {
+  if (modalSwiper) modalSwiper.destroy(true, true);
 
-//   modalSwiper = new Swiper('.modal-product-swiper', {
-//     slidesPerView: 3,
-//     slidesPerGroup: 1,
-//     centeredSlides: true,
-//     spaceBetween: 50,
-//     loop: true,
-//     initialSlide: startIndex,
-//     speed: 800,
-//   });
-// }
+  setTimeout(() => {
+    modalSwiper = new Swiper('.modal-product-swiper', {
+      slidesPerView: 3,
+      centeredSlides: true,
+      spaceBetween: 50,
+      loop: true,
+      initialSlide: startIndex,
+      speed: 800,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  }, 100); // даём время модалке "показаться"
+}
 
-// // Открытие модалки при клике на изображение
-// document.querySelectorAll('.product-swiper-slide img').forEach((img, index) => {
-//   img.addEventListener('click', () => {
-//     const modal = document.getElementById('modal-product');
-//     modal.classList.add('show');
-//     productSwiper.autoplay.stop();
-//     document.body.classList.add('modal-open');
+// Открытие модалки при клике на изображение
+document.querySelectorAll('.product-swiper-slide img').forEach((img, index) => {
+  img.addEventListener('click', () => {
+    const modal = document.getElementById('modal-product');
 
-//     // инициализируем модал-свайпер с нужного слайда
-//     initModalSwiper(index);
-//   });
-// });
+    // 1) Показываем модалку
+    modal.classList.add('show');
+    document.body.classList.add('modal-open');
 
-// // Закрытие модалки
-// function closeModal() {
-//   const modal = document.getElementById('modal-product');
-//   modal.classList.remove('show');
+    // 2) Ждём, пока браузер отрисует (можно 0 мс + requestAnimationFrame)
+    requestAnimationFrame(() => {
+      // 3) Только после этого инициализируем Swiper
+      initModalSwiper(index);
+    });
+  });
+}); 
 
-//   // Возобновление autoplay при закрытии
-//   productSwiper.autoplay.start();
-// }
+// Закрытие модалки
+function closeModal() {
+  const modal = document.getElementById('modal-product');
+  modal.classList.remove('show');
 
-// // Крестик
-// document.querySelector('.modal-product-close').addEventListener('click', closeModal);
+  // Возобновление autoplay при закрытии
+  productSwiper.autoplay.start();
+}
 
-// // Клик по фону
-// document.querySelector('.modal-product-overlay').addEventListener('click', closeModal);
+// Крестик
+document.querySelector('.modal-product-close').addEventListener('click', closeModal);
+
+// Клик по фону
+document.querySelector('.modal-product-overlay').addEventListener('click', closeModal);
 
 
 
