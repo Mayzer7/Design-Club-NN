@@ -1616,44 +1616,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /*** ФУНКЦИЯ: показываем десктопный слайд i ***/
   function showSlideDesktop(i) {
-    images[current].classList.remove('active');
-    contents[current].classList.remove('active');
-    images[i].classList.add('active');
-    contents[i].classList.add('active');
-  }
+      images[current].classList.remove('active');
+      contents[current].classList.remove('active');
+      images[i].classList.add('active');
+      contents[i].classList.add('active');
+    }
 
-  /*** ФУНКЦИЯ: показываем мобильный слайд i ***/
-  function showSlideMobile(i) {
-  // 1) Снимаем active со старого и ставим для нового
-  mobContents[current].classList.remove('active');
-  mobContents[i].classList.add('active');
+    /*** ФУНКЦИЯ: показываем мобильный слайд i ***/
+    function showSlideMobile(i) {
+    // 1) Снимаем active со старого и ставим для нового
+    mobContents[current].classList.remove('active');
+    mobContents[i].classList.add('active');
 
-  if (window.innerWidth <= 1000) {
-    const parentMobile = mobContents[i];
-    const thumbContainer = parentMobile.querySelector('.mobile-miniatures');
-    if (!thumbContainer) return;
+    if (window.innerWidth <= 1000) {
+      const parentMobile = mobContents[i];
+      const thumbContainer = parentMobile.querySelector('.mobile-miniatures');
+      if (!thumbContainer) return;
 
-    const btn = thumbContainer.querySelector(`button[data-index="${i}"]`);
-    if (!btn) return;
+      const btn = thumbContainer.querySelector(`button[data-index="${i}"]`);
+      if (!btn) return;
 
-    // 2) Если первая миниатюра, просто сбрасываем scrollTop в 0
-    if (i === 0) {
-      // напрямую, без плавной анимации
-      thumbContainer.scrollTop = 0;
-    } else {
-      // 3) Для остальных: берём offsetTop кнопки,
-      // но не даём «top» превысить возможную прокрутку
-      const offsetTopRelative = btn.offsetTop;
-      const maxScroll = thumbContainer.scrollHeight - thumbContainer.clientHeight;
-      const targetScroll = Math.min(offsetTopRelative, maxScroll);
+      // 2) Если первая миниатюра, просто сбрасываем scrollTop в 0
+      if (i === 0) {
+        // напрямую, без плавной анимации
+        thumbContainer.scrollTop = 0;
+      } else {
+        // 3) Для остальных: берём offsetTop кнопки,
+        // но не даём «top» превысить возможную прокрутку
+        const offsetTopRelative = btn.offsetTop;
+        const maxScroll = thumbContainer.scrollHeight - thumbContainer.clientHeight;
+        const targetScroll = Math.min(offsetTopRelative, maxScroll);
 
-      thumbContainer.scrollTo({
-        top: targetScroll,
-        behavior: 'smooth'
-      });
+        thumbContainer.scrollTo({
+          top: targetScroll,
+          behavior: 'auto'
+        });
+      }
     }
   }
-}
 
   /*** ФУНКЦИЯ: переключение на слайд i (десктоп + мобилка) ***/
   function showSlide(i) {
