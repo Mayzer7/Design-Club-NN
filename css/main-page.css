@@ -109,10 +109,10 @@ body.no-scroll {
 }
 
 
-/* Главный экран */
+/* ===== Существующие стили (не трогаем) ===== */
 
 .main-hero-container {
-    min-height: 100%;
+  min-height: 100%;
 }
 
 .main-hero {
@@ -151,85 +151,131 @@ body.no-scroll {
 
 .hero-bg-2,
 .hero-bg-3 {
-    filter: brightness(80%);
+  filter: brightness(80%);
 }
 
 .hero-content {
   position: absolute;
   bottom: 0;
   left: 0;
-  z-index: 2;
-  padding: clamp(16px, 2vw, 40px) clamp(12px, 4vw, 20px);
   width: 100%;
+  padding: clamp(16px, 2vw, 40px) clamp(12px, 4vw, 20px);
   box-sizing: border-box;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hero-content.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 3;
 }
 
 .hero-content-first-line {
-    display: flex;
-    align-items: center;
-    margin-bottom: 27px;
-
+  display: flex;
+  align-items: center;
+  margin-bottom: 27px;
 }
 
 .invite-left {
-    white-space: nowrap;
+  white-space: nowrap;
 }
 
-.invite-right { 
-    width: 100%;
-    padding-left: 21vw;
+.invite-right {
+  width: 100%;
+  padding-left: 21vw;
 }
 
 .invite-right h4 {
-    font-size: clamp(18px, 2vw, 32px);
-    margin-bottom: 20px;
+  font-size: clamp(18px, 2vw, 32px);
+  margin-bottom: 20px;
 }
 
 .hero-content-second-line {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 .hero-left-side h1 {
-    font-family: 'Future New Light', sans-serif;
-    font-size: clamp(42px, 6vw, 110px);
-    line-height: 90%;
-    font-weight: 300;
-    text-transform: uppercase;
+  font-family: 'Future New Light', sans-serif;
+  font-size: clamp(42px, 6vw, 110px);
+  line-height: 90%;
+  font-weight: 300;
+  text-transform: uppercase;
 }
 
 .hero-right-side {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    position: absolute;
-    bottom: clamp(20px, 5vw, 30px);
-    right: clamp(10px, 3vw, 20px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute;
+  bottom: clamp(20px, 5vw, 30px);
+  right: clamp(10px, 3vw, 20px);
+
+  /* Убедитесь, что тут нет overflow: hidden; */
+  overflow: visible; 
 }
 
 .hero-right-side img {
-    width: 76px;
-    height: 75px;
+  width: 76px;
+  height: 75px;
 }
 
+/* Кнопка-обёртка миниатюры */
 .hero-right-side button {
-    border: none;
-    padding: 0;
-    margin: 0;
-    background: none;
-    cursor: pointer;
-    transition: transform 0.3s ease;
+  position: relative;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  
+  /* «Запас» снизу для прогресс-бара мы оставлять не будем — теперь он внутри картинки */
+  padding-bottom: 5px;
+  overflow: visible;
 }
 
 .hero-right-side button:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
-/* Мобильная версия главного экрана */
+/* Сам прогресс-бар, перекрывающий нижнюю часть миниатюры */
+.progress-bar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 0%;               /* по умолчанию 0% */
+  background-color: #EDE4D7;
+  
+  /* Чтобы анимация шла плавно, переход будет задаваться через JS */
+  transition: none;
+  
+  /* Над картинкой, но под курсором кнопки */
+  z-index: 2;
+}
 
+/* Класс, который «запускает» анимацию от 0% до 100% */
+.progress-bar.fill {
+  animation: progressAnim 3s linear forwards;
+}
+
+@keyframes progressAnim {
+  from { width: 0%; }
+  to   { width: 97%; }
+}
+/* ===== Стили для мобильной версии (оставляем как есть) ===== */
+
+/* === ДОБАВЛЕНО: по умолчанию скрываем мобильный блок === */
 .hero-content-mobile {
-    display: none;
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease-in-out;
   position: absolute;
   bottom: -220px;
   left: 0;
@@ -239,52 +285,112 @@ body.no-scroll {
   box-sizing: border-box;
 }
 
+/* Класс активного мобильного слайда (будет работать только при display: block) */
+.hero-content-mobile.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Контейнер миниатюр (колонка) */
 .mobile-miniatures {
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  max-width: 68px;
+  width: 100%;
+
+  overflow-y: auto;
+  max-height: 150px;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.mobile-miniatures::-webkit-scrollbar {
+  display: none;
+}
+
+/* Кнопка-миниатюра для мобилки */
+.mobile-thumb {
+  position: relative;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  /* Оставляем небольшую «подушку» внизу для прогресс-бара */
+  padding-bottom: 5px;
+  overflow: visible;
+}
+
+.mobile-thumb:hover {
+  transform: scale(1.05);
 }
 
 .invite-left-mobile {
-    padding-top: 20px;
-    padding-bottom: 33px;
+  padding-top: 20px;
+  padding-bottom: 33px;
 }
 
 .invite-link-mobile {
-    margin-bottom: 25px;
-    font-size: 18px;
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px; 
-    text-align: center;
-    padding: 20px 20px;
-    background-color: #AE9877;
-    cursor: pointer;
-    border: none;
-    color: #fff;
-    transition: all 0.3s ease;
-    width: 60%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    max-width: 310px;
-    max-height: 56px;
-    height: 100%;
-    width: 100%;
-    text-transform: uppercase;
+  margin-bottom: 25px;
+  font-size: 18px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px; 
+  text-align: center;
+  padding: 20px 20px;
+  background-color: #AE9877;
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  transition: all 0.3s ease;
+  width: 60%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 310px;
+  max-height: 56px;
+  height: 100%;
+  width: 100%;
+  text-transform: uppercase;
 }
 
 .mobile-miniatures img {
-    width: 66px;
-    height: 66px;
+  width: 66px;
+  height: 66px;
 }
 
 .mobile-up p {
-    padding-top: 0px;
-    padding-bottom: 20px;
-    font-size: 20px;
+  padding-top: 0px;
+  padding-bottom: 20px;
+  font-size: 20px;
 }
+
+/* Прогресс-бар для мобильных миниатюр */
+.progress-bar-mobile {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 0%;
+  background-color: #EDE4D7;
+  transition: none; /* анимация задаётся через JS */
+  z-index: 2;
+}
+
+/* Анимация заполнения мобильного прогресс-бара */
+.progress-bar-mobile.fill {
+  animation: progressAnimMobile 3s linear forwards;
+}
+
+@keyframes progressAnimMobile {
+  from { width: 0%; }
+  to   { width: 97%; }
+}
+
 
 /* Адаптив главного экрана */
 
@@ -299,6 +405,7 @@ body.no-scroll {
         display: none;
     }
 
+    /* Показываем мобильный блок */
     .hero-content-mobile {
         display: block;
     }

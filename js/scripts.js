@@ -1529,25 +1529,169 @@ if (modalVideo) {
 
 // Скрипты для контента на странице "main-page.html"
 
+const heroContent1 = document.querySelector('.hero-content-1');
+
+if (heroContent1) {
+  
 // Переключение изображений каждые 3 секунды
+// Переключение изображений каждые 3 секунды (десктоп + мобилка)
+document.addEventListener('DOMContentLoaded', () => {
+  // Десктопные элементы:
+  const images       = document.querySelectorAll('.hero-bg');
+  const contents     = document.querySelectorAll('.hero-content');
+  const allProgress  = document.querySelectorAll('.hero-content .progress-bar');
+  const deskButtons  = document.querySelectorAll('.hero-content .hero-right-side button');
 
-const images = document.querySelectorAll('.hero-bg');
+  // Мобильные элементы:
+  const mobContents      = [
+    document.querySelector('.hero-content-mobile-1'),
+    document.querySelector('.hero-content-mobile-2'),
+    document.querySelector('.hero-content-mobile-3')
+  ];
+  // Получим все мобильные кнопки сразу – querySelectorAll даёт коллекцию из 9 кнопок, 
+  // но далее мы будем опираться на data-index каждого:
+  const mobThumbButtons  = document.querySelectorAll('.hero-content-mobile .mobile-thumb');
+  const allMobProgress   = document.querySelectorAll('.hero-content-mobile .progress-bar-mobile');
 
-if (images) {
+  const slideCount       = images.length; // Должно быть 3
+  const SWITCH_INTERVAL  = 3000;          // 3 секунды
   let current = 0;
+  let intervalId = null;
 
-    // При необходимости заменяем первый слайд на мобильный вариант
-    const screenWidth = window.innerWidth;
-    if (screenWidth <= 1030) {
-        images[0].src = 'images/main-page/bg-1030.webp';
+  // Условие подмены первого фона, если экран <= 1030px
+  if (window.innerWidth <= 1030 && images[0]) {
+    images[0].src = 'images/main-page/bg-1030.webp';
+  }
+
+  /*** ФУНКЦИЯ: сброс всех прогресс-баров (десктопные + мобильные) ***/
+  function resetAllProgressBars() {
+    // Десктоп
+    allProgress.forEach(pb => {
+      pb.classList.remove('fill');
+      pb.style.transition = 'none';
+      pb.style.width = '0';
+    });
+    // Мобилка
+    allMobProgress.forEach(pb => {
+      pb.classList.remove('fill');
+      pb.style.transition = 'none';
+      pb.style.width = '0';
+    });
+  }
+
+  /*** ФУНКЦИЯ: запускаем прогресс-бар у десктопной кнопки с индексом idx ***/
+  function startProgressBarDesktop(idx) {
+    resetAllProgressBars(); // сбрасываем прежде чем запустить любую
+    const activeContent = contents[idx];
+    const btn = activeContent.querySelector(`button[data-index="${idx}"]`);
+    const bar = btn ? btn.querySelector('.progress-bar') : null;
+    if (bar) {
+      requestAnimationFrame(() => {
+        bar.style.transition = `width ${SWITCH_INTERVAL / 1000}s linear`;
+        bar.classList.add('fill');
+      });
     }
+  }
 
-    setInterval(() => {
-        images[current].classList.remove('active');
-        current = (current + 1) % images.length;
-        images[current].classList.add('active');
-    }, 3000);
+  /*** ФУНКЦИЯ: запускаем прогресс-бар у мобильной кнопки с индексом idx ***/
+  function startProgressBarMobile(idx) {
+    // Снова сбросили все (чтобы десктоп и мобилка синхронизировались).
+    // Чтобы не «дёргало», лучше всё-reset, а потом включаем только нужные:
+    const wantedBtns = Array.from(mobThumbButtons).filter(b => {
+      return Number(b.getAttribute('data-index')) === idx;
+    });
+    if (wantedBtns.length === 0) return;
+    // Так как таких кнопок будет ровно 3 (по одной в каждом мобильном слайде),
+    // то мы должны выбрать лишь ту, что внутри активного mobContents[idx].
+    const parentMobile = mobContents[idx];
+    const btn = parentMobile.querySelector(`button[data-index="${idx}"]`);
+    const bar = btn ? btn.querySelector('.progress-bar-mobile') : null;
+    if (bar) {
+      requestAnimationFrame(() => {
+        bar.style.transition = `width ${SWITCH_INTERVAL / 1000}s linear`;
+        bar.classList.add('fill');
+      });
+    }
+  }
 
+  /*** ФУНКЦИЯ: показываем десктопный слайд i ***/
+  function showSlideDesktop(i) {
+    images[current].classList.remove('active');
+    contents[current].classList.remove('active');
+    images[i].classList.add('active');
+    contents[i].classList.add('active');
+  }
+
+  /*** ФУНКЦИЯ: показываем мобильный слайд i ***/
+  function showSlideMobile(i) {
+    // Убираем active со старого
+    mobContents[current].classList.remove('active');
+    // Добавляем active новому
+    mobContents[i].classList.add('active');
+  }
+
+  /*** ФУНКЦИЯ: переключение на слайд i (десктоп + мобилка) ***/
+  function showSlide(i) {
+    if (i === current) return;
+    // Скрываем предыдущий десктоп
+    showSlideDesktop(i);
+    // Скрываем предыдущий мобильный
+    showSlideMobile(i);
+    current = i;
+  }
+
+  /*** ФУНКЦИЯ: следующий слайд по кругу ***/
+  function nextSlide() {
+    const next = (current + 1) % slideCount;
+    showSlide(next);
+    // Запускаем прогресс-бары у десктопа и мобилки
+    startProgressBarDesktop(next);
+    startProgressBarMobile(next);
+  }
+
+  /*** ФУНКЦИЯ: запускаем автопрокрутку ***/
+  function startAutoSwitch() {
+    if (intervalId) {
+      clearInterval(intervalId);
+    }
+    // Сразу запустить прогресс-бары для текущего a.k.a. 0
+    startProgressBarDesktop(current);
+    startProgressBarMobile(current);
+
+    intervalId = setInterval(nextSlide, SWITCH_INTERVAL);
+  }
+
+  /*** ОБРАБОТЧИКИ КЛИКА НА ДЕСКТОПНЫЕ КНОПКИ ***/
+  deskButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = parseInt(btn.getAttribute('data-index'), 10);
+      if (!isNaN(idx) && idx !== current) {
+        showSlide(idx);
+        startProgressBarDesktop(idx);
+        startProgressBarMobile(idx);
+        startAutoSwitch();
+      }
+    });
+  });
+
+  /*** ОБРАБОТЧИКИ КЛИКА НА МОБИЛЬНЫЕ КНОПКИ ***/
+  mobThumbButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = parseInt(btn.getAttribute('data-index'), 10);
+      if (!isNaN(idx) && idx !== current) {
+        showSlide(idx);
+        startProgressBarDesktop(idx);
+        startProgressBarMobile(idx);
+        startAutoSwitch();
+      }
+    });
+  });
+
+  // Инициируем: показываем первый слайд и запускаем автопрокрутку
+  showSlideDesktop(0);
+  showSlideMobile(0);
+  startAutoSwitch();
+});
 
 }
 
