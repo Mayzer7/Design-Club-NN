@@ -1,3 +1,10 @@
+/* Прелоадер — фоновый экран */
+
+window.addEventListener("load", () => {
+  const preloader = document.getElementById("preloader");
+  preloader.classList.add("hidden");
+});
+
 // Общие скрипты для всех страниц (снизу будут под отдельные страницы)
 const bodyCont = document.querySelector('body');
 
