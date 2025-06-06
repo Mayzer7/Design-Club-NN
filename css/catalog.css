@@ -4701,7 +4701,151 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
 
 
+.cookie-banner {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #151C28;
+    padding: 40px;
+    max-width: 1191px;
+    min-height: 136px;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 9999;
+}
 
+.cookie-banner-text {
+  font-size: 16px;
+  color: #EDE4D7;
+  
+}
+
+.cookie-banner-text span a {
+  color: #AE9877;
+}
+  
+.cookie-link {
+    color: #aaa;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.buttons button {
+  text-transform: uppercase;
+}
+  
+.cookie-btn {
+  padding: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;  
+
+  width: 100%;
+  height: 100%;
+}
+  
+.accept-btn {
+  font-family: 'SF Pro Display';
+  background: #AE9877;
+  color: white;
+  border: none;
+  font-size: 18px; 
+  transition: background-color 0.3s ease;
+}
+
+.accept-btn:hover {
+  background-color: #7f6f5a;
+}
+
+.accept-btn:active {
+  transform: scale(0.98);
+}
+
+.reject-btn  {
+  font-family: 'SF Pro Display';
+  background: transparent;
+  color: white;
+  border: 1px solid #EDE4D7;
+  font-size: 18px; 
+  transition: background-color 0.3s ease;
+}
+
+
+.reject-btn:hover {
+  background-color: #AE9877; 
+}
+
+.reject-btn:active {
+  transform: scale(0.98);
+}
+
+
+/* Адаптив */
+
+@media (max-width: 1250px) {
+  .cookie-banner {
+    max-width: 1100px;
+  }
+
+
+  .visible-svg {
+    display: none;
+  }
+
+  .cookie-btn {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1150px) {
+  .cookie-banner {
+    max-width: 953px;
+  }
+
+  .cookie-banner-text {
+    font-size: 14px;
+  }
+
+}
+
+@media (max-width: 990px) {
+    .cookie-banner {
+      flex-direction: column;
+      padding: 30px;
+    }
+
+    .cookie-banner-text {
+      margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 650px) {
+    .cookie-banner {
+      padding: 15px;
+    }
+
+    .buttons {
+      gap: 10px;
+    }
+
+    .cookie-btn {
+      font-size: 16px;
+    }
+}
+
+@media (max-width: 338px) {
+  .buttons {
+    flex-direction: column;
+  }
+}
 
 
 

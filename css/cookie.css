@@ -28,12 +28,12 @@
     color: #aaa;
 }
 
-.buttons {
+.buttons-cookie {
   display: flex;
   gap: 20px;
 }
 
-.buttons button {
+.buttons-cookie button {
   text-transform: uppercase;
 }
   
