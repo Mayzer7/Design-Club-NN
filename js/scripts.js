@@ -2116,141 +2116,147 @@ if (categoriesSection) {
 
 
 
+
 // Скрипты для контента на странице "product-page.html"
 
-let productSwiper;
-let imagesMobileSwiper;
-let modalSwiper;
+let modalProductSwiper;
+let modalProductImagesMobileSwiper;
+let modalProductMainSwiper;
 
-const modal = document.getElementById('modal-product');
-const swiperInstances = []; 
+const modalProduct = document.getElementById('modal-product');
+const modalProductSwiperInstances = []; 
 
-// Инициализация product-swiper
-const productSwiperContainer = document.querySelector('.product-swiper');
-if (productSwiperContainer) {
-  productSwiper = new Swiper('.product-swiper', {
-    slidesPerView: 'auto',
-    spaceBetween: 20,
-    loop: false,
-    speed: 500,
-    autoplay: {
-      delay: 2500,
-      disableOnInteraction: false,
-    },
-    breakpoints: {
-      0: {
-        spaceBetween: 10
+if (modalProduct) {
+    
+  // Инициализация product-swiper
+  const modalProductMainSwiperContainer = document.querySelector('.product-swiper');
+  if (modalProductMainSwiperContainer) {
+    modalProductMainSwiper = new Swiper('.product-swiper', {
+      slidesPerView: 'auto',
+      spaceBetween: 20,
+      loop: false,
+      effect: 'slide',
+      speed: 500,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
       },
-      1411: {
-        spaceBetween: 20
-      }
-    },
-    on: {
-      reachEnd: function () {
-        this.autoplay.stop();
-        setTimeout(() => {
-          this.slideTo(0);
-          this.autoplay.start();
-        }, 1000);
-      }
-    }
-  });
-  swiperInstances.push(productSwiper);
-}
-
-// Инициализация images-mobile.swiper
-const imagesMobileSwiperContainer = document.querySelector('.images-mobile.swiper');
-if (imagesMobileSwiperContainer) {
-  imagesMobileSwiper = new Swiper('.images-mobile.swiper', {
-    slidesPerView: 'auto',
-    slidesPerGroup: 1,
-    initialSlide: 1,
-    spaceBetween: 10,
-    centeredSlides: false,
-    loop: true,
-    autoplay: {
-      delay: 2500,
-      disableOnInteraction: false,
-    },
-  });
-  swiperInstances.push(imagesMobileSwiper);
-}
-
-// Инициализация modal-product-swiper
-function initModalSwiper(startIndex = 0) {
-  if (modalSwiper) modalSwiper.destroy(true, true);
-
-  setTimeout(() => {
-    modalSwiper = new Swiper('.modal-product-swiper', {
-      loop: true,
-      speed: 800,
-      initialSlide: startIndex,
-      navigation: {
-        prevEl: '.swiper-button-next',
-        nextEl: '.swiper-button-prev',
-      },
-      spaceBetween: 50,
-      centeredSlides: true,
       breakpoints: {
-        0: {
-          slidesPerView: 1,
-          centeredSlides: false,
-          spaceBetween: 20,
-        },
-        646: {
-          slidesPerView: 3,
-          centeredSlides: true,
-          spaceBetween: 50,
-        },
+        0: { spaceBetween: 10 },
+        1411: { spaceBetween: 20 }
       },
+      on: {
+        reachEnd: function () {
+          this.autoplay.stop();
+          setTimeout(() => {
+            this.slideTo(0);
+            this.autoplay.start();
+          }, 1000);
+        }
+      }
     });
-  }, 100);
-}
-
-// функция открытия модалки
-function openModalAt(index) {
-  modal.classList.add('show');
-  document.querySelector('.container').style.filter = 'blur(5px)';
-  document.documentElement.classList.add('no-scroll');
-
-  swiperInstances.forEach(swiper => swiper.autoplay?.stop());
-
-  requestAnimationFrame(() => {
-    initModalSwiper(index);
-  });
-}
-
-// Закрытие модалки
-function closeModal() {
-  modal.classList.remove('show');
-  document.querySelector('.container').style.filter = 'none';
-  document.documentElement.classList.remove('no-scroll');
-
-  if (modalSwiper) {
-    modalSwiper.destroy(true, true);
-    modalSwiper = null;
+    modalProductSwiperInstances.push(modalProductMainSwiper);
   }
 
-  // Запускаем все swiper'ы снова
-  swiperInstances.forEach(swiper => swiper.autoplay?.start());
+  // Инициализация images-mobile.swiper
+  const modalProductImagesMobileSwiperContainer = document.querySelector('.images-mobile.swiper');
+  if (modalProductImagesMobileSwiperContainer) {
+    modalProductImagesMobileSwiper = new Swiper('.images-mobile.swiper', {
+      slidesPerView: 'auto',
+      slidesPerGroup: 1,
+      initialSlide: 1,
+      spaceBetween: 10,
+      centeredSlides: false,
+      loop: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+    });
+    modalProductSwiperInstances.push(modalProductImagesMobileSwiper);
+  }
+
+  // Инициализация modal-product-swiper
+  function initModalProductSwiper(startIndex = 0) {
+    if (modalProductSwiper) modalProductSwiper.destroy(true, true);
+
+    modalProductSwiper = new Swiper('.modal-product-swiper', {
+        loop: true,
+        speed: 800,
+        initialSlide: startIndex,
+        navigation: {
+          prevEl: '.swiper-button-next',
+          nextEl: '.swiper-button-prev',
+        },
+        spaceBetween: 50,
+        centeredSlides: true,
+        breakpoints: {
+          0: {
+            slidesPerView: 1,
+            centeredSlides: false,
+            spaceBetween: 20,
+          },
+          646: {
+            slidesPerView: 3,
+            centeredSlides: true,
+            spaceBetween: 50,
+          },
+        },
+      });
+  }
+
+  let isModalOpen = false;
+  
+  // функция открытия модалки
+  function openModalProductAt(index) {
+    if (isModalOpen) return;
+    isModalOpen = true;
+
+    modalProduct.classList.add('show');
+    document.querySelector('.container').style.filter = 'blur(5px)';
+    document.documentElement.classList.add('no-scroll');
+
+    modalProductSwiperInstances.forEach(swiper => swiper.autoplay?.stop());
+
+    requestAnimationFrame(() => {
+      initModalProductSwiper(index);
+    });
+  }
+
+  // Закрытие модалки
+  function closeModalProduct() {
+  modalProduct.classList.remove('show');
+  document.querySelector('.container').style.filter = 'none';
+  document.documentElement.classList.remove('no-scroll');
+  isModalOpen = false;
+
+  setTimeout(() => {
+    if (modalProductSwiper) {
+      modalProductSwiper.destroy(true, true);
+      modalProductSwiper = null;
+    }
+  }, 400); // соответствует CSS transition
+  modalProductSwiperInstances.forEach(swiper => swiper.autoplay?.start());
 }
 
-// Обработчик закрытия модалки
-document.querySelector('.close-product-modal').addEventListener('click', closeModal);
+  // Обработчик закрытия модалки
+  document.querySelector('.close-product-modal').addEventListener('click', closeModalProduct);
 
-// Картинки десктопного swiper
-document.querySelectorAll('.product-swiper-slide img').forEach((img, index) => {
-  img.addEventListener('click', () => {
-    openModalAt(index);
+  // Картинки десктопного swiper
+  document.querySelectorAll('.product-swiper-slide img').forEach((img, index) => {
+    img.addEventListener('click', () => {
+      openModalProductAt(index);
+    });
   });
-});
 
-// Картинки мобильного swiper
-document.querySelectorAll('.product-images.images-mobile .swiper-slide img').forEach((img, index) => {
-  img.addEventListener('click', () => {
-    openModalAt(index);
+  // Картинки мобильного swiper
+  document.querySelectorAll('.product-images.images-mobile .swiper-slide img').forEach((img, index) => {
+    img.addEventListener('click', () => {
+      openModalProductAt(index);
+    });
   });
-});
+
+}
 
 
 // Добавление товара в корзину

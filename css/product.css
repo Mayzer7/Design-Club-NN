@@ -1348,6 +1348,15 @@ nav ul ul.open + svg {
   pointer-events: auto;
 }
 
+.modal-product.show .modal-product-content {
+  animation: fadeInModal 0.4s ease forwards;
+}
+
+@keyframes fadeInModal {
+  from { transform: scale(0.95); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
 /* .modal-product-overlay {
   position: absolute;
   width: 100%;
@@ -1396,6 +1405,11 @@ nav ul ul.open + svg {
     border: none;
     background-color: transparent;
     padding: 0;
+}
+
+.modal-product-swiper.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .modal-product .modal-product-swiper {
@@ -2405,6 +2419,7 @@ nav ul ul.open + svg {
   height: auto;
   object-fit: cover;
   display: block;
+  aspect-ratio: 1 / 1;
 }
 
 .product-mobile-info {
