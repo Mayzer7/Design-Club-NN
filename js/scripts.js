@@ -2525,9 +2525,7 @@ if (projectsSection) {
   window.addEventListener('DOMContentLoaded', () => {
     if (window.location.hash) {
       isInitialHashScroll = true;
-      // сначала даём браузеру открутить на элемент...
       setTimeout(() => {
-        // ...а потом подвинем ровно на HEADER_OFFSET
         adjustHashScroll();
         isInitialHashScroll = false;
       }, 0);
@@ -2568,6 +2566,16 @@ if (projectsSection) {
         isScrollingProgrammatically = false;
       }, 600);
     });
+  });
+
+  // Свайп навигации проектов
+
+  const swiper = new Swiper('.projects-navigation', {
+    slidesPerView: 'auto',       
+    spaceBetween: 10,            
+    freeMode: true,              
+    loop: false,                  
+    grabCursor: true,            
   });
 }
 
