@@ -2680,114 +2680,116 @@
 
         <!-- Всплывающие меню фильтров -->
         <div class="filter-menu">
-            <button class="close-filters">
-                <svg width="32" height="4" viewBox="0 0 32 4" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="32" height="4" rx="2" fill="#79747E"/>
-                </svg>
+            <div class="filter-menu-content">
+                <button class="close-filters">
+                    <svg width="32" height="4" viewBox="0 0 32 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="32" height="4" rx="2" fill="#79747E"/>
+                    </svg>
 
-            </button>
+                </button>
 
-            <h2>ФИЛЬТРЫ</h2>
-            
-            <div class="filters-container">
-                <div class="filter-group">
-                    <label>Цена</label>
-                    <div class="price-input">
-                        <div class="price-input-left">
-                            <p>от</p>
+                <h2>ФИЛЬТРЫ</h2>
+                
+                <div class="filters-container">
+                    <div class="filter-group">
+                        <label>Цена</label>
+                        <div class="price-input">
+                            <div class="price-input-left">
+                                <p>от</p>
 
-                            <input type="number" value="3500"/>
+                                <input type="number" value="3500"/>
+                            </div>
+
+                            <div class="price-input-right">
+                                <p>до</p>
+
+                                <input type="number" />
+                            </div>
                         </div>
+                    </div>
 
-                        <div class="price-input-right">
-                            <p>до</p>
+                    <div class="filter-section">
+                        <p class="color">Цвет</p>
+                                                        
+                        <label class="radio-label">
+                            <input type="radio" name="color" checked />
+                                белый
+                        </label>
+                
+                        <label class="radio-label">
+                            <input type="radio" name="color" checked />
+                                серый
+                        </label>
+                
+                        <label class="radio-label">
+                            <input type="radio" name="color" checked />
+                                чёрный
+                        </label>
+                    </div>
 
-                            <input type="number" />
-                        </div>
+                    <div class="filter-section">
+                        <p class="color">Бренд</p>
+                        
+                        <label>
+                            <input type="checkbox" />
+                            <span class="checkbox-custom"></span> WasserKRAFT
+                        </label>
+                                                        
+                        <label>
+                            <input type="checkbox" checked />
+                            <span class="checkbox-custom"></span> Grossman
+                        </label>
+
+                        <label>
+                            <input type="checkbox" />
+                            <span class="checkbox-custom"></span> Grossman
+                        </label>
+
+                        <label>
+                            <input type="checkbox" checked />
+                            <span class="checkbox-custom"></span> WasserKRAFT
+                        </label>
+
+                        <label>
+                            <input type="checkbox" />
+                            <span class="checkbox-custom"></span> Grossman
+                        </label>
+                    </div>
+
+                    <div class="filter-section">
+                        <p class="color">Бренд</p>
+                        
+                        <label>
+                            <input type="checkbox" />
+                            <span class="checkbox-custom"></span> WasserKRAFT
+                        </label>
+                                                        
+                        <label>
+                            <input type="checkbox" checked />
+                            <span class="checkbox-custom"></span> Grossman
+                        </label>
+
+                        <label>
+                            <input type="checkbox" />
+                            <span class="checkbox-custom"></span> Grossman
+                        </label>
+
+                        <label>
+                            <input type="checkbox" checked />
+                            <span class="checkbox-custom"></span> WasserKRAFT
+                        </label>
+
+                        <label>
+                            <input type="checkbox" />
+                            <span class="checkbox-custom"></span> Grossman
+                        </label>
                     </div>
                 </div>
 
-                <div class="filter-section">
-                    <p class="color">Цвет</p>
-                                                    
-                    <label class="radio-label">
-                        <input type="radio" name="color" checked />
-                            белый
-                    </label>
-            
-                    <label class="radio-label">
-                        <input type="radio" name="color" checked />
-                            серый
-                    </label>
-            
-                    <label class="radio-label">
-                        <input type="radio" name="color" checked />
-                            чёрный
-                    </label>
+                <div class="filter-mobile-menu-buttons">
+                    <button class="reset-filters-btn">Сбросить </button>
+                    <button class="apply-filters-btn">Показать (29)</button>
                 </div>
-
-                <div class="filter-section">
-                    <p class="color">Бренд</p>
-                    
-                    <label>
-                        <input type="checkbox" />
-                        <span class="checkbox-custom"></span> WasserKRAFT
-                    </label>
-                                                    
-                    <label>
-                        <input type="checkbox" checked />
-                        <span class="checkbox-custom"></span> Grossman
-                    </label>
-
-                    <label>
-                        <input type="checkbox" />
-                        <span class="checkbox-custom"></span> Grossman
-                    </label>
-
-                    <label>
-                        <input type="checkbox" checked />
-                        <span class="checkbox-custom"></span> WasserKRAFT
-                    </label>
-
-                    <label>
-                        <input type="checkbox" />
-                        <span class="checkbox-custom"></span> Grossman
-                    </label>
-                </div>
-
-                <div class="filter-section">
-                    <p class="color">Бренд</p>
-                    
-                    <label>
-                        <input type="checkbox" />
-                        <span class="checkbox-custom"></span> WasserKRAFT
-                    </label>
-                                                    
-                    <label>
-                        <input type="checkbox" checked />
-                        <span class="checkbox-custom"></span> Grossman
-                    </label>
-
-                    <label>
-                        <input type="checkbox" />
-                        <span class="checkbox-custom"></span> Grossman
-                    </label>
-
-                    <label>
-                        <input type="checkbox" checked />
-                        <span class="checkbox-custom"></span> WasserKRAFT
-                    </label>
-
-                    <label>
-                        <input type="checkbox" />
-                        <span class="checkbox-custom"></span> Grossman
-                    </label>
-                </div>
-            </div>
-
-            <div class="filter-mobile-menu-buttons">
-                <button class="reset-filters-btn">Сбросить </button>
-                <button class="apply-filters-btn">Показать (29)</button>
             </div>
         </div>
 
