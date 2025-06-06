@@ -1950,6 +1950,10 @@ nav ul ul.open + svg {
         padding-left: 0%;
     }
 
+    .projects-navigation .swiper-wrapper .swiper-slide.projects-nav {
+        padding: 12px 20px;
+    }
+
     .sticky-nav {
         padding: 5px 0px;
         padding-bottom: 75px;
