@@ -1321,17 +1321,6 @@ nav ul ul.open + svg {
     }
 }
 
-img {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none;   /* Chrome/Safari/Opera */
-  -khtml-user-select: none;    /* Konqueror */
-  -moz-user-select: none;      /* Firefox */
-  -ms-user-select: none;       /* Internet Explorer/Edge */
-  user-select: none;
-
- /* запрет любых взаимодействий */
-}
-
 
 /* Секция Товара */
 
@@ -1344,82 +1333,90 @@ img {
   width: 100%;
   height: 100%;
   background: rgba(0,0,0,0.8);
-  display: none;
   justify-content: center;
   align-items: center;
   z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
 .modal-product.show {
-  display: flex;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
-.modal-product-overlay {
+/* .modal-product-overlay {
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0; left: 0;
   z-index: 1;
-}
+} */
 
-
-
-.modal-product {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.8);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-.modal-product.show {
-  display: flex;
-}
-
-.modal-product-overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0; left: 0;
-  z-index: 1;
-}
 
 .modal-product-content {
+    position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* ... */
-  /* НЕ допускать width: 0; или height: 0; */
   width: 100%;
   height: 100%;
   max-width: 100vw;
   max-height: 100vh;
 }
 
+.close-product-modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin: 40px 20px;
+  padding: 0;
+}
+
+.close-product-modal svg {
+  cursor: pointer; 
+}
+
+.close-product-modal svg path {
+  transition: stroke 0.3s ease;
+}
+
+.close-product-modal:hover svg path {
+  stroke: #AE9877; /* Золотой цвет */
+  stroke-opacity: 1; /* Чтобы убрать полупрозрачность при наведении */
+}
+
+.modal-product-arrows button {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+}
+
 .modal-product .modal-product-swiper {
-position: relative;
-  width: 95vw;       /* или любая фиксированная/относительная ширина */
-  height: auto;      /* высота рассчитывается по содержимому */
-  overflow: visible; /* важное: чтобы увеличенный активный слайд не обрезался */
+    position: relative;
+  width: 95vw;      
+  height: auto;     
+  overflow: visible;
+  cursor: pointer;
     
 
 }
 .modal-product .swiper-wrapper {
-  overflow: visible; /* без этого центрированный слайд может обрезаться */
+  overflow: visible; 
 }
 
-/* 2) Базовые стили для слайдов */
 .modal-product .swiper-slide {
     display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform 0.5s ease; /* плавный переход */
-  z-index: 1;            /* по умолчанию — под активным */
+  transition: transform 0.5s ease; 
+  z-index: 1;          
 }
 
 .modal-product .swiper-slide-active {
@@ -1440,14 +1437,6 @@ position: relative;
     pointer-events: none;
 }
 
-/* 4) Если хотите, чтобы соседние чуть приглушались, можно добавить */
-.modal-product .swiper-slide-next,
-.modal-product .swiper-slide-prev {
-  opacity: 0.8;
-  transition: opacity 0.5s;
-}
-
-/* Убедитесь, что картинки внутри слайда ведут себя корректно */
 .modal-product .swiper-slide img {
   width: 100%;
   width: 236px;
@@ -1456,33 +1445,25 @@ position: relative;
   
 }
 
+.modal-product .modal-product-arrows {
+  position: absolute;
+  bottom: -300px;
+  left: 50%;
+  transform: translateX(-30%);
+  display: flex;
+  gap: 40px;
+  z-index: 10;
+}
+
 .modal-product .swiper-button-prev,
 .modal-product .swiper-button-next {
-  position: absolute;
-  top: 220%;
-  transform: translateY(-50%);
-  z-index: 10;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
   width: 54px;
   height: 33px;
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 
-.modal-product .swiper-button-prev {
-  left: 31%;
-}
-
-.modal-product .swiper-button-next {
-  right: 31%;
-}
-
-/* Повернуть стрелку для кнопки "вперёд" */
-.arrow-rotate {
-  transform: rotate(180deg);
-}
 
 .swiper-button-prev::after,
 .swiper-button-next::after {
@@ -1490,12 +1471,43 @@ position: relative;
   content: none;
 }
 
+/* Адаптив модального окна товара */
+
 @media (max-width: 1550px) {
     .modal-product .swiper-slide-active .slide-inner  {
         transform: scale(2);
     }
+
+    .modal-product .modal-product-arrows {
+        bottom: -200px;
+    }
 }
 
+@media (max-width: 520px) {
+    .modal-product .swiper-slide-active .slide-inner  {
+        transform: scale(1.5);
+    }
+
+    .modal-product .modal-product-arrows {
+        bottom: -120px;
+    }
+}
+
+@media (max-width: 400px) {
+    .modal-product .swiper-slide-active .slide-inner  {
+        transform: scale(1.3);
+    }
+
+    .modal-product .modal-product-arrows {
+        bottom: -80px;
+    }
+
+    .modal-product .swiper-button-prev,
+    .modal-product .swiper-button-next {
+        width: 40px;
+        height: 40px;
+    }
+}
 
 /* Общие стили карточек */
 
@@ -1532,6 +1544,7 @@ position: relative;
 
 .product-swiper {
   width: 100%;
+  cursor: pointer;
 }
 
 .product-swiper-wrapper {

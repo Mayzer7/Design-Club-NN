@@ -2119,13 +2119,18 @@ if (categoriesSection) {
 // Скрипты для контента на странице "product-page.html"
 
 let productSwiper;
+let imagesMobileSwiper;
+let modalSwiper;
 
+const modal = document.getElementById('modal-product');
+const swiperInstances = []; 
+
+// Инициализация product-swiper
 const productSwiperContainer = document.querySelector('.product-swiper');
-
 if (productSwiperContainer) {
   productSwiper = new Swiper('.product-swiper', {
     slidesPerView: 'auto',
-    spaceBetween: 20, // Значение по умолчанию
+    spaceBetween: 20,
     loop: false,
     speed: 500,
     autoplay: {
@@ -2150,84 +2155,102 @@ if (productSwiperContainer) {
       }
     }
   });
+  swiperInstances.push(productSwiper);
 }
 
-
-// Свайп карточек мобильная версиия
-
-const imagesMobileSwiper = document.querySelector('.images-mobile.swiper');
-
-if (imagesMobileSwiper) {
-  new Swiper('.images-mobile.swiper', {
-      slidesPerView: 'auto',
-      slidesPerGroup: 1,
-      initialSlide: 1,
-      spaceBetween: 10,
-      centeredSlides: false,
-      loop: true,
-      autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
-      },
-    });
+// Инициализация images-mobile.swiper
+const imagesMobileSwiperContainer = document.querySelector('.images-mobile.swiper');
+if (imagesMobileSwiperContainer) {
+  imagesMobileSwiper = new Swiper('.images-mobile.swiper', {
+    slidesPerView: 'auto',
+    slidesPerGroup: 1,
+    initialSlide: 1,
+    spaceBetween: 10,
+    centeredSlides: false,
+    loop: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+  });
+  swiperInstances.push(imagesMobileSwiper);
 }
 
-
-// Создание нового Swiper в модалке
-let modalSwiper;
-
+// Инициализация modal-product-swiper
 function initModalSwiper(startIndex = 0) {
   if (modalSwiper) modalSwiper.destroy(true, true);
 
   setTimeout(() => {
     modalSwiper = new Swiper('.modal-product-swiper', {
-      slidesPerView: 3,
-      centeredSlides: true,
-      spaceBetween: 50,
       loop: true,
-      initialSlide: startIndex,
       speed: 800,
+      initialSlide: startIndex,
       navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+        prevEl: '.swiper-button-next',
+        nextEl: '.swiper-button-prev',
+      },
+      spaceBetween: 50,
+      centeredSlides: true,
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+          centeredSlides: false,
+          spaceBetween: 20,
+        },
+        646: {
+          slidesPerView: 3,
+          centeredSlides: true,
+          spaceBetween: 50,
+        },
       },
     });
-  }, 100); // даём время модалке "показаться"
+  }, 100);
 }
 
-// Открытие модалки при клике на изображение
-document.querySelectorAll('.product-swiper-slide img').forEach((img, index) => {
-  img.addEventListener('click', () => {
-    const modal = document.getElementById('modal-product');
+// функция открытия модалки
+function openModalAt(index) {
+  modal.classList.add('show');
+  document.querySelector('.container').style.filter = 'blur(5px)';
+  document.documentElement.classList.add('no-scroll');
 
-    // 1) Показываем модалку
-    modal.classList.add('show');
-    document.body.classList.add('modal-open');
+  swiperInstances.forEach(swiper => swiper.autoplay?.stop());
 
-    // 2) Ждём, пока браузер отрисует (можно 0 мс + requestAnimationFrame)
-    requestAnimationFrame(() => {
-      // 3) Только после этого инициализируем Swiper
-      initModalSwiper(index);
-    });
+  requestAnimationFrame(() => {
+    initModalSwiper(index);
   });
-}); 
+}
 
 // Закрытие модалки
 function closeModal() {
-  const modal = document.getElementById('modal-product');
   modal.classList.remove('show');
+  document.querySelector('.container').style.filter = 'none';
+  document.documentElement.classList.remove('no-scroll');
 
-  // Возобновление autoplay при закрытии
-  productSwiper.autoplay.start();
+  if (modalSwiper) {
+    modalSwiper.destroy(true, true);
+    modalSwiper = null;
+  }
+
+  // Запускаем все swiper'ы снова
+  swiperInstances.forEach(swiper => swiper.autoplay?.start());
 }
 
-// Крестик
-document.querySelector('.modal-product-close').addEventListener('click', closeModal);
+// Обработчик закрытия модалки
+document.querySelector('.close-product-modal').addEventListener('click', closeModal);
 
-// Клик по фону
-document.querySelector('.modal-product-overlay').addEventListener('click', closeModal);
+// Картинки десктопного swiper
+document.querySelectorAll('.product-swiper-slide img').forEach((img, index) => {
+  img.addEventListener('click', () => {
+    openModalAt(index);
+  });
+});
 
-
+// Картинки мобильного swiper
+document.querySelectorAll('.product-images.images-mobile .swiper-slide img').forEach((img, index) => {
+  img.addEventListener('click', () => {
+    openModalAt(index);
+  });
+});
 
 
 // Добавление товара в корзину
