@@ -457,118 +457,185 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Модальное окно "Связаться с нами"
 
-// Получаем элементы модалок
-const contactModal = document.getElementById('contactModal');
-const thanksModal = document.getElementById('thanksModal');
-const errorModal = document.getElementById('errorModal');
+// Получаем контейнеры под модалки
+const contactModalWrapper = document.getElementById('get-contact-modal');
+const thanksModalWrapper = document.getElementById('thanks-modal');
+const errorModalWrapper = document.getElementById('error-modal');
+const container = document.querySelector('.container'); // блюр-контейнер
 
-// Кнопки открытия
-const openBtns = [
-  document.getElementById('openModalBtn'),
-  document.getElementById('burger-get-request'),
-  document.getElementById('sign-up-showroom')
-];
+// Загружаем все модалки, если они есть на странице
+if (contactModalWrapper && thanksModalWrapper && errorModalWrapper) {
+  Promise.all([
+    fetch('modals/get-contact.html').then(res => res.text()),
+    fetch('modals/thanks-modal.html').then(res => res.text()),
+    fetch('modals/error-modal.html').then(res => res.text())
+  ]).then(([contactHTML, thanksHTML, errorHTML]) => {
+    // Вставка HTML
+    contactModalWrapper.innerHTML = contactHTML;
+    thanksModalWrapper.innerHTML = thanksHTML;
+    errorModalWrapper.innerHTML = errorHTML;
 
-// Кнопки закрытия
-const closeBtns = [
-  document.getElementById('closeModalBtn'),
-  document.getElementById('closeModalBtnThanks'),
-  document.getElementById('closeModalBtnError')
-];
+    // Получение внутренних модалок
+    const contactModal = document.getElementById('contactModal');
+    const thanksModal = document.getElementById('thanksModal');
+    const errorModal = document.getElementById('errorModal');
 
-// Контейнер для блюра
-const container = document.querySelector('.container');
+    const openBtns = [
+      document.getElementById('openModalBtn'),
+      document.getElementById('burger-get-request'),
+      document.getElementById('sign-up-showroom')
+    ];
 
-// Функция открытия модалки с блюром
-function openModal(modal) {
-  modal.style.display = 'flex';
-  container.style.filter = 'blur(5px)';
-  setTimeout(() => modal.classList.add('open'), 10);
-  document.documentElement.classList.add('no-scroll');
-}
+    const closeBtns = [
+      document.getElementById('closeModalBtn'),
+      document.getElementById('closeModalBtnThanks'),
+      document.getElementById('closeModalBtnError')
+    ];
 
-// Функция закрытия модалки и снятия блюра
-function closeModal(modal) {
-  modal.classList.remove('open');
-  setTimeout(() => {
-    modal.style.display = 'none';
-
-    // Проверка: остались ли открытые модалки
-    const modals = [contactModal, thanksModal, errorModal];
-    const anyOpen = modals.some(m => m !== modal && m.style.display === 'flex');
-    
-    if (!anyOpen) {
-      container.style.filter = 'none';
+    // Открытие модалки
+    function openModal(modal) {
+      if (!modal) return;
+      modal.style.display = 'flex';
+      container.style.filter = 'blur(5px)';
+      setTimeout(() => modal.classList.add('open'), 10);
+      document.documentElement.classList.add('no-scroll');
     }
-    
-    document.documentElement.classList.remove('no-scroll');
-  }, 500);
-}
 
-// Открытие контактной модалки по кнопкам
-openBtns.forEach(btn => {
-  if (btn) {
-    btn.addEventListener('click', () => openModal(contactModal));
-  }
-});
+    // Закрытие модалки
+    function closeModal(modal) {
+      if (!modal) return;
+      modal.classList.remove('open');
+      setTimeout(() => {
+        modal.style.display = 'none';
+        const modals = [contactModal, thanksModal, errorModal];
+        const anyOpen = modals.some(m => m && m !== modal && m.style.display === 'flex');
+        if (!anyOpen) container.style.filter = 'none';
+        document.documentElement.classList.remove('no-scroll');
+      }, 500);
+    }
 
-// Закрытие модалок по кнопкам ✖
-closeBtns.forEach(btn => {
-  if (!btn) return;
-  btn.addEventListener('click', () => {
-    if (btn.id === 'closeModalBtn') closeModal(contactModal);
-    else if (btn.id === 'closeModalBtnThanks') closeModal(thanksModal);
-    else if (btn.id === 'closeModalBtnError') closeModal(errorModal);
+    // Кнопки открытия
+    openBtns.forEach(btn => {
+      if (btn) btn.addEventListener('click', () => openModal(contactModal));
+    });
+
+    // Кнопки закрытия
+    closeBtns.forEach(btn => {
+      if (!btn) return;
+      btn.addEventListener('click', () => {
+        if (btn.id === 'closeModalBtn') closeModal(contactModal);
+        else if (btn.id === 'closeModalBtnThanks') closeModal(thanksModal);
+        else if (btn.id === 'closeModalBtnError') closeModal(errorModal);
+      });
+    });
+
+    // Клик по фону
+    [contactModal, thanksModal, errorModal].forEach(modal => {
+      if (!modal) return;
+      modal.addEventListener('click', e => {
+        if (e.target === modal) closeModal(modal);
+      });
+    });
+
+    // Отправка формы
+    window.onSubmitForm = function (event) {
+      event.preventDefault();
+      const form = event.target;
+
+      if (!validateFormModal(form)) {
+        closeModal(contactModal);
+        openModal(errorModal);
+        return;
+      }
+
+      closeModal(contactModal);
+      openModal(thanksModal);
+      formReset(form);
+    };
+
+    function formReset(form) {
+      form.reset();
+
+      const errorElements = form.querySelectorAll('.error-contact');
+      errorElements.forEach(error => (error.style.display = 'none'));
+
+      // Сброс кастомного select-а
+      const contactSelect = form.querySelector("#contactSelect");
+      const selectedOption = contactSelect.querySelector(".selected-option");
+      const hiddenInput = form.querySelector("#contactMethodInput");
+
+      selectedOption.textContent = "КАК УДОБНЕЕ СВЯЗАТЬСЯ";
+      hiddenInput.value = "";
+    }
+
+    function validateFormModal(form) {
+      let valid = true;
+
+      const errorElements = form.querySelectorAll('.error-contact');
+      errorElements.forEach(error => (error.style.display = 'none'));
+
+      const nameInput = form.querySelector('input[name="name"]');
+      const phoneInput = form.querySelector('input[name="phone"]');
+      const contactMethodInput = form.querySelector('input[name="contact_method"]');
+      const acceptInput = form.querySelector('input[name="accept"]');
+
+      if (!nameInput.value.trim()) {
+        errorElements[0].textContent = 'Пожалуйста, введите ваше имя.';
+        errorElements[0].style.display = 'block';
+        valid = false;
+      }
+
+      if (!phoneInput.value.trim()) {
+        errorElements[1].textContent = 'Пожалуйста, введите ваш телефон.';
+        errorElements[1].style.display = 'block';
+        valid = false;
+      }
+
+      if (!contactMethodInput.value.trim()) {
+        errorElements[2].textContent = 'Пожалуйста, выберите способ связи.';
+        errorElements[2].style.display = 'block';
+        valid = false;
+      }
+
+      if (!acceptInput.checked) {
+        errorElements[3].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
+        errorElements[3].style.display = 'block';
+        valid = false;
+      }
+
+      return valid;
+    }
+
+    // Выборка "Как удобнее связаться"
+
+    const select = document.getElementById("contactSelect");
+    const header = select.querySelector(".select-header");
+    const options = select.querySelectorAll(".select-options li");
+    const selected = select.querySelector(".selected-option");
+    const hiddenInput = document.getElementById("contactMethodInput");
+
+    header.addEventListener("click", () => {
+      select.classList.toggle("open");
+    });
+
+    options.forEach(option => {
+      option.addEventListener("click", () => {
+        selected.textContent = option.textContent;
+        hiddenInput.value = option.dataset.value;
+        select.classList.remove("open");
+      });
+    });
+
+    // Закрытие при клике вне блока
+    document.addEventListener("click", (e) => {
+      if (!select.contains(e.target)) {
+        select.classList.remove("open");
+      }
+    });
   });
-});
-
-// Закрытие модалок по клику на затемнённый фон
-[contactModal, thanksModal, errorModal].forEach(modal => {
-  if (!modal) return;
-  modal.addEventListener('click', e => {
-    if (e.target === modal) closeModal(modal);
-  });
-});
-
-// Очистка формы и ошибок
-function formReset(form) {
-  form.reset();
-  const errorElements = form.querySelectorAll('.error-contact');
-  errorElements.forEach(error => (error.style.display = 'none'));
 }
 
-// Валидация формы модалки
-function validateFormModal(form) {
-  let valid = true;
-
-  const errorElements = form.querySelectorAll('.error-contact');
-  errorElements.forEach(error => (error.style.display = 'none'));
-
-  const nameInput = form.querySelector('input[name="name"]');
-  const phoneInput = form.querySelector('input[name="phone"]');
-  const acceptInput = form.querySelector('input[name="accept"]');
-
-  if (!nameInput.value.trim()) {
-    errorElements[0].textContent = 'Пожалуйста, введите ваше имя.';
-    errorElements[0].style.display = 'block';
-    valid = false;
-  }
-
-  if (!phoneInput.value.trim()) {
-    errorElements[1].textContent = 'Пожалуйста, введите ваш телефон.';
-    errorElements[1].style.display = 'block';
-    valid = false;
-  }
-
-  if (!acceptInput.checked) {
-    errorElements[2].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
-    errorElements[2].style.display = 'block';
-    valid = false;
-  }
-
-  return valid;
-}
-
+ 
 // Обработчик отправки формы — привязывается к onsubmit формы
 function onSubmitForm(event) {
   event.preventDefault();

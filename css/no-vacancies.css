@@ -2032,7 +2032,6 @@ nav ul ul.open + svg {
 
 
 
-
 /* Модальное окно "Связаться с нами" */
 
 .modal {
@@ -2055,16 +2054,16 @@ nav ul ul.open + svg {
 
 .modal-content {
     max-width: 725px;
-    width: 100%;
-    max-height: 895px;
-    height: 100%;
+    width: 90%; 
     background-color: #151C28;
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     min-width: 300px;
     position: relative;
     overflow-y: auto;
-    scrollbar-width: none;  
-    -ms-overflow-style: none;  
+    max-height: 700px; 
+    height: 100%;     
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .modal-content::-webkit-scrollbar {
@@ -2085,7 +2084,7 @@ nav ul ul.open + svg {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 40px;
+    padding: 20px;
     
 }
 
@@ -2094,15 +2093,15 @@ nav ul ul.open + svg {
     border: none;
     background-color: transparent;
     position: absolute;
-    top: 40px;
-    right: 40px;
+    top: 20px;
+    right: 20px;
     cursor: pointer;
 }
 
 .modal-content-info img {
     margin-bottom: 30px;
-    width: 171px;
-    height: 171px;
+    width: 80px;
+    height: 80px;
 }
 
 .phone-number {
@@ -2112,7 +2111,7 @@ nav ul ul.open + svg {
 
 .contact-modal-title {
     font-family: 'Future New Light', sans-serif;
-    font-size: 76px;
+    font-size: 50px;
     text-transform: uppercase;
     margin-bottom: 20px;
 }
@@ -2159,6 +2158,11 @@ nav ul ul.open + svg {
     padding: 5px 0; 
 }
 
+.conta-input-modal-choice {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
 
 .accept-politics-modal {
     margin-top: 10px;
@@ -2178,7 +2182,7 @@ nav ul ul.open + svg {
 }
 
 .get-request-button-modal {
-    margin-top: 10px;
+    margin-top: 25px;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-size: 18px;
     position: relative;
@@ -2242,6 +2246,67 @@ nav ul ul.open + svg {
 }
 
 
+/* Как удобнее связаться с нами в модалке */
+
+.custom-select {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+}
+
+.select-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  font-size: 18px;
+  padding: 5px 0;
+}
+
+.arrow-icon {
+  transition: transform 0.3s ease;
+}
+
+.custom-select.open .arrow-icon {
+  transform: rotate(180deg);
+}
+
+.select-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #151C28;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 5px;
+  list-style: none;
+  padding: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 10;
+}
+
+.custom-select.open .select-options {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.select-options li {
+  text-transform: uppercase;
+  padding: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.select-options li:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+
 /* Адаптив модального окна "Связаться с нами"*/
 
 @media (max-width: 1040px) {
@@ -2261,95 +2326,89 @@ nav ul ul.open + svg {
     .modal-description {
         font-size: 16px;
     }
+}
 
-    .modal-content {
-        max-width: 731px;
-        max-height: 659px;
+@media (max-width: 1010px) {
+    .res-1024 {
+        font-size: 50px;
     }
 }
 
-@media (max-width: 785px) {
+@media (max-width: 680px) {
+    .res-1024 {
+        font-size: 40px;    
+    }
+
+    .modal-description {
+        font-size: 14px;
+    }
+
+    .modal-content-info {
+        padding: 10px 10px;
+    }
+
+    .contact-form-modal {
+        gap: 10px;
+    }
+
     .modal-content {
-        max-width: 95%; 
+        max-height: 620px;
+    }
+    
+    .error-contact {
+        font-size: 12px;
+    }
+
+    .modal-content-info img {
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 }
 
-@media (max-width: 642px) {
-    .modal-content {
-        max-height: 710px;
-    }
-}
 
-@media (max-width: 544px) {
-    .modal-content {
-        max-height: 730px;
-    }
-}
 
 @media (max-width: 480px) {
     .contact-form-modal {
         padding: 0 20px;
     }
-
-    .modal-content-info {
-        padding: 40px 20px;
-    }
 }
 
-@media (max-width: 427px) {
-    .get-request-button-modal {
-        margin-top: 20px;
-    }
-
-    .modal-content {
-        max-height: 740px;
-    }
-}
-
-
-@media (max-width: 410px) {
+@media (max-width: 460px) {
     .modal-content-info-inner img {
         width: 80px;
         height: 80px;
+    }
+
+    .res-1024 {
+        font-size: 32px;
     }
 
     .phone-number {
         font-size: 16px;
     }
 
-    .res-1024 {
-        font-size: 38px;
+    .modal-description {
+        font-size: 12px;
     }
 
-    .modal-description {
-        font-size: 16px;
+    .error-contact {
+        font-size: 10px;
     }
 
     .accept-politics-modal p {
-        font-size: 14px;
+        font-size: 10px;
     }
 
     .accept-politics-modal p span a {
-        font-size: 14px;
-    }
-
-    .modal-content {
-        max-height: 650px;
+        font-size: 10px;
     }
 }
 
-@media (max-width: 395px) {
+@media (max-width: 336px) {
     .modal-content {
-        max-height: 690px;
+        max-height: 620px;
     }
 }
-
-@media (max-width: 363px) {
-    .modal-content {
-        max-height: 700px;
-    }
-}
-
 
 
 

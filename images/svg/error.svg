@@ -1,0 +1,4 @@
+<svg class="error-svg" viewBox="0 0 79 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="79" height="79" rx="39.5" fill="#924141"/>
+    <path d="M56.4275 22.5715L22.5703 56.4287M56.4275 56.4287L22.5703 22.5716" stroke="white" stroke-opacity="0.6" stroke-width="4" stroke-linecap="square"/>
+</svg>
