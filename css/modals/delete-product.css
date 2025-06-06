@@ -1,0 +1,118 @@
+.modal-delete {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 20px;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+
+.modal-delete.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+  .modal-delete-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: default;
+    background-color: #151c28;
+    padding: 20px;
+    max-width: 450px;
+    width: 100%;
+  }
+
+  .modal-delete-content p {
+    text-transform: uppercase;
+  }
+
+  .modal-delete-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+  height: 100%;
+  }
+
+  .delete-button {
+    font-family: 'SF Pro Display', sans-serif;
+    background: #AE9877;
+    color: #fff;
+    border: none;
+    font-size: 18px; 
+    padding: 20px 50px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    box-sizing: border-box;
+  }
+
+  .delete-button:hover {
+    background-color: #9c8766;
+  }
+
+  .stop-button {
+    font-family: 'SF Pro Display', sans-serif;
+    background: transparent;
+    border: 1px solid #EDE4D7;;
+    color: white;
+    font-size: 18px; 
+    padding: 20px 50px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-sizing: border-box;
+  }
+
+  .stop-button:hover {
+    background-color: #AE9877;
+  }
+
+  @media (max-width: 515px) {
+    .delete-button,
+    .stop-button {
+      padding: 15px 40px;
+    }
+
+    .modal-delete-content {
+      max-width: 385px;
+    }
+
+      .modal-delete-content p {
+        font-size: 16px;
+      }
+  }
+
+  @media (max-width: 440px) {
+    .delete-button,
+    .stop-button {
+      padding: 15px 20px;
+    }
+
+    .modal-delete-content {
+      max-width: 315px;
+    }
+  }
+
+  @media (max-width: 350px) {
+    .modal-delete-buttons {
+      flex-direction: column;
+    }
+
+    .delete-button,
+    .stop-button {
+      width: 100%;
+    }
+  }

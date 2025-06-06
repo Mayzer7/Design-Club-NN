@@ -1,0 +1,21 @@
+.notification {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #151c28;
+  padding: clamp(18px, 2vw, 25px) clamp(18px, 2vw, 25px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  font-size: clamp(14px, 2vw, 18px);
+  z-index: 1000;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.notification.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(-20px);
+}

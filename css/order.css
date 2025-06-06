@@ -1496,6 +1496,7 @@ nav ul ul.open + svg {
     font-weight: 600;
     text-transform: uppercase;
     font-size: 34px;
+    margin-bottom: 20px;
 }
 
 /* Для прокрутки товаров оформления заказа */
@@ -1532,6 +1533,9 @@ nav ul ul.open + svg {
 .order-products {
     margin: 20px 0;
     display: flex;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px 0;
 }
 
 .order-left img {
@@ -1545,6 +1549,23 @@ nav ul ul.open + svg {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.order-right-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.order-right-top-right button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+.order-right-top-right button:hover svg path {
+    stroke: #AE9877; 
+    stroke-opacity: 1; 
 }
 
 .product-name {
@@ -1592,6 +1613,16 @@ nav ul ul.open + svg {
     color: #615F5B;
     font-size: 16px;
     transform: translateY(20px);
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+
+.price-per-piece.visible {
+    opacity: 1;
+    max-height: 50px; /* подбирай под контент */
 }
 
 .price-per-piece-2 {
@@ -1599,6 +1630,15 @@ nav ul ul.open + svg {
     font-weight: 900;
     color: #615F5B;
     font-size: 16px;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.price-per-piece-2.visible {
+    opacity: 1; 
+    max-height: 50px;
 }
 
 .product-last-line {
@@ -1881,6 +1921,7 @@ nav ul ul.open + svg {
 
 .product-price-container-600 {
     margin-top: 25px;
+    margin-bottom: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;

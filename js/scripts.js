@@ -1610,6 +1610,148 @@ if (modalVideo) {
   });
 }
 
+// Уведомления
+
+// Уведомление об удалении товара
+const notificationContainer = document.getElementById('notification-container');
+
+if (notificationContainer) {
+  fetch('modals/notification-delete-product.html')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Не удалось загрузить notification.html');
+      }
+      return response.text();
+    })
+    .then(html => {
+      notificationContainer.innerHTML = html;
+
+      const notification = document.getElementById('notification');
+
+      // Теперь подключаем модалку и кнопку удаления
+      setupDeleteModal(notification);
+    })
+    .catch(error => {
+      console.error('Ошибка при загрузке уведомления:', error);
+    });
+
+
+// Уведомление и модалка очистки корзины
+Promise.all([
+  fetch('modals/clear-cart.html').then(res => res.text()),
+  fetch('modals/notification-clear-cart.html').then(res => res.text())
+]).then(([clearModalHTML, clearNotificationHTML]) => {
+  const clearModalContainer = document.getElementById('modal-clear-container');
+  const clearNotificationContainer = document.getElementById('notification-clear-container');
+
+  clearModalContainer.innerHTML = clearModalHTML;
+  clearNotificationContainer.innerHTML = clearNotificationHTML;
+
+  const clearCartModal = document.getElementById('clearCartModal');
+  const clearCartNotification = document.getElementById('notification-clear-cart');
+  const container = document.querySelector('.container'); 
+
+  const openClearModalBtns = document.querySelectorAll('.clear-cart-button');
+  const confirmClearBtn = clearCartModal.querySelector('.confirm-clear-cart');
+  const cancelClearBtn = clearCartModal.querySelector('.cancel-clear-cart');
+
+  function openClearModal() {
+    clearCartModal.classList.add('show');
+    container.style.filter = 'blur(5px)';
+    document.documentElement.classList.add('no-scroll');
+  }
+
+  function closeClearModal() {
+    clearCartModal.classList.remove('show');
+    container.style.filter = 'none';
+    document.documentElement.classList.remove('no-scroll');
+  }
+
+  openClearModalBtns.forEach(btn => {
+    btn.addEventListener('click', openClearModal);
+  });
+
+  cancelClearBtn.addEventListener('click', closeClearModal);
+
+  clearCartModal.addEventListener('click', (e) => {
+    if (e.target === clearCartModal) closeClearModal();
+  });
+
+  confirmClearBtn.addEventListener('click', () => {
+    clearCartNotification.classList.remove('hidden');
+
+    setTimeout(() => {
+      clearCartNotification.classList.add('hidden');
+    }, 3000);
+
+    closeClearModal();
+  });
+}).catch(err => {
+  console.error('Ошибка при загрузке модалки очистки корзины:', err);
+});
+  }
+
+function setupDeleteModal(notification) {
+  const modalContainer = document.getElementById("modal-container");  
+
+  if (modalContainer) {
+    fetch('modals/delete-product.html')
+      .then(response => response.text())
+      .then(html => {
+        document.body.insertAdjacentHTML('beforeend', html);
+
+        const modal = document.getElementById('deleteModal');
+        const openButtons = document.querySelectorAll('.open-modal-btn');
+        const stopButton = modal.querySelector('.stop-button');
+        const closeBtn = modal.querySelector('.close-modal-delete');
+        const deleteButton = modal.querySelector('.delete-button');
+
+        function openModal() {
+          modal.classList.add('show');
+          container.style.filter = 'blur(5px)';
+          document.documentElement.classList.add('no-scroll');
+        }
+
+        function closeModal() {
+          modal.classList.remove('show');
+          container.style.filter = 'none';
+          document.documentElement.classList.remove('no-scroll');
+        }
+
+        // Открытие модалки
+        openButtons.forEach(btn => {
+          btn.addEventListener('click', openModal);
+        });
+
+        // Кнопка "Оставить" — закрыть модалку
+        stopButton.addEventListener('click', closeModal);
+
+        // Клик по фону — закрыть модалку
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            closeModal();
+          }
+        });
+
+        // Крестик — закрыть модалку
+        if (closeBtn) {
+          closeBtn.addEventListener('click', closeModal);
+        }
+
+        deleteButton.addEventListener('click', () => {
+          notification.classList.remove('hidden');
+          
+          setTimeout(() => {
+            notification.classList.add('hidden');
+          }, 3000);
+
+          // Закрыть модалку
+          closeModal();
+        });
+      });
+  }
+}
+
 // Скрипты для контента на странице "main-page.html"
 
 const heroContent1 = document.querySelector('.hero-content-1');
@@ -2496,6 +2638,51 @@ if (buyProducts) {
           });
       });
   });
+
+  // Увелечение количества товара на кнопки
+  // И отображение товара за 1шт
+
+  function setupQuantityToggle(containerSelector, priceSelector) {
+      document.querySelectorAll(containerSelector).forEach(item => {
+          const minusBtn = item.querySelector('.change-count button:first-of-type');
+          const plusBtn  = item.querySelector('.change-count button:last-of-type');
+          const countEl  = item.querySelector('.change-count p');
+          const priceEl  = item.querySelector(priceSelector);
+
+          let count = parseInt(countEl.textContent, 10);
+
+          const updateVisibility = () => {
+              if (count > 1) {
+                  priceEl.classList.add('visible');
+              } else {
+                  priceEl.classList.remove('visible');
+              }
+          };
+
+          plusBtn.addEventListener('click', () => {
+              count++;
+              countEl.textContent = count;
+              updateVisibility();
+          });
+
+          minusBtn.addEventListener('click', () => {
+              if (count > 1) {
+                  count--;
+                  countEl.textContent = count;
+                  updateVisibility();
+              }
+          });
+
+          // инициализация
+          updateVisibility();
+      });
+  }
+
+  // Настраиваем для десктопа
+  setupQuantityToggle('.order-products', '.price-per-piece');
+  // Настраиваем для мобильной версии
+  setupQuantityToggle('.order-item-600', '.price-per-piece-2');
+
 }
 
 
@@ -2577,6 +2764,7 @@ if (projectsSection) {
     loop: false,                  
     grabCursor: true,            
   });
+  
 }
 
 // Скрипты для контента на странице "project-info-page.html"

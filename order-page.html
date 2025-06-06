@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/order.css">
     <link rel="icon" href="images/svg/favicon.svg" type="image/svg+xml">
+    <!-- Модальные окна -->
+    <link rel="stylesheet" href="css/modals/delete-product.css">
+    <!-- Уведомления -->
+    <link rel="stylesheet" href="css/modals/notification.css">
     <!-- Preloader -->
     <link rel="stylesheet" href="css/preloader.css">
     <title>Дизайн клуб - Оформление заказа</title>
@@ -331,9 +335,9 @@
                 
                                 <div class="buy-products-content fade-in">
                                     <div class="left-side">
-                                        <h1 class="buyer">
+                                        <h2 class="buyer">
                                             Покупатель
-                                        </h1>
+                                        </h2>
                 
                                         <form action="" id="order-form-1">
                                             <div class="order-input">
@@ -369,13 +373,11 @@
                                     </div>
                 
                                     <div class="right-side">
-                                        <h1 class="right-side-items">
+                                        <h2 class="right-side-items">
                                             Товары в заказе (4)
-                                        </h1>
+                                        </h2>
                 
                                         <div class="right-side-scroll-wrapper">
-                                            <hr class="line-buy">
-                
                                             <div class="order-products">
                                                 <div class="order-left">
                                                     <img src="images/cart/product.png" alt="">
@@ -383,10 +385,11 @@
                 
                                                 <div class="order-right">
                                                     <div class="order-right-top">
-                                                        <h1 class="product-name">
-                                                            Смеситель для <br>
-                                                            умывальника Asphe 7703 
-                                                        </h1>
+                                                        <div class="order-right-top-left">
+                                                            <p class="product-name">
+                                                                Смеситель для <br>
+                                                                умывальника Asphe 7703 
+                                                            </p>
                         
                                                         <div class="product-desc">
                                                             <div class="product-desc-left">
@@ -401,6 +404,15 @@
                         
                                                                 <p>Серый</p>
                                                             </div>
+                                                        </div>
+                                                        </div>
+
+                                                        <div class="order-right-top-right">
+                                                            <button class="open-modal-btn">
+                                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M20 8L8 20M20 20L8 8.00001" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                                </svg>
+                                                            </button>
                                                         </div>
                                                     </div>
                 
@@ -431,16 +443,14 @@
                                                                     30 000 ₽
                                                                 </h4>
                             
-                                                                <h1 class="total-price">
+                                                                <p class="total-price">
                                                                     28 000 ₽
-                                                                </h1> 
+                                                                </p> 
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                
-                                            <hr class="line-buy">
                 
                                             <div class="order-products">
                                                 <div class="order-left">
@@ -449,28 +459,42 @@
                 
                                                 <div class="order-right">
                                                     <div class="order-right-top">
-                                                        <h1 class="product-name">
-                                                            Смеситель для <br>
-                                                            умывальника Asphe 7703 
-                                                        </h1>
+                                                        <div class="order-right-top-left">
+                                                            <p class="product-name">
+                                                                Смеситель для <br>
+                                                                умывальника Asphe 7703 
+                                                            </p>
                         
-                                                        <div class="product-desc">
-                                                            <div class="product-desc-left">
-                                                                <p>Бренд</p>
-                        
-                                                                <p>Цвет</p>
+                                                            <div class="product-desc">
+                                                                <div class="product-desc-left">
+                                                                    <p>Бренд</p>
+                            
+                                                                    <p>Цвет</p>
+                                                                </div>
+                            
+                            
+                                                                <div class="product-desc-right">
+                                                                    <p>WaserKraft</p>
+                            
+                                                                    <p>Серый</p>
+                                                                </div>
                                                             </div>
-                        
-                        
-                                                            <div class="product-desc-right">
-                                                                <p>WaserKraft</p>
-                        
-                                                                <p>Серый</p>
-                                                            </div>
+                                                        </div>
+
+                                                        <div class="order-right-top-right">
+                                                            <button class="open-modal-btn">
+                                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M20 8L8 20M20 20L8 8.00001" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                                </svg>
+                                                            </button>
                                                         </div>
                                                     </div>
                 
                                                     <div class="order-right-down">
+                                                        <p class="price-per-piece">
+                                                            14 000 ₽ / шт.
+                                                        </p>
+                
                                                         <div class="product-last-line">
                                                             <div class="change-count">
                                                                 <button>
@@ -489,16 +513,19 @@
                                                             </div>
                 
                                                             <div class="total">
-                                                                <h1 class="total-price">
-                                                                    15 000 ₽
-                                                                </h1> 
+                                                                <h4 class="discount">
+                                                                    <!-- Если нет скидки чтобы не ломать вёрстку -->
+                                                                     &#8203;
+                                                                </h4>
+                            
+                                                                <p class="total-price">
+                                                                    28 000 ₽
+                                                                </p> 
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                
-                                            <hr class="line-buy">
                 
                                             <div class="order-products">
                                                 <div class="order-left">
@@ -507,24 +534,34 @@
                 
                                                 <div class="order-right">
                                                     <div class="order-right-top">
-                                                        <h1 class="product-name">
-                                                            Смеситель для <br>
-                                                            умывальника Asphe 7703 
-                                                        </h1>
+                                                        <div class="order-right-top-left">
+                                                            <p class="product-name">
+                                                                Смеситель для <br>
+                                                                умывальника Asphe 7703 
+                                                            </p>
                         
-                                                        <div class="product-desc">
-                                                            <div class="product-desc-left">
-                                                                <p>Бренд</p>
-                        
-                                                                <p>Цвет</p>
+                                                            <div class="product-desc">
+                                                                <div class="product-desc-left">
+                                                                    <p>Бренд</p>
+                            
+                                                                    <p>Цвет</p>
+                                                                </div>
+                            
+                            
+                                                                <div class="product-desc-right">
+                                                                    <p>WaserKraft</p>
+                            
+                                                                    <p>Серый</p>
+                                                                </div>
                                                             </div>
-                        
-                        
-                                                            <div class="product-desc-right">
-                                                                <p>WaserKraft</p>
-                        
-                                                                <p>Серый</p>
-                                                            </div>
+                                                        </div>
+
+                                                        <div class="order-right-top-right">
+                                                            <button class="open-modal-btn">
+                                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M20 8L8 20M20 20L8 8.00001" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                                </svg>
+                                                            </button>
                                                         </div>
                                                     </div>
                 
@@ -555,17 +592,15 @@
                                                                     30 000 ₽
                                                                 </h4>
                             
-                                                                <h1 class="total-price">
+                                                                <p class="total-price">
                                                                     28 000 ₽
-                                                                </h1> 
+                                                                </p> 
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                
-                                            <hr class="line-buy">
-                
+
                                             <div class="order-products">
                                                 <div class="order-left">
                                                     <img src="images/cart/product.png" alt="">
@@ -573,24 +608,34 @@
                 
                                                 <div class="order-right">
                                                     <div class="order-right-top">
-                                                        <h1 class="product-name">
-                                                            Смеситель для <br>
-                                                            умывальника Asphe 7703 
-                                                        </h1>
+                                                        <div class="order-right-top-left">
+                                                            <p class="product-name">
+                                                                Смеситель для <br>
+                                                                умывальника Asphe 7703 
+                                                            </p>
                         
-                                                        <div class="product-desc">
-                                                            <div class="product-desc-left">
-                                                                <p>Бренд</p>
-                        
-                                                                <p>Цвет</p>
+                                                            <div class="product-desc">
+                                                                <div class="product-desc-left">
+                                                                    <p>Бренд</p>
+                            
+                                                                    <p>Цвет</p>
+                                                                </div>
+                            
+                            
+                                                                <div class="product-desc-right">
+                                                                    <p>WaserKraft</p>
+                            
+                                                                    <p>Серый</p>
+                                                                </div>
                                                             </div>
-                        
-                        
-                                                            <div class="product-desc-right">
-                                                                <p>WaserKraft</p>
-                        
-                                                                <p>Серый</p>
-                                                            </div>
+                                                        </div>
+
+                                                        <div class="order-right-top-right">
+                                                            <button class="open-modal-btn">
+                                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M20 8L8 20M20 20L8 8.00001" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                                </svg>
+                                                            </button>
                                                         </div>
                                                     </div>
                 
@@ -621,37 +666,33 @@
                                                                     30 000 ₽
                                                                 </h4>
                             
-                                                                <h1 class="total-price">
+                                                                <p class="total-price">
                                                                     28 000 ₽
-                                                                </h1> 
+                                                                </p> 
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                
-                                            <hr class="line-buy">
                                         </div>
                 
                                         <div class="total-order-price-container">
                                             <h3>Итого</h3>
                 
-                                            <h1 class="total-order-price">
+                                            <p class="total-order-price">
                                                 43 000 ₽
-                                            </h1>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="buy-products-content-1024 fade-in">
                                     <div class="up-side-1024">
-                                        <h1 class="right-side-items">
+                                        <h2 class="right-side-items">
                                             Товары в заказе (4)
-                                        </h1>
+                                        </h2>
                 
                                         <div class="right-side-scroll-wrapper">
-                                            <hr class="line-buy">
-                
                                             <div class="order-products">
                                                 <div class="order-left">
                                                     <img src="images/cart/product.png" alt="">
@@ -659,24 +700,34 @@
                 
                                                 <div class="order-right">
                                                     <div class="order-right-top">
-                                                        <h1 class="product-name">
-                                                            Смеситель для <br>
-                                                            умывальника Asphe 7703 
-                                                        </h1>
+                                                        <div class="order-right-top-left">
+                                                            <p class="product-name">
+                                                                Смеситель для <br>
+                                                                умывальника Asphe 7703 
+                                                            </p>
                         
-                                                        <div class="product-desc">
-                                                            <div class="product-desc-left">
-                                                                <p>Бренд</p>
-                        
-                                                                <p>Цвет</p>
+                                                            <div class="product-desc">
+                                                                <div class="product-desc-left">
+                                                                    <p>Бренд</p>
+                            
+                                                                    <p>Цвет</p>
+                                                                </div>
+                            
+                            
+                                                                <div class="product-desc-right">
+                                                                    <p>WaserKraft</p>
+                            
+                                                                    <p>Серый</p>
+                                                                </div>
                                                             </div>
-                        
-                        
-                                                            <div class="product-desc-right">
-                                                                <p>WaserKraft</p>
-                        
-                                                                <p>Серый</p>
-                                                            </div>
+                                                        </div>
+
+                                                        <div class="order-right-top-right">
+                                                            <button class="open-modal-btn">
+                                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M20 8L8 20M20 20L8 8.00001" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                                </svg>
+                                                            </button>
                                                         </div>
                                                     </div>
                 
@@ -707,17 +758,15 @@
                                                                     30 000 ₽
                                                                 </h4>
                             
-                                                                <h1 class="total-price">
+                                                                <p class="total-price">
                                                                     28 000 ₽
-                                                                </h1> 
+                                                                </p> 
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                
-                                            <hr class="line-buy">
-                
+
                                             <div class="order-products">
                                                 <div class="order-left">
                                                     <img src="images/cart/product.png" alt="">
@@ -725,28 +774,42 @@
                 
                                                 <div class="order-right">
                                                     <div class="order-right-top">
-                                                        <h1 class="product-name">
-                                                            Смеситель для <br>
-                                                            умывальника Asphe 7703 
-                                                        </h1>
+                                                        <div class="order-right-top-left">
+                                                            <p class="product-name">
+                                                                Смеситель для <br>
+                                                                умывальника Asphe 7703 
+                                                            </p>
                         
-                                                        <div class="product-desc">
-                                                            <div class="product-desc-left">
-                                                                <p>Бренд</p>
-                        
-                                                                <p>Цвет</p>
+                                                            <div class="product-desc">
+                                                                <div class="product-desc-left">
+                                                                    <p>Бренд</p>
+                            
+                                                                    <p>Цвет</p>
+                                                                </div>
+                            
+                            
+                                                                <div class="product-desc-right">
+                                                                    <p>WaserKraft</p>
+                            
+                                                                    <p>Серый</p>
+                                                                </div>
                                                             </div>
-                        
-                        
-                                                            <div class="product-desc-right">
-                                                                <p>WaserKraft</p>
-                        
-                                                                <p>Серый</p>
-                                                            </div>
+                                                        </div>
+
+                                                        <div class="order-right-top-right">
+                                                            <button class="open-modal-btn">
+                                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M20 8L8 20M20 20L8 8.00001" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                                </svg>
+                                                            </button>
                                                         </div>
                                                     </div>
                 
                                                     <div class="order-right-down">
+                                                        <p class="price-per-piece">
+                                                            14 000 ₽ / шт.
+                                                        </p>
+                
                                                         <div class="product-last-line">
                                                             <div class="change-count">
                                                                 <button>
@@ -765,17 +828,19 @@
                                                             </div>
                 
                                                             <div class="total">
-                                                                <h1 class="total-price">
-                                                                    15 000 ₽
-                                                                </h1> 
+                                                                <h4 class="discount">
+                                                                    &#8203;
+                                                                </h4>
+                            
+                                                                <p class="total-price">
+                                                                    28 000 ₽
+                                                                </p> 
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                
-                                            <hr class="line-buy">
-                
+
                                             <div class="order-products">
                                                 <div class="order-left">
                                                     <img src="images/cart/product.png" alt="">
@@ -783,24 +848,34 @@
                 
                                                 <div class="order-right">
                                                     <div class="order-right-top">
-                                                        <h1 class="product-name">
-                                                            Смеситель для <br>
-                                                            умывальника Asphe 7703 
-                                                        </h1>
+                                                        <div class="order-right-top-left">
+                                                            <p class="product-name">
+                                                                Смеситель для <br>
+                                                                умывальника Asphe 7703 
+                                                            </p>
                         
-                                                        <div class="product-desc">
-                                                            <div class="product-desc-left">
-                                                                <p>Бренд</p>
-                        
-                                                                <p>Цвет</p>
+                                                            <div class="product-desc">
+                                                                <div class="product-desc-left">
+                                                                    <p>Бренд</p>
+                            
+                                                                    <p>Цвет</p>
+                                                                </div>
+                            
+                            
+                                                                <div class="product-desc-right">
+                                                                    <p>WaserKraft</p>
+                            
+                                                                    <p>Серый</p>
+                                                                </div>
                                                             </div>
-                        
-                        
-                                                            <div class="product-desc-right">
-                                                                <p>WaserKraft</p>
-                        
-                                                                <p>Серый</p>
-                                                            </div>
+                                                        </div>
+
+                                                        <div class="order-right-top-right">
+                                                            <button class="open-modal-btn">
+                                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M20 8L8 20M20 20L8 8.00001" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                                </svg>
+                                                            </button>
                                                         </div>
                                                     </div>
                 
@@ -831,17 +906,15 @@
                                                                     30 000 ₽
                                                                 </h4>
                             
-                                                                <h1 class="total-price">
+                                                                <p class="total-price">
                                                                     28 000 ₽
-                                                                </h1> 
+                                                                </p> 
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                
-                                            <hr class="line-buy">
-                
+
                                             <div class="order-products">
                                                 <div class="order-left">
                                                     <img src="images/cart/product.png" alt="">
@@ -849,24 +922,34 @@
                 
                                                 <div class="order-right">
                                                     <div class="order-right-top">
-                                                        <h1 class="product-name">
-                                                            Смеситель для <br>
-                                                            умывальника Asphe 7703 
-                                                        </h1>
+                                                        <div class="order-right-top-left">
+                                                            <p class="product-name">
+                                                                Смеситель для <br>
+                                                                умывальника Asphe 7703 
+                                                            </p>
                         
-                                                        <div class="product-desc">
-                                                            <div class="product-desc-left">
-                                                                <p>Бренд</p>
-                        
-                                                                <p>Цвет</p>
+                                                            <div class="product-desc">
+                                                                <div class="product-desc-left">
+                                                                    <p>Бренд</p>
+                            
+                                                                    <p>Цвет</p>
+                                                                </div>
+                            
+                            
+                                                                <div class="product-desc-right">
+                                                                    <p>WaserKraft</p>
+                            
+                                                                    <p>Серый</p>
+                                                                </div>
                                                             </div>
-                        
-                        
-                                                            <div class="product-desc-right">
-                                                                <p>WaserKraft</p>
-                        
-                                                                <p>Серый</p>
-                                                            </div>
+                                                        </div>
+
+                                                        <div class="order-right-top-right">
+                                                            <button class="open-modal-btn">
+                                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M20 8L8 20M20 20L8 8.00001" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                                </svg>
+                                                            </button>
                                                         </div>
                                                     </div>
                 
@@ -897,31 +980,29 @@
                                                                     30 000 ₽
                                                                 </h4>
                             
-                                                                <h1 class="total-price">
+                                                                <p class="total-price">
                                                                     28 000 ₽
-                                                                </h1> 
+                                                                </p> 
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                
-                                            <hr class="line-buy">
                                         </div>
                 
                                         <div class="total-order-price-container">
                                             <h3>Итого</h3>
                 
-                                            <h1 class="total-order-price">
+                                            <p class="total-order-price">
                                                 43 000 ₽
-                                            </h1>
+                                            </p>
                                         </div>
                                     </div>
 
                                     <div class="down-side-1024">
-                                        <h1 class="buyer">
+                                        <h2 class="buyer">
                                             Покупатель
-                                        </h1>
+                                        </h2>
                 
                                         <form action="" id="order-form-2">
                                             <div class="order-input">
@@ -959,16 +1040,14 @@
 
                                 <div class="buy-products-content-600 fade-in">
                                     <div class="up-side-1024">
-                                        <!-- Клик‑заголовок -->
-                                        <h1 class="right-side-items right-side-items-600">
+                                        <h2 class="right-side-items right-side-items-600">
                                             Товары в корзине (3)
 
                                             <svg class="arrow-icon" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M20 11L14.7071 16.6854C14.3166 17.1049 13.6834 17.1049 13.2929 16.6854L8 11" stroke="#EDE4D7" stroke-linecap="round"/>
                                             </svg>
-                                        </h1>
+                                        </h2>
 
-                                        <!-- Блок, который будем сворачивать/разворачивать -->
                                         <div class="order-items-600">
                                             <div class="order-item-600">
                                                 <div class="order-item-img-600">
@@ -976,11 +1055,11 @@
                                                 </div>
                     
                                                 <div class="product-header-600">
-                                                    <h1 class="product-title-600">
+                                                    <p class="product-title-600">
                                                         Смеситель для умывальника Asphe 7703 
-                                                    </h1>
+                                                    </p>
 
-                                                    <button class="delete-product-btn">
+                                                    <button class="delete-product-btn open-modal-btn">
                                                         <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M20 8L8 20M20 20L8 8.00001" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
                                                         </svg>
@@ -1038,11 +1117,73 @@
                                                 </div>
                     
                                                 <div class="product-header-600">
-                                                    <h1 class="product-title-600">
+                                                    <p class="product-title-600">
                                                         Смеситель для умывальника Asphe 7703 
-                                                    </h1>
+                                                    </p>
 
-                                                    <button class="delete-product-btn">
+                                                    <button class="delete-product-btn open-modal-btn">
+                                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M20 8L8 20M20 20L8 8.00001" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+
+                                                <div class="product-desc-600">
+                                                    <div class="product-desc-line">
+                                                        <p>Бренд</p>
+                                                        <p>WaserKraft</p>
+                                                    </div>
+
+                                                    <div class="product-desc-line">
+                                                        <p>Цвет</p>
+                                                        <p>Серый</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="product-price-container-600">
+                                                    <p class="price-per-piece-2">
+                                                        14 000 ₽ / шт
+                                                    </p>
+
+                                                    <p class="discount">
+                                                        &#8203;
+                                                    </p>
+                                                </div>
+
+                                                <div class="total-price-600">
+                                                    <div class="change-count">
+                                                        <button>
+                                                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M7 14H22" stroke="#EDE4D7" stroke-opacity="0.7"/>
+                                                            </svg>    
+                                                        </button>
+                                                                
+                                                        <p>1</p>
+                                                                
+                                                        <button>
+                                                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M14 7V21M21 14L7 14" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                            </svg>    
+                                                        </button>
+                                                    </div>
+
+                                                    <p class="total-price">
+                                                        28 000 ₽
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div class="order-item-600">
+                                                <div class="order-item-img-600">
+                                                    <img src="images/catalog/products/image-1.png" alt="product">
+                                                </div>
+                    
+                                                <div class="product-header-600">
+                                                    <p class="product-title-600">
+                                                        Смеситель для умывальника Asphe 7703 
+                                                    </p>
+
+                                                    <button class="delete-product-btn open-modal-btn">
                                                         <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M20 8L8 20M20 20L8 8.00001" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
                                                         </svg>
@@ -1100,11 +1241,11 @@
                                                 </div>
                     
                                                 <div class="product-header-600">
-                                                    <h1 class="product-title-600">
+                                                    <p class="product-title-600">
                                                         Смеситель для умывальника Asphe 7703 
-                                                    </h1>
+                                                    </p>
 
-                                                    <button class="delete-product-btn">
+                                                    <button class="delete-product-btn open-modal-btn">
                                                         <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M20 8L8 20M20 20L8 8.00001" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
                                                         </svg>
@@ -1162,73 +1303,11 @@
                                                 </div>
                     
                                                 <div class="product-header-600">
-                                                    <h1 class="product-title-600">
+                                                    <p class="product-title-600">
                                                         Смеситель для умывальника Asphe 7703 
-                                                    </h1>
-
-                                                    <button class="delete-product-btn">
-                                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M20 8L8 20M20 20L8 8.00001" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
-                                                        </svg>
-                                                    </button>
-                                                </div>
-
-                                                <div class="product-desc-600">
-                                                    <div class="product-desc-line">
-                                                        <p>Бренд</p>
-                                                        <p>WaserKraft</p>
-                                                    </div>
-
-                                                    <div class="product-desc-line">
-                                                        <p>Цвет</p>
-                                                        <p>Серый</p>
-                                                    </div>
-                                                </div>
-
-                                                <div class="product-price-container-600">
-                                                    <p class="price-per-piece-2">
-                                                        14 000 ₽ / шт
                                                     </p>
 
-                                                    <p class="discount">
-                                                        30 000 ₽
-                                                    </p>
-                                                </div>
-
-                                                <div class="total-price-600">
-                                                    <div class="change-count">
-                                                        <button>
-                                                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <path d="M7 14H22" stroke="#EDE4D7" stroke-opacity="0.7"/>
-                                                            </svg>    
-                                                        </button>
-                                                                
-                                                        <p>2</p>
-                                                                
-                                                        <button>
-                                                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <path d="M14 7V21M21 14L7 14" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
-                                                            </svg>    
-                                                        </button>
-                                                    </div>
-
-                                                    <p class="total-price">
-                                                        28 000 ₽
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <div class="order-item-600">
-                                                <div class="order-item-img-600">
-                                                    <img src="images/catalog/products/image-1.png" alt="product">
-                                                </div>
-                    
-                                                <div class="product-header-600">
-                                                    <h1 class="product-title-600">
-                                                        Смеситель для умывальника Asphe 7703 
-                                                    </h1>
-
-                                                    <button class="delete-product-btn">
+                                                    <button class="delete-product-btn open-modal-btn">
                                                         <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M20 8L8 20M20 20L8 8.00001" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
                                                         </svg>
@@ -1283,7 +1362,9 @@
                                     </div>
 
                                     <div class="order-total-price">
-                                        <h1>Итого</h1>
+                                        <p class="buyer buyer-600">
+                                            Итого
+                                        </p>
 
                                         <p class="total-price">
                                             28 000 ₽
@@ -1291,9 +1372,9 @@
                                     </div>
 
                                     <div class="down-side-1024 down-600">
-                                        <h1 class="buyer buyer-600">
+                                        <p class="buyer buyer-600">
                                             Покупатель
-                                        </h1>
+                                        </p>
                 
                                         <form action="" id="order-form-3">
                                             <div class="order-input">
@@ -1792,6 +1873,12 @@
             </div>
         </div>
     </div>
+
+    <!-- Модальное окно удаления товара -->
+    <div id="modal-container"></div>
+
+    <!-- Уведомления -->
+    <div id="notification-container"></div>
 
     <!-- Модальное окно "Связаться с нами"-->
     <div class="modal" id="contactModal">

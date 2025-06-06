@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/cart.css">
     <link rel="icon" href="images/svg/favicon.svg" type="image/svg+xml">
+    <!-- Модальные окна -->
+    <link rel="stylesheet" href="css/modals/delete-product.css">
+    <!-- Уведомления -->
+    <link rel="stylesheet" href="css/modals/notification.css">
     <!-- Preloader -->
     <link rel="stylesheet" href="css/preloader.css">
     <title>Дизайн клуб - Корзина</title>
@@ -328,7 +332,7 @@
                                     </h1>
                                 </div>
                                     
-                                <button class="clear-cart-button fade-in">
+                                <button class="clear-cart-button fade-in ">
                                     Очистить корзину
                                 </button>
                             </div>
@@ -360,7 +364,7 @@
                                                             </div>
 
                                                             <div class="close-button-container">
-                                                                <button class="close-button">
+                                                                <button class="close-button open-modal-btn">
                                                                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                         <path d="M20 8L8 20M20 20L8 8.00001" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
                                                                     </svg>
@@ -451,7 +455,7 @@
                                                             </div>
 
                                                             <div class="close-button-container">
-                                                                <button class="close-button">
+                                                                <button class="close-button open-modal-btn">
                                                                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                         <path d="M20 8L8 20M20 20L8 8.00001" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
                                                                     </svg>
@@ -543,7 +547,7 @@
                                                             </div>
 
                                                             <div class="close-button-container">
-                                                                <button class="close-button">
+                                                                <button class="close-button open-modal-btn">
                                                                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                         <path d="M20 8L8 20M20 20L8 8.00001" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
                                                                     </svg>
@@ -1209,6 +1213,16 @@
         </div>
     </div>
 
+    <!-- Модальное окно удаления товара -->
+    <div id="modal-container"></div>
+
+    <!-- Для модалки подтверждения очистки корзины -->
+    <div id="modal-clear-container"></div>
+
+    <!-- Уведомления -->
+    <div id="notification-container"></div>
+    <div id="notification-clear-container"></div>
+
     <!-- Модальное окно "Связаться с нами"-->
     <div class="modal" id="contactModal">
         <div class="modal-content">
@@ -1322,6 +1336,8 @@
             </div>
         </div>
     </div>
+
+    
 
     <!-- Яндекс карта -->
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=6a0a70e3-b1fe-4c23-ab8b-779377082ed2" type="text/javascript"></script>
