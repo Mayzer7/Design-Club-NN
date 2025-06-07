@@ -2831,7 +2831,33 @@ if (projectsSection) {
     loop: false,                  
     grabCursor: true,            
   });
-  
+
+  // Раскрытие проектов побольше
+
+  const btnWrapper = document.querySelector('.open-more-project-btn');
+
+  if (btnWrapper) {
+    const btn = btnWrapper.querySelector('button');
+    let clickCount = 0;  // счётчик кликов
+
+    btn.addEventListener('click', () => {
+      clickCount++;
+
+      // Клонируем все секции при каждом клике
+      document.querySelectorAll('.projects-content-container').forEach(orig => {
+        const clone = orig.cloneNode(true);
+        clone.classList.add('cloned');
+        orig.after(clone);
+        
+        setTimeout(() => clone.classList.add('visible'), 50);
+      });
+
+      // После второго клика — прячем кнопку
+      if (clickCount >= 2) {
+        btnWrapper.style.display = 'none';
+      }
+    });
+  }
 }
 
 // Скрипты для контента на странице "project-info-page.html"

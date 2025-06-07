@@ -1641,6 +1641,17 @@ nav ul ul.open + svg {
     overflow-y: hidden;
 }
 
+/* Скрытые клоны .projects-content-container */
+.projects-content-container.cloned {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* Видимые — после включения */
+.projects-content-container.cloned.visible {
+  opacity: 1;
+}
+
 .project-content-title {
     font-family: 'Future New Light', sans-serif;
     font-size: 76px;
@@ -1760,6 +1771,7 @@ nav ul ul.open + svg {
     overflow-wrap: break-word; 
     white-space: normal;
     margin-bottom: 15px;
+    margin-top: 15px;
 }
 
 .mobile-open-project-link {
@@ -2180,7 +2192,7 @@ nav ul ul.open + svg {
 
 .footer-below-1024 {
     display: none;
-    padding: 100px 20px 0px 20px;
+    padding: 45px 20px 0px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 
