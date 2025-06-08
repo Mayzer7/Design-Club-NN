@@ -1470,44 +1470,6 @@ function handleScrollUp() {
     }
           
     moreButton.addEventListener('click', showNextReviewContainer);
-
-    // Открытие отзыва побольше в модальном окне
-
-    const modal = document.getElementById("modal-review");
-    const openLinks = document.querySelectorAll(".read-more-link");
-    const closeBtn = document.querySelector(".modal-close");
-    const container = document.querySelector(".container");
-
-    openLinks.forEach(link => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault(); 
-        container.style.filter = "blur(5px)";
-        document.documentElement.classList.add("no-scroll");
-        document.body.classList.add("no-scroll");
-        modal.classList.remove("closing");
-        modal.classList.add("open");
-      });
-    });
-
-    function closeModalReview() {
-      modal.classList.remove("open");
-      modal.classList.add("closing"); // Добавим временный класс
-
-      // Подождём, пока завершится анимация (300ms по transition)
-      setTimeout(() => {
-        modal.classList.remove("closing");
-        container.style.filter = "none";
-        document.documentElement.classList.remove("no-scroll");
-        document.body.classList.remove("no-scroll");
-      }, 500); // Лучше чуть больше 300ms, чтобы анимация точно завершилась
-    }
-
-    closeBtn.addEventListener("click", closeModalReview);
-    window.addEventListener("click", (e) => {
-      if (e.target === modal) {
-        closeModalReview();
-      }
-    });
   }
 
   // Скрипты для контента на странице "customers-page.html"
@@ -1561,45 +1523,54 @@ function handleScrollUp() {
           }
         },
     });
-
-    // Открытие отзыва побольше в модальном окне
-
-    const modal = document.getElementById("modal-review");
-    const openLinks = document.querySelectorAll(".read-more-link");
-    const closeBtn = document.querySelector(".modal-close");
-    const container = document.querySelector(".container");
-
-    openLinks.forEach(link => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault(); 
-        container.style.filter = "blur(5px)";
-        document.documentElement.classList.add("no-scroll");
-        document.body.classList.add("no-scroll");
-        modal.classList.remove("closing");
-        modal.classList.add("open");
-      });
-    });
-
-    function closeModalReview() {
-      modal.classList.remove("open");
-      modal.classList.add("closing"); // Добавим временный класс
-
-      // Подождём, пока завершится анимация (300ms по transition)
-      setTimeout(() => {
-        modal.classList.remove("closing");
-        container.style.filter = "none";
-        document.documentElement.classList.remove("no-scroll");
-        document.body.classList.remove("no-scroll");
-      }, 500); // Лучше чуть больше 300ms, чтобы анимация точно завершилась
-    }
-
-    closeBtn.addEventListener("click", closeModalReview);
-    window.addEventListener("click", (e) => {
-      if (e.target === modal) {
-        closeModalReview();
-      }
-    });
   }
+
+  // Открытие отзыва побольше в модальном окне
+
+    const reviewModalContainer = document.getElementById('review-modal-container');
+
+    if (reviewModalContainer || reviewsPageSection) {
+      fetch("modals/review-modal.html")
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById("review-modal-container").innerHTML = html;
+
+        // После загрузки HTML
+        const modal = document.getElementById("modal-review");
+        const openLinks = document.querySelectorAll(".read-more-link");
+        const closeBtn = document.querySelector(".modal-close");
+        const container = document.querySelector(".container");
+
+        openLinks.forEach(link => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            container.style.filter = "blur(5px)";
+            document.documentElement.classList.add("no-scroll");
+            document.body.classList.add("no-scroll");
+            modal.classList.remove("closing");
+            modal.classList.add("open");
+          });
+        });
+
+        function closeModalReview() {
+          modal.classList.remove("open");
+          modal.classList.add("closing");
+          setTimeout(() => {
+            modal.classList.remove("closing");
+            container.style.filter = "none";
+            document.documentElement.classList.remove("no-scroll");
+            document.body.classList.remove("no-scroll");
+          }, 500);
+        }
+
+        closeBtn.addEventListener("click", closeModalReview);
+        window.addEventListener("click", (e) => {
+          if (e.target === modal) {
+            closeModalReview();
+          }
+        });
+      });
+    }
 
   // Свайп карточек "Почему выбирают нас"
 
