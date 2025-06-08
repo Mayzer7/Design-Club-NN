@@ -1405,17 +1405,17 @@ nav ul ul.open + svg {
     gap: 54px;
 }
 
-.work-info h1 {
+.work-info h3 {
     font-size: 20px;
 }
 
-.work-info h1 span {
+.work-info h3 span {
     font-family: 'Sf Pro Display Thin', sans-serif;
     font-weight: 300;
     font-size: 18px;
 }
 
-.requirements h1 {
+.requirements h3 {
     font-size: 20px;
     margin-bottom: 5px;
 }
@@ -1462,11 +1462,12 @@ nav ul ul.open + svg {
 @media (max-width: 890px) {
     .vacancy {
         flex-direction: column;
+        gap: 15px;
         padding: 20px 0;
     }
 
     .work-info {
-        gap: 0px;
+        gap: 20px;
         width: 100%;
     }
 
@@ -1487,46 +1488,67 @@ nav ul ul.open + svg {
         border-left: none;
         border-right: none;
     }
-}
 
-@media (max-width: 760px) {
+    .main-page-top {
+        min-height: 620px;
+    }
+
     .title {
         font-size: 110px;
     }
-
-    .main-page-top {
-        min-height: 615px;
-    }
 }
+
 
 @media (max-width: 730px) {
-    .main-page-top {
-        min-height: 545px;
-    }
-}
-
-@media (max-width: 585px) {
     .title {
         font-size: 90px;
-    }
-}
-
-@media (max-width: 485px) {
-    .title {
-        font-size: 70px;
     }
 
     .subtitle {
         margin-top: 15px;
-        font-size: 20px;
+        font-size: 18px;
+    }
+
+    .under-header-container a,
+    .under-header-container p,
+    .under-header-container a:first-child {
+        font-size: 14px;
+    }
+
+    .under-header-container {
+        margin-top: 25px;
     }
 
     .main-page-top {
         min-height: 460px;
     }
-
-    
 }
+
+
+@media (max-width: 600px) {
+    .title {
+        font-size: 70px;
+    }
+
+    .main-page-top {
+        min-height: 440px;
+    }
+}
+
+@media (max-width: 500px) {
+    .title {
+        font-size: 60px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+     .main-page-top {
+        min-height: 400px;
+    }
+}
+
 
 @media (max-width: 400px) {
     .title {
@@ -1874,6 +1896,10 @@ nav ul ul.open + svg {
     .get-contact {
         background-size: 650px 500px;
         background-position: right 50px;
+    }
+
+    .get-up-title {
+        font-size: 14px;
     }
 }
 

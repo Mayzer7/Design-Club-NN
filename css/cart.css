@@ -1757,6 +1757,24 @@ nav ul ul.open + svg {
     }
 }
 
+@media (max-width: 600px) {
+    .title {
+        font-size: 80px;
+    }
+
+    .under-header-container p,
+    .under-header-container a,
+    .under-header-container a:nth-child(1) {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 500px) {
+    .title {
+        font-size: 70px;
+    }
+}
+
 @media (max-width: 480px) {
     .product-name {
         font-size: 20px;
@@ -1783,11 +1801,12 @@ nav ul ul.open + svg {
     }
 }
 
-@media (max-width: 460px) {
+@media (max-width: 450px) {
     .title {
-        font-size: 70px;
+        font-size: 60px;
     }
 }
+
 
 @media (max-width: 400px) {
     .cart {

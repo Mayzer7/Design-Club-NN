@@ -1670,6 +1670,7 @@ nav ul ul.open + svg {
     .main-side-wrapper {
         margin-left: 0vh;
     }
+    
 }
 
 @media (max-width: 735px) {
@@ -1692,21 +1693,53 @@ nav ul ul.open + svg {
 
 @media (max-width: 600px) {
     .main-side-wrapper h1 {
-        font-size: 100px;
+        font-size: 80px;
+    }
+
+    .under-header-container {
+        margin-top: 30px;
+    }
+
+    .main-side-wrapper {
+        gap: 25px;
+    }
+
+    .get-contact {
+        padding: 40px 0 0 20px;
+    }
+
+    .main-side-text {
+        font-size: 18px;
+    }
+
+    .under-header-container a,
+    .under-header-container p,
+    .under-header-container a:first-child {
+        font-size: 14px;
+    }
+
+    .resume-label {
+        font-size: 14px;
     }
 }
 
-@media (max-width: 525px) {
+@media (max-width: 550px) {
     .main-side-wrapper h1 {
-        font-size: 85px;
+        font-size: 70px;
+    }
+}
+
+@media (max-width: 500px) {
+    .main-side-wrapper h1 {
+        font-size: 60px;
+    }
+
+    .main-side-text {
+        font-size: 14px;
     }
 }
 
 @media (max-width: 460px) {
-    .main-side-wrapper h1 {
-        font-size: 70px;
-    }
-
     .main-side-text {
         font-size: 16px;
     }

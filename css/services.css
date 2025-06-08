@@ -1535,6 +1535,24 @@ nav ul ul.open + svg {
     }
 }
 
+@media (max-width: 600px) {
+    .services-title {
+        font-size: 80px;
+    }
+
+    .under-header-container p,
+    .under-header-container a,
+    .under-header-container a:nth-child(1) {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 450px) {
+    .services-title {
+        font-size: 70px;
+    }
+}
+
 @media (max-width: 400px) {
     .services-title-section-container {
         padding: 200px 20px 50px 20px;
@@ -2058,6 +2076,13 @@ nav ul ul.open + svg {
 
     .get-request {
         padding: 45px 20px 45px 20px;
+    }
+}
+
+@media (max-width: 370px) {
+    .contact-input-fields input::placeholder,
+    .contact-input input::placeholder {
+        font-size: 14px;
     }
 }
 
