@@ -29,13 +29,13 @@
             </div>
 
             <div class="modal-inputs">
-                <form id="contact-form-modal" class="contact-form-modal" onsubmit="onSubmitForm(event)">
+                <form id="contact-form-modal" class="contact-form-modal" autocomplete="on" onsubmit="onSubmitForm(event)">
                     <div class="contact-input-modal">
-                        <input type="text" name="name" placeholder="ВАШЕ ИМЯ">
+                        <input type="text" id="contact-name" name="name" placeholder="ВАШЕ ИМЯ" autocomplete="name">
                         <span class="error-contact"></span>
                     </div>  
                     <div class="contact-input-modal">
-                        <input type="text" name="phone" placeholder="ТЕЛЕФОН">
+                        <input type="tel" id="phone" name="phone" placeholder="ТЕЛЕФОН" autocomplete="tel">
                         <span class="error-contact"></span>
                     </div>
                     

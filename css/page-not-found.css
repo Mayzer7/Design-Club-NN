@@ -104,7 +104,13 @@ body.no-scroll {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-
+/* Стили для автозаполнения */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #fff inset !important; 
+    box-shadow: 0 0 0 1000px #171F2E inset !important;
+    -webkit-text-fill-color: #EDE4D7 !important; 
+    transition: background-color 5000s ease-in-out 0s; 
+}
 
 
 /* Шапка */

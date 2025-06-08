@@ -1033,7 +1033,6 @@ function handleScrollUp() {
 }
 
 // Валидация форм на странице
-
   const questionInput = document.querySelector('[name="your-question"]');
   const desiredPositionInput = document.querySelector('[name="desired-position"]'); 
 

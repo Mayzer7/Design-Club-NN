@@ -423,14 +423,14 @@
                                             </p>
                 
                                             <div class="vacancies-form-container fade-in">
-                                                <form id="vacancies-form" class="vacancies-form fade-in" onsubmit="return validateForm(event, 'vacancies-form')">
+                                                <form id="vacancies-form" class="vacancies-form fade-in" autocomplete="on" onsubmit="return validateForm(event, 'vacancies-form')">
                                                     <div class="contact-input fade-in">
-                                                        <input type="text" name="name" placeholder="ВАШЕ ИМЯ">
+                                                        <input type="text" id="contact-name" name="name" placeholder="ВАШЕ ИМЯ" autocomplete="name">
                                                         <span class="error-contact"></span>
-                                                    </div>
-                                                
+                                                    </div>  
+
                                                     <div class="contact-input fade-in">
-                                                        <input type="number" name="phone" placeholder="ТЕЛЕФОН">
+                                                        <input type="tel" id="phone" name="phone" placeholder="ТЕЛЕФОН" autocomplete="tel">
                                                         <span class="error-contact"></span>
                                                     </div>
                                                 

@@ -1452,14 +1452,14 @@
 
                                         <div class="maps-mobile" id="map-mobile"></div>
                         
-                                        <form id="contact-form-1" class="contact-form" onsubmit="return validateForm(event, 'contact-form-1')">
+                                        <form id="contact-form-1" class="contact-form" autocomplete="on" onsubmit="return validateForm(event, 'contact-form-1')">
                                             <div class="contact-input fade-in">
-                                                <input type="text" name="name" placeholder="ВАШЕ ИМЯ">
+                                                <input type="text" id="contact-name" name="name" placeholder="ВАШЕ ИМЯ" autocomplete="name">
                                                 <span class="error-contact"></span>
                                             </div>  
 
                                             <div class="contact-input fade-in">
-                                                <input type="text" name="phone" placeholder="ТЕЛЕФОН">
+                                                <input type="tel" id="phone" name="phone" placeholder="ТЕЛЕФОН" autocomplete="tel">
                                                 <span class="error-contact"></span>
                                             </div>
 
@@ -2370,14 +2370,14 @@
                                             ароматного чая, пока мы поможем вам создать пространство мечты!
                                         </p>
                         
-                                        <form id="contact-form-2" class="contact-form" onsubmit="return validateForm(event, 'contact-form-2')">
+                                        <form id="contact-form-2" class="contact-form" autocomplete="on" onsubmit="return validateForm(event, 'contact-form-2')">
                                             <div class="contact-input fade-in">
-                                                <input type="text" name="name" placeholder="ВАШЕ ИМЯ">
+                                                <input type="text" id="contact-name" name="name" placeholder="ВАШЕ ИМЯ" autocomplete="name">
                                                 <span class="error-contact"></span>
                                             </div>  
 
                                             <div class="contact-input fade-in">
-                                                <input type="text" name="phone" placeholder="ТЕЛЕФОН">
+                                                <input type="tel" id="phone" name="phone" placeholder="ТЕЛЕФОН" autocomplete="tel">
                                                 <span class="error-contact"></span>
                                             </div>
 
