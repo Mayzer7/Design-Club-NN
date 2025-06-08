@@ -1072,17 +1072,18 @@ function handleScrollUp() {
 
     if (contactMethodHiddenInput) {
       if (!contactMethodHiddenInput.value.trim()) {
-          const errorSpan = form.querySelector('.contact-input-wrapper .error-contact');
-          errorSpan.textContent = 'Выберите способ связи';
-          errorSpan.style.display = 'block';
-          valid = false;
+        errorSpans[2].textContent = 'Пожалуйста, выберите способ связи.';
+        errorSpans[2].style.display = 'block';
+        valid = false;
       }
     }
 
-    if (questionInput && !questionInput.value.trim()) {
-        errorSpans[2].textContent = 'Пожалуйста, введите ваш вопрос.';
-        errorSpans[2].style.display = 'block';
+    if (questionInput) {
+      if (questionInput && !questionInput.value.trim()) {
+        errorSpans[3].textContent = 'Пожалуйста, введите ваш вопрос.';
+        errorSpans[3].style.display = 'block';
         valid = false;
+      }
     }
 
     if (desiredPositionInput && !desiredPositionInput.value.trim()) {
@@ -1091,10 +1092,20 @@ function handleScrollUp() {
         valid = false;
     }
 
-    if (!acceptInput.checked) {
+    if (!questionInput) {
+      if (!acceptInput.checked) {
         errorSpans[3].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
         errorSpans[3].style.display = 'block';
         valid = false;
+      }
+    }
+
+    if (questionInput) {
+      if (!acceptInput.checked) {
+        errorSpans[4].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
+        errorSpans[4].style.display = 'block';
+        valid = false;
+      }
     }
 
     if (valid) form.submit();
@@ -1753,8 +1764,6 @@ Promise.all([
 
     closeClearModal();
   });
-}).catch(err => {
-  console.error('Ошибка при загрузке модалки очистки корзины:', err);
 });
   }
 
