@@ -1804,6 +1804,10 @@ nav ul ul.open + svg {
     transition: max-height 0.4s ease, opacity 0.4s ease;
 }
 
+.menu-contact-method.open {
+    margin-top: 10px;
+}
+
 .dropdown-arrow {
     transition: transform 0.3s ease;
 }
