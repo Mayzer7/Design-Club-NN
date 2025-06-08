@@ -1193,7 +1193,6 @@ li.active .menu-arrow {
 nav ul svg {
   transition: transform 0.4s ease;
   transform-origin: center;
-  margin-left: 8px;
 }
 
 .burger-catalog ul ul.open + svg,
@@ -4161,6 +4160,13 @@ nav ul ul.open + svg {
     }
 }
 
+@media (max-width: 450px) {
+    .footer-nav-down a,
+    .footer-nav-up p {
+        font-size: 20px;
+    }
+}
+
 @media (max-width: 440px) {
     .footer-logo-below {
         width: 120px;
@@ -4172,6 +4178,7 @@ nav ul ul.open + svg {
         height: 32px;
     }
 }
+
 
 
 

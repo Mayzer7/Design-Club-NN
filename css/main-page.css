@@ -1313,6 +1313,10 @@ li.active .menu-arrow {
         padding-bottom: 20px;
         background-color: transparent;
     }
+
+    .header-top {
+        padding: 15px;
+    }
 }
 
 @media (max-width: 400px) {
@@ -1578,7 +1582,6 @@ li.active .menu-arrow {
 nav ul svg {
   transition: transform 0.4s ease;
   transform-origin: center;
-  margin-left: 8px;
 }
 
 .burger-catalog ul ul.open + svg,
@@ -2746,7 +2749,7 @@ a .popular-product-desc p,
 
 .our-up-title {
     position: relative;
-    top: 5px;
+    top: -5px;
     left: 5px;
 }
 
@@ -2756,6 +2759,7 @@ a .popular-product-desc p,
     padding-left: 25%;
     text-transform: uppercase;
     text-align: left;
+    line-height: 95%;
 }
 
 .our-brands-content {
@@ -2876,7 +2880,7 @@ a .popular-product-desc p,
     }
 }
 
-@media (max-width: 390px) {
+@media (max-width: 430px) {
     .title-our-brands {
         margin-top: 10px;
         font-size: 38px;
@@ -3414,7 +3418,6 @@ a .popular-product-desc p,
     background-size: cover; 
     background-position: center right;
 }
-
 
 .get-request-title {
     font-family: 'Future New Light', sans-serif;
@@ -4549,7 +4552,7 @@ a .popular-product-desc p,
     }
 
     .review-up-title {
-        top: -30px;
+        top: -20px;
     }
 
     .rating-number p {
@@ -5126,6 +5129,13 @@ a .popular-product-desc p,
 
     .design-club-logo {
         white-space: nowrap;
+    }
+}
+
+@media (max-width: 450px) {
+    .footer-nav-down a,
+    .footer-nav-up p {
+        font-size: 20px;
     }
 }
 
@@ -5934,4 +5944,33 @@ a .popular-product-desc p,
 .modal-content-info-inner-error h1,
 .modal-content-info-inner-error p {
   color: #EDE4D7;
+}
+
+
+/* Адаптив отступов между секций */
+
+@media (max-width: 650px) {
+    .popular-categories,
+    .our-brands,
+    .about-company,
+    .projects {
+        padding: 45px 15px 45px 15px;
+    }
+
+    .reviews {
+        padding: 50px 15px 45px 15px;
+    }
+    
+    .get-request,
+    .get-contact {
+        padding: 5px 15px 45px 15px;
+    }
+
+    .footer-below-1024 {
+        padding: 45px 15px 0 15px;
+    }
+
+    .why-choose-us-content {
+        padding-bottom: 25px;
+    }
 }
