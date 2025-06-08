@@ -2340,7 +2340,6 @@ if (modalProduct) {
     modalProductSwiperInstances.push(modalProductMainSwiper);
   }
 
-  // Инициализация images-mobile.swiper
   const modalProductImagesMobileSwiperContainer = document.querySelector('.images-mobile.swiper');
   if (modalProductImagesMobileSwiperContainer) {
     modalProductImagesMobileSwiper = new Swiper('.images-mobile.swiper', {
@@ -2358,7 +2357,6 @@ if (modalProduct) {
     modalProductSwiperInstances.push(modalProductImagesMobileSwiper);
   }
 
-  // Инициализация modal-product-swiper
   function initModalProductSwiper(startIndex = 0) {
     if (modalProductSwiper) modalProductSwiper.destroy(true, true);
 
@@ -2436,6 +2434,27 @@ if (modalProduct) {
     img.addEventListener('click', () => {
       openModalProductAt(index);
     });
+  });
+
+  // Раскрытие информации товара побольше
+
+  document.querySelectorAll('.open-all-about-products').forEach(button => {
+    button.addEventListener('click', () => {
+    const container = button.closest('.about-products-mobile');
+    const extraText = container.querySelector('.extra-text');
+    const extraSettings = container.querySelector('.extra-settings');
+
+    // Логика универсальна: ищет, что именно нужно показать
+    if (extraText) {
+      const isHidden = extraText.style.display === 'none';
+      extraText.style.display = isHidden ? 'flex' : 'none';
+      button.textContent = isHidden ? 'скрыть' : 'открыть все';
+    } else if (extraSettings) {
+      const isHidden = extraSettings.style.display === 'none';
+      extraSettings.style.display = isHidden ? 'flex' : 'none';
+      button.textContent = isHidden ? 'скрыть' : 'открыть все';
+    }
+  });
   });
 
 }

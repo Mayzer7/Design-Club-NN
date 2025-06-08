@@ -2364,6 +2364,11 @@ nav ul ul.open + svg {
     
 }
 
+.extra-text,
+.extra-settings {
+    margin-top: 10px;
+}
+
 .open-all-about-products {
     margin-top: 10px;
     border: none;

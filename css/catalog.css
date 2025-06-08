@@ -1509,15 +1509,13 @@ nav ul ul.open + svg {
 }
 
 
-
-
-
-
-
-
 /* Категории */
 
-.categories-mobile {
+/* 4 варианта отображений категорий с макета */
+
+.categories-two-option,
+.categories-three-option,
+.categories-four-option {
     display: none;
 }
 
@@ -1573,17 +1571,6 @@ nav ul ul.open + svg {
         padding: 50px 20px 50px 20px;
     }
 }
-
-@media (max-width: 900px) {
-    .categories-desktop {
-        display: none;
-    }
-
-    .categories-mobile {
-        display: flex;
-    }
-}
-
 @media (max-width: 635px) {
     .categories-swiper .swiper-wrapper .category img,
     .categories-swiper .swiper-wrapper .category-non-field img {
