@@ -1559,6 +1559,23 @@ nav ul ul.open + svg {
     height: 100%;
 }
 
+.product-image-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 110%;
+  overflow: hidden;
+}
+
+.product-image-wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
 .product-desc {
     margin-top: 15px;
     max-width: 455px;
