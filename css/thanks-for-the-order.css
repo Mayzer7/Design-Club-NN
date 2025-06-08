@@ -1639,11 +1639,6 @@ nav ul ul.open + svg {
 }
 
 
-
-
-
-
-
 /* Модальное окно "Связаться с нами" */
 
 .modal {
@@ -1724,14 +1719,6 @@ nav ul ul.open + svg {
 .contact-modal-title {
     font-family: 'Future New Light', sans-serif;
     font-size: 50px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-}
-
-.res-1024 {
-    display: none;
-    font-family: 'Future New Light', sans-serif;
-    font-size: 60px;
     text-transform: uppercase;
     margin-bottom: 20px;
 }
@@ -1922,14 +1909,6 @@ nav ul ul.open + svg {
 /* Адаптив модального окна "Связаться с нами"*/
 
 @media (max-width: 1040px) {
-    .contact-modal-title {
-        display: none;
-    }
-
-    .res-1024 {
-        display: block;
-    }
-    
     .modal-content-info img {
         width: 80px;
         height: 80px;
@@ -1941,13 +1920,13 @@ nav ul ul.open + svg {
 }
 
 @media (max-width: 1010px) {
-    .res-1024 {
+    .contact-modal-title {
         font-size: 50px;
     }
 }
 
 @media (max-width: 680px) {
-    .res-1024 {
+    .contact-modal-title {
         font-size: 40px;    
     }
 
@@ -1956,7 +1935,7 @@ nav ul ul.open + svg {
     }
 
     .modal-content-info {
-        padding: 10px 10px;
+        padding: 10px 20px;
     }
 
     .contact-form-modal {
@@ -1964,7 +1943,7 @@ nav ul ul.open + svg {
     }
 
     .modal-content {
-        max-height: 620px;
+        max-height: 580px;
     }
     
     .error-contact {
@@ -1975,11 +1954,24 @@ nav ul ul.open + svg {
         margin-top: 10px;
         margin-bottom: 10px;
     }
+
+    .contact-input-modal input::placeholder {
+        font-size: 14px;
+        font-family: 'SF Pro Display', sans-serif;
+        font-weight: 600;
+    }
+
+    .contact-input-modal input,
+    .select-header {
+        padding: 0;
+    }
+
+    .selected-option {
+        font-size: 14px;
+    }
 }
 
-
-
-@media (max-width: 480px) {
+@media (max-width: 580px) {
     .contact-form-modal {
         padding: 0 20px;
     }
@@ -1991,7 +1983,7 @@ nav ul ul.open + svg {
         height: 80px;
     }
 
-    .res-1024 {
+    .contact-modal-title {
         font-size: 32px;
     }
 
@@ -2016,13 +2008,11 @@ nav ul ul.open + svg {
     }
 }
 
-@media (max-width: 336px) {
+@media (max-width: 358px) {
     .modal-content {
         max-height: 620px;
     }
 }
-
-
 
 
 /* Модальное окно "Спасибо за заявку" */

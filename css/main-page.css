@@ -5234,14 +5234,6 @@ a .popular-product-desc p,
     margin-bottom: 20px;
 }
 
-.res-1024 {
-    display: none;
-    font-family: 'Future New Light', sans-serif;
-    font-size: 60px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-}
-
 .modal-description {
     font-size: 20px;
 }
@@ -5428,14 +5420,6 @@ a .popular-product-desc p,
 /* Адаптив модального окна "Связаться с нами"*/
 
 @media (max-width: 1040px) {
-    .contact-modal-title {
-        display: none;
-    }
-
-    .res-1024 {
-        display: block;
-    }
-    
     .modal-content-info img {
         width: 80px;
         height: 80px;
@@ -5447,13 +5431,13 @@ a .popular-product-desc p,
 }
 
 @media (max-width: 1010px) {
-    .res-1024 {
+    .contact-modal-title {
         font-size: 50px;
     }
 }
 
 @media (max-width: 680px) {
-    .res-1024 {
+    .contact-modal-title {
         font-size: 40px;    
     }
 
@@ -5462,7 +5446,7 @@ a .popular-product-desc p,
     }
 
     .modal-content-info {
-        padding: 10px 10px;
+        padding: 10px 20px;
     }
 
     .contact-form-modal {
@@ -5470,7 +5454,7 @@ a .popular-product-desc p,
     }
 
     .modal-content {
-        max-height: 620px;
+        max-height: 580px;
     }
     
     .error-contact {
@@ -5481,11 +5465,24 @@ a .popular-product-desc p,
         margin-top: 10px;
         margin-bottom: 10px;
     }
+
+    .contact-input-modal input::placeholder {
+        font-size: 14px;
+        font-family: 'SF Pro Display', sans-serif;
+        font-weight: 600;
+    }
+
+    .contact-input-modal input,
+    .select-header {
+        padding: 0;
+    }
+
+    .selected-option {
+        font-size: 14px;
+    }
 }
 
-
-
-@media (max-width: 480px) {
+@media (max-width: 580px) {
     .contact-form-modal {
         padding: 0 20px;
     }
@@ -5497,7 +5494,7 @@ a .popular-product-desc p,
         height: 80px;
     }
 
-    .res-1024 {
+    .contact-modal-title {
         font-size: 32px;
     }
 
@@ -5522,7 +5519,7 @@ a .popular-product-desc p,
     }
 }
 
-@media (max-width: 336px) {
+@media (max-width: 358px) {
     .modal-content {
         max-height: 620px;
     }
