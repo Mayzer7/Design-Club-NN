@@ -2854,7 +2854,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     transition: color 0.3s ease;
 }
 
-.rating-number h1 {
+.rating-number h3 {
     font-family: 'Future New Light', sans-serif;
     font-size: 93px;
 }
@@ -3073,7 +3073,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 }
 
 @media (max-width: 1030px) {
-    .rating-number h1 {
+    .rating-number h3 {
         font-size: 47px;
     }
 
@@ -3126,7 +3126,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
         top: -30px;
     }
 
-    .rating-number h1 {
+    .rating-number h3 {
         font-size: 93px;
     }
 
@@ -3352,7 +3352,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     width: 100%;
 }
 
-.content-wrapper h1 {
+.content-wrapper h2 {
   overflow-wrap: break-word;
   word-break: break-word; 
   font-family: 'Future New Light', sans-serif;

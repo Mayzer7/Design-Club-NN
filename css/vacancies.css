@@ -1600,7 +1600,7 @@ nav ul ul.open + svg {
     width: 100%;
 }
 
-.main-side-wrapper h1 {
+.main-side-wrapper h2 {
     font-family: 'Future New Light', sans-serif;
     text-transform: uppercase;
     font-size: 110px;
@@ -1866,7 +1866,7 @@ nav ul ul.open + svg {
 }
 
 @media (max-width: 750px) {
-    .main-side-wrapper h1 {
+    .main-side-wrapper h2 {
         font-size: 70px;
         max-width: 490px;
     }
@@ -1884,7 +1884,7 @@ nav ul ul.open + svg {
 }
 
 @media (max-width: 495px) {
-    .main-side-wrapper h1 {
+    .main-side-wrapper h2 {
         font-size: 38px;
         max-width: 250px;
         margin-top: 10px;

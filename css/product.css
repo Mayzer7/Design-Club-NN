@@ -1533,7 +1533,7 @@ nav ul ul.open + svg {
 /* Общие стили карточек */
 
 .product {
-    padding: 400px 0px 100px 0px;
+    padding: 350px 0px 100px 0px;
     background-color: #151c28;
     position: relative;
 }
@@ -1623,8 +1623,8 @@ nav ul ul.open + svg {
     width: 100%;
 }
 
-.desc-right h1,
-.desc-left h1 {
+.desc-right h2,
+.desc-left h2 {
     font-family: 'Future New Bold', sans-serif;
     font-size: 34px;
     text-transform: uppercase;
@@ -1769,7 +1769,7 @@ nav ul ul.open + svg {
     padding: 5px;
 }
 
-.discount h1{
+.discount p {
     font-size: 14px;
     color: #FFF;
 }
@@ -1789,7 +1789,7 @@ nav ul ul.open + svg {
     text-decoration: line-through;
 }
 
-.price h1 {
+.price p {
     font-size: 38px;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 900;
@@ -2188,8 +2188,8 @@ nav ul ul.open + svg {
         font-size: 60px;
     }
 
-    .desc-left h1,
-    .desc-right h1 {
+    .desc-left h2,
+    .desc-right h2 {
         font-size: 26px;
     }
 
@@ -2355,7 +2355,7 @@ nav ul ul.open + svg {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.about-products-mobile h1 {
+.about-products-mobile h2 {
     margin-bottom: 15px;
     font-family: 'Future New Bold', sans-serif;
     font-size: 26px;
@@ -2388,7 +2388,7 @@ nav ul ul.open + svg {
     align-items: center;
 }
 
-.product-mobile-price h1 {
+.product-mobile-price p {
     font-size: 40px;
 }
 
@@ -2533,7 +2533,7 @@ nav ul ul.open + svg {
 }
 
 @media (max-width: 430px) {
-    .product-mobile-price h1 {
+    .product-mobile-price p {
         font-size: 28px;
     }
 
@@ -2940,7 +2940,7 @@ a .popular-product-desc p,
     align-items: flex-end;
 }
 
-.title-group h1 {
+.title-group h2 {
     font-family: 'Future New Light', sans-serif;
     font-size: 76px;
     text-transform: uppercase;
@@ -3112,7 +3112,7 @@ a .popular-product-desc p,
         width: 100%;
     }
 
-    .title-group h1 {
+    .title-group h2 {
         font-size: 60px;
     }
 }
@@ -3164,7 +3164,7 @@ a .popular-product-desc p,
 }
 
 @media (max-width: 840px) {
-    .title-group h1 {
+    .title-group h2 {
         font-size: 50px;
     }
     
@@ -3227,13 +3227,13 @@ a .popular-product-desc p,
 
 
 @media (max-width: 430px) {
-    .title-group h1 {
+    .title-group h2 {
         font-size: 40px;
     }
 }
 
 @media (max-width: 400px) {
-    .title-group h1 {
+    .title-group h2 {
         font-size: 38px;
     }
 

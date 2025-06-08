@@ -1464,7 +1464,7 @@ nav ul ul.open + svg {
     }
     
     .under-404 {
-        gap: 10px;
+        gap: 40px;
     }
 }
 
@@ -1496,7 +1496,7 @@ nav ul ul.open + svg {
     gap: 10px;
 }
 
-.footer-navigation h1 {
+.footer-navigation h4 {
     white-space: nowrap;
     padding-bottom: 10px;
     text-transform: uppercase;
@@ -1504,7 +1504,7 @@ nav ul ul.open + svg {
     transition: color 0.3s ease;
 }
 
-.footer-navigation h1:hover {
+.footer-navigation h4:hover {
     color: #AE9877;
 }
 
@@ -1528,7 +1528,7 @@ nav ul ul.open + svg {
     color: rgba(237, 228, 215, 0.7);
 }
 
-.footer-address h1 {
+.footer-address h5 {
     font-size: 38px;
     margin-bottom: 40px;
     font-family: 'SF Pro Display Thin', sans-serif; 
@@ -1606,9 +1606,13 @@ nav ul ul.open + svg {
     padding-top: 20px;
 }
 
-.footer-nav-down h1 {
+.footer-nav-down h4 {
     text-transform: uppercase;
     font-size: 24px;
+}
+
+.footer-nav-down:last-child h4 {
+    white-space: nowrap;
 }
 
 .footer-nav-down p {
@@ -1715,7 +1719,7 @@ nav ul ul.open + svg {
         font-size: 14px;
     }
 
-    .footer-nav-down h1 {
+    .footer-nav-down h4 {
         font-size: 20px;
     }
 

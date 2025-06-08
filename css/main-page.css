@@ -2083,7 +2083,7 @@ nav ul ul.open + svg {
     align-items: flex-end;
 }
 
-.title-group h1 {
+.title-group h2 {
     font-family: 'Future New Light', sans-serif;
     font-size: 76px;
     text-transform: uppercase;
@@ -2255,7 +2255,7 @@ nav ul ul.open + svg {
         width: 100%;
     }
 
-    .title-group h1 {
+    .title-group h2 {
         font-size: 60px;
     }
 }
@@ -2315,7 +2315,7 @@ nav ul ul.open + svg {
 }
 
 @media (max-width: 840px) {
-    .title-group h1 {
+    .title-group h2 {
         font-size: 50px;
     }
 
@@ -2398,17 +2398,15 @@ nav ul ul.open + svg {
 
 
 @media (max-width: 430px) {
-    .title-group h1 {
+    .title-group h2 {
         font-size: 40px;
     }
 }
 
 @media (max-width: 400px) {
-    .title-group h1 {
+    .title-group h2 {
         font-size: 38px;
     }
-
-    
 }
 
 /* Секция "Популярные товары" */
@@ -3549,7 +3547,7 @@ a .popular-product-desc p,
     width: 100%;
 }
 
-.content-wrapper h1 {
+.content-wrapper h2 {
   overflow-wrap: break-word;
   word-break: break-word; 
   font-family: 'Future New Light', sans-serif;
@@ -4263,7 +4261,7 @@ a .popular-product-desc p,
     transition: color 0.3s ease;
 }
 
-.rating-number h1 {
+.rating-number p {
     font-family: 'Future New Light', sans-serif;
     font-size: 93px;
 }
@@ -4501,7 +4499,7 @@ a .popular-product-desc p,
 }
 
 @media (max-width: 1030px) {
-    .rating-number h1 {
+    .rating-number p {
         font-size: 47px;
     }
 
@@ -4554,7 +4552,7 @@ a .popular-product-desc p,
         top: -30px;
     }
 
-    .rating-number h1 {
+    .rating-number p {
         font-size: 93px;
     }
 

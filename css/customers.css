@@ -1592,7 +1592,7 @@ nav ul ul.open + svg {
     padding-left: 38%;  
 }
 
-.main-side-wrapper h1 {
+.main-side-wrapper h2 {
     font-family: 'Future New Light', sans-serif;
     font-size: 76px;
     white-space: nowrap;
@@ -1894,7 +1894,7 @@ nav ul ul.open + svg {
         padding-left: 15%;  
     }
 
-    .main-side-wrapper h1 {
+    .main-side-wrapper h2 {
         font-size: 60px;
     }
 
@@ -1924,7 +1924,7 @@ nav ul ul.open + svg {
 }
 
 @media (max-width: 660px) {
-    .main-side-wrapper h1 {
+    .main-side-wrapper h2 {
         white-space: normal;
     }
 
@@ -1942,7 +1942,7 @@ nav ul ul.open + svg {
         font-size: 14px;
     }
 
-    .main-side-wrapper h1 {
+    .main-side-wrapper h2 {
         font-size: 50px;
     }
 }

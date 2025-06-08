@@ -1599,7 +1599,7 @@ nav ul ul.open + svg {
     white-space: nowrap;
 }
 
-.rating-number h1 {
+.rating-number h3 {
     font-family: 'Future New Light', sans-serif;
     font-size: 93px;
 }
@@ -1642,7 +1642,7 @@ nav ul ul.open + svg {
     white-space: nowrap;
 }
 
-.rating-number-mobile h1 {
+.rating-number-mobile h3 {
     font-family: 'Future New Light', sans-serif;
     font-size: 93px;
 }
@@ -1734,7 +1734,7 @@ nav ul ul.open + svg {
         top: 115px;
     }
 
-    .rating-number h1 {
+    .rating-number h3 {
         font-size: 47px;
     }
 } 

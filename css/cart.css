@@ -1627,14 +1627,16 @@ nav ul ul.open + svg {
     padding: 20px 0;
 }
 
-.total-calc-price h1:first-child {
+.total-calc-price p:first-child {
     font-size: 26px;
     text-transform: uppercase;
     font-family: 'Future New Bold', sans-serif;
+    font-weight: 600;
 }
 
 .total-price-cart {
     font-size: 30px;
+    font-weight: 600;
 }
 
 
@@ -1954,7 +1956,7 @@ nav ul ul.open + svg {
     width: 100%;
 }
 
-.content-wrapper h1 {
+.content-wrapper h2 {
   overflow-wrap: break-word;
   word-break: break-word; 
   font-family: 'Future New Light', sans-serif;

@@ -1445,7 +1445,12 @@ nav ul ul.open + svg {
     gap: 15px;
 }
 
-
+.advantages-left h4,
+.advantages-right h4 {
+    font-size: 26px;
+    font-weight: 600;
+    font-family: 'SF Pro Display', sans-serif;
+}
 
 
 /* Адаптив секции 'Разгрузка, подъем и сборка мебели'*/
@@ -1497,8 +1502,8 @@ nav ul ul.open + svg {
         font-size: 16px;
     }
 
-    .advantages-left h1,
-    .advantages-right h1 {
+    .advantages-left h4,
+    .advantages-right h4 {
         font-size: 22px;
     }
 
@@ -1658,7 +1663,7 @@ nav ul ul.open + svg {
     padding-left: 38%;  
 }
 
-.main-side-wrapper h1 {
+.main-side-wrapper h2 {
     font-family: 'Future New Light', sans-serif;
     font-size: 76px;
     white-space: nowrap;
@@ -1962,7 +1967,7 @@ nav ul ul.open + svg {
         padding-left: 15%;  
     }
 
-    .main-side-wrapper h1 {
+    .main-side-wrapper h2 {
         font-size: 60px;
     }
 
@@ -1992,7 +1997,7 @@ nav ul ul.open + svg {
 }
 
 @media (max-width: 660px) {
-    .main-side-wrapper h1 {
+    .main-side-wrapper h2 {
         white-space: normal;
     }
 
@@ -2010,7 +2015,7 @@ nav ul ul.open + svg {
         font-size: 14px;
     }
 
-    .main-side-wrapper h1 {
+    .main-side-wrapper h2 {
         font-size: 50px;
     }
 }

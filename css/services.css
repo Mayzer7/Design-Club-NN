@@ -1701,7 +1701,7 @@ nav ul ul.open + svg {
     width: 100%;
 }
 
-.content-wrapper h1 {
+.content-wrapper h2 {
   overflow-wrap: break-word;
   word-break: break-word; 
   font-family: 'Future New Light', sans-serif;
