@@ -1205,7 +1205,7 @@ function handleScrollUp() {
   if (popularCategoriesContentMobile) {
     const swiper = new Swiper('.popular-categories-swiper', {
         slidesPerView: 'auto',
-        spaceBetween: 20,
+        spaceBetween: 10,
         slidesPerGroup: 1,
         speed: 800,
         grabCursor: false,
@@ -2054,6 +2054,14 @@ if (categoriesSection) {
       nextEl: '.right-arrow-categories',
       prevEl: '.left-arrow-categories',
     },
+
+    breakpoints: {
+      0:   { spaceBetween: 10 },  // < 435px
+
+      435: { spaceBetween: 20 },  // ≥ 435px и < 635px
+
+      635: { spaceBetween: 30 },  // ≥ 635px (включая 1920+)
+    }
   });
 
   // Выплывающие меню фильтров в шапке

@@ -1770,6 +1770,7 @@ nav ul ul.open + svg {
     align-items: flex-start;
     gap: 5px;
     margin-bottom: 20px;
+    margin-top: 5px;
 }
 
 .filter-section p {
@@ -2106,8 +2107,10 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
 
 
-
-
+.filters-desktop {
+    position: relative;      
+    z-index: 1000;
+}
 
 
 
@@ -2115,6 +2118,8 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
 .filters-mobile {
     display: none;
+    position: relative;      
+    z-index: 1000;
 }
 
 @media (max-width: 650px) {
