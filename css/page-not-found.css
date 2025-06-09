@@ -210,7 +210,7 @@ input:-webkit-autofill {
     display: flex;
     align-items: center;
     cursor: pointer;
-    gap: 6px;
+    gap: 10px;
     position: relative;
     z-index: 1000;
     pointer-events: auto;
@@ -1519,10 +1519,6 @@ nav ul ul.open + svg {
     transition: color 0.3s ease;
 }
 
-.footer-navigation h4:hover {
-    color: #AE9877;
-}
-
 .footer-navigation ul {
     display: flex;
     flex-direction: column;
@@ -1543,7 +1539,11 @@ nav ul ul.open + svg {
     color: rgba(237, 228, 215, 0.7);
 }
 
-.footer-address h5 {
+.footer-design-club-info {
+    margin-bottom: 40px;
+}
+
+.footer-design-club-info a {
     font-size: 38px;
     margin-bottom: 40px;
     font-family: 'SF Pro Display Thin', sans-serif; 
@@ -1564,7 +1564,7 @@ nav ul ul.open + svg {
     display: grid;
     grid-template-columns: 0.81fr 1.5fr 1fr auto;
     gap: 10px;
-    padding: 20px 0;
+    padding-top: 10px;
 }
 
 .footer-copyright a {
@@ -1574,6 +1574,8 @@ nav ul ul.open + svg {
 .footer-copyright a:hover {
     color: #AE9877;
 }
+
+
 
 /* Футер для 1024 разрешения */
 
@@ -1621,12 +1623,29 @@ nav ul ul.open + svg {
     padding-top: 20px;
 }
 
-.footer-nav-down h4 {
+.footer-nav-down a {
     text-transform: uppercase;
-    font-size: 24px;
+    font-size: 38px;
 }
 
-.footer-nav-down:last-child h4 {
+.footer-nav-down-1024 {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.footer-nav-down-1024 a {
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.footer-nav-down-1024 p {
+    font-size: 16px;
+}
+
+.footer-nav-down:last-child a,
+.footer-nav-down-1024:last-child a {
     white-space: nowrap;
 }
 
@@ -1763,6 +1782,10 @@ nav ul ul.open + svg {
     .footer-icons img {
         width: 32px;
         height: 32px;
+    }
+
+    .footer-nav-up h4 {
+        font-size: 20px;
     }
 }
 

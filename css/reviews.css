@@ -230,7 +230,7 @@ input:-webkit-autofill {
     display: flex;
     align-items: center;
     cursor: pointer;
-    gap: 6px;
+    gap: 10px;
     position: relative;
     z-index: 1000;
     pointer-events: auto;
