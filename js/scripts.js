@@ -1519,6 +1519,32 @@ function handleScrollUp() {
           }
         });
       });
+
+      // Скрытие кнопки "читать весь" у отзыва если строк меньше 7
+
+      document.querySelectorAll('.review-card').forEach(card => {
+          const textEl = card.querySelector('.review-text');
+          const btn    = card.querySelector('.read-more-link');
+          if (!textEl || !btn) return;
+
+          const style      = window.getComputedStyle(textEl);
+          let lineHeight   = parseFloat(style.lineHeight);
+          
+          if (isNaN(lineHeight)) {
+            lineHeight = parseFloat(style.fontSize) * 1.2;
+          }
+
+
+          const totalHeight = textEl.scrollHeight;
+
+          const linesCount  = Math.round(totalHeight / lineHeight);
+          console.log('linesCount', linesCount);
+
+          // если строк меньше 8 — скрываем кнопку
+          if (linesCount < 8) {
+            btn.style.display = 'none';
+          }
+      });
     }
 
   // Свайп карточек "Почему выбирают нас"

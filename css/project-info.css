@@ -4228,10 +4228,11 @@ a .popular-product-desc p,
 }
 
 .review-card-modal {
-    padding: 40px 0px 40px 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
     display: flex;
     flex-direction: column;
-    min-height: 60vh;
+    min-height: 29vh;
     height: 100%;
     max-width: 692px;
     width: 100%;
@@ -4268,17 +4269,18 @@ a .popular-product-desc p,
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-right: 20px;
+    padding-right: 40px;
+    padding-left: 40px;
 }
 
 .review-modal-text {
+    padding: 0px 40px 0px 40px;
     font-size: 20px;
     line-height: 120%;
     text-align: left;
     overflow-y: auto;
     max-height: 385px;
     max-width: 700px;
-    padding-right: 40px;
     scroll-behavior: smooth;
     
 }
@@ -4345,9 +4347,6 @@ a .popular-product-desc p,
         width: 100%;
     }
 
-    .review-card-modal {
-        min-height: 52vh;
-    }
 }
 
 @media (max-width: 750px) {
@@ -4355,8 +4354,13 @@ a .popular-product-desc p,
         padding: 20px;
     }
 
+    .review-modal-text {
+        padding: 0px 20px 0px 20px;
+    }
+
     .review-card-modal {
-        padding: 20px 0px 20px 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
 
     .review-modal-text {
@@ -4364,20 +4368,23 @@ a .popular-product-desc p,
     }
 
     .review-card-modal {
-        min-height: 48vh;
+        min-height: 26vh;
     }
 }
 
 @media (max-width: 440px) {
-    .review-card-modal {
-        padding: 20px 0px 20px 20px;
-    }
-
     .review-modal-text {
         padding-right: 15px;
     }
 
      .review-modal-author {
         font-size: 24px;
+    }
+}
+
+@media (max-width: 400px) {
+    .review-card-modal-down {
+        padding-right: 20px;
+        padding-left: 20px;
     }
 }
