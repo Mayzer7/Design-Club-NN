@@ -2792,6 +2792,19 @@ max-width:  360px;
     left: 5px;
 }
 
+.our-brands-swiper {
+  width: 100%;
+}
+
+.our-brands-swiper .swiper-wrapper {
+  display: flex;
+}
+
+.our-brands-swiper .swiper-slide {
+  width: auto; 
+  flex-shrink: 0;
+}
+
 .title-our-brands {
     font-family: 'Future New Light', sans-serif;
     font-size: 76px;
@@ -2799,6 +2812,7 @@ max-width:  360px;
     text-transform: uppercase;
     text-align: left;
     line-height: 95%;
+    margin-bottom: 60px;
 }
 
 .our-brands-content {
@@ -2827,11 +2841,23 @@ max-width:  360px;
 
 .brand-item {
   position: relative;
-  width: 455px;
-  height: 320px;
+  width: 100%;
+  width: clamp(200px, 30vw, 450px);
+  /* width: clamp(200px, 22.5vw, 450px); */
+  aspect-ratio: 4 / 3; /* сохраняет соотношение сторон */
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.brand-item img {
+  width: 80%;
+  height: auto;
+  object-fit: contain;
+  max-height: 80%;
 }
 
 /* Общий стиль для линий */
@@ -2866,12 +2892,24 @@ max-width:  360px;
 
 
 
-/* Адаптив */
+/* Адаптив "Наши бренды" */
+
+@media (max-width: 1900px) {
+    .brand-item {
+        width: clamp(200px, 23.5vw, 450px);
+    }
+}
+
+@media (max-width: 1700px) {
+    .brand-item {
+        width: clamp(200px, 22.5vw, 450px);
+    }
+}
 
 @media (max-width: 1400px) {
     .brand-item {
         max-width: 300px;
-        height: 232px;
+        height: 231px;
     }
 
     .brand-item img {
