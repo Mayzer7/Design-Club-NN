@@ -967,10 +967,10 @@ li.active .menu-arrow {
 }
 
 .burger-menu-open {
-    display: block; /* чтобы transition сработал */
+    display: block; 
     position: fixed;
     top: 0;
-    left: 0; /* фиксируем сверху слева */
+    left: 0; 
     width: 100vw;
     height: 100vh;
     padding: 15px;
@@ -1363,12 +1363,6 @@ nav ul ul.open + svg {
         background-image: url('../images/reviews/adaptive/background-1024.png');
     }
 }
-
-
-
-
-
-
 
 
 /* Секция "Отзывов" */

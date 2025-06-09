@@ -969,10 +969,10 @@ li.active .menu-arrow {
 }
 
 .burger-menu-open {
-    display: block; /* чтобы transition сработал */
+    display: block; 
     position: fixed;
     top: 0;
-    left: 0; /* фиксируем сверху слева */
+    left: 0; 
     width: 100vw;
     height: 100vh;
     padding: 15px;
@@ -1613,8 +1613,6 @@ nav ul ul.open + svg {
             #AE9877 100%);
 }
 
-
-/* Стили для кнопки */
 .projects-nav button {
     border: none;
     background-color: transparent;
@@ -1628,9 +1626,8 @@ nav ul ul.open + svg {
     transition: color 0.3s ease;
 }
 
-/* Ховер на кнопке */
 .projects-nav button:hover {
-    color: #AE9877;  /* Меняем цвет текста при ховере на кнопку */
+    color: #AE9877;  
 }
 
 [id] {
@@ -1743,15 +1740,6 @@ nav ul ul.open + svg {
     color: #AE9877;
     border-bottom-color: #AE9877;
 }
-
-
-
-
-
-
-
-
-
 
 
 /* Адаптив "Проекты" */
@@ -2023,9 +2011,6 @@ nav ul ul.open + svg {
     }
 
 }
-
-
-
 
 
 /* Footer */

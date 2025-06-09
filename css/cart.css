@@ -972,10 +972,10 @@ li.active .menu-arrow {
 }
 
 .burger-menu-open {
-    display: block; /* чтобы transition сработал */
+    display: block; 
     position: fixed;
     top: 0;
-    left: 0; /* фиксируем сверху слева */
+    left: 0;
     width: 100vw;
     height: 100vh;
     padding: 15px;
@@ -1533,7 +1533,7 @@ nav ul ul.open + svg {
     font-size: 20px;
     transition: all 0.3s ease;
     display: inline-block;
-    min-width: 20px; /* чтобы ширина не прыгала */
+    min-width: 20px;
     text-align: center;
 }
 

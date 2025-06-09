@@ -966,10 +966,10 @@ li.active .menu-arrow {
 }
 
 .burger-menu-open {
-    display: block; /* чтобы transition сработал */
+    display: block; 
     position: fixed;
     top: 0;
-    left: 0; /* фиксируем сверху слева */
+    left: 0;
     width: 100vw;
     height: 100vh;
     padding: 15px;
@@ -1403,8 +1403,8 @@ nav ul ul.open + svg {
 }
 
 .close-product-modal:hover svg path {
-  stroke: #AE9877; /* Золотой цвет */
-  stroke-opacity: 1; /* Чтобы убрать полупрозрачность при наведении */
+  stroke: #AE9877;
+  stroke-opacity: 1; 
 }
 
 .modal-product-arrows button {
@@ -1568,7 +1568,7 @@ nav ul ul.open + svg {
 }
 
 .product-swiper-wrapper {
-  display: flex; /* это ключевой момент */
+  display: flex; 
   margin-left: -50px;
   max-width: 1920px;
   width: 100%;
@@ -1894,7 +1894,6 @@ nav ul ul.open + svg {
   font-size: 20px;
   overflow: hidden;
 
-  /* Добавим начальные значения */
   opacity: 0;
   transform: translateY(10px);
   height: 0;
@@ -1915,7 +1914,7 @@ nav ul ul.open + svg {
 .product-added-to-cart-notification.active {
   opacity: 1;
   transform: translateY(0);
-  height: auto; /* Раскроем */
+  height: auto;
   padding-top: 14px;
   padding-bottom: 14px;
   visibility: visible;
@@ -2416,7 +2415,7 @@ nav ul ul.open + svg {
 }
 
 .images-mobile .swiper-slide {
-  aspect-ratio: 1 / 1; /* квадрат, можно 4/3, 16/9 и т.д. */
+  aspect-ratio: 1 / 1; 
   max-width: 500px;
   flex-shrink: 0;
   display: flex;

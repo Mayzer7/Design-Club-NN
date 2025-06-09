@@ -99,7 +99,6 @@ function activateSearchMode() {
   if (aboutToggle && aboutToggle.classList.contains('open')) {
     aboutToggle.classList.remove('open');
 
-    // Убираем блюры, которые мог активировать about-toggle
     blurContainers.forEach(container => {
       container.style.filter = '';
       container.style.cursor = '';
@@ -111,7 +110,6 @@ function activateSearchMode() {
     });
   }
 }
-
 
 function deactivateSearchMode() {
   // Сброс всех классов, связанных с поиском
@@ -144,8 +142,6 @@ function deactivateSearchMode() {
 // пользователь ввел название товара в поиске и нажал Enter
 
 
-
-// Первый input (где id="search-input")
 function performMainSearch() {
     const query = document.getElementById('search-input').value.trim();
     if (query) {
@@ -166,7 +162,6 @@ document.querySelector('.search-icon-button').addEventListener('click', function
 const query = document.getElementById('search-input-on-page')
 
 if (query) {
-  // Второй input (где id="search-input-on-page")
   function performOnPageSearch() {
 
       if (query) {
@@ -219,7 +214,6 @@ function resetHeaderState() {
         container.style.cursor = '';
     });
 
-    // Закрываем меню "О компании", если оно открыто
     if (toggleItem.classList.contains('open')) {
       toggleItem.classList.remove('open');
       menuNavigation.classList.remove('about-open');
@@ -239,12 +233,10 @@ blurContainers.forEach(container => {
             event.preventDefault();
             event.stopPropagation();
 
-            // Устанавливаем блокировку кликов
             disableClick = true;
 
             resetHeaderState();
 
-            // Снимаем блокировку через небольшой таймаут
             setTimeout(() => {
                 disableClick = false;
             }, 100);
@@ -252,7 +244,7 @@ blurContainers.forEach(container => {
             event.preventDefault();
             event.stopPropagation();
         }
-    }, true); // Захват
+    }, true); 
 });
 
 // Обработка кликов по under-header
@@ -280,13 +272,10 @@ underHeaders.forEach(header => {
         }
 
         if (isMenuOpen() || isSearchActive) {
-            // Клик в underHeaders, но не по ссылке/кнопке — просто закрываем меню
             resetHeaderState();
         }
-    }, true); // захват для надёжности
+    }, true); 
 });
-
-// Теперь на кнопках добавьте проверку disableClick:
 
 document.querySelectorAll('button, a').forEach(el => {
     el.addEventListener('click', (event) => {
@@ -298,7 +287,6 @@ document.querySelectorAll('button, a').forEach(el => {
     }, true);
 });
 
-// Проверка, открыт ли каталог или любое меню
 function isMenuOpen() {
     return isCatalogActive || toggleItem.classList.contains('open');
 }
@@ -355,7 +343,6 @@ function toggleCatalogMenu() {
 openCatalog.addEventListener('click', function(e) {
     e.preventDefault();
 
-    // Если в поиске есть текст, сначала отключаем поиск
     if (searchInput.value.trim() !== '') {
         searchInput.value = '';
         deactivateSearchMode();
@@ -402,18 +389,15 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleHeader.addEventListener('click', (e) => {
         e.preventDefault();
 
-        // 1. Очищаем поиск и сбрасываем UI поиска
         if (searchInput.value.trim() !== '') {
             searchInput.value = '';
             deactivateSearchMode();
         }
 
-        // 2. Закрываем активный каталог, если он открыт
         if (openCatalog.parentElement.classList.contains('active')) {
             openCatalog.parentElement.classList.remove('active');
             isCatalogActive = false;
 
-            // Сброс UI каталога
             openCatalog.style.color = '';
             header.style.backgroundColor = 'transparent';
             menuNavigation.style.display = 'none';
@@ -428,10 +412,8 @@ document.addEventListener('DOMContentLoaded', () => {
             underHeaders.forEach(el => el.style.backdropFilter = 'none');
         }
 
-        // 3. Переключаем меню "О компании"
         toggleItem.classList.toggle('open');
 
-        // 4. Применяем/снимаем blur в зависимости от состояния
         if (toggleItem.classList.contains('open')) {
             blurContainers.forEach(container => {
                 container.style.filter = 'blur(5px)';
@@ -457,13 +439,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Модальное окно "Связаться с нами"
 
-// Получаем контейнеры под модалки
 const contactModalWrapper = document.getElementById('get-contact-modal');
 const thanksModalWrapper = document.getElementById('thanks-modal');
 const errorModalWrapper = document.getElementById('error-modal');
 const container = document.querySelector('.container'); // блюр-контейнер
 
-// Загружаем все модалки, если они есть на странице
 if (contactModalWrapper && thanksModalWrapper && errorModalWrapper) {
   Promise.all([
     fetch('modals/get-contact.html').then(res => res.text()),
@@ -475,7 +455,6 @@ if (contactModalWrapper && thanksModalWrapper && errorModalWrapper) {
     thanksModalWrapper.innerHTML = thanksHTML;
     errorModalWrapper.innerHTML = errorHTML;
 
-    // Получение внутренних модалок
     const contactModal = document.getElementById('contactModal');
     const thanksModal = document.getElementById('thanksModal');
     const errorModal = document.getElementById('errorModal');
@@ -514,12 +493,10 @@ if (contactModalWrapper && thanksModalWrapper && errorModalWrapper) {
       }, 500);
     }
 
-    // Кнопки открытия
     openBtns.forEach(btn => {
       if (btn) btn.addEventListener('click', () => openModal(contactModal));
     });
 
-    // Кнопки закрытия
     closeBtns.forEach(btn => {
       if (!btn) return;
       btn.addEventListener('click', () => {
@@ -529,7 +506,6 @@ if (contactModalWrapper && thanksModalWrapper && errorModalWrapper) {
       });
     });
 
-    // Клик по фону
     [contactModal, thanksModal, errorModal].forEach(modal => {
       if (!modal) return;
       modal.addEventListener('click', e => {
@@ -537,7 +513,6 @@ if (contactModalWrapper && thanksModalWrapper && errorModalWrapper) {
       });
     });
 
-    // Отправка формы
     window.onSubmitForm = function (event) {
       event.preventDefault();
       const form = event.target;
@@ -654,7 +629,6 @@ function onSubmitForm(event) {
 
 // Раскрытие менюшек при нажатии на каталог в хедере
 
-// Определяем, есть ли поддержка hover и fine pointer (т.е. мышь, ПК)
 const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
 const menuContainer = document.querySelector('.menu-container');
@@ -665,10 +639,8 @@ header.addEventListener('mouseenter', (e) => {
   const isOverCatalogButton = e.target.closest('.open-catalog');
 
   if (!isOverCatalogButton && openCatalog.parentElement.classList.contains('active')) {
-    // Закрываем каталог
     toggleCatalogMenu();
 
-    // Сброс состояния меню
     document.querySelectorAll('.submenu').forEach(sm => sm.classList.remove('open'));
     document.querySelectorAll('.menu-toggle').forEach(btn => btn.classList.remove('active'));
     document.querySelectorAll('.submenu-item').forEach(item => item.classList.remove('active'));
@@ -676,7 +648,6 @@ header.addEventListener('mouseenter', (e) => {
       content.style.display = 'none';
     });
 
-    // Сброс фильтров, курсоров и фоновых цветов
     blurContainers.forEach(container => {
       container.style.filter = 'none';
       container.style.cursor = '';
@@ -699,6 +670,7 @@ header.addEventListener('mouseenter', (e) => {
 });
 
 // Клик по верхнему меню
+
 document.querySelectorAll('.menu-toggle').forEach(button => {
   button.addEventListener('click', e => {
     const category = button.dataset.category;
@@ -728,8 +700,6 @@ document.querySelectorAll('.menu-toggle').forEach(button => {
   });
 });
 
-
-// Hover для ПК
 if (hasHover) {
   document.querySelectorAll('.menu-toggle').forEach(button => {
     button.addEventListener('mouseenter', () => {
@@ -751,7 +721,6 @@ if (hasHover) {
   });
 }
 
-// Наведение на подменю
 document.querySelectorAll('.submenu-item .menu-button').forEach(button => {
   button.addEventListener('mouseenter', () => {
     const submenuItem = button.closest('.submenu-item');
@@ -772,12 +741,10 @@ document.querySelectorAll('.submenu-item .menu-button').forEach(button => {
   });
 });
 
-// Защита от ухода мыши с правого меню
 document.querySelectorAll('.right-menu-content').forEach(menu => {
   menu.addEventListener('mouseenter', () => clearTimeout(hideTimeout));
 });
 
-// Обработчик правого меню по клику, чтобы работало на touch устройствах
 document.querySelectorAll('.submenu-item .menu-button').forEach(button => {
   const openRightMenu = () => {
     const submenuItem = button.closest('.submenu-item');
@@ -801,7 +768,7 @@ document.querySelectorAll('.submenu-item .menu-button').forEach(button => {
 
   button.addEventListener('click', (e) => {
     if (!hasHover) {
-      e.preventDefault(); // отключить переход по ссылке
+      e.preventDefault();
       openRightMenu();
     }
   });
@@ -809,7 +776,6 @@ document.querySelectorAll('.submenu-item .menu-button').forEach(button => {
 
 
 // Открытие бургер меню
-
 
 const openBurgerMenu = document.getElementById('openBurgerMenu');
 const burgerMenuContent = document.getElementById('burgerMenuContent');
@@ -829,8 +795,6 @@ function closeMenu() {
   
   burgerMenuContent.classList.remove('open');
 
-    
-    // Показывает контент чуть раньше 
     setTimeout(() => {
         mainContent.classList.remove('hidden');
     }, 250);
@@ -839,7 +803,6 @@ function closeMenu() {
 function onTransitionEnd(event) {
     if (event.propertyName === 'transform' || event.propertyName === 'opacity') {
         mainContent.classList.remove('hidden');
-        // Чтобы не накопились обработчики, удаляем слушатель
         burgerMenuContent.removeEventListener('transitionend', onTransitionEnd);
     }
 }
@@ -896,10 +859,8 @@ submenuTitles.forEach(title => {
 
 const inputBurger = document.getElementById('inputBurger');
 const searchItemsBurger = document.getElementById('searchItemsBurger');
-// Скрытие менюшек в бургере при поиске
 const burgerUnderSearch = document.querySelector('.burger-under-search-hide');
 
-// По умолчанию скрываем
 searchItemsBurger.classList.add('hidden');
 
 inputBurger.addEventListener('input', () => {
@@ -952,7 +913,6 @@ function handleScroll() {
       header.style.cursor = '';
     });
 
-    // Закрываем всё при достижении самого верха
     resetHeaderState();
   }
 
@@ -963,7 +923,6 @@ window.addEventListener('scroll', handleScroll);
 
 
 function handleScrollDown() {
-  // Прерываем скрытие, если начался скролл вниз
   if (hideStickyTimeout) {
     clearTimeout(hideStickyTimeout);
     hideStickyTimeout = null;
@@ -1008,7 +967,6 @@ function handleScrollDown() {
 }
 
 function handleScrollUp() {
-  // Если есть активный таймер — сбрасываем
   if (hideStickyTimeout) {
     clearTimeout(hideStickyTimeout);
     hideStickyTimeout = null;
@@ -1148,7 +1106,6 @@ function handleScrollUp() {
               contactMethodInput.value = russianText;
               contactMethodValueInput.value = englishValue;
 
-              // Сброс выделения
               menu.querySelectorAll('.contact-input-fields-menu').forEach(el => {
                   el.classList.remove('selected');
               });
@@ -1208,18 +1165,16 @@ function handleScrollUp() {
           on: {
             reachEnd: function () {
               setTimeout(() => {
-                this.slideTo(2); // Переход на карточку с индексом 2
-              }, 500); // можно убрать задержку или изменить по желанию
+                this.slideTo(2); 
+              }, 500); 
             }
           }
         });
       }
     }
 
-    // Инициализация при загрузке
     initSwiper();
 
-    // Переинициализация при изменении ширины окна
     window.addEventListener('resize', () => {
       initSwiper();
     });
@@ -1398,7 +1353,6 @@ function handleScrollUp() {
   const customersNavigation = document.querySelector('.customers-navigation');
 
     if (customersNavigation) {
-       // Навигация (раскрытие менюшек)
       document.addEventListener("DOMContentLoaded", function () {
         const navBlocks = document.querySelectorAll(".customers-navigation");
         const HEADER_OFFSET = 160; 
@@ -1446,7 +1400,6 @@ function handleScrollUp() {
     const moreButton = document.getElementById('more-button');
     const reviewContainers = document.querySelectorAll('.more-reviews');
           
-    // Индекс текущего контейнера, который будет показан
     let currentIndex = 0;
           
     function showNextReviewContainer() {
@@ -1460,7 +1413,6 @@ function handleScrollUp() {
             currentIndex++;
             }
           
-        // Скрываем кнопку, если все блоки показаны
         if (currentIndex >= reviewContainers.length) {
             const moreContainer = document.querySelector('.more');
                 
@@ -1493,9 +1445,6 @@ function handleScrollUp() {
       }
     });
   }
-
-  
-
 
   // Свайп карточек отзывов
 
@@ -1676,7 +1625,6 @@ if (notificationContainer) {
 
       const notification = document.getElementById('notification');
 
-      // Теперь подключаем модалку и кнопку удаления
       setupDeleteModal(notification);
     })
     .catch(error => {
@@ -1804,7 +1752,6 @@ const heroContent1 = document.querySelector('.hero-content-1');
 
 if (heroContent1) {
   
-// Переключение изображений каждые 3 секунды
 // Переключение изображений каждые 3 секунды (десктоп + мобилка)
 document.addEventListener('DOMContentLoaded', () => {
   // Десктопные элементы:
@@ -1867,13 +1814,10 @@ document.addEventListener('DOMContentLoaded', () => {
   /*** ФУНКЦИЯ: запускаем прогресс-бар у мобильной кнопки с индексом idx ***/
   function startProgressBarMobile(idx) {
     // Снова сбросили все (чтобы десктоп и мобилка синхронизировались).
-    // Чтобы не «дёргало», лучше всё-reset, а потом включаем только нужные:
     const wantedBtns = Array.from(mobThumbButtons).filter(b => {
       return Number(b.getAttribute('data-index')) === idx;
     });
     if (wantedBtns.length === 0) return;
-    // Так как таких кнопок будет ровно 3 (по одной в каждом мобильном слайде),
-    // то мы должны выбрать лишь ту, что внутри активного mobContents[idx].
     const parentMobile = mobContents[idx];
     const btn = parentMobile.querySelector(`button[data-index="${idx}"]`);
     const bar = btn ? btn.querySelector('.progress-bar-mobile') : null;
@@ -1885,7 +1829,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /*** ФУНКЦИЯ: показываем десктопный слайд i ***/
+  /*** ФУНКЦИЯ: показываем десктопный слайд ***/
   function showSlideDesktop(i) {
       images[current].classList.remove('active');
       contents[current].classList.remove('active');
@@ -1893,9 +1837,8 @@ document.addEventListener('DOMContentLoaded', () => {
       contents[i].classList.add('active');
     }
 
-    /*** ФУНКЦИЯ: показываем мобильный слайд i ***/
+    /*** ФУНКЦИЯ: показываем мобильный слайд ***/
     function showSlideMobile(i) {
-    // 1) Снимаем active со старого и ставим для нового
     mobContents[current].classList.remove('active');
     mobContents[i].classList.add('active');
 
@@ -1907,13 +1850,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const btn = thumbContainer.querySelector(`button[data-index="${i}"]`);
       if (!btn) return;
 
-      // 2) Если первая миниатюра, просто сбрасываем scrollTop в 0
       if (i === 0) {
-        // напрямую, без плавной анимации
         thumbContainer.scrollTop = 0;
       } else {
-        // 3) Для остальных: берём offsetTop кнопки,
-        // но не даём «top» превысить возможную прокрутку
         const offsetTopRelative = btn.offsetTop;
         const maxScroll = thumbContainer.scrollHeight - thumbContainer.clientHeight;
         const targetScroll = Math.min(offsetTopRelative, maxScroll);
@@ -1926,7 +1865,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /*** ФУНКЦИЯ: переключение на слайд i (десктоп + мобилка) ***/
+  /*** ФУНКЦИЯ: переключение на слайд (десктоп + мобилка) ***/
   function showSlide(i) {
     if (i === current) return;
     // Скрываем предыдущий десктоп
@@ -1950,7 +1889,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (intervalId) {
       clearInterval(intervalId);
     }
-    // Сразу запустить прогресс-бары для текущего a.k.a. 0
+
     startProgressBarDesktop(current);
     startProgressBarMobile(current);
 
@@ -1990,130 +1929,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 }
 
-
-
-
 const pageWrapper3 = document.querySelector('.page-wrapper-3');
-
-if (pageWrapper3) {
-  // Скрипт для автоматического переключения контента на главной странице + переключение изображений на заднем плане
-
-  // const section = document.querySelector('.main-page-top');
-  // const pageWrappers = document.querySelectorAll('.page-wrapper');
-
-  // const mobileProgressBars = document.querySelectorAll('.for-mobile-switch .progress-bar');
-  // const mobileProgressBars340 = document.querySelectorAll('.for-mobile-switch-340 .progress-bar');
-  // const progressBars1024 = document.querySelectorAll('.desctop-images-1024 .progress-bar');
-  // const desktopProgressBars = document.querySelectorAll('.desctop-images .progress-bar');
-
-  // const styles = getComputedStyle(section);
-  // const bg1 = styles.getPropertyValue('--bg-1').trim();
-  // const bg2 = styles.getPropertyValue('--bg-2').trim();
-  // const bg3 = styles.getPropertyValue('--bg-3').trim();
-
-  // function extractUrl(cssUrl) {
-  //     return cssUrl.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
-  // }
-
-  // const bgImages = [bg1, bg2, bg3].map(extractUrl).map(path => path.replace(/^\.\.\//, ''));
-
-  // let currentBgIndex = 0;
-  // let intervalId = null;
-
-  // // Определяем текущие прогресс-бары по ширине окна
-  // function getCurrentProgressBars() {
-  //     const width = window.innerWidth;
-  //     if (width <= 400) {
-  //         return mobileProgressBars340;
-  //     } else if (width <= 1010) {
-  //         return mobileProgressBars;
-  //     } else if (width <= 1024) {
-  //         return progressBars1024;
-  //     } else {
-  //         return desktopProgressBars;
-  //     }
-  // }
-
-  // // Сброс анимации прогресс-бара
-  // function resetProgressBars() {
-  //     const bars = getCurrentProgressBars();
-  //     bars.forEach(bar => {
-  //         bar.style.transition = 'none';
-  //         bar.style.width = '0%';
-  //         void bar.offsetWidth; // принудительный reflow для сброса
-  //         bar.style.transition = 'width 3s linear';
-  //     });
-  // }
-
-  // // Анимация текущего прогресс-бара
-  // function animateCurrentProgressBar(index) {
-  //     resetProgressBars();
-  //     const bars = getCurrentProgressBars();
-  //     if (bars[index]) {
-  //         bars[index].style.width = '100%';
-  //     }
-  // }
-
-  // // Смена фона
-  // function changeBackground(index) {
-  //     const newBg = bgImages[index];
-
-  //     const tempBg = document.createElement('div');
-  //     tempBg.classList.add('temp-bg');
-  //     tempBg.style.backgroundImage = `url('${newBg}')`;
-  //     tempBg.style.opacity = '0';
-
-  //     section.appendChild(tempBg);
-  //     void tempBg.offsetHeight; // рефлоу
-  //     tempBg.style.opacity = '1';
-
-  //     setTimeout(() => {
-  //         section.style.backgroundImage = `url('${newBg}')`;
-  //         if (tempBg.parentNode) tempBg.remove();
-  //     }, 1000);
-
-  //     pageWrappers.forEach((wrapper, i) => {
-  //         wrapper.classList.toggle('active', i === index);
-  //     });
-
-  //     animateCurrentProgressBar(index);
-  // }
-
-  // // Автоматическое переключение
-  // function startAutoChange() {
-  //     if (intervalId) clearInterval(intervalId);
-
-  //     animateCurrentProgressBar(currentBgIndex);
-
-  //     intervalId = setInterval(() => {
-  //         currentBgIndex = (currentBgIndex + 1) % bgImages.length;
-  //         changeBackground(currentBgIndex);
-  //     }, 3000);
-  // }
-
-  // // Инициализация
-  // startAutoChange();
-
-  // // Повторная инициализация прогресс-бара при ресайзе
-  // window.addEventListener('resize', () => {
-  //     animateCurrentProgressBar(currentBgIndex);
-  // });
-
-  // // Обработка кликов на миниатюрах
-  // document.querySelectorAll('.title-images a').forEach((link, index) => {
-  //     link.addEventListener('click', function (e) {
-  //         e.preventDefault();
-
-  //         const bgUrl = this.getAttribute('data-bg');
-  //         const foundIndex = bgImages.indexOf(bgUrl);
-  //         if (foundIndex !== -1) {
-  //             currentBgIndex = foundIndex;
-  //             changeBackground(currentBgIndex);
-  //             startAutoChange();
-  //         }
-  //     });
-  // });
-}
 
 // Скрипты для контента на странице "catalog-page.html"
 
@@ -2123,7 +1939,7 @@ if (categoriesSection) {
   const body = document.body;
   let scrollPosition = 0;
 
-  // Функции для открытия/закрытия меню фильтров с фиксацией body
+  // Функции для открытия/закрытия меню фильтров 
   function openFilterMenu() {
     // Запоминаем текущее положение прокрутки
     scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
@@ -2218,7 +2034,6 @@ if (categoriesSection) {
       if (filterMenu.classList.contains('active')) {
         filterMenu.classList.remove('active');
         mainPageContent.style.filter = '';
-        // Возвращаем body, если мы пытались открыть первый фильтр
         body.style.position = '';
         body.style.top = '';
         body.style.left = '';
@@ -2241,6 +2056,7 @@ if (categoriesSection) {
   });
 
   // Инициализация свайпера для категорий
+
   const swiper = new Swiper('.categories-swiper', {
     slidesPerView: 'auto',
     spaceBetween: 20,
@@ -2415,7 +2231,7 @@ if (modalProduct) {
       modalProductSwiper.destroy(true, true);
       modalProductSwiper = null;
     }
-  }, 400); // соответствует CSS transition
+  }, 400); 
   modalProductSwiperInstances.forEach(swiper => swiper.autoplay?.start());
 }
 
@@ -2444,7 +2260,6 @@ if (modalProduct) {
     const extraText = container.querySelector('.extra-text');
     const extraSettings = container.querySelector('.extra-settings');
 
-    // Логика универсальна: ищет, что именно нужно показать
     if (extraText) {
       const isHidden = extraText.style.display === 'none';
       extraText.style.display = isHidden ? 'flex' : 'none';
@@ -2487,7 +2302,7 @@ if (addToCardProduct) {
 
   function initContainer(container) {
     let quantity = 1;
-    let notifyTimeout = null; // для контроля времени уведомления
+    let notifyTimeout = null; 
 
     function updateQtyLabel() {
       container.qtyLabel.textContent = quantity;
@@ -2504,7 +2319,7 @@ if (addToCardProduct) {
 
       // Перезапускаем анимацию (если элемент уже активен)
       notify.classList.remove('active');
-      void notify.offsetWidth; // ⏪ триггер рефлоу (хак для перезапуска CSS-анимации)
+      void notify.offsetWidth;
       notify.classList.add('active');
 
       notifyTimeout = setTimeout(() => {
@@ -2520,7 +2335,7 @@ if (addToCardProduct) {
         updateQtyLabel();
       }
 
-      showNotification(); // всегда показываем
+      showNotification(); 
     });
 
     container.plusBtn?.addEventListener('click', () => {
@@ -2813,7 +2628,6 @@ if (projectsSection) {
       window.scrollTo({ top: topPosition, behavior: 'smooth' });
 
       setTimeout(() => {
-        // ставим hash после анимации
         window.history.pushState(null, '', targetId);
         isScrollingProgrammatically = false;
       }, 600);
@@ -2836,12 +2650,11 @@ if (projectsSection) {
 
   if (btnWrapper) {
     const btn = btnWrapper.querySelector('button');
-    let clickCount = 0;  // счётчик кликов
+    let clickCount = 0; 
 
     btn.addEventListener('click', () => {
       clickCount++;
 
-      // Клонируем все секции при каждом клике
       document.querySelectorAll('.projects-content-container').forEach(orig => {
         const clone = orig.cloneNode(true);
         clone.classList.add('cloned');
@@ -2850,7 +2663,6 @@ if (projectsSection) {
         setTimeout(() => clone.classList.add('visible'), 50);
       });
 
-      // После второго клика — прячем кнопку
       if (clickCount >= 2) {
         btnWrapper.style.display = 'none';
       }
@@ -2869,7 +2681,7 @@ const gallerySwiper = document.querySelector('.project-gallery-swiper');
     function initSwiper() {
       const isMobile = window.matchMedia('(max-width: 830px)').matches;
 
-      if (swiper) swiper.destroy(true, true); // удаляем старый instance
+      if (swiper) swiper.destroy(true, true); 
 
       swiper = new Swiper('.project-gallery-swiper', {
         slidesPerView: 'auto',
