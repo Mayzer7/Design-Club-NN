@@ -1634,7 +1634,7 @@ nav ul ul.open + svg {
 
 @media (max-width: 520px) {
     .main-page-top {
-        min-height: 800px;
+        min-height: 750px;
     }
 }
 
@@ -1662,12 +1662,6 @@ nav ul ul.open + svg {
 
     .under-header {
         top: 90px;
-    }
-}
-
-@media (max-width: 338px) {
-    .main-page-top {
-        min-height: 800px;
     }
 }
 
@@ -2082,6 +2076,7 @@ nav ul ul.open + svg {
 
 .why-up-title {
     margin-left: 3px;
+    margin-bottom: 10px;
 }
 
 .block-title {
@@ -2462,7 +2457,7 @@ nav ul ul.open + svg {
 .warehouse-up-title {
     position: absolute;
     top: 85px;
-    left: 23px;
+    left: 19px;
 }
 
 .about-warehouse-title {
@@ -2691,7 +2686,7 @@ nav ul ul.open + svg {
 
 @media (max-width: 520px) {
     .about-warehouse {
-        padding: 120px 20px 90px 20px;
+        padding: 120px 20px 45px 20px;
     }
 
     .warehouse-up-title {
@@ -2750,8 +2745,8 @@ nav ul ul.open + svg {
 
 .showroom-up-title {
     position: absolute;
-    top: 75px;
-    left: 24px;
+    top: 40px;
+    left: 19px;
 }
 
 .showroom-content {
@@ -2898,7 +2893,7 @@ nav ul ul.open + svg {
 
 @media (max-width: 545px) {
     .showroom-1024 {
-        padding: 100px 20px 100px 20px;
+        padding: 70px 20px 45px 20px;
     }
 
     .showroom-second-left svg {
@@ -3432,8 +3427,8 @@ nav ul ul.open + svg {
 
     .get-request-left-side {
         position: absolute;
-        top: -20px;
-        left: 5px;
+        top: -25px;
+        left: 3px;
     }
 }
 
@@ -3447,7 +3442,7 @@ nav ul ul.open + svg {
     }
 
     .get-request {
-        padding: 45px 20px 45px 20px;
+        padding: 5px 20px 45px 20px;
     }
 }
 
@@ -3490,7 +3485,7 @@ nav ul ul.open + svg {
 .review-up-title {
     position: absolute;
     top: 0;
-    left: 2px;
+    left: 3px;
 }
 
 .reviews-title {
@@ -3886,6 +3881,12 @@ nav ul ul.open + svg {
     }
 }
 
+@media (max-width: 575px) {
+    .reviews {
+        padding: 65px 20px 45px 20px;
+    }
+}
+
 @media (max-width: 470px) {
     .nav-arrows-reviews {
         display: none;
@@ -4153,6 +4154,12 @@ nav ul ul.open + svg {
         display: block;
     }
 
+}
+
+@media (max-width: 575px) {
+    .footer-below-1024 {
+        padding: 45px 20px 0px 20px;
+    }
 }
 
 
@@ -5031,3 +5038,23 @@ nav ul ul.open + svg {
     }
 }
 
+/* Адаптив отступов */
+
+@media (max-width: 650px) {
+    .reviews,
+    .get-request,
+    .showroom-1024,
+    .about-warehouse,
+    .why-choose-us,
+    .unique-solutions,
+    .under-header,
+    .unique-solutions-520px,
+    .footer-below-1024 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .header-top {
+        padding: 15px;
+    }
+}
