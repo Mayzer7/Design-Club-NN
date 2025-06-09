@@ -104,6 +104,10 @@ body.no-scroll {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
+.line-height {
+    line-height: 95%;
+}
+
 /* Стили для автозаполнения */
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px #fff inset !important; 
@@ -2882,3 +2886,4 @@ nav ul ul.open + svg {
         height: 56px;
     }
 }
+

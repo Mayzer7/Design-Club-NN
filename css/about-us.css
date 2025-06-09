@@ -1957,6 +1957,7 @@ nav ul ul.open + svg {
     font-size: 38px;
     text-transform: uppercase;
     margin-bottom: 20px;
+    line-height: 95%;
 }
 
 .unique-solutions-text {
@@ -2744,6 +2745,7 @@ nav ul ul.open + svg {
     font-size: 76px;
     text-transform: uppercase;
     margin-bottom: 20px;
+    line-height: 95%;
 }
 
 .showroom-up-title {

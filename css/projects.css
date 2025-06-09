@@ -103,6 +103,10 @@ body.no-scroll {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
+.line-height {
+    line-height: 95%;
+}
+
 /* Стили для автозаполнения */
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px #fff inset !important; 
@@ -1425,7 +1429,7 @@ nav ul ul.open + svg {
     }
 
     .main-page-top {
-        height: 450px;
+        height: 420px;
     }
 
 }
@@ -2795,6 +2799,10 @@ nav ul ul.open + svg {
     .thanks-svg {
         width: 56px;
         height: 56px;
+    }
+
+    .main-page-top {
+        height: 420px;
     }
 
 }

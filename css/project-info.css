@@ -114,6 +114,10 @@ body.no-scroll {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
+.line-height {
+    line-height: 95%;
+}
+
 .block-title {
     color: rgba(255, 255, 255, 0.6);
     font-family: 'SF Pro Display', sans-serif;
@@ -2096,7 +2100,8 @@ a .popular-product-desc p,
     }
 
     .up-title {
-        top: 30px;
+        top: 25px;
+        left: 20px;
     }
 
     .popular-products-swiper .swiper-wrapper  {
@@ -2497,6 +2502,10 @@ a .popular-product-desc p,
 
     .rating-number {
         padding: 23px 73px;
+    }
+
+    .reviews {
+        padding: 90px 20px 90px 20px;
     }
 }
 
@@ -3169,7 +3178,7 @@ a .popular-product-desc p,
     }
     
     .get-contact {
-        padding: 45px 20px 45px 20px;
+        padding: 5px 20px 45px 20px;
         background-image: url("../images/main-page/get-request/background-mobile-2.png");
         background-size: auto;
         background-position: top right;

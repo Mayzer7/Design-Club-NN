@@ -2458,7 +2458,8 @@ nav ul ul.open + svg {
     font-family: 'Future New Light', sans-serif;
     font-size: 76px;
     text-transform: uppercase;
-    text-align: left;   
+    text-align: left;
+    line-height: 95%;   
 }
 
 .popular-product-cards {

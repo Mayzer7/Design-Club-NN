@@ -1606,6 +1606,11 @@ nav ul ul.open + svg {
     .category-title {
         font-size: 16px;
     }
+
+    .filter-first-btn-left-side p,
+    .filter-second-btn-left-side p {
+        font-size: 16px;
+    }
 }
 
 /* Фильтры */
@@ -2398,9 +2403,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
         height: 92px;
     }
 
-    .categories-section {
-        padding: 0 20px 50px 20px;
-    }
+    
 
     .filters {
         margin-top: 10px;
@@ -2766,7 +2769,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
 
 .reviews {
-    padding: 130px 20px 100px 20px;
+    padding: 90px 20px 100px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;  
     overflow: hidden;
@@ -3109,7 +3112,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     }
 
     .review-up-title {
-        top: -30px;
+        top: -25px;
     }
 
     .rating-number h3 {
@@ -4925,7 +4928,29 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
   }
 }
 
+/* Адаптив отступов */
 
+@media (max-width: 600px) {
+    .pagination {
+        margin-top: 40px;
+    }
+
+    .reviews {
+        padding: 45px 15px 45px 15px;
+    }
+
+    .products-cards {
+        padding: 0px 15px 45px 15px;
+    }
+
+    .get-request {
+        padding: 5px 15px 45px 15px;
+    }
+
+    .footer-below-1024 {
+        padding: 45px 15px 0px 15px;
+    }
+}
 
 
 

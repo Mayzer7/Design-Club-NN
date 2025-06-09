@@ -121,6 +121,9 @@ input[type="number"] {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
+.line-height {
+    line-height: 95%;
+}
 
 .block-title {
     color: rgba(255, 255, 255, 0.6);
@@ -2074,7 +2077,7 @@ nav ul ul.open + svg {
     }
 
     .get-request {
-        padding: 45px 20px 45px 20px;
+        padding: 5px 20px 45px 20px;
     }
 }
 
