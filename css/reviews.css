@@ -1913,10 +1913,10 @@ nav ul ul.open + svg {
 }
 
 .footer {
-    padding: 100px 20px 20px 20px;
+    padding: 90px 20px 20px 20px;
     background-color: #151c28;
-    font-family: 'SF Pro Display', sans-serif;
-    font-weight: 300;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    font-weight: 300; 
 }
 
 .footer-container {
@@ -1943,8 +1943,12 @@ nav ul ul.open + svg {
     white-space: nowrap;
     padding-bottom: 10px;
     text-transform: uppercase;
-    font-size: 20px;
+    font-size: 24px;
     transition: color 0.3s ease;
+}
+
+.footer-navigation h1:hover {
+    color: #AE9877;
 }
 
 .footer-navigation ul {
@@ -1956,7 +1960,6 @@ nav ul ul.open + svg {
 
 .footer-navigation ul li a {
     transition: color 0.3s ease;
-    font-size: 16px;
 }
 
 .footer-navigation ul li a:hover {
@@ -1980,8 +1983,6 @@ nav ul ul.open + svg {
     font-size: 38px;
     cursor: pointer;
 }
-
-
 
 .footer-icons {
     display: flex;
@@ -2016,9 +2017,9 @@ nav ul ul.open + svg {
 
 .footer-1024 {
     display: none;
-    padding: 100px 20px 20px 20px;
+    padding: 90px 20px 20px 20px;
     background-color: #151c28;
-    font-family: 'SF Pro Display', sans-serif;
+    font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 
 }
 
@@ -2060,13 +2061,13 @@ nav ul ul.open + svg {
 
 .footer-nav-down a {
     text-transform: uppercase;
-    font-size: 20px;
+    font-size: 24px;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 600;
 }
 
 .footer-nav-down p {
-    font-size: 14px;
+    font-size: 16px;
     color: rgba(237, 228, 215, 0.7);
     margin-bottom: 5px;
 }
@@ -2076,9 +2077,9 @@ nav ul ul.open + svg {
 
 .footer-below-1024 {
     display: none;
-    padding: 100px 20px 0px 20px;
+    padding: 90px 20px 0px 20px;
     background-color: #151c28;
-    font-family: 'SF Pro Display', sans-serif;
+    font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 
 }
 
@@ -2125,10 +2126,7 @@ nav ul ul.open + svg {
     flex-direction: column;
     gap: 10px;
     align-items: flex-end;
-}
-
-.copyrigth-second-column p {
-    font-size: 14px;
+    
 }
 
 /* Адаптив для footer */
@@ -2199,7 +2197,6 @@ nav ul ul.open + svg {
         height: 32px;
     }
 }
-
 
 
 
