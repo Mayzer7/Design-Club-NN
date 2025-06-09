@@ -1797,7 +1797,7 @@ nav ul ul.open + svg {
 
 
 
-/* Секция "Популярные товары" */
+/* Секция "Товары проекта*/
 
 .project-products {
     padding: 90px 20px 90px 20px;
@@ -1999,7 +1999,7 @@ a .popular-product-desc p,
     margin-top: 40px;
 }
 
-/* Адаптив популярные товары */
+/* Адаптив "Товары проекта" */
 
 @media (max-width: 1630px) {
     .popular-products-swiper .swiper-wrapper  {
@@ -2034,6 +2034,28 @@ a .popular-product-desc p,
 @media (max-width: 1030px) {
     .popular-products-swiper .swiper-wrapper  {
         margin-left: -100px;
+    }
+
+    .popular-products-swiper .swiper-wrapper .swiper-slide.swiper-slide-active {
+        width: 331px;
+    }
+
+    .popular-products-swiper .swiper-wrapper .swiper-slide.swiper-slide-active img {
+        max-width:  331px;
+        max-height: 331px;
+        height: 100%;
+        width: 100%;
+    }
+
+    .popular-product-card img {
+        max-width: 231px;
+        max-height: 231px;
+        height: 100%;
+        width: 100%;
+    }
+
+    .popular-products-swiper .swiper-wrapper .swiper-slide {
+        width: 231px;
     }
 }
 

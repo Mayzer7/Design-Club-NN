@@ -2463,7 +2463,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
 .product-card img {
     max-width: 455px;
-    max-height: 502px;
+    max-height: 455px;
     width: 100%;
     height: 100%;
 }
@@ -2625,8 +2625,6 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     }
 }
-
-
 
 @media (max-width: 1200px) {
     .badge {

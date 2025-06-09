@@ -2430,6 +2430,7 @@ nav ul ul.open + svg {
 
 .images-mobile .swiper-slide img {
   max-width: 100%;      
+  min-height: 216px;
   height: auto;
   object-fit: cover;
   display: block;
@@ -2803,10 +2804,31 @@ a .popular-product-desc p,
     }
 }
 
-
 @media (max-width: 1030px) {
     .popular-products-swiper .swiper-wrapper  {
         margin-left: -100px;
+    }
+
+    .popular-products-swiper .swiper-wrapper .swiper-slide.swiper-slide-active {
+        width: 331px;
+    }
+
+    .popular-products-swiper .swiper-wrapper .swiper-slide.swiper-slide-active img {
+        max-width:  331px;
+        max-height: 331px;
+        height: 100%;
+        width: 100%;
+    }
+
+    .popular-product-card img {
+        max-width: 231px;
+        max-height: 231px;
+        height: 100%;
+        width: 100%;
+    }
+
+    .popular-products-swiper .swiper-wrapper .swiper-slide {
+        width: 231px;
     }
 }
 
