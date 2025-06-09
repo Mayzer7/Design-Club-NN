@@ -1538,7 +1538,6 @@ function handleScrollUp() {
           const totalHeight = textEl.scrollHeight;
 
           const linesCount  = Math.round(totalHeight / lineHeight);
-          console.log('linesCount', linesCount);
 
           // если строк меньше 8 — скрываем кнопку
           if (linesCount < 8) {
@@ -2048,7 +2047,7 @@ if (categoriesSection) {
 
   const swiper = new Swiper('.categories-swiper', {
     slidesPerView: 'auto',
-    spaceBetween: 20,
+    spaceBetween: 30,
     freeMode: true,
     grabCursor: false,
     navigation: {

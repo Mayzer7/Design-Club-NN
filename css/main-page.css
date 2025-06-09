@@ -1081,11 +1081,25 @@ li.active .menu-arrow {
     display: flex;
     align-items: center;
     gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.all-result-link:hover a {
+    color: #AE9877;
+}
+
+.all-result-link:hover svg path {
+    stroke: #AE9877;
+}
+
+.all-result-link svg {
+    vertical-align: middle;
 }
 
 .all-result-link h4 {
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300;
+    padding: 0;
 }
 
 .search-item img {
@@ -1285,7 +1299,7 @@ li.active .menu-arrow {
     }
 
     .header-search-padding {
-        padding-bottom: 330px;
+        padding-bottom: 340px;
     }
 
 
@@ -2980,7 +2994,7 @@ max-width:  360px;
 
 .popular-categories-card img {
     width: 455px;
-    height: 340px;
+    height: 376px;
 
 }
 .popular-categories-card a {
