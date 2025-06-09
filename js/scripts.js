@@ -1940,83 +1940,46 @@ if (categoriesSection) {
   let scrollPosition = 0;
 
   // Функции для открытия/закрытия меню фильтров 
-  function openFilterMenu() {
-    // Запоминаем текущее положение прокрутки
-    scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+  const backdrop = document.querySelector('.filter-backdrop');
+  const filterMenu = document.querySelector('.filter-menu');
 
-    // Блокируем фон через position: fixed
+  function openFilterMenu() {
+    scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
     body.style.position = 'fixed';
     body.style.top = `-${scrollPosition}px`;
-    body.style.left = '0';
-    body.style.right = '0';
     body.style.width = '100%';
 
-    // Показываем меню и добавляем блюр к основному контенту
-    document.querySelector('.filter-menu').classList.add('active');
+    backdrop.classList.add('active');
+    filterMenu.classList.add('active');
     document.querySelector('.main-page-content').style.filter = 'blur(5px)';
   }
 
   function closeFilterMenu() {
-    // Скрываем меню и убираем блюр
-    document.querySelector('.filter-menu').classList.remove('active');
+    filterMenu.classList.remove('active');
+    backdrop.classList.remove('active');
     document.querySelector('.main-page-content').style.filter = '';
 
-    // Убираем фиксацию body и возвращаем прокрутку
     body.style.position = '';
     body.style.top = '';
-    body.style.left = '';
-    body.style.right = '';
     body.style.width = '';
-
     window.scrollTo(0, scrollPosition);
   }
 
-  // Клик на первую кнопку — открываем/закрываем первое меню фильтров
-  document.getElementById('filterFirstButtonMobile').addEventListener('click', () => {
-    const filterMenu = document.querySelector('.filter-menu');
-    const secondMenu = document.querySelector('.filter-second-button-menu');
-    const secondButton = document.getElementById('filterSecondButtonMobile');
-    const arrowIconMobile = secondButton.querySelector('.arrow-icon-mobile');
+  // Открытие/закрытие кнопкой
+  document.getElementById('filterFirstButtonMobile')
+    .addEventListener('click', () => {
+      if (!filterMenu.classList.contains('active')) openFilterMenu();
+      else closeFilterMenu();
+    });
 
-    // Закрываем второе меню, если оно открыто
-    if (secondMenu.classList.contains('active')) {
-      secondMenu.classList.remove('active');
-      arrowIconMobile.classList.remove('active');
-    }
+  // Клик по кресту
+  document.querySelector('.close-filters')
+    .addEventListener('click', closeFilterMenu);
 
-    // Переключаем первое меню
-    if (!filterMenu.classList.contains('active')) {
-      openFilterMenu();
-    } else {
-      closeFilterMenu();
-    }
-  });
-
-  // Кнопка закрытия внутри меню
-  document.querySelector('.close-filters').addEventListener('click', () => {
+  // Клик на фон — закрываем и не даём дальше
+  backdrop.addEventListener('click', e => {
+    e.stopPropagation();
     closeFilterMenu();
-  });
-
-  // Клик вне меню закрывает его
-  document.addEventListener('click', (e) => {
-    const filterMenu = document.querySelector('.filter-menu');
-    const firstButton = document.getElementById('filterFirstButtonMobile');
-    const secondButton = document.getElementById('filterSecondButtonMobile');
-    const secondMenu = secondButton.querySelector('.filter-second-button-menu');
-
-    const isClickInsideFirstMenu = filterMenu.contains(e.target);
-    const isClickOnFirstButton = e.target.closest('#filterFirstButtonMobile');
-    const isClickOnSecondButtonOrMenu =
-      secondButton.contains(e.target) || secondMenu.contains(e.target);
-
-    if (
-      filterMenu.classList.contains('active') &&
-      !isClickInsideFirstMenu &&
-      !isClickOnFirstButton &&
-      !isClickOnSecondButtonOrMenu
-    ) {
-      closeFilterMenu();
-    }
   });
 
   // Всплывающие меню второго уровня (второй фильтр)
