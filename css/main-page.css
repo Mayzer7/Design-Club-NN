@@ -5239,7 +5239,6 @@ max-width:  360px;
     
 }
 
-
 .modal-content-info-inner button {
     border: none;
     background-color: transparent;
@@ -5277,7 +5276,6 @@ max-width:  360px;
     flex-direction: column;
     gap: 20px;
 }
-
 
 .contact-input-modal {
     position: relative;
@@ -5401,15 +5399,16 @@ max-width:  360px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #fff;
+  font-family: 'SF Pro Display Bold', sans-serif;
   font-size: 18px;
+  color: rgba(117, 117, 117);
   padding: 5px 0;
 }
 
 .arrow-icon {
   transition: transform 0.3s ease;
 }
-
+ 
 .custom-select.open .arrow-icon {
   transform: rotate(180deg);
 }
@@ -5825,6 +5824,10 @@ max-width:  360px;
     padding: 40px 0px 40px 40px;
     display: flex;
     flex-direction: column;
+    min-height: 60vh;
+    height: 100%;
+    max-width: 692px;
+    width: 100%;
     align-items: center;
     justify-content: space-between;
     border-left: 1px solid rgba(255, 255, 255, 0.4);
@@ -5853,6 +5856,14 @@ max-width:  360px;
     transform-origin: center; 
 }
 
+.review-card-modal-down {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-right: 20px;
+}
+
 .review-modal-text {
     font-size: 20px;
     line-height: 120%;
@@ -5860,7 +5871,7 @@ max-width:  360px;
     overflow-y: auto;
     max-height: 385px;
     max-width: 700px;
-    padding-right: 20px;
+    padding-right: 40px;
     scroll-behavior: smooth;
     
 }
@@ -5926,6 +5937,10 @@ max-width:  360px;
         max-width: 571px;
         width: 100%;
     }
+
+    .review-card-modal {
+        min-height: 52vh;
+    }
 }
 
 @media (max-width: 750px) {
@@ -5939,6 +5954,10 @@ max-width:  360px;
 
     .review-modal-text {
         font-size: 16px;
+    }
+
+    .review-card-modal {
+        min-height: 48vh;
     }
 }
 
@@ -5956,20 +5975,6 @@ max-width:  360px;
     }
 }
 
-.modal-error,
-.modal-error * {
-  color: #EDE4D7;  /* или любой другой светлый цвет */
-}
-
-/* Если хотите более точечно */
-.modal-content-error {
-  color: #EDE4D7;
-}
-
-.modal-content-info-inner-error h1,
-.modal-content-info-inner-error p {
-  color: #EDE4D7;
-}
 
 
 /* Адаптив отступов между секций */

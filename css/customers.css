@@ -2478,8 +2478,9 @@ nav ul ul.open + svg {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #fff;
+  font-family: 'SF Pro Display Bold', sans-serif;
   font-size: 18px;
+  color: rgba(117, 117, 117);
   padding: 5px 0;
 }
 

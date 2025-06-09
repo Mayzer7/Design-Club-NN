@@ -4229,8 +4229,9 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #fff;
+  font-family: 'SF Pro Display Bold', sans-serif;
   font-size: 18px;
+  color: rgba(117, 117, 117);
   padding: 5px 0;
 }
 
@@ -4587,6 +4588,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 }
 
 
+
 /* Модальное окно отзыва */
 
 .modal-review {
@@ -4653,6 +4655,10 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     padding: 40px 0px 40px 40px;
     display: flex;
     flex-direction: column;
+    min-height: 60vh;
+    height: 100%;
+    max-width: 692px;
+    width: 100%;
     align-items: center;
     justify-content: space-between;
     border-left: 1px solid rgba(255, 255, 255, 0.4);
@@ -4681,6 +4687,14 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     transform-origin: center; 
 }
 
+.review-card-modal-down {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-right: 20px;
+}
+
 .review-modal-text {
     font-size: 20px;
     line-height: 120%;
@@ -4688,7 +4702,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     overflow-y: auto;
     max-height: 385px;
     max-width: 700px;
-    padding-right: 20px;
+    padding-right: 40px;
     scroll-behavior: smooth;
     
 }
@@ -4754,6 +4768,10 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
         max-width: 571px;
         width: 100%;
     }
+
+    .review-card-modal {
+        min-height: 52vh;
+    }
 }
 
 @media (max-width: 750px) {
@@ -4767,6 +4785,10 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
     .review-modal-text {
         font-size: 16px;
+    }
+
+    .review-card-modal {
+        min-height: 48vh;
     }
 }
 
