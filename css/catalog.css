@@ -3700,7 +3700,12 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 }
 
 
-
+@media (max-width: 370px) {
+    .contact-input-fields input::placeholder,
+    .contact-input input::placeholder {
+        font-size: 14px;
+    }
+}
 
 
 /* Footer */

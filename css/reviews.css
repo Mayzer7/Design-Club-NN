@@ -1395,12 +1395,13 @@ nav ul ul.open + svg {
     position: relative;
     max-width: 692px;
     width: 100%;
+    min-height: 414px;
     height: 100%;
     padding-bottom: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     border-left: 1px solid rgba(255, 255, 255, 0.4);
     border-right: 1px solid rgba(255, 255, 255, 0.4);
     background-color: transparent;
@@ -1425,11 +1426,28 @@ nav ul ul.open + svg {
     background-size: 100% 1px;
 }
 
+.review-down-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.review-texts {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 40px;}
+
 .review-text {
     font-family: 'SF Pro Display Thin', sans-serif;
     text-align: left;
-    padding: 40px;
     font-size: 20px;
+    height: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 9; /* максимальное кол-во строк */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .review-text span a {
@@ -1711,6 +1729,10 @@ nav ul ul.open + svg {
     .read-more-link {
         font-size: 16px;
     }
+
+    .review-text {
+        -webkit-line-clamp: 14;
+    }
 }
 
 @media (max-width: 1225px) {
@@ -1822,7 +1844,7 @@ nav ul ul.open + svg {
 }
 
 @media (max-width: 570px) {
-    .review-text {
+    .review-texts {
         padding: 15px;
     }
 }
