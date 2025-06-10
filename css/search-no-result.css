@@ -1461,8 +1461,8 @@ nav ul ul.open + svg {
 
 .product-count {
     position: absolute;
-    top: -25px;
-    left: 0px;
+    top: -30px;
+    left: 2px;
 }
 
 .product-count p {
@@ -1517,13 +1517,19 @@ nav ul ul.open + svg {
     }
 }
 
+@media (max-width: 650px) {
+      .search-result-container {
+        padding: 300px 15px 90px 15px;
+    }
+}
+
 @media (max-width: 610px) {
     .search-result-title {
         font-size: 80px;
     }
 
     .search-result-container {
-        padding: 255px 20px 50px 20px;
+        padding: 255px 15px 50px 15px;
     }
 
     .product-count p {
@@ -1560,11 +1566,15 @@ nav ul ul.open + svg {
 
 @media (max-width: 400px) {
     .search-result-container {
-        padding: 200px 20px 40px 20px;
+        padding: 200px 15px 40px 15px;
     }
 
     .search-result-title {
         font-size: 42px;
+    }
+
+    .search-no-result-text {
+        font-size: 18px;
     }
 }
 
@@ -1622,6 +1632,8 @@ nav ul ul.open + svg {
     font-size: 20px;
     margin-top: 15px;
     margin-bottom: 20px;
+    max-width: 450px;
+    width: 100%;
 }
 
 
@@ -2611,7 +2623,6 @@ nav ul ul.open + svg {
 
 /* Адаптив модального окна "Произошла ошибка"*/
 
-
 @media (max-width: 670px) {
     .modal-content-error {
         max-width: 95%;
@@ -2637,5 +2648,21 @@ nav ul ul.open + svg {
         width: 56px;
         height: 56px;
     }
+}
 
+/* Адаптив отступов */
+
+@media (max-width: 650px) {
+    .header-top,
+    .under-header {
+        padding: 15px;
+    }
+
+    .get-request {
+        padding: 50px 15px 45px 15px;
+    }
+
+    .footer-below-1024 {
+        padding: 45px 15px 0px 15px;
+    }
 }
