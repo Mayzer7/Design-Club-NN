@@ -1970,11 +1970,10 @@ if (categoriesSection) {
 
   function openFilterMenu() {
     scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-    body.style.position = 'fixed';
-    body.style.top = `-${scrollPosition}px`;
-    body.style.width = '100%';
+    body.style.overflow = 'hidden'; // добавлено
 
     backdrop.classList.add('active');
+    backdrop.style.overflow = 'hidden'; // добавлено #2
     filterMenu.classList.add('active');
     document.querySelector('.main-page-content').style.filter = 'blur(5px)';
   }
@@ -1982,11 +1981,14 @@ if (categoriesSection) {
   function closeFilterMenu() {
     filterMenu.classList.remove('active');
     backdrop.classList.remove('active');
+    backdrop.style.overflow = ''; // сброс
     document.querySelector('.main-page-content').style.filter = '';
 
     body.style.position = '';
     body.style.top = '';
     body.style.width = '';
+    body.style.overflow = ''; // сброс #2
+
     window.scrollTo(0, scrollPosition);
   }
 
