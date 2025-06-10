@@ -964,6 +964,32 @@ li.active .menu-arrow {
     transform: translateY(-20px);
 }
 
+.burger-under-search-hide {
+    max-height: 2000px; /* достаточно большое значение */
+    opacity: 1;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.burger-under-search-hide.hidden {
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.burger-under-search {
+    max-height: 2000px;
+    overflow-y: scroll; 
+    
+    /* Скрытие скролла */
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+}
+
+.burger-under-search::-webkit-scrollbar {
+    display: none; 
+}
+
 .burger-menu-open {
     display: block; 
     position: fixed;
@@ -1247,7 +1273,6 @@ nav ul ul.open + svg {
 .burger-get-request-btn button:hover {
     background-color: #AE9877;
 }
-
 /* Анимации на странице */
 
 /* Появление заголовка через анимацию через маску вверх */

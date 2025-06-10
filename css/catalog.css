@@ -979,6 +979,7 @@ li.active .menu-arrow {
 }
 
 
+
 /* Бургер меню */
 
 .main-page-content, .burger-menu-open {
@@ -989,6 +990,32 @@ li.active .menu-arrow {
     opacity: 0;
     pointer-events: none;
     transform: translateY(-20px);
+}
+
+.burger-under-search-hide {
+    max-height: 2000px; /* достаточно большое значение */
+    opacity: 1;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.burger-under-search-hide.hidden {
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.burger-under-search {
+    max-height: 2000px;
+    overflow-y: scroll; 
+    
+    /* Скрытие скролла */
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+}
+
+.burger-under-search::-webkit-scrollbar {
+    display: none; 
 }
 
 .burger-menu-open {
@@ -3240,7 +3267,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     }
 }
 
-@media (max-width: 470px) {
+@media (max-width: 472px) {
     .nav-arrows-reviews {
         display: none;
     }
