@@ -2295,24 +2295,31 @@ if (modalProduct) {
 
   // Раскрытие информации товара побольше
 
-  document.querySelectorAll('.open-all-about-products').forEach(button => {
+document.querySelectorAll('.open-all-about-products').forEach(button => {
     button.addEventListener('click', () => {
-    const container = button.closest('.about-products-mobile');
-    const extraText = container.querySelector('.extra-text');
-    const extraSettings = container.querySelector('.extra-settings');
+        // Найти родительский элемент, содержащий кнопку
+        const container = button.closest('.about-products-mobile');
+        
+        // Найти элемент, который нужно показать/скрыть
+        const extraText = container.querySelector('.extra-text');
 
-    if (extraText) {
-      const isHidden = extraText.style.display === 'none';
-      extraText.style.display = isHidden ? 'flex' : 'none';
-      button.textContent = isHidden ? 'скрыть' : 'открыть все';
-    } else if (extraSettings) {
-      const isHidden = extraSettings.style.display === 'none';
-      extraSettings.style.display = isHidden ? 'flex' : 'none';
-      button.textContent = isHidden ? 'скрыть' : 'открыть все';
-    }
-  });
-  });
+        if (extraText) {
+            // Проверяем, скрыт ли элемент и переключаем класс
+            const isHidden = !extraText.classList.contains('show'); 
+            extraText.classList.toggle('show', isHidden); 
 
+            const arrow = button.querySelector('.arrow'); 
+            if (arrow) {
+                arrow.classList.toggle('rotate', isHidden); 
+            }
+
+            const span = button.querySelector('span'); 
+            if (span) { 
+                span.textContent = isHidden ? 'скрыть' : 'открыть все'; 
+            }
+        }
+    });
+});
 }
 
 

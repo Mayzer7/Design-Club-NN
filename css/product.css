@@ -2462,7 +2462,29 @@ nav ul ul.open + svg {
     margin-top: 10px;
 }
 
+.extra-text {
+    transition: max-height 0.3s ease, opacity 0.3s ease; 
+    max-height: 0; 
+    opacity: 0; 
+    overflow: hidden;
+}
+
+.extra-text.show {
+    max-height: 1000px; 
+    opacity: 1;
+}
+
+.arrow {
+    transition: transform 0.3s ease; 
+}
+
+.arrow.rotate {
+    transform: rotate(180deg);
+}
 .open-all-about-products {
+    display: flex;
+    align-items: center;
+    gap: 5px;
     margin-top: 10px;
     border: none;
     background-color: transparent;
@@ -2473,6 +2495,8 @@ nav ul ul.open + svg {
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300;
 }
+
+
 
 .about-products-settings-container {
     display: flex;
