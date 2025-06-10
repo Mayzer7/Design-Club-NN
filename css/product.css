@@ -1712,13 +1712,41 @@ nav ul ul.open + svg {
 
 .desc-left-text a {
     color: rgba(255, 255, 255, 0.6);
-    margin-left: 5px;
     transition: all 0.3s ease;
 }
 
 .desc-left-text a:hover {
     color: #AE9877;
 }
+
+.read-more-link-product {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.3s ease;
+}
+
+.read-more-link-product:hover,
+.read-more-link-product.active {
+    color: #AE9877;
+}
+
+.read-more-link-product:hover .arrow-path,
+.read-more-link-product.active .arrow-path {
+    stroke: #AE9877;
+}
+
+.arrow-icon {
+  transition: transform 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.arrow-icon.rotated {
+  transform: rotate(180deg) translateY(-2px);
+}
+
 
 .more-text {
   transition: all 0.3s ease;

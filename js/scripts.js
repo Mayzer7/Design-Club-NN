@@ -1426,22 +1426,27 @@ function handleScrollUp() {
 
   // Скрипты для контента на странице "customers-page.html"
 
+  // Раскрытие текст "О товаре" побольше
   const readMoreLink = document.querySelector('.read-more-link-product');
 
   if (readMoreLink) {
-    document.querySelector('.read-more-link-product').addEventListener('click', function (e) {
+    readMoreLink.addEventListener('click', function (e) {
       e.preventDefault();
+
       const moreText = document.querySelector('.more-text');
       const dots = document.querySelector('.dots');
+      const arrowIcon = this.querySelector('.arrow-icon');
 
       if (moreText.style.display === "none") {
         moreText.style.display = "inline";
         dots.style.display = "none";
-        this.textContent = "скрыть";
+        this.childNodes[0].textContent = "скрыть ";
+        arrowIcon.classList.add("rotated");
       } else {
         moreText.style.display = "none";
         dots.style.display = "inline";
-        this.textContent = "открыть весь";
+        this.childNodes[0].textContent = "открыть весь ";
+        arrowIcon.classList.remove("rotated");
       }
     });
   }
