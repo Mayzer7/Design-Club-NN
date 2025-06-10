@@ -2066,6 +2066,7 @@ nav ul ul.open + svg {
 
 .why-up-title {
     margin-left: 3px;
+    margin-bottom: 10px;
 }
 
 .block-title {
@@ -2347,6 +2348,10 @@ nav ul ul.open + svg {
     .why-choose-us {
         padding: 90px 20px 90px 20px;
     }
+
+    .title-group h2 {
+        font-size: 38px;
+    }
 }
 
 @media (max-width: 710px) {
@@ -2360,6 +2365,11 @@ nav ul ul.open + svg {
     }
 }
 
+@media (max-width: 650px) {
+    .why-choose-us {
+        padding: 90px 15px 90px 15px;
+    }
+}
 
 @media (max-width: 600px) {
     .rigth-title-group.visible {
@@ -2367,9 +2377,9 @@ nav ul ul.open + svg {
     }
 }
 
-@media (max-width: 593px) {
+@media (max-width: 650px) {
     .why-choose-us {
-        padding: 90px 20px 90px 20px;
+        padding: 90px 15px 45px 15px;
     }
 }
 
@@ -2410,7 +2420,7 @@ nav ul ul.open + svg {
     }
 
     .why-choose-us {
-        padding: 90px 20px 20px 20px;
+        padding: 90px 15px 20px 15px;
     }
 }
 
@@ -2443,7 +2453,7 @@ nav ul ul.open + svg {
 
 .up-title {
     position: absolute;
-    top: -20px;
+    top: -25px;
     left: 2px;
 }
 
@@ -2758,20 +2768,35 @@ max-width:  360px;
     }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 768px) {
+    .project-products-header {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 759px) {
     .nav-arrows-products {
         display: none;
     }
 }
 
-@media (max-width: 430px) {
+@media (max-width: 730px) {
     .project-products-title {
         font-size: 38px;
     }
+}
 
+@media (max-width: 650px) {
+    .project-products {
+        padding: 50px 15px 50px 15px;
+    }
+}
+
+@media (max-width: 430px) {
     .project-products-header {
         margin-bottom: 20px;
     }
+
 }
 
 
@@ -2788,8 +2813,10 @@ max-width:  360px;
 
 .our-up-title {
     position: relative;
-    top: -5px;
-    left: 5px;
+    top: 0px;
+    font-size: 14px;
+    left: 2px;
+    
 }
 
 .our-brands-swiper {
@@ -2813,6 +2840,7 @@ max-width:  360px;
     text-align: left;
     line-height: 95%;
     margin-bottom: 60px;
+    margin-top: 10px;
 }
 
 .our-brands-content {
@@ -2950,6 +2978,18 @@ max-width:  360px;
     }
 }
 
+@media (max-width: 768px) {
+    .title-our-brands {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 730px) {
+    .title-our-brands {
+        font-size: 38px;
+    }
+}
+
 
 @media (max-width: 470px) {
     .our-brands {
@@ -2959,17 +2999,11 @@ max-width:  360px;
 
 @media (max-width: 430px) {
     .title-our-brands {
-        margin-top: 10px;
         font-size: 38px;
     }
 
     .our-brands-content {
         margin-top: 5px;
-    }
-
-    .our-up-title {
-        font-size: 14px;
-        left: 2px;
     }
 
     .why-up-title,
@@ -2998,8 +3032,8 @@ max-width:  360px;
 
 .popular-up-title {
     position: relative;
-    top: 0px;
-    left: 5px;
+    top: -5px;
+    left: 2px;
 }
 
 .title-p {
@@ -3196,6 +3230,12 @@ max-width:  360px;
     }
 }
 
+@media (max-width: 730px) {
+    .title-popular-categories {
+        font-size: 38px;
+    }
+}
+
 @media (max-width: 470px) {
     .title-popular-categories {
         font-size: 38px;
@@ -3246,8 +3286,8 @@ max-width:  360px;
 
 .about-up-title {
     position: absolute;
-    top: -20px;
-    left: 5px;
+    top: -30px;
+    left: 2px;
 }
 
 .about-company-title {
@@ -3431,13 +3471,19 @@ max-width:  360px;
 
 }
 
+@media (max-width: 730px) {
+    .about-company-title {
+        font-size: 38px;
+    }
+
+    .about-company-content {
+        margin-top: 20px;
+    }
+}
+
 @media (max-width: 720px) {
     .about-company-subtitle {
         font-size: 20px;
-    }
-
-    .about-company-title {
-        font-size: 50px;
     }
 }
 
@@ -3453,9 +3499,6 @@ max-width:  360px;
 }
 
 @media (max-width: 405px) {
-    .about-company-title {
-        font-size: 40px;
-    }
 
     .about-up-title {
         font-size: 14px;
@@ -3472,11 +3515,7 @@ max-width:  360px;
 
     .desc-low-res {
         margin-top: 0px;
-    }
-
-    .about-company-content {
-        margin-top: 15px;
-    }
+    }   
 }
 
 
@@ -3645,6 +3684,8 @@ max-width:  360px;
 
 .get-request-text {
     margin-bottom: 40px;
+    max-width: 545px;
+    width: 100%;
 }
 
 .content-wrapper p {
@@ -3864,16 +3905,18 @@ max-width:  360px;
 
     .get-request-left-side {
         position: absolute;
-        top: -20px;
-        left: 5px;
+        top: -25px;
+        left: 3px;
+    }
+}
+
+@media (max-width: 730px) {
+    .get-title-request {
+        font-size: 38px;
     }
 }
 
 @media (max-width: 575px) {
-    .get-title-request {
-        font-size: 38px;
-    }
-
     .get-request-text {
         font-size: 16px;
     }
@@ -3898,7 +3941,7 @@ max-width:  360px;
 
 .projects-up-title {
     position: relative;
-    top: 0px;
+    top: -5px;
     left: 2px;
 }
 
@@ -4176,6 +4219,12 @@ max-width:  360px;
     }
 }
 
+@media (max-width: 738px) {
+    .projects-title {
+        font-size: 38px;
+    }
+}
+
 @media (max-width: 490px) {
     .projects-content-container {
         margin-top: 0px
@@ -4183,10 +4232,6 @@ max-width:  360px;
 
     .projects-content-container:last-child {
         padding-bottom: 5px;
-    }
-
-    .projects-title {
-        font-size: 50px;
     }
 
     .projects-up-title {
@@ -4278,7 +4323,7 @@ max-width:  360px;
 .review-up-title {
     position: absolute;
     top: 0;
-    left: 2px;
+    left: 5px;
 }
 
 .reviews-title {
@@ -4629,7 +4674,7 @@ max-width:  360px;
     }
 
     .review-up-title {
-        top: -20px;
+        top: -30px;
     }
 
     .rating-number p {
@@ -4650,7 +4695,7 @@ max-width:  360px;
 
 @media (max-width: 739px) {
     .nav-arrows-reviews {
-        top: 320px;
+        top: 300px;
     }
 }
 
@@ -4664,7 +4709,13 @@ max-width:  360px;
         font-size: 24px;
     }
 
-    
+    .reviews-title {
+        font-size: 38px;
+    }
+
+    .nav-arrows-reviews {
+        top: 220px;
+    }
 }
 
 @media (max-width: 630px) {
@@ -4697,7 +4748,7 @@ max-width:  360px;
     }
 }
 
-@media (max-width: 470px) {
+@media (max-width: 472px) {
     .nav-arrows-reviews {
         display: none;
     }
@@ -4904,8 +4955,8 @@ max-width:  360px;
 
     .get-contact-left-side {
         position: absolute;
-        top: -20px;
-        left: 5px;
+        top: -30px;
+        left: 2px;
     }
     
     .get-contact {
@@ -6037,6 +6088,7 @@ max-width:  360px;
 
 /* Адаптив отступов между секций */
 
+
 @media (max-width: 650px) {
     .popular-categories,
     .our-brands,
@@ -6060,5 +6112,24 @@ max-width:  360px;
 
     .why-choose-us-content {
         padding-bottom: 25px;
+    }
+
+    .header-top,
+    .hero-content-mobile {
+        padding: 15px;
+    }
+
+    .header-search-padding {
+        padding-bottom: 340px;
+    }
+
+    .footer-below-1024 {
+        padding: 45px 15px 0px 15px;
+    }
+}
+
+@media (max-width: 505px) {
+    .header-search-padding {
+        padding-bottom: 15px;
     }
 }

@@ -1725,7 +1725,7 @@ nav ul ul.open + svg {
 
 .unique-up-title {
     position: absolute;
-    top: 130px;
+    top: 90px;
 }
 
 .unique-solutions-container {
@@ -1895,8 +1895,10 @@ nav ul ul.open + svg {
 
 @media (max-width: 1180px) {
     .unique-solutions {
-        padding: 100px 20px 80px 20px;
+        padding: 60px 20px 45px 20px;
     }
+
+  
 }
 
 @media (max-width: 1150px) {
@@ -1950,11 +1952,13 @@ nav ul ul.open + svg {
     }
 }
 
-@media (max-width: 705px) {
+@media (max-width: 730px) {
     .uniq-title-1024 {
-        font-size: 45px;
+        font-size: 38px;
     }
+}
 
+@media (max-width: 705px) {
     .unique-up-title {
         font-size: 14px;
     }
@@ -2374,9 +2378,6 @@ nav ul ul.open + svg {
     }
 }
 
-
-
-
 @media (max-width: 1000px) {
     .title-group {
         padding-left: 20%;
@@ -2390,9 +2391,9 @@ nav ul ul.open + svg {
 }
 
 @media (max-width: 870px) {
-    
-
-
+    .why-arrows {
+        top: 280px;
+    }
 
     .title-group {
         padding-left: 0%;
@@ -2410,10 +2411,17 @@ nav ul ul.open + svg {
     }
 }
 
+@media (max-width: 730px) {
+    .title-group h2 {
+        font-size: 38px;
+    }
+
+    .why-arrows {
+        top: 220px;
+    }
+}
+
 @media (max-width: 710px) {
-
-    
-
     .title-group h4 {
         max-width: 450px;
     }
@@ -2460,12 +2468,6 @@ nav ul ul.open + svg {
     }
 }
 
-@media (max-width: 430px) {
-    .title-group h2 {
-        font-size: 40px;
-    }
-}
-
 @media (max-width: 400px) {
     .title-group h2 {
         font-size: 38px;
@@ -2503,7 +2505,7 @@ nav ul ul.open + svg {
 .warehouse-up-title {
     position: absolute;
     top: 85px;
-    left: 19px;
+    left: 17px;
 }
 
 .about-warehouse-title {
@@ -2686,6 +2688,13 @@ nav ul ul.open + svg {
     }
 }
 
+@media (max-width: 730px) {
+    .about-warehouse-title {
+        font-size: 38px;
+        margin-bottom: 20px;
+    }
+}
+
 @media (max-width: 690px) {
     .about-warehouse-last {
         display: none;
@@ -2723,11 +2732,6 @@ nav ul ul.open + svg {
     .warehouse-up-title {
         font-size: 14px;
     }
-
-    .about-warehouse-title {
-        font-size: 45px;
-        margin-bottom: 15px;
-    }
 }
 
 @media (max-width: 520px) {
@@ -2737,12 +2741,6 @@ nav ul ul.open + svg {
 
     .warehouse-up-title {
         top: 50px;
-    }
-}
-
-@media (max-width: 390px) {
-    .about-warehouse-title {
-        font-size: 38px;
     }
 }
 
@@ -2840,7 +2838,7 @@ nav ul ul.open + svg {
 /* Шоурум для 1024 */
 
 .showroom-1024 {
-    padding: 100px 20px 90px 20px;
+    padding: 70px 15px 45px 15px;
     background-color: #151c28;
     font-family: 'SF UI Display Thin', sans-serif;
     position: relative;
@@ -2937,9 +2935,15 @@ nav ul ul.open + svg {
     }
 }
 
+@media (max-width: 730px) {
+    .showroom-title {
+        font-size: 38px;
+    }
+}
+
 @media (max-width: 545px) {
     .showroom-1024 {
-        padding: 70px 20px 45px 20px;
+        padding: 70px 15px 45px 15px;
     }
 
     .showroom-second-left svg {
@@ -2971,14 +2975,14 @@ nav ul ul.open + svg {
         width: 100%;
         height: 100%;
     }
+
+    .showroom-last p {
+        font-size: 16px;
+    }
 }
 
 
 @media (max-width: 420px) {
-    .showroom-title {
-        font-size: 50px;
-    }
-
     .showroom-up-title {
         font-size: 14px;
     }
@@ -2991,10 +2995,6 @@ nav ul ul.open + svg {
 
     .showroom-last-line p:first-child {
         font-size: 14px;
-    }
-
-    .showroom-title {
-        font-size: 38px;
     }
 }
 
@@ -3161,6 +3161,8 @@ nav ul ul.open + svg {
 
 .get-request-text {
     margin-bottom: 40px;
+    max-width: 545px;
+    width: 100%;
 }
 
 .content-wrapper p {
@@ -3478,17 +3480,19 @@ nav ul ul.open + svg {
     }
 }
 
-@media (max-width: 575px) {
+@media (max-width: 730px) {
     .get-title-request {
         font-size: 38px;
     }
+}
 
+@media (max-width: 575px) {
     .get-request-text {
         font-size: 16px;
     }
 
     .get-request {
-        padding: 5px 20px 45px 20px;
+        padding: 10px 15px 45px 15px;
     }
 }
 
@@ -3884,7 +3888,7 @@ nav ul ul.open + svg {
 
 @media (max-width: 739px) {
     .nav-arrows-reviews {
-        top: 320px;
+        top: 300px;
     }
 }
 
@@ -3898,7 +3902,13 @@ nav ul ul.open + svg {
         font-size: 24px;
     }
 
-    
+    .reviews-title {
+        font-size: 38px;
+    }
+
+    .nav-arrows-reviews {
+        top: 220px;
+    }
 }
 
 @media (max-width: 630px) {
@@ -3933,22 +3943,16 @@ nav ul ul.open + svg {
     }
 }
 
-@media (max-width: 470px) {
+@media (max-width: 472px) {
     .nav-arrows-reviews {
         display: none;
     }
 }
 
 @media (max-width: 430px) {
-    .reviews-title {
-        font-size: 38px;
-    }
-
     .review-up-title {
         font-size: 14px;
     }
-
-
 }
 
 
@@ -5108,7 +5112,7 @@ nav ul ul.open + svg {
 
 /* Адаптив отступов */
 
-@media (max-width: 650px) {
+@media (max-width: 730px) {
     .reviews,
     .get-request,
     .showroom-1024,
@@ -5122,5 +5126,37 @@ nav ul ul.open + svg {
         padding-right: 15px;
     }
 
-    
+    .header-top {
+        padding: 15px;
+    }
+
+    .header-search-padding {
+        padding-bottom: 340px;
+    }
+
+    .why-choose-us {
+        padding: 45px 15px 45px 15px;
+    }
+
+    .about-warehouse {
+        padding: 100px 15px 45px 15px;
+    }
+
+    .reviews {
+        padding: 60px 15px 45px 15px;
+    }
+
+    .footer-below-1024 {
+        padding: 45px 15px 0px 15px;
+    }
+
+    .warehouse-up-title {
+        top: 30px;
+    }
+}
+
+@media (max-width: 505px) {
+    .header-search-padding {
+        padding-bottom: 15px;
+    }
 }
