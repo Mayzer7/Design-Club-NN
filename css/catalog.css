@@ -1608,10 +1608,6 @@ nav ul ul.open + svg {
     .category-title {
         font-size: 16px;
     }
-
-    .categories-section {
-        padding: 10px 20px 10px 20px;
-    }
 }
 
 @media (max-width: 435px) {
@@ -2110,13 +2106,10 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 }
 
 
-
-
 .filters-desktop {
     position: relative;      
-    z-index: 1000;
+    z-index: 99;
 }
-
 
 
 /* Фильтры на телефоне */
@@ -2124,7 +2117,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 .filters-mobile {
     display: none;
     position: relative;      
-    z-index: 1000;
+    z-index: 99;
 }
 
 @media (max-width: 650px) {
@@ -3172,7 +3165,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
     .nav-arrows-reviews {
         position: absolute;
-        top: 250px;
+        top: 230px;
         right: 0;
     }
 
@@ -3198,7 +3191,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
 @media (max-width: 739px) {
     .nav-arrows-reviews {
-        top: 320px;
+        top: 300px;
     }
 }
 
@@ -3212,7 +3205,13 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
         font-size: 24px;
     }
 
-    
+    .reviews-title {
+        font-size: 38px;
+    }
+
+    .nav-arrows-reviews {
+        top: 220px;
+    }
 }
 
 @media (max-width: 630px) {
@@ -3248,9 +3247,6 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 }
 
 @media (max-width: 430px) {
-    .reviews-title {
-        font-size: 38px;
-    }
 
     .review-up-title {
         font-size: 14px;
@@ -3424,6 +3420,8 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
 .get-request-text {
     margin-bottom: 40px;
+    max-width: 545px;
+    width: 100%;
 }
 
 .content-wrapper p {
@@ -3745,16 +3743,18 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
     .get-request-left-side {
         position: absolute;
-        top: -20px;
-        left: 5px;
+        top: -25px;
+        left: 3px;
+    }
+}
+
+@media (max-width: 730px) {
+    .get-title-request {
+        font-size: 38px;
     }
 }
 
 @media (max-width: 575px) {
-    .get-title-request {
-        font-size: 38px;
-    }
-
     .get-request-text {
         font-size: 16px;
     }
@@ -5028,7 +5028,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
 /* Адаптив отступов */
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
     .pagination {
         margin-top: 40px;
     }
@@ -5048,12 +5048,40 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     .footer-below-1024 {
         padding: 45px 15px 0px 15px;
     }
+
+    .header-top {
+        padding: 15px;
+    }
+
+    .header-search-padding {
+        padding-bottom: 340px;
+    }
+
+    .catalog-title-section-container {
+        padding: 200px 15px 0 15px;
+    }
+
+    .categories-section {
+        padding: 10px 15px 10px 15px;
+    }
+
+    .under-header {
+        padding: 15px;
+    }
 }
 
 
+@media (max-width: 505px) {
+    .header-search-padding {
+        padding-bottom: 15px;
+    }
+}
 
-
-
+@media (max-width: 400px) {
+    .catalog-title-section-container {
+        padding: 160px 15px 0 15px;
+    }
+}
 
 
 
