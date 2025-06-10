@@ -894,7 +894,7 @@ function handleScroll() {
   }
 
   if (scrollDelta > 0) {
-    handleScrollDown();
+    handleScrollDown(); 
   } else {
     handleScrollUp();
   }

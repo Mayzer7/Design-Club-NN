@@ -529,16 +529,17 @@ input:-webkit-autofill {
     width: 100%;
     padding: 20px;
     z-index: 1000;
-    transition: transform 0.3s ease-in-out;
+    transition: top 0.3s ease-in-out;
+    will-change: top, background-color; /* Оптимизация отображения */
 }
 
 .header-hidden {
-    transform: translateY(-100%);
+    top: -100%; /* Вместо transform: translateY(-100%); */
 }
 
 .header-scrolled-up {
     background-color: #151c28 !important;
-    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out; /* Перенесем transition для фона только сюда */
 }
 
 
