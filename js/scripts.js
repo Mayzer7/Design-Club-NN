@@ -1120,16 +1120,54 @@ function handleScrollUp() {
   
   if (desiredPositionInput) {
     const input = document.getElementById('resume-upload-input');
-    const fileNameSpan = document.querySelector('.file-name');
-        
+    const labelTextSpan = document.querySelector('#resume-label-text');
+    const labelIcon = document.querySelector('.resume-icon');
+    const removeFileBtn = document.querySelector('.remove-file-btn');
+
     input.addEventListener('change', () => {
+        labelTextSpan.style.color = '';
+
         if (input.files.length > 0) {
-            fileNameSpan.textContent = `Файл выбран: ${input.files[0].name}`;
+            // Проверка формата файла
+            const file = input.files[0];
+            const acceptedFormats = ['.pdf', '.jpg', '.jpeg', '.doc', '.docx', '.png'];
+            let isAcceptedFormat = false;
+
+            for (let format of acceptedFormats) {
+                if (file.name.endsWith(format)) {
+                    isAcceptedFormat = true;
+                    break;
+                }
+            }
+
+            if (isAcceptedFormat) {
+                let fileName = file.name;
+                if (fileName.length > 10) {
+                    fileName = fileName.substring(0, 10) + file.name.substring(fileName.length - 4);
+                }
+                labelTextSpan.textContent = fileName;
+                labelIcon.src = 'images/svg/file.svg';
+                removeFileBtn.style.display = 'block';
+            } else {
+                labelTextSpan.textContent = 'Некорректный формат. Загрузите еще раз';
+                labelTextSpan.style.color = '#EB5151';
+                labelIcon.src = 'images/svg/upload-file.svg';
+                removeFileBtn.style.display = 'none';
+            }
         } else {
-            fileNameSpan.textContent = '';
+            labelTextSpan.textContent = 'Прикрепите ваше резюме в формате PDF, JPG или DOC';
+            labelIcon.src = 'images/svg/upload-file.svg';
+            removeFileBtn.style.display = 'none';
         }
     });
-  }
+
+    removeFileBtn.addEventListener('click', () => {
+        input.value = '';
+        labelTextSpan.textContent = 'Прикрепите ваше резюме в формате PDF, JPG или DOC';
+        labelIcon.src = 'images/svg/upload-file.svg';
+        removeFileBtn.style.display = 'none';
+    });
+}
 
   // Переключение карточек "Популярные товары"
 

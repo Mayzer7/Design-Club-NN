@@ -1478,7 +1478,6 @@ nav ul ul.open + svg {
     opacity: 0;
 }
 
-
 /* Форма */
 
 .vacancies-form {
@@ -1631,17 +1630,55 @@ nav ul ul.open + svg {
     padding: 5px 0;
 }
 
-.resume-label:hover {
+.resume-label-text {
+    transition: all 0.3s ease;
+}
+
+.resume-label-text:hover {
     color: #9c8766;
 }
 
 .resume-label svg {
-    flex-shrink: 0; /* чтобы SVG не сжимался */
+    flex-shrink: 0; 
     vertical-align: middle;
 }
 
 .file-name {
     color: #D4B28C;
+}
+
+.remove-file-btn {
+    padding-top: 3px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none;
+}
+
+.close-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.close-icon:hover {
+    fill: #9c8766;
+}
+
+.resume-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px; 
+    color: #EDE4D7;
+    font-size: 20px;
+    cursor: pointer;
+    font-family: 'SF Pro Display Thin', sans-serif;
+    transition: color 0.3s ease;
+    padding: 5px 0;
+}
+
+.resume-label svg {
+    flex-shrink: 0;
+    vertical-align: middle;
 }
 
 
@@ -1778,10 +1815,6 @@ nav ul ul.open + svg {
     .under-header-container a,
     .under-header-container p,
     .under-header-container a:first-child {
-        font-size: 14px;
-    }
-
-    .resume-label {
         font-size: 14px;
     }
 }
