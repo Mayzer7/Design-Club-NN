@@ -906,7 +906,7 @@ function handleScroll() {
     handleScrollUp();
   }
 
-  if (scrollTop <= headerHeight) {
+  if (scrollTop <= 0) {
     header.classList.remove('header-scrolled-up');
 
     // Убираем блюры в самом верху страницы

@@ -173,19 +173,17 @@ input:-webkit-autofill {
     width: 100%;
     padding: 20px;
     z-index: 1000;
-    transition: top 0.3s ease-in-out, background-color 0.3s ease-in-out;
-    will-change: top, background-color; /* Оптимизация отображения */
+    transition: transform 0.3s ease-in-out;
 }
 
 .header-hidden {
-    top: -100%; /* Вместо transform: translateY(-100%); */
+    transform: translateY(-100%);
 }
 
 .header-scrolled-up {
     background-color: #151c28 !important;
-    transition: background-color 0.3s ease-in-out; /* Перенесем transition для фона только сюда */
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
-
 
 .header-container {
     padding-top: 5px;

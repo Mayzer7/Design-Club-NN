@@ -971,16 +971,6 @@ li.active .menu-arrow {
     .search-container {
         display: none;
     }
-
-    .header-search-padding,
-    .header-search-padding-down {
-        padding-bottom: 20px;
-        background-color: transparent;
-    }
-
-    .header-top {
-        padding: 15px;
-    }
 }
 
 @media (max-width: 400px) {
@@ -1384,7 +1374,7 @@ nav ul ul.open + svg {
 
 @media (max-width: 730px) {
     .under-header {
-        top: 130px;
+        top: 120px;
     }
 }
 
@@ -4442,3 +4432,4 @@ a .popular-product-desc p,
     }
 
 }
+

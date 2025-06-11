@@ -523,29 +523,25 @@ input:-webkit-autofill {
 }
 
 .header-top {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px;
-  z-index: 1000;
-  will-change: top, background-color;
-  transition: top 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
 }
 
-.header-top.header-solid {
-  background-color: #151c28;
-}
-
-.header-top.header-hidden {
-  top: -100%;
+.header-hidden {
+    transform: translateY(-100%);
 }
 
 .header-scrolled-up {
     background-color: #151c28 !important;
-    transition: background-color 0.3s ease-in-out; /* Перенесем transition для фона только сюда */
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
+
+
 
 
 
