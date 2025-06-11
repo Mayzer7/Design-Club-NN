@@ -1207,14 +1207,6 @@ function handleScrollUp() {
             nextEl: '.popular-right-arrow',
             prevEl: '.popular-left-arrow',
           },
-
-          on: {
-            reachEnd: function () {
-              setTimeout(() => {
-                this.slideTo(2); 
-              }, 500); 
-            }
-          }
         });
       }
     }
