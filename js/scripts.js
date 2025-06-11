@@ -886,7 +886,6 @@ let hideStickyTimeout = null;
 
 function handleScroll() {
   const raw = window.pageYOffset || document.documentElement.scrollTop;
-  console.log(raw);
 
   // 1) фильтруем резиновый overscroll iOS
   // 2) фильтруем «мгновенный» перескок из отрицательного в 0

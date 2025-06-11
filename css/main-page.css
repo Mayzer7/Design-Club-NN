@@ -541,10 +541,6 @@ input:-webkit-autofill {
     transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
-
-
-
-
 .header-container {
     padding-top: 5px;
     display: flex;
