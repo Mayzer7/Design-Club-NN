@@ -523,18 +523,23 @@ input:-webkit-autofill {
 }
 
 .header-top {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px;
-    z-index: 1000;
-    transition: top 0.3s ease-in-out;
-    will-change: top, background-color; /* Оптимизация отображения */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  z-index: 1000;
+  will-change: top, background-color;
+  transition: top 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  background-color: transparent;
 }
 
-.header-hidden {
-    top: -100%; /* Вместо transform: translateY(-100%); */
+.header-top.header-solid {
+  background-color: #151c28;
+}
+
+.header-top.header-hidden {
+  top: -100%;
 }
 
 .header-scrolled-up {
@@ -584,10 +589,6 @@ input:-webkit-autofill {
     display: flex;
     flex-direction: column;
 }
-
-
-
-
 
 
 .about-toggle.open .about-submenu {

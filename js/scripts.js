@@ -885,13 +885,20 @@ const stickyNavs = document.querySelectorAll('.sticky-nav');
 let hideStickyTimeout = null;
 
 function handleScroll() {
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const raw = window.pageYOffset || document.documentElement.scrollTop;
+  console.log(raw);
+
+  // 1) фильтруем резиновый overscroll iOS
+  // 2) фильтруем «мгновенный» перескок из отрицательного в 0
+  if (raw < 0 || (raw === 0 && lastScrollTop > header.offsetHeight)) {
+    return; 
+  }
+
+  const scrollTop = raw;  // уже всегда ≥ 0
   const scrollDelta = scrollTop - lastScrollTop;
 
-  if (Math.abs(scrollDelta) < scrollThreshold) {
-    lastScrollTop = scrollTop;
-    return;
-  }
+  const headerHeight = header.offsetHeight;
+
 
   if (scrollDelta > 0) {
     handleScrollDown(); 
@@ -899,7 +906,7 @@ function handleScroll() {
     handleScrollUp();
   }
 
-  if (scrollTop <= 0) {
+  if (scrollTop <= headerHeight) {
     header.classList.remove('header-scrolled-up');
 
     // Убираем блюры в самом верху страницы
@@ -919,7 +926,9 @@ function handleScroll() {
   lastScrollTop = scrollTop;
 }
 
-window.addEventListener('scroll', handleScroll);
+window.addEventListener('scroll', () => {
+  window.requestAnimationFrame(handleScroll);
+}, { passive: true });
 
 
 function handleScrollDown() {
