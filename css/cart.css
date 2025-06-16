@@ -714,7 +714,7 @@ li.active .menu-arrow {
 }
 
 .zoom-image:hover img {
-    transform: scale(1.1);
+    transform: scale(1.02);
 }
 
 .search-item-info {
