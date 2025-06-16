@@ -442,7 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const contactModalWrapper = document.getElementById('get-contact-modal');
 const thanksModalWrapper = document.getElementById('thanks-modal');
 const errorModalWrapper = document.getElementById('error-modal');
-const container = document.querySelector('.container'); // блюр-контейнер
+const container = document.querySelector('.container'); 
 
 if (contactModalWrapper && thanksModalWrapper && errorModalWrapper) {
   Promise.all([
@@ -1083,6 +1083,7 @@ function handleScrollUp() {
   if (menu) {
     document.querySelectorAll('.contact-form').forEach(form => {
         const wrapper = form.querySelector('.contact-input-wrapper');
+
         if (!wrapper) return;
 
         const toggleButton = wrapper.querySelector('.contact-method-selector');
@@ -1765,7 +1766,7 @@ Promise.all([
     closeClearModal();
   });
 });
-  }
+}
 
 function setupDeleteModal(notification) {
   const modalContainer = document.getElementById("modal-container");  
@@ -2504,6 +2505,16 @@ if (buyProducts) {
           if (phoneInput && phoneInput.value.trim() === '') {
               const error = phoneInput.closest('.order-input').querySelector('.error-contact');
               error.textContent = 'Введите телефон';
+              error.style.display = 'block';
+              hasError = true;
+          }
+
+          // Валидация способа связи
+          const methodValue = form.querySelector('input[name="contact_method_value"]');
+          const methodWrapper = form.querySelector('.contact-method-selector');
+          if (!methodValue.value.trim()) {
+              const error = methodWrapper.querySelector('.error-contact');
+              error.textContent = 'Выберите способ связи';
               error.style.display = 'block';
               hasError = true;
           }
