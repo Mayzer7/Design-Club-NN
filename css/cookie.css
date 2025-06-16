@@ -139,7 +139,7 @@
 }
 
 @media (max-width: 338px) {
-  .buttons {
+  .buttons-cookie {
     flex-direction: column;
   }
 }

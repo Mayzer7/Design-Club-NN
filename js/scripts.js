@@ -2,7 +2,11 @@
 
 window.addEventListener("load", () => {
   const preloader = document.getElementById("preloader");
+
   preloader.classList.add("hidden");
+
+  document.documentElement.classList.remove("no-scroll");
+
 });
 
 // Общие скрипты для всех страниц (снизу будут под отдельные страницы)
