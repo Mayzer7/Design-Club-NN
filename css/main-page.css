@@ -3378,6 +3378,7 @@ max-width:  360px;
 
 .about-company-text {
     margin-top: 10px;
+    line-height: 120%;
 }
 
 .about-company-subtitle {
@@ -3445,17 +3446,19 @@ max-width:  360px;
         height: 450px;
     }
 
+    .about-company-subtitle {
+        font-size: 22px;
+    }
+
     .about-company-desc {
-        height: 396px;
+        height: 450px;
+        max-height: 450px;
     }
 
     .about-company-text {
-        margin-top: 0;
+        font-size: 16px;
     }
 
-    .about-company-address {
-        margin-top: 0;
-    }
 }
 
 @media (max-width: 1007px) {
@@ -3558,6 +3561,10 @@ max-width:  360px;
     .desc-low-res {
         margin-top: 0px;
     }   
+
+    .about-company-desc {
+        height: 386px;
+    }
 }
 
 
