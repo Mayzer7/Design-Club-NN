@@ -1515,6 +1515,108 @@ nav ul ul.open + svg {
 
 
 
+/* Как удобнее связаться */
+
+.contact-input-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: transparent;
+    padding: 5px 0;
+    gap: 8px;
+    width: 100%;
+}
+
+.contact-input-menu input {
+    width: 100%; 
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #FFF;
+    font-size: 18px;
+    padding: 5px 0; 
+}
+
+
+.contact-input-fields {
+    width: 100%;
+    padding-right: 40px;
+    box-sizing: border-box; 
+
+}
+
+.contact-input-fields input {
+    width: 100%;
+    padding-right: 40px; 
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.contact-input-fields svg {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; 
+}
+
+.contact-input-fields-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 0;
+  width: 100%;
+}
+
+.checkmark {
+  color: #EDE4D7;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.contact-input-fields-menu.selected .checkmark {
+  opacity: 1;
+}
+
+.contact-input-fields-menu input {
+    width: 100%;
+    padding-right: 40px; 
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.contact-input-fields-menu svg {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; 
+}
+
+.menu-contact-method {
+    margin-top: 10px;
+    overflow: hidden;
+    opacity: 0;
+    max-height: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.dropdown-arrow {
+    transition: transform 0.3s ease;
+}
+
+.dropdown-arrow.rotated {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+
+.input-field::placeholder {
+    color: #fff;
+}
+
+
+
 .error-contact {
     font-family: 'SF Pro Display Thin', sans-serif; 
     position: absolute;
@@ -1682,7 +1784,7 @@ nav ul ul.open + svg {
 }
 
 
-/* Адаптив "Вакансии*/
+/* Адаптив "Вакансии" */
 
 @media (max-width: 1885px) {
     .main-side-wrapper {
@@ -1871,7 +1973,12 @@ nav ul ul.open + svg {
     }
 }
 
-
+@media (max-width: 370px) {
+    .contact-input-fields input::placeholder,
+    .contact-input input::placeholder {
+        font-size: 14px;
+    }
+}
 
 
 

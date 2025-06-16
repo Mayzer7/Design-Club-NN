@@ -435,7 +435,7 @@
                                             </p>
                 
                                             <div class="vacancies-form-container fade-in">
-                                                <form id="vacancies-form" class="vacancies-form fade-in" autocomplete="on" onsubmit="return validateForm(event, 'vacancies-form')">
+                                                <form id="vacancies-form" class="vacancies-form contact-form fade-in" autocomplete="on" onsubmit="return validateForm(event, 'vacancies-form')">
                                                     <div class="contact-input fade-in">
                                                         <input type="text" id="contact-name" name="name" placeholder="ФИО" autocomplete="name">
                                                         <span class="error-contact"></span>
@@ -444,6 +444,59 @@
                                                     <div class="contact-input fade-in">
                                                         <input type="tel" id="phone" name="phone" placeholder="ТЕЛЕФОН" autocomplete="tel">
                                                         <span class="error-contact"></span>
+                                                    </div>
+
+                                                    <div class="contact-input-wrapper">
+                                                        <div class="contact-input contact-method-selector fade-in">
+                                                            <div class="contact-input-fields">
+                                                                <input
+                                                                    type="text"
+                                                                    name="contact_method"
+                                                                    placeholder="УДОБНЫЙ СПОСОБ СВЯЗИ"
+                                                                    readonly
+                                                                />
+
+                                                                <input type="hidden" name="contact_method_value" />
+
+                                                                <svg class="dropdown-arrow" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M20 11L14.7071 16.6854C14.3166 17.1049 13.6834 17.1049 13.2929 16.6854L8 11" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="round"/>
+                                                                </svg>
+                                                            </div>
+
+                                                            <span class="error-contact"></span>
+                                                        </div>
+
+                                                        <div class="contact-input-menu menu-contact-method">
+                                                            <div class="contact-input contact-method-selector">
+                                                                <div class="contact-input-fields-menu" data-value="CALL">
+                                                                    <span>СОЗВОНИТЬСЯ</span>
+                                                                    
+                                                                    <svg class="checkmark" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path d="M21.5 9.5L13.7931 19.7401C13.4699 20.0866 13.2887 20.0866 12.9655 19.7401L7.5 13.5" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                                    </svg>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="contact-input contact-method-selector">
+                                                                <div class="contact-input-fields-menu" data-value="TELEGRAM">
+                                                                    <span>НАПИСАТЬ В TELEGRAM</span>
+                                                                    
+                                                                    <svg class="checkmark" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path d="M21.5 9.5L13.7931 19.7401C13.4699 20.0866 13.2887 20.0866 12.9655 19.7401L7.5 13.5" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                                    </svg>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="contact-input contact-method-selector">
+                                                                <div class="contact-input-fields-menu" data-value="WHATSAPP">
+                                                                    <span>НАПИСАТЬ В WHAT'S APP</span>
+                                                                    
+                                                                    <svg class="checkmark" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path d="M21.5 9.5L13.7931 19.7401C13.4699 20.0866 13.2887 20.0866 12.9655 19.7401L7.5 13.5" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                                    </svg>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 
                                                     <div class="contact-input fade-in">

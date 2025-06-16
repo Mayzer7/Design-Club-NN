@@ -1052,12 +1052,12 @@ function handleScrollUp() {
     }
 
     if (desiredPositionInput && !desiredPositionInput.value.trim()) {
-        errorSpans[2].textContent = 'Пожалуйста, введите желаемую должность.';
-        errorSpans[2].style.display = 'block';
+        errorSpans[3].textContent = 'Пожалуйста, введите желаемую должность.';
+        errorSpans[3].style.display = 'block';
         valid = false;
     }
 
-    if (!questionInput) {
+    if (!questionInput && !desiredPositionInput) {
       if (!acceptInput.checked) {
         errorSpans[3].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
         errorSpans[3].style.display = 'block';
@@ -1065,7 +1065,7 @@ function handleScrollUp() {
       }
     }
 
-    if (questionInput) {
+    if (questionInput || desiredPositionInput) {
       if (!acceptInput.checked) {
         errorSpans[4].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
         errorSpans[4].style.display = 'block';
