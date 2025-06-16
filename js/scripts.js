@@ -482,16 +482,22 @@ if (contactModalWrapper && thanksModalWrapper && errorModalWrapper) {
 
     // Закрытие модалки
     function closeModal(modal) {
-      if (!modal) return;
-      modal.classList.remove('open');
-      setTimeout(() => {
-        modal.style.display = 'none';
-        const modals = [contactModal, thanksModal, errorModal];
-        const anyOpen = modals.some(m => m && m !== modal && m.style.display === 'flex');
-        if (!anyOpen) container.style.filter = 'none';
-        document.documentElement.classList.remove('no-scroll');
-      }, 500);
+  if (!modal) return;
+  modal.classList.remove('open');
+  setTimeout(() => {
+    modal.style.display = 'none';
+
+    // Проверяем, осталась ли какая-либо открытая модалка
+    const modals = [contactModal, thanksModal, errorModal];
+    const anyOpen = modals.some(m => m && m.style.display === 'flex');
+    
+    if (!anyOpen) {
+      container.style.filter = 'none';
+      document.documentElement.classList.remove('no-scroll');
     }
+
+  }, 500);
+}
 
     openBtns.forEach(btn => {
       if (btn) btn.addEventListener('click', () => openModal(contactModal));
