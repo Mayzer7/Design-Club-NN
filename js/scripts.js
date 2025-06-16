@@ -555,7 +555,7 @@ if (contactModalWrapper && thanksModalWrapper && errorModalWrapper) {
       const acceptInput = form.querySelector('input[name="accept"]');
 
       if (!nameInput.value.trim()) {
-        errorElements[0].textContent = 'Пожалуйста, введите ваше имя.';
+        errorElements[0].textContent = 'Пожалуйста, введите ваше фио.';
         errorElements[0].style.display = 'block';
         valid = false;
       }
@@ -1024,7 +1024,7 @@ function handleScrollUp() {
 
     // Проверки
     if (!nameInput.value.trim()) {
-        errorSpans[0].textContent = 'Пожалуйста, введите ваше имя.';
+        errorSpans[0].textContent = 'Пожалуйста, введите ваше фио.';
         errorSpans[0].style.display = 'block';
         valid = false;
     }

@@ -2079,6 +2079,8 @@ nav ul ul.open + svg {
 
 .get-request-text {
     margin-bottom: 40px;
+    max-width: 645px;
+    width: 100%;
 }
 
 .content-wrapper p {

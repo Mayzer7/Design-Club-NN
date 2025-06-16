@@ -3432,6 +3432,8 @@ a .popular-product-desc p,
     font-size: 20px;
     margin-top: 15px;
     margin-bottom: 20px;
+    max-width: 450px;
+    width: 100%;
 }
 
 
