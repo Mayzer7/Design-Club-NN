@@ -1224,15 +1224,29 @@ function handleScrollUp() {
 
   if (ourBrands) {
     const swiper = new Swiper('.our-brands-swiper', {
-        slidesPerView: 'auto',
-        spaceBetween: 20,
-        slidesPerGroup: 1,
-        speed: 800,
-        grabCursor: false,
-        effect: 'slide',
-        loop: true,
-        centeredSlides: false,
-  
+      slidesPerView: 4,
+      spaceBetween: 20,
+      slidesPerGroup: 1,
+      speed: 800,
+      grabCursor: false,
+      effect: 'slide',
+      loop: true,
+      centeredSlides: false,
+
+      breakpoints: {
+        0: {
+          slidesPerView: 'auto',
+          spaceBetween: 10,
+        },
+        769: {
+          slidesPerView: 'auto',
+          spaceBetween: 20, 
+        },
+        1001: {
+          slidesPerView: 4,
+          spaceBetween: 20,
+        },
+      },
     });
   }
 

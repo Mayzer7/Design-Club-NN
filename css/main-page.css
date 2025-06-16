@@ -2837,6 +2837,7 @@ max-width:  360px;
     padding: 90px 20px 90px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display', sans-serif;
+    overflow: visible;
 }
 
 .our-up-title {
@@ -2848,8 +2849,11 @@ max-width:  360px;
 }
 
 .our-brands-swiper {
+    padding: 10px 0px;
   width: 100%;
 }
+
+
 
 .our-brands-swiper .swiper-wrapper {
   display: flex;
@@ -2876,7 +2880,7 @@ max-width:  360px;
     display: flex;
     justify-content: space-between;
     gap: 20px;
-    overflow-x: auto; 
+    overflow-x: visible; 
     padding: 20px 0; 
 }
 
@@ -2886,27 +2890,26 @@ max-width:  360px;
 
 
 
-.our-brands-content a {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.our-brands-swiper,
+.our-brands-swiper .swiper-wrapper,
+.our-brands-swiper .swiper-slide {
+  overflow: visible !important;
 }
 
-.our-brands-content a:hover {
-    transform: scale(1.02);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
-}
 
 .brand-item {
   position: relative;
   width: 100%;
   width: clamp(200px, 30vw, 450px);
   /* width: clamp(200px, 22.5vw, 450px); */
-  aspect-ratio: 4 / 3; /* сохраняет соотношение сторон */
+  aspect-ratio: 4 / 3; 
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   padding: 20px;
   box-sizing: border-box;
+  transition: transform 0.3s ease; /* добавляем плавный переход */
 }
 
 .brand-item img {
@@ -2914,6 +2917,11 @@ max-width:  360px;
   height: auto;
   object-fit: contain;
   max-height: 80%;
+}
+
+.brand-item:hover {
+  transform: scale(1.01); 
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
 }
 
 /* Общий стиль для линий */
@@ -2927,7 +2935,6 @@ max-width:  360px;
   pointer-events: none;
 }
 
-/* Горизонтальные линии с разрывами */
 .brand-item::before {
   border-top: 1px solid #999;
   /* border-bottom: 1px solid #999; */
@@ -2937,7 +2944,6 @@ max-width:  360px;
   height: 100%;
 }
 
-/* Вертикальные линии с разрывами */
 .brand-item::after {
   border-left: 1px solid #999;
   border-right: 1px solid #999;
@@ -3041,7 +3047,6 @@ max-width:  360px;
 
     
 }
-
 
 
 
