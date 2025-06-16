@@ -1423,6 +1423,10 @@ nav ul ul.open + svg {
     font-size: 26px;
 }
 
+.informations {
+    margin-top: 40px;
+}
+
 .information {
     margin-bottom: 20px;
     max-width: 1406px;
@@ -1472,7 +1476,7 @@ nav ul ul.open + svg {
     }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 730px) {
     .title {
         font-size: 50px;
     }
@@ -1489,6 +1493,10 @@ nav ul ul.open + svg {
 
     .main-page-top {
         min-height: 220px;
+    }
+
+    .informations {
+        margin-top: 20px;
     }
 }
 
