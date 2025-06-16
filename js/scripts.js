@@ -568,13 +568,10 @@ if (contactModalWrapper && thanksModalWrapper && errorModalWrapper) {
       }
     }
 
-    // === КОНЕЦ новой логики ===
-
     function formReset(form) {
       form.reset();
       form.querySelectorAll('.error-contact').forEach(e => e.style.display = 'none');
 
-      // Сброс кастомного селекта
       const contactSelect = form.querySelector('#contactSelect');
       if (contactSelect) {
         contactSelect.querySelector('.selected-option').textContent = 'КАК УДОБНЕЕ СВЯЗАТЬСЯ';
@@ -610,7 +607,7 @@ if (contactModalWrapper && thanksModalWrapper && errorModalWrapper) {
       return valid;
     }
 
-    // === Логика кастомного селекта «Как удобнее связаться» ===
+    // Как удобнее связаться
     const select = document.getElementById('contactSelect');
     const header = select.querySelector('.select-header');
     const options = select.querySelectorAll('.select-options li');
