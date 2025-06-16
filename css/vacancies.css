@@ -2453,7 +2453,6 @@ nav ul ul.open + svg {
 
 
 
-
 /* Модальное окно "Связаться с нами" */
 
 .modal {
@@ -2510,7 +2509,6 @@ nav ul ul.open + svg {
     
 }
 
-
 .modal-content-info-inner button {
     border: none;
     background-color: transparent;
@@ -2548,7 +2546,6 @@ nav ul ul.open + svg {
     flex-direction: column;
     gap: 20px;
 }
-
 
 .contact-input-modal {
     position: relative;
@@ -2681,7 +2678,7 @@ nav ul ul.open + svg {
 .arrow-icon {
   transition: transform 0.3s ease;
 }
-
+ 
 .custom-select.open .arrow-icon {
   transform: rotate(180deg);
 }
@@ -2829,9 +2826,6 @@ nav ul ul.open + svg {
         max-height: 620px;
     }
 }
-
-
-
 
 /* Модальное окно "Спасибо за заявку" */
 

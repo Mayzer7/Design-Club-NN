@@ -3850,6 +3850,8 @@ a .popular-product-desc p,
 
 
 
+
+
 /* Модальное окно "Связаться с нами" */
 
 .modal {
@@ -3906,7 +3908,6 @@ a .popular-product-desc p,
     
 }
 
-
 .modal-content-info-inner button {
     border: none;
     background-color: transparent;
@@ -3944,7 +3945,6 @@ a .popular-product-desc p,
     flex-direction: column;
     gap: 20px;
 }
-
 
 .contact-input-modal {
     position: relative;
@@ -4077,7 +4077,7 @@ a .popular-product-desc p,
 .arrow-icon {
   transition: transform 0.3s ease;
 }
-
+ 
 .custom-select.open .arrow-icon {
   transform: rotate(180deg);
 }
@@ -4117,6 +4117,18 @@ a .popular-product-desc p,
   background-color: rgba(255, 255, 255, 0.05);
 }
 
+.error-contact {
+    font-family: 'SF Pro Display', sans-serif; 
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    color: #EB5151;
+    font-size: 14px;
+    display: none;
+    margin-top: 5px;
+    padding-left: 5px;
+}
 
 /* Адаптив модального окна "Связаться с нами"*/
 
@@ -4338,19 +4350,6 @@ a .popular-product-desc p,
 
 
 /* Модальное окно "Произошла ошибка" */
-
-.error-contact {
-    font-family: 'SF Pro Display', sans-serif; 
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    color: #EB5151;
-    font-size: 14px;
-    display: none;
-    margin-top: 5px;
-    padding-left: 5px;
-}
 
 .modal-error {
     display: none;

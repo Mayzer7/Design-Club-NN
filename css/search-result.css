@@ -2664,6 +2664,20 @@ nav ul ul.open + svg {
 }
 
 
+.error-contact {
+    font-family: 'SF Pro Display', sans-serif; 
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    color: #EB5151;
+    font-size: 14px;
+    display: none;
+    margin-top: 5px;
+    padding-left: 5px;
+}
+
+
 /* Адаптив модального окна "Связаться с нами"*/
 
 @media (max-width: 1040px) {
@@ -2885,20 +2899,6 @@ nav ul ul.open + svg {
 
 
 /* Модальное окно "Произошла ошибка" */
-
-
-.error-contact {
-    font-family: 'SF Pro Display', sans-serif; 
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    color: #EB5151;
-    font-size: 14px;
-    display: none;
-    margin-top: 5px;
-    padding-left: 5px;
-}
 
 .modal-error {
     display: none;
