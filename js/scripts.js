@@ -2768,6 +2768,14 @@ const gallerySwiper = document.querySelector('.project-gallery-swiper');
           nextEl: '.right-arrow',
           prevEl: '.left-arrow',
         },
+        breakpoints: {
+          0: {
+            spaceBetween: 10
+          },
+          401: {
+            spaceBetween: 20
+          }
+        }
       });
     }
 
