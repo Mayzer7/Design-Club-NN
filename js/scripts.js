@@ -442,11 +442,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // Модальное окно "Связаться с нами"
-
 const contactModalWrapper = document.getElementById('get-contact-modal');
-const thanksModalWrapper = document.getElementById('thanks-modal');
-const errorModalWrapper = document.getElementById('error-modal');
-const container = document.querySelector('.container'); 
+const thanksModalWrapper  = document.getElementById('thanks-modal');
+const errorModalWrapper   = document.getElementById('error-modal');
+const container           = document.querySelector('.container');
 
 if (contactModalWrapper && thanksModalWrapper && errorModalWrapper) {
   Promise.all([
@@ -454,28 +453,31 @@ if (contactModalWrapper && thanksModalWrapper && errorModalWrapper) {
     fetch('modals/thanks-modal.html').then(res => res.text()),
     fetch('modals/error-modal.html').then(res => res.text())
   ]).then(([contactHTML, thanksHTML, errorHTML]) => {
-    // Вставка HTML
+    // Вставляем разметку
     contactModalWrapper.innerHTML = contactHTML;
-    thanksModalWrapper.innerHTML = thanksHTML;
-    errorModalWrapper.innerHTML = errorHTML;
+    thanksModalWrapper.innerHTML  = thanksHTML;
+    errorModalWrapper.innerHTML   = errorHTML;
 
+    // Элементы модалок
     const contactModal = document.getElementById('contactModal');
-    const thanksModal = document.getElementById('thanksModal');
-    const errorModal = document.getElementById('errorModal');
+    const thanksModal  = document.getElementById('thanksModal');
+    const errorModal   = document.getElementById('errorModal');
 
+    // Кнопки открытия
     const openBtns = [
       document.getElementById('openModalBtn'),
       document.getElementById('burger-get-request'),
       document.getElementById('sign-up-showroom')
     ];
 
+    // Кнопки закрытия
     const closeBtns = [
       document.getElementById('closeModalBtn'),
       document.getElementById('closeModalBtnThanks'),
       document.getElementById('closeModalBtnError')
     ];
 
-    // Открытие модалки
+    // Открыть модалку
     function openModal(modal) {
       if (!modal) return;
       modal.style.display = 'flex';
@@ -484,38 +486,35 @@ if (contactModalWrapper && thanksModalWrapper && errorModalWrapper) {
       document.documentElement.classList.add('no-scroll');
     }
 
-    // Закрытие модалки
+    // Закрыть модалку
     function closeModal(modal) {
-  if (!modal) return;
-  modal.classList.remove('open');
-  setTimeout(() => {
-    modal.style.display = 'none';
-
-    // Проверяем, осталась ли какая-либо открытая модалка
-    const modals = [contactModal, thanksModal, errorModal];
-    const anyOpen = modals.some(m => m && m.style.display === 'flex');
-    
-    if (!anyOpen) {
-      container.style.filter = 'none';
-      document.documentElement.classList.remove('no-scroll');
+      if (!modal) return;
+      modal.classList.remove('open');
+      setTimeout(() => {
+        modal.style.display = 'none';
+        // Если больше нет открытых модалок — убираем размытие
+        const anyOpen = [contactModal, thanksModal, errorModal]
+          .some(m => m && m.style.display === 'flex');
+        if (!anyOpen) {
+          container.style.filter = 'none';
+          document.documentElement.classList.remove('no-scroll');
+        }
+      }, 500);
     }
 
-  }, 500);
-}
-
+    // Вешаем обработчики на кнопки
     openBtns.forEach(btn => {
       if (btn) btn.addEventListener('click', () => openModal(contactModal));
     });
-
     closeBtns.forEach(btn => {
       if (!btn) return;
       btn.addEventListener('click', () => {
-        if (btn.id === 'closeModalBtn') closeModal(contactModal);
+        if (btn.id === 'closeModalBtn')      closeModal(contactModal);
         else if (btn.id === 'closeModalBtnThanks') closeModal(thanksModal);
-        else if (btn.id === 'closeModalBtnError') closeModal(errorModal);
+        else if (btn.id === 'closeModalBtnError')  closeModal(errorModal);
       });
     });
-
+    // Закрытие кликом по подложке
     [contactModal, thanksModal, errorModal].forEach(modal => {
       if (!modal) return;
       modal.addEventListener('click', e => {
@@ -523,100 +522,117 @@ if (contactModalWrapper && thanksModalWrapper && errorModalWrapper) {
       });
     });
 
-    window.onSubmitForm = function (event) {
+    // отправка JSON 
+    const form = document.getElementById('contact-form-modal');
+    form.addEventListener('submit', onSubmitForm);
+
+    async function onSubmitForm(event) {
       event.preventDefault();
       const form = event.target;
 
+      // Валидация
       if (!validateFormModal(form)) {
-        closeModal(contactModal);
-        openModal(errorModal);
-        return;
+        return; 
       }
 
-      closeModal(contactModal);
-      openModal(thanksModal);
-      formReset(form);
-    };
+      // Собираем данные
+      const data = {
+        name:           form.name.value.trim(),
+        phone:          form.phone.value.trim(),
+        contact_method: form.contact_method.value,
+        accept:         form.accept.checked
+      };
+
+      // Выводим в консоль данные
+      console.log('Данные формы:', data);
+
+      try {
+        // Отправляем на эндпоинт
+        const resp = await fetch('/modaldata', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify(data)
+        });
+
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+
+        // При успехе
+        closeModal(contactModal);
+        openModal(thanksModal);
+        formReset(form);  
+
+      } catch (err) {
+        console.error('Ошибка при отправке формы:', err);
+        closeModal(contactModal);
+        openModal(errorModal);
+      }
+    }
+
+    // === КОНЕЦ новой логики ===
 
     function formReset(form) {
       form.reset();
+      form.querySelectorAll('.error-contact').forEach(e => e.style.display = 'none');
 
-      const errorElements = form.querySelectorAll('.error-contact');
-      errorElements.forEach(error => (error.style.display = 'none'));
-
-      // Сброс кастомного select-а
-      const contactSelect = form.querySelector("#contactSelect");
-      const selectedOption = contactSelect.querySelector(".selected-option");
-      const hiddenInput = form.querySelector("#contactMethodInput");
-
-      selectedOption.textContent = "КАК УДОБНЕЕ СВЯЗАТЬСЯ";
-      hiddenInput.value = "";
+      // Сброс кастомного селекта
+      const contactSelect = form.querySelector('#contactSelect');
+      if (contactSelect) {
+        contactSelect.querySelector('.selected-option').textContent = 'КАК УДОБНЕЕ СВЯЗАТЬСЯ';
+        form.contact_method.value = '';
+      }
     }
 
     function validateFormModal(form) {
       let valid = true;
+      const errs = form.querySelectorAll('.error-contact');
+      errs.forEach(e => { e.style.display = 'none'; e.textContent = ''; });
 
-      const errorElements = form.querySelectorAll('.error-contact');
-      errorElements.forEach(error => (error.style.display = 'none'));
-
-      const nameInput = form.querySelector('input[name="name"]');
-      const phoneInput = form.querySelector('input[name="phone"]');
-      const contactMethodInput = form.querySelector('input[name="contact_method"]');
-      const acceptInput = form.querySelector('input[name="accept"]');
-
-      if (!nameInput.value.trim()) {
-        errorElements[0].textContent = 'Пожалуйста, введите ваше фио.';
-        errorElements[0].style.display = 'block';
+      if (!form.name.value.trim()) {
+        errs[0].textContent = 'Пожалуйста, введите ваше ФИО.';
+        errs[0].style.display = 'block';
         valid = false;
       }
-
-      if (!phoneInput.value.trim()) {
-        errorElements[1].textContent = 'Пожалуйста, введите ваш телефон.';
-        errorElements[1].style.display = 'block';
+      if (!form.phone.value.trim()) {
+        errs[1].textContent = 'Пожалуйста, введите ваш телефон.';
+        errs[1].style.display = 'block';
         valid = false;
       }
-
-      if (!contactMethodInput.value.trim()) {
-        errorElements[2].textContent = 'Пожалуйста, выберите способ связи.';
-        errorElements[2].style.display = 'block';
+      if (!form.contact_method.value) {
+        errs[2].textContent = 'Пожалуйста, выберите способ связи.';
+        errs[2].style.display = 'block';
         valid = false;
       }
-
-      if (!acceptInput.checked) {
-        errorElements[3].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
-        errorElements[3].style.display = 'block';
+      if (!form.accept.checked) {
+        errs[3].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
+        errs[3].style.display = 'block';
         valid = false;
       }
-
       return valid;
     }
 
-    // Выборка "Как удобнее связаться"
+    // === Логика кастомного селекта «Как удобнее связаться» ===
+    const select = document.getElementById('contactSelect');
+    const header = select.querySelector('.select-header');
+    const options = select.querySelectorAll('.select-options li');
+    const selected = select.querySelector('.selected-option');
+    const hiddenInput = document.getElementById('contactMethodInput');
 
-    const select = document.getElementById("contactSelect");
-    const header = select.querySelector(".select-header");
-    const options = select.querySelectorAll(".select-options li");
-    const selected = select.querySelector(".selected-option");
-    const hiddenInput = document.getElementById("contactMethodInput");
-
-    header.addEventListener("click", () => {
-      select.classList.toggle("open");
+    header.addEventListener('click', () => {
+      select.classList.toggle('open');
     });
-
     options.forEach(option => {
-      option.addEventListener("click", () => {
+      option.addEventListener('click', () => {
         selected.textContent = option.textContent;
-        hiddenInput.value = option.dataset.value;
-        select.classList.remove("open");
+        hiddenInput.value    = option.dataset.value;
+        select.classList.remove('open');
       });
     });
-
-    // Закрытие при клике вне блока
-    document.addEventListener("click", (e) => {
+    document.addEventListener('click', e => {
       if (!select.contains(e.target)) {
-        select.classList.remove("open");
+        select.classList.remove('open');
       }
     });
+
   });
 }
 
@@ -1083,7 +1099,37 @@ function handleScrollUp() {
       }
     }
 
-    if (valid) form.submit();
+    if (valid) {
+      // Собираем данные пользователя формы
+      const data = {
+        name: form.querySelector('input[name="name"]').value.trim(),
+        phone: form.querySelector('input[name="phone"]').value.trim(),
+        contact_method: form.querySelector('input[name="contact_method_value"]').value.trim(),
+        accept: form.querySelector('input[name="accept"]').checked,
+        question: form.querySelector('input[name="your-question"]')?.value.trim(),
+        desired_position: form.querySelector('input[name="desired-position"]')?.value.trim()
+      };
+
+      // Выводим сам объект
+      console.log('Data object:', data);
+
+      // Затем — отправка для бекенда 
+      fetch('/api/requests', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(res => {
+        console.log('Fetch response status:', res.status);
+        return res.json();
+      })
+      .then(json => {
+        console.log('Response JSON:', json);
+      })
+      .catch(err => {
+        console.error('Fetch error:', err);
+      });
+    }
   }
 
   // Выбор способа связи в форме "Связаться с нами"
