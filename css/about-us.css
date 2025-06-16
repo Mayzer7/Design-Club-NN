@@ -2476,6 +2476,10 @@ nav ul ul.open + svg {
     .swiper-slide {
         max-width: 265px;
     }
+
+    .card:hover {
+        transform: scale(1);
+    }
 }
 
 @media (max-width: 520px) {

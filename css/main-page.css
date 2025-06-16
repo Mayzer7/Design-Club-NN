@@ -2450,6 +2450,10 @@ nav ul ul.open + svg {
     .why-choose-us {
         padding: 90px 15px 20px 15px;
     }
+
+    .card:hover {
+        transform: scale(1);
+    }
 }
 
 
@@ -2945,6 +2949,12 @@ max-width:  360px;
 
 
 
+
+.our-brands-swiper {
+  overflow: visible !important;
+}
+
+
 /* Адаптив "Наши бренды" */
 
 @media (max-width: 1900px) {
@@ -3006,6 +3016,14 @@ max-width:  360px;
 @media (max-width: 768px) {
     .title-our-brands {
         margin-bottom: 20px;
+    }
+
+    .our-brands-swiper{
+        overflow: hidden !important;
+    }
+
+    .brand-item:hover {
+        transform: scale(1); 
     }
 }
 

@@ -3351,10 +3351,12 @@ a .popular-product-desc p,
         padding-top: 20px;
     }
 
-    
-
     .why-choose-us-swiper .swiper-wrapper .swiper-slide {
         max-width: 265px;
+    }
+
+    .card:hover {
+        transform: scale(1);
     }
 }
 
