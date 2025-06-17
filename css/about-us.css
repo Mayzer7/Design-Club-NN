@@ -3394,7 +3394,6 @@ nav ul ul.open + svg {
 
 .contact-input-fields input {
     width: 100%;
-    padding-right: 40px; 
     cursor: pointer;
     box-sizing: border-box;
 }
@@ -3562,7 +3561,12 @@ nav ul ul.open + svg {
     }
 }
 
-
+@media (max-width: 370px) {
+    .contact-input-fields input::placeholder,
+    .contact-input input::placeholder {
+        font-size: 14px;
+    }
+}
 
 
 
