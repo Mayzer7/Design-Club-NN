@@ -2996,7 +2996,7 @@ a .popular-product-desc p,
     }
 
     .project-products {
-        padding: 50px 20px 50px 20px;
+        padding: 50px 20px 45px 20px;
     }
 
     .up-title {
@@ -3038,6 +3038,7 @@ a .popular-product-desc p,
 
 .why-up-title {
     margin-left: 3px;
+    margin-bottom: 10px;
 }
 
 .block-title {
@@ -3357,6 +3358,10 @@ a .popular-product-desc p,
 
     .card:hover {
         transform: scale(1);
+    }
+
+    .why-choose-us {
+        padding: 45px 20px 90px 20px;
     }
 }
 
