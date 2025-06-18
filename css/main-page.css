@@ -129,8 +129,17 @@ input:-webkit-autofill {
   min-height: 700px;
   width: 100%;
   max-height: 100vh;
-  position: relative;
+
   overflow: visible;
+}
+
+.fixed-main-title {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;   
+    color: #EDE4D7;
+    z-index: 10;
+    padding: clamp(16px, 2vw, 40px) clamp(12px, 4vw, 20px);
 }
 
 .hero-image {
@@ -189,7 +198,7 @@ input:-webkit-autofill {
 .hero-content-first-line {
   display: flex;
   align-items: center;
-  margin-bottom: 27px;
+  margin-bottom: 225px;
 }
 
 .invite-left {
@@ -219,6 +228,7 @@ input:-webkit-autofill {
   line-height: 90%;
   font-weight: 300;
   text-transform: uppercase;
+  max-width: 1300px;
 }
 
 .hero-right-side {
@@ -371,6 +381,7 @@ input:-webkit-autofill {
   animation: progressAnimMobile 3s linear forwards;
 }
 
+
 @keyframes progressAnimMobile {
   from { width: 0%; }
   to   { width: 96%; }
@@ -395,14 +406,17 @@ input:-webkit-autofill {
         opacity: 0;                    
         pointer-events: none;         
         transition: opacity 1s ease-in-out;
-
         position: absolute;
-        bottom: -220px;               
+        bottom: -100px;               
         left: 0;
         z-index: 3;
         padding: clamp(16px, 2vw, 40px) clamp(12px, 4vw, 20px);
         width: 100%;
         box-sizing: border-box;
+    }
+
+    .fixed-main-title {
+        bottom: -205px;
     }
 
     .hero-content-mobile.active {
@@ -411,13 +425,13 @@ input:-webkit-autofill {
     }
 
     .main-hero-container {
-        min-height: 900px;
+        min-height: 700px;
     }
 
     .hero-left-side h1,
     .hero-left-side h2 {
         font-size: 60px;
-    }
+    }   
 
     /* Затемнение снизу для светлых фотографий (2 и 3) */
     .with-gradient::after {
@@ -451,23 +465,7 @@ input:-webkit-autofill {
     }
 
     .main-hero-container {
-        min-height: 720px;
-    }
-}
-
-@media (max-width: 590px) {
-    .hero-content-mobile {
-        bottom: -230px;
-    }
-}
-
-@media (max-width: 583px) {
-    .hero-content-mobile {
-        bottom: -260px;
-    }
-
-    .main-hero-container {
-        min-height: 750px;
+        min-height: 508px;
     }
 }
 
@@ -2332,7 +2330,7 @@ nav ul ul.open + svg {
 
 @media (max-width: 1000px) {
     .why-choose-us {
-        padding: 180px 20px 90px 20px;
+        padding: 320px 20px 90px 20px;
     }
 
     .why-arrows {
@@ -2353,9 +2351,6 @@ nav ul ul.open + svg {
 }
 
 @media (max-width: 870px) {
-    .why-choose-us {
-        padding: 160px 20px 90px 20px;
-    }
 
     .why-up-title {
         top: 450px;
@@ -2363,6 +2358,10 @@ nav ul ul.open + svg {
 
     .title-group {
         padding-left: 0%;
+    }
+
+    .fixed-main-title {
+        bottom: -185px;
     }
 }
 
@@ -2378,11 +2377,15 @@ nav ul ul.open + svg {
 
 @media (max-width: 730px) {
     .why-choose-us {
-        padding: 90px 20px 90px 20px;
+        padding: 320px 20px 90px 20px;
     }
 
     .title-group h2 {
         font-size: 38px;
+    }
+
+    .fixed-main-title {
+        bottom: -175px;
     }
 }
 
@@ -2398,20 +2401,14 @@ nav ul ul.open + svg {
 }
 
 @media (max-width: 650px) {
-    .why-choose-us {
-        padding: 90px 15px 90px 15px;
+    .fixed-main-title {
+        padding: 15px;
     }
 }
 
 @media (max-width: 600px) {
     .rigth-title-group.visible {
         display: none;
-    }
-}
-
-@media (max-width: 650px) {
-    .why-choose-us {
-        padding: 90px 15px 45px 15px;
     }
 }
 
@@ -2452,7 +2449,7 @@ nav ul ul.open + svg {
     }
 
     .why-choose-us {
-        padding: 90px 15px 20px 15px;
+        padding: 270px 15px 20px 15px;
     }
 
     .card:hover {
@@ -2460,7 +2457,27 @@ nav ul ul.open + svg {
     }
 }
 
+/* Заголовок для мобилки */
 
+@media (max-width: 509px) {
+    .fixed-main-title {
+        bottom: -210px;
+    }
+
+    .why-choose-us {
+        padding: 295px 15px 20px 15px;
+    }
+}
+
+@media (max-width: 432px) {
+    .fixed-main-title {
+        bottom: -245px;
+    }
+
+    .why-choose-us {
+        padding: 320px 15px 20px 15px;
+    }
+}
 
 @media (max-width: 430px) {
     .title-group h2 {
