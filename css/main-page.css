@@ -2120,7 +2120,7 @@ nav ul ul.open + svg {
 
 .why-arrows {
     position: absolute;
-    top: 200px;
+    top: 130px;
     right: 20px;
 }
 
@@ -2333,6 +2333,10 @@ nav ul ul.open + svg {
 @media (max-width: 1000px) {
     .why-choose-us {
         padding: 180px 20px 90px 20px;
+    }
+
+    .why-arrows {
+        top: 130px;
     }
 }
 

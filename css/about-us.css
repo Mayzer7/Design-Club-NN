@@ -2208,7 +2208,7 @@ nav ul ul.open + svg {
 
 .why-arrows {
     position: absolute;
-    top: 300px;
+    top: 220px;
     right: 20px;
 }
 
@@ -2434,6 +2434,12 @@ nav ul ul.open + svg {
     }
 }
 
+@media (max-width: 1019px) {
+    .why-arrows {
+        top: 220px;
+    }
+}
+
 @media (max-width: 1000px) {
     .title-group {
         padding-left: 20%;
@@ -2448,7 +2454,7 @@ nav ul ul.open + svg {
 
 @media (max-width: 870px) {
     .why-arrows {
-        top: 280px;
+        top: 225px;
     }
 
     .title-group {
@@ -2473,7 +2479,7 @@ nav ul ul.open + svg {
     }
 
     .why-arrows {
-        top: 220px;
+        top: 160px;
     }
 }
 
