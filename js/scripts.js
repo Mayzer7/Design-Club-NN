@@ -504,8 +504,14 @@ if (contactModalWrapper && thanksModalWrapper && errorModalWrapper) {
 
     // Вешаем обработчики на кнопки
     openBtns.forEach(btn => {
-      if (btn) btn.addEventListener('click', () => openModal(contactModal));
+      if (!btn) return;
+      btn.addEventListener('click', () => {
+        // перед открытием обязательно сбросим поля
+        formReset(form);
+        openModal(contactModal);
+      });
     });
+    
     closeBtns.forEach(btn => {
       if (!btn) return;
       btn.addEventListener('click', () => {
@@ -576,6 +582,7 @@ if (contactModalWrapper && thanksModalWrapper && errorModalWrapper) {
       if (contactSelect) {
         contactSelect.querySelector('.selected-option').textContent = 'КАК УДОБНЕЕ СВЯЗАТЬСЯ';
         form.contact_method.value = '';
+        contactSelect.classList.remove('selected');
       }
     }
 
@@ -622,6 +629,7 @@ if (contactModalWrapper && thanksModalWrapper && errorModalWrapper) {
         selected.textContent = option.textContent;
         hiddenInput.value    = option.dataset.value;
         select.classList.remove('open');
+        select.classList.add('selected');
       });
     });
     document.addEventListener('click', e => {

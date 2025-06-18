@@ -3853,6 +3853,14 @@ a .popular-product-desc p,
   cursor: pointer;
 }
 
+.custom-select .selected-option {
+  color: rgba(117, 117, 117);
+}
+
+.custom-select.selected .selected-option {
+  color: #ffffff;
+}
+
 .select-header {
   display: flex;
   justify-content: space-between;
