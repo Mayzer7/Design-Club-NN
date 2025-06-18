@@ -390,9 +390,27 @@ input:-webkit-autofill {
 
 /* Адаптив главного экрана */
 
+@media (max-width: 1330px) {
+    .hero-content-first-line {
+        margin-bottom: 175px;
+    }
+}
+
 @media (max-width: 1210px) {
     .hero-bg-3 {
         object-position: left top;
+    }
+}
+
+@media (max-width: 1330px) {
+    .hero-content-first-line {
+        margin-bottom: 150px;
+    }
+}
+
+@media (max-width: 1040px) {
+    .hero-content-first-line {
+        margin-bottom: 130px;
     }
 }
 
@@ -1899,6 +1917,7 @@ nav ul ul.open + svg {
 }
 
 
+
 @media (max-width: 1450px) {
     .title-container h1 {
         font-size: 80px;
@@ -1907,7 +1926,12 @@ nav ul ul.open + svg {
     .under-header-container {
         gap: 300px;
     }
+}
 
+@media (max-width: 1330px) {
+    .invite-link {
+        max-width: 180px;
+    }
 }
 
 @media (max-width: 1284px) {
@@ -1986,8 +2010,6 @@ nav ul ul.open + svg {
     }
 }
 
-
-
 @media (max-width: 540px) {
     .title-container h1 {
         font-size: 42px;
@@ -1999,39 +2021,6 @@ nav ul ul.open + svg {
     flex-direction: column;
     gap: 20px;
 }
-/* 
-@media (max-width: 400px) {
-    .temp-bg {
-        background-size: contain !important;
-        background-position: top center !important;
-        background-repeat: no-repeat !important;
-    }
-
-    .main-page-top {
-        background-image: url("../images/main-page/adaptive/mobile/background-340.png");    
-        background-size: contain;
-        background-position: top center;
-        min-height: 870px;
-    }
-
-    .main-page-top {
-        --bg-1: url("../images/main-page/adaptive/mobile/background-340.png");
-        --bg-2: url('../images/main-page/adaptive/mobile/mobile-1.webp');
-        --bg-3: url('../images/main-page/adaptive/mobile/mobile-2.webp');
-    }
-
-    .under-header {
-        top: 185px;
-    }
-
-    .for-mobile-switch {
-        display: none;
-    }
-
-    .for-mobile-switch-340 {
-        display: flex;
-    }
-} */
 
 @media (max-width: 385px) {
     .under-header {
