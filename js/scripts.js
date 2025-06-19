@@ -84,6 +84,7 @@ function activateSearchMode() {
     header.classList.add('header-search-padding');
   } else {
     header.classList.add('header-search-padding-down');
+    header.classList.add('header-search-padding');
   }
 
   // Общая логика

@@ -979,10 +979,6 @@ li.active .menu-arrow {
         padding-bottom: 20px;
         background-color: transparent;
     }
-
-    .header-top {
-        padding: 15px;
-    }
 }
 
 @media (max-width: 400px) {
@@ -1865,13 +1861,13 @@ nav ul ul.open + svg {
 
     .review-card {
         max-width: 100%;
+        margin-top: 20px;
     }
 }
 
 @media (max-width: 775px) {
     .reviews-title-section-container  {
         background-image: none;
-        padding: 235px 20px 0 20px;
     }
 }
 
@@ -1889,12 +1885,13 @@ nav ul ul.open + svg {
 
     .more {
         justify-content: center;
+        margin-top: 30px;
     }
 }
 
 @media (max-width: 730px) {
     .reviews-title-section-container  {
-        padding: 170px 20px 0 20px;
+        padding: 200px 20px 0 20px;
     }
 }
 
@@ -1905,6 +1902,22 @@ nav ul ul.open + svg {
 
     .reviews-subtitle {
         font-size: 18px;
+    }
+
+    .under-header-container p,
+    .under-header-container a,
+    .under-header-container a:nth-child(1) {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 650px) {
+    .reviews-title-section-container  {
+        padding: 180px 15px 0 15px;
+    }
+
+    .reviews-section {
+        padding: 0 15px 20px 15px;
     }
 }
 
@@ -1942,7 +1955,7 @@ nav ul ul.open + svg {
 
 @media (max-width: 400px) {
     .reviews-title-section-container {
-        padding: 125px 20px 0 20px;
+        padding: 130px 15px 0 15px;
     }
 
 }
@@ -2126,7 +2139,7 @@ nav ul ul.open + svg {
 
 .footer-below-1024 {
     display: none;
-    padding: 90px 20px 0px 20px;
+    padding: 65px 15px 0px 15px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 
@@ -3077,5 +3090,25 @@ nav ul ul.open + svg {
     .review-card-modal-down {
         padding-right: 20px;
         padding-left: 20px;
+    }
+}
+
+
+/* Адаптив отступов */
+
+@media (max-width: 650px) {
+    .header-top,
+    .under-header {
+        padding: 15px;
+    }
+
+    .header-search-padding {
+        padding-bottom: 340px;
+    }
+}
+
+@media (max-width: 505px) {
+    .header-search-padding {
+        padding-bottom: 15px;
     }
 }
