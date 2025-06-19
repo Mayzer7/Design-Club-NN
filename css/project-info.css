@@ -987,10 +987,6 @@ li.active .menu-arrow {
         padding-bottom: 20px;
         background-color: transparent;
     }
-
-    .header-top {
-        padding: 15px;
-    }
 }
 
 @media (max-width: 400px) {
@@ -1442,6 +1438,8 @@ nav ul ul.open + svg {
     font-family: 'Future New Light', sans-serif;
     text-transform: uppercase;
     font-size: 110px;
+    max-width: 1300px;
+    width: 100%;
 }
 
 .video-container {
@@ -1488,7 +1486,7 @@ nav ul ul.open + svg {
 
 .project-info-content {
     display: flex;
-    gap: 40px;
+    gap: 20px;
 }
 
 .right-side {
@@ -1564,12 +1562,14 @@ nav ul ul.open + svg {
 @media (max-width: 1740px) {
     .title {
         font-size: 100px;
+        max-width: 1200px;
     }
 }
 
 @media (max-width: 1570px) {
     .title {
         font-size: 90px;
+        max-width: 1100px;
     }
 }
 
@@ -1587,12 +1587,14 @@ nav ul ul.open + svg {
 
     .title {
         font-size: 80px;
+        max-width: 950px;
     }
 }
 
 @media (max-width: 1260px) {
     .title {
         font-size: 70px;
+        max-width: 850px;
     }
 }
 
@@ -1617,16 +1619,32 @@ nav ul ul.open + svg {
     .video-container img {
         max-width: 100%;
         max-height: 100%;
+        min-height: 100%;
     }
 
     .right-side-down {
         margin-top: 30px;
+    }
+
+    .title {
+        margin-bottom: 10px;
+    }
+
+    .right-side-content-first {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 830px) {
+    .project-info-section {
+        padding: 30px 20px 45px 20px;
     }
 }
 
 @media (max-width: 745px) {
     .title {
         font-size: 48px;
+        max-width: 550px;
     }
 }
 
@@ -1813,7 +1831,11 @@ nav ul ul.open + svg {
     }
 
     .project-gallery {
-        padding: 90px 20px 90px 20px;
+        padding: 45px 20px 90px 20px;
+    }
+
+    .project-gallery-swiper .swiper-wrapper {
+        margin-top: 20px;
     }
 }
 
@@ -2181,7 +2203,7 @@ a .popular-product-desc p,
     }
 
     .up-title {
-        top: 25px;
+        top: 20px;
         left: 20px;
     }
 
@@ -2569,7 +2591,7 @@ a .popular-product-desc p,
 
     .nav-arrows-reviews {
         position: absolute;
-        top: 250px;
+        top: 230px;
         right: 0;
     }
 
@@ -2588,6 +2610,10 @@ a .popular-product-desc p,
     .reviews {
         padding: 90px 20px 90px 20px;
     }
+
+    .open-all-catalog-reviews {
+        margin-top: 30px;
+    }
 }
 
 @media (max-width: 830px) {
@@ -2599,7 +2625,7 @@ a .popular-product-desc p,
 
 @media (max-width: 739px) {
     .nav-arrows-reviews {
-        top: 320px;
+        top: 300px;
     }
 }
 
@@ -3459,7 +3485,7 @@ a .popular-product-desc p,
 
 .footer-below-1024 {
     display: none;
-    padding: 90px 20px 0px 20px;
+    padding: 45px 15px 0px 15px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 
@@ -4455,5 +4481,50 @@ a .popular-product-desc p,
     .review-card-modal-down {
         padding-right: 20px;
         padding-left: 20px;
+    }
+}
+
+
+/* Адаптив отступов */
+
+@media (max-width: 650px) {
+    .header-top,
+    .under-header {
+        padding: 15px;
+    }
+
+    .header-search-padding {
+        padding-bottom: 340px;
+    }
+
+    .project-info-section {
+        padding-left: 15px;
+    }
+
+    .project-gallery {
+        padding: 45px 15px 65px 15px;
+    }
+
+    .project-products {
+        padding: 45px 15px 20px 15px;
+    }
+
+    .up-title {
+        top: 20px;
+        left: 15px;
+    }
+
+    .reviews {
+        padding: 90px 15px 65px 15px;
+    }
+
+    .get-contact {
+        padding: 5px 15px 45px 15px;
+    }
+}
+
+@media (max-width: 505px) {
+    .header-search-padding {
+        padding-bottom: 15px;
     }
 }

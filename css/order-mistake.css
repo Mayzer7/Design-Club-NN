@@ -982,10 +982,6 @@ li.active .menu-arrow {
         padding-bottom: 20px;
         background-color: transparent;
     }
-
-    .header-top {
-        padding: 15px;
-    }
 }
 
 @media (max-width: 400px) {
@@ -1593,7 +1589,7 @@ nav ul ul.open + svg {
 
 .footer-below-1024 {
     display: none;
-    padding: 100px 20px 0 20px;
+    padding: 100px 15px 0 15px;
     background-color: transparent;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 
@@ -2375,19 +2371,38 @@ nav ul ul.open + svg {
 }
 
 @media (max-width: 510px) {
-    .under-header {
-        top: 90px;
-    }
-
     .title {
         font-size: 42px;
     }
 
     .footer-below-1024 {
-        padding: 0px 20px 0px 20px;
+        padding: 0px 15px 0px 15px;
     }
 
     .subtitle {
         font-size: 16px;
+    }
+}
+
+@media (max-width: 400px) {
+    .under-header {
+        top: 90px;
+    }
+}
+
+@media (max-width: 650px) {
+    .header-top,
+    .under-header {
+        padding: 15px;
+    }
+
+    .header-search-padding {
+        padding-bottom: 340px;
+    }
+}
+
+@media (max-width: 505px) {
+    .header-search-padding {
+        padding-bottom: 15px;
     }
 }
