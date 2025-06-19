@@ -960,6 +960,14 @@ li.active .menu-arrow {
     }
 }
 
+@media (max-width: 600px) {
+    .under-header-container p,
+    .under-header-container a,
+    .under-header-container a:nth-child(1) {
+        font-size: 14px;
+    }
+}
+
 @media (max-width: 550px) {
     .search-container {
         margin-left: 0%;

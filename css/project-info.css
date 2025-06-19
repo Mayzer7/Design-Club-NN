@@ -87,7 +87,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 body {
-    font-family: 'SF Pro Display Thin', sans-serif;
+    font-family: 'SF Pro Display', sans-serif;
     font-size: 18px;
     font-weight: 300;
     color: #EDE4D7;
@@ -3254,8 +3254,8 @@ a .popular-product-desc p,
 
     .get-contact-left-side {
         position: absolute;
-        top: -20px;
-        left: 5px;
+        top: -30px;
+        left: 2px;
     }
     
     .get-contact {

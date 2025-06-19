@@ -1375,7 +1375,7 @@ nav ul ul.open + svg {
 }
 
 .under-header-container {
-    margin-top: 20px;
+    margin-top: 30px;
     display: flex;
     align-items: center;
     transition: margin-top 0.5s ease;

@@ -1944,10 +1944,6 @@ nav ul ul.open + svg {
 }
 
 @media (max-width: 400px) {
-    .under-header-container {
-        margin-top: 20px;
-    }
-
     .get-contact {
         padding: 10px 0 0 20px;
     }

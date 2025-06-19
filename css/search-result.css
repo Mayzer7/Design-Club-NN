@@ -1443,7 +1443,7 @@ nav ul ul.open + svg {
     }
 
     .under-header-container {
-        margin-top: 10px;
+        margin-top: 30px;
     }
 
     
@@ -3005,7 +3005,7 @@ nav ul ul.open + svg {
     }
 
     .search-result-container {
-        padding: 255px 15px 0px 15px;
+        padding: 280px 15px 0px 15px;
     }
 
     .products-cards {
@@ -3033,6 +3033,6 @@ nav ul ul.open + svg {
 
 @media (max-width: 400px) {
     .search-result-container {
-        padding: 210px 15px 0px 15px;
+        padding: 230px 15px 0px 15px;
     }
 }

@@ -1399,7 +1399,7 @@ nav ul ul.open + svg {
     }
 
     .under-header-container {
-        margin-top: 10px;
+        margin-top: 20px;
     }
 
     
@@ -1408,6 +1408,10 @@ nav ul ul.open + svg {
 @media (max-width: 400px) {
     .under-header {
         top: 90px;
+    }
+
+    .under-header-container {
+        margin-top: 30px;
     }
 }
 
@@ -1511,6 +1515,12 @@ nav ul ul.open + svg {
         background-position: center 50px;
         padding: 100px 20px 90px 20px;
 
+    }
+
+    .under-header-container a,
+    .under-header-container p,
+    .under-header-container a:first-child {
+        font-size: 14px;
     }
 
     .search-result-container-inner {
