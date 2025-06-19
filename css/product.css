@@ -2273,7 +2273,7 @@ nav ul ul.open + svg {
 
     .desc-left h2,
     .desc-right h2 {
-        font-size: 26px;
+        font-size: 24px;
     }
 
     .desc-left p,
@@ -2692,7 +2692,7 @@ nav ul ul.open + svg {
 .up-title {
     position: absolute;
     top: 90px;
-    left: 25px;
+    left: 22px;
 }
 
 .popular-products-title {
@@ -3000,7 +3000,7 @@ a .popular-product-desc p,
     }
 
     .up-title {
-        top: 30px;
+        top: 20px;
     }
 
     .popular-products-swiper .swiper-wrapper  {
@@ -4449,3 +4449,66 @@ a .popular-product-desc p,
 
 }
 
+
+
+/* Адаптив отступов между секций */
+
+@media (max-width: 650px) {
+    .header-top,
+    .under-header {
+        padding: 15px;
+    }
+
+    .header-search-padding {
+        padding-bottom: 340px;
+    }
+
+    .under-header-container,
+    .product-mobile-info {
+        padding: 0px 15px;
+    }
+
+    .product-title {
+        margin-top: 30px;
+        padding-left: 15px;
+        margin-bottom: 12px;
+    }
+
+    .images-mobile .swiper-wrapper {
+        margin-left: 15px;
+    }
+
+    .product-mobile-discount-icons {
+        margin-top: 15px;
+    }
+
+    .product-mobile-price {
+        margin-top: 5px;
+    }
+
+    .project-products {
+        padding: 50px 15px 45px 15px;
+    }
+
+    .why-choose-us {
+        padding: 45px 15px 90px 15px;
+    }
+
+    .up-title {
+        left: 17px;
+    }
+
+    .get-request {
+        padding: 60px 15px 30px 15px;
+    }
+
+    .footer-below-1024 {
+        padding: 45px 15px 0px 15px;
+    }
+}
+
+@media (max-width: 505px) {
+    .header-search-padding {
+        padding-bottom: 15px;
+    }
+}
