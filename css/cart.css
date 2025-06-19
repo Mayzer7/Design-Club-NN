@@ -82,6 +82,7 @@ body {
     font-weight: 300;
     color: #EDE4D7;
     background-color: #151c28;
+    min-width: 320px;
 }
 
 html.no-scroll,
@@ -1820,7 +1821,7 @@ nav ul ul.open + svg {
     }
 
     .product-info-left img {
-        width: 95vw !important;
+        width: 94vw !important;
         height: auto !important;
         max-width: none !important;
         max-height: none !important;
@@ -1832,6 +1833,15 @@ nav ul ul.open + svg {
 @media (max-width: 650px) {
     .cart {
         padding: 260px 15px 60px 15px;
+    }
+
+    .product-info-left img {
+        width: 95vw !important;
+        height: auto !important;
+        max-width: none !important;
+        max-height: none !important;
+        object-fit: cover;
+        display: block;   
     }
 }
 
@@ -1923,7 +1933,7 @@ nav ul ul.open + svg {
 
 @media (max-width: 350px) {
     .product-info-left img {
-        min-width: 100%;
+        min-width: 320px;
         min-height: 100%;
         max-width: 100%;
         max-height: 310px;

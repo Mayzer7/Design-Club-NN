@@ -83,6 +83,7 @@ body {
     font-weight: 300;
     color: #EDE4D7;
     background-color: #141b28;
+    min-width: 320px;
 }
 
 html.no-scroll,
