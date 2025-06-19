@@ -1831,7 +1831,7 @@ nav ul ul.open + svg {
 
 @media (max-width: 650px) {
     .cart {
-        padding: 210px 15px 100px 15px;
+        padding: 260px 15px 60px 15px;
     }
 }
 
@@ -1901,7 +1901,7 @@ nav ul ul.open + svg {
 
 @media (max-width: 400px) {
     .cart {
-        padding: 210px 15px 100px 15px;
+        padding: 210px 15px 60px 15px;
     }
 }
 
@@ -2409,14 +2409,14 @@ nav ul ul.open + svg {
 
     .get-request-left-side {
         position: absolute;
-        top: -20px;
-        left: 5px;
+        top: -30px;
+        left: 2px;
     }
 }
 
 @media (max-width: 650px) {
     .get-request {
-        padding: 45px 15px 45px 15px;
+        padding: 5px 15px 45px 15px;
     }
 }
 
@@ -2611,7 +2611,7 @@ nav ul ul.open + svg {
 
 .footer-below-1024 {
     display: none;
-    padding: 100px 20px 0px 20px;
+    padding: 45px 15px 0px 15px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 
@@ -3315,5 +3315,23 @@ nav ul ul.open + svg {
         width: 56px;
         height: 56px;
     }
+}
 
+/* Адаптив отступов */
+
+@media (max-width: 650px) {
+    .header-top,
+    .under-header {
+        padding: 15px;
+    }
+
+    .header-search-padding {
+        padding-bottom: 340px;
+    }
+}
+
+@media (max-width: 505px) {
+    .header-search-padding {
+        padding-bottom: 15px;
+    }
 }
