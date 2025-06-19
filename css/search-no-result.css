@@ -1753,8 +1753,8 @@ nav ul ul.open + svg {
 
     .left-side p {
         position: absolute;
-        top: -20px;
-        left: 5px;
+        top: -30px;
+        left: 3px;
     }
 
     .right-side {
