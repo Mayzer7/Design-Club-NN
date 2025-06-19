@@ -1590,7 +1590,8 @@ nav ul ul.open + svg {
 
     .services-image p {
         font-size: 20px;
-        margin: 20px 0;
+        margin-top: 15px;
+        margin-bottom: 20px;
         font-family: 'SF Pro Display Thin', sans-serif;
         font-weight: 900;
     }
@@ -2344,7 +2345,7 @@ nav ul ul.open + svg {
 
 .footer-below-1024 {
     display: none;
-    padding: 90px 20px 0px 20px;
+    padding: 65px 15px 0px 15px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 
@@ -3062,8 +3063,18 @@ nav ul ul.open + svg {
 /* Адаптив отступов */
 
 @media (max-width: 650px) {
-
-    .header-top {
+    .header-top,
+    .under-header {
         padding: 15px;
+    }
+
+    .header-search-padding {
+        padding-bottom: 340px;
+    }
+}
+
+@media (max-width: 505px) {
+    .header-search-padding {
+        padding-bottom: 15px;
     }
 }

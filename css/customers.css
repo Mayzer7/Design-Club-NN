@@ -979,10 +979,6 @@ li.active .menu-arrow {
         padding-bottom: 20px;
         background-color: transparent;
     }
-
-    .header-top {
-        padding: 15px;
-    }
 }
 
 @media (max-width: 400px) {
@@ -1456,7 +1452,7 @@ nav ul ul.open + svg {
 
 @media (max-width: 730px) {
     .customers-title-section {
-        padding: 180px 20px 0 20px;
+        padding: 180px 20px 0px 20px;
     }
 }
 
@@ -1469,8 +1465,19 @@ nav ul ul.open + svg {
         margin-top: 15px;
         font-size: 16px;
     }
+
+    .under-header-container a,
+    .under-header-container p,
+    .under-header-container a:nth-child(1) {
+        font-size: 14px;
+    }
 }
 
+@media (max-width: 650px) {
+    .customers-title-section {
+        padding: 180px 15px 0px 15px;
+    }
+}
 
 @media (max-width: 515px) {
     .customers-title {
@@ -1480,7 +1487,7 @@ nav ul ul.open + svg {
 
 @media (max-width: 400px) {
     .customers-title-section {
-        padding: 125px 20px 0 20px;
+        padding: 135px 15px 0px 15px;
     }
 }
 
@@ -1592,10 +1599,14 @@ nav ul ul.open + svg {
 }
 
 @media (max-width: 675px) {
-    
-
     .customers-navigation {
         padding: 40px 5px;
+    }
+}
+
+@media (max-width: 650px) {
+    .customers {
+        padding: 0px 15px 100px 15px;
     }
 }
 
@@ -1607,6 +1618,14 @@ nav ul ul.open + svg {
     .title-nav {
         font-size: 24px;
     }
+
+    .customers-navigation {
+        padding: 20px 5px;
+    }
+
+    .customers {
+        padding: 0px 15px 65px 15px;
+    }
 }
 
 
@@ -1614,7 +1633,7 @@ nav ul ul.open + svg {
 /* Секция "Остались вопросы?" */
 
 .get-contact {
-    padding: 80px 0 150px 20px;
+    padding: 80px 20px 150px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif; 
     background-image: url("../images/customers-page/background.png");
@@ -1666,7 +1685,7 @@ nav ul ul.open + svg {
 .main-side-wrapper form {
     display: flex;
     flex-direction: column;
-    gap: 35px;
+    gap: 30px;
     width: 105%;
 }
 
@@ -1950,7 +1969,7 @@ nav ul ul.open + svg {
 @media (max-width: 1100px) {
     .get-contact {
         background-image: url("../images/furniture-build/adaptive/background-contact-1024.png");
-        padding: 80px 0 80px 20px;
+        padding: 80px 20px 80px 20px;
     }
 
 
@@ -1992,12 +2011,14 @@ nav ul ul.open + svg {
         white-space: normal;
     }
 
-    .main-side-wrapper form {
-        width: 100%;
-    }
-
     .accept-politics p {
         white-space: normal;
+    }
+}
+
+@media (max-width: 650px) {
+    .get-contact {
+        padding: 65px 15px 45px 15px;
     }
 }
 
@@ -2192,7 +2213,7 @@ nav ul ul.open + svg {
 
 .footer-below-1024 {
     display: none;
-    padding: 90px 20px 0px 20px;
+    padding: 65px 15px 0px 15px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 
@@ -2905,5 +2926,23 @@ nav ul ul.open + svg {
         width: 56px;
         height: 56px;
     }
+}
 
+/* Адаптив отступов */
+
+@media (max-width: 650px) {
+    .header-top,
+    .under-header {
+        padding: 15px;
+    }
+
+    .header-search-padding {
+        padding-bottom: 340px;
+    }
+}
+
+@media (max-width: 505px) {
+    .header-search-padding {
+        padding-bottom: 15px;
+    }
 }

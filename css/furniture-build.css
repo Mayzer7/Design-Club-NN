@@ -979,10 +979,6 @@ li.active .menu-arrow {
         padding-bottom: 20px;
         background-color: transparent;
     }
-
-    .header-top {
-        padding: 15px;
-    }
 }
 
 @media (max-width: 400px) {
@@ -1419,6 +1415,8 @@ nav ul ul.open + svg {
     font-size: 100px;
     font-weight: 600;
     text-transform: uppercase;
+    max-width: 1000px;
+    width: 100%;
 }
 
 .furniture-build-content {
@@ -1432,7 +1430,7 @@ nav ul ul.open + svg {
 }
 
 .first-text {
-    margin: 30px 0;
+    margin: 20px 0;
     font-size: 20px;
 }
 
@@ -1526,6 +1524,7 @@ nav ul ul.open + svg {
 @media (max-width: 1370px) {
     .furniture-title {
         font-size: 80px;
+        max-width: 800px;
     }
 
     .video-container img {
@@ -1551,6 +1550,7 @@ nav ul ul.open + svg {
 @media (max-width: 1160px) {
     .furniture-title {
         font-size: 70px;
+        max-width: 700px;
     }
     
     .video-container img {
@@ -1630,6 +1630,18 @@ nav ul ul.open + svg {
     .advantages-container {
         flex-direction: column;
     }
+
+    .first-text {
+        margin: 15px 0px;
+    }
+
+    .advantages-title {
+        margin-bottom: 15px;
+    }
+
+    .advantages-container {
+        gap: 20px;
+    }
 }
 
 @media (max-width: 730px) {
@@ -1645,19 +1657,35 @@ nav ul ul.open + svg {
     }
 }
 
-@media (max-width: 630px) {
+@media (max-width: 700px) {
     .furniture-title {
         font-size: 55px;
     }
 }
 
-@media (max-width: 510px) {
-    .furniture-title {
-        font-size: 45px;
+@media (max-width: 650px) {
+    .services-title-section-container {
+        padding: 220px 15px 45px 15px;
     }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 630px) {
+    .services-title-section-container {
+        padding: 200px 15px 45px 15px;
+    }
+}
+
+@media (max-width: 560px) {
+    .furniture-title {
+        font-size: 45px;
+    }
+
+    .services-title-section-container {
+        padding: 190px 15px 45px 15px;
+    }
+}
+
+@media (max-width: 460px) {
     .furniture-title {
         font-size: 38px;
     }
@@ -1671,12 +1699,16 @@ nav ul ul.open + svg {
     }
 }
 
-
 @media (max-width: 400px) {
     .services-title-section-container {
-        padding: 180px 20px 100px 20px;
+        padding: 150px 15px 45px 15px;
     }
-    
+}
+
+@media (max-width: 386px) {
+    .services-title-section-container {
+        padding: 170px 15px 45px 15px;
+    }
 }
 
 
@@ -1685,7 +1717,7 @@ nav ul ul.open + svg {
 /* Секция "Остались вопросы?" */
 
 .get-contact {
-    padding: 80px 0 150px 20px;
+    padding: 80px 20px 150px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif; 
     background-image: url("../images/customers-page/background.png");
@@ -2023,7 +2055,7 @@ nav ul ul.open + svg {
 @media (max-width: 1100px) {
     .get-contact {
         background-image: url("../images/furniture-build/adaptive/background-contact-1024.png");
-        padding: 80px 0 80px 20px;
+        padding: 80px 20px 80px 20px;
     }
 
 
@@ -2065,12 +2097,14 @@ nav ul ul.open + svg {
         white-space: normal;
     }
 
-    .main-side-wrapper form {
-        width: 100%;
-    }
-
     .accept-politics p {
         white-space: normal;
+    }
+}
+
+@media (max-width: 650px) {
+    .get-contact {
+        padding: 65px 15px 45px 15px;
     }
 }
 
@@ -2266,7 +2300,7 @@ nav ul ul.open + svg {
 
 .footer-below-1024 {
     display: none;
-    padding: 90px 20px 0px 20px;
+    padding: 65px 15px 0px 15px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 
@@ -3034,5 +3068,23 @@ nav ul ul.open + svg {
         width: 56px;
         height: 56px;
     }
+}
 
+/* Адаптив отступов */
+
+@media (max-width: 650px) {
+    .header-top,
+    .under-header {
+        padding: 15px;
+    }
+
+    .header-search-padding {
+        padding-bottom: 340px;
+    }
+}
+
+@media (max-width: 505px) {
+    .header-search-padding {
+        padding-bottom: 15px;
+    }
 }
