@@ -1405,7 +1405,7 @@ nav ul ul.open + svg {
 /* Секция "Оформить заказ" */
 
 .buy-products {
-    padding: 400px 20px 0px 20px;
+    padding: 400px 20px 90px 20px;
     background-color: #151c28;
 
     position: relative;
@@ -1443,7 +1443,6 @@ nav ul ul.open + svg {
     font-weight: 600;
     text-transform: uppercase;
     font-size: 34px;
-    margin-bottom: 40px;
 }
 
 
@@ -2032,13 +2031,19 @@ nav ul ul.open + svg {
 
 @media (max-width: 730px) {
     .buy-products {
-        padding: 265px 20px 0px 20px;
+        padding: 265px 20px 45px 20px;
+    }
+}
+
+@media (max-width: 650px) {
+    .buy-products {
+        padding: 265px 15px 45px 15px;
     }
 }
 
 @media (max-width: 400px) {
     .buy-products {
-        padding: 210px 20px 0px 20px;
+        padding: 210px 15px 45px 15px;
     }
 
 }
@@ -2051,16 +2056,19 @@ nav ul ul.open + svg {
     }
 }
 
-@media (max-width: 400px) {
-    .title {
-        font-size: 38px;
-        margin-bottom: 30px;
-    }
-
+@media (max-width: 470px) {
     .under-header-container p,
     .under-header-container a,
     .under-header-container > a:not(:last-child) {
         font-size: 14px;
+    }
+    
+}
+
+@media (max-width: 400px) {
+    .title {
+        font-size: 38px;
+        margin-bottom: 30px;
     }
 }
 
@@ -2083,7 +2091,8 @@ nav ul ul.open + svg {
     gap: 5px;
     padding: 20px 0;
     border-top: 1px solid rgba(237, 228, 215, 0.2);
-    border-bottom: 1px solid rgba(237, 228, 215, 0.2);
+    border-bottom: 1px solid rgba(237, 228, 215, 0.2);  
+    margin-bottom: 0px;
 }
 
 /* Товары */
@@ -2188,6 +2197,8 @@ nav ul ul.open + svg {
 .order-total-price {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    text-align: center;
     padding: 20px 0px;
     border-bottom: 1px solid rgba(237, 228, 215, 0.2);
 }
@@ -2203,8 +2214,15 @@ nav ul ul.open + svg {
 }
 
 .buyer-600 {
-    margin-bottom: 15px;
     font-size: 24px;
+}
+
+.buyer-title-main {
+    margin-bottom: 40px;
+}
+
+.buyer-title {
+    margin-bottom: 15px;
 }
 
 .order-input-600 textarea {
@@ -2406,7 +2424,7 @@ nav ul ul.open + svg {
 
 .footer-below-1024 {
     display: none;
-    padding: 100px 20px 0px 20px;
+    padding: 45px 15px 0px 15px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 
@@ -3127,4 +3145,24 @@ nav ul ul.open + svg {
         height: 56px;
     }
 
+}
+
+
+/* Адаптив отступов */
+
+@media (max-width: 650px) {
+    .header-top,
+    .under-header {
+        padding: 15px;
+    }
+
+    .header-search-padding {
+        padding-bottom: 340px;
+    }
+}
+
+@media (max-width: 505px) {
+    .header-search-padding {
+        padding-bottom: 15px;
+    }
 }
