@@ -5391,6 +5391,14 @@ max-width:  360px;
     cursor: pointer;
 }
 
+.close-modal svg path {
+    transition: stroke 0.3s ease;
+}
+
+.close-modal:hover svg path {
+    stroke: #AE9877;
+}
+
 .modal-content-info {
     display: flex;
     justify-content: center;
@@ -5408,6 +5416,7 @@ max-width:  360px;
     top: 20px;
     right: 20px;
     cursor: pointer;
+    padding: 0px;
 }
 
 .modal-content-info img {

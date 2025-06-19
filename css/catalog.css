@@ -4167,6 +4167,14 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     cursor: pointer;
 }
 
+.close-modal svg path {
+    transition: stroke 0.3s ease;
+}
+
+.close-modal:hover svg path {
+    stroke: #AE9877;
+}
+
 .modal-content-info {
     display: flex;
     justify-content: center;
