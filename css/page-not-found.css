@@ -958,10 +958,6 @@ li.active .menu-arrow {
         padding-bottom: 20px;
         background-color: transparent;
     }
-
-    .header-top {
-        padding: 15px;
-    }
 }
 
 @media (max-width: 400px) {
@@ -1718,7 +1714,7 @@ nav ul ul.open + svg {
 
 .footer-below-1024 {
     display: none;
-    padding: 0px 20px 0px 20px;
+    padding: 0px 15px 0px 15px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 
@@ -2448,5 +2444,24 @@ nav ul ul.open + svg {
     .error-svg {
         width: 56px;
         height: 56px;
+    }
+}
+
+/* Адаптив отступов */
+
+@media (max-width: 650px) {
+    .header-top,
+    .under-header {
+        padding: 15px;
+    }
+
+    .header-search-padding {
+        padding-bottom: 340px;
+    }
+}
+
+@media (max-width: 505px) {
+    .header-search-padding {
+        padding-bottom: 15px;
     }
 }

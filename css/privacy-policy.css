@@ -82,6 +82,7 @@ body {
     font-weight: 300;
     color: #EDE4D7;
     background-color: #151c28;
+    min-width: 320px;
 }
 
 html.no-scroll,
@@ -968,10 +969,6 @@ li.active .menu-arrow {
         padding-bottom: 20px;
         background-color: transparent;
     }
-
-    .header-top {
-        padding: 15px;
-    }
 }
 
 @media (max-width: 400px) {
@@ -1462,7 +1459,7 @@ nav ul ul.open + svg {
 
 @media (max-width: 890px) {
     .privacy-policy {
-        padding-left: 20px;
+        padding: 0px 20px 45px 20px;
     }
 }
 
@@ -1473,6 +1470,12 @@ nav ul ul.open + svg {
 
     .text-dlya-zagolovka {
         margin-bottom: 30px;
+    }
+
+    .under-header-container a,
+    .under-header-container p,
+    .under-header-container a:first-child{
+        font-size: 14px;
     }
 }
 
@@ -1500,6 +1503,13 @@ nav ul ul.open + svg {
     }
 }
 
+@media (max-width: 650px) {
+    .privacy-policy {
+        padding-left: 15px;
+    }
+}
+
+
 @media (max-width: 474px) {
     .title {
         font-size: 42px;
@@ -1515,12 +1525,6 @@ nav ul ul.open + svg {
 @media (max-width: 400px) {
      .main-page-top {
         min-height: 165px;
-    }
-}
-
-@media (max-width: 305px) {
-    .privacy-policy {
-        padding: 20px 20px 20px 20px;
     }
 }
 
@@ -1698,7 +1702,7 @@ nav ul ul.open + svg {
 
 .footer-below-1024 {
     display: none;
-    padding: 90px 20px 0px 20px;
+    padding: 45px 15px 0px 15px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 
@@ -2421,5 +2425,23 @@ nav ul ul.open + svg {
         width: 56px;
         height: 56px;
     }
+}
 
+/* Адаптив отступов */
+
+@media (max-width: 650px) {
+    .header-top,
+    .under-header {
+        padding: 15px;
+    }
+
+    .header-search-padding {
+        padding-bottom: 340px;
+    }
+}
+
+@media (max-width: 505px) {
+    .header-search-padding {
+        padding-bottom: 15px;
+    }
 }
