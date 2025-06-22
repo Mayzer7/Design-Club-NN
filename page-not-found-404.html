@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/page-not-found.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="images/svg/favicon.svg" type="image/svg+xml">
     <!-- Preloader -->
     <link rel="stylesheet" href="css/preloader.css">
@@ -16,12 +16,12 @@
 
     <div class="container">
         <!-- Основной контент страницы -->
-        <div class="main-page-content" id="mainContent">
-            <section class="page-wrapper">
-                <main class="under-header">
+        <div class="main-page-content main-page-content-404" id="mainContent">
+            <section class="page-wrapper-404">
+                <main class="under-header-404">
                     <hr class="line fade-in">
         
-                    <div class="under-header-container fade-in">
+                    <div class="under-header-container-404 fade-in">
                         <a href="main-page.html">Главная</a>
                         <p>/</p>
                         <a href="page-not-found-404.html">Ошибка</a>
@@ -30,7 +30,7 @@
             </section>
     
             <!-- Шапка -->
-            <section class="main-page-top">
+            <section class="main-page-top-404">
                 <div class="bg-overlay"></div>
                 <header class="header-top">
                     <div class="container">
@@ -333,14 +333,14 @@
                 <div class="sections">
                     <section class="search-result">
                         <div class="blur-container">
-                            <div class="search-result-container">
-                                <div class="search-result-container-inner reveal-mask">
-                                    <h1 class="search-result-title">
+                            <div class="search-result-container-404">
+                                <div class="search-result-container-inner-404 reveal-mask">
+                                    <h1 class="search-result-title-404">
                                         404
                                     </h1>
 
                                     <div class="under-404 fade-in">
-                                        <p class="search-no-result-text fade-in">
+                                        <p class="search-no-result-text-404 fade-in">
                                             Страница не найдена
                                         </p>
 
@@ -362,21 +362,19 @@
                         </div>
                     </section>
             
-                    <section class="footer">
+                    <section class="footer footer-404">
                         <div class="blur-container">
                             <footer>
-                                <hr class="line fade-in">
+                                <hr class="line">
                             
                                 <div class="footer-grid">
                                     <div class="footer-container">
-                                        <div class="footer-logo-container">
-                                            <a href="main-page.html">
-                                                <img class="footer-logo footer-logo-below fade-in" src="images/svg/logo.svg" alt="footer-logo">
-                                            </a>
-                                        </div>
+                                        <a href="main-page.html">
+                                            <img class="footer-logo fade-in" src="images/svg/logo.svg" alt="footer-logo">
+                                        </a>
                             
                                         <nav class="footer-navigation fade-in">
-                                            <h4>Каталог</h4>
+                                            <p>Каталог</p>
                                             <ul>
                                                 <li><a href="catalog-page.html">Ванны</a></li>
                                                 <li><a href="catalog-page.html">Диваны</a></li>
@@ -388,27 +386,210 @@
                                         </nav>
                             
                                         <nav class="footer-navigation fade-in">
-                                            <h4>О компании</h4>
+                                            <p>О компании</p>
                                             <ul>
                                                 <li><a href="about-us-page.html">О нас</a></li>
                                                 <li><a href="projects-page.html">Проекты</a></li>
                                                 <li><a href="customers-page.html">Покупателям</a></li>
                                                 <li><a href="reviews-page.html">Отзывы</a></li>
                                                 <li><a href="services-page.html">Услуги</a></li>
-                                                <li><a href="vacancies-page.html">Вакансии</a></li>
-                                                <li><a href="no-vacancies-page.html">Нет вакансий</a></li>
                                             </ul>
                                         </nav>
                             
                                         <nav class="footer-navigation fade-in">
-                                            <h4>Покупателям</h4>
+                                            <p>Покупателям</p>
                                             <ul>
-                                                <li><a href="main-page.html#brands">Бренды</a></li>
+                                                <li><a href="#brands">Бренды</a></li>
                                                 <li><a href="services-page.html">Услуги</a></li>
                                                 <li><a href="#">Доставка и оплата</a></li>
                                             </ul>
                                         </nav>
                             
+                                        <div class="footer-address fade-in">
+                                            <div class="footer-address-first">
+                                                <p>Наш магазин по адресу</p>
+                        
+                                                <a href="https://yandex.ru/maps/-/CHCE6VNj" target="_blank" class="address">
+                                                    Нижний Новогород,<br>
+                                                    Эльтонская, 8
+                                                </a>
+                                            </div>
+                            
+                                            <div class="footer-address-second">
+                                                <p>По различным вопросам</p>
+
+                                                <a href="mailto:email@mail.ru">email@mail.ru</a>
+                                            </div>
+                            
+                                            <div class="footer-address-second">
+                                                <p>Связаться с нами</p>
+
+                                                <a href="tel:+79994828210">+7 999 482 82 10</a>
+                                            </div>
+                                        </div>
+                            
+                                        <div class="footer-icons fade-in">
+                                            <a href="#"><img class="footer-icon" src="images/svg/telegram.svg" alt="telegram-icon"></a>
+                                            <a href="#"><img class="footer-icon" src="images/svg/phone.svg" alt="phone-icon"></a>
+                                        </div>
+                                    </div>
+                            
+                                    <div class="footer-last">
+                                        <hr class="line">
+                            
+                                        <div class="footer-copyright fade-in">
+                                            <p>© Design Club NN</p>
+                                            <a href="privacy-policy-page.html">Политика конфиденциальности</a>
+                                            <a href="https://omniagency.ru/" target="_blank">Сделано в OmniAgency</a>
+                                            <p>2025</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>
+                    </section>
+
+                    <section class="footer-1024 footer-404">
+                        <div class="blur-container">
+                            <footer>
+                                <hr class="line">
+                            
+                                <div class="footer-grid-up">
+                                    <div class="footer-container-1024">
+                                        <div class="footer-logo-container">
+                                            <a href="main-page.html">
+                                                <img class="footer-logo fade-in" src="images/svg/logo.svg" alt="footer-logo">
+                                            </a>
+                                        </div>
+
+                                        <nav class="footer-navigation fade-in">
+                                            <div class="footer-nav-up">
+                                                <p>Каталог</p>
+
+                                                <ul>
+                                                    <li><a href="catalog-page.html">Ванны</a></li>
+                                                    <li><a href="catalog-page.html">Диваны</a></li>
+                                                    <li><a href="catalog-page.html">Обеденные зоны</a></li>
+                                                    <li><a href="catalog-page.html">Декор</a></li>
+                                                    <li><a href="catalog-page.html">Декор</a></li>
+                                                    <li><a href="catalog-page.html">Декор</a></li>
+                                                </ul>
+                                            </div>
+                                        </nav>
+                            
+                                        <nav class="footer-navigation fade-in">
+                                            <div class="footer-nav-up">
+                                                <p>О компании</p>
+                                                
+                                                <ul>
+                                                    <li><a href="about-us-page.html">О нас</a></li>
+                                                    <li><a href="projects-page.html">Проекты</a></li>
+                                                    <li><a href="customers-page.html">Покупателям</a></li>
+                                                    <li><a href="reviews-page.html">Отзывы</a></li>
+                                                    <li><a href="services-page.html">Услуги</a></li>
+                                                </ul>
+                                            </div>                                    
+                                        </nav>
+                            
+                                        <nav class="footer-navigation fade-in">
+                                            <div class="footer-nav-up">
+                                                <p>Покупателям</p>
+                                                
+                                                <ul>
+                                                    <li><a href="#brands">Бренды</a></li>
+                                                    <li><a href="services-page.html">Услуги</a></li>
+                                                    <li><a href="#">Доставка и оплата</a></li>
+                                                </ul>
+                                            </div>
+                                        </nav>
+                                    </div>
+                                </div>
+
+                                <div class="footer-grid-down fade-in">
+                                    <div class="footer-nav-down">
+                                        <div class="footer-icons ">
+                                            <a href="#"><img class="footer-icon" src="images/svg/telegram.svg" alt="telegram-icon"></a>
+                                            <a href="#"><img class="footer-icon" src="images/svg/phone.svg" alt="phone-icon"></a>
+                                        </div>
+                                    </div>
+
+                                    <div class="footer-nav-down fade-in">
+                                        <p>Наш магазин по адресу</p>
+
+                                        <a href="https://yandex.ru/maps/-/CHCE6VNj" target="_blank" class="address fade-in">
+                                            Нижний Новогород,<br>
+                                            Эльтонская, 8
+                                        </a>
+                                    </div>
+
+                                    <div class="footer-nav-down fade-in">
+                                        <p>По различным вопросам</p>
+                        
+                                        <a href="mailto:email@mail.ru">email@mail.ru</a>
+                                    </div>
+
+                                    <div class="footer-nav-down fade-in">
+                                        <p>Связаться с нами</p>
+                        
+                                        <a href="tel:+79994828210">+ 7 999 482 82 10</a>
+                                    </div>
+                                </div>
+
+                                <hr class="line">
+                            
+                                <div class="footer-copyright-1024 fade-in">
+                                    <p>© Design Club NN</p>
+                                    <a href="privacy-policy-page.html">Политика конфиденциальности</a>
+                                    <a href="https://omniagency.ru/" target="_blank">Сделано в OmniAgency</a>
+                                    <p class="last-column">2025</p>
+                                </div>
+                            </footer>
+                        </div>
+                    </section>
+
+                    <section class="footer-below-1024-404">
+                        <div class="blur-container">
+                            <footer>
+                                <hr class="line">
+
+                                <div class="footer-first-line">
+                                    <img class="footer-logo footer-logo-below fade-in" src="images/svg/logo.svg" alt="footer-logo">
+                                
+                                    <div class="footer-icons fade-in">
+                                        <a href="#"><img class="footer-icon" src="images/svg/telegram.svg" alt="telegram-icon"></a>
+                                        <a href="#"><img class="footer-icon" src="images/svg/phone.svg" alt="phone-icon"></a>
+                                    </div>
+                                </div>
+
+                                <div class="footer-second-line ">
+                                    <div class="footer-first-column">
+                                        <nav class="footer-navigation">
+                                            <div class="footer-nav-up fade-in">
+                                                <p>Каталог</p>
+
+                                                <ul>
+                                                    <li><a href="catalog-page.html">Ванны</a></li>
+                                                    <li><a href="catalog-page.html">Диваны</a></li>
+                                                    <li><a href="catalog-page.html">Обеденные зоны</a></li>
+                                                    <li><a href="catalog-page.html">Декор</a></li>
+                                                    <li><a href="catalog-page.html">Декор</a></li>
+                                                    <li><a href="page-not-found-404.html">Декор</a></li>
+                                                </ul>
+                                            </div>
+                                        </nav>
+
+                                        <nav class="footer-navigation fade-in">
+                                            <div class="footer-nav-up">
+                                                <p>Покупателям</p>
+                                                
+                                                <ul>
+                                                    <li><a href="#brands">Бренды</a></li>
+                                                    <li><a href="services-page.html">Услуги</a></li>
+                                                    <li><a href="#">Доставка и оплата</a></li>
+                                                </ul>
+                                            </div>
+                                        </nav>
+
                                         <div class="footer-design-club-info">
                                             <div class="footer-nav-down fade-in">
                                                 <p>Наш магазин по адресу</p>
@@ -431,200 +612,12 @@
                                                 <a href="tel:+79994828210">+ 7 999 482 82 10</a>
                                             </div>
                                         </div>
-                            
-                                        <div class="footer-icons fade-in">
-                                            <a href="#"><img class="footer-icon" src="images/svg/telegram.svg" alt="telegram-icon"></a>
-                                            <a href="#"><img class="footer-icon" src="images/svg/phone.svg" alt="phone-icon"></a>
-                                        </div>
-                                    </div>
-                            
-                                    <hr class="line fade-in">
-                            
-                                    <div class="footer-copyright fade-in">
-                                        <p>© Design Club NN</p>
-                                        <a href="privacy-policy-page.html">Политика конфиденциальности</a>
-                                        <a href="https://omniagency.ru/" target="_blank">Сделано в OmniAgency</a>
-                                        <p>2025</p>
-                                    </div>
-                                </div>
-                            </footer>
-                        </div>
-                    </section>
-
-
-                    <section class="footer-1024">
-                        <div class="blur-container">
-                            <footer>
-                                <hr class="line fade-in">
-                            
-                                <div class="footer-grid-up">
-                                    <div class="footer-container-1024">
-                                        <div class="footer-logo-container">
-                                            <a href="main-page.html">
-                                                <img class="footer-logo footer-logo-below fade-in" src="images/svg/logo.svg" alt="footer-logo">
-                                            </a>
-                                        </div>
-
-                                        <nav class="footer-navigation fade-in">
-                                            <div class="footer-nav-up">
-                                                <h4>Каталог</h4>
-
-                                                <ul>
-                                                    <li><a href="#">Ванны</a></li>
-                                                    <li><a href="#">Диваны</a></li>
-                                                    <li><a href="#">Обеденные зоны</a></li>
-                                                    <li><a href="#">Декор</a></li>
-                                                    <li><a href="#">Декор</a></li>
-                                                    <li><a href="page-not-found-404.html">Декор</a></li>
-                                                </ul>
-                                            </div>
-                                        </nav>
-                            
-                                        <nav class="footer-navigation fade-in">
-                                            <div class="footer-nav-up">
-                                                <h4>О компании</h4>
-                                                
-                                                <ul>
-                                                    <li><a href="about-us-page.html">О нас</a></li>
-                                                    <li><a href="projects-page.html">Проекты</a></li>
-                                                    <li><a href="customers-page.html">Покупателям</a></li>
-                                                    <li><a href="reviews-page.html">Отзывы</a></li>
-                                                    <li><a href="services-page.html">Услуги</a></li>
-                                                </ul>
-                                            </div>                                    
-                                        </nav>
-                            
-                                        <nav class="footer-navigation fade-in">
-                                            <div class="footer-nav-up">
-                                                <h4>Покупателям</h4>    
-                                                
-                                                <ul>
-                                                    <li><a href="#">Бренды</a></li>
-                                                    <li><a href="services-page.html">Услуги</a></li>
-                                                    <li><a href="#">Доставка и оплата</a></li>
-                                                </ul>
-                                            </div>
-                                        </nav>
-                                    </div>
-                                </div>
-
-                                <div class="footer-grid-down">
-                                    <div class="footer-nav-down">
-                                        <div class="footer-icons fade-in">
-                                            <a href="#"><img class="footer-icon" src="images/svg/telegram.svg" alt="telegram-icon"></a>
-                                            <a href="#"><img class="footer-icon" src="images/svg/phone.svg" alt="phone-icon"></a>
-                                        </div>
-                                    </div>
-
-                                    <div class="footer-nav-down-1024 fade-in">
-                                        <p>Наш магазин по адресу</p>
-
-                                        <a href="https://yandex.ru/maps/-/CHCE6VNj" target="_blank" class="address">
-                                            Нижний<br> Новогород,
-                                            Эльтонская, 8
-                                        </a>
-                                    </div>
-
-                                    <div class="footer-nav-down-1024 fade-in">
-                                        <p>По различным вопросам</p>
-                        
-                                        <a href="mailto:email@mail.ru">email@mail.ru</a>
-                                    </div>
-
-                                    <div class="footer-nav-down-1024 fade-in">
-                                        <p>Связаться с нами</p>
-                        
-                                        <a href="tel:+79994828210">+ 7 999 482 82 10</a>
-                                    </div>
-                                </div>
-
-                                <hr class="line fade-in">
-                            
-                                <div class="footer-copyright-1024 fade-in">
-                                    <p>© Design Club NN</p>
-                                    <a href="privacy-policy-page.html">Политика конфиденциальности</a>
-                                    <a href="https://omniagency.ru/" target="_blank">Сделано в OmniAgency</a>
-                                    <p class="last-column">2025</p>
-                                </div>
-                            </footer>
-                        </div>
-                    </section>
-
-                    <section class="footer-below-1024">
-                        <div class="blur-container">
-                            <footer>
-                                <hr class="line fade-in">
-
-                                <div class="footer-first-line fade-in">
-                                    <div class="footer-logo-container">
-                                            <a href="main-page.html">
-                                                <img class="footer-logo footer-logo-below fade-in" src="images/svg/logo.svg" alt="footer-logo">
-                                            </a>
-                                        </div>
-                                
-                                    <div class="footer-icons">
-                                        <a href="#"><img class="footer-icon" src="images/svg/telegram.svg" alt="telegram-icon"></a>
-                                        <a href="#"><img class="footer-icon" src="images/svg/phone.svg" alt="phone-icon"></a>
-                                    </div>
-                                </div>
-
-                                <div class="footer-second-line fade-in">
-                                    <div class="footer-first-column">
-                                        <nav class="footer-navigation">
-                                            <div class="footer-nav-up">
-                                                <h4>Каталог</h4>
-
-                                                <ul>
-                                                    <li><a href="#">Ванны</a></li>
-                                                    <li><a href="#">Диваны</a></li>
-                                                    <li><a href="#">Обеденные зоны</a></li>
-                                                    <li><a href="#">Декор</a></li>
-                                                    <li><a href="#">Декор</a></li>
-                                                    <li><a href="page-not-found-404.html">Декор</a></li>
-                                                </ul>
-                                            </div>
-                                        </nav>
-
-                                        <nav class="footer-navigation">
-                                            <div class="footer-nav-up">
-                                                <h4>Покупателям</h4>
-                                                
-                                                <ul>
-                                                    <li><a href="#">Бренды</a></li>
-                                                    <li><a href="services-page.html">Услуги</a></li>
-                                                    <li><a href="#">Доставка и оплата</a></li>
-                                                </ul>
-                                            </div>
-                                        </nav>
-
-                                        <div class="footer-design-club-info">
-                                            <div class="footer-nav-down">
-                                                <p>Наш магазин по адресу</p>
-
-                                                <h4 class="address">
-                                                    Нижний Новогород,<br>
-                                                    Эльтонская, 8
-                                                </h4>
-                                            </div>
-
-                                            <div class="footer-nav-down">
-                                                <p>По различным вопросам</p>
-                                
-                                                <h4>email@mail.ru</h4>
-                                            </div>
-
-                                            <div class="footer-nav-down">
-                                                <p>Связаться с нами</p>
-                                
-                                                <h4>+ 7 999 482 82 10</h4>
-                                            </div>
-                                        </div>
                                     </div>
 
                                     <div class="footer-second-column">
                                         <nav class="footer-navigation">
-                                            <div class="footer-nav-up">
-                                                <h4>О компании</h4>
+                                            <div class="footer-nav-up fade-in">
+                                                <p>О компании</p>
                                                 
                                                 <ul>
                                                     <li><a href="about-us-page.html">О нас</a></li>
@@ -638,10 +631,10 @@
                                     </div>
                                 </div>
 
-                                <div class="footer-copyright-last-line fade-in">
+                                <div class="footer-copyright-last-line">
                                     <hr class="line">
 
-                                    <div class="copyright-lines">
+                                    <div class="copyright-lines fade-in">
                                         <div class="copyrigth-first-column">
                                             <a href="privacy-policy-page.html">Политика конфиденциальности</a>
                                             

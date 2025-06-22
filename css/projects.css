@@ -118,7 +118,7 @@ input:-webkit-autofill {
 
 /* Верхрняя секция главной страницы */
 
-.main-page-top {
+.main-page-top-projects {
     background-image: url('../images/projects/background.webp');
     background-repeat: no-repeat;
     background-size: cover;
@@ -129,14 +129,9 @@ input:-webkit-autofill {
 
 
 .projects-display-mobile {
-    overflow-y: auto;        
+    overflow-y: hidden;        
     scroll-behavior: smooth; 
 }
-
-
-
-
-
 
 
 
@@ -1359,11 +1354,11 @@ nav ul ul.open + svg {
 
 /* header */
 
-.page-wrapper {
+.page-wrapper-projects {
     position: relative; 
 }
 
-.under-header {
+.under-header-projects {
     position: absolute;
     top: 200px;
     left: 0;
@@ -1373,25 +1368,25 @@ nav ul ul.open + svg {
     transition: filter 0.2s ease, backdrop-filter 0.2s ease;
 }
 
-.under-header-container {
+.under-header-container-projects {
     margin-top: 30px;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.under-header-container a:first-child {
+.under-header-container-projects a:first-child {
     color: #7B8292;
 }
 
 
-.projects-header-container {
+.projects-header-container-projects {
     margin-top: 60px;
     padding-left: 26%;
     position: relative;
 } 
 
-.title {
+.title-projects {
     font-family: 'Future New Light', sans-serif;
     font-size: 142px;
     font-weight: 600;
@@ -1399,7 +1394,7 @@ nav ul ul.open + svg {
     white-space: normal; 
 }
 
-.subtitle {
+.subtitle-projects {
     margin-top: 30px;
     margin-bottom: 40px;
     font-size: 20px;
@@ -1410,139 +1405,135 @@ nav ul ul.open + svg {
 /* Адаптив  заголовка под шапкой */
 
 @media (max-width: 1680px) {
-    .title {
+    .title-projects {
         font-size: 120px;
     }
 }
 
 @media (max-width: 1380px) {
-    .title {
+    .title-projects {
         font-size: 100px;
     }
 
-    .main-page-top {
+    .main-page-top-projects {
         height: 750px;
     }
 }
 
 
 @media (max-width: 1100px) {
-    .projects-header-container {
+    .projects-header-container-projects {
         padding-left: 19%;
     }
 }
 
 @media (max-width: 1050px) {
-    .title {
+    .title-projects {
         font-size: 98px;
     }
 }
 
 @media (max-width: 1000px) {
-    .title {
+    .title-projects {
         font-size: 78px;
     }
 
-    .main-page-top {
+    .main-page-top-projects {
         height: 700px;
     }
 }
 
 @media (max-width: 890px) {
-    .projects-header-container {
+    .projects-header-container-projects {
         padding-left: 9%;
     }
 }
 
 @media (max-width: 870px) {
-    .projects-header-container {
+    .projects-header-container-projects {
         padding-left: 0%;
     }
 }
 
 @media (max-width: 770px) {
-    .title {
+    .title-projects {
         font-size: 60px;
     }
 }
 
 @media (max-width: 730px) {
-    .under-header {
+    .under-header-projects {
         top: 130px;
     }
 
-    .main-page-top {
+    .main-page-top-projects {
         height: 650px;
     }
 }
 
 @media (max-width: 670px) {
-
-    .subtitle {
+    .subtitle-projects {
         font-size: 16px;
     }   
 
-    .main-page-top {
+    .main-page-top-projects {
         height: 560px;
     }
 }
 
-
-
 @media (max-width: 508px) {
-    .title {
+    .title-projects {
         font-size: 42px;
     }
 
-    .projects-header-container {
+    .projects-header-container-projects {
         margin-top: 30px;
     }
 
-    .under-header-container p,
-    .under-header-container a,
-    .under-header-container a:first-child {
+    .under-header-container-projects p,
+    .under-header-container-projects a {
         font-size: 14px;
     }
 
-    .subtitle {
+    .subtitle-projects {
         margin-top: 15px;
     }
 
-    .main-page-top {
+    .main-page-top-projects {
         height: 500px;
     }
 
 }
 
 @media (max-width: 400px) {
-    .under-header {
+    .under-header-projects {
         top: 90px;
     }
 
-    .under-header-container {
+    .under-header-container-projects {
         margin-top: 30px;
     }
 
-    .main-page-top {
+    .main-page-top-projects {
         height: 420px;
     }
 
 }
 
 @media (max-width: 370px) {
-    .title {
+    .title-projects {
         font-size: 38px;
     }
 }
 
 @media (max-width: 338px) {
-    .main-page-top {
+    .main-page-top-projects {
         height: 500px;
     }
 }
 
 @media (max-width: 280px) {
-    .main-page-top {
+    .main-page-top-projects {
         height: 550px;
     }
 }
@@ -1646,7 +1637,7 @@ nav ul ul.open + svg {
 }
 
 
-.projects-content-container[id] {
+.projects-content-container-projects[id] {
   scroll-margin-top: 120px;
 }
 
@@ -1733,25 +1724,32 @@ nav ul ul.open + svg {
   scroll-margin-top: 110px;
 }
 
-.project-content {
+.project-content-projects {
     padding: 20px 0;
     display: flex;
     justify-content: space-between;
 }
 
-.projects-content-container {
-    scroll-margin-top: 300px;
-    overflow-y: hidden;
+
+.project-content-projects:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Скрытые клоны .projects-content-container */
-.projects-content-container.cloned {
+.project-content-projects.start-project {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.projects-content-container-projects {
+    scroll-margin-top: 300px;
+    overflow: hidden;
+}
+
+.projects-content-container-projects.cloned {
   opacity: 0;
   transition: opacity 0.5s ease;
 }
 
-/* Видимые — после включения */
-.projects-content-container.cloned.visible {
+.projects-content-container-projects.cloned.visible {
   opacity: 1;
 }
 
@@ -1784,18 +1782,18 @@ nav ul ul.open + svg {
  
 }
 
-.project-content-second {
+.project-content-second-projects {
     display: flex;
     gap: 20px;
     margin-left: 40px;
 }
 
-.project-content-second-left img {
+.project-content-second-left-projects img {
     max-width: 425px;
     max-height: 533px;
 }
 
-.project-content-second-right {
+.project-content-second-right-projects {
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -1812,14 +1810,14 @@ nav ul ul.open + svg {
     font-size: 20px;
 }
 
-.project-content-last {
+.project-content-last-projects {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-end;
 }
 
-.project-content-last button {
+.project-content-last-projects button {
     border: none;
     background-color: transparent;
     color: #EDE4D7;
@@ -1835,11 +1833,14 @@ nav ul ul.open + svg {
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 }
 
-.project-content-last button:hover {
+.project-content-last-projects button:hover {
     color: #AE9877;
     border-bottom-color: #AE9877;
 }
 
+.project-content-last-down-projects {
+    white-space: nowrap;
+}
 
 /* Адаптив "Проекты" */
 
@@ -1926,73 +1927,73 @@ nav ul ul.open + svg {
 
 
 @media (max-width: 1800px) {
-    .project-content-second {
+    .project-content-second-projects {
         margin-left: 80px;
     }
 }
 
 @media (max-width: 1730px) {
-    .project-content-second {
+    .project-content-second-projects {
         margin-left: 110px;
     }
 }
 
 @media (max-width: 1685px) {
-    .project-content-second {
+    .project-content-second-projects {
         margin-left: 140px;
     }
 }
 
 @media (max-width: 1610px) {
-    .project-content-second {
+    .project-content-second-projects {
         margin-left: 170px;
     }
 }
 
 @media (max-width: 1551px) {
-    .project-content-second {
+    .project-content-second-projects {
         margin-left: 200px;
     }
 }
 
 @media (max-width: 1500px) {
-    .project-content-second {
+    .project-content-second-projects {
         margin-left: 230px;
     }
 }
 
 @media (max-width: 1447px) {
-    .project-content-second {
+    .project-content-second-projects {
         margin-left: 270px;
     }
 }
 
 
 @media (max-width: 1310px) {
-    .project-content-second-left img {
+    .project-content-second-left-projects img {
         max-width: 325px;
         max-height: 433px;
     }
 
-    .project-content-second {
+    .project-content-second-projects {
         margin-left: 230px;
     }
 }
 
 @media (max-width: 1257px) {
-    .project-content-second {
+    .project-content-second-projects {
         margin-left: 250px;
     }
 }
 
 @media (max-width: 1213px) {
-    .project-content-second {
+    .project-content-second-projects {
         margin-left: 230px;
     }
 }
 
 @media (max-width: 1127px) {
-    .project-content-second {
+    .project-content-second-projects {
         margin-left: 210px;
     }
 }
@@ -2011,39 +2012,40 @@ nav ul ul.open + svg {
         font-size: 16px;
     }
 
-    .project-content-second-left img {
+    .project-content-second-left-projects img {
         max-width: 286px;
         max-height: 358px;
     }
 
-    .project-content-second {
+    .project-content-second-projects {
         margin-left: 230px;
     }
 }
 
 @media (max-width: 1100px) {
-    .project-content-second {
+    .project-content-second-projects {
         margin-left: 120px;
     }
 
     .project-content-title {
         padding-left: 18%;
-    }
-
-    .project-content-title {
         font-size: 42px;
     }
 }
 
-
+@media (max-width: 1000px) {
+    .project-content-title {
+        padding-left: 20%;
+    }
+}
 
 @media (max-width: 890px) {
-    .project-content-second {
+    .project-content-second-projects {
         margin-left: 30px;
     }
     
     .project-content-title {
-        padding-left: 9%;
+        padding-left: 11%;
     }
 }
 
@@ -2073,31 +2075,36 @@ nav ul ul.open + svg {
         font-size: 16px;
     }
 
-    .main-page-top {
+    .main-page-top-projects {
         height: 680px;
+    }
+
+    .project-content-title {
+        margin-top: 43px;
+        margin-bottom: 20px;
     }
 }
 
 @media (max-width: 770px) {
-    .main-page-top {
+    .main-page-top-projects {
         height: 630px;
     }
 }
 
 @media (max-width: 730px) {
-    .main-page-top {
+    .main-page-top-projects {
         height: 570px;
     }
 }
 
 @media (max-width: 670px) {
-    .main-page-top {
+    .main-page-top-projects {
         height: 540px;
     }
 }
 
 @media (max-width: 508px) {
-    .main-page-top {
+    .main-page-top-projects {
         height: 460px;
     }
 
@@ -2932,7 +2939,7 @@ nav ul ul.open + svg {
         height: 56px;
     }
 
-    .main-page-top {
+    .main-page-top-projects {
         height: 420px;
     }
 

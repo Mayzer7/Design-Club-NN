@@ -137,7 +137,7 @@ input:-webkit-autofill {
 
 /* Верхрняя секция главной страницы */
 
-.main-page-top {
+.main-page-top-project-info {
     min-height: 350px;
 }
 
@@ -1360,11 +1360,11 @@ nav ul ul.open + svg {
 
 /* Header */
 
-.page-wrapper {
+.page-wrapper-project-info {
     position: relative; 
 }
 
-.under-header {
+.under-header-project-info {
     position: absolute;
     top: 200px;
     left: 0;
@@ -1374,7 +1374,7 @@ nav ul ul.open + svg {
     transition: filter 0.2s ease, backdrop-filter 0.2s ease;
 }
 
-.under-header-container {
+.under-header-container-project-info {
     margin-top: 30px;
     display: flex;
     flex-wrap: wrap;
@@ -1382,41 +1382,33 @@ nav ul ul.open + svg {
     gap: 10px;
 }
 
-.under-header-container a:nth-child(1),
-.under-header-container a:nth-child(3) {
+.under-header-container-project-info a:not(:last-child) {
     color: #7B8292;
-}
-
-.under-header-container a:nth-child(1):hover,
-.under-header-container a:nth-child(3):hover {
-    color: #AE9877;
 }
 
 /* Адаптив под шапкой */
 
 @media (max-width: 730px) {
-    .under-header {
+    .under-header-project-info {
         top: 130px;
     }
 
-    .under-header-container a,
-    .under-header-container ,
-    .under-header-container a:nth-child(1),
-    .under-header-container a:nth-child(3) {
+    .under-header-container-project-info a,
+    .under-header-container-project-info p {
         font-size: 14px;
     }
 
-    .main-page-top {
+    .main-page-top-project-info {
         min-height: 220px
     }
 }
 
 @media (max-width: 400px) {
-    .under-header {
+    .under-header-project-info {
         top: 90px;
     }
 
-    .main-page-top {
+    .main-page-top-project-info {
         min-height: 200px;
     }
 }
@@ -1434,7 +1426,7 @@ nav ul ul.open + svg {
     font-family: 'SF UI Display Thin', sans-serif;
 }
 
-.title {
+.title-project-info {
     margin-bottom: 60px;
     font-family: 'Future New Light', sans-serif;
     text-transform: uppercase;
@@ -1561,14 +1553,14 @@ nav ul ul.open + svg {
 /* Адаптив подробности проекта */
 
 @media (max-width: 1740px) {
-    .title {
+    .title-project-info {
         font-size: 100px;
         max-width: 1200px;
     }
 }
 
 @media (max-width: 1570px) {
-    .title {
+    .title-project-info {
         font-size: 90px;
         max-width: 1100px;
     }
@@ -1586,14 +1578,14 @@ nav ul ul.open + svg {
         font-size: 16px;
     }
 
-    .title {
+    .title-project-info {
         font-size: 80px;
         max-width: 950px;
     }
 }
 
 @media (max-width: 1260px) {
-    .title {
+    .title-project-info {
         font-size: 70px;
         max-width: 850px;
     }
@@ -1627,7 +1619,7 @@ nav ul ul.open + svg {
         margin-top: 30px;
     }
 
-    .title {
+    .title-project-info {
         margin-bottom: 10px;
     }
 
@@ -1643,7 +1635,7 @@ nav ul ul.open + svg {
 }
 
 @media (max-width: 745px) {
-    .title {
+    .title-project-info {
         font-size: 48px;
         max-width: 550px;
     }

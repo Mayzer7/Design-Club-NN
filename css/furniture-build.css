@@ -1352,11 +1352,11 @@ nav ul ul.open + svg {
 
 /* Секция 'Под шапкой' */
 
-.page-wrapper {
+.page-wrapper-furniture {
     position: relative; 
 }
 
-.under-header {
+.under-header-furniture {
     position: absolute;
     top: 200px;
     left: 0;
@@ -1366,7 +1366,7 @@ nav ul ul.open + svg {
     transition: filter 0.2s ease, backdrop-filter 0.2s ease;
 }
 
-.under-header-container {
+.under-header-container-furniture {
     margin-top: 30px;
     display: flex;
     align-items: center;
@@ -1374,8 +1374,7 @@ nav ul ul.open + svg {
     gap: 10px;
 }
 
-.under-header-container a:nth-child(1),
-.under-header-container a:nth-child(3) {
+.under-header-container-furniture a:not(:last-child) {
     font-size: 18px;
     font-weight: 600;
     color: #7B8292;
@@ -1384,13 +1383,13 @@ nav ul ul.open + svg {
 /* Адаптив секции под шапкой */
 
 @media (max-width: 730px) {
-    .under-header {
+    .under-header-furniture {
         top: 130px;
     }
 }
 
 @media (max-width: 400px) {
-    .under-header {
+    .under-header-furniture {
         top: 90px;
     }
 }
@@ -1717,8 +1716,8 @@ nav ul ul.open + svg {
 
 /* Секция "Остались вопросы?" */
 
-.get-contact {
-    padding: 80px 20px 150px 20px;
+.get-contact-services {
+    padding: 80px 20px 90px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif; 
     background-image: url("../images/customers-page/background.png");
@@ -1732,7 +1731,7 @@ nav ul ul.open + svg {
     display: flex;
 }
 
-.left-side {
+.left-side-services {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -1744,14 +1743,10 @@ nav ul ul.open + svg {
     color: rgba(255, 255, 255, 0.6);
 }
 
-.left-side img {
-    width: 56px;
-    height: 56px;
-}
 
 
 
-.main-side-wrapper {
+.main-side-wrapper-services {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -1760,17 +1755,17 @@ nav ul ul.open + svg {
     padding-left: 38%;  
 }
 
-.main-side-wrapper h2 {
+.main-side-wrapper-services h2 {
     font-family: 'Future New Light', sans-serif;
     font-size: 76px;
     white-space: nowrap;
     text-transform: uppercase;
 }
 
-.main-side-wrapper form {
+.main-side-wrapper-services form {
     display: flex;
     flex-direction: column;
-    gap: 35px;
+    gap: 25px;
     width: 105%;
 }
 
@@ -2006,79 +2001,81 @@ nav ul ul.open + svg {
     background-image: url('../images/svg/check-mark.svg');
 }
 
-.main-side-text {
+.main-side-text-services {
     font-size: 18px;
 }
 
 /* Адаптив "Остались вопросы" */
 
 @media (max-width: 1770px) {
-    .main-side-wrapper {
+    .main-side-wrapper-services {
         padding-left: 33%;
     }
 }
 
 @media (max-width: 1655px) {
-    .main-side-wrapper {
+    .main-side-wrapper-services {
         padding-left: 30%;
     }
 }
 
 @media (max-width: 1555px) {
-    .main-side-wrapper {
+    .main-side-wrapper-services {
         padding-left: 25%;  
     }
 }
 
+@media (max-width: 1480px) {
+    .get-contact-services {
+        background-image: url("../images/furniture-build/adaptive/background-contact-1024.png");
+        padding: 80px 20px 80px 20px;
+    }
+}
+
 @media (max-width: 1390px) {
-    .main-side-wrapper {
+    .main-side-wrapper-services {
         padding-left: 20%;  
     }
 }
 
 @media (max-width: 1200px) {
-    .main-side-wrapper form {
+    .main-side-wrapper-services form {
         width: 100%;
     }
 
-    .main-side-text {
+    .main-side-text-services {
         max-width: 420px;
         width: 100%;
     }
 }
 
 @media (max-width: 1128px) {
-    .main-side-wrapper {
+    .main-side-wrapper-services {
         padding-left: 17%;  
     }
 }
 
 @media (max-width: 1100px) {
-    .get-contact {
-        background-image: url("../images/furniture-build/adaptive/background-contact-1024.png");
-        padding: 80px 20px 80px 20px;
-    }
 
-
-    .main-side-wrapper {
+    .main-side-wrapper-services {
         padding-left: 15%;  
     }
 
-    .main-side-wrapper h2 {
+    .main-side-wrapper-services h2 {
         font-size: 60px;
     }
 
-    .main-side-wrapper form {
+    .main-side-wrapper-services form {
         width: 105%;
     }
 
-    .main-side-text {
+    .main-side-text-services {
         font-size: 16px;
     }
 }
 
 @media (max-width: 950px) {
-    .left-side div {
+    .left-side-services div {
         display: none;
     }
 
@@ -2088,13 +2085,13 @@ nav ul ul.open + svg {
         left: 5px;
     }
 
-    .main-side-wrapper {
+    .main-side-wrapper-services {
         padding-left: 0%;  
     }
 }
 
 @media (max-width: 660px) {
-    .main-side-wrapper h2 {
+    .main-side-wrapper-services h2 {
         white-space: normal;
     }
 
@@ -2104,7 +2101,7 @@ nav ul ul.open + svg {
 }
 
 @media (max-width: 650px) {
-    .get-contact {
+    .get-contact-services {
         padding: 65px 15px 45px 15px;
     }
 }
@@ -2114,7 +2111,7 @@ nav ul ul.open + svg {
         font-size: 14px;
     }
 
-    .main-side-wrapper h2 {
+    .main-side-wrapper-services h2 {
         font-size: 50px;
     }
 }

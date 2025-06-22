@@ -6,7 +6,6 @@ window.addEventListener("load", () => {
   preloader.classList.add("hidden");
 
   document.documentElement.classList.remove("no-scroll");
-
 });
 
 // Общие скрипты для всех страниц (снизу будут под отдельные страницы)
@@ -937,7 +936,7 @@ function handleScroll() {
     handleScrollUp();
   }
 
-  if (scrollTop <= 0) {
+  if (scrollTop <= 20) {
     header.classList.remove('header-scrolled-up');
 
     // Убираем блюры в самом верху страницы
@@ -959,6 +958,13 @@ function handleScroll() {
 
 window.addEventListener('scroll', () => {
   window.requestAnimationFrame(handleScroll);
+  
+  const scrollY = window.scrollY || window.pageYOffset;
+
+  if (scrollY <= 0) {
+    header.classList.remove('header-scrolled-up');
+  }
+
 }, { passive: true });
 
 
@@ -1327,7 +1333,6 @@ function handleScrollUp() {
         effect: 'slide',
         loop: true,
         centeredSlides: false,
-  
     });
   }
 
@@ -1732,12 +1737,14 @@ if (modalVideo) {
 
   btns.forEach((btn) => {
     btn.addEventListener("click", () => {
+      document.documentElement.classList.add("no-scroll");
       modalVideo.style.display = "flex";
       video.play();
     });
   });
 
   closeBtnVideo.addEventListener("click", () => {
+    document.documentElement.classList.remove("no-scroll");
     modalVideo.style.display = "none";
     video.pause();
     video.currentTime = 0;
@@ -1745,6 +1752,7 @@ if (modalVideo) {
 
   window.addEventListener("click", (event) => {
     if (event.target === modalVideo) {
+      document.documentElement.classList.remove("no-scroll");
       modalVideo.style.display = "none";
       video.pause();
       video.currentTime = 0;
@@ -2089,6 +2097,7 @@ if (categoriesSection) {
   const filterMenu = document.querySelector('.filter-menu');
 
   function openFilterMenu() {
+    document.documentElement.classList.add('no-scroll');
     scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
     body.style.overflow = 'hidden'; // добавлено
 
@@ -2099,6 +2108,7 @@ if (categoriesSection) {
   }
 
   function closeFilterMenu() {
+    document.documentElement.classList.remove('no-scroll');
     filterMenu.classList.remove('active');
     backdrop.classList.remove('active');
     backdrop.style.overflow = ''; // сброс
@@ -2180,9 +2190,9 @@ if (categoriesSection) {
     breakpoints: {
       0:   { spaceBetween: 10 },  // < 435px
 
-      435: { spaceBetween: 20 },  // ≥ 435px и < 635px
+      435: { spaceBetween: 10 },  // ≥ 435px и < 635px
 
-      635: { spaceBetween: 30 },  // ≥ 635px (включая 1920+)
+      636: { spaceBetween: 30 },  // ≥ 635px (включая 1920+)
     }
   });
 
@@ -2500,10 +2510,10 @@ if (cart) {
   // Увелечение количества товара на кнопки
   // И отображение товара за 1шт
 
-  document.querySelectorAll('.product-item').forEach(product => {
-        const minusBtn = product.querySelector('.product-count button:first-of-type');
-        const plusBtn = product.querySelector('.product-count button:last-of-type');
-        const countEl = product.querySelector('.product-count p');
+  document.querySelectorAll('.product-item-cart').forEach(product => {
+        const minusBtn = product.querySelector('.product-count-cart button:first-of-type');
+        const plusBtn = product.querySelector('.product-count-cart button:last-of-type');
+        const countEl = product.querySelector('.product-count-cart p');
         const priceContainer = product.querySelector('.product-price-container');
 
         const updatePriceVisibility = (count) => {
@@ -2784,24 +2794,17 @@ if (projectsSection) {
   const btnWrapper = document.querySelector('.open-more-project-btn');
 
   if (btnWrapper) {
-    const btn = btnWrapper.querySelector('button');
-    let clickCount = 0; 
+    const container = document.querySelector('.hidden-projects-for-more-btn');
+    const btn = document.querySelector('.open-more-project-btn button');
 
     btn.addEventListener('click', () => {
-      clickCount++;
-
-      document.querySelectorAll('.projects-content-container').forEach(orig => {
-        const clone = orig.cloneNode(true);
-        clone.classList.add('cloned');
-        orig.after(clone);
-        
-        setTimeout(() => clone.classList.add('visible'), 50);
-      });
-
-      if (clickCount >= 2) {
-        btnWrapper.style.display = 'none';
-      }
-    });
+    // Раскрываем контент
+    container.classList.add('expanded');
+    // Убираем кнопку целиком
+    btnWrapper.remove();
+    // Если хотите просто скрыть, а не удалять, используйте:
+    // btnWrapper.style.display = 'none';
+  });
   }
 }
 

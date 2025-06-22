@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Preloader -->
     <link rel="stylesheet" href="css/preloader.css">
-    <link rel="stylesheet" href="css/catalog.css">
+    <link rel="stylesheet" href="css/style.css">
     <!-- Swiper -->
     <link
       rel="stylesheet"
@@ -13,27 +13,25 @@
     <link rel="icon" href="images/svg/favicon.svg" type="image/svg+xml">
     <title>Дизайн клуб - Каталог</title>
 </head>
-<body>
+<body style="overflow-x: hidden;">
     <div id="preloader">
         <img src="images/svg/logo.svg" alt="Logo" class="preloader-logo" />
     </div>
 
-    <div class="container">
+    <div class="container" >
         <!-- Основной контент страницы -->
         <div class="main-page-content" id="mainContent">
-            <section class="page-wrapper">
-                <main class="under-header">
+            <section class="page-wrapper-catalog">
+                <main class="under-header-catalog">
                     <hr class="line fade-in">
         
-                    <div class="under-header-container fade-in">
+                    <div class="under-header-container-catalog fade-in">
                         <a href="main-page.html">Главная</a>
                         <p>/</p>
                         <a href="catalog-page.html">Каталог</a>
                         <p>/</p>
                         <a href="catalog-page.html">Смесители</a>
                     </div>
-        
-                    
                 </main>
             </section>
         
@@ -1155,7 +1153,7 @@
                     <section class="products-cards">
                         <div class="blur-container">
                             <div class="cards-line-1 fade-in">
-                                    <div class="product-cards">
+                                <div class="product-cards">
                                         <a href="product-page.html" class="zoom-card">
                                             <div class="product-card">
                                                 <div class="product-image-wrapper">
@@ -1308,8 +1306,8 @@
                                                 </div>
                                             </div>
                                         </a>
-                                    </div>
                                 </div>
+                            </div>
 
                                 <div class="cards-line-other fade-in">
                                     <div class="product-cards">
@@ -1820,7 +1818,7 @@
                                     <ul>
                                         <button>
                                             <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M17 8L11.3146 13.2929C10.8951 13.6834 10.8951 14.3166 11.3146 14.7071L17 20" stroke="#EDE4D7" stroke-linecap="round"/>
+                                                <path d="M17 8L11.3146 13.2929C10.8951 13.6834 10.8951 14.3166 11.3146 14.7071L17 20" stroke="currentColor" stroke-linecap="round"/>
                                             </svg>    
                                         </button>
                                         
@@ -1848,15 +1846,16 @@
 
                                         <button>
                                             <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="#EDE4D7" stroke-linecap="round"/>
+                                                <path d="M11 8L16.6854 13.2929C17.1049 13.6834 17.1049 14.3166 16.6854 14.7071L11 20" stroke="currentColor" stroke-linecap="round"/>
                                             </svg>       
                                         </button>
                                     </ul>
                                 </div>
+                            </div>
                         </div>
                     </section>
 
-                    <section class="reviews">
+                    <section class="reviews reviews-about">
                             <div class="blur-container">
                                 <div class="reviews-container">
                                     <div class="reviews-header reveal-mask">
@@ -1876,7 +1875,7 @@
 
                                     <div class="reviews-content">
                                         <div class="rating-number fade-in">
-                                            <h3 class="fade-in">4,9</h3>
+                                            <p class="fade-in">4,9</p>
                                 
                                             <a href="https://yandex.ru/maps/org/dizayn_klub_nn/43110755341/reviews/?ll=44.022507%2C56.299496&utm_source=review&z=17" 
                                                 target="_blank" class="fade-in">
@@ -1908,13 +1907,16 @@
                                                                 что они предложили несколько интересных идей по оформлению 
                                                                 интерьера, что было очень полезно. Рекомендую всем, 
                                                                 кто ищет стильную и качественную мебель!
+
+                                                                
                                                             </div>
 
-                                                            <a href="#" class="read-more-link">читать весь</a>
+                                                            <button class="read-more-link" >
+                                                                читать весь
+                                                            </button>
                                                         </div>
                                                     </div>
                                                     
-                                    
                                                     <div class="review-card-down">
                                                         <div class="review-author fade-in">
                                                             Анна Смирнова
@@ -2517,7 +2519,6 @@
                             </div>
                     </section>
                 
-
                     <section class="get-request">
                         <div class="blur-container">
                             <main class="get-request-content">
@@ -2917,7 +2918,7 @@
                         </div>
                     </section>
                 </div>
-            </div>
+           
         </div>
 
         <!-- Всплывающие меню фильтров -->

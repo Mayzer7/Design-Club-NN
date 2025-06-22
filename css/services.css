@@ -1365,11 +1365,11 @@ nav ul ul.open + svg {
 
 /* Секция 'Под шапкой' */
 
-.page-wrapper {
+.page-wrapper-services {
     position: relative; 
 }
 
-.under-header {
+.under-header-services {
     position: absolute;
     top: 200px;
     left: 0;
@@ -1379,27 +1379,27 @@ nav ul ul.open + svg {
     transition: filter 0.2s ease, backdrop-filter 0.2s ease;
 }
 
-.under-header-container {
+.under-header-container-services {
     margin-top: 30px;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.under-header-container a:nth-child(1) {
+.under-header-container-services a:not(:last-child) {
     color: #7B8292;
 }
 
 /* Адаптив секции под шапкой */
 
 @media (max-width: 730px) {
-    .under-header {
+    .under-header-services {
         top: 130px;
     }
 }
 
 @media (max-width: 400px) {
-    .under-header {
+    .under-header-services {
         top: 90px;
     }
 }

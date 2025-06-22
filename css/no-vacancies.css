@@ -136,7 +136,7 @@ input:-webkit-autofill {
 
 /* Верхрняя секция главной страницы */
 
-.main-page-top {
+.main-page-top-no-vacancies {
     min-height: 200px;
     background-color: #151c28;
 }
@@ -1360,11 +1360,11 @@ nav ul ul.open + svg {
 
 /* header */
 
-.page-wrapper {
+.page-wrapper-no-vacancies {
     position: relative; 
 }
 
-.under-header {
+.under-header-no-vacancies {
     position: absolute;
     top: 200px;
     left: 0;
@@ -1374,14 +1374,14 @@ nav ul ul.open + svg {
     transition: filter 0.2s ease, backdrop-filter 0.2s ease;
 }
 
-.under-header-container {
+.under-header-container-no-vacancies {
     margin-top: 60px;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.under-header-container a:first-child {
+.under-header-container-no-vacancies a:not(:last-child) {
     color: #7B8292;
 }
 
@@ -1389,23 +1389,23 @@ nav ul ul.open + svg {
 /* Адаптив под шапкой */
 
 @media (max-width: 730px) {
-    .under-header {
+    .under-header-no-vacancies {
         top: 130px;
     }
 }
 
 @media (max-width: 400px) {
-    .under-header {
+    .under-header-no-vacancies {
         top: 90px;
     }
 
-    .main-page-top {
+    .main-page-top-no-vacancies {
         min-height: 170px;
     }
 }
 
 
-/* Секция "Вакансий " */
+/* Секция "Вакансий" */
 
 .vacancies-container {
     margin-top: 60px;
@@ -1428,7 +1428,7 @@ nav ul ul.open + svg {
 
 /* Секция "Оставьте ваше резюме" */
 
-.get-contact {
+.get-contact-no-vacancies {
     margin-top: 50px;
     padding: 80px 20px 45px 20px;
     background-color: #151c28;
@@ -1439,14 +1439,14 @@ nav ul ul.open + svg {
     background-position: center right; 
 }
 
-.get-contact-container {
+.get-contact-container-no-vacancies {
     display: flex;
     justify-content: space-between;
     min-height: 524px;
     height: 100%;
 }
 
-.main-side-wrapper {
+.main-side-wrapper-no-vacancies {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -1456,7 +1456,7 @@ nav ul ul.open + svg {
     width: 100%;
 }
 
-.main-side-wrapper h1 {
+.main-side-wrapper-no-vacancies h1 {
     margin-top: 30px;
     font-family: 'Future New Light', sans-serif;
     text-transform: uppercase;
@@ -1470,7 +1470,7 @@ nav ul ul.open + svg {
     -ms-hyphens: auto;
 }
 
-.main-side-text {
+.main-side-text-no-vacancies {
     max-width: 430px;
     width: 100%;
     font-size: 22px;
@@ -1788,177 +1788,171 @@ nav ul ul.open + svg {
 /* Адаптив "Вакансии" */
 
 @media (max-width: 1820px) {
-    .main-side-wrapper {
+    .main-side-wrapper-no-vacancies {
         margin-left: 60%;
     }
 }
 
 @media (max-width: 1720px) {
-    .main-side-wrapper {
+    .main-side-wrapper-no-vacancies {
         margin-left: 57%;
     }
 }
 
 @media (max-width: 1625px) {
-    .main-side-wrapper {
+    .main-side-wrapper-no-vacancies {
         margin-left: 55%;
     }
 }
 
 @media (max-width: 1565px) {
-    .main-side-wrapper {
+    .main-side-wrapper-no-vacancies {
         margin-left: 52%;
     }
 }
 
 
 @media (max-width: 1470px) {
-    .get-contact {
+    .get-contact-no-vacancies {
         background-position: center -400px;
     }
 }
 
 @media (max-width: 1450px) {
-    .main-side-wrapper {
+    .main-side-wrapper-no-vacancies {
         margin-left: 47%;
     }
 }
 
 @media (max-width: 1350px) {
-    .main-side-wrapper {
+    .main-side-wrapper-no-vacancies {
         margin-left: 42%;
     }
 }
 
 @media (max-width: 1347px) {
-    .get-contact {
+    .get-contact-no-vacancies {
         background-position: center -350px;
     }
 }
 
 @media (max-width: 1200px) {
-    .get-contact {
+    .get-contact-no-vacancies {
         background-position: center -300px;
     }
 }
 
 @media (max-width: 1100px) {
-    .get-contact {
+    .get-contact-no-vacancies {
         background-image: url('../images/vacancies/no-vacancies/adaptive/background-1024.png');
         background-position: center right; 
     }
 
-    .main-side-wrapper {
+    .main-side-wrapper-no-vacancies {
         margin-left: 38%;
     }
 }
 
 @media (max-width: 1060px) {
-    .main-side-wrapper h1 {
+    .main-side-wrapper-no-vacancies h1 {
         font-size: 110px;
     }
 
-    .main-side-wrapper {
+    .main-side-wrapper-no-vacancies {
         margin-left: 47%;
     }
 }
 
 @media (max-width: 960px) {
-    .main-side-wrapper {
+    .main-side-wrapper-no-vacancies {
         margin-left: 43%;
     }
 }
 
 @media (max-width: 890px) {
-    .main-side-wrapper {
+    .main-side-wrapper-no-vacancies {
         margin-left: 40%;
     }
 }
 
 @media (max-width: 870px) {
-    .main-side-wrapper {
+    .main-side-wrapper-no-vacancies {
         margin-left: 0%;
     }
 }
 
 @media (max-width: 730px) {
-    .get-contact {
+    .get-contact-no-vacancies {
         margin-top: 0px;
     }
 }
 
 @media (max-width: 700px) {
-    .main-side-wrapper h1 {
+    .main-side-wrapper-no-vacancies h1 {
         font-size: 80px;
     }
 
-    .under-header-container {
+    .under-header-container-no-vacancies {
         margin-top: 30px;
     }
 
-    .main-side-wrapper {
+    .main-side-wrapper-no-vacancies {
         gap: 25px;
     }
 
-    .main-side-text {
+    .main-side-text-no-vacancies {
         font-size: 18px;
     }
 
-    .under-header-container a,
-    .under-header-container p,
-    .under-header-container a:first-child {
+    .under-header-container-no-vacancies a,
+    .under-header-container-no-vacancies p,
+    .under-header-container-no-vacancies a:not(:last-child) {
         font-size: 14px;
     }
 
-    .get-contact {
+    .get-contact-no-vacancies {
         padding: 20px 20px 45px 20px;
     }
 }   
 
 @media (max-width: 650px) {
-    .get-contact {
+    .get-contact-no-vacancies {
         padding: 0px 15px 45px 15px;
     }
 }
 
 @media (max-width: 550px) {
-    .main-side-wrapper h1 {
+    .main-side-wrapper-no-vacancies h1 {
         font-size: 70px;
     }
 }
 
 @media (max-width: 500px) {
-    .main-side-wrapper h1 {
+    .main-side-wrapper-no-vacancies h1 {
         font-size: 60px;
     }
 
-    .main-side-text {
+    .main-side-text-no-vacancies {
         font-size: 14px;
     }
 }
 
 @media (max-width: 460px) {
-    .main-side-text {
+    .main-side-text-no-vacancies {
         font-size: 16px;
     }
 }
 
 @media (max-width: 380px) {
-    .main-side-wrapper h1 {
+    .main-side-wrapper-no-vacancies h1 {
         font-size: 55px;
     }
 
-    .under-header-container a,
-    .under-header-container p,
-    .under-header-container a:first-child {
-        font-size: 14px;
-    }
-
-    .main-side-wrapper {
+    .main-side-wrapper-no-vacancies {
         gap: 15px;
     }
 
-    .main-side-text {
+    .main-side-text-no-vacancies {
         margin-bottom: 30px;
     }
 }

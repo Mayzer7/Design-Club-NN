@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="images/svg/favicon.svg" type="image/svg+xml">
     <!-- Модальные окна -->
     <link rel="stylesheet" href="css/modals/delete-product.css">
@@ -21,11 +21,11 @@
     <div class="container">
         <!-- Основной контент страницы -->
         <div class="main-page-content" id="mainContent">
-            <section class="page-wrapper">
-                <main class="under-header ">
+            <section class="page-wrapper-cart">
+                <main class="under-header-cart">
                     <hr class="line fade-in">
         
-                    <div class="under-header-container fade-in">
+                    <div class="under-header-container-cart fade-in">
                         <a href="main-page.html">Главная</a>
                         <p>/</p>
                         <a href="catalog-page.html">Корзина</a>
@@ -332,14 +332,13 @@
                 </div>
             </section>
 
-        
             <div class="blur-container">
                 <div class="sections">
                     <section class="cart">
                         <div class="blur-container">
                             <div class="cart-section">
                                 <div class="title-items reveal-mask">
-                                    <h1 class="title">
+                                    <h1 class="cart-title">
                                         Корзина
                                     </h1>
                                 </div>
@@ -351,277 +350,276 @@
                     
                             <div class="cart-items cart-items-desktop">
                                 <div class="cart-container fade-in">
-                                    <div class="product-item">
-                                            <div class="product-id">
-                                                <p>1</p>
+                                    <div class="product-item-cart">
+                                        <div class="product-id-cart">
+                                            <p>1</p>
+                                        </div>
+                        
+                                        <div class="product-info-cart">
+                                            <div class="product-info-left-cart">
+                                                <a href="product-page.html" class="zoom-image">
+                                                    <img src="images/catalog/products/image-1.png" alt="">
+                                                </a>
                                             </div>
                         
-                                            <div class="product-info">
-                                                <div class="product-info-left">
-                                                    <a href="product-page.html" class="zoom-image">
-                                                        <img src="images/catalog/products/image-1.png" alt="">
-                                                    </a>
-                                                </div>
-                        
-                                                <div class="product-info-right">
-                                                    <div class="product-info-lines">
-                                                        <div class="product-info-one-line">
-                                                            <div class="name-product">
-                                                                <p class="product-name">
-                                                                    <a href="product-page.html">
-                                                                        Смеситель для<br> 
-                                                                        умывальника Asphe 7703 
-                                                                    </a>
-                                                                </p>
-                                                            </div>
-
-                                                            <div class="close-button-container">
-                                                                <button class="close-button open-modal-btn">
-                                                                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                        <path d="M20 8L8 20M20 20L8 8.00001" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
-                                                                    </svg>
-                                                                </button>
-                                                            </div>
+                                            <div class="product-info-right-cart">
+                                                <div class="product-info-lines">
+                                                    <div class="product-info-one-line">
+                                                        <div class="name-product">
+                                                            <p class="product-name-cart">
+                                                                <a href="product-page.html">
+                                                                    Смеситель для<br> 
+                                                                    умывальника Asphe 7703 
+                                                                </a>
+                                                            </p>
                                                         </div>
 
-                                                        <div class="product-info-two-line">
-                                                            <div class="product-dess">
-                                                                <div class="product-dess-left">
-                                                                    <p>Бренд</p>
-                                                                    <p>Цвет</p>
-                                                                </div>
+                                                        <div class="close-button-container">
+                                                            <button class="close-button open-modal-btn">
+                                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M20 8L8 20M20 20L8 8.00001" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="product-info-two-line">
+                                                        <div class="product-desc-cart">
+                                                            <div class="product-desc-left-cart">
+                                                                <p>Бренд</p>
+                                                                <p>Цвет</p>
+                                                            </div>
                                     
-                                                                <div class="product-dess-right">
-                                                                    <p>WaserKraft</p>
-                                                                    <p>Серый</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="product-info-three-line">
-                                                            <div class="product-price-container hidden">
-                                                                <p class="product-price">
-                                                                    14 000 ₽ / шт
-                                                                </p>
-                                                            </div>
-
-                                                            <div class="discount-container">
-                                                                <p class="discount">
-                                                                    30 000 ₽
-                                                                </p>
+                                                            <div class="product-desc-right-cart">
+                                                                <p>WaserKraft</p>
+                                                                <p>Серый</p>
                                                             </div>
                                                         </div>
                                                     </div>
 
-                                                    <div class="product-info-last-line">
-                                                        <div class="product-count">
-                                                            <button>
-                                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path d="M7 14H22" stroke="#EDE4D7" stroke-opacity="0.7"/>
-                                                                </svg>    
-                                                            </button>
-                            
-                                                            <p>1</p>
-                                                                
-                                                            <button>
-                                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path d="M14 7V21M21 14L7 14" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
-                                                                </svg>  
-                                                            </button>
+                                                    <div class="product-info-three-line">
+                                                        <div class="product-price-container hidden">
+                                                            <p class="product-price-cart">
+                                                                14 000 ₽ / шт
+                                                            </p>
                                                         </div>
 
-                                                        <div class="total-price-container">
-                                                            <p class="total-price">
-                                                                28 000 ₽
+                                                        <div class="discount-container">
+                                                            <p class="discount-cart">
+                                                                30 000 ₽
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <div class="product-info-last-line">
+                                                    <div class="product-count-cart">
+                                                        <button>
+                                                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M7 14H22" stroke="#EDE4D7" stroke-opacity="0.7"/>
+                                                            </svg>    
+                                                        </button>
+                            
+                                                        <p>1</p>
+                                                                
+                                                        <button>
+                                                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M14 7V21M21 14L7 14" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                            </svg>  
+                                                        </button>
+                                                    </div>
+
+                                                    <div class="total-price-container">
+                                                        <p class="total-price">
+                                                            28 000 ₽
+                                                        </p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+                                    </div>
                                 </div>
                         
                                 <div class="cart-container fade-in">
-                                    <div class="product-item">
-                                            <div class="product-id">
-                                                <p>1</p>
+                                    <div class="product-item-cart">
+                                        <div class="product-id-cart">
+                                            <p>1</p>
+                                        </div>
+                        
+                                        <div class="product-info-cart">
+                                            <div class="product-info-left-cart">
+                                                <a href="product-page.html" class="zoom-image">
+                                                    <img src="images/catalog/products/image-1.png" alt="">
+                                                </a>
                                             </div>
                         
-                                            <div class="product-info">
-                                                <div class="product-info-left">
-                                                    <a href="product-page.html" class="zoom-image">
-                                                        <img src="images/catalog/products/image-1.png" alt="">
-                                                    </a>
-                                                </div>
-                        
-                                                <div class="product-info-right">
-                                                    <div class="product-info-lines">
-                                                        <div class="product-info-one-line">
-                                                            <div class="name-product">
-                                                                <p class="product-name">
-                                                                    <a href="product-page.html">
-                                                                        Смеситель для<br> 
-                                                                        умывальника Asphe 7703 
-                                                                    </a>
-                                                                </p>
-                                                            </div>
-
-                                                            <div class="close-button-container">
-                                                                <button class="close-button open-modal-btn">
-                                                                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                        <path d="M20 8L8 20M20 20L8 8.00001" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
-                                                                    </svg>
-                                                                </button>
-                                                            </div>
+                                            <div class="product-info-right-cart">
+                                                <div class="product-info-lines">
+                                                    <div class="product-info-one-line">
+                                                        <div class="name-product">
+                                                            <p class="product-name-cart">
+                                                                <a href="product-page.html">
+                                                                    Смеситель для<br> 
+                                                                    умывальника Asphe 7703 
+                                                                </a>
+                                                            </p>
                                                         </div>
 
-                                                        <div class="product-info-two-line">
-                                                            <div class="product-dess">
-                                                                <div class="product-dess-left">
-                                                                    <p>Бренд</p>
-                                                                    <p>Цвет</p>
-                                                                </div>
+                                                        <div class="close-button-container">
+                                                            <button class="close-button open-modal-btn">
+                                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M20 8L8 20M20 20L8 8.00001" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="product-info-two-line">
+                                                        <div class="product-desc-cart">
+                                                            <div class="product-desc-left-cart">
+                                                                <p>Бренд</p>
+                                                                <p>Цвет</p>
+                                                            </div>
                                     
-                                                                <div class="product-dess-right">
-                                                                    <p>WaserKraft</p>
-                                                                    <p>Серый</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="product-info-three-line">
-                                                            <div class="product-price-container hidden">
-                                                                <p class="product-price">
-                                                                    14 000 ₽ / шт
-                                                                </p>
-                                                            </div>
-
-                                                            <div class="discount-container">
-                                                                <p class="discount">
-                                                                    <!-- Если нет скидки, чтобы верстка не съехала -->
-                                                                    &#8203;
-                                                                </p>
+                                                            <div class="product-desc-right-cart">
+                                                                <p>WaserKraft</p>
+                                                                <p>Серый</p>
                                                             </div>
                                                         </div>
                                                     </div>
 
-                                                    <div class="product-info-last-line">
-                                                        <div class="product-count">
-                                                            <button>
-                                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path d="M7 14H22" stroke="#EDE4D7" stroke-opacity="0.7"/>
-                                                                </svg>    
-                                                            </button>
-                            
-                                                            <p>1</p>
-                                                                
-                                                            <button>
-                                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path d="M14 7V21M21 14L7 14" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
-                                                                </svg>  
-                                                            </button>
+                                                    <div class="product-info-three-line">
+                                                        <div class="product-price-container hidden">
+                                                            <p class="product-price-cart">
+                                                                14 000 ₽ / шт
+                                                            </p>
                                                         </div>
 
-                                                        <div class="total-price-container">
-                                                            <p class="total-price">
-                                                                28 000 ₽
+                                                        <div class="discount-container">
+                                                            <p class="discount-cart">
+                                                                30 000 ₽
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <div class="product-info-last-line">
+                                                    <div class="product-count-cart">
+                                                        <button>
+                                                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M7 14H22" stroke="#EDE4D7" stroke-opacity="0.7"/>
+                                                            </svg>    
+                                                        </button>
+                            
+                                                        <p>1</p>
+                                                                
+                                                        <button>
+                                                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M14 7V21M21 14L7 14" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                            </svg>  
+                                                        </button>
+                                                    </div>
+
+                                                    <div class="total-price-container">
+                                                        <p class="total-price">
+                                                            28 000 ₽
+                                                        </p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+                                    </div>
                                 </div>
 
                                 <div class="cart-container fade-in">
-                                    <div class="product-item">
-                                            <div class="product-id">
-                                                <p>1</p>
+                                    <div class="product-item-cart">
+                                        <div class="product-id-cart">
+                                            <p>1</p>
+                                        </div>
+                        
+                                        <div class="product-info-cart">
+                                            <div class="product-info-left-cart">
+                                                <a href="product-page.html" class="zoom-image">
+                                                    <img src="images/catalog/products/image-1.png" alt="">
+                                                </a>
                                             </div>
                         
-                                            <div class="product-info">
-                                                <div class="product-info-left">
-                                                    <a href="product-page.html" class="zoom-image">
-                                                        <img src="images/catalog/products/image-1.png" alt="">
-                                                    </a>
-                                                </div>
-                        
-                                                <div class="product-info-right">
-                                                    <div class="product-info-lines">
-                                                        <div class="product-info-one-line">
-                                                            <div class="name-product">
-                                                                <p class="product-name">
-                                                                    <a href="product-page.html">
-                                                                        Смеситель для<br> 
-                                                                        умывальника Asphe 7703 
-                                                                    </a>
-                                                                </p>
-                                                            </div>
-
-                                                            <div class="close-button-container">
-                                                                <button class="close-button open-modal-btn">
-                                                                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                        <path d="M20 8L8 20M20 20L8 8.00001" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
-                                                                    </svg>
-                                                                </button>
-                                                            </div>
+                                            <div class="product-info-right-cart">
+                                                <div class="product-info-lines">
+                                                    <div class="product-info-one-line">
+                                                        <div class="name-product">
+                                                            <p class="product-name-cart">
+                                                                <a href="product-page.html">
+                                                                    Смеситель для<br> 
+                                                                    умывальника Asphe 7703 
+                                                                </a>
+                                                            </p>
                                                         </div>
 
-                                                        <div class="product-info-two-line">
-                                                            <div class="product-dess">
-                                                                <div class="product-dess-left">
-                                                                    <p>Бренд</p>
-                                                                    <p>Цвет</p>
-                                                                </div>
+                                                        <div class="close-button-container">
+                                                            <button class="close-button open-modal-btn">
+                                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M20 8L8 20M20 20L8 8.00001" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="product-info-two-line">
+                                                        <div class="product-desc-cart">
+                                                            <div class="product-desc-left-cart">
+                                                                <p>Бренд</p>
+                                                                <p>Цвет</p>
+                                                            </div>
                                     
-                                                                <div class="product-dess-right">
-                                                                    <p>WaserKraft</p>
-                                                                    <p>Серый</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="product-info-three-line">
-                                                            <div class="product-price-container hidden">
-                                                                <p class="product-price">
-                                                                    14 000 ₽ / шт
-                                                                </p>
-                                                            </div>
-
-                                                            <div class="discount-container">
-                                                                <p class="discount">
-                                                                    30 000 ₽
-                                                                </p>
+                                                            <div class="product-desc-right-cart">
+                                                                <p>WaserKraft</p>
+                                                                <p>Серый</p>
                                                             </div>
                                                         </div>
                                                     </div>
 
-                                                    <div class="product-info-last-line">
-                                                        <div class="product-count">
-                                                            <button>
-                                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path d="M7 14H22" stroke="#EDE4D7" stroke-opacity="0.7"/>
-                                                                </svg>    
-                                                            </button>
-                            
-                                                            <p>1</p>
-                                                                
-                                                            <button>
-                                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path d="M14 7V21M21 14L7 14" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
-                                                                </svg>  
-                                                            </button>
+                                                    <div class="product-info-three-line">
+                                                        <div class="product-price-container hidden">
+                                                            <p class="product-price-cart">
+                                                                14 000 ₽ / шт
+                                                            </p>
                                                         </div>
 
-                                                        <div class="total-price-container">
-                                                            <p class="total-price">
-                                                                28 000 ₽
+                                                        <div class="discount-container">
+                                                            <p class="discount-cart">
+                                                                30 000 ₽
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <div class="product-info-last-line">
+                                                    <div class="product-count-cart">
+                                                        <button>
+                                                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M7 14H22" stroke="#EDE4D7" stroke-opacity="0.7"/>
+                                                            </svg>    
+                                                        </button>
+                            
+                                                        <p>1</p>
+                                                                
+                                                        <button>
+                                                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M14 7V21M21 14L7 14" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
+                                                            </svg>  
+                                                        </button>
+                                                    </div>
+
+                                                    <div class="total-price-container">
+                                                        <p class="total-price">
+                                                            28 000 ₽
+                                                        </p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+                                    </div>
                                 </div>
                             </div>
                     
@@ -656,7 +654,7 @@
                         </div>
                         </section>
 
-                        <section class="get-request">
+                        <section class="get-request get-request-cart">
                         <div class="blur-container">
                             <main class="get-request-content">
                                 <div class="get-request-left-side">

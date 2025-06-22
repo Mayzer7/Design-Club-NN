@@ -1329,11 +1329,11 @@ nav ul ul.open + svg {
 
 
 
-.page-wrapper {
+.page-wrapper-404 {
     position: relative; 
 }
 
-.under-header {
+.under-header-404 {
     position: absolute;
     top: 200px;
     left: 0;
@@ -1343,14 +1343,14 @@ nav ul ul.open + svg {
     transition: filter 0.2s ease, backdrop-filter 0.2s ease;
 }
 
-.under-header-container {
+.under-header-container-404 {
     margin-top: 60px;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.under-header-container a:first-child {
+.under-header-container-404 a:not(:last-child) {
     color: #7B8292;
 }
 
@@ -1391,11 +1391,11 @@ nav ul ul.open + svg {
 /* Адаптив Заголовка */
 
 @media (max-width: 730px) {
-    .under-header {
+    .under-header-404 {
         top: 130px;
     }
 
-    .under-header-container {
+    .under-header-container-404 {
         margin-top: 20px;
     }
 
@@ -1403,25 +1403,25 @@ nav ul ul.open + svg {
 }
 
 @media (max-width: 400px) {
-    .under-header {
+    .under-header-404 {
         top: 90px;
     }
 
-    .under-header-container {
+    .under-header-container-404 {
         margin-top: 30px;
     }
 }
 
 /* Секция "404" */
 
-.search-result-container {
+.search-result-container-404 {
     padding: 100px 20px 100px 20px;
     background-image: url('../images/page-not-found-404/background.webp');
     background-repeat: no-repeat;
     background-position: center top;
 }
 
-.search-result-container-inner {
+.search-result-container-inner-404 {
     margin-top: 150px;
     display: flex;
     flex-direction: column;
@@ -1476,7 +1476,7 @@ nav ul ul.open + svg {
     color: #AE9877;
 }
 
-.search-result-title {
+.search-result-title-404 {
     font-family: 'Future New Bold', sans-serif;
     color: #989795;
     font-size: 460px;
@@ -1493,38 +1493,38 @@ nav ul ul.open + svg {
 /* Адаптив */
 
 @media (max-width: 1050px) {
-    .search-result-title {
+    .search-result-title-404 {
         font-size: 318px;
     }
 
-    .search-result-container-inner {
+    .search-result-container-inner-404 {
         margin-top: 250px;
     }
 
-    .search-result-container {
+    .search-result-container-404 {
          padding: 100px 20px 150px 20px;
     }
 }
 
 @media (max-width: 570px) {
-    .search-result-container {
+    .search-result-container-404 {
         background-size: 1000px 700px;
         background-position: center 50px;
         padding: 100px 20px 90px 20px;
 
     }
 
-    .under-header-container a,
-    .under-header-container p,
-    .under-header-container a:first-child {
+    .under-header-container-404 a,
+    .under-header-container-404 p,
+    .under-header-container-404 a:not(:last-child) {
         font-size: 14px;
     }
 
-    .search-result-container-inner {
+    .search-result-container-inner-404 {
         margin-top: 100px;
     }
 
-    .search-result-title {
+    .search-result-title-404 {
         font-size: 159px;
         margin-bottom: 40px;
     }

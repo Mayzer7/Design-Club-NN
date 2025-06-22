@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/search-no-result.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="images/svg/favicon.svg" type="image/svg+xml">
     <!-- Preloader -->
     <link rel="stylesheet" href="css/preloader.css">
@@ -17,11 +17,11 @@
     <div class="container">
         <!-- Основной контент страницы -->
         <div class="main-page-content" id="mainContent">
-            <section class="page-wrapper">
-                <main class="under-header">
+            <section class="page-wrapper-result">
+                <main class="under-header-result">
                     <hr class="line fade-in">
         
-                    <div class="under-header-container fade-in">
+                    <div class="under-header-container-result fade-in">
                         <a href="main-page.html">Главная</a>
                         <p>/</p>
                         <a href="search-no-result-page.html">Результаты поиска</a>
@@ -332,14 +332,14 @@
                 <div class="sections">
                     <section class="search-result">
                         <div class="blur-container">
-                            <div class="search-result-container">
-                                <div class="search-result-container-inner reveal-mask">
+                            <div class="search-no-result-container">
+                                <div class="search-result-container-inner no-result-inner reveal-mask">
                                     <h1 class="search-result-title line-height">
                                         Результаты поиска
                                     </h1>
 
                                     <div class="result-container fade-in">
-                                        <div class="search-bar-on-page">
+                                        <div class="search-bar-on-page no-result-bar">
                                             <input id="search-input-on-page" type="text" placeholder="Искать" value="">
 
                                             <div class="icons search-icon-on-page">
@@ -364,40 +364,40 @@
                         </div>
                         </section>
 
-                        <section class="get-request">
-                        <div class="blur-container">
-                            <div class="get-request-content">
-                                <div class="left-side fade-in">
-                                    <p>Оставить заявку</p>
-                
-                                    <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="2.93331" height="17.5998" transform="matrix(1 0 0 -1 26.5312 23.6016)" fill="white" fill-opacity="0.2"/>
-                                        <rect width="2.93331" height="17.5998" transform="matrix(1 0 0 -1 26.5312 50)" fill="white" fill-opacity="0.2"/>
-                                        <rect width="2.93331" height="17.5998" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 50 29.4688)" fill="white" fill-opacity="0.2"/>
-                                        <rect width="2.93331" height="17.5998" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 23.6016 29.4688)" fill="white" fill-opacity="0.2"/>
-                                    </svg>
-                                </div>
-                
-                                <div class="right-side reveal-mask">
-                                    <h2 class="right-side-title line-height">
-                                        Не нашли свой вариант?
-                                    </h2>
-                
-                                    <div class="right-side-desc fade-in">
-                                        <h4>Доверьте поиск эксперту в комфорте!</h4>
-                
-                                        <p>
-                                            Хватит листать бесконечные страницы! Запишитесь: в уютной атмосфере наш специалист быстро подберет варианты под ваши критерии. Сэкономьте время и силы.
-                                        </p>
-                                    
-                                        <button type="submit" class="get-request-button fade-in" id="sign-up-showroom">
-                                            ЗАПИСАТЬСЯ В ШОУРУМ
-                                            <img src="images/svg/contact.svg" alt="Связаться" class="contact-icon">
-                                        </button>
+                        <section class="get-request-search">
+                            <div class="blur-container">
+                                <div class="get-request-content-search">
+                                    <div class="left-side-search fade-in">
+                                        <p>Оставить заявку</p>
+                    
+                                        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="2.93331" height="17.5998" transform="matrix(1 0 0 -1 26.5312 23.6016)" fill="white" fill-opacity="0.2"/>
+                                            <rect width="2.93331" height="17.5998" transform="matrix(1 0 0 -1 26.5312 50)" fill="white" fill-opacity="0.2"/>
+                                            <rect width="2.93331" height="17.5998" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 50 29.4688)" fill="white" fill-opacity="0.2"/>
+                                            <rect width="2.93331" height="17.5998" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 23.6016 29.4688)" fill="white" fill-opacity="0.2"/>
+                                        </svg>
+                                    </div>
+                    
+                                    <div class="right-side-search reveal-mask">
+                                        <h2 class="right-side-title-search line-height">
+                                            Не нашли свой вариант?
+                                        </h2>
+                    
+                                        <div class="right-side-desc-search fade-in">
+                                            <h4>Доверьте поиск эксперту в комфорте!</h4>
+                    
+                                            <p>
+                                                Хватит листать бесконечные страницы! Запишитесь: в уютной атмосфере наш специалист быстро подберет варианты под ваши критерии. Сэкономьте время и силы.
+                                            </p>
+                                        
+                                            <button type="submit" class="get-request-button-search fade-in" id="sign-up-showroom">
+                                                ЗАПИСАТЬСЯ В ШОУРУМ
+                                                <img src="images/svg/contact.svg" alt="Связаться" class="contact-icon">
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         </section>
                 
                         <section class="footer">

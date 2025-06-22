@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/furniture-build.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="images/svg/favicon.svg" type="image/svg+xml">
     <!-- Preloader -->
     <link rel="stylesheet" href="css/preloader.css">
     <title>Дизайн клуб - Разгрузка, подъем и сборка мебели</title>
 </head>
-<body>
+<body style="overflow-x: hidden;">
     <div id="preloader">
         <img src="images/svg/logo.svg" alt="Logo" id="preloader-logo" />
     </div>
@@ -17,11 +17,11 @@
     <div class="container">
         <!-- Основной контент страницы -->
         <div class="main-page-content" id="mainContent">
-            <section class="page-wrapper">
-                <main class="under-header">
+            <section class="page-wrapper-furniture">
+                <main class="under-header-furniture">
                     <hr class="line fade-in">
         
-                    <div class="under-header-container fade-in">
+                    <div class="under-header-container-furniture fade-in">
                         <a href="main-page.html">Главная</a>
                         <p>/</p>
                         <a href="services-page.html">Услуги</a>
@@ -32,7 +32,7 @@
             </section>
     
             <!-- Шапка -->
-            <section class="main-page-top">
+            <section class="main-page-top-furniture">
                 <div class="bg-overlay"></div>
                 <header class="header-top">
                     <div class="container">
@@ -332,9 +332,9 @@
 
             <div class="blur-container">
                 <div class="sections">
-                    <section class="services-title-section desktop">
+                    <section class="services-title-section services-desktop">
                         <div class="blur-container">
-                            <div class="services-title-section-container">
+                            <div class="services-title-furniture">
                                 <div class="furniture-build-container">
                                     <div class="reveal-mask">
                                         <h1 class="furniture-title line-height">
@@ -423,9 +423,9 @@
                         </div>
                     </section>
 
-                    <section class="services-title-section mobile">
+                    <section class="services-title-section services-mobile">
                         <div class="blur-container">
-                            <div class="services-title-section-container">
+                            <div class="services-title-furniture">
                                 <div class="furniture-build-container">
                                     <div class="reveal-mask">
                                         <h2 class="furniture-title line-height">
@@ -514,11 +514,11 @@
                         </div>
                     </section>
 
-                    <section class="get-contact">
+                    <section class="get-contact-services">
                         <div class="blur-container">
                             <main class="get-contant-content">
                                 <div class="get-contact-container">
-                                    <div class="left-side fade-in">
+                                    <div class="left-side-services fade-in">
                                         <p class="block-title get-contact-up-title">
                                             Оставить заявку
                                         </p>
@@ -534,13 +534,13 @@
 
                                     </div>
                     
-                                    <div class="main-side">
-                                        <div class="main-side-wrapper reveal-mask">
+                                    <div class="main-side-services">
+                                        <div class="main-side-wrapper-services reveal-mask">
                                             <h2 class="line-height">
                                                 Остались вопросы?
                                             </h2>
                     
-                                            <p class="main-side-text fade-in">
+                                            <p class="main-side-text-services fade-in">
                                                 Если вам нужна помощь с разгрузкой, подъемом или сборкой мебели, не 
                                                 стесняйтесь обращаться к нам! Мы готовы ответить на все ваши вопросы 
                                                 и предложить индивидуальные решения в зависимости от ваших
@@ -1101,8 +1101,8 @@
     </div>
 
     <!-- Модальное окно для просмотра видео -->
-    <div class="modal-video">
-        <div class="modal-content-video">
+    <div class="modal-video modal-video-furniture">
+        <div class="modal-content-video modal-furniture-content-video">
             <span class="close-video">&times;</span>
             <video controls id="modalVideo" preload="metadata">
                 <source src="http://103.74.94.225/video/services.mp4" type="video/mp4">
