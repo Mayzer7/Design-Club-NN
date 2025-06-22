@@ -117,9 +117,40 @@ input:-webkit-autofill {
     transition: background-color 5000s ease-in-out 0s; 
 }
 
+/* Прелоадер — фоновый экран */
+
+#preloader {
+    position: fixed;
+    inset: 0;
+    background: #141b28;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+
+  #preloader-logo {
+    width: 135px;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+  }
+
+  #preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+
 /* Страница "main-page.html" */
 
-/* ===== Главный экран ===== */
+/* Главный экран*/
 
 .main-hero-container {
   min-height: 100%;
@@ -11827,30 +11858,9 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     padding: 5px 0; 
 }
 
-.contact-input-menu {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    background: transparent;
-    padding: 5px 0;
-    gap: 8px;
-    width: 100%;
-}
-
 .contact-input-menu-order {
     width: 105%;
 }
-
-.contact-input-menu input {
-    width: 100%; 
-    background: transparent;
-    border: none;
-    outline: none;
-    color: #FFF;
-    font-size: 18px;
-    padding: 5px 0; 
-}
-
 
 .contact-input-fields {
     width: 100%;
@@ -12003,8 +12013,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     font-family: 'Future New Bold', sans-serif;
     font-weight: 600;
     text-transform: uppercase;
-    font-size: 34px;
-    margin-bottom: 20px;
+    font-size: 34px;    
 }
 
 /* Для прокрутки товаров оформления заказа */
@@ -12191,7 +12200,6 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 }
 
 .total-order-price-container {
-    margin-top: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -13618,7 +13626,8 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 .video-container img {
     display: block;
     max-width: 455px;
-    max-height: 550px;
+    max-height: 550px;  
+    min-width: 280px;
     width: 100%;
     height: 100%;
 }
@@ -13665,13 +13674,9 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     justify-content: space-between;
 }
 
-.right-side p {
-    color: rgba(237, 228, 215, 0.7);
-    font-size: 20px;
-}
 
-.right-side h3 {
-    font-size: 20px;
+.total-order-price-container {
+    font-size: 24px;
 }
 
 .right-side-up {
@@ -15414,27 +15419,6 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
 /* Как удобнее связаться */
 
-.contact-input-menu {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    background: transparent;
-    padding: 5px 0;
-    gap: 8px;
-    width: 100%;
-}
-
-.contact-input-menu input {
-    width: 100%; 
-    background: transparent;
-    border: none;
-    outline: none;
-    color: #FFF;
-    font-size: 18px;
-    padding: 5px 0; 
-}
-
-
 .contact-input-fields {
     width: 100%;
     padding-right: 40px;
@@ -16592,26 +16576,6 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
 /* Как удобнее связаться */
 
-.contact-input-menu {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    background: transparent;
-    padding: 5px 0;
-    gap: 8px;
-    width: 100%;
-}
-
-.contact-input-menu input {
-    width: 100%; 
-    background: transparent;
-    border: none;
-    outline: none;
-    color: #FFF;
-    font-size: 18px;
-    padding: 5px 0; 
-}
-
 
 .contact-input-fields {
     width: 100%;
@@ -17140,27 +17104,6 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
 
 /* Как удобнее связаться */
-
-.contact-input-menu {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    background: transparent;
-    padding: 5px 0;
-    gap: 8px;
-    width: 100%;
-}
-
-.contact-input-menu input {
-    width: 100%; 
-    background: transparent;
-    border: none;
-    outline: none;
-    color: #FFF;
-    font-size: 18px;
-    padding: 5px 0; 
-}
-
 
 .contact-input-fields {
     width: 100%;
@@ -18042,4 +17985,298 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
 .main-page-content-404 {
     max-height: 1469px;
+}
+
+/* Модальное окно очистки корзины */
+
+.modal-delete {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 20px;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+
+.modal-delete.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+  .modal-delete-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: default;
+    background-color: #151c28;
+    padding: 20px;
+    max-width: 450px;
+    width: 100%;
+  }
+
+  .modal-delete-content p {
+    text-transform: uppercase;
+  }
+
+  .modal-delete-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+  height: 100%;
+  }
+
+  .delete-button {
+    font-family: 'SF Pro Display', sans-serif;
+    background: #AE9877;
+    color: #fff;
+    border: none;
+    font-size: 18px; 
+    padding: 20px 50px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    box-sizing: border-box;
+  }
+
+  .delete-button:hover {
+    background-color: #9c8766;
+  }
+
+  .stop-button {
+    font-family: 'SF Pro Display', sans-serif;
+    background: transparent;
+    border: 1px solid #EDE4D7;;
+    color: white;
+    font-size: 18px; 
+    padding: 20px 50px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-sizing: border-box;
+  }
+
+  .stop-button:hover {
+    background-color: #AE9877;
+  }
+
+  @media (max-width: 515px) {
+    .delete-button,
+    .stop-button {
+      padding: 15px 40px;
+    }
+
+    .modal-delete-content {
+      max-width: 385px;
+    }
+
+      .modal-delete-content p {
+        font-size: 16px;
+      }
+  }
+
+  @media (max-width: 440px) {
+    .delete-button,
+    .stop-button {
+      padding: 15px 20px;
+    }
+
+    .modal-delete-content {
+      max-width: 315px;
+    }
+  }
+
+  @media (max-width: 350px) {
+    .modal-delete-buttons {
+      flex-direction: column;
+    }
+
+    .delete-button,
+    .stop-button {
+      width: 100%;
+    }
+  }
+
+/* Уведомления */
+
+.notification {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #151c28;
+  padding: clamp(18px, 2vw, 25px) clamp(18px, 2vw, 25px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  font-size: clamp(14px, 2vw, 18px);
+  z-index: 1000;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.notification.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(-20px);
+}
+
+
+/* Cookie стили */
+
+.cookie-banner {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #151C28;
+    padding: 40px;
+    max-width: 1191px;
+    min-height: 136px;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 9999;
+}
+
+.cookie-banner-text {
+  font-size: 16px;
+  color: #EDE4D7;
+  
+}
+
+.cookie-banner-text span a {
+  color: #AE9877;
+}
+  
+.cookie-link {
+    color: #aaa;
+}
+
+.buttons-cookie {
+  display: flex;
+  gap: 20px;
+}
+
+.buttons-cookie button {
+  text-transform: uppercase;
+}
+  
+.cookie-btn {
+  padding: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;  
+
+  width: 100%;
+  height: 100%;
+}
+  
+.accept-btn {
+  font-family: 'SF Pro Display';
+  background: #AE9877;
+  color: white;
+  border: none;
+  font-size: 18px; 
+  transition: background-color 0.3s ease;
+}
+
+.accept-btn:hover {
+  background-color: #7f6f5a;
+}
+
+.accept-btn:active {
+  transform: scale(0.98);
+}
+
+.reject-btn  {
+  font-family: 'SF Pro Display';
+  background: transparent;
+  color: white;
+  border: 1px solid #EDE4D7;
+  font-size: 18px; 
+  transition: background-color 0.3s ease;
+}
+
+
+.reject-btn:hover {
+  background-color: #AE9877; 
+}
+
+.reject-btn:active {
+  transform: scale(0.98);
+}
+
+
+/* Адаптив */
+
+@media (max-width: 1250px) {
+  .cookie-banner {
+    max-width: 1100px;
+  }
+
+
+  .visible-svg {
+    display: none;
+  }
+
+  .cookie-btn {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1150px) {
+  .cookie-banner {
+    max-width: 953px;
+  }
+
+  .cookie-banner-text {
+    font-size: 14px;
+  }
+
+}
+
+@media (max-width: 990px) {
+    .cookie-banner {
+      flex-direction: column;
+      padding: 30px;
+    }
+
+    .cookie-banner-text {
+      margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 650px) {
+    .cookie-banner {
+      padding: 15px;
+    }
+
+    .buttons {
+      gap: 10px;
+    }
+
+    .cookie-btn {
+      font-size: 16px;
+    }
+}
+
+@media (max-width: 338px) {
+  .buttons-cookie {
+    flex-direction: column;
+  }
 }
