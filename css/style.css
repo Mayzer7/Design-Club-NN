@@ -2547,7 +2547,9 @@ nav ul ul.open + svg {
     white-space: nowrap;
 }
 
-.nav-arrows-products button {
+.nav-arrows-products button,
+.nav-arrows-reviews button,
+.nav-arrows button {
     outline: none;
     border: none;
     background-color: transparent;
@@ -2555,8 +2557,10 @@ nav ul ul.open + svg {
     transition: transform 0.3s ease;
 }
 
-.nav-arrows-products button:hover {
-    transform: scale(1.1);
+.nav-arrows-products button:hover,
+.nav-arrows-reviews button:hover,
+.nav-arrows button:hover {
+    transform: scale(1.05);
 }
 
 .project-products-title {
@@ -2620,16 +2624,6 @@ nav ul ul.open + svg {
 
 .popular-image-wrapper {
   position: relative;
-}
-
-
-.badges {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  display: flex;
-  gap: 8px; 
-  pointer-events: none; 
 }
 
 .discount-badge,
@@ -3766,9 +3760,13 @@ max-width:  360px;
 .get-title-request {
     font-size: 76px;
     margin-bottom: 60px;
-    max-width: 1180px;
+    max-width: 1000px;
     width: 100%;
     min-width: 320px;
+}
+
+.get-title-request-two {
+    max-width: 1015px;
 }
 
 .get-request-text {
@@ -4773,6 +4771,7 @@ max-width:  360px;
 
     .review-up-title {
         top: -30px;
+        left: 2px;
     }
 
     .rating-number p {
@@ -4965,6 +4964,7 @@ max-width:  360px;
 }
 
 .menu-contact-method {
+    margin-top: 10px;
     overflow: hidden;
     opacity: 0;
     max-height: 0;
@@ -7032,6 +7032,8 @@ max-width:  360px;
     font-size: 76px;
     text-transform: uppercase;
     margin-bottom: 60px;
+    max-width: 1200px;
+    width: 100%;
 }
 
 .about-warehouse-content {
@@ -7108,10 +7110,7 @@ max-width:  360px;
 
 /* Адаптив "О складе" */
 
-.warehouse-title-1024 {
-    display: none;
-}
-
+/* 
 @media (max-width: 1643px) {
     .warehouse-title-1920 {
         display: none;
@@ -7121,7 +7120,7 @@ max-width:  360px;
         display: block;
     }
 
-}
+} */
 
 @media (max-width: 1500px) {
     .about-warehouse-title {
@@ -7553,7 +7552,7 @@ max-width:  360px;
     top: 0;
     width: 100vw;
     height: 100vh;
-    min-width: 320px;
+    min-width: 340px;
     min-height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.8);
@@ -7603,6 +7602,8 @@ max-width:  360px;
     top: 0;
     width: 100vw;
     height: 100vh;
+    min-width: 340px;
+    min-height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(8px);
@@ -7643,6 +7644,8 @@ max-width:  360px;
     top: 0;
     width: 100vw;
     height: 100vh;
+    min-width: 340px;
+    min-height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(8px);
@@ -9066,7 +9069,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     top: 5px;
     right: 5px;
     display: flex;
-    gap: 10px; 
+    gap: 5px; 
 }
 
 .badge {
@@ -9115,6 +9118,15 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
         flex-direction: column;
         align-items: flex-end;
         gap: 5px;
+        top: 5px;
+    }
+
+    .badges-catalog {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0px;
+        top: 0px;
     }
 
     .badge.discount {
@@ -9578,6 +9590,10 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 @media (max-width: 650px) {
     .right-side-title-search {
         font-size: 38px;
+    }
+
+    .right-side-desc-search {
+        margin-top: 30px;
     }
 
     .left-side-search p {
@@ -10168,7 +10184,8 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
   top: 0;            
   left: 0;
   right: 0;
-  max-width: 100vw;  
+  max-width: 100vw;
+  min-width: 320px;  
   box-sizing: border-box;
   overflow-x: auto;
   overflow-y: hidden;
@@ -12014,6 +12031,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     font-weight: 600;
     text-transform: uppercase;
     font-size: 34px;    
+    padding-bottom: 20px;
 }
 
 /* Для прокрутки товаров оформления заказа */
@@ -12203,6 +12221,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 20px;
 }
 
 .total-order-price-container h3 {
@@ -12251,7 +12270,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 .buy-products-content-1024 {
     display: none;
     flex-direction: column;
-    gap: 115px;
+    gap: 90px;
 }
 
 .buy-products-content-600 {
@@ -12302,6 +12321,10 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 @media (max-width: 950px) {
     .buy-products-section {
         padding-left: 0%;
+    }
+
+    .buy-products-content-1024 {
+        gap: 40px;
     }
 }
 
@@ -13674,6 +13697,10 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     justify-content: space-between;
 }
 
+.right-side-order {
+    justify-content: normal;
+}
+
 
 .total-order-price-container {
     font-size: 24px;
@@ -13730,6 +13757,14 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
 .right-side-down a:hover {
     border-bottom: 1px solid #AE9877;
+}
+
+.up-title-project-info {
+    left: 0px;
+}
+
+.right-side-project-info p {
+    color: rgba(237, 228, 215, 0.7);
 }
 
 /* Адаптив подробности проекта */
@@ -15934,7 +15969,6 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     height: 100%;
 }
 
-
 /* Адаптив секции "Покупателям"*/
 
 @media (max-width: 950px) {
@@ -16196,7 +16230,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 }
 
 .under-header-container-vacancies {
-    margin-top: 40px;
+    margin-top: 30px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -16946,6 +16980,10 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     .main-side-text-vacancies {
         margin-bottom: 30px;
     }
+
+    .vacancies-form-text {
+        margin-bottom: 10px;
+    }
 }
 
 
@@ -17498,6 +17536,10 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     .main-side-text-no-vacancies {
         margin-bottom: 30px;
     }
+
+    .vacancies-form-text {
+        margin-bottom: 10px;
+    }
 }
 
 @media (max-width: 370px) {
@@ -17671,7 +17713,6 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     font-weight: 300; 
 }
 
-
 /* Адаптив */
 
 @media (max-width: 1050px) {
@@ -17719,18 +17760,6 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
         gap: 40px;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Адаптив отступов между секций */
 
@@ -17950,14 +17979,6 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
         padding-bottom: 15px;
     }
 }
-
-
-
-
-
-
-
-
 
 /* Адаптив header */
 
