@@ -5082,14 +5082,23 @@ max-width:  360px;
     background-color: #151c28;
     font-family: 'SF Pro Display Thin', sans-serif;
     font-weight: 300; 
-}
+}   
 
 .footer-container {
     padding-top: 20px;
     display: grid;
-    grid-template-columns: 1.8fr 1fr 1fr 1fr 2fr auto; 
+    grid-template-areas: 
+        "logo nav1 nav2 nav3 address icons";
+    grid-template-columns: 1.8fr 1fr 1fr 1fr 2fr auto;
     gap: 40px;
 }
+
+.footer-logo-block { grid-area: logo; }
+.nav-1 { grid-area: nav1; }
+.nav-2 { grid-area: nav2; }
+.nav-3 { grid-area: nav3; }
+.footer-address { grid-area: address; }
+.footer-icons { grid-area: icons; }
 
 .footer-logo {
     width: 178px;
@@ -5149,6 +5158,16 @@ max-width:  360px;
     cursor: pointer;
 }
 
+.footer-address-first,
+.footer-number-phone,
+.footer-address-email {
+    word-break: break-word; 
+}
+
+.footer-number-phone a {
+    white-space: nowrap;
+}
+
 .footer-icons {
     display: flex;
     gap: 10px;
@@ -5177,216 +5196,158 @@ max-width:  360px;
     color: #AE9877;
 }
 
-/* Футер для 1024 разрешения */
+/* Адаптив footer */
 
-.footer-1024 {
-    display: none;
-    padding: 90px 20px 20px 20px;
-    background-color: #151c28;
-    font-family: 'SF Pro Display Thin', sans-serif;
-    font-weight: 300; 
-}
+@media (max-width: 1335px) {
+  .footer-container {
+    grid-template-areas:
+      "logo nav1 nav2 nav3"
+      "icons address address address";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 30px;
+  }
 
-.footer-container-1024 {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
-    padding-top: 20px;
-}
+  .footer-copyright {
+    grid-template-columns: 0.81fr 1.25fr 1fr auto;
+  }
 
-.footer-copyright-1024 {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
-    padding-top: 20px;
-}
-
-.last-column {
-    justify-self: end;
-}
-
-.footer-copyright-1024 a {
-    font-size: 14px;
-    transition: color 0.3s ease;
-}
-
-.footer-copyright-1024 a:hover {
-    color: #AE9877;
-}
-
-.footer-grid-down {
+  .footer-address {
     margin-top: 60px;
-    margin-bottom: 36px;
+    flex-direction: row;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
-    padding-top: 20px;
-}
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 
-.footer-nav-down a {
-    text-transform: uppercase;
-    font-size: 24px;
-    font-family: 'SF Pro Display Thin', sans-serif;
-    font-weight: 600;
-}
+  .footer-icons {
+    margin-top: 60px; 
+  }
 
-.footer-nav-down p {
+  .footer-address p {
     font-size: 16px;
-    color: rgba(237, 228, 215, 0.7);
-    margin-bottom: 5px;
+  }
+
+  .footer-address a {
+    font-size: 24px;
+    text-transform: uppercase;
+  }
 }
 
+@media (max-width: 890px) {
+  .footer-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "logo   icons"
+      "nav1   nav2"
+      "nav3   ."
+      "address address"
+      "address address"
+      "address address";
+    gap: 30px 20px;
+  }
 
-/* Футер при разрешении меньше 1024 (870px) */
+  .footer-logo-block { grid-area: logo; }
+  .nav-1             { grid-area: nav1; }
+  .nav-2             { grid-area: nav2; }
+  .nav-3             { grid-area: nav3; }
+  .footer-icons      { grid-area: icons; }
+  .footer-address    { grid-area: address; }
 
-.footer-below-1024 {
-    display: none;
-    padding: 90px 20px 0px 20px;
-    background-color: #151c28;
-    font-family: 'SF Pro Display Thin', sans-serif;
-    font-weight: 300; 
-}
+  .nav-2 {
+    justify-self: end;
+  }
 
-.footer-below-1024-404 {
-    display: none;
-    padding: 0px 15px 0px 15px;
-    background-color: #151c28;
-    font-family: 'SF Pro Display Thin', sans-serif;
-    font-weight: 300; 
-}
-
-.footer-first-line {
+  .footer-icons {
+    margin-top: 0;
+    justify-self: flex-end;
+    align-self: center;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 40px;
-}
-
-.footer-second-line {
-    margin: 40px 0;
-    display: flex;
-    justify-content: space-between;
-}
-
-.footer-first-column {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-}
-
-.footer-design-club-info {
+    gap: 10px;
+  }
+  
+  .footer-address {
     display: flex;
     flex-direction: column;
     gap: 20px;
-}
+    margin: 0;
+  }
+  .footer-address p { 
+    font-size: 14px; 
+  }
+  
+  .footer-address a { 
+    font-size: 20px; 
+  }
 
-.copyright-lines {
-    margin: 20px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    
-}
+  .footer-address-first {
+    max-width: 330px;
+  }
 
-.copyrigth-first-column {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding-right: 10px;
-}
+  .footer-copyright {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "policy design"
+      "agency year";
+    gap: 10px 20px;
+  }
 
-.copyrigth-second-column {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 10px;
-    align-items: flex-end;
-    
-}
+  .footer-copyright a[href="privacy-policy-page.html"] {
+    grid-area: policy;
+  }
 
-/* Адаптив для footer */
+  .footer-copyright a[href*="omniagency"] {
+    grid-area: agency;
+  }
 
-@media (max-width: 1335px) {
-    .footer {
-        display: none;
+  .footer-copyright p:first-of-type {
+    grid-area: design;
+  }
+
+  .footer-copyright p:last-of-type {
+    grid-area: year;
+  }
+
+  .footer-copyright a,
+  .footer-copyright p {
+    margin: 0;
+  }
+
+    .footer-copyright p:first-of-type,
+    .footer-copyright p:last-of-type {
+    justify-self: end;
+    text-align: right;
     }
 
-    .footer-1024 {
-        display: block;
-    }
-}
-
-@media (max-width: 870px) {
-    .footer-1024 {
-        display: none;
+    .footer-copyright p:last-of-type {
+    justify-self: end;
+    align-self: end;
     }
 
-    .footer-below-1024 {
-        display: block;
-    }
-
-    .footer-below-1024-404 {
-        display: block;
-    }
-
-}
-
-
-@media (max-width: 460px) {
-    .footer-nav-up h1 a {
-        font-size: 20px;
-    }
-
-    .footer-nav-up ul li a {
-        font-size: 16px;
-    }
-
-    .footer-nav-down p {
+    .footer-copyright p,
+    .footer-copyright a {
         font-size: 14px;
     }
 
-    .footer-nav-down h1 {
-        font-size: 20px;
-    }
-
-    .copyright-lines a {
-        font-size: 14px;
-    }
-
-    .copyrigth-second-column p {
-        font-size: 14px;
-    }
-
-    .design-club-logo {
-        white-space: nowrap;
-    }
-}
-
-@media (max-width: 450px) {
-    .footer-nav-down a,
-    .footer-nav-up p {
-        font-size: 20px;
-    }
-}
-
-@media (max-width: 440px) {
-    .footer-logo-below {
+    .footer-logo-block img {
         width: 120px;
         height: 91px;
     }
 
-    .footer-icons img {
+    .footer-navigation p {
+        font-size: 20px;
+        padding-bottom: 0px;
+    }
+
+    .footer-navigation ul li a {
+        font-size: 16px;
+    }
+
+    .footer-icons a img {
         width: 32px;
         height: 32px;
     }
 }
-
-
-
-
-
-
-
 
 /* Модальное окно "Связаться с нами" */
 
@@ -5875,6 +5836,13 @@ max-width:  360px;
     }
 }
 
+@media (max-width: 505px) {
+    .thanks-svg {
+        width: 56px;
+        height: 56px;
+    }
+}
+
 @media (max-width: 400px) {
     .modal-content-info-inner-thanks h1 {
         font-size: 38px;
@@ -5883,12 +5851,6 @@ max-width:  360px;
     .modal-description-info {
         font-size: 16px;
     }
-
-    .thanks-svg {
-        width: 56px;
-        height: 56px;
-    }
-
 }
 
 
@@ -12614,12 +12576,6 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
 /* Адаптив спасибо за заказ */
 
-@media (max-width: 1274px) {
-    .footer-thanks-1024 {
-        top: 800px;
-    }
-}
-
 @media (max-width: 1100px) {
     .main-page-top-thanks {
         background-size: 100%;
@@ -12666,10 +12622,6 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     .subtitle-thanks {
         font-size: 16px;
     }
-
-    .footer-thanks-below-1024 {
-        padding: 0px 15px 0px 15px;
-    }
 }
 
 
@@ -12685,68 +12637,31 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     z-index: 4;
 }
 
-.footer-thanks-1024 {
-    display: none;
-    padding: 100px 20px 0 20px;
-    background-color: transparent;
-    font-family: 'SF Pro Display Thin', sans-serif;
-    font-weight: 300; 
-    position: absolute;
-    top: 700px;
-    left: 0;
-    width: 100%;
-    z-index: 4; 
-}
-
-.footer-thanks-below-1024 {
-    display: none;
-    padding: 100px 15px 0 15px;
-    background-color: transparent;
-    font-family: 'SF Pro Display Thin', sans-serif;
-    font-weight: 300; 
-    position: absolute;
-    top: 650px;
-    left: 0;
-    width: 100%;
-    z-index: 4;
-}
-
-.footer-copyright-thanks {
-    display: grid;
-    grid-template-columns: 0.81fr 1.5fr 1fr auto;
+.thanks-copyright {
     padding-top: 10px;
     padding-bottom: 20px;
 }
 
-/* Адаптив footer */
-
-@media (max-width: 1335px) {
+@media (max-width: 870px) {
     .footer-thanks {
-        display: none;
-    }
-
-    .footer-thanks-1024 {
-        display: block;
-    }
+        top: 650px;
+    }    
 }
 
-
-@media (max-width: 870px) {
-    .footer-thanks-1024 {
-        display: none;
+@media (max-width: 650px) {
+    .thanks-copyright {
+        padding-bottom: 0px;
     }
-
-    .footer-thanks-below-1024 {
-        display: block;
-    }
-
 }
 
 @media (max-width: 505px) {
-    .footer-thanks-below-1024 {
+    .footer-thanks {
         top: 500px;
-    }
+    } 
+
 }
+
+
 
 
 /* Страница "projects-page.html" */
@@ -17781,8 +17696,13 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     .under-header-cart,
     .under-header-project-info,
     .under-header-furniture,
-    .under-header-reviews {
+    .under-header-reviews,
+    .footer-thanks {
         padding: 15px;
+    }
+
+    .footer {
+        padding: 45px 15px 20px 15px;
     }
 
     .under-header-container-product {
@@ -17860,6 +17780,14 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     .footer-below-1024 {
         padding-left: 15px;
         padding-right: 15px;
+    }
+
+    .footer-error {
+        padding: 45px 15px 20px 15px;
+    }
+
+    .title-thanks {
+        margin-top: 20px;
     }
 
     .header-search-padding {
