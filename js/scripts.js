@@ -1141,24 +1141,73 @@ function handleScrollUp() {
       valid = false;
     }
 
+    function openModal(modal) {
+      if (!modal) return;
+      modal.style.display = 'flex';
+      document.querySelector('.container').style.filter = 'blur(5px)';
+      setTimeout(() => modal.classList.add('open'), 10);
+      document.documentElement.classList.add('no-scroll');
+    }
+
     // Отправка данных для бекенда
     if (valid) {
       const formData = new FormData(form);
+      console.log('Данные формы:', Object.fromEntries(formData.entries()));
 
-      const dataObject = {};
-      formData.forEach((value, key) => {
-        dataObject[key] = value;
-      });
-
-      console.log('Данные формы:', dataObject);
-      const thanksModal  = document.getElementById('thanksModal');
+      const thanksModal = document.getElementById('thanksModal');
       openModal(thanksModal);
 
-      // Файл резюме
-      const resumeInput = form.querySelector('input[name="resume"]');
-      if (resumeInput && resumeInput.files.length > 0) {
-        console.log('Файл резюме:', formData.get('resume'));
-      } 
+      // Сброс состояния формы
+      form.reset();
+
+      const wrapper = form.querySelector('.contact-input-wrapper');
+      if (wrapper) {
+        const menu       = wrapper.querySelector('.menu-contact-method');
+        const arrow      = wrapper.querySelector('.dropdown-arrow');
+        const inputMain  = wrapper.querySelector('input[name="contact_method"]');
+        const inputValue = wrapper.querySelector('input[name="contact_method_value"]');
+
+        if (menu) {
+          menu.classList.remove('open');
+          menu.style.maxHeight = '0px';
+          menu.style.opacity   = '0';
+        }
+
+        if (arrow) {
+          arrow.classList.remove('rotated');
+        }
+
+        if (inputMain) {
+          inputMain.value = '';
+          inputMain.placeholder = 'УДОБНЫЙ СПОСОБ СВЯЗИ';
+        }
+        if (inputValue) {
+          inputValue.value = '';
+        }
+        wrapper
+          .querySelectorAll('.contact-input-fields-menu.selected')
+          .forEach(el => el.classList.remove('selected'));
+      }
+
+      // Сбрасываем файл резюме
+      const resumeInput = form.querySelector('#resume-upload-input');
+      const resumeLabelText = form.querySelector('#resume-label-text');
+      const removeFileBtn = form.querySelector('.remove-file-btn');
+
+      if (resumeInput) {
+        resumeInput.value = '';
+      }
+      if (resumeLabelText) {
+        resumeLabelText.textContent = 'Прикрепите ваше резюме в формате PDF, JPG или DOC';
+      }
+      if (removeFileBtn) {
+        removeFileBtn.style.display = 'none';
+      }
+
+      form.querySelectorAll('.error-contact').forEach(span => {
+        span.textContent   = '';
+        span.style.display = 'none';
+      });
     }
   }
 
