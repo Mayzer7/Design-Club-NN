@@ -442,221 +442,224 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // Модальное окно "Связаться с нами"
+
 const contactModalWrapper = document.getElementById('get-contact-modal');
 const thanksModalWrapper  = document.getElementById('thanks-modal');
 const errorModalWrapper   = document.getElementById('error-modal');
 const container           = document.querySelector('.container');
 
 if (contactModalWrapper && thanksModalWrapper && errorModalWrapper) {
-  Promise.all([
-    fetch('modals/get-contact.html').then(res => res.text()),
-    fetch('modals/thanks-modal.html').then(res => res.text()),
-    fetch('modals/error-modal.html').then(res => res.text())
-  ]).then(([contactHTML, thanksHTML, errorHTML]) => {
-    // Вставляем разметку
-    contactModalWrapper.innerHTML = contactHTML;
-    thanksModalWrapper.innerHTML  = thanksHTML;
-    errorModalWrapper.innerHTML   = errorHTML;
+    Promise.all([
+      fetch('modals/get-contact.html').then(res => res.text()),
+      fetch('modals/thanks-modal.html').then(res => res.text()),
+      fetch('modals/error-modal.html').then(res => res.text())
+    ]).then(([contactHTML, thanksHTML, errorHTML]) => {
+      // Вставляем разметку внутрь контейнеров
+      contactModalWrapper.innerHTML = contactHTML;
+      thanksModalWrapper.innerHTML  = thanksHTML;
+      errorModalWrapper.innerHTML   = errorHTML;
 
-    // Элементы модалок
-    const contactModal = document.getElementById('contactModal');
-    const thanksModal  = document.getElementById('thanksModal');
-    const errorModal   = document.getElementById('errorModal');
+      // Элементы модалок
+      const contactModal = document.getElementById('contactModal');
+      const thanksModal  = document.getElementById('thanksModal');
+      const errorModal   = document.getElementById('errorModal');
 
-    // Кнопки открытия
-    const openBtns = [
-      document.getElementById('openModalBtn'),
-      document.getElementById('burger-get-request'),
-      document.getElementById('sign-up-showroom')
-    ];
+      // Кнопки открытия
+      const openBtns = [
+        document.getElementById('openModalBtn'),
+        document.getElementById('burger-get-request'),
+        document.getElementById('sign-up-showroom')
+      ];
 
-    // Кнопки закрытия
-    const closeBtns = [
-      document.getElementById('closeModalBtn'),
-      document.getElementById('closeModalBtnThanks'),
-      document.getElementById('closeModalBtnError')
-    ];
+      // Кнопки закрытия
+      const closeBtns = [
+        document.getElementById('closeModalBtn'),
+        document.getElementById('closeModalBtnThanks'),
+        document.getElementById('closeModalBtnError')
+      ];
 
-    // Открыть модалку
-    function openModal(modal) {
-      if (!modal) return;
-      modal.style.display = 'flex';
-      container.style.filter = 'blur(5px)';
-      setTimeout(() => modal.classList.add('open'), 10);
-      document.documentElement.classList.add('no-scroll');
-    }
-
-    // Закрыть модалку
-    function closeModal(modal) {
-      if (!modal) return;
-      modal.classList.remove('open');
-      setTimeout(() => {
-        modal.style.display = 'none';
-        // Если больше нет открытых модалок — убираем размытие
-        const anyOpen = [contactModal, thanksModal, errorModal]
-          .some(m => m && m.style.display === 'flex');
-        if (!anyOpen) {
-          container.style.filter = 'none';
-          document.documentElement.classList.remove('no-scroll');
-        }
-      }, 500);
-    }
-
-    // Вешаем обработчики на кнопки
-    openBtns.forEach(btn => {
-      if (!btn) return;
-      btn.addEventListener('click', () => {
-        // перед открытием обязательно сбросим поля
-        formReset(form);
-        openModal(contactModal);
-      });
-    });
-    
-    closeBtns.forEach(btn => {
-      if (!btn) return;
-      btn.addEventListener('click', () => {
-        if (btn.id === 'closeModalBtn')      closeModal(contactModal);
-        else if (btn.id === 'closeModalBtnThanks') closeModal(thanksModal);
-        else if (btn.id === 'closeModalBtnError')  closeModal(errorModal);
-      });
-    });
-    // Закрытие кликом по подложке
-    [contactModal, thanksModal, errorModal].forEach(modal => {
-      if (!modal) return;
-      modal.addEventListener('click', e => {
-        if (e.target === modal) closeModal(modal);
-      });
-    });
-
-    // отправка JSON 
-    const form = document.getElementById('contact-form-modal');
-    form.addEventListener('submit', onSubmitForm);
-
-    async function onSubmitForm(event) {
-      event.preventDefault();
-      const form = event.target;
-
-      // Валидация
-      if (!validateFormModal(form)) {
-        return; 
+      // Открыть модалку
+      function openModal(modal) {
+        if (!modal) return;
+        modal.style.display = 'flex';
+        container.style.filter = 'blur(5px)';
+        setTimeout(() => modal.classList.add('open'), 10);
+        document.documentElement.classList.add('no-scroll');
       }
 
-      // Собираем данные
-      const data = {
-        name:           form.name.value.trim(),
-        phone:          form.phone.value.trim(),
-        contact_method: form.contact_method.value,
-        accept:         form.accept.checked
-      };
+      // Закрыть модалку
+      function closeModal(modal) {
+        if (!modal) return;
+        modal.classList.remove('open');
+        setTimeout(() => {
+          modal.style.display = 'none';
+          // убираем размытие, если больше нет открытых модалок
+          const anyOpen = [contactModal, thanksModal, errorModal]
+            .some(m => m && m.style.display === 'flex');
+          if (!anyOpen) {
+            container.style.filter = 'none';
+            document.documentElement.classList.remove('no-scroll');
+          }
+        }, 500);
+      }
 
-      // Выводим в консоль данные
-      console.log('Данные формы:', data);
-
-      try {
-        // Отправляем на эндпоинт
-        const resp = await fetch('/modaldata', {
-          method:  'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body:    JSON.stringify(data)
+      // Обработчики кнопок «Открыть»
+      openBtns.forEach(btn => {
+        if (!btn) return;
+        btn.addEventListener('click', () => {
+          formReset(form);
+          openModal(contactModal);
         });
+      });
 
-        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      // Обработчики кнопок «Закрыть»
+      closeBtns.forEach(btn => {
+        if (!btn) return;
+        btn.addEventListener('click', () => {
+          switch (btn.id) {
+            case 'closeModalBtn':
+              closeModal(contactModal);
+              break;
+            case 'closeModalBtnThanks':
+              closeModal(thanksModal);
+              break;
+            case 'closeModalBtnError':
+              // вместо закрытия — возвращаем к форме
+              closeModal(errorModal);
+              setTimeout(() => openModal(contactModal), 300); 
+              break;
+          }
+        });
+      });
 
-        // При успехе
+      // Закрытие кликом из вне
+      [contactModal, thanksModal, errorModal].forEach(modal => {
+        if (!modal) return;
+        modal.addEventListener('click', e => {
+          if (e.target !== modal) return;
+
+          // Для контактной и «спасибо» — просто закрываем
+          if (modal === contactModal || modal === thanksModal) {
+            closeModal(modal);
+          }
+
+          // Для ошибки — закрываем и возвращаем к заполнению формы
+          if (modal === errorModal) {
+            closeModal(errorModal);
+            setTimeout(() => openModal(contactModal), 300); 
+          }
+        });
+      });
+
+      // Форма внутри модалки
+      const form = document.getElementById('contact-form-modal');
+      form.addEventListener('submit', onSubmitForm);
+
+      // Обработчик отправки формы
+      function onSubmitForm(event) {
+        event.preventDefault();
+        const formEl = event.target;
+
+        if (!validateFormModal(formEl)) {
+          closeModal(contactModal);
+          openModal(errorModal);
+          return;
+        }
+
+        // 1. Сбор данные 
+        const data = {
+          name: formEl.name.value.trim(),
+          phone: formEl.phone.value.trim(),
+          contact_method: formEl.contact_method.value,
+          accept: formEl.accept.checked
+        };
+
+        console.log('Данные формы модального окна:', data);
+
         closeModal(contactModal);
         openModal(thanksModal);
-        formReset(form);  
-
-      } catch (err) {
-        console.error('Ошибка при отправке формы:', err);
-        closeModal(contactModal);
-        openModal(errorModal);
+        formReset(formEl);
       }
-    }
 
-    function formReset(form) {
-      form.reset();
-      form.querySelectorAll('.error-contact').forEach(e => e.style.display = 'none');
+      // Сброс полей и ошибок
+      function formReset(form) {
+        form.reset();
+        form.querySelectorAll('.error-contact')
+          .forEach(e => { e.style.display = 'none'; e.textContent = ''; });
 
-      const contactSelect = form.querySelector('#contactSelect');
-      if (contactSelect) {
-        contactSelect.querySelector('.selected-option').textContent = 'КАК УДОБНЕЕ СВЯЗАТЬСЯ';
-        form.contact_method.value = '';
-        contactSelect.classList.remove('selected');
+        const contactSelect = form.querySelector('#contactSelect');
+        if (contactSelect) {
+          contactSelect.querySelector('.selected-option').textContent = 'КАК УДОБНЕЕ СВЯЗАТЬСЯ';
+          form.contact_method.value = '';
+          contactSelect.classList.remove('selected');
+        }
       }
-    }
 
-    function validateFormModal(form) {
-      let valid = true;
-      const errs = form.querySelectorAll('.error-contact');
-      errs.forEach(e => { e.style.display = 'none'; e.textContent = ''; });
+      // Валидация полей
+      function validateFormModal(form) {
+        let valid = true;
+        const errs = form.querySelectorAll('.error-contact');
+        errs.forEach(e => { e.style.display = 'none'; e.textContent = ''; });
 
-      if (!form.name.value.trim()) {
-        errs[0].textContent = 'Пожалуйста, введите ваше ФИО.';
-        errs[0].style.display = 'block';
-        valid = false;
-      }
-      if (!form.phone.value.trim()) {
-        errs[1].textContent = 'Пожалуйста, введите ваш телефон.';
-        errs[1].style.display = 'block';
-        valid = false;
-      }
-      if (!form.contact_method.value) {
-        errs[2].textContent = 'Пожалуйста, выберите способ связи.';
-        errs[2].style.display = 'block';
-        valid = false;
-      }
-      if (!form.accept.checked) {
-        errs[3].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
-        errs[3].style.display = 'block';
-        valid = false;
-      }
-      return valid;
-    }
+        if (!form.name.value.trim()) {
+          errs[0].textContent = 'Пожалуйста, введите ваше ФИО.';
+          errs[0].style.display = 'block';
+          valid = false;
+        }
 
-    // Как удобнее связаться
-    const select = document.getElementById('contactSelect');
-    const header = select.querySelector('.select-header');
-    const options = select.querySelectorAll('.select-options li');
-    const selected = select.querySelector('.selected-option');
-    const hiddenInput = document.getElementById('contactMethodInput');
+        const phoneVal = form.phone.value.trim();
+        const digitCount = phoneVal.replace(/\D/g, '').length;
+        if (!phoneVal) {
+          errs[1].textContent = 'Пожалуйста, введите ваш телефон.';
+          errs[1].style.display = 'block';
+          valid = false;
+        } else if (digitCount < 8) {
+          errs[1].textContent = 'Номер должен содержать минимум 8 цифр.';
+          errs[1].style.display = 'block';
+          valid = false;
+        }
 
-    header.addEventListener('click', () => {
-      select.classList.toggle('open');
-    });
-    options.forEach(option => {
-      option.addEventListener('click', () => {
-        selected.textContent = option.textContent;
-        hiddenInput.value    = option.dataset.value;
-        select.classList.remove('open');
-        select.classList.add('selected');
+        if (!form.contact_method.value) {
+          errs[2].textContent = 'Пожалуйста, выберите способ связи.';
+          errs[2].style.display = 'block';
+          valid = false;
+        }
+
+        if (!form.accept.checked) {
+          errs[3].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
+          errs[3].style.display = 'block';
+          valid = false;
+        }
+        return valid;
+      }
+
+      // Кастомный селект «Как удобнее связаться»
+      const select = document.getElementById('contactSelect');
+      const header = select.querySelector('.select-header');
+      const options = select.querySelectorAll('.select-options li');
+      const selected = select.querySelector('.selected-option');
+      const hiddenInput = document.getElementById('contactMethodInput');
+
+      header.addEventListener('click', () => {
+        select.classList.toggle('open');
+      });
+      options.forEach(option => {
+        option.addEventListener('click', () => {
+          selected.textContent = option.textContent;
+          hiddenInput.value    = option.dataset.value;
+          select.classList.remove('open');
+          select.classList.add('selected');
+        });
+      });
+      document.addEventListener('click', e => {
+        if (!select.contains(e.target)) {
+          select.classList.remove('open');
+        }
       });
     });
-    document.addEventListener('click', e => {
-      if (!select.contains(e.target)) {
-        select.classList.remove('open');
-      }
-    });
-
-  });
-}
-
- 
-// Обработчик отправки формы — привязывается к onsubmit формы
-function onSubmitForm(event) {
-  event.preventDefault();
-  const form = event.target;
-
-  if (!validateFormModal(form)) {
-    closeModal(contactModal);
-    openModal(errorModal);
-    return;
   }
 
-  closeModal(contactModal);
-  openModal(thanksModal);
-  formReset(form);
-}
+ 
 
 // Раскрытие менюшек при нажатии на каталог в хедере
 
@@ -1052,95 +1055,110 @@ function handleScrollUp() {
 
     let valid = true;
 
+    // Валидация ФИО
     const nameInput = form.querySelector('input[name="name"]');
-    const phoneInput = form.querySelector('input[name="phone"]');
-    const acceptInput = form.querySelector('input[name="accept"]');
-    const contactMethodHiddenInput = form.querySelector('input[name="contact_method_value"]');
-    const questionInput = form.querySelector('input[name="your-question"]');
-    const desiredPositionInput = form.querySelector('input[name="desired-position"]');
-    const errorSpans = form.querySelectorAll('.error-contact');
-
-    // Проверки
+    const nameError = nameInput.nextElementSibling; // <span class="error-contact">
     if (!nameInput.value.trim()) {
-        errorSpans[0].textContent = 'Пожалуйста, введите ваше фио.';
-        errorSpans[0].style.display = 'block';
-        valid = false;
+      nameError.textContent = 'Пожалуйста, введите ваше ФИО.';
+      nameError.style.display = 'block';
+      valid = false;
     }
 
-    if (!phoneInput.value.trim()) {
-        errorSpans[1].textContent = 'Пожалуйста, введите ваш телефон.';
-        errorSpans[1].style.display = 'block';
-        valid = false;
+    // Валидация телефона
+    const phoneInput = form.querySelector('input[name="phone"]');
+    const phoneError = phoneInput.nextElementSibling;
+    const phoneValue = phoneInput.value.trim();
+    if (!phoneValue) {
+      phoneError.textContent = 'Пожалуйста, введите ваш телефон.';
+      phoneError.style.display = 'block';
+      valid = false;
+    } else if (phoneValue.replace(/\D/g, '').length < 8) {
+      phoneError.textContent = 'Номер должен содержать минимум 8 цифр.';
+      phoneError.style.display = 'block';
+      valid = false;
     }
 
-    if (contactMethodHiddenInput) {
-      if (!contactMethodHiddenInput.value.trim()) {
-        errorSpans[2].textContent = 'Пожалуйста, выберите способ связи.';
-        errorSpans[2].style.display = 'block';
+    // Валидация способа связи
+    const methodValue = form.querySelector('input[name="contact_method_value"]');
+    const methodWrapper = form.querySelector('.contact-method-selector');
+    const methodError = methodWrapper.querySelector('.error-contact');
+    if (!methodValue.value.trim()) {
+      methodError.textContent = 'Пожалуйста, выберите способ связи.';
+      methodError.style.display = 'block';
+      valid = false;
+    }
+
+    // Валидация желаемой должности
+    const desiredInput = form.querySelector('input[name="desired-position"]');
+    
+    if (desiredInput) {
+      const desiredError = desiredInput.nextElementSibling;
+      
+      if (desiredInput && !desiredInput.value.trim()) {
+        desiredError.textContent = 'Пожалуйста, введите желаемую должность.';
+        desiredError.style.display = 'block';
         valid = false;
       }
     }
+
+    // Валидация вопроса
 
     if (questionInput) {
+      const questionError = questionInput.nextElementSibling;
       if (questionInput && !questionInput.value.trim()) {
-        errorSpans[3].textContent = 'Пожалуйста, введите ваш вопрос.';
-        errorSpans[3].style.display = 'block';
+        questionError.textContent = 'Пожалуйста, введите ваш вопрос.';
+        questionError.style.display = 'block';
         valid = false;
       }
     }
 
-    if (desiredPositionInput && !desiredPositionInput.value.trim()) {
-        errorSpans[3].textContent = 'Пожалуйста, введите желаемую должность.';
-        errorSpans[3].style.display = 'block';
-        valid = false;
-    }
-
-    if (!questionInput && !desiredPositionInput) {
-      if (!acceptInput.checked) {
-        errorSpans[3].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
-        errorSpans[3].style.display = 'block';
+    // Валидация резюме 
+    const resumeInput = form.querySelector('input[name="resume"]');
+    if (resumeInput) {
+      let resumeError = resumeInput
+        .closest('.resume-upload')
+        .querySelector('.error-contact');
+      if (!resumeError) {
+        resumeError = document.createElement('span');
+        resumeError.className = 'error-contact';
+        resumeInput.closest('.resume-upload').appendChild(resumeError);
+      }
+      if (resumeInput.files.length === 0) {
+        resumeError.textContent = 'Пожалуйста, прикрепите резюме.';
+        resumeError.style.display = 'block';
         valid = false;
       }
     }
 
-    if (questionInput || desiredPositionInput) {
-      if (!acceptInput.checked) {
-        errorSpans[4].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
-        errorSpans[4].style.display = 'block';
-        valid = false;
-      }
+    // Валидация чекбокса
+    const acceptInput = form.querySelector('input[name="accept"]');
+    const acceptError = form
+      .querySelector('.accept-politics')
+      .querySelector('.error-contact');
+    if (!acceptInput.checked) {
+      acceptError.textContent = 'Вы должны согласиться с политикой конфиденциальности.';
+      acceptError.style.display = 'block';
+      valid = false;
     }
 
+    // Отправка данных для бекенда
     if (valid) {
-      // Собираем данные пользователя формы
-      const data = {
-        name: form.querySelector('input[name="name"]').value.trim(),
-        phone: form.querySelector('input[name="phone"]').value.trim(),
-        contact_method: form.querySelector('input[name="contact_method_value"]').value.trim(),
-        accept: form.querySelector('input[name="accept"]').checked,
-        question: form.querySelector('input[name="your-question"]')?.value.trim(),
-        desired_position: form.querySelector('input[name="desired-position"]')?.value.trim()
-      };
+      const formData = new FormData(form);
 
-      // Выводим сам объект
-      console.log('Data object:', data);
-
-      // Затем — отправка для бекенда 
-      fetch('/api/requests', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      })
-      .then(res => {
-        console.log('Fetch response status:', res.status);
-        return res.json();
-      })
-      .then(json => {
-        console.log('Response JSON:', json);
-      })
-      .catch(err => {
-        console.error('Fetch error:', err);
+      const dataObject = {};
+      formData.forEach((value, key) => {
+        dataObject[key] = value;
       });
+
+      console.log('Данные формы:', dataObject);
+      const thanksModal  = document.getElementById('thanksModal');
+      openModal(thanksModal);
+
+      // Файл резюме
+      const resumeInput = form.querySelector('input[name="resume"]');
+      if (resumeInput && resumeInput.files.length > 0) {
+        console.log('Файл резюме:', formData.get('resume'));
+      } 
     }
   }
 
@@ -2573,12 +2591,21 @@ if (buyProducts) {
           }
 
           // Валидация телефона
+          // Валидация телефона с проверкой длины цифр
           const phoneInput = form.querySelector('input[name="phone"]');
-          if (phoneInput && phoneInput.value.trim() === '') {
+          if (phoneInput) {
+              const phoneValue = phoneInput.value.trim();
               const error = phoneInput.closest('.order-input').querySelector('.error-contact');
-              error.textContent = 'Введите телефон';
-              error.style.display = 'block';
-              hasError = true;
+
+              if (!phoneValue) {
+                  error.textContent = 'Введите телефон';
+                  error.style.display = 'block';
+                  hasError = true;
+              } else if (phoneValue.replace(/\D/g, '').length < 8) {
+                  error.textContent = 'Номер должен содержать минимум 8 цифр';
+                  error.style.display = 'block';
+                  hasError = true;
+              }
           }
 
           // Валидация способа связи
@@ -2617,52 +2644,63 @@ if (buyProducts) {
 
           // Обработка результата
           if (!hasError) {
-              window.open(successUrl, '_blank');
-              form.reset();
+            // Сбор данных формы
+            const formData = new FormData(form);
+      
+            const data = {};
+            formData.forEach((value, key) => {
+              data[key] = value;
+            });
+            
+            console.log('Данные формы:', data);
+
+            window.open(successUrl, '_blank');
+            form.reset();
           } else {
-              window.open(errorUrl, '_blank');
+            window.open(errorUrl, '_blank');
           }
       });
+
+      // Раскрытие меню товаров в оформление заказа на мобильном устройстве
+
+      document.querySelectorAll('.right-side').forEach(function(side) {
+      const header = side.querySelector('.right-side-items');
+      const wrapper = side.querySelector('.right-side-scroll-wrapper');
+
+      header.addEventListener('click', function() {
+        // если ширина больше 690px — игнорируем клик
+        if (window.innerWidth > 690) return;
+
+        header.style.cursor = 'pointer';
+
+        if (side.classList.contains('open')) {
+          wrapper.style.maxHeight = '0';
+          side.classList.remove('open');
+        } else {
+          wrapper.style.maxHeight = wrapper.scrollHeight + 'px';
+          side.classList.add('open');
+        }
+      });
+
+      // пересчет высоты при ресайзе, только если открыт
+      window.addEventListener('resize', function() {
+        if (side.classList.contains('open') && window.innerWidth <= 690) {
+          wrapper.style.maxHeight = wrapper.scrollHeight + 'px';
+        }
+      });
+    });
   }
 
-  // Применяем валидацию только к 3 формам (1920, 1024, 340)
-  ['order-form-1', 'order-form-2', 'order-form-3'].forEach(formId => {
-      const form = document.getElementById(formId);
-      if (form) {
-          initFormValidation(
-              form,
-              'thanks-for-the-order-page.html',
-              'order-mistake-page.html'
-          );
-      }
-  });
+  // Применяем валидацию 
+  const orderForm = document.getElementById('order-form');
+  if (orderForm) {
+    initFormValidation(
+      orderForm,
+      'thanks-for-the-order-page.html',
+      'order-mistake-page.html'
+    );
+  }
 
-
-  // Раскрытие и скрытие меню товаров при оформлении заказа на мобильном устройстве
-  document.addEventListener('DOMContentLoaded', function() {
-      const toggles = document.querySelectorAll('.right-side-items-600');
-
-      toggles.forEach(function(header) {
-          header.addEventListener('click', function() {
-              const content = header.nextElementSibling;
-              
-              if (!content || !content.classList.contains('order-items-600')) {
-                  return;
-              }
-
-              const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
-
-              if (!isOpen) {
-                  const fullHeight = content.scrollHeight + 'px';
-                  content.style.maxHeight = fullHeight;
-                  header.classList.add('open');
-              } else {
-                  content.style.maxHeight = '0';
-                  header.classList.remove('open');
-              }
-          });
-      });
-  });
 
   // Увелечение количества товара на кнопки
   // И отображение товара за 1шт
@@ -2700,14 +2738,10 @@ if (buyProducts) {
 
           // инициализация
           updateVisibility();
-      });
+      }); 
   }
 
-  // Настраиваем для десктопа
   setupQuantityToggle('.order-products', '.price-per-piece');
-  // Настраиваем для мобильной версии
-  setupQuantityToggle('.order-item-600', '.price-per-piece-2');
-
 }
 
 

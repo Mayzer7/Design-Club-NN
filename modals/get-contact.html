@@ -25,7 +25,7 @@
             </div>
 
             <div class="modal-inputs">
-                <form id="contact-form-modal" class="contact-form-modal" autocomplete="on" onsubmit="onSubmitForm(event)">
+                <form id="contact-form-modal" class="contact-form-modal" autocomplete="on" onsubmit="return validateForm(event, 'modal-form')">
                     <div class="contact-input-modal">
                         <input type="text" id="contact-name" name="name" placeholder="ФИО" autocomplete="name">
                         <span class="error-contact"></span>

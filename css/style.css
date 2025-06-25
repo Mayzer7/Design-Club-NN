@@ -11728,6 +11728,10 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     gap: 115px;
 }
 
+.buyer-title-main {
+    margin-bottom: 40px;
+}
+
 .left-side {
     display: flex;
     flex-direction: column;
@@ -11994,6 +11998,13 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     text-transform: uppercase;
     font-size: 34px;    
     padding-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.right-side-items svg {
+    display: none;
 }
 
 /* Для прокрутки товаров оформления заказа */
@@ -12025,10 +12036,12 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     margin: 0; 
 }
 
-.order-products {
-    margin: 20px 0;
-    display: flex;
+.order-products:nth-child(1) {
     border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.order-products {
+    display: flex;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     padding: 20px 0;
 }
@@ -12070,7 +12083,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 }
 
 .product-desc-order {
-    margin-top: 14px;
+    margin-top: 15px;
     display: flex;
     justify-content: space-between;
     max-width: 400px;
@@ -12107,33 +12120,17 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     font-weight: 900;
     color: #615F5B;
     font-size: 16px;
-    transform: translateY(20px);
     opacity: 0;
-    max-height: 0;
+    height: 20px; 
+    transform: translateY(20px);
     overflow: hidden;
-    transition: all 0.5s ease;
+    transition: opacity 0.3s ease;
+    visibility: hidden; 
 }
-
 
 .price-per-piece.visible {
     opacity: 1;
-    max-height: 50px; 
-}
-
-.price-per-piece-2 {
-    font-family: 'SF Pro Display', sans-serif;
-    font-weight: 900;
-    color: #615F5B;
-    font-size: 16px;
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-.price-per-piece-2.visible {
-    opacity: 1; 
-    max-height: 50px;
+    visibility: visible;
 }
 
 .product-last-line {
@@ -12229,22 +12226,6 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
 /* Адаптив */
 
-.buy-products-content-1024 {
-    display: none;
-    flex-direction: column;
-    gap: 90px;
-}
-
-.buy-products-content-600 {
-    display: none;
-}
-
-.down-side-1024 {
-    display: flex;
-    flex-direction: column;
-    width: 95%;
-}
-
 .up-side-1024 {
     display: flex;
     flex-direction: column;
@@ -12253,11 +12234,18 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
 @media (max-width: 1700px) {
     .buy-products-content {
-        display: none;
+        display: flex;
+        flex-direction: column-reverse;
+        width: 100%;
+        max-width: 100%;
     }
 
-    .buy-products-content-1024 {
-        display: flex;
+    .right-side {
+        max-width: 100%;
+    }
+
+    .left-side {
+        width: 95%;
     }
 }
 
@@ -12284,10 +12272,6 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     .buy-products-section {
         padding-left: 0%;
     }
-
-    .buy-products-content-1024 {
-        gap: 40px;
-    }
 }
 
 @media (max-width: 865px) {
@@ -12299,6 +12283,98 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 @media (max-width: 730px) {
     .buy-products {
         padding: 265px 20px 45px 20px;
+    }
+}
+
+@media (max-width: 690px) {
+    .order-products {
+        flex-direction: column;
+        margin: 0px;
+    }
+
+    .order-right {
+        padding: 0px;
+        position: relative;
+        margin-top: 15px;
+    }
+
+    .order-right-top-left {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .product-desc-right-order {
+        margin-right: 0px;
+    }
+
+    .product-desc-order {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .right-side-scroll-wrapper {
+        padding: 1px 0px;
+        padding-right: 0px;
+        max-height: 100%;   
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+    }
+
+    .right-side-items .arrow-icon {
+        transition: transform 0.4s ease;
+        transform: rotate(0deg);
+    }
+    
+    .right-side.open .right-side-items .arrow-icon {
+        transform: rotate(180deg);
+    }
+
+    .order-right-top-right {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .total-order-price-container {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 20px 0px;
+        margin-top: 0px;
+    }
+
+    .total-order-price-container h3 {
+        font-family: 'Future New Bold', sans-serif;
+        font-weight: 600;
+    }
+
+    .buy-products-content {
+        gap: 20px;
+    }
+
+    .order-left img {
+        max-width: 100%;
+        width: 100%;
+        height: 100%;
+        max-height: 100%;
+    }
+
+    .right-side-items {
+        padding: 20px 0px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        font-size: 24px;
+    }
+
+    .right-side-items svg {
+        display: flex;
+    }
+
+    .buyer,
+    .total-order-price {
+        font-size: 24px;
+    }
+
+    .buyer-title-main {
+        margin-bottom: 15px;
     }
 }
 
@@ -12320,8 +12396,6 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     }
 
 }
-
-
 
 @media (max-width: 630px) {
     .title-order {
@@ -12351,166 +12425,8 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     }
 }
 
-/* Контейнер корзины на 600px */
 
-
-.right-side-items-600 {
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 20px 0;
-    border-top: 1px solid rgba(237, 228, 215, 0.2);
-    border-bottom: 1px solid rgba(237, 228, 215, 0.2);  
-    margin-bottom: 0px;
-}
-
-/* Товары */
-
-.order-item-img-600 img {
-    width: 100%;
-    height: 100%;
-}
-
-.order-items-600 {
-    max-height: 0;              
-    overflow: hidden;           
-    transition: max-height 0.3s ease;
-}
-
-.arrow-icon {
-  transition: transform 0.3s ease;
-  transform-origin: center center;
-}
-
-.right-side-items-600.open .arrow-icon {
-  transform: rotate(180deg);
-}
-
-.right-side-items-600 {
-  cursor: pointer;
-}
-
-.order-item-600 {
-    
-    border-bottom: 1px solid rgba(237, 228, 215, 0.2);
-    padding: 20px 0;
-}
-
-.product-header-600 {
-    margin-top: 15px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
-.product-title-600 {
-    font-family: 'SF Pro Display Thin', sans-serif;
-    font-weight: 900;
-    font-size: 20px;
-    max-width: 240px;
-}
-
-.delete-product-btn {
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
-}
-
-.product-desc-600 {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.product-desc-line {
-    display: flex;
-    justify-content: space-between;
-}
-
-.product-desc-line p:first-child {
-    color: rgba(237, 228, 215, 0.7);
-}
-
-.product-desc-line p {
-    font-size: 14px;
-} 
-
-.product-price-container-600 {
-    margin-top: 25px;
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.product-price-container-600 .discount {
-    font-size: 18px;
-}
-
-.total-price-600 {
-    display: flex;
-    justify-content: space-between;
-}
-
-.total-price-600 .change-count p {
-    font-size: 18px;
-}
-
-.total-price-600 .total-price {
-    font-size: 24px;
-}
-
-.order-total-price {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    padding: 20px 0px;
-    border-bottom: 1px solid rgba(237, 228, 215, 0.2);
-}
-
-.order-total-price h1 {
-    text-transform: uppercase;
-    font-family: 'Future New Bold', sans-serif;
-    font-size: 24px;
-}
-
-.down-600 {
-    margin-top: 20px;
-}
-
-.buyer-600 {
-    font-size: 24px;
-}
-
-.buyer-title-main {
-    margin-bottom: 40px;
-}
-
-.buyer-title {
-    margin-bottom: 15px;
-}
-
-.order-input-600 textarea {
-    height: 200px;
-}
-
-@media (max-width: 600px) {
-    .buy-products-content-1024 {
-        display: none;
-    }
-
-    .buy-products-content-600 {
-        display: block;
-    }
-}
-
-
-/* Страница "thanks-fot-the-order-page.html" */
+/* Страница "thanks-for-the-order-page.html" */
 
 
 .main-page-top-thanks {
