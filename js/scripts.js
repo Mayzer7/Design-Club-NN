@@ -1749,7 +1749,7 @@ function handleScrollUp() {
       grabCursor: false,
       speed: 800,
       slidesPerGroup: 2,
-      loop: true,
+      loop: false,
       navigation: {
         nextEl: '.why-right-arrow',
         prevEl: '.why-left-arrow',
