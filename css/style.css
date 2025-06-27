@@ -4781,6 +4781,11 @@ max-width:  360px;
     .rating-number {
         padding: 23px 73px;
     }
+
+    .review-card:hover {
+        transform: scale(1);
+        box-shadow: none; 
+    }
 }
 
 @media (max-width: 830px) {

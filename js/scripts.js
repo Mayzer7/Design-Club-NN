@@ -450,9 +450,9 @@ const container           = document.querySelector('.container');
 
 if (contactModalWrapper && thanksModalWrapper && errorModalWrapper) {
     Promise.all([
-      fetch('modals/get-contact.html').then(res => res.text()),
-      fetch('modals/thanks-modal.html').then(res => res.text()),
-      fetch('modals/error-modal.html').then(res => res.text())
+      fetch(MODAL_PATHS.contact).then(res => res.text()),
+      fetch(MODAL_PATHS.thanks).then(res => res.text()),
+      fetch(MODAL_PATHS.error).then(res => res.text())
     ]).then(([contactHTML, thanksHTML, errorHTML]) => {
       // Вставляем разметку внутрь контейнеров
       contactModalWrapper.innerHTML = contactHTML;
@@ -1290,17 +1290,17 @@ function handleScrollUp() {
                     fileName = fileName.substring(0, 10) + file.name.substring(fileName.length - 4);
                 }
                 labelTextSpan.textContent = fileName;
-                labelIcon.src = 'images/svg/file.svg';
+                labelIcon.src = SVG_PATHS.fileIcon;
                 removeFileBtn.style.display = 'block';
             } else {
                 labelTextSpan.textContent = 'Некорректный формат. Загрузите еще раз';
                 labelTextSpan.style.color = '#EB5151';
-                labelIcon.src = 'images/svg/upload-file.svg';
+                labelIcon.src = SVG_PATHS.uploadFileIcon;
                 removeFileBtn.style.display = 'none';
             }
         } else {
             labelTextSpan.textContent = 'Прикрепите ваше резюме в формате PDF, JPG или DOC';
-            labelIcon.src = 'images/svg/upload-file.svg';
+            labelIcon.src = SVG_PATHS.uploadFileIcon;
             removeFileBtn.style.display = 'none';
         }
     });
@@ -1308,7 +1308,7 @@ function handleScrollUp() {
     removeFileBtn.addEventListener('click', () => {
         input.value = '';
         labelTextSpan.textContent = 'Прикрепите ваше резюме в формате PDF, JPG или DOC';
-        labelIcon.src = 'images/svg/upload-file.svg';
+        labelIcon.src = SVG_PATHS.uploadFileIcon;
         removeFileBtn.style.display = 'none';
     });
 }
@@ -1507,7 +1507,7 @@ function handleScrollUp() {
 
       let placemark = new ymaps.Placemark(center, {}, {
         iconLayout: 'default#image',
-        iconImageHref: 'images/svg/marker.svg',
+        iconImageHref: SVG_PATHS.markerIcon,
         iconImageSize: [40, 40],
         iconImageOffset: [-19, -44],
         balloonLayout: balloonLayout,
@@ -1671,7 +1671,7 @@ function handleScrollUp() {
     const reviewModalContainer = document.getElementById('review-modal-container');
 
     if (reviewModalContainer || reviewsPageSection) {
-      fetch("modals/review-modal.html")
+      fetch(MODAL_PATHS.reviewModal)
       .then(response => response.text())
       .then(html => {
         document.getElementById("review-modal-container").innerHTML = html;
@@ -1833,7 +1833,7 @@ if (modalVideo) {
 const notificationContainer = document.getElementById('notification-container');
 
 if (notificationContainer) {
-  fetch('modals/notification-delete-product.html')
+  fetch(MODAL_PATHS.notificationDeleteProduct)
     .then(response => {
       if (!response.ok) {
         throw new Error('Не удалось загрузить notification.html');
@@ -1854,8 +1854,8 @@ if (notificationContainer) {
 
 // Уведомление и модалка очистки корзины
 Promise.all([
-  fetch('modals/clear-cart.html').then(res => res.text()),
-  fetch('modals/notification-clear-cart.html').then(res => res.text())
+  fetch(MODAL_PATHS.clearCart).then(res => res.text()),
+  fetch(MODAL_PATHS.notificationClearCart).then(res => res.text())
 ]).then(([clearModalHTML, clearNotificationHTML]) => {
   const clearModalContainer = document.getElementById('modal-clear-container');
   const clearNotificationContainer = document.getElementById('notification-clear-container');
@@ -1909,7 +1909,7 @@ function setupDeleteModal(notification) {
   const modalContainer = document.getElementById("modal-container");  
 
   if (modalContainer) {
-    fetch('modals/delete-product.html')
+    fetch(MODAL_PATHS.deleteProduct)
       .then(response => response.text())
       .then(html => {
         document.body.insertAdjacentHTML('beforeend', html);
@@ -1998,7 +1998,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Условие подмены первого фона, если экран <= 1030px
   if (window.innerWidth <= 1030 && images[0]) {
     // Изображение на главной странице первый слайд при разрещении меньше 1030px
-    images[0].src = 'images/main-page/bg-1030.webp';
+    images[0].src = IMAGE_PATHS.mainBgSmall;
   }
 
   /*** ФУНКЦИЯ: сброс всех прогресс-баров (десктопные + мобильные) ***/
