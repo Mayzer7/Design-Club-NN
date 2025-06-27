@@ -1966,6 +1966,7 @@ function setupDeleteModal(notification) {
   }
 }
 
+
 // Скрипты для контента на странице "main-page.html"
 
 const heroContent1 = document.querySelector('.hero-content-1');
@@ -1980,25 +1981,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const allProgress  = document.querySelectorAll('.hero-content .progress-bar');
   const deskButtons  = document.querySelectorAll('.hero-content .hero-right-side button');
 
-  // Мобильные элементы:
-  const mobContents      = [
-    document.querySelector('.hero-content-mobile-1'),
-    document.querySelector('.hero-content-mobile-2'),
-    document.querySelector('.hero-content-mobile-3')
-  ];
+  // Получаем все элементы слайдеров:
+  const mobContents = document.querySelectorAll('.hero-content-mobile');
+  
   // Получим все мобильные кнопки сразу – querySelectorAll даёт коллекцию из 9 кнопок, 
   // но далее мы будем опираться на data-index каждого:
   const mobThumbButtons  = document.querySelectorAll('.hero-content-mobile .mobile-thumb');
   const allMobProgress   = document.querySelectorAll('.hero-content-mobile .progress-bar-mobile');
 
-  const slideCount       = images.length; // Должно быть 3
+  const slideCount       = images.length; // Должно быть 4 (добавляя ещё один фон в контейнер .hero-image с уникальным классом)
+  
   const SWITCH_INTERVAL  = 3000;          // 3 секунды
   let current = 0;
   let intervalId = null;
 
   // Условие подмены первого фона, если экран <= 1030px
   if (window.innerWidth <= 1030 && images[0]) {
-    images[0].src = 'images/main-page/bg-1030.webp';
+    // Изображение на главной странице первый слайд при разрещении меньше 1030px
+    images[0].src = CONSTANTS.IMAGE_PATHS.BG_MAIN_SMALL;
   }
 
   /*** ФУНКЦИЯ: сброс всех прогресс-баров (десктопные + мобильные) ***/
