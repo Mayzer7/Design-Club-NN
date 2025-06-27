@@ -1998,7 +1998,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Условие подмены первого фона, если экран <= 1030px
   if (window.innerWidth <= 1030 && images[0]) {
     // Изображение на главной странице первый слайд при разрещении меньше 1030px
-    images[0].src = CONSTANTS.IMAGE_PATHS.BG_MAIN_SMALL;
+    images[0].src = 'images/main-page/bg-1030.webp';
   }
 
   /*** ФУНКЦИЯ: сброс всех прогресс-баров (десктопные + мобильные) ***/
