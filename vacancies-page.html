@@ -435,12 +435,26 @@
                                             <div class="vacancies-form-container fade-in">
                                                 <form id="vacancies-form" class="vacancies-form contact-form fade-in" autocomplete="on" onsubmit="return validateForm(event, 'vacancies-form')">
                                                     <div class="contact-input fade-in">
-                                                        <input type="text" id="contact-name" name="name" placeholder="ФИО" autocomplete="name">
+                                                        <input 
+                                                            type="text" 
+                                                            id="contact-name" 
+                                                            name="name"
+                                                            data-field="name" 
+                                                            placeholder="ФИО" 
+                                                            autocomplete="name"
+                                                        >
                                                         <span class="error-contact"></span>
                                                     </div>  
 
                                                     <div class="contact-input fade-in">
-                                                        <input type="tel" id="phone" name="phone" placeholder="ТЕЛЕФОН" autocomplete="tel">
+                                                        <input 
+                                                            type="tel" 
+                                                            id="phone" 
+                                                            name="phone"
+                                                            data-field="phone" 
+                                                            placeholder="ТЕЛЕФОН" 
+                                                            autocomplete="tel"
+                                                        >
                                                         <span class="error-contact"></span>
                                                     </div>
 
@@ -450,11 +464,15 @@
                                                                 <input
                                                                     type="text"
                                                                     name="contact_method"
+                                                                    data-field="contact-method"
                                                                     placeholder="УДОБНЫЙ СПОСОБ СВЯЗИ"
                                                                     readonly
                                                                 />
 
-                                                                <input type="hidden" name="contact_method_value" />
+                                                                <input type="hidden" 
+                                                                    name="contact_method_value" 
+                                                                    data-field="contact-method-value"
+                                                                />
 
                                                                 <svg class="dropdown-arrow" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <path d="M20 11L14.7071 16.6854C14.3166 17.1049 13.6834 17.1049 13.2929 16.6854L8 11" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="round"/>
@@ -498,7 +516,12 @@
                                                     </div>
                                                 
                                                     <div class="contact-input fade-in">
-                                                        <input type="text" name="desired-position" placeholder="ЖЕЛАЕМАЯ ДОЛЖНОСТЬ">
+                                                        <input 
+                                                            type="text" 
+                                                            name="desired-position" 
+                                                            data-field="desired-position"
+                                                            placeholder="ЖЕЛАЕМАЯ ДОЛЖНОСТЬ"
+                                                        >
                                                         <span class="error-contact"></span>
                                                     </div>
                                                 
@@ -511,12 +534,23 @@
                                                             </button>
                                                         </label>
 
-                                                        <input type="file" id="resume-upload-input" name="resume" accept=".pdf,.jpg,.jpeg,.doc,.docx,.png" hidden>
+                                                        <input 
+                                                            type="file" 
+                                                            id="resume-upload-input" 
+                                                            name="resume" 
+                                                            data-field="resume"
+                                                            accept=".pdf,.jpg,.jpeg,.doc,.docx,.png" 
+                                                            hidden
+                                                        >
                                                     </div>
                             
                                                     <div class="accept-politics fade-in">
                                                         <label class="custom-checkbox">
-                                                            <input type="checkbox" name="accept" />
+                                                            <input 
+                                                                type="checkbox" 
+                                                                name="accept"
+                                                                data-field="accept" 
+                                                            />
                                                             <div class="checkbox-img"></div>
                                                         </label>
                                                         <p>Согласен <span><a href="privacy-policy-page.html">с политикой конфиденциальности и обработки персональных данных</a></span></p>

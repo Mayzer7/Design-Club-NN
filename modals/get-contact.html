@@ -27,11 +27,17 @@
             <div class="modal-inputs">
                 <form id="contact-form-modal" class="contact-form-modal" autocomplete="on" onsubmit="return validateForm(event, 'modal-form')">
                     <div class="contact-input-modal">
-                        <input type="text" id="contact-name" name="name" placeholder="ФИО" autocomplete="name">
+                        <input 
+                            type="text" 
+                            id="contact-name"
+                            data-field="name" 
+                            placeholder="ФИО" 
+                            autocomplete="name"
+                        >
                         <span class="error-contact"></span>
                     </div>  
                     <div class="contact-input-modal">
-                        <input type="tel" id="phone" name="phone" placeholder="ТЕЛЕФОН" autocomplete="tel">
+                        <input type="tel" id="phone" data-field="phone" placeholder="ТЕЛЕФОН" autocomplete="tel">
                         <span class="error-contact"></span>
                     </div>
                     
@@ -47,13 +53,13 @@
                             <li data-value="whatsapp">НАПИСАТЬ В WHAT'S APP</li>
                             </ul>
                         </div>
-                        <input type="hidden" name="contact_method" id="contactMethodInput" />
+                        <input type="hidden" data-field="contact-method-modal" id="contactMethodInput" />
                         <span class="error-contact"></span>
                     </div>
 
                     <div class="accept-politics-modal">
                         <label class="custom-checkbox">
-                            <input type="checkbox" name="accept" />
+                            <input type="checkbox" data-field="accept-modal" />
                             <div class="checkbox-img"></div>
                         </label>
                         <p>Согласен <span><a href="privacy-policy-page.html" target="_blank">с политикой конфиденциальности и обработки персональных данных</a></span></p>

@@ -556,29 +556,28 @@ if (contactModalWrapper && thanksModalWrapper && errorModalWrapper) {
       form.addEventListener('submit', onSubmitForm);
 
       // Обработчик отправки формы
-      function onSubmitForm(event) {
-        event.preventDefault();
-        const formEl = event.target;
+      function onSubmitForm(e) {
+        e.preventDefault();
+        const form = e.target;
 
-        if (!validateFormModal(formEl)) {
+        if (!validateFormModal(form)) {
           closeModal(contactModal);
           openModal(errorModal);
           return;
         }
 
-        // 1. Сбор данные 
-        const data = {
-          name: formEl.name.value.trim(),
-          phone: formEl.phone.value.trim(),
-          contact_method: formEl.contact_method.value,
-          accept: formEl.accept.checked
-        };
+        // Собираем данные по data-field
+        const data = {};
+        form.querySelectorAll('[data-field]').forEach(el => {
+          const key = el.getAttribute('data-field');
+          data[key] = (el.type === 'checkbox') ? el.checked : el.value.trim();
+        });
 
         console.log('Данные формы модального окна:', data);
 
         closeModal(contactModal);
         openModal(thanksModal);
-        formReset(formEl);
+        formReset(form);
       }
 
       // Сброс полей и ошибок
@@ -590,7 +589,6 @@ if (contactModalWrapper && thanksModalWrapper && errorModalWrapper) {
         const contactSelect = form.querySelector('#contactSelect');
         if (contactSelect) {
           contactSelect.querySelector('.selected-option').textContent = 'КАК УДОБНЕЕ СВЯЗАТЬСЯ';
-          form.contact_method.value = '';
           contactSelect.classList.remove('selected');
         }
       }
@@ -601,35 +599,51 @@ if (contactModalWrapper && thanksModalWrapper && errorModalWrapper) {
         const errs = form.querySelectorAll('.error-contact');
         errs.forEach(e => { e.style.display = 'none'; e.textContent = ''; });
 
-        if (!form.name.value.trim()) {
-          errs[0].textContent = 'Пожалуйста, введите ваше ФИО.';
-          errs[0].style.display = 'block';
+        // получаем элементы по data-field
+        const nameEl = form.querySelector('[data-field="name"]');
+        const phoneEl = form.querySelector('[data-field="phone"]');
+        const methodEl = form.querySelector('[data-field="contact-method-modal"]');
+        const acceptEl = form.querySelector('[data-field="accept-modal"]');
+
+        // найти для каждого свой .error-contact
+        const errName   = nameEl.nextElementSibling;
+        const errPhone  = phoneEl.nextElementSibling;
+        const errMethod = methodEl.closest('.contact-input-modal').querySelector('.error-contact');
+        const errAccept = form.querySelector('.accept-politics-modal .error-contact');
+
+        // Валидация ФИО
+        if (!nameEl.value.trim()) {
+          errName.textContent = 'Пожалуйста, введите ваше ФИО.';
+          errName.style.display = 'block';
           valid = false;
         }
 
-        const phoneVal = form.phone.value.trim();
-        const digitCount = phoneVal.replace(/\D/g, '').length;
-        if (!phoneVal) {
-          errs[1].textContent = 'Пожалуйста, введите ваш телефон.';
-          errs[1].style.display = 'block';
+        // Валидация телефона
+        const digits = phoneEl.value.replace(/\D/g, '').length;
+        if (!phoneEl.value.trim()) {
+          errPhone.textContent = 'Пожалуйста, введите ваш телефон.';
+          errPhone.style.display = 'block';
           valid = false;
-        } else if (digitCount < 8) {
-          errs[1].textContent = 'Номер должен содержать минимум 8 цифр.';
-          errs[1].style.display = 'block';
-          valid = false;
-        }
-
-        if (!form.contact_method.value) {
-          errs[2].textContent = 'Пожалуйста, выберите способ связи.';
-          errs[2].style.display = 'block';
+        } else if (digits < 8) {
+          errPhone.textContent = 'Номер должен содержать минимум 8 цифр.';
+          errPhone.style.display = 'block';
           valid = false;
         }
 
-        if (!form.accept.checked) {
-          errs[3].textContent = 'Вы должны согласиться с политикой конфиденциальности.';
-          errs[3].style.display = 'block';
+        // Валидация способа связи
+        if (!methodEl.value) {
+          errMethod.textContent = 'Пожалуйста, выберите способ связи.';
+          errMethod.style.display = 'block';
           valid = false;
         }
+
+        // Валидация чекбокса
+        if (!acceptEl.checked) {
+          errAccept.textContent = 'Вы должны согласиться с политикой конфиденциальности.';
+          errAccept.style.display = 'block';
+          valid = false;
+        }
+
         return valid;
       }
 
@@ -1039,9 +1053,9 @@ function handleScrollUp() {
   }
 }
 
-// Валидация форм на странице
-  const questionInput = document.querySelector('[name="your-question"]');
-  const desiredPositionInput = document.querySelector('[name="desired-position"]'); 
+// Валидация форм на странице 
+  const questionInput = document.querySelector('[data-field="your-question"]');
+  const desiredPositionInput = document.querySelector('[data-field="desired-position"]'); 
 
   function validateForm(event, formId) {
     event.preventDefault();
@@ -1056,7 +1070,7 @@ function handleScrollUp() {
     let valid = true;
 
     // Валидация ФИО
-    const nameInput = form.querySelector('input[name="name"]');
+    const nameInput = form.querySelector('input[data-field="name"]');
     const nameError = nameInput.nextElementSibling; // <span class="error-contact">
     if (!nameInput.value.trim()) {
       nameError.textContent = 'Пожалуйста, введите ваше ФИО.';
@@ -1065,7 +1079,7 @@ function handleScrollUp() {
     }
 
     // Валидация телефона
-    const phoneInput = form.querySelector('input[name="phone"]');
+    const phoneInput = form.querySelector('input[data-field="phone"]');
     const phoneError = phoneInput.nextElementSibling;
     const phoneValue = phoneInput.value.trim();
     if (!phoneValue) {
@@ -1079,7 +1093,7 @@ function handleScrollUp() {
     }
 
     // Валидация способа связи
-    const methodValue = form.querySelector('input[name="contact_method_value"]');
+    const methodValue = form.querySelector('input[data-field="contact-method-value"]');
     const methodWrapper = form.querySelector('.contact-method-selector');
     const methodError = methodWrapper.querySelector('.error-contact');
     if (!methodValue.value.trim()) {
@@ -1089,7 +1103,7 @@ function handleScrollUp() {
     }
 
     // Валидация желаемой должности
-    const desiredInput = form.querySelector('input[name="desired-position"]');
+    const desiredInput = form.querySelector('input[data-field="desired-position"]');
     
     if (desiredInput) {
       const desiredError = desiredInput.nextElementSibling;
@@ -1113,7 +1127,7 @@ function handleScrollUp() {
     }
 
     // Валидация резюме 
-    const resumeInput = form.querySelector('input[name="resume"]');
+    const resumeInput = form.querySelector('input[data-field="resume"]');
     if (resumeInput) {
       let resumeError = resumeInput
         .closest('.resume-upload')
@@ -1131,7 +1145,7 @@ function handleScrollUp() {
     }
 
     // Валидация чекбокса
-    const acceptInput = form.querySelector('input[name="accept"]');
+    const acceptInput = form.querySelector('input[data-field="accept"]');
     const acceptError = form
       .querySelector('.accept-politics')
       .querySelector('.error-contact');
@@ -1164,8 +1178,8 @@ function handleScrollUp() {
       if (wrapper) {
         const menu       = wrapper.querySelector('.menu-contact-method');
         const arrow      = wrapper.querySelector('.dropdown-arrow');
-        const inputMain  = wrapper.querySelector('input[name="contact_method"]');
-        const inputValue = wrapper.querySelector('input[name="contact_method_value"]');
+        const inputMain  = wrapper.querySelector('input[data-field="contact-method"]');
+        const inputValue = wrapper.querySelector('input[data-field="contact-method-value"]');
 
         if (menu) {
           menu.classList.remove('open');
@@ -1224,8 +1238,10 @@ function handleScrollUp() {
         const toggleButton = wrapper.querySelector('.contact-method-selector');
         const menu = wrapper.querySelector('.menu-contact-method');
         const arrow = wrapper.querySelector('.dropdown-arrow');
-        const contactMethodInput = form.querySelector('input[name="contact_method"]');
-        const contactMethodValueInput = form.querySelector('input[name="contact_method_value"]');
+
+        // вместо input[name="…"]
+        const contactMethodInput      = form.querySelector('[data-field="contact-method"]');
+        const contactMethodValueInput = form.querySelector('[data-field="contact-method-value"]');
 
         toggleButton.addEventListener('click', () => {
             const isOpen = menu.classList.contains('open');
@@ -2631,7 +2647,7 @@ if (buyProducts) {
           });
 
           // Валидация имени
-          const nameInput = form.querySelector('input[name="name"]');
+          const nameInput = form.querySelector('input[data-field="name"]');
           if (nameInput && nameInput.value.trim() === '') {
               const error = nameInput.closest('.order-input').querySelector('.error-contact');
               error.textContent = 'Введите имя';
@@ -2641,7 +2657,7 @@ if (buyProducts) {
 
           // Валидация телефона
           // Валидация телефона с проверкой длины цифр
-          const phoneInput = form.querySelector('input[name="phone"]');
+          const phoneInput = form.querySelector('input[data-field="phone"]');
           if (phoneInput) {
               const phoneValue = phoneInput.value.trim();
               const error = phoneInput.closest('.order-input').querySelector('.error-contact');
@@ -2658,7 +2674,7 @@ if (buyProducts) {
           }
 
           // Валидация способа связи
-          const methodValue = form.querySelector('input[name="contact_method_value"]');
+          const methodValue = form.querySelector('input[data-field="contact-method-value"]');
           const methodWrapper = form.querySelector('.contact-method-selector');
           if (!methodValue.value.trim()) {
               const error = methodWrapper.querySelector('.error-contact');
@@ -2668,7 +2684,7 @@ if (buyProducts) {
           }
 
           // Валидация комментария
-          const commentTextarea = form.querySelector('textarea');
+          const commentTextarea = form.querySelector('textarea[data-field="comment"]');
           if (commentTextarea && commentTextarea.value.trim() === '') {
               let error = commentTextarea.nextElementSibling;
               if (!error || !error.classList.contains('error-contact')) {
@@ -2682,7 +2698,7 @@ if (buyProducts) {
           }
 
           // Валидация чекбокса
-          const checkbox = form.querySelector('input[name="accept"]');
+          const checkbox = form.querySelector('input[data-field="accept"]');
           if (checkbox && !checkbox.checked) {
               const error = form.querySelector('.accept-politics-order .error-contact');
               error.textContent = 'Необходимо согласиться с политикой';
