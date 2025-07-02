@@ -1,3 +1,15 @@
+// Отправка данных с форм 
+
+function sendForm(formData) {
+  if (formData) {
+    // Данные формы
+    console.log('Данные формы:', Object.fromEntries(formData.entries()));
+    return true
+  } else {
+    return false
+  }
+}
+
 /* Прелоадер — фоновый экран */
 
 window.addEventListener("load", () => {
@@ -566,18 +578,18 @@ if (contactModalWrapper && thanksModalWrapper && errorModalWrapper) {
           return;
         }
 
-        // Собираем данные по data-field
-        const data = {};
-        form.querySelectorAll('[data-field]').forEach(el => {
-          const key = el.getAttribute('data-field');
-          data[key] = (el.type === 'checkbox') ? el.checked : el.value.trim();
-        });
+        const formData = new FormData(form); 
+        // Отправка данных модального окна
+        const formResult = sendForm(formData);
 
-        console.log('Данные формы модального окна:', data);
-
-        closeModal(contactModal);
-        openModal(thanksModal);
-        formReset(form);
+        if (formResult) {
+          closeModal(contactModal);
+          openModal(thanksModal);
+          formReset(form);
+        } else {
+          closeModal(contactModal);
+          openModal(errorModal);
+        }
       }
 
       // Сброс полей и ошибок
@@ -1163,13 +1175,18 @@ function handleScrollUp() {
       document.documentElement.classList.add('no-scroll');
     }
 
-    // Отправка данных для бекенда
+    // Отправка данных форм
     if (valid) {
       const formData = new FormData(form);
-      console.log('Данные формы:', Object.fromEntries(formData.entries()));
-
-      const thanksModal = document.getElementById('thanksModal');
-      openModal(thanksModal);
+      const formResult = sendForm(formData);
+    
+      if (formResult) {
+        const thanksModal = document.getElementById('thanksModal');
+        openModal(thanksModal); 
+      } else {
+        const errorModal = document.getElementById('errorModal');
+        openModal(errorModal);
+      }
 
       // Сброс состояния формы
       form.reset();
@@ -2708,17 +2725,16 @@ if (buyProducts) {
           }
 
           // Обработка результата
-          if (!hasError) {
-            // Сбор данных формы
-            const formData = new FormData(form);
-      
-            const data = {};
-            formData.forEach((value, key) => {
-              data[key] = value;
-            });
-            
-            console.log('Данные формы:', data);
+          if (hasError) {
+            return;
+          }
 
+          // Отправка данных оформления заказа
+          const formData = new FormData(form);
+          const formResult = sendForm(formData);
+
+          // Перенаправляем по результату
+          if (formResult) {
             window.open(successUrl, '_blank');
             form.reset();
           } else {
@@ -2765,7 +2781,6 @@ if (buyProducts) {
       'order-mistake-page.html'
     );
   }
-
 
   // Увелечение количества товара на кнопки
   // И отображение товара за 1шт
