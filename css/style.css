@@ -4530,7 +4530,6 @@ max-width:  360px;
     display: flex;
     gap: 20px;
     overflow-x: visible; 
-    cursor: pointer;
     padding-bottom: 20px;
     min-height: 360px;
     transition: transform 0.5s ease; 
@@ -4578,7 +4577,6 @@ max-width:  360px;
 .review-card:hover {
     transform: scale(1.01); 
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2); 
-    cursor: pointer;
 } 
 
 .review-text {
