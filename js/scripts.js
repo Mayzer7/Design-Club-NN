@@ -1718,6 +1718,28 @@ function handleScrollUp() {
         openLinks.forEach(link => {
           link.addEventListener("click", (e) => {
             e.preventDefault();
+
+            const card = e.currentTarget.closest('.review-card');
+            console.log(card);
+            if (!card) return;
+
+            // Текст отзыва
+            const fullText = card.querySelector('.review-text').innerText.trim();
+            
+            // Автор
+            const author = card.querySelector('.review-author').innerText.trim();
+
+            // Ссылка на яндекс отзыв
+            const yandexLinkEl = card.querySelector('.review-link a');
+            const yandexHref = yandexLinkEl ? yandexLinkEl.getAttribute('href') : '#';
+
+            // Заполняем контент модалки
+            modal.querySelector('.review-modal-text').innerText = fullText;
+            modal.querySelector('.review-modal-author').innerText = author;
+            modal.querySelector('.review-yandex-link a')
+                .setAttribute('href', yandexHref);
+
+            // Открываем модалку
             container.style.filter = "blur(5px)";
             document.documentElement.classList.add("no-scroll");
             document.body.classList.add("no-scroll");
