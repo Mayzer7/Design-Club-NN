@@ -1617,31 +1617,27 @@ function handleScrollUp() {
 
   if (reviewsPageSection) {
     // Раскрытие отзывов на кнопку "Больше"
-    const moreButton = document.getElementById('more-button');
-    const reviewContainers = document.querySelectorAll('.more-reviews');
-          
-    let currentIndex = 0;
-          
-    function showNextReviewContainer() {
-        if (currentIndex < reviewContainers.length) {
-            const block = reviewContainers[currentIndex];
-          
-            block.classList.add('show');
-            block.style.maxHeight = block.scrollHeight + 'px';
-            block.style.opacity = '1';
-          
-            currentIndex++;
-            }
-          
-        if (currentIndex >= reviewContainers.length) {
-            const moreContainer = document.querySelector('.more');
-                
-            moreButton.style.display = 'none';
-            moreContainer.style.display = 'none';
-        }
-    }
-          
-    moreButton.addEventListener('click', showNextReviewContainer);
+    const btn   = document.getElementById('more-button');
+    const more  = document.getElementById('more-reviews');
+
+    btn.addEventListener('click', () => {
+      const isOpen = more.classList.toggle('show');
+
+      if (isOpen) {
+        const fullHeight = more.scrollHeight;
+        more.style.maxHeight = fullHeight + 'px';
+      } else {
+        more.style.maxHeight = '0px';
+      }
+
+      btn.textContent = isOpen ? 'Скрыть' : 'Больше';
+    });
+
+    window.addEventListener('resize', () => {
+      if (more.classList.contains('show')) {
+        more.style.maxHeight = more.scrollHeight + 'px';
+      }
+    });
   }
 
   // Скрипты для контента на странице "customers-page.html"
@@ -1719,15 +1715,24 @@ function handleScrollUp() {
           link.addEventListener("click", (e) => {
             e.preventDefault();
 
-            const card = e.currentTarget.closest('.review-card');
-            console.log(card);
+            const cardReview     = e.currentTarget.closest('.review-card');
+            const cardReviewPage = e.currentTarget.closest('.review-page-card');
+            
+            const card = cardReview || cardReviewPage;
+
             if (!card) return;
 
-            // Текст отзыва
-            const fullText = card.querySelector('.review-text').innerText.trim();
-            
-            // Автор
-            const author = card.querySelector('.review-author').innerText.trim();
+            let fullText;
+            let author;
+
+            // Текст отзыва и его автор
+            if (card === cardReviewPage) {
+              fullText = card.querySelector('.review-text-page').innerText.trim();
+              author = card.querySelector('.review-author-page').innerText.trim();
+            } else {
+              fullText = card.querySelector('.review-text').innerText.trim();
+              author = card.querySelector('.review-author').innerText.trim();
+            }
 
             // Ссылка на яндекс отзыв
             const yandexLinkEl = card.querySelector('.review-link a');

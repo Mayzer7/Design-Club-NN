@@ -14070,12 +14070,12 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 }
 
 .review-cards {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
 }
 
 .review-page-card {
-    margin-top: 20px;
     position: relative;
     max-width: 692px;
     width: 100%;
@@ -14110,6 +14110,15 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     background-size: 100% 1px;
 }
 
+.review-page-card.hidden {
+  opacity: 0;
+  max-height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  transition: opacity 0.5s ease, max-height 0.5s ease, margin 0.5s ease, padding 0.5s ease;
+}
+
 .review-down-info {
     display: flex;
     flex-direction: column;
@@ -14129,7 +14138,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     font-size: 20px;
     height: 100%;
     display: -webkit-box;
-    -webkit-line-clamp: 9; /* максимальное кол-во строк */
+    -webkit-line-clamp: 9; 
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -14224,14 +14233,22 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 }
 
 .more-reviews {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease, opacity 0.5s ease;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
 .more-reviews.show {
-    opacity: 1;
+  opacity: 1;
+  margin-top: 20px;
+}
+
+.more-reviews:first-child {
+  gap: 20px;
 }
 
 .more {
@@ -14304,8 +14321,6 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     font-family: 'Future New Light', sans-serif;
     font-size: 93px;
 }
-
-
 
 .rating-number-mobile {
     display: none;
@@ -14405,10 +14420,10 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
 
 @media (max-width: 1230px) {
-    .review-page-card {
+    /* .review-page-card {
         max-width: 356px;
         min-height: 446px;
-    }
+    } */
 
     .review-text-page,
     .read-more-link {
@@ -14474,6 +14489,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
     .rating-number-mobile {
         display: flex;
+        margin-bottom: 20px;
     }
 
     .reviews-page-content {
@@ -14486,7 +14502,6 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
     .review-page-card {
         max-width: 100%;
-        margin-top: 20px;
     }
 }
 
@@ -14497,14 +14512,14 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 }
 
 @media (max-width: 770px) {
-    .review-cards {
-        flex-direction: column;
-        gap: 0;
+    .review-cards,
+    .more-reviews {
+        grid-template-columns: 1fr;
     }
 
     .review-page-card {
         max-width: 100%;
-        margin-top: 20px;
+        margin-top: 0px;
         min-height: 180px;
     }
 
