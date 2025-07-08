@@ -15038,41 +15038,36 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
 
 .advantages-title {
-    font-size: 26px;
+    font-size: 34px;
     text-transform: uppercase;
     font-family: 'Future New Bold', sans-serif;
     margin-top: 30px;
     margin-bottom: 20px;
 }
 
-.advantages-container {
-    display: flex;
-    gap: 40px;
+.advantages-text h4 {
+    font-size: 26px;
+    font-weight: 600;
+    font-family: 'SF Pro Display', sans-serif;
+    padding-bottom: 15px;
 }
 
-.advantages-left,
-.advantages-right {
+.advantages-text p {
+    font-size: 20px;
+    line-height: 120%;
+}
+
+.advantages-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.advantages-inner {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-
-.advantages-left-up,
-.advantages-left-down,
-.advantages-right-up,
-.advantages-right-down {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.advantages-left h4,
-.advantages-right h4 {
-    font-size: 26px;
-    font-weight: 600;
-    font-family: 'SF Pro Display', sans-serif;
-}
-
 
 /* Адаптив секции 'Разгрузка, подъем и сборка мебели'*/
 
@@ -15128,8 +15123,19 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     .advantages-right p {
         font-size: 16px;
     }
-}
 
+    .advantages-title {
+        font-size: 26px;
+    }
+
+    .advantages-text h4 {
+        font-size: 22px;
+    }
+
+    .advantages-text p {
+        font-size: 16px;
+    }
+}
 
 @media (max-width: 1000px) {
     .furniture-build-container {
@@ -15163,13 +15169,21 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     .services-desktop {
         display: none;
     }
+    
+    .advantages-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .advantages-text h4 {
+        font-size: 20px;
+    }
+
+    .advantages-text p {
+        font-size: 16px;
+    }
 
     .services-mobile {
         display: block;
-    }
-
-    .advantages-container {
-        flex-direction: column;
     }
 
     .first-text {
@@ -15178,10 +15192,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
     .advantages-title {
         margin-bottom: 15px;
-    }
-
-    .advantages-container {
-        gap: 20px;
+        font-size: 24px;
     }
 
     .under-header-container-furniture a:not(:last-child),
