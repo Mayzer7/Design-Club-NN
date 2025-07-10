@@ -471,6 +471,10 @@ if (contactModalWrapper && thanksModalWrapper && errorModalWrapper) {
       thanksModalWrapper.innerHTML  = thanksHTML;
       errorModalWrapper.innerHTML   = errorHTML;
 
+      // Форма внутри модалки
+      const form = document.getElementById('contact-form-modal');
+      form.addEventListener('submit', onSubmitForm);
+
       // Элементы модалок
       const contactModal = document.getElementById('contactModal');
       const thanksModal  = document.getElementById('thanksModal');
@@ -563,18 +567,12 @@ if (contactModalWrapper && thanksModalWrapper && errorModalWrapper) {
         });
       });
 
-      // Форма внутри модалки
-      const form = document.getElementById('contact-form-modal');
-      form.addEventListener('submit', onSubmitForm);
-
       // Обработчик отправки формы
       function onSubmitForm(e) {
         e.preventDefault();
         const form = e.target;
 
         if (!validateFormModal(form)) {
-          closeModal(contactModal);
-          openModal(errorModal);
           return;
         }
 
@@ -596,12 +594,18 @@ if (contactModalWrapper && thanksModalWrapper && errorModalWrapper) {
       function formReset(form) {
         form.reset();
         form.querySelectorAll('.error-contact')
-          .forEach(e => { e.style.display = 'none'; e.textContent = ''; });
+            .forEach(e => { e.style.display = 'none'; e.textContent = ''; });
 
-        const contactSelect = form.querySelector('#contactSelect');
-        if (contactSelect) {
-          contactSelect.querySelector('.selected-option').textContent = 'КАК УДОБНЕЕ СВЯЗАТЬСЯ';
-          contactSelect.classList.remove('selected');
+        const select = form.querySelector('#contactSelect');
+        if (select) {
+          const placeholder = 'УДОБНЫЙ СПОСОБ СВЯЗИ';
+          select.querySelector('.selected-option').textContent = placeholder;
+          select.classList.remove('selected', 'open');
+        }
+
+        const hiddenInput = form.querySelector('#contactMethodInput');
+        if (hiddenInput) {
+          hiddenInput.value = '';
         }
       }
 
