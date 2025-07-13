@@ -2896,6 +2896,7 @@ max-width:  360px;
 
 .our-brands-swiper .swiper-wrapper {
   display: flex;
+  overflow: hidden;
 }
 
 .our-brands-swiper .swiper-slide {
