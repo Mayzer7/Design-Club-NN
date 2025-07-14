@@ -2578,6 +2578,7 @@ nav ul ul.open + svg {
 .popular-product-card {
   display: flex;
   flex-direction: column;
+  height: 300px;
 }
 
 .popular-product-info {
@@ -2590,6 +2591,10 @@ nav ul ul.open + svg {
 .popular-product-name {
     font-size: 26px;
     margin-bottom: 5px;
+}
+
+.popular-product-desc {
+    min-height: 120px;
 }
 
 .popular-product-desc-text {
@@ -2675,7 +2680,7 @@ a .popular-product-desc p,
 }
 
 .popular-products-swiper .swiper-wrapper .swiper-slide.swiper-slide-active img {
-max-width:  360px;
+    max-width:  360px;
   max-height: 360px;
   height: 100%;
   width: 100%;
@@ -2713,6 +2718,7 @@ max-width:  360px;
     padding-left: 25%;
     margin-top: 40px;
 }
+
 
 /* Адаптив популярные товары */
 
