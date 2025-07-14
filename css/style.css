@@ -2882,7 +2882,7 @@ a .popular-product-desc p,
     padding: 90px 20px 90px 20px;
     background-color: #151c28;
     font-family: 'SF Pro Display', sans-serif;
-    overflow: visible;
+    overflow: hidden;
 }
 
 .our-up-title {
@@ -2890,7 +2890,6 @@ a .popular-product-desc p,
     top: 0px;
     font-size: 14px;
     left: 2px;
-    
 }
 
 .our-brands-swiper {
@@ -2898,11 +2897,9 @@ a .popular-product-desc p,
   width: 100%;
 }
 
-
-
 .our-brands-swiper .swiper-wrapper {
   display: flex;
-  overflow: hidden;
+
 }
 
 .our-brands-swiper .swiper-slide {
