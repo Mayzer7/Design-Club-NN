@@ -2593,9 +2593,6 @@ nav ul ul.open + svg {
     margin-bottom: 5px;
 }
 
-.popular-product-desc {
-    min-height: 120px;
-}
 
 .popular-product-desc-text {
     font-size: 14px;
@@ -2656,6 +2653,7 @@ a .popular-product-desc p,
 
 .popular-products-swiper .swiper-wrapper {
   margin-left: -280px;
+  min-height: 550px;
 }
 
 .popular-products-swiper-container {
@@ -2665,23 +2663,26 @@ a .popular-product-desc p,
 
 .popular-product-card img {
   max-width: 265px;
-  max-height: 265px;
+  max-height: 1000px;
   height: 100%;
   width: 100%;
 }
 
 .popular-products-swiper .swiper-wrapper .swiper-slide {
   width: 265px;
+  height: 265px;
 }
 
 /* Активная карточка */
 .popular-products-swiper .swiper-wrapper .swiper-slide.swiper-slide-active {
   width: 360px;
+  height: 100%;
 }
 
 .popular-products-swiper .swiper-wrapper .swiper-slide.swiper-slide-active img {
     max-width:  360px;
   max-height: 360px;
+  min-height: 360px;
   height: 100%;
   width: 100%;
 }
@@ -2762,8 +2763,9 @@ a .popular-product-desc p,
     }
 
     .popular-products-swiper .swiper-wrapper .swiper-slide.swiper-slide-active img {
-        max-width:  331px;
+        max-width:  360px;
         max-height: 331px;
+        min-height: 331px;
         height: 100%;
         width: 100%;
     }
@@ -2812,9 +2814,12 @@ a .popular-product-desc p,
         margin-top: 0px;
         max-width: 276px;
         width: 100%;
+        min-height: 0px;
+        height: 100%;
         transition: none; 
         display: flex;
         justify-content: center;
+
     }
 
     .popular-products-swiper .swiper-wrapper .swiper-slide img {
@@ -2822,6 +2827,7 @@ a .popular-product-desc p,
         max-width: 276px;
         height: 100%;
         max-height: 276px;
+        min-height: 276px;
     }
 
 
@@ -2833,7 +2839,7 @@ a .popular-product-desc p,
 
     .popular-products-swiper-container .popular-products-swiper .swiper-slide.swiper-slide-active img {
         max-width: 276px;
-        max-height: 276px;
+        min-height: 276px;
         width: 100%;
         height: 100%;
     }
@@ -2844,6 +2850,7 @@ a .popular-product-desc p,
 
     .popular-products-swiper .swiper-wrapper  {
         margin-left: 0px;
+        min-height: 0px;
     }
 }
 
