@@ -2332,11 +2332,15 @@ if (categoriesSection) {
   const toggleBtn2 = document.getElementById('filterToggle-2');
   const dropdown = document.getElementById('filterDropdown');
   const dropdown2 = document.getElementById('filterDropdown-2');
+  const filterArrowIcon = document.querySelector('.filter-arrow-icon');
+  const filterArrowIconSort = document.querySelector('.filter-arrow-icon-sort');
 
   // Функция для закрытия всех выпадающих меню
   const closeAllDropdowns = () => {
     dropdown.classList.remove('active');
     dropdown2.classList.remove('active');
+    filterArrowIcon.classList.remove('rotated');
+    filterArrowIconSort.classList.remove('rotated');
   };
 
   // Открытие/закрытие первого выпадающего меню
@@ -2346,6 +2350,7 @@ if (categoriesSection) {
     closeAllDropdowns();
     if (!isActive) {
       dropdown.classList.add('active');
+      filterArrowIcon.classList.add('rotated');
     }
   });
 
@@ -2356,6 +2361,7 @@ if (categoriesSection) {
     closeAllDropdowns();
     if (!isActive) {
       dropdown2.classList.add('active');
+      filterArrowIconSort.classList.add('rotated');
     }
   });
 
