@@ -2546,6 +2546,11 @@ document.querySelectorAll('.open-all-about-products').forEach(button => {
 });
 }
 
+function addToCart(isAdded, quantity) {
+  const result = { isAdded, quantity };
+  console.log(result);
+  return result;
+}
 
 // Добавление товара в корзину
 const addToCardProduct = document.querySelector('.add-to-card-product');
@@ -2583,13 +2588,11 @@ if (addToCardProduct) {
     function showNotification() {
       const notify = container.notifyBlock;
 
-      // Сбросить старый таймер, если пользователь спамит
       if (notifyTimeout) {
         clearTimeout(notifyTimeout);
         notifyTimeout = null;
       }
 
-      // Перезапускаем анимацию (если элемент уже активен)
       notify.classList.remove('active');
       void notify.offsetWidth;
       notify.classList.add('active');
@@ -2605,6 +2608,7 @@ if (addToCardProduct) {
         container.qtyBlock.classList.add('active');
         quantity = 1;
         updateQtyLabel();
+        addToCart(true, quantity);
       }
 
       showNotification(); 
@@ -2613,12 +2617,16 @@ if (addToCardProduct) {
     container.plusBtn?.addEventListener('click', () => {
       quantity++;
       updateQtyLabel();
+      // При увеличении передаём данные
+      addToCart(true, quantity);
     });
 
     container.minusBtn?.addEventListener('click', () => {
       if (quantity > 1) {
         quantity--;
         updateQtyLabel();
+        // При уменьшении передаём данные
+        addToCart(true, quantity);
       } else {
         quantity = 1;
         container.qtyBlock.classList.remove('active');
@@ -2626,11 +2634,12 @@ if (addToCardProduct) {
         container.addToCartBtn.style.display = '';
         updateQtyLabel();
 
-        // Очистить таймер уведомления, если плашка выключена досрочно
         if (notifyTimeout) {
           clearTimeout(notifyTimeout);
           notifyTimeout = null;
         }
+
+        addToCart(false, 0);
       }
     });
   }

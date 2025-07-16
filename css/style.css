@@ -10388,6 +10388,32 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     cursor: auto;
 }
 
+.document-buttons {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.document-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    color: #EDE4D7;
+    font-family: 'SF Pro Display', sans-serif;
+    font-size: 18px;
+    max-width: 350px;
+    width: 100%;
+    white-space: normal;         
+    word-break: break-word; 
+}
+
+.document-button:hover {
+    color: #AE9877;
+}
+
 /* Скрытый блок описания */
 
 .open-menu {
