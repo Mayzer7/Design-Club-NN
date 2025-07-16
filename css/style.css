@@ -10396,6 +10396,14 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     gap: 10px;
 }
 
+.document-button-container {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0px;
+}
+
 .document-button {
     border: none;
     background-color: transparent;

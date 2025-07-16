@@ -1611,6 +1611,12 @@ function handleScrollUp() {
 
             nav.addEventListener("click", toggleCurrentMenu);
             if (button) button.addEventListener("click", toggleCurrentMenu);
+
+            nav.querySelectorAll('.document-button').forEach(link => {
+              link.addEventListener('click', event => {
+                event.stopPropagation();
+              });
+            });
         });
       }); 
     }  
