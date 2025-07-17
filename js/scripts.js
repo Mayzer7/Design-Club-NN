@@ -1914,7 +1914,7 @@ if (notificationContainer) {
       notificationContainer.innerHTML = html;
 
       const notification = document.getElementById('notification');
-
+      
       setupDeleteModal(notification);
     })
     .catch(error => {
@@ -1941,6 +1941,9 @@ Promise.all([
   const confirmClearBtn = clearCartModal.querySelector('.confirm-clear-cart');
   const cancelClearBtn = clearCartModal.querySelector('.cancel-clear-cart');
 
+  // Текущая корзина
+  let currentCartId = null;
+
   function openClearModal() {
     clearCartModal.classList.add('show');
     container.style.filter = 'blur(5px)';
@@ -1954,7 +1957,16 @@ Promise.all([
   }
 
   openClearModalBtns.forEach(btn => {
-    btn.addEventListener('click', openClearModal);
+    btn.addEventListener('click', () => {
+      // Предпалагаю что у всех товаров одинаковый data-cart_id
+      const firstProduct = document.querySelector('.product-item-cart[data-cart_id]');
+      
+      if (firstProduct) {
+        currentCartId = firstProduct.dataset.cart_id;
+      }
+      
+      openClearModal();
+    }); 
   });
 
   cancelClearBtn.addEventListener('click', closeClearModal);
@@ -1964,19 +1976,23 @@ Promise.all([
   });
 
   confirmClearBtn.addEventListener('click', () => {
+    // Показываем уведомление и закрываем модалку
     clearCartNotification.classList.remove('hidden');
-
-    setTimeout(() => {
-      clearCartNotification.classList.add('hidden');
-    }, 3000);
-
+    setTimeout(() => clearCartNotification.classList.add('hidden'), 3000);
     closeClearModal();
+
+    console.log('Очищаем корзину с data-cart_id:', currentCartId);
+
+    // Функция очистки корзины
+    clearCart(currentCartId);
   });
 });
 }
 
 function setupDeleteModal(notification) {
   const modalContainer = document.getElementById("modal-container");  
+  // Удаляемый товар id
+  let productId = null;
 
   if (modalContainer) {
     fetch(MODAL_PATHS.deleteProduct)
@@ -2004,7 +2020,12 @@ function setupDeleteModal(notification) {
 
         // Открытие модалки
         openButtons.forEach(btn => {
-          btn.addEventListener('click', openModal);
+          btn.addEventListener('click', () => {
+            // Находим товар по data-id
+            const productEl = btn.closest('.product-item-cart');
+            productId = productEl.dataset.id;
+            openModal();
+          });
         });
 
         // Кнопка "Оставить" — закрыть модалку
@@ -2023,14 +2044,15 @@ function setupDeleteModal(notification) {
         }
 
         deleteButton.addEventListener('click', () => {
+          // Уведомление
           notification.classList.remove('hidden');
-          
-          setTimeout(() => {
-            notification.classList.add('hidden');
-          }, 3000);
-
-          // Закрыть модалку
+          setTimeout(() => notification.classList.add('hidden'), 3000);
           closeModal();
+
+          console.log('Удаляем товар с id:', productId);
+
+          // Функция удаления из корзины
+          removeFromCart(productId);
         });
       });
   }

@@ -11322,6 +11322,13 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     border: none;
     background-color: transparent;
     cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+    color: #EDE4D7;
+}
+
+.close-button:hover {
+    color: #AE9877;
 }
 
 .total-price-down {
