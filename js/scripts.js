@@ -2584,7 +2584,10 @@ if (addToCardProduct) {
   };
 
   function initContainer(container) {
-    let quantity = 1;
+    let quantity = container.qtyBlock.classList.contains('active')
+      ? parseInt(container.qtyLabel.textContent, 10) || 1
+      : 1;
+    
     let notifyTimeout = null; 
 
     function updateQtyLabel() {
