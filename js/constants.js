@@ -6,11 +6,21 @@ window.MODAL_PATHS = {
   notificationClearCart: 'modals/notification-clear-cart.html',
   reviewModal: 'modals/review-modal.html',
   notificationDeleteProduct: 'modals/notification-delete-product.html',
-  deleteProduct: 'modals/delete-product.html'
+  deleteProduct: 'modals/delete-product.html',
+  thanksPage: 'thanks-for-the-order-page.html',
 };
 
 window.IMAGE_PATHS = {
   mainBgSmall: 'images/main-page/bg-1030.webp'
+};
+
+window.PAGE_PATHS = {
+  thanksPage: 'thanks-for-the-order-page.html',
+  orderMistakePage: 'order-mistake-page.html'
+};
+
+window.SEARCH_PATHS = {
+  searchResultPage: 'search-result-page.html?query='
 };
 
 window.SVG_PATHS = {

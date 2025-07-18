@@ -157,44 +157,33 @@ function deactivateSearchMode() {
 // Переадрисация на страницу "Результаты поиска" после того как 
 // пользователь ввел название товара в поиске и нажал Enter
 
-
-function performMainSearch() {
-    const query = document.getElementById('search-input').value.trim();
-    if (query) {
-        window.location.href = 'search-result-page.html?query=' + encodeURIComponent(query);
-    }
-}
-
-document.getElementById('search-input').addEventListener('keypress', function(event) {
-    if (event.key === 'Enter') {
-        performMainSearch();
-    }
-});
-
-document.querySelector('.search-icon-button').addEventListener('click', function() {
-    performMainSearch();
-});
-
-const query = document.getElementById('search-input-on-page')
-
-if (query) {
-  function performOnPageSearch() {
-
-      if (query) {
-          window.location.href = 'search-result-page.html?query=' + encodeURIComponent(query);
-      }
+function performSearch(queryString) {
+  const q = queryString.trim();
+  if (q) {
+    window.location.href = SEARCH_PATHS.searchResultPage + encodeURIComponent(q);
   }
-
-  document.getElementById('search-input-on-page').addEventListener('keypress', function(event) {
-      if (event.key === 'Enter') {
-          performOnPageSearch();
-      }
-  });
-
-  document.querySelector('.search-icon-on-page').addEventListener('click', function() {
-      performOnPageSearch();
-  });
 }
+
+const mainInput = document.getElementById('search-input');
+mainInput.addEventListener('keypress', function(event) {
+  if (event.key === 'Enter') {
+    performSearch(mainInput.value);
+  }
+});
+document.querySelector('.search-icon-button')
+        .addEventListener('click', () => performSearch(mainInput.value));
+
+const pageInput = document.getElementById('search-input-on-page');
+if (pageInput) {
+  pageInput.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+      performSearch(pageInput.value);
+    }
+  });
+  document.querySelector('.search-icon-on-page')
+          .addEventListener('click', () => performSearch(pageInput.value));
+}
+
 
 // Функция когда клик вне хедера
 
@@ -2812,10 +2801,10 @@ if (buyProducts) {
 
           // Перенаправляем по результату
           if (formResult) {
-            window.open(successUrl, '_blank');
+            window.location.href = successUrl;
             form.reset();
           } else {
-            window.open(errorUrl, '_blank');
+            window.location.href = errorUrl;
           }
       });
 
@@ -2848,14 +2837,14 @@ if (buyProducts) {
       });
     });
   }
-
+  
   // Применяем валидацию 
   const orderForm = document.getElementById('order-form');
   if (orderForm) {
     initFormValidation(
       orderForm,
-      'thanks-for-the-order-page.html',
-      'order-mistake-page.html'
+      PAGE_PATHS.thanksPage,
+      PAGE_PATHS.orderMistakePage
     );
   }
 
