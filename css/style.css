@@ -11125,6 +11125,18 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     min-width: 310px;
 }
 
+.cart-empty-section {
+    border-bottom: none;
+}
+
+.cart-empty {
+    padding-left: 25%;
+}
+
+.cart-empty-text {
+    font-size: 20px;
+}
+
 .title-items {
     display: flex;
     justify-content: space-between;
@@ -11468,8 +11480,9 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     }
 }
 
-@media (max-width: 980px) {
-    .cart-section {
+@media (max-width: 1000px) {
+    .cart-section,
+    .cart-empty {
         padding-left: 0%;
     }
 
@@ -11562,10 +11575,20 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
         font-size: 80px;
     }
 
+    .cart-empty-text {
+        font-size: 18px;
+    }
+
     .under-header-container p,
     .under-header-container a,
     .under-header-container a:nth-child(1) {
         font-size: 14px;
+    }
+}
+
+@media (max-width: 575px) {
+    .cart-empty-text {
+        font-size: 16px;
     }
 }
 
