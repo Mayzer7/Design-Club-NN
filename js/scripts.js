@@ -722,6 +722,19 @@ header.addEventListener('mouseenter', (e) => {
   }
 });
 
+// Скрытие правого меню при наведении на категорию без подкатегорий в header
+
+const submenuItems = document.querySelectorAll('.submenu li:not(.submenu-items) > a');
+
+submenuItems.forEach(a => {
+  a.addEventListener('mouseenter', () => {
+    document.querySelectorAll('.submenu-item').forEach(item => item.classList.remove('active'));
+      document.querySelectorAll('.right-menu-content').forEach(content => {
+        content.style.display = 'none';
+      });
+  });
+});
+
 // Клик по верхнему меню
 
 document.querySelectorAll('.menu-toggle').forEach(button => {
@@ -1706,50 +1719,43 @@ function handleScrollUp() {
 
         // После загрузки HTML
         const modal = document.getElementById("modal-review");
-        const openLinks = document.querySelectorAll(".read-more-link");
         const closeBtn = document.querySelector(".modal-close");
-        const container = document.querySelector(".container");
+        const container = document.querySelector('.reviews-container') || document.body;
+        const blurContainer = document.querySelector('.container');
 
-        openLinks.forEach(link => {
-          link.addEventListener("click", (e) => {
-            e.preventDefault();
+        container.addEventListener('click', (e) => {
+          const link = e.target.closest('.read-more-link');
+          if (!link) return;          
+          e.preventDefault();
 
-            const cardReview     = e.currentTarget.closest('.review-card');
-            const cardReviewPage = e.currentTarget.closest('.review-page-card');
-            
-            const card = cardReview || cardReviewPage;
+          // Повторяем логику открытия модалки:
+          const cardReview     = link.closest('.review-card');
+          const cardReviewPage = link.closest('.review-page-card');
+          const card = cardReview || cardReviewPage;
+          if (!card) return;
 
-            if (!card) return;
+          let fullText, author;
+          if (card === cardReviewPage) {
+            fullText = card.querySelector('.review-text-page').innerText.trim();
+            author   = card.querySelector('.review-author-page').innerText.trim();
+          } else {
+            fullText = card.querySelector('.review-text').innerText.trim();
+            author   = card.querySelector('.review-author').innerText.trim();
+          }
 
-            let fullText;
-            let author;
+          const yandexLinkEl = card.querySelector('.review-link a');
+          const yandexHref   = yandexLinkEl ? yandexLinkEl.href : '#';
 
-            // Текст отзыва и его автор
-            if (card === cardReviewPage) {
-              fullText = card.querySelector('.review-text-page').innerText.trim();
-              author = card.querySelector('.review-author-page').innerText.trim();
-            } else {
-              fullText = card.querySelector('.review-text').innerText.trim();
-              author = card.querySelector('.review-author').innerText.trim();
-            }
+          const modal = document.getElementById("modal-review");
+          modal.querySelector('.review-modal-text').innerText   = fullText;
+          modal.querySelector('.review-modal-author').innerText = author;
+          modal.querySelector('.review-yandex-link a').href     = yandexHref;
 
-            // Ссылка на яндекс отзыв
-            const yandexLinkEl = card.querySelector('.review-link a');
-            const yandexHref = yandexLinkEl ? yandexLinkEl.getAttribute('href') : '#';
-
-            // Заполняем контент модалки
-            modal.querySelector('.review-modal-text').innerText = fullText;
-            modal.querySelector('.review-modal-author').innerText = author;
-            modal.querySelector('.review-yandex-link a')
-                .setAttribute('href', yandexHref);
-
-            // Открываем модалку
-            container.style.filter = "blur(5px)";
-            document.documentElement.classList.add("no-scroll");
-            document.body.classList.add("no-scroll");
-            modal.classList.remove("closing");
-            modal.classList.add("open");
-          });
+          blurContainer.style.filter = "blur(5px)";
+          document.documentElement.classList.add("no-scroll");
+          document.body.classList.add("no-scroll");
+          modal.classList.remove("closing");
+          modal.classList.add("open");
         });
 
         function closeModalReview() {
@@ -1757,10 +1763,10 @@ function handleScrollUp() {
           modal.classList.add("closing");
           setTimeout(() => {
             modal.classList.remove("closing");
-            container.style.filter = "none";
+            blurContainer.style.filter = "none";
             document.documentElement.classList.remove("no-scroll");
             document.body.classList.remove("no-scroll");
-          }, 500);
+          }, 300);
         }
 
         closeBtn.addEventListener("click", closeModalReview);
@@ -1773,7 +1779,8 @@ function handleScrollUp() {
 
       // Скрытие кнопки "читать весь" у отзыва если строк меньше 7
 
-      document.querySelectorAll('.review-card').forEach(card => {
+      function hideReadMoreCards() {
+        document.querySelectorAll('.review-card').forEach(card => {
           const textEl = card.querySelector('.review-text');
           const btn    = card.querySelector('.read-more-link');
           if (!textEl || !btn) return;
@@ -1794,7 +1801,45 @@ function handleScrollUp() {
           if (linesCount < 8) {
             btn.style.display = 'none';
           }
-      });
+        });
+      }
+
+      function hideReadMorePage() {
+        document.querySelectorAll('.review-page-card').forEach(card => {
+          const textEl = card.querySelector('.review-text-page');
+          const btn    = card.querySelector('.read-more-link');
+          if (!textEl || !btn) return;
+
+          // элемент с clamp:9 уже ограничит видимую высоту,
+          // clientHeight — видимая, scrollHeight — полная
+          if (textEl.scrollHeight <= textEl.clientHeight) {
+            // обрезки нет — скрываем кнопку
+            btn.style.display = 'none';
+          }
+        });
+      }
+
+      function applyHideLogic() {
+        hideReadMoreCards();
+        hideReadMorePage();
+      }
+
+      applyHideLogic();
+
+      // Отслеживаем динамическое добавление отзывов
+      const reviewsContainer = document.querySelector('.review-cards');
+
+      if (reviewsContainer) {
+        const observer = new MutationObserver((mutationsList) => {
+          for (const mutation of mutationsList) {
+            if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+              applyHideLogic(); // вызываем повторно
+            }
+          }
+        });
+
+        observer.observe(reviewsContainer, { childList: true, subtree: true });
+      }
     }
 
   // Свайп карточек "Почему выбирают нас"
@@ -2054,7 +2099,7 @@ const heroContent1 = document.querySelector('.hero-content-1');
 
 if (heroContent1) {
   
-// Переключение изображений каждые 3 секунды (десктоп + мобилка)
+// Переключение изображений каждые 5 секунд (десктоп + мобилка)
 document.addEventListener('DOMContentLoaded', () => {
   // Десктопные элементы:
   const images       = document.querySelectorAll('.hero-bg');
@@ -2072,7 +2117,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const slideCount       = images.length; // Должно быть 4 (добавляя ещё один фон в контейнер .hero-image с уникальным классом)
   
-  const SWITCH_INTERVAL  = 3000;          // 3 секунды
+  const SWITCH_INTERVAL  = 5000;          // 5 секунд
   let current = 0;
   let intervalId = null;
 
@@ -2233,6 +2278,19 @@ document.addEventListener('DOMContentLoaded', () => {
 const pageWrapper3 = document.querySelector('.page-wrapper-3');
 
 // Скрипты для контента на странице "catalog-page.html"
+
+const categoriesOneOption = document.querySelector('.categories-one-option');
+
+if (!categoriesOneOption) {
+  const leftArrowCategories = document.querySelector('.left-arrow-categories');
+  const rightArrowCategories = document.querySelector('.right-arrow-categories');
+
+  if (leftArrowCategories || rightArrowCategories) {
+    leftArrowCategories.style.display = 'none';
+    rightArrowCategories.style.display = 'none';
+  }
+}
+
 
 const categoriesSection = document.querySelector('.categories-section');
 
@@ -2411,27 +2469,37 @@ if (modalProduct) {
   // Инициализация product-swiper
   const modalProductMainSwiperContainer = document.querySelector('.product-swiper');
   if (modalProductMainSwiperContainer) {
+    const slidesCount = modalProductMainSwiperContainer.querySelectorAll('.swiper-slide').length;
+    const productSwiperWrapper = document.querySelector('.product-swiper-wrapper');
+
+    if (slidesCount === 1 || slidesCount === 2) {
+      productSwiperWrapper.classList.add('one-image');
+    }
+
     modalProductMainSwiper = new Swiper('.product-swiper', {
       slidesPerView: 'auto',
       spaceBetween: 20,
+      centeredSlides: slidesCount === 1 || slidesCount === 2,
       loop: false,
       effect: 'slide',
       speed: 500,
-      autoplay: {
+      autoplay: slidesCount > 4 ? {
         delay: 2500,
         disableOnInteraction: false,
-      },
+      } : false,
       breakpoints: {
         0: { spaceBetween: 10 },
         1411: { spaceBetween: 20 }
       },
       on: {
         reachEnd: function () {
-          this.autoplay.stop();
-          setTimeout(() => {
-            this.slideTo(0);
-            this.autoplay.start();
-          }, 1000);
+          if (slidesCount > 4) {
+            this.autoplay.stop();
+            setTimeout(() => {
+              this.slideTo(0);
+              this.autoplay.start();
+            }, 1000);
+          }
         }
       }
     });
@@ -3006,7 +3074,7 @@ const gallerySwiper = document.querySelector('.project-gallery-swiper');
         centeredSlides: !isMobile, // если не мобильный — центрируем
         spaceBetween: 20,
         grabCursor: false,
-        loop: true,
+        loop: false,
         speed: 800,
         initialSlide: 1,
         navigation: {
