@@ -2835,18 +2835,18 @@ if (buyProducts) {
           }
 
           // Валидация комментария
-          const commentTextarea = form.querySelector('textarea[data-field="comment"]');
-          if (commentTextarea && commentTextarea.value.trim() === '') {
-              let error = commentTextarea.nextElementSibling;
-              if (!error || !error.classList.contains('error-contact')) {
-                  error = document.createElement('span');
-                  error.className = 'error-contact';
-                  commentTextarea.insertAdjacentElement('afterend', error);
-              }
-              error.textContent = 'Введите комментарий';
-              error.style.display = 'block';
-              hasError = true;
-          }
+          // const commentTextarea = form.querySelector('textarea[data-field="comment"]');
+          // if (commentTextarea && commentTextarea.value.trim() === '') {
+          //     let error = commentTextarea.nextElementSibling;
+          //     if (!error || !error.classList.contains('error-contact')) {
+          //         error = document.createElement('span');
+          //         error.className = 'error-contact';
+          //         commentTextarea.insertAdjacentElement('afterend', error);
+          //     }
+          //     error.textContent = 'Введите комментарий';
+          //     error.style.display = 'block';
+          //     hasError = true;
+          // }
 
           // Валидация чекбокса
           const checkbox = form.querySelector('input[data-field="accept"]');

@@ -11362,10 +11362,10 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     font-family: 'SF Pro Display', sans-serif;
     font-weight: 600;
     font-size: 26px;
-    max-width: 304px;
+    max-width: 400px;
     display: -webkit-box;            
     -webkit-box-orient: vertical;    
-    -webkit-line-clamp: 2;            
+    -webkit-line-clamp: 3;            
     overflow: hidden;                 
     text-overflow: ellipsis;            
     white-space: normal;
