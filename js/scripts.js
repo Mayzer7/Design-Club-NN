@@ -1145,22 +1145,22 @@ function handleScrollUp() {
     }
 
     // Валидация резюме 
-    const resumeInput = form.querySelector('input[data-field="resume"]');
-    if (resumeInput) {
-      let resumeError = resumeInput
-        .closest('.resume-upload')
-        .querySelector('.error-contact');
-      if (!resumeError) {
-        resumeError = document.createElement('span');
-        resumeError.className = 'error-contact';
-        resumeInput.closest('.resume-upload').appendChild(resumeError);
-      }
-      if (resumeInput.files.length === 0) {
-        resumeError.textContent = 'Пожалуйста, прикрепите резюме.';
-        resumeError.style.display = 'block';
-        valid = false;
-      }
-    }
+    // const resumeInput = form.querySelector('input[data-field="resume"]');
+    // if (resumeInput) {
+    //   let resumeError = resumeInput
+    //     .closest('.resume-upload')
+    //     .querySelector('.error-contact');
+    //   if (!resumeError) {
+    //     resumeError = document.createElement('span');
+    //     resumeError.className = 'error-contact';
+    //     resumeInput.closest('.resume-upload').appendChild(resumeError);
+    //   }
+    //   if (resumeInput.files.length === 0) {
+    //     resumeError.textContent = 'Пожалуйста, прикрепите резюме.';
+    //     resumeError.style.display = 'block';
+    //     valid = false;
+    //   }
+    // }
 
     // Валидация чекбокса
     const acceptInput = form.querySelector('input[data-field="accept"]');
@@ -1777,7 +1777,7 @@ function handleScrollUp() {
         });
       });
 
-      // Скрытие кнопки "читать весь" у отзыва если строк меньше 7
+      // Скрытие кнопки "читать весь" у отзывов
 
       function hideReadMoreCards() {
         document.querySelectorAll('.review-card').forEach(card => {
@@ -1786,19 +1786,25 @@ function handleScrollUp() {
           if (!textEl || !btn) return;
 
           const style      = window.getComputedStyle(textEl);
-          let lineHeight   = parseFloat(style.lineHeight);
-          
+
+          let clamp = parseInt(style.getPropertyValue('--line-clamp'), 10);
+
+          if (isNaN(clamp)) {
+            clamp = parseInt(style.getPropertyValue('-webkit-line-clamp'), 10);
+          }
+
+          if (isNaN(clamp)) {
+            clamp = 7;
+          }
+
+          let lineHeight = parseFloat(style.lineHeight);
           if (isNaN(lineHeight)) {
             lineHeight = parseFloat(style.fontSize) * 1.2;
           }
-
-
           const totalHeight = textEl.scrollHeight;
-
           const linesCount  = Math.round(totalHeight / lineHeight);
 
-          // если строк меньше 8 — скрываем кнопку
-          if (linesCount < 8) {
+          if (linesCount <= clamp) {
             btn.style.display = 'none';
           }
         });
@@ -1810,8 +1816,6 @@ function handleScrollUp() {
           const btn    = card.querySelector('.read-more-link');
           if (!textEl || !btn) return;
 
-          // элемент с clamp:9 уже ограничит видимую высоту,
-          // clientHeight — видимая, scrollHeight — полная
           if (textEl.scrollHeight <= textEl.clientHeight) {
             // обрезки нет — скрываем кнопку
             btn.style.display = 'none';
@@ -1833,7 +1837,7 @@ function handleScrollUp() {
         const observer = new MutationObserver((mutationsList) => {
           for (const mutation of mutationsList) {
             if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-              applyHideLogic(); // вызываем повторно
+              applyHideLogic(); 
             }
           }
         });
