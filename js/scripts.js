@@ -164,25 +164,39 @@ function performSearch(queryString) {
   }
 }
 
-const mainInput = document.getElementById('search-input');
-mainInput.addEventListener('keypress', function(event) {
-  if (event.key === 'Enter') {
-    performSearch(mainInput.value);
-  }
-});
-document.querySelector('.search-icon-button')
-        .addEventListener('click', () => performSearch(mainInput.value));
+document.addEventListener('DOMContentLoaded', () => {
+  // Собираем все инпуты и кнопки, связанные с поиском
+  const inputs = document.querySelectorAll(
+    '#search-input, #search-input-on-page, .search-bar input, .search-items-burger .search-input input'
+  );
+  const buttons = document.querySelectorAll(
+    '.search-icon-button, .search-icon-on-page'
+  );
 
-const pageInput = document.getElementById('search-input-on-page');
-if (pageInput) {
-  pageInput.addEventListener('keypress', function(event) {
-    if (event.key === 'Enter') {
-      performSearch(pageInput.value);
-    }
+  inputs.forEach(input => {
+    input.addEventListener('keypress', e => {
+      if (e.key === 'Enter') {
+        performSearch(input.value);
+      }
+    });
   });
-  document.querySelector('.search-icon-on-page')
-          .addEventListener('click', () => performSearch(pageInput.value));
-}
+
+  // Навешиваем клики на все кнопки
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const wrapper = btn.closest('.search-bar, .search-bar-on-page, .search-items-burger, #search-input-container, #search-input-on-page-container');
+      let input;
+      if (wrapper) {
+        input = wrapper.querySelector('input');
+      }
+
+      if (!input && inputs.length) {
+        input = inputs[0];
+      }
+      performSearch(input.value);
+    });
+  });
+});
 
 
 // Функция когда клик вне хедера
@@ -1862,6 +1876,11 @@ function handleScrollUp() {
         nextEl: '.why-right-arrow',
         prevEl: '.why-left-arrow',
       },
+      on: {
+        init: resizeCards,
+        slideChange: resizeCards,
+        resize: resizeCards
+      },
 
       breakpoints: {
         1020: {
@@ -1886,6 +1905,16 @@ function handleScrollUp() {
         },
       },
     });
+
+    function resizeCards() {
+      const cards = document.querySelectorAll('.why-choose-us-swiper .card');
+      let maxH = 0;
+      cards.forEach(c => {
+        c.style.minHeight = ''; 
+        maxH = Math.max(maxH, c.getBoundingClientRect().height);
+      });
+      cards.forEach(c => c.style.minHeight = maxH + 'px');
+    }
 
     // Отображаем стрелочки для переключения карточек "Почему выбирают нас", если карточек больше 4 
     const whyCards = document.querySelectorAll('.why-choose-us-content .card');
@@ -2406,7 +2435,7 @@ if (categoriesSection) {
     }
   });
 
-  // Выплывающие меню фильтров в шапке
+  // Выплывающие меню фильтров на странице каталога
   const toggleBtn = document.getElementById('filterToggle');
   const toggleBtn2 = document.getElementById('filterToggle-2');
   const dropdown = document.getElementById('filterDropdown');
@@ -2456,6 +2485,20 @@ if (categoriesSection) {
     }
   });
 }
+
+function sortMobileFilter() {
+  document.querySelectorAll('label.js-sortInput').forEach(function(label) {
+    label.addEventListener('click', function(e) {
+      e.preventDefault();
+      var link = label.getAttribute('data-link');
+      if (link) {
+          window.location.href = link;
+        }
+      });
+  });
+}
+
+sortMobileFilter();
 
 
 
@@ -2515,25 +2558,29 @@ if (modalProduct) {
     modalProductImagesMobileSwiper = new Swiper('.images-mobile.swiper', {
       slidesPerView: 'auto',
       slidesPerGroup: 1,
-      initialSlide: 1,
+      initialSlide: 0,
       spaceBetween: 10,
       centeredSlides: false,
-      loop: true,
+      loop: false,
       autoplay: {
         delay: 2500,
         disableOnInteraction: false,
       },
+    });   
+    modalProductImagesMobileSwiper.on('click', (swiper, event) => {
+      const realIndex = swiper.clickedIndex;
+      if (realIndex !== undefined) {
+        openModalProductAt(realIndex);
+      }
     });
-    modalProductSwiperInstances.push(modalProductImagesMobileSwiper);
   }
 
   function initModalProductSwiper(startIndex = 0) {
     if (modalProductSwiper) modalProductSwiper.destroy(true, true);
 
     modalProductSwiper = new Swiper('.modal-product-swiper', {
-        loop: true,
+        loop: false,
         speed: 800,
-        initialSlide: startIndex,
         navigation: {
           prevEl: '.swiper-button-next',
           nextEl: '.swiper-button-prev',
@@ -2553,6 +2600,8 @@ if (modalProduct) {
           },
         },
       });
+
+    modalProductSwiper.slideToLoop(startIndex, 0);
   }
 
   let isModalOpen = false;
@@ -2561,12 +2610,19 @@ if (modalProduct) {
   function openModalProductAt(index) {
     if (isModalOpen) return;
     isModalOpen = true;
-
     modalProduct.classList.add('show');
     document.querySelector('.container').style.filter = 'blur(5px)';
     document.documentElement.classList.add('no-scroll');
 
-    modalProductSwiperInstances.forEach(swiper => swiper.autoplay?.stop());
+    modalProductSwiperInstances.forEach(swiper => {
+      if (swiper.autoplay && swiper.autoplay.stop) {
+        swiper.autoplay.stop();
+      }
+    });
+
+    if (modalProductImagesMobileSwiper && modalProductImagesMobileSwiper.autoplay) {
+      modalProductImagesMobileSwiper.autoplay.stop();
+    }
 
     requestAnimationFrame(() => {
       initModalProductSwiper(index);
@@ -2575,19 +2631,28 @@ if (modalProduct) {
 
   // Закрытие модалки
   function closeModalProduct() {
-  modalProduct.classList.remove('show');
-  document.querySelector('.container').style.filter = 'none';
-  document.documentElement.classList.remove('no-scroll');
-  isModalOpen = false;
+    modalProduct.classList.remove('show');
+    document.querySelector('.container').style.filter = 'none';
+    document.documentElement.classList.remove('no-scroll');
+    isModalOpen = false;
 
-  setTimeout(() => {
-    if (modalProductSwiper) {
-      modalProductSwiper.destroy(true, true);
-      modalProductSwiper = null;
+    setTimeout(() => {
+      if (modalProductSwiper) {
+        modalProductSwiper.destroy(true, true);
+        modalProductSwiper = null;
+      }
+    }, 400);
+
+    modalProductSwiperInstances.forEach(swiper => {
+      if (swiper.autoplay && swiper.autoplay.start) {
+        swiper.autoplay.start();
+      }
+    });
+
+    if (modalProductImagesMobileSwiper && modalProductImagesMobileSwiper.autoplay) {
+      modalProductImagesMobileSwiper.autoplay.start();
     }
-  }, 400); 
-  modalProductSwiperInstances.forEach(swiper => swiper.autoplay?.start());
-}
+  }
 
   // Обработчик закрытия модалки
   document.querySelector('.close-product-modal').addEventListener('click', closeModalProduct);
@@ -2685,7 +2750,7 @@ if (addToCardProduct) {
         notifyTimeout = null;
       }
 
-      notify.classList.remove('active');
+      notify.classList.remove('active');  
       void notify.offsetWidth;
       notify.classList.add('active');
 

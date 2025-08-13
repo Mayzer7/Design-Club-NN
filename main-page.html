@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <!-- Swiper -->
     <link
       rel="stylesheet"
@@ -322,17 +322,30 @@
             <div class="blur-container">
             <div class="main-hero-container">
                 <div class="main-hero">
-                    <picture class="hero-image">
+                    <div class="hero-image">
+                        <picture class="hero-bg-wrapper">
+                            <source 
+                                media="(max-width: 500px)" 
+                                srcset="images/main-page/background-mobile.webp" />
+                            <img 
+                                src="images/main-page/background-webp.webp" 
+                                alt="фон" 
+                                class="hero-bg hero-bg-1 active" />
+                        </picture>
+
                         <div class="hero-bg-wrapper">
-                            <img src="images/main-page/background-webp.webp" alt="фон" class="hero-bg hero-bg-1 active" />
+                            <img src="images/main-page/background-webp.webp" alt="фон" class="hero-bg hero-bg-2" />
+                        </div>
+                        <div class="hero-bg-wrapper">
+                            <img src="images/main-page/background-webp.webp" alt="фон" class="hero-bg hero-bg-3" />
                         </div>
                         <div class="hero-bg-wrapper with-gradient">
-                            <img src="images/main-page/backgrounds/switch-1.webp" alt="фон" class="hero-bg hero-bg-2" />
+                            <img src="images/main-page/backgrounds/switch-1.webp" alt="фон" class="hero-bg hero-bg-4" />
                         </div>
                         <div class="hero-bg-wrapper with-gradient">
-                            <img src="images/main-page/backgrounds/switch-2.webp" alt="фон" class="hero-bg hero-bg-3" />
+                            <img src="images/main-page/backgrounds/switch-2.webp" alt="фон" class="hero-bg hero-bg-5" />
                         </div>
-                    </picture>
+                    </div>
 
                     <div class="fixed-main-title hero-left-side">
                         <div class="reveal-mask">
@@ -366,6 +379,14 @@
                             <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
                             <div class="progress-bar"></div>
                             </button>
+                            <button data-index="3">
+                            <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
+                            <div class="progress-bar"></div>
+                            </button>
+                            <button data-index="4">
+                            <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
+                            <div class="progress-bar"></div>
+                            </button>
                         </div>
                         </div>
                     </div>
@@ -392,6 +413,14 @@
                             <div class="progress-bar"></div>
                             </button>
                             <button data-index="2">
+                            <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
+                            <div class="progress-bar"></div>
+                            </button>
+                            <button data-index="3">
+                            <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
+                            <div class="progress-bar"></div>
+                            </button>
+                            <button data-index="4">
                             <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
                             <div class="progress-bar"></div>
                             </button>
@@ -424,6 +453,88 @@
                             <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
                             <div class="progress-bar"></div>
                             </button>
+                            <button data-index="3">
+                            <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
+                            <div class="progress-bar"></div>
+                            </button>
+                            <button data-index="4">
+                            <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
+                            <div class="progress-bar"></div>
+                            </button>
+                        </div>
+                        </div>
+                    </div>
+
+                    <!-- Слайд 4 -->
+                    <div class="hero-content hero-content-4">
+                        <div class="hero-content-first-line fade-in">
+                        <div class="invite-left">04  —  05</div>
+                        <div class="invite-right reveal-mask">
+                            <h4>Довольные клиенты<br> делятся опытом</h4>
+                            <a href="reviews-page.html" class="invite-link">
+                                Отзывы <img src="images/svg/contact.svg" alt="icon">
+                            </a>
+                        </div>
+                        </div>
+                        <div class="hero-content-second-line">
+                        <div class="hero-right-side fade-in">
+                            <button data-index="0">
+                            <img src="images/main-page/miniature/miniature-1.png" alt="Миниатюра">
+                            <div class="progress-bar"></div>
+                            </button>
+                            <button data-index="1">
+                            <img src="images/main-page/miniature/miniature-2.webp" alt="Миниатюра">
+                            <div class="progress-bar"></div>
+                            </button>
+                            <button data-index="2">
+                            <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
+                            <div class="progress-bar"></div>
+                            </button>
+                            <button data-index="3">
+                            <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
+                            <div class="progress-bar"></div>
+                            </button>
+                            <button data-index="4">
+                            <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
+                            <div class="progress-bar"></div>
+                            </button>
+                        </div>
+                        </div>
+                    </div>
+
+                    <!-- Слайд 5 -->
+                    <div class="hero-content hero-content-5">
+                        <div class="hero-content-first-line fade-in">
+                        <div class="invite-left">05  —  05</div>
+                        <div class="invite-right reveal-mask">
+                            <h4>Довольные клиенты<br> делятся опытом</h4>
+                            <a href="reviews-page.html" class="invite-link">
+                                Отзывы <img src="images/svg/contact.svg" alt="icon">
+                            </a>
+                        </div>
+                        </div>
+                        <div class="hero-content-second-line">
+                        <div class="hero-right-side fade-in">
+                            <button data-index="0">
+                            <img src="images/main-page/miniature/miniature-1.png" alt="Миниатюра">
+                            <div class="progress-bar"></div>
+                            </button>
+                            <button data-index="1">
+                            <img src="images/main-page/miniature/miniature-2.webp" alt="Миниатюра">
+                            <div class="progress-bar"></div>
+                            </button>
+                            <button data-index="2">
+                            <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
+                            <div class="progress-bar"></div>
+                            </button>
+                            <button data-index="3">
+                            <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
+                            <div class="progress-bar"></div>
+                            </button>
+                            <button data-index="4">
+                            <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
+                            <div class="progress-bar"></div>
+                            </button>
                         </div>
                         </div>
                     </div>
@@ -435,18 +546,26 @@
                     <div class="mobile-up fade-in">
                         <div class="mobile-miniatures">
                         <!-- Каждая миниатюра теперь – кнопка с data-index -->
-                        <button data-index="0" class="mobile-thumb">
-                            <img src="images/main-page/miniature/miniature-1.png" alt="Миниатюра">
-                            <div class="progress-bar-mobile"></div>
-                        </button>
-                        <button data-index="1" class="mobile-thumb">
-                            <img src="images/main-page/miniature/miniature-2.webp" alt="Миниатюра">
-                            <div class="progress-bar-mobile"></div>
-                        </button>
-                        <button data-index="2" class="mobile-thumb">
-                            <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
-                            <div class="progress-bar-mobile"></div>
-                        </button>
+                            <button data-index="0" class="mobile-thumb">
+                                <img src="images/main-page/miniature/miniature-1.png" alt="Миниатюра">
+                                <div class="progress-bar-mobile"></div>
+                            </button>
+                            <button data-index="1" class="mobile-thumb">
+                                <img src="images/main-page/miniature/miniature-2.webp" alt="Миниатюра">
+                                <div class="progress-bar-mobile"></div>
+                            </button>
+                            <button data-index="2" class="mobile-thumb">
+                                <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
+                                <div class="progress-bar-mobile"></div>
+                            </button>
+                            <button data-index="3" class="mobile-thumb">
+                                <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
+                                <div class="progress-bar-mobile"></div>
+                            </button>
+                            <button data-index="4" class="mobile-thumb">
+                                <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
+                                <div class="progress-bar-mobile"></div>
+                            </button>
                         </div>
 
                         <div class="invite-left-mobile">01 — 03</div>
@@ -461,18 +580,27 @@
                     <div class="hero-content-mobile hero-content-mobile-2">
                     <div class="mobile-up fade-in">
                         <div class="mobile-miniatures">
-                        <button data-index="0" class="mobile-thumb">
-                            <img src="images/main-page/miniature/miniature-1.png" alt="Миниатюра">
-                            <div class="progress-bar-mobile"></div>
-                        </button>
-                        <button data-index="1" class="mobile-thumb">
-                            <img src="images/main-page/miniature/miniature-2.webp" alt="Миниатюра">
-                            <div class="progress-bar-mobile"></div>
-                        </button>
-                        <button data-index="2" class="mobile-thumb">
-                            <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
-                            <div class="progress-bar-mobile"></div>
-                        </button>
+                        <!-- Каждая миниатюра теперь – кнопка с data-index -->
+                            <button data-index="0" class="mobile-thumb">
+                                <img src="images/main-page/miniature/miniature-1.png" alt="Миниатюра">
+                                <div class="progress-bar-mobile"></div>
+                            </button>
+                            <button data-index="1" class="mobile-thumb">
+                                <img src="images/main-page/miniature/miniature-2.webp" alt="Миниатюра">
+                                <div class="progress-bar-mobile"></div>
+                            </button>
+                            <button data-index="2" class="mobile-thumb">
+                                <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
+                                <div class="progress-bar-mobile"></div>
+                            </button>
+                            <button data-index="3" class="mobile-thumb">
+                                <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
+                                <div class="progress-bar-mobile"></div>
+                            </button>
+                            <button data-index="4" class="mobile-thumb">
+                                <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
+                                <div class="progress-bar-mobile"></div>
+                            </button>
                         </div>
 
                         <div class="invite-left-mobile">02 — 03</div>
@@ -485,29 +613,108 @@
 
                     <!-- Мобильный слайд 3 -->
                     <div class="hero-content-mobile hero-content-mobile-3">
-                    <div class="mobile-up fade-in">
-                        <div class="mobile-miniatures">
-                        <button data-index="0" class="mobile-thumb">
-                            <img src="images/main-page/miniature/miniature-1.png" alt="Миниатюра">
-                            <div class="progress-bar-mobile"></div>
-                        </button>
-                        <button data-index="1" class="mobile-thumb">
-                            <img src="images/main-page/miniature/miniature-2.webp" alt="Миниатюра">
-                            <div class="progress-bar-mobile"></div>
-                        </button>
-                        <button data-index="2" class="mobile-thumb">
-                            <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
-                            <div class="progress-bar-mobile"></div>
-                        </button>
+                        <div class="mobile-up fade-in">
+                            <div class="mobile-miniatures">
+                        <!-- Каждая миниатюра теперь – кнопка с data-index -->
+                            <button data-index="0" class="mobile-thumb">
+                                <img src="images/main-page/miniature/miniature-1.png" alt="Миниатюра">
+                                <div class="progress-bar-mobile"></div>
+                            </button>
+                            <button data-index="1" class="mobile-thumb">
+                                <img src="images/main-page/miniature/miniature-2.webp" alt="Миниатюра">
+                                <div class="progress-bar-mobile"></div>
+                            </button>
+                            <button data-index="2" class="mobile-thumb">
+                                <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
+                                <div class="progress-bar-mobile"></div>
+                            </button>
+                            <button data-index="3" class="mobile-thumb">
+                                <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
+                                <div class="progress-bar-mobile"></div>
+                            </button>
+                            <button data-index="4" class="mobile-thumb">
+                                <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
+                                <div class="progress-bar-mobile"></div>
+                            </button>
                         </div>
 
-                        <div class="invite-left-mobile">03 — 03</div>
-                        <p>Довольные клиенты<br> делятся опытом</p>
-                        <a href="reviews-page.html" class="invite-link-mobile">
-                        Отзывы <img src="images/svg/contact.svg" alt="icon">
-                        </a>
+                            <div class="invite-left-mobile">03 — 03</div>
+                            <p>Довольные клиенты<br> делятся опытом</p>
+                            <a href="reviews-page.html" class="invite-link-mobile">
+                            Отзывы <img src="images/svg/contact.svg" alt="icon">
+                            </a>
+                        </div>
                     </div>
-                </div>
+
+                    <!-- Мобильный слайд 4 -->
+                    <div class="hero-content-mobile hero-content-mobile-4">
+                        <div class="mobile-up fade-in">
+                            <div class="mobile-miniatures">
+                        <!-- Каждая миниатюра теперь – кнопка с data-index -->
+                            <button data-index="0" class="mobile-thumb">
+                                <img src="images/main-page/miniature/miniature-1.png" alt="Миниатюра">
+                                <div class="progress-bar-mobile"></div>
+                            </button>
+                            <button data-index="1" class="mobile-thumb">
+                                <img src="images/main-page/miniature/miniature-2.webp" alt="Миниатюра">
+                                <div class="progress-bar-mobile"></div>
+                            </button>
+                            <button data-index="2" class="mobile-thumb">
+                                <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
+                                <div class="progress-bar-mobile"></div>
+                            </button>
+                            <button data-index="3" class="mobile-thumb">
+                                <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
+                                <div class="progress-bar-mobile"></div>
+                            </button>
+                            <button data-index="4" class="mobile-thumb">
+                                <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
+                                <div class="progress-bar-mobile"></div>
+                            </button>
+                        </div>
+
+                            <div class="invite-left-mobile">03 — 03</div>
+                            <p>Довольные клиенты<br> делятся опытом</p>
+                            <a href="reviews-page.html" class="invite-link-mobile">
+                            Отзывы <img src="images/svg/contact.svg" alt="icon">
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Мобильный слайд 5 -->
+                    <div class="hero-content-mobile hero-content-mobile-5">
+                        <div class="mobile-up fade-in">
+                            <div class="mobile-miniatures">
+                        <!-- Каждая миниатюра теперь – кнопка с data-index -->
+                            <button data-index="0" class="mobile-thumb">
+                                <img src="images/main-page/miniature/miniature-1.png" alt="Миниатюра">
+                                <div class="progress-bar-mobile"></div>
+                            </button>
+                            <button data-index="1" class="mobile-thumb">
+                                <img src="images/main-page/miniature/miniature-2.webp" alt="Миниатюра">
+                                <div class="progress-bar-mobile"></div>
+                            </button>
+                            <button data-index="2" class="mobile-thumb">
+                                <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
+                                <div class="progress-bar-mobile"></div>
+                            </button>
+                            <button data-index="3" class="mobile-thumb">
+                                <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
+                                <div class="progress-bar-mobile"></div>
+                            </button>
+                            <button data-index="4" class="mobile-thumb">
+                                <img src="images/main-page/miniature/miniature-3.webp" alt="Миниатюра">
+                                <div class="progress-bar-mobile"></div>
+                            </button>
+                        </div>
+
+                            <div class="invite-left-mobile">03 — 03</div>
+                            <p>Довольные клиенты<br> делятся опытом</p>
+                            <a href="reviews-page.html" class="invite-link-mobile">
+                            Отзывы <img src="images/svg/contact.svg" alt="icon">
+                            </a>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -553,65 +760,33 @@
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide">
                                             <div class="card down-card fade-in">
-                                                <h2 class="fade-in">Персональный подход</h2>
-                                                <p class="fade-in">Мы ценим каждого клиента и предлагаем индивидуальные решения, которые соответствуют вашим потребностям и предпочтениям, обеспечивая лучший опыт покупки. Мы ценим каждого клиента </p>
-                                                <img class="fade-in" src="images/main-page/why-choose-us-1.png" alt="Подход">
-                                            </div>
-                                        </div>
-                                    
-                                        <div class="swiper-slide">
-                                            <div class="card fade-in">
-                                                <h2 class="fade-in">Качество и надежность</h2>
-                                                <p class="fade-in">Мы ценим каждого клиента и предлагаем индивидуальные решения, которые соответствуют вашим потребностям и предпочтениям, обеспечивая лучший опыт покупки. Мы ценим каждого клиента</p>
-                                                <img class="fade-in" src="images/main-page/why-choose-us-2.png" alt="Подход">
-                                            </div>
-                                        </div>
-                        
-                                        <div class="swiper-slide">
-                                            <div class="card down-card fade-in">
-                                                <h2 class="fade-in">Постпродажная поддержка</h2>
-                                                <p class="fade-in">Мы ценим каждого клиента и предлагаем индивидуальные решения, которые соответствуют вашим потребностям и предпочтениям, обеспечивая лучший опыт покупки. Мы ценим каждого клиента</p>
+                                                <h2 class="fade-in">Сервис, который не заканчивается на покупке</h2>
+                                                <p class="fade-in">Мы знаем, как важно оставаться рядом с Вами после закрытия сделки, ведь именно здесь начинается настоящая забота. Поддержка и помощь с любыми трудностями после покупки – это то, что мы заложили в основу нашей работы. Для нас важен ваш комфорт, а не бюрократия, ведь вы общаетесь с теми, кто реально вам поможет, а не отправит в «службу поддержки».</p>
                                                 <img class="fade-in" src="images/main-page/why-choose-us-3.png" alt="Подход">
                                             </div>
                                         </div>
                         
                                         <div class="swiper-slide">
                                             <div class="card fade-in">
-                                                <h2 class="fade-in">Хранение на складе</h2>
-                                                <p class="fade-in">Мы ценим каждого клиента и предлагаем индивидуальные решения, которые соответствуют вашим потребностям и предпочтениям, обеспечивая лучший опыт покупки. Мы ценим каждого клиента </p>
+                                                <h2 class="fade-in">Персональный подход</h2>
+                                                <p class="fade-in">Личный менеджер пройдет с Вами весь путь – от бетонных стен до финального декора. И даже если это просто обновление мебели в любимой квартире – Вы всегда можете положиться на нового помощника, который будет в курсе вплоть до какого оттенка плитку Вы выбрали в прошлый раз и почему раковина должна быть именно 80 см.</p>
                                                 <img class="fade-in" src="images/main-page/why-choose-us-4.png" alt="Подход">
                                             </div>
                                         </div>
 
                                         <div class="swiper-slide">
                                             <div class="card down-card fade-in">
-                                                <h2 class="fade-in">Персональный подход</h2>
-                                                <p class="fade-in">Мы ценим каждого клиента и предлагаем индивидуальные решения, которые соответствуют вашим потребностям и предпочтениям, обеспечивая лучший опыт покупки. Мы ценим каждого клиента </p>
+                                                <h2 class="fade-in">Доставка в удобное время</h2>
+                                                <p class="fade-in">Ваше время слишком ценно, чтобы ждать доставку «в течение дня». Выбирайте удобный трехчасовой интервал заранее, и мы приедем точно в срок или компенсируем простой. </p>
                                                 <img class="fade-in" src="images/main-page/why-choose-us-1.png" alt="Подход">
                                             </div>
                                         </div>
                                     
                                         <div class="swiper-slide">
                                             <div class="card fade-in">
-                                                <h2 class="fade-in">Качество и надежность</h2>
-                                                <p class="fade-in">Мы ценим каждого клиента и предлагаем индивидуальные решения, которые соответствуют вашим потребностям и предпочтениям, обеспечивая лучший опыт покупки. Мы ценим каждого клиента</p>
+                                                <h2 class="fade-in">Хранение на складе до 2 лет</h2>
+                                                <p class="fade-in">ремонт пошел не по графику? Сохраним Ваш товар на нашем складе столько, сколько нужно. Бесплатно. А тем временем продолжаете ремонт в удобном Вам темпе – без лишней спешки и суеты. </p>
                                                 <img class="fade-in" src="images/main-page/why-choose-us-2.png" alt="Подход">
-                                            </div>
-                                        </div>
-                        
-                                        <div class="swiper-slide">
-                                            <div class="card down-card fade-in">
-                                                <h2 class="fade-in">Постпродажная поддержка</h2>
-                                                <p class="fade-in">Мы ценим каждого клиента и предлагаем индивидуальные решения, которые соответствуют вашим потребностям и предпочтениям, обеспечивая лучший опыт покупки. Мы ценим каждого клиента</p>
-                                                <img class="fade-in" src="images/main-page/why-choose-us-3.png" alt="Подход">
-                                            </div>
-                                        </div>
-                        
-                                        <div class="swiper-slide">
-                                            <div class="card fade-in">
-                                                <h2 class="fade-in">Хранение на складе</h2>
-                                                <p class="fade-in">Мы ценим каждого клиента и предлагаем индивидуальные решения, которые соответствуют вашим потребностям и предпочтениям, обеспечивая лучший опыт покупки. Мы ценим каждого клиента </p>
-                                                <img class="fade-in" src="images/main-page/why-choose-us-4.png" alt="Подход">
                                             </div>
                                         </div>
                                     </div>
@@ -1308,7 +1483,9 @@
                                     </div>
                 
                                     <div class="project-content-second">
-                                        <img src="images/main-page/projects/project-1.png" alt="Проект">
+                                        
+                                            <img src="test-images/1.png" alt="Проект">
+                                        
                 
                                         <p>
                                             В нашем шоуруме вас встретит
@@ -1321,7 +1498,7 @@
                                     </div>
                 
                                     <div class="project-content-last">
-                                        <img class="project-image" src="images/main-page/projects/project-small.png" alt="Проект маленькая фотография">
+                                        <img class="project-image" src="test-images/1.png" alt="Проект маленькая фотография">
                                     
                                         <div class="open-project">
                                             <a href="project-info-page.html">Открыть проект</a>
@@ -1993,9 +2170,11 @@
                     <div class="search-input">
                         <input id="inputBurger" type="text" placeholder="Искать">
 
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M19 19L15.85 15.85M17.6 11.3C17.6 14.7794 14.7794 17.6 11.3 17.6C7.82061 17.6 5 14.7794 5 11.3C5 7.82061 7.82061 5 11.3 5C14.7794 5 17.6 7.82061 17.6 11.3Z" stroke="#EDE4D7" stroke-linecap="round"/>
-                        </svg>
+                        <button class="search-icon-button">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 19L15.85 15.85M17.6 11.3C17.6 14.7794 14.7794 17.6 11.3 17.6C7.82061 17.6 5 14.7794 5 11.3C5 7.82061 7.82061 5 11.3 5C14.7794 5 17.6 7.82061 17.6 11.3Z" stroke="#EDE4D7" stroke-linecap="round"/>
+                            </svg>
+                        </button>
                     </div>
 
                     <div id="searchItemsBurger" class="burger-search-items">
