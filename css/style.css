@@ -8522,6 +8522,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
+  cursor: default;
 }
 
 .other-option-card-navigation button {
@@ -8592,14 +8593,34 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
   }
 }
 
+.other-options-cards,
+.related-products-cards {
+  touch-action: pan-y;   /* разрешаем вертикальную прокрутку, блокируем горизонтальную систему браузера */
+  -ms-touch-action: pan-y;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
 
+.other-option-card,
+.related-products-card {
+  display: none;
+}
 
+.other-option-card.is-active,
+.related-products-card.is-active {
+  display: block;
+}
 
+.related-products-cards a {
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
+}
 
-
-
-
-
+.related-products-cards {
+  touch-action: pan-y;
+}
 
 
 
@@ -10842,7 +10863,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
   text-transform: uppercase;
   margin-top: 60px;
   margin-bottom: 30px;
-  padding-left: 26%;
+  padding-left: 25%;
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-word;
@@ -10880,6 +10901,8 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  min-width: 350px;
+  max-width: 350px;
 }
 .project-title {
   font-size: 26px;
@@ -10971,9 +10994,14 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 .project-content-mobile {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
   padding-bottom: 25px;
 }
+
+.project-content-mobile:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
 .project-content-mobile img {
   width: 100%;
   height: 100%;
@@ -11049,9 +11077,25 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     margin-left: 150px;
   }
 }
+
+@media (max-width: 1335px) {
+  .project-content-title {
+    padding-left: 23%;
+  }
+}
+
 @media (max-width: 1257px) {
   .project-content-second-projects {
     margin-left: 250px;
+  }
+
+  .project-content-second-right-projects {
+    max-width: 315px;
+    min-width: 315px;
+  }
+
+  .project-content-title {
+    padding-left: 27%;
   }
 }
 @media (max-width: 1213px) {
@@ -11059,9 +11103,26 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     margin-left: 230px;
   }
 }
+
+@media (max-width: 1200px) {
+  .project-content-second-right-projects {
+    max-width: 220px;
+    min-width: 220px;
+  }
+
+  .project-content-title {
+    padding-left: 29%;
+  }
+}
+
 @media (max-width: 1127px) {
   .project-content-second-projects {
     margin-left: 210px;
+  }
+
+  .project-content-second-right-projects {
+    max-width: 190px;
+    min-width: 190px;
   }
 }
 @media (max-width: 1100px) {
@@ -11086,15 +11147,27 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     margin-left: 100px;
   }
   .project-content-title {
-    padding-left: 22%;
+    padding-left: 25%;
     font-size: 42px;
   }
 }
 @media (max-width: 1000px) {
   .project-content-title {
+    padding-left: 22%;
+  }
+}
+
+@media (max-width: 920px) {
+  .project-content-second-right-projects {
+    max-width: 170px;
+    min-width: 170px;
+  }
+
+  .project-content-title {
     padding-left: 20%;
   }
 }
+
 @media (max-width: 890px) {
   .project-desktop {
     display: none;
@@ -14916,5 +14989,89 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 @media (max-width: 338px) {
   .buttons-cookie {
     flex-direction: column;
+  }
+}
+
+
+
+
+/* Политика конфиденциальности */
+
+.privacy-policy-section ~ div {
+  padding: 0 20px 20px 20px;
+  background-color: #151c28;
+  padding-left: 25%;
+}
+
+.privacy-policy-section ~ div h2 {
+  font-size: 50px;
+  text-transform: uppercase;
+  font-family: "Future New Light", sans-serif;
+  font-weight: 600;
+  line-height: 50px;
+  margin-bottom: 30px;
+}
+
+
+.privacy-policy-section ~ div ul {
+  margin-left: 35px;
+}
+
+.privacy-policy-section ~ div ul li {
+  list-style: disc;
+  margin-bottom: 5px;
+}
+
+/* .privacy-policy-section ~ div ol {
+  margin-left: 35px;
+} */
+
+.privacy-policy-section ~ div ol li {
+  list-style-type: decimal;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 1010px) {
+  .privacy-policy-section ~ div {
+    padding-left: 10%;
+  }
+}
+@media (max-width: 890px) {
+  .privacy-policy-section ~ div {
+    padding: 0 20px 45px 20px;
+  }
+}
+
+@media (max-width: 735px) {
+  .under-header-container-privacy span {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 720px) {
+  .privacy-policy-section ~ div h2 {
+    font-size: 36px;
+    text-transform: uppercase;
+    font-family: "Future New Light", sans-serif;
+    font-weight: 600;
+    line-height: 36px;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 650px) {
+  .privacy-policy-section ~ div {
+    padding-left: 15px;
+  }
+}
+
+@media (max-width: 530px) {
+  .privacy-policy-section ~ div h2 {
+    font-size: 30px;
+    text-transform: uppercase;
+    font-family: "Future New Light", sans-serif;
+    font-weight: 600;
+    line-height: 30px;
+    margin-bottom: 30px;
   }
 }

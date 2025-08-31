@@ -2629,6 +2629,8 @@ if (modalProduct) {
     });
   }
 
+  
+
   // Закрытие модалки
   function closeModalProduct() {
     modalProduct.classList.remove('show');
@@ -2645,12 +2647,12 @@ if (modalProduct) {
 
     modalProductSwiperInstances.forEach(swiper => {
       if (swiper.autoplay && swiper.autoplay.start) {
-        swiper.autoplay.start();
+        swiper.autoplay.stop();
       }
     });
 
     if (modalProductImagesMobileSwiper && modalProductImagesMobileSwiper.autoplay) {
-      modalProductImagesMobileSwiper.autoplay.start();
+      modalProductImagesMobileSwiper.autoplay.stop();
     }
   }
 
@@ -3174,219 +3176,278 @@ const gallerySwiper = document.querySelector('.project-gallery-swiper');
 
 
 
-
+// На странице товара блоки "Другие варианты" и "Похожие товары"
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Инициализируем карусели и для other-options и для related-products
+  function fadeReplaceImg(imgEl, src) {
+    if (!imgEl || !src) return;
+    if (imgEl.getAttribute('data-src') !== null) imgEl.setAttribute('data-src', src);
+    if (imgEl.getAttribute('data-srcset') !== null) imgEl.removeAttribute('data-srcset');
+    if (imgEl.getAttribute('srcset') !== null) imgEl.removeAttribute('srcset');
+
+    const prevTransition = imgEl.style.transition;
+    imgEl.style.transition = imgEl.style.transition || 'opacity 260ms ease';
+    imgEl.style.willChange = 'opacity';
+    imgEl.style.opacity = '0';
+
+    const applyNew = () => {
+      imgEl.src = src;
+      if (!imgEl.complete) {
+        imgEl.onload = () => {
+          imgEl.style.opacity = '1';
+          imgEl.onload = null;
+          setTimeout(() => {
+            imgEl.style.transition = prevTransition || '';
+            imgEl.style.willChange = '';
+          }, 300);
+        };
+      } else {
+        imgEl.style.opacity = '1';
+        setTimeout(() => {
+          imgEl.style.transition = prevTransition || '';
+          imgEl.style.willChange = '';
+        }, 300);
+      }
+    };
+
+    setTimeout(applyNew, 180);
+  }
+
+  // Меняем первую картинку внутри модалки слайдера 
+  function updateModalFirstImage(newSrc) {
+    if (!newSrc) return;
+    const modalWrapper = document.querySelector('.modal-product-swiper');
+    if (!modalWrapper) return;
+
+    const slideEls = Array.from(modalWrapper.querySelectorAll('.swiper-slide'));
+    if (!slideEls.length) return;
+
+    let targetSlides = slideEls.filter(sl => sl.getAttribute('data-swiper-slide-index') === '0');
+    if (!targetSlides.length) targetSlides = [slideEls[0]];
+
+    targetSlides.forEach(sl => {
+      const img = sl.querySelector('img');
+      if (img) {
+        fadeReplaceImg(img, newSrc);
+        return;
+      }
+      const pic = sl.querySelector('picture');
+      if (pic) {
+        const sources = pic.querySelectorAll('source');
+        sources.forEach(s => { if (s.getAttribute('srcset')) s.removeAttribute('srcset'); });
+        const imgInside = pic.querySelector('img');
+        if (imgInside) fadeReplaceImg(imgInside, newSrc);
+        return;
+      }
+
+      const inner = sl.querySelector('.slide-inner');
+      if (inner) {
+        inner.style.backgroundImage = `url("${newSrc}")`;
+      }
+    });
+
+    const modalSwiper = modalWrapper.swiper || modalWrapper.__swiper ||
+      (modalWrapper.closest && modalWrapper.closest('.swiper-container') && modalWrapper.closest('.swiper-container').swiper);
+
+    if (modalSwiper && typeof modalSwiper.update === 'function') {
+      setTimeout(() => {
+        try {
+          modalSwiper.update();
+          if (typeof modalSwiper.slideTo === 'function') modalSwiper.slideTo(0, 0, false);
+        } catch (err) { }
+      }, 350);
+    }
+  }
+
+  function updateMainSliderImage(newSrc) {
+    if (!newSrc) return;
+    const containers = Array.from(document.querySelectorAll('.product-swiper, .product-images, .images-mobile, .product-images.images-mobile'));
+    containers.forEach(container => {
+      const slideEls = Array.from(container.querySelectorAll('.product-swiper-slide, .swiper-slide'));
+      if (!slideEls.length) return;
+
+      const matched = slideEls.filter(sl => sl.getAttribute('data-swiper-slide-index') === '0');
+      if (!matched.length) {
+        const firstSlide = slideEls[0];
+        const img = firstSlide && firstSlide.querySelector('img');
+        if (img) fadeReplaceImg(img, newSrc);
+        else {
+          const inner = firstSlide && firstSlide.querySelector('.slide-inner');
+          if (inner) inner.style.backgroundImage = `url("${newSrc}")`;
+        }
+      } else {
+        matched.forEach(sl => {
+          const img = sl.querySelector('img');
+          if (img) fadeReplaceImg(img, newSrc);
+        });
+      }
+
+      const swiperInstance = container.swiper || container.__swiper || (container.closest && container.closest('.swiper-container') && container.closest('.swiper-container').swiper);
+      if (swiperInstance && typeof swiperInstance.update === 'function') {
+        setTimeout(() => {
+          try {
+            swiperInstance.update();
+
+            let targetIndex = -1;
+            try {
+              const slidesArray = Array.from(swiperInstance.slides || []);
+              targetIndex = slidesArray.findIndex(s => s.getAttribute && s.getAttribute('data-swiper-slide-index') === '0');
+            } catch (err) { targetIndex = -1; }
+
+            if (targetIndex < 0) targetIndex = 0;
+
+            const DURATION = 360; 
+            if (swiperInstance.params && swiperInstance.params.loop && typeof swiperInstance.slideToLoop === 'function') {
+              const current = swiperInstance.realIndex !== undefined ? swiperInstance.realIndex : (swiperInstance.activeIndex || 0);
+              if (current !== 0) {
+                swiperInstance.slideToLoop(0, DURATION, false);
+              }
+            } else if (typeof swiperInstance.slideTo === 'function') {
+              const alreadyOn = (swiperInstance.activeIndex === targetIndex);
+              if (!alreadyOn) swiperInstance.slideTo(targetIndex, DURATION, false);
+            }
+          } catch (err) { }
+        }, 350);
+      }
+    });
+
+    try { updateModalFirstImage(newSrc); } catch (err) {  }
+  }
+
+  let rafId = null;
+  function cancelScrollAnim() {
+    if (rafId) {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+  }
+  function easeInOutCubic(t){ return t<0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
+  function smoothScrollToY(targetY, duration = 600){
+    cancelScrollAnim();
+    const scroller = document.scrollingElement || document.documentElement || document.body;
+    const startY = scroller.scrollTop || window.pageYOffset || 0;
+    const maxScroll = Math.max(0, scroller.scrollHeight - window.innerHeight);
+    const finalY = Math.min(maxScroll, Math.max(0, Math.round(targetY)));
+    const diff = finalY - startY;
+    if (diff === 0) return Promise.resolve();
+    const startTime = performance.now();
+    const dur = Math.max(50, duration);
+    return new Promise((resolve) => {
+      function step(now){
+        const t = Math.min(1, (now - startTime)/dur);
+        const eased = easeInOutCubic(t);
+        const y = Math.round(startY + diff * eased);
+        window.scrollTo(0, y);
+        if (t < 1) rafId = requestAnimationFrame(step);
+        else { rafId = null; resolve(); }
+      }
+      rafId = requestAnimationFrame(step);
+    });
+  }
+
+  const MOBILE_MAX_WIDTH = 1010;
+  function getProductTarget() {
+    if (window.innerWidth <= MOBILE_MAX_WIDTH) {
+      return document.querySelector('.product-mobile .under-header-container-product') || document.querySelector('.product-mobile .product-item-title');
+    } else {
+      return ( document.querySelector('.product-section') || document.querySelector('.product-desktop') || document.querySelector('.product') || document.querySelector('#product-section') || document.querySelector('#product-desktop') );
+    }
+  }
+  function scrollToProduct(offset = 0, duration = 600){
+    const target = getProductTarget();
+    if (!target) return Promise.resolve();
+    const top = target.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) - offset;
+    return smoothScrollToY(top, duration);
+  }
+
   document.querySelectorAll('.other-options-cards, .related-products-cards').forEach(initCarousel);
 
   function initCarousel(cardsWrapper) {
     const cards = Array.from(cardsWrapper.querySelectorAll('.other-option-card, .related-products-card'));
     if (!cards.length) return;
 
-    // Определяем тип блока: related-products или обычные other-options
-    const isRelated = !!cardsWrapper.closest('.related-products') || cardsWrapper.classList.contains('related-products-cards');
+    try { cardsWrapper.style.touchAction = 'pan-y'; } catch(e) {}
 
+    const isRelated = !!cardsWrapper.closest('.related-products') || cardsWrapper.classList.contains('related-products-cards');
     let current = cards.findIndex(c => c.classList.contains('is-active'));
     if (current === -1) current = 0;
 
-    // show(index, direction)
-    // direction: 1 = next (swipe left), -1 = prev (swipe right), 0/null = no navigation
     function show(index, direction = 0) {
+      index = (index + cards.length) % cards.length;
       cards.forEach((c, i) => c.classList.toggle('is-active', i === index));
       current = index;
-
-      // Если это related-products и показ вызван свайпом/навигацией -> переход на href
-      if (isRelated && direction !== 0) {
-        const targetCard = cards[index];
-        if (!targetCard) return;
-        // Предпочтение: если direction === 1 (next) — ищем правую ссылку, если -1 — левую.
-        let hrefEl = null;
-        if (direction === 1) {
-          hrefEl = targetCard.querySelector('a.other-option-right-btn');
-        } else if (direction === -1) {
-          hrefEl = targetCard.querySelector('a.other-option-left-btn');
-        }
-        // fallback — любая ссылка внутри карточки
-        if (!hrefEl) hrefEl = targetCard.querySelector('a[href]');
-
-        if (hrefEl && hrefEl.href) {
-          // небольшой таймаут чтобы анимация показа карточки сработала — потом навигируем
-          setTimeout(() => {
-            // Переходим на страницу
-            window.location.href = hrefEl.href;
-          }, 260);
-        }
-      }
     }
 
-    // Smooth scroll (RAF) — без изменений
-    let rafId = null;
-    function cancelScrollAnim() { if (rafId) { cancelAnimationFrame(rafId); rafId = null; } }
-    function easeInOutCubic(t){ return t<0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
-    function smoothScrollToY(targetY, duration = 600){
-      cancelScrollAnim();
-      const scroller = document.scrollingElement || document.documentElement || document.body;
-      const startY = scroller.scrollTop || window.pageYOffset || 0;
-      const maxScroll = Math.max(0, scroller.scrollHeight - window.innerHeight);
-      const finalY = Math.min(maxScroll, Math.max(0, Math.round(targetY)));
-      const diff = finalY - startY;
-      if (diff === 0) return Promise.resolve();
-      const startTime = performance.now();
-      const dur = Math.max(50, duration);
-      return new Promise((resolve) => {
-        function step(now){
-          const t = Math.min(1, (now - startTime)/dur);
-          const eased = easeInOutCubic(t);
-          const y = Math.round(startY + diff * eased);
-          window.scrollTo(0, y);
-          if (t < 1) rafId = requestAnimationFrame(step);
-          else { rafId = null; resolve(); }
-        }
-        rafId = requestAnimationFrame(step);
-      });
-    }
+    let rafIdLocal = null;
+    function cancelScrollAnimLocal() { if (rafIdLocal) { cancelAnimationFrame(rafIdLocal); rafIdLocal = null; } }
 
-    const MOBILE_MAX_WIDTH = 1010;
-    function getProductTarget() {
-      if (window.innerWidth <= MOBILE_MAX_WIDTH) {
-        return document.querySelector('.product-mobile .under-header-container-product')
-          || document.querySelector('.product-mobile .product-item-title');
-      } else {
-        return (
-          document.querySelector('.product-section') ||
-          document.querySelector('.product-desktop') ||
-          document.querySelector('.product') ||
-          document.querySelector('#product-section') ||
-          document.querySelector('#product-desktop')
-        );
-      }
-    }
-
-    function scrollToProduct(offset = 0, duration = 600){
-      const target = getProductTarget();
-      if (!target) return Promise.resolve();
-      const top = target.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) - offset;
-      return smoothScrollToY(top, duration);
-    }
-
-    // -----------------------
-    // Функция обновления картинки в основных слайдерах (плавно)
-    // (используется ТОЛЬКО для other-options)
-    // -----------------------
-    function updateMainSliderImage(newSrc) {
-      if (!newSrc) return;
-      const containers = Array.from(document.querySelectorAll('.product-swiper, .product-images, .images-mobile, .product-images.images-mobile'));
-      containers.forEach(container => {
-        const slideEls = Array.from(container.querySelectorAll('.product-swiper-slide, .swiper-slide'));
-        if (!slideEls.length) return;
-        function fadeReplaceImg(imgEl, src) {
-          if (!imgEl) return;
-          if (imgEl.getAttribute('data-src') !== null) imgEl.setAttribute('data-src', src);
-          if (imgEl.getAttribute('data-srcset') !== null) imgEl.removeAttribute('data-srcset');
-          const prevTransition = imgEl.style.transition;
-          imgEl.style.transition = imgEl.style.transition || 'opacity 260ms ease';
-          imgEl.style.willChange = 'opacity';
-          imgEl.style.opacity = '0';
-          const applyNew = () => {
-            imgEl.src = src;
-            if (!imgEl.complete) {
-              imgEl.onload = () => {
-                imgEl.style.opacity = '1'; imgEl.onload = null;
-                setTimeout(()=> { imgEl.style.transition = prevTransition || ''; imgEl.style.willChange = ''; }, 300);
-              };
-            } else {
-              imgEl.style.opacity = '1';
-              setTimeout(()=> { imgEl.style.transition = prevTransition || ''; imgEl.style.willChange = ''; }, 300);
-            }
-          };
-          setTimeout(applyNew, 180);
-        }
-
-        const matched = slideEls.filter(sl => {
-          const ds = sl.getAttribute('data-swiper-slide-index');
-          return ds === '0';
-        });
-        if (!matched.length) {
-          const firstSlide = slideEls[0];
-          const img = firstSlide && firstSlide.querySelector('img');
-          if (img) fadeReplaceImg(img, newSrc);
-        } else {
-          matched.forEach(sl => {
-            const img = sl.querySelector('img');
-            if (img) fadeReplaceImg(img, newSrc);
-          });
-        }
-
-        const swiperInstance = container.swiper || container.__swiper || (container.closest && container.closest('.swiper-container') && container.closest('.swiper-container').swiper);
-        if (swiperInstance && typeof swiperInstance.update === 'function') {
-          setTimeout(() => {
-            try { swiperInstance.update(); } catch(err){/*silent*/ }
-          }, 350);
-        }
-      });
-    }
-    // -----------------------
-
-    // Переменные для различения свайпа и тапа, и для подавления click после свайпа
+    const SWIPE_THRESHOLD = 50;
+    const TAP_THRESHOLD = 10;
+    const MAX_VERTICAL_DELTA = 80;
     let suppressClick = false;
     const CLICK_SUPPRESS_MS = 350;
 
-    // Делегирование кликов: стрелки и клики по .other-option-card-top
+    cards.forEach(card => {
+      const link = card.querySelector("a");
+      if (link) {
+        link.addEventListener("click", e => {
+          if (suppressClick) { e.preventDefault(); e.stopPropagation(); }
+        });
+      }
+    });
+
+    // Делегирование кликов
     cardsWrapper.addEventListener('click', (e) => {
       if (suppressClick) { e.stopPropagation(); e.preventDefault(); return; }
-
       const prevBtn = e.target.closest('.other-option-left-btn');
       const nextBtn = e.target.closest('.other-option-right-btn');
-
-      // Если это ссылки (<a>), позволяем браузеру выполнить переход (не перехватываем)
       if (prevBtn) {
-        if (prevBtn.tagName === 'A') return; // пусть работает как обычная ссылка
-        show((current - 1 + cards.length) % cards.length, 0);
+        if (prevBtn.tagName === 'A' && isRelated) {
+          e.preventDefault();
+          show((current - 1 + cards.length) % cards.length, -1);
+          return;
+        }
+        if (prevBtn.tagName === 'A') return;
+        show((current - 1 + cards.length) % cards.length, -1);
         return;
       }
       if (nextBtn) {
+        if (nextBtn.tagName === 'A' && isRelated) {
+          e.preventDefault();
+          show((current + 1) % cards.length, 1);
+          return;
+        }
         if (nextBtn.tagName === 'A') return;
-        show((current + 1) % cards.length, 0);
+        show((current + 1) % cards.length, 1);
         return;
       }
 
-      const topClick = e.target.closest('.other-option-card-top, .related-products-card > .other-option-card-top');
+      const topClick = e.target.closest('.other-option-card-top, .related-products-card > .other-option-card-top, .related-products-card-top');
       if (topClick) {
         const cardEl = topClick.closest('.other-option-card, .related-products-card');
         if (!cardEl) return;
         const idx = cards.indexOf(cardEl);
 
-        // Для related-products: клик по карточке — переходим на страницу (если есть ссылка)
         if (isRelated) {
-          const hrefEl = cardEl.querySelector('a[href]'); // первое вхождение
-          if (hrefEl && hrefEl.href) {
-            window.location.href = hrefEl.href;
-            return;
+          const anchor = cardEl.querySelector('a[href]');
+          if (anchor && anchor.contains(e.target)) {
+            return; 
           }
-          // если ссылки нет — просто выделяем карточку
           if (idx >= 0) show(idx, 0);
           return;
         }
 
-        // Для other-options: старая логика — показываем карточку, меняем главный слайдер и скроллим
         if (idx >= 0) show(idx, 0);
         const clickedImg = cardEl.querySelector('.other-option-card-image img');
         if (clickedImg && clickedImg.src) updateMainSliderImage(clickedImg.src);
-
-        const OFFSET = 20; const DURATION = 600;
+        const OFFSET = 20;
+        const DURATION = 600;
         scrollToProduct(OFFSET, DURATION).catch(()=>{});
       }
     });
 
-    // Свайп/тап (Pointer events + fallback на touch)
-    const SWIPE_THRESHOLD = 50; // px
-    const TAP_THRESHOLD = 10;   // если движение меньше — считаем тапом
-    const MAX_VERTICAL_DELTA = 80;
-
     if (window.PointerEvent) {
       let startX = 0, startY = 0, pointerId = null, isDragging = false, startTarget = null;
-
       cardsWrapper.addEventListener('pointerdown', (e) => {
         if (pointerId !== null) return;
         if (e.target.closest('.other-option-left-btn, .other-option-right-btn')) return;
@@ -3409,18 +3470,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > MAX_VERTICAL_DELTA) return;
 
         if (Math.abs(dx) >= SWIPE_THRESHOLD) {
-          // dx < 0 — свайп влево => next; dx > 0 — свайп вправо => prev
           if (dx < 0) {
             const newIndex = (current + 1) % cards.length;
-            show(newIndex, 1); // direction 1 = next
+            show(newIndex, 1);
           } else {
             const newIndex = (current - 1 + cards.length) % cards.length;
-            show(newIndex, -1); // direction -1 = prev
+            show(newIndex, -1);
           }
           suppressClick = true;
           setTimeout(()=> suppressClick = false, CLICK_SUPPRESS_MS);
         } else if (Math.abs(dx) <= TAP_THRESHOLD && Math.abs(dy) <= TAP_THRESHOLD) {
-          // тап — делаем то же, что click обработчик (имитируем тап)
           const topEl = (startTarget && startTarget.closest) ? startTarget.closest('.other-option-card-top, .related-products-card > .other-option-card-top') : null;
           if (topEl) {
             const cardEl = topEl.closest('.other-option-card, .related-products-card');
@@ -3428,16 +3487,14 @@ document.addEventListener('DOMContentLoaded', () => {
               const idx = cards.indexOf(cardEl);
               if (isRelated) {
                 const hrefEl = cardEl.querySelector('a[href]');
-                if (hrefEl && hrefEl.href) {
-                  window.location.href = hrefEl.href;
-                  return;
-                }
+                if (hrefEl && hrefEl.contains(startTarget)) return;
                 if (idx >= 0) show(idx, 0);
               } else {
                 if (idx >= 0) show(idx, 0);
                 const clickedImg = cardEl.querySelector('.other-option-card-image img');
                 if (clickedImg && clickedImg.src) updateMainSliderImage(clickedImg.src);
-                const OFFSET = 20; const DURATION = 600;
+                const OFFSET = 20;
+                const DURATION = 600;
                 scrollToProduct(OFFSET, DURATION).catch(()=>{});
               }
             }
@@ -3445,13 +3502,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
-      cardsWrapper.addEventListener('pointermove', () => { /* можно добавить визуальный drag */ });
+      cardsWrapper.addEventListener('pointermove', () => {});
       cardsWrapper.addEventListener('pointerup', endPointer);
       cardsWrapper.addEventListener('pointercancel', () => { pointerId = null; isDragging = false; });
-    } else {
-      // fallback touch
-      let startX = 0, startY = 0, tracking = false, startTarget = null;
 
+    } else {
+      let startX = 0, startY = 0, tracking = false, startTarget = null;
       cardsWrapper.addEventListener('touchstart', (e) => {
         const t = e.touches[0];
         if (!t) return;
@@ -3463,7 +3519,7 @@ document.addEventListener('DOMContentLoaded', () => {
         startTarget = elAt;
       }, { passive: true });
 
-      cardsWrapper.addEventListener('touchmove', (e) => { /* можно добавить drag */ }, { passive: true });
+      cardsWrapper.addEventListener('touchmove', (e) => {}, { passive: true });
 
       cardsWrapper.addEventListener('touchend', (e) => {
         if (!tracking) return;
@@ -3472,9 +3528,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!t) return;
         const dx = t.clientX - startX;
         const dy = t.clientY - startY;
-
         if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > MAX_VERTICAL_DELTA) return;
-
         if (Math.abs(dx) >= SWIPE_THRESHOLD) {
           if (dx < 0) {
             const newIndex = (current + 1) % cards.length;
@@ -3493,16 +3547,14 @@ document.addEventListener('DOMContentLoaded', () => {
               const idx = cards.indexOf(cardEl);
               if (isRelated) {
                 const hrefEl = cardEl.querySelector('a[href]');
-                if (hrefEl && hrefEl.href) {
-                  window.location.href = hrefEl.href;
-                  return;
-                }
+                if (hrefEl && hrefEl.contains(startTarget)) return;
                 if (idx >= 0) show(idx, 0);
               } else {
                 if (idx >= 0) show(idx, 0);
                 const clickedImg = cardEl.querySelector('.other-option-card-image img');
                 if (clickedImg && clickedImg.src) updateMainSliderImage(clickedImg.src);
-                const OFFSET = 20; const DURATION = 600;
+                const OFFSET = 20;
+                const DURATION = 600;
                 scrollToProduct(OFFSET, DURATION).catch(()=>{});
               }
             }
@@ -3511,13 +3563,22 @@ document.addEventListener('DOMContentLoaded', () => {
       }, { passive: true });
     }
 
-    // клавиши (опционально)
     cardsWrapper.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowLeft') show((current - 1 + cards.length) % cards.length, -1);
       if (e.key === 'ArrowRight') show((current + 1) % cards.length, 1);
     });
 
-    // старт
     show(current, 0);
   }
+
+  document.addEventListener('click', (e) => {
+    const openBtn = e.target.closest('[data-open-modal="product"], .open-product-modal, .product-main-image'); 
+    if (!openBtn) return;
+
+    const mainImg = document.querySelector('.product-swiper .swiper-slide[data-swiper-slide-index="0"] img, .product-images .swiper-slide img, .product-main-image img');
+    const src = mainImg ? (mainImg.src || mainImg.getAttribute('data-src')) : null;
+    if (src) {
+      setTimeout(() => { updateModalFirstImage(src); }, 50);
+    }
+  });
 });
