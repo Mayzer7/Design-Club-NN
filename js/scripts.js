@@ -3582,3 +3582,87 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+
+
+
+
+
+// Отображение цветов товара в каталоге
+
+  function debounce(fn, wait = 100) {
+    let t;
+    return (...args) => {
+      clearTimeout(t);
+      t = setTimeout(() => fn(...args), wait);
+    };
+  }
+
+  function getVisibleCountForWidth(width, defaultVisible = 8) {
+  // при <=1300 показываем 6 видимых цветов
+  // при <=800 показываем 4 видимых цвета
+  if (width <= 800) return 4;
+  if (width <= 1300) return 6;
+  return defaultVisible;
+}
+
+  function updateColorPalettes({ selector = '.color-palette' } = {}) {
+    const width = window.innerWidth;
+    document.querySelectorAll(selector).forEach(palette => {
+      const defaultVisible = parseInt(palette.dataset.defaultVisible, 10) || 8;
+      const visibleCount = getVisibleCountForWidth(width, defaultVisible);
+
+      const colors = Array.from(palette.querySelectorAll('.color'));
+      let more = palette.querySelector('.color-palette-more');
+
+      if (!more) {
+        more = document.createElement('span');
+        more.className = 'color-palette-more';
+        more.setAttribute('role', 'img');
+        palette.appendChild(more);
+      }
+
+      const total = colors.length;
+
+      if (total <= visibleCount) {
+        colors.forEach(c => {
+          c.style.display = '';
+          c.removeAttribute('aria-hidden');
+        });
+        more.style.display = 'none';
+        more.textContent = '';
+        more.removeAttribute('title');
+        more.removeAttribute('aria-label');
+      } else {
+        colors.forEach((c, i) => {
+          if (i < visibleCount) {
+            c.style.display = '';
+            c.removeAttribute('aria-hidden');
+          } else {
+            c.style.display = 'none';
+            c.setAttribute('aria-hidden', 'true');
+          }
+        });
+
+        const hiddenCount = total - visibleCount;
+        more.textContent = `+${hiddenCount}`;
+        more.style.display = 'inline-flex';
+        more.setAttribute('aria-label', `${hiddenCount} скрытых цвета`);
+
+        const hiddenColors = colors.slice(visibleCount).map(el => {
+          return window.getComputedStyle(el).backgroundColor || el.style.backgroundColor || '';
+        }).filter(Boolean);
+
+        if (hiddenColors.length) {
+          more.title = hiddenColors.join(', ');
+        } else {
+          more.removeAttribute('title');
+        }
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    updateColorPalettes();
+    window.addEventListener('resize', debounce(() => updateColorPalettes(), 120));
+  });

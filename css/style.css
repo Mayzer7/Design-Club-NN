@@ -7217,12 +7217,63 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
   padding: 10px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
+
 .second-info {
   padding: 10px 0;
   display: flex;
+  align-items: center;
+  text-align: center;
   justify-content: space-between;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
+
+.color-palette {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow: visible;
+}
+
+.color {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px; 
+}
+
+.color[aria-hidden="true"] {
+  display: none !important;
+}
+
+.color-palette-more {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  display: inline-flex;
+  cursor: default;
+  user-select: none;
+  font-size: 16px;
+}
+
+@media (max-width: 1300px) {
+  .color-palette {
+    gap: 4px;
+  }
+}
+
+@media (max-width: 600px) {
+  .color {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px; 
+  }
+
+  .color-palette-more {
+    font-size: 12px;
+  }
+}
+
+
 .last-info {
   padding: 10px 0;
   display: flex;
