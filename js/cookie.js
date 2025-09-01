@@ -1,4 +1,4 @@
-fetch('/cookie-banner.html')
+fetch('cookie-banner.html')
     .then(res => res.text())
     .then(html => {
         // Вставляем баннер в страницу

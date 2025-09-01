@@ -3590,79 +3590,144 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Отображение цветов товара в каталоге
 
-  function debounce(fn, wait = 100) {
-    let t;
-    return (...args) => {
+(function () {
+  const BREAKPOINT_MOBILE = 800;   // <= 800px -> 4
+  const BREAKPOINT_TABLET  = 1300;  // <=1300px -> 6
+  const LIMIT_DESKTOP = 8;
+  const LIMIT_TABLET  = 6;
+  const LIMIT_MOBILE  = 4;
+  const RESIZE_DEBOUNCE_MS = 120;
+
+  function getLimitForWidth(width) {
+    if (width <= BREAKPOINT_MOBILE) return LIMIT_MOBILE;
+    if (width <= BREAKPOINT_TABLET) return LIMIT_TABLET;
+    return LIMIT_DESKTOP;
+  }
+
+  function getCurrentLimit() {
+    return getLimitForWidth(window.innerWidth);
+  }
+
+  function debounce(fn, wait) {
+    let t = null;
+    return function (...args) {
       clearTimeout(t);
-      t = setTimeout(() => fn(...args), wait);
+      t = setTimeout(() => fn.apply(this, args), wait);
     };
   }
 
-  function getVisibleCountForWidth(width, defaultVisible = 8) {
-  // при <=1300 показываем 6 видимых цветов
-  // при <=800 показываем 4 видимых цвета
-  if (width <= 800) return 4;
-  if (width <= 1300) return 6;
-  return defaultVisible;
-}
-
-  function updateColorPalettes({ selector = '.color-palette' } = {}) {
-    const width = window.innerWidth;
-    document.querySelectorAll(selector).forEach(palette => {
-      const defaultVisible = parseInt(palette.dataset.defaultVisible, 10) || 8;
-      const visibleCount = getVisibleCountForWidth(width, defaultVisible);
-
-      const colors = Array.from(palette.querySelectorAll('.color'));
-      let more = palette.querySelector('.color-palette-more');
-
-      if (!more) {
-        more = document.createElement('span');
-        more.className = 'color-palette-more';
-        more.setAttribute('role', 'img');
-        palette.appendChild(more);
-      }
-
-      const total = colors.length;
-
-      if (total <= visibleCount) {
-        colors.forEach(c => {
-          c.style.display = '';
-          c.removeAttribute('aria-hidden');
-        });
-        more.style.display = 'none';
-        more.textContent = '';
-        more.removeAttribute('title');
-        more.removeAttribute('aria-label');
-      } else {
-        colors.forEach((c, i) => {
-          if (i < visibleCount) {
-            c.style.display = '';
-            c.removeAttribute('aria-hidden');
-          } else {
-            c.style.display = 'none';
-            c.setAttribute('aria-hidden', 'true');
-          }
-        });
-
-        const hiddenCount = total - visibleCount;
-        more.textContent = `+${hiddenCount}`;
-        more.style.display = 'inline-flex';
-        more.setAttribute('aria-label', `${hiddenCount} скрытых цвета`);
-
-        const hiddenColors = colors.slice(visibleCount).map(el => {
-          return window.getComputedStyle(el).backgroundColor || el.style.backgroundColor || '';
-        }).filter(Boolean);
-
-        if (hiddenColors.length) {
-          more.title = hiddenColors.join(', ');
-        } else {
-          more.removeAttribute('title');
-        }
-      }
+  let rafId = null;
+  function scheduleUpdateAllPalettesIfNeeded(force = false) {
+    if (rafId) return; 
+    rafId = requestAnimationFrame(() => {
+      rafId = null;
+      updateAllPalettes(force);
     });
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    updateColorPalettes();
-    window.addEventListener('resize', debounce(() => updateColorPalettes(), 120));
+  function ensureMoreNode(palette) {
+    let more = palette.querySelector('.color-palette-more');
+    if (!more) {
+      more = document.createElement('span');
+      more.className = 'color-palette-more';
+      palette.appendChild(more);
+    }
+    return more;
+  }
+
+  function updatePalette(palette, limit) {
+    const items = Array.from(palette.querySelectorAll('.color'));
+    const more = ensureMoreNode(palette);
+
+    if (items.length > limit) {
+      items.forEach((el, i) => {
+        if (i >= limit) {
+          el.setAttribute('aria-hidden', 'true');
+        } else {
+          el.removeAttribute('aria-hidden');
+        }
+      });
+
+      const extra = items.length - limit;
+      more.textContent = `+${extra}`;
+      more.style.display = 'inline-flex';
+      more.setAttribute('aria-hidden', 'false');
+      more.setAttribute('role', 'status');
+      more.setAttribute('aria-label', `${extra} скрытых цветов`);
+    } else {
+      items.forEach(el => el.removeAttribute('aria-hidden'));
+      more.style.display = 'none';
+      more.setAttribute('aria-hidden', 'true');
+      more.textContent = '';
+    }
+  }
+
+  let lastAppliedLimit = null;
+  function updateAllPalettes(force = false) {
+    const limit = getCurrentLimit();
+    if (!force && limit === lastAppliedLimit) return;
+    lastAppliedLimit = limit;
+
+    const palettes = document.querySelectorAll('.color-palette');
+    palettes.forEach(p => updatePalette(p, limit));
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => updateAllPalettes(true));
+  } else {
+    updateAllPalettes(true);
+  }
+
+  const mqlMobile = window.matchMedia(`(max-width: ${BREAKPOINT_MOBILE}px)`);
+  const mqlTablet = window.matchMedia(`(max-width: ${BREAKPOINT_TABLET}px)`);
+
+  function onMediaChange() {
+    scheduleUpdateAllPalettesIfNeeded();
+  }
+
+  if (mqlMobile.addEventListener) {
+    mqlMobile.addEventListener('change', onMediaChange);
+    mqlTablet.addEventListener('change', onMediaChange);
+  } else { 
+    mqlMobile.addListener(onMediaChange);
+    mqlTablet.addListener(onMediaChange);
+  }
+
+  const onResizeDebounced = debounce(() => scheduleUpdateAllPalettesIfNeeded(), RESIZE_DEBOUNCE_MS);
+  window.addEventListener('resize', onResizeDebounced);
+
+  const observer = new MutationObserver(mutations => {
+    const palettesToUpdate = new Set();
+    for (const m of mutations) {
+      if (m.type === 'childList') {
+        [...m.addedNodes, ...m.removedNodes].forEach(node => {
+          if (!(node instanceof Element)) return;
+
+          if (node.classList && node.classList.contains('color-palette')) {
+            palettesToUpdate.add(node);
+          }
+
+          const p = node.closest ? node.closest('.color-palette') : null;
+          if (p) palettesToUpdate.add(p);
+
+          if (node.querySelectorAll) {
+            node.querySelectorAll('.color-palette').forEach(pp => palettesToUpdate.add(pp));
+          }
+        });
+      }
+    }
+
+    if (palettesToUpdate.size) {
+      if (rafId) {
+
+      }
+      scheduleUpdateAllPalettesIfNeeded(); 
+    }
   });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  window.__updateColorPalettes = function (force = false) { updateAllPalettes(!!force); };
+  window.__getCurrentColorLimit = getCurrentLimit;
+})();
+
