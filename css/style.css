@@ -8649,7 +8649,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
   .other-options,
   .related-products {
-    max-width: 310px;
+    max-width: 100%;
   }
 
   .other-option-card-info {
@@ -8702,11 +8702,11 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 .product-item-description {
   width: 100%;
   margin-top: 60px;
-  padding-right: 30px;
+  padding-right: 43px;
 }
 .customers-navigation {
   position: relative;
-  padding: 40px 0;
+  padding: 42px 0;
   cursor: pointer;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -8975,7 +8975,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
   }
   .desc-left h2,
   .desc-right h2 {
-    font-size: 24px;
+    font-size: 26px;
   }
   .desc-left p,
   .desc-right p {
@@ -9017,7 +9017,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 }
 @media (max-width: 1030px) {
   .sticky-container {
-    padding-left: 22%;
+    padding-left: 25%;
   }
   .sticky-left {
     max-width: 480px;
@@ -13163,11 +13163,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
   background-color: rgba(255, 255, 255, 0.2);
   margin: 0;
 }
-.customers-navigation {
-  position: relative;
-  padding: 40px 0;
-  cursor: pointer;
-}
+
 .customers-navigation:hover {
   background-color: rgba(255, 255, 255, 0.02);
 }
@@ -13214,6 +13210,13 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
   width: 100%;
   height: 100%;
 }
+
+@media (max-width: 1130px) {
+  .title-nav {
+    font-size: 26px;
+  }
+}
+
 @media (max-width: 950px) {
   .customers-content-title,
   .customers-section {
