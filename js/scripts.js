@@ -3371,6 +3371,58 @@ document.addEventListener('DOMContentLoaded', () => {
     const isRelated = !!cardsWrapper.closest('.related-products') || cardsWrapper.classList.contains('related-products-cards');
     let current = cards.findIndex(c => c.classList.contains('is-active'));
     if (current === -1) current = 0;
+    
+    // Меняем цену товара при смене ТП
+    function updateProductPriceFromCard(cardEl) {
+      if (!cardEl) return;
+
+      const discountEl = cardEl.querySelector('.other-option-card-discount');
+      const priceEl    = cardEl.querySelector('.other-option-card-price');
+
+      const normalize = (s) => (s || '').replace(/\u00A0/g, ' ').replace(/\s+/g, ' ').trim();
+
+      const discText = discountEl ? normalize(discountEl.textContent) : '';
+      const priceText = priceEl ? normalize(priceEl.textContent) : (discText ? '' : '');
+
+      const productDiscountWrap = document.querySelector('.product-prices .discount-price');
+      const productPriceWrap    = document.querySelector('.product-prices .price');
+
+      if (productDiscountWrap) {
+        const targetDiscountTextEl = productDiscountWrap.querySelector('h3') || productDiscountWrap;
+        if (discText) {
+          targetDiscountTextEl.textContent = discText;
+          productDiscountWrap.style.display = ''; 
+        } else {
+          productDiscountWrap.style.display = 'none';
+        }
+      }
+
+      if (productPriceWrap) {
+        const targetPriceTextEl = productPriceWrap.querySelector('p') || productPriceWrap;
+        targetPriceTextEl.textContent = priceText || '';
+      }
+
+      const mobilePriceBlocks = Array.from(document.querySelectorAll('.product-mobile-price'));
+      if (mobilePriceBlocks.length) {
+        mobilePriceBlocks.forEach(block => {
+          const mobPriceEl = block.querySelector('.price') || block.querySelector('p');
+          const mobDiscEl  = block.querySelector('.price-discount') || block.querySelector('h3');
+
+          if (mobDiscEl) {
+            if (discText) {
+              mobDiscEl.textContent = discText;
+              mobDiscEl.style.display = '';
+            } else {
+              mobDiscEl.style.display = 'none';
+            }
+          }
+
+          if (mobPriceEl) {
+            mobPriceEl.textContent = priceText || '';
+          }
+        });
+      }
+    }
 
     function show(index, direction = 0) {
       index = (index + cards.length) % cards.length;
@@ -3396,7 +3448,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Делегирование кликов
     cardsWrapper.addEventListener('click', (e) => {
       if (suppressClick) { e.stopPropagation(); e.preventDefault(); return; }
       const prevBtn = e.target.closest('.other-option-left-btn');
@@ -3439,7 +3490,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (idx >= 0) show(idx, 0);
         const clickedImg = cardEl.querySelector('.other-option-card-image img');
-        if (clickedImg && clickedImg.src) updateMainSliderImage(clickedImg.src);
+        if (clickedImg && clickedImg.src) {
+          updateMainSliderImage(clickedImg.src);
+          updateProductPriceFromCard(cardEl);
+        }
         const OFFSET = 20;
         const DURATION = 600;
         scrollToProduct(OFFSET, DURATION).catch(()=>{});
@@ -3492,7 +3546,10 @@ document.addEventListener('DOMContentLoaded', () => {
               } else {
                 if (idx >= 0) show(idx, 0);
                 const clickedImg = cardEl.querySelector('.other-option-card-image img');
-                if (clickedImg && clickedImg.src) updateMainSliderImage(clickedImg.src);
+                if (clickedImg && clickedImg.src) {
+                  updateMainSliderImage(clickedImg.src);
+                  updateProductPriceFromCard(cardEl);
+                }
                 const OFFSET = 20;
                 const DURATION = 600;
                 scrollToProduct(OFFSET, DURATION).catch(()=>{});
@@ -3552,7 +3609,10 @@ document.addEventListener('DOMContentLoaded', () => {
               } else {
                 if (idx >= 0) show(idx, 0);
                 const clickedImg = cardEl.querySelector('.other-option-card-image img');
-                if (clickedImg && clickedImg.src) updateMainSliderImage(clickedImg.src);
+                if (clickedImg && clickedImg.src) {
+                  updateMainSliderImage(clickedImg.src);
+                  updateProductPriceFromCard(cardEl);
+                }
                 const OFFSET = 20;
                 const DURATION = 600;
                 scrollToProduct(OFFSET, DURATION).catch(()=>{});
@@ -3582,10 +3642,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-
-
-
-
 
 
 // Отображение цветов товара в каталоге
