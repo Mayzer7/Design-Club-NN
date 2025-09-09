@@ -3373,56 +3373,103 @@ document.addEventListener('DOMContentLoaded', () => {
     if (current === -1) current = 0;
     
     // Меняем цену товара при смене ТП
-    function updateProductPriceFromCard(cardEl) {
-      if (!cardEl) return;
+    // Обновлённая функция updateProductPriceFromCard — копирует баннер скидки из карточки в главный блок продукта
+function updateProductPriceFromCard(cardEl) {
+  if (!cardEl) return;
 
-      const discountEl = cardEl.querySelector('.other-option-card-discount');
-      const priceEl    = cardEl.querySelector('.other-option-card-price');
+  const discountEl = cardEl.querySelector('.other-option-card-discount');
+  const priceEl    = cardEl.querySelector('.other-option-card-price');
+  const bannerEl   = cardEl.querySelector('.other-option-card-discount-banner');
 
-      const normalize = (s) => (s || '').replace(/\u00A0/g, ' ').replace(/\s+/g, ' ').trim();
+  const normalize = (s) => (s || '').replace(/\u00A0/g, ' ').replace(/\s+/g, ' ').trim();
 
-      const discText = discountEl ? normalize(discountEl.textContent) : '';
-      const priceText = priceEl ? normalize(priceEl.textContent) : (discText ? '' : '');
+  const discText = discountEl ? normalize(discountEl.textContent) : '';
+  const priceText = priceEl ? normalize(priceEl.textContent) : (discText ? '' : '');
+  const bannerText = bannerEl ? normalize(bannerEl.textContent) : '';
 
-      const productDiscountWrap = document.querySelector('.product-prices .discount-price');
-      const productPriceWrap    = document.querySelector('.product-prices .price');
+  // обновляем цену/скидку в правом блоке
+  const productDiscountWrap = document.querySelector('.product-prices .discount-price');
+  const productPriceWrap    = document.querySelector('.product-prices .price');
 
-      if (productDiscountWrap) {
-        const targetDiscountTextEl = productDiscountWrap.querySelector('h3') || productDiscountWrap;
-        if (discText) {
-          targetDiscountTextEl.textContent = discText;
-          productDiscountWrap.style.display = ''; 
+  if (productDiscountWrap) {
+    const targetDiscountTextEl = productDiscountWrap.querySelector('h3') || productDiscountWrap;
+    if (discText) {
+      targetDiscountTextEl.textContent = discText;
+      productDiscountWrap.style.display = '';
+    } else {
+      productDiscountWrap.style.display = 'none';
+    }
+  }
+
+  if (productPriceWrap) {
+    const targetPriceTextEl = productPriceWrap.querySelector('p') || productPriceWrap;
+    targetPriceTextEl.textContent = priceText || '';
+  }
+
+  // обновляем баннер скидки в блоке product-banners (десктоп и мобильные расположения)
+  // селектор покрывает как <div class="discount"><p>-15%</p></div>, так и другие варианты
+  const productBannerEls = Array.from(document.querySelectorAll('.product-banners .discount'));
+  if (productBannerEls.length) {
+    productBannerEls.forEach(pb => {
+      const p = pb.querySelector('p');
+      if (bannerText) {
+        if (p) p.textContent = bannerText;
+        else pb.textContent = bannerText;
+        pb.style.display = '';
+      } else {
+        // если в карточке нет баннера — скрываем главный баннер
+        pb.style.display = 'none';
+      }
+    });
+  }
+
+  // обновляем мобильные блоки с ценой (если есть)
+  const mobilePriceBlocks = Array.from(document.querySelectorAll('.product-mobile-price, .product-mobile .product-prices, .product-mobile-price-block'));
+  if (mobilePriceBlocks.length) {
+    mobilePriceBlocks.forEach(block => {
+      // возможные селекторы внутри мобильного блока: .price, .price-discount, .price .price-discount, h3, p
+      const mobPriceEl = block.querySelector('.price') || block.querySelector('p') || block.querySelector('.product-price');
+      const mobDiscEl  = block.querySelector('.price-discount') || block.querySelector('h3') || block.querySelector('.product-discount');
+
+      if (mobDiscEl) {
+        if (bannerText || discText) {
+          // приоритет — баннер карточки (bannerText). Если его нет, используем discText (цена-скидка внутри карточки).
+          const textToUse = bannerText || discText;
+          if (textToUse) {
+            mobDiscEl.textContent = textToUse;
+            mobDiscEl.style.display = '';
+          } else {
+            mobDiscEl.style.display = 'none';
+          }
         } else {
-          productDiscountWrap.style.display = 'none';
+          mobDiscEl.style.display = 'none';
         }
       }
 
-      if (productPriceWrap) {
-        const targetPriceTextEl = productPriceWrap.querySelector('p') || productPriceWrap;
-        targetPriceTextEl.textContent = priceText || '';
+      if (mobPriceEl) {
+        mobPriceEl.textContent = priceText || '';
       }
+    });
+  }
 
-      const mobilePriceBlocks = Array.from(document.querySelectorAll('.product-mobile-price'));
-      if (mobilePriceBlocks.length) {
-        mobilePriceBlocks.forEach(block => {
-          const mobPriceEl = block.querySelector('.price') || block.querySelector('p');
-          const mobDiscEl  = block.querySelector('.price-discount') || block.querySelector('h3');
-
-          if (mobDiscEl) {
-            if (discText) {
-              mobDiscEl.textContent = discText;
-              mobDiscEl.style.display = '';
-            } else {
-              mobDiscEl.style.display = 'none';
-            }
-          }
-
-          if (mobPriceEl) {
-            mobPriceEl.textContent = priceText || '';
-          }
-        });
+  // Дополнительно: если есть какой-то отдельный блок-бейдж для скидки (например .product-badge-discount), обновим и его
+  const badgeEls = Array.from(document.querySelectorAll('.product-badge-discount, .product-discount-badge'));
+  if (badgeEls.length) {
+    badgeEls.forEach(b => {
+      if (bannerText) {
+        b.textContent = bannerText;
+        b.style.display = '';
+      } else {
+        b.style.display = 'none';
       }
-    }
+    });
+  }
+}
+
+// Примечание: вставьте эту функцию вместо существующей updateProductPriceFromCard в вашем скрипте.
+// Логика: приоритет для текста баннера — bannerText; если баннера нет, используются значения .other-option-card-discount/.other-option-card-price.
+// Баннеры и блоки скрываются, если соответствующая информация отсутствует.
+
 
     function show(index, direction = 0) {
       index = (index + cards.length) % cards.length;
