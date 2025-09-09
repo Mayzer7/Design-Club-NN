@@ -3373,109 +3373,142 @@ document.addEventListener('DOMContentLoaded', () => {
     if (current === -1) current = 0;
     
     // Меняем цену товара при смене ТП
-    // Обновлённая функция updateProductPriceFromCard — копирует баннер скидки из карточки в главный блок продукта
-function updateProductPriceFromCard(cardEl) {
-  if (!cardEl) return;
+    function updateProductPriceFromCard(cardEl) {
+      if (!cardEl) return;
 
-  const discountEl = cardEl.querySelector('.other-option-card-discount');
-  const priceEl    = cardEl.querySelector('.other-option-card-price');
-  const bannerEl   = cardEl.querySelector('.other-option-card-discount-banner');
+      const discountEl = cardEl.querySelector('.other-option-card-discount');
+      const priceEl    = cardEl.querySelector('.other-option-card-price');
+      const bannerEl   = cardEl.querySelector('.other-option-card-discount-banner');
 
-  const normalize = (s) => (s || '').replace(/\u00A0/g, ' ').replace(/\s+/g, ' ').trim();
+      const normalize = (s) => (s || '').replace(/\u00A0/g, ' ').replace(/\s+/g, ' ').trim();
 
-  const discText = discountEl ? normalize(discountEl.textContent) : '';
-  const priceText = priceEl ? normalize(priceEl.textContent) : (discText ? '' : '');
-  const bannerText = bannerEl ? normalize(bannerEl.textContent) : '';
+      const discText = discountEl ? normalize(discountEl.textContent) : '';
+      const priceText = priceEl ? normalize(priceEl.textContent) : (discText ? '' : '');
+      const bannerText = bannerEl ? normalize(bannerEl.textContent) : '';
 
-  // обновляем цену/скидку в правом блоке
-  const productDiscountWrap = document.querySelector('.product-prices .discount-price');
-  const productPriceWrap    = document.querySelector('.product-prices .price');
+      const productDiscountWrap = document.querySelector('.product-prices .discount-price');
+      const productPriceWrap    = document.querySelector('.product-prices .price');
 
-  if (productDiscountWrap) {
-    const targetDiscountTextEl = productDiscountWrap.querySelector('h3') || productDiscountWrap;
-    if (discText) {
-      targetDiscountTextEl.textContent = discText;
-      productDiscountWrap.style.display = '';
-    } else {
-      productDiscountWrap.style.display = 'none';
-    }
-  }
-
-  if (productPriceWrap) {
-    const targetPriceTextEl = productPriceWrap.querySelector('p') || productPriceWrap;
-    targetPriceTextEl.textContent = priceText || '';
-  }
-
-  // обновляем баннер скидки в блоке product-banners (десктоп и мобильные расположения)
-  // селектор покрывает как <div class="discount"><p>-15%</p></div>, так и другие варианты
-  const productBannerEls = Array.from(document.querySelectorAll('.product-banners .discount'));
-  if (productBannerEls.length) {
-    productBannerEls.forEach(pb => {
-      const p = pb.querySelector('p');
-      if (bannerText) {
-        if (p) p.textContent = bannerText;
-        else pb.textContent = bannerText;
-        pb.style.display = '';
-      } else {
-        // если в карточке нет баннера — скрываем главный баннер
-        pb.style.display = 'none';
-      }
-    });
-  }
-
-  // обновляем мобильные блоки с ценой (если есть)
-  const mobilePriceBlocks = Array.from(document.querySelectorAll('.product-mobile-price, .product-mobile .product-prices, .product-mobile-price-block'));
-  if (mobilePriceBlocks.length) {
-    mobilePriceBlocks.forEach(block => {
-      // возможные селекторы внутри мобильного блока: .price, .price-discount, .price .price-discount, h3, p
-      const mobPriceEl = block.querySelector('.price') || block.querySelector('p') || block.querySelector('.product-price');
-      const mobDiscEl  = block.querySelector('.price-discount') || block.querySelector('h3') || block.querySelector('.product-discount');
-
-      if (mobDiscEl) {
-        if (bannerText || discText) {
-          // приоритет — баннер карточки (bannerText). Если его нет, используем discText (цена-скидка внутри карточки).
-          const textToUse = bannerText || discText;
-          if (textToUse) {
-            mobDiscEl.textContent = textToUse;
-            mobDiscEl.style.display = '';
-          } else {
-            mobDiscEl.style.display = 'none';
-          }
+      if (productDiscountWrap) {
+        const targetDiscountTextEl = productDiscountWrap.querySelector('h3') || productDiscountWrap;
+        if (discText) {
+          targetDiscountTextEl.textContent = discText;
+          productDiscountWrap.style.display = '';
         } else {
-          mobDiscEl.style.display = 'none';
+          productDiscountWrap.style.display = 'none';
         }
       }
 
-      if (mobPriceEl) {
-        mobPriceEl.textContent = priceText || '';
+      if (productPriceWrap) {
+        const targetPriceTextEl = productPriceWrap.querySelector('p') || productPriceWrap;
+        targetPriceTextEl.textContent = priceText || '';
+      }
+
+      const productBannerEls = Array.from(document.querySelectorAll('.product-banners .discount'));
+      if (productBannerEls.length) {
+        productBannerEls.forEach(pb => {
+          const p = pb.querySelector('p');
+          if (bannerText) {
+            if (p) p.textContent = bannerText;
+            else pb.textContent = bannerText;
+            pb.style.display = '';
+          } else {
+            pb.style.display = 'none';
+          }
+        });
+      }
+
+      const mobilePriceBlocks = Array.from(document.querySelectorAll('.product-mobile-price, .product-mobile .product-prices, .product-mobile-price-block'));
+      if (mobilePriceBlocks.length) {
+        mobilePriceBlocks.forEach(block => {
+          const mobPriceEl = block.querySelector('.price') || block.querySelector('p') || block.querySelector('.product-price');
+          const mobDiscEl  = block.querySelector('.price-discount') || block.querySelector('h3') || block.querySelector('.product-discount');
+
+          if (mobDiscEl) {
+            if (bannerText || discText) {
+              const textToUse = bannerText || discText;
+              if (textToUse) {
+                mobDiscEl.textContent = textToUse;
+                mobDiscEl.style.display = '';
+              } else {
+                mobDiscEl.style.display = 'none';
+              }
+            } else {
+              mobDiscEl.style.display = 'none';
+            }
+          }
+
+          if (mobPriceEl) {
+            mobPriceEl.textContent = priceText || '';
+          }
+        });
+      }
+
+      const badgeEls = Array.from(document.querySelectorAll('.product-badge-discount, .product-discount-badge'));
+      if (badgeEls.length) {
+        badgeEls.forEach(b => {
+          if (bannerText) {
+            b.textContent = bannerText;
+            b.style.display = '';
+          } else {
+            b.style.display = 'none';
+          }
+        });
+      }
+  }
+
+  function broadcastActive(type, index, sourceWrapper = null) {
+    window.__productActive = window.__productActive || {};
+    window.__productActive[type] = index;
+
+    const selector = (type === 'related') ? '.related-products-cards' : '.other-options-cards';
+    document.querySelectorAll(selector).forEach(wrapper => {
+      if (sourceWrapper && wrapper === sourceWrapper) return;
+
+      const otherCards = Array.from(wrapper.querySelectorAll('.other-option-card, .related-products-card'));
+      if (!otherCards.length) return;
+
+      const idx = Math.max(0, Math.min(index, otherCards.length - 1));
+      otherCards.forEach((c, i) => c.classList.toggle('is-active', i === idx));
+
+      const swiperInstance = wrapper.swiper || wrapper.__swiper ||
+        (wrapper.closest && wrapper.closest('.swiper-container') && wrapper.closest('.swiper-container').swiper);
+
+      if (swiperInstance) {
+        try {
+          if (swiperInstance.params && swiperInstance.params.loop && typeof swiperInstance.slideToLoop === 'function') {
+            swiperInstance.slideToLoop(idx, 0, false);
+          } else if (typeof swiperInstance.slideTo === 'function') {
+            swiperInstance.slideTo(idx, 0, false);
+          }
+        } catch (err) {  }
       }
     });
   }
 
-  // Дополнительно: если есть какой-то отдельный блок-бейдж для скидки (например .product-badge-discount), обновим и его
-  const badgeEls = Array.from(document.querySelectorAll('.product-badge-discount, .product-discount-badge'));
-  if (badgeEls.length) {
-    badgeEls.forEach(b => {
-      if (bannerText) {
-        b.textContent = bannerText;
-        b.style.display = '';
-      } else {
-        b.style.display = 'none';
-      }
-    });
+  function show(index, direction = 0) {
+    index = (index + cards.length) % cards.length;
+    cards.forEach((c, i) => c.classList.toggle('is-active', i === index));
+    current = index;
+
+    try {
+      const type = isRelated ? 'related' : 'other';
+      broadcastActive(type, index, cardsWrapper);
+    } catch (err) {  }
   }
-}
 
-// Примечание: вставьте эту функцию вместо существующей updateProductPriceFromCard в вашем скрипте.
-// Логика: приоритет для текста баннера — bannerText; если баннера нет, используются значения .other-option-card-discount/.other-option-card-price.
-// Баннеры и блоки скрываются, если соответствующая информация отсутствует.
+  let __syncResizeTO = null;
+  function applySavedStateToAll() {
+    if (!window.__productActive) return;
+    if (window.__productActive.other !== undefined) broadcastActive('other', window.__productActive.other, null);
+    if (window.__productActive.related !== undefined) broadcastActive('related', window.__productActive.related, null);
+  }
+  window.addEventListener('resize', () => {
+    clearTimeout(__syncResizeTO);
+    __syncResizeTO = setTimeout(applySavedStateToAll, 120);
+  });
 
-
-    function show(index, direction = 0) {
-      index = (index + cards.length) % cards.length;
-      cards.forEach((c, i) => c.classList.toggle('is-active', i === index));
-      current = index;
-    }
+  try { applySavedStateToAll(); } catch (e) {}
 
     let rafIdLocal = null;
     function cancelScrollAnimLocal() { if (rafIdLocal) { cancelAnimationFrame(rafIdLocal); rafIdLocal = null; } }
