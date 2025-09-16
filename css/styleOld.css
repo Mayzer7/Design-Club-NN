@@ -228,13 +228,11 @@ input:-webkit-autofill {
 .hero-left-side h1,
 .hero-left-side h2 {
   font-family: "Future New Light", sans-serif;
-  font-size: clamp(42px, 5.5vw, 110px);
+  font-size: clamp(42px, 6vw, 110px);
   line-height: 90%;
-  letter-spacing: -0.04em;
   font-weight: 300;
   text-transform: uppercase;
-  max-width: 1500px;
-  width: 100%;
+  max-width: 1300px;
 }
 .hero-right-side {
   display: flex;
@@ -1893,10 +1891,6 @@ nav ul ul.open + svg {
     min-width: 250px;
     width: 100%;
   }
-
-  .hero-left-side h1, .hero-left-side h2 {
-    max-width: 850px;
-  }
 }
 @media (max-width: 1040px) {
   .card {
@@ -2011,26 +2005,18 @@ nav ul ul.open + svg {
     transform: scale(1);
   }
 }
-
-@media (max-width: 605px) {
-    .fixed-main-title {
-        bottom: -210px;
-    }
-}
-
 @media (max-width: 509px) {
+  .fixed-main-title {
+    bottom: -210px;
+  }
   .why-choose-us {
     padding: 295px 15px 20px 15px;
   }
 }
-
-@media (max-width: 445px) {
-    .fixed-main-title {
-        bottom: -245px;
-    }
-}
-
 @media (max-width: 432px) {
+  .fixed-main-title {
+    bottom: -245px;
+  }
   .why-choose-us {
     padding: 320px 15px 20px 15px;
   }
@@ -8645,9 +8631,11 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
   cursor: pointer;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
+
 .customers-navigation:last-child {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
+
 .customers-navigation:hover {
   background-color: rgba(255, 255, 255, 0.02);
 }
@@ -15027,134 +15015,4 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     line-height: 30px;
     margin-bottom: 30px;
   }
-}
-
-
-
-
-
-/* Выбор цвета на странице товара */
-
-.choice-color {
-  width: 100%;
-}
-
-.choice-color-title,
-.choice-overflow-title {
-  font-family: 'SF Pro Display', sans-serif;
-  font-weight: 300;
-  font-size: 18px;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-}
-
-.choice-color,
-.choice-overflow {
-  width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 20px;
-}
-
-.choice-overflow {
-  margin-top: 20px;
-}
-
-.choice-color-option {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 10px 0px;
-  cursor: pointer;
-}
-
-.choice-color-option.active {
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.choice-color-option-left,
-.choice-color-option-item {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  gap: 9px;
-}
-
-.choice-color-option-item {
-  cursor: pointer;
-}
-
-.choice-color-option-image img {
-  display: block;
-  width: 25px; 
-  height: 25px;
-  object-fit: contain;
-}
-
-.choice-color-option-name {
-  font-family: 'SF Pro Display Light', sans-serif;
-  font-weight: 300;
-  font-size: 16px;
-  line-height: 110%;
-}
-
-.choice-color-option-button {
-  border: none;
-  background-color: transparent;
-  padding: 0;
-  margin: 0;
-  cursor: pointer;
-}
-
-.choice-color-options-list {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-
-  max-height: 170px;
-  overflow-y: auto;
-}
-
-.choice-color-options-list::-webkit-scrollbar {
-    width: 3px;
-}
-  
-.choice-color-options-list::-webkit-scrollbar-track {
-    background-color: #EDE4D7;
-    border-radius: 6px;
-  }
-  
-.choice-color-options-list::-webkit-scrollbar-thumb {
-    background-color: #AE9877;
-    border-radius: 6px;
-}
-
-.choice-overflow-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-}
-
-.choice-overflow-buttons button {
-  padding: 12px 16px;
-  border: none;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background-color: transparent;
-  color: #EDE4D7;
-  font-family: 'SF Pro Display Light', sans-serif;
-  font-weight: 300;
-  font-size: 20px;
-  letter-spacing: -0.02em;
-  cursor: pointer;
-  transition: color 0.3s ease;
-  max-width: 154px;
-  width: 100%;
-}
-
-.choice-overflow-buttons button.active {
-  background-color: #AE9877;
 }

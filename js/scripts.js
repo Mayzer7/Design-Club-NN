@@ -3176,7 +3176,7 @@ const gallerySwiper = document.querySelector('.project-gallery-swiper');
 
 
 
-// На странице товара блоки "Другие варианты" и "Похожие товары"
+// На странице товара блоки "Другие варианты" и "Похожие товары" и палитра цветов
 
 document.addEventListener('DOMContentLoaded', () => {
   function fadeReplaceImg(imgEl, src) {
@@ -3314,6 +3314,40 @@ document.addEventListener('DOMContentLoaded', () => {
     try { updateModalFirstImage(newSrc); } catch (err) {  }
   }
 
+  (function syncActiveWithGalleryOnLoad() {
+    // чуть позже (50ms) — чтобы успели инициализироваться слайдеры/DOM, если они создаются скриптами
+    setTimeout(() => {
+      const activeEl = document.querySelector('.choice-color-option');
+      if (!activeEl) return;
+
+      // попытки получить data-img-url из нескольких мест
+      const activeUrlFromAttr = activeEl.dataset.imgUrl || null;
+      const activeUrlFromImg = activeEl.querySelector('img')?.getAttribute('data-img-url') || null;
+      const activeUrl = activeUrlFromAttr || activeUrlFromImg || null;
+
+      // Находим первую картинку галереи (несколько селекторов для надёжности)
+      const firstImg = document.querySelector('.product-swiper .product-swiper-wrapper .product-swiper-slide img')
+                    || document.querySelector('.product-swiper .swiper-slide img')
+                    || document.querySelector('.product-main-image img')
+                    || null;
+      const firstSrc = firstImg ? (firstImg.src || firstImg.getAttribute('data-src')) : null;
+
+      if (activeUrl) {
+        // если активный цвет задаёт картинку — подставляем её в галерею (плавно через твою функцию)
+        if (firstImg && firstSrc !== activeUrl) {
+          try { updateMainSliderImage(activeUrl); } catch (err) { 
+            // fallback: простая замена src
+            try { firstImg.src = activeUrl; } catch(e) {}
+          }
+        }
+      } else if (firstSrc) {
+        // если у активного цвета нет data-img-url — заполним его текущей картинкой галереи
+        try { activeEl.dataset.imgUrl = firstSrc; } catch (e) {}
+      }
+    }, 50);
+  })();
+
+  // ---------- smooth scroll helpers (твоя реализация) ----------
   let rafId = null;
   function cancelScrollAnim() {
     if (rafId) {
@@ -3348,9 +3382,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const MOBILE_MAX_WIDTH = 1010;
   function getProductTarget() {
     if (window.innerWidth <= MOBILE_MAX_WIDTH) {
-      return document.querySelector('.product-mobile .under-header-container-product') || document.querySelector('.product-mobile .product-item-title');
+      return document.querySelector('.product-mobile .under-header-container-product')
+        || document.querySelector('.product-mobile .product-item-title');
     } else {
-      return ( document.querySelector('.product-section') || document.querySelector('.product-desktop') || document.querySelector('.product') || document.querySelector('#product-section') || document.querySelector('#product-desktop') );
+      return document.querySelector('.under-header-product')
+        || document.querySelector('.product-section')
+        || document.querySelector('.product-desktop')
+        || document.querySelector('.product')
+        || document.querySelector('#product-section')
+        || document.querySelector('#product-desktop');
     }
   }
   function scrollToProduct(offset = 0, duration = 600){
@@ -3360,6 +3400,62 @@ document.addEventListener('DOMContentLoaded', () => {
     return smoothScrollToY(top, duration);
   }
 
+  // ---- choice-color handler (встроена логика подмены и плавного скролла) ----
+  (function initChoiceColor() {
+    const active = document.querySelector('.choice-color-option'); // верхний активный блок
+    const list = document.querySelector('.choice-color-options-list'); // контейнер с цветами
+    if (!active || !list) return;
+
+    list.addEventListener('click', (e) => {
+      const item = e.target.closest('.choice-color-option-item');
+      if (!item) return;
+
+      // Получаем URL картинки товара (data-img-url может быть на элементе item или на <img>)
+      let productImg = item.dataset.imgUrl || item.querySelector('img')?.getAttribute('data-img-url') || null;
+      // Мини-иконка и имя у выбранного пункта
+      const clickedImgEl = item.querySelector('img');
+      const clickedSwatchSrc = clickedImgEl ? clickedImgEl.src : '';
+      const clickedNameEl = item.querySelector('.choice-color-option-name');
+      const clickedName = clickedNameEl ? clickedNameEl.textContent.trim() : '';
+
+      // Информация из активного верхнего блока
+      const activeSwatchImgEl = active.querySelector('.choice-color-option-image img');
+      const activeSwatchSrc = activeSwatchImgEl ? activeSwatchImgEl.src : '';
+      const activeNameEl = active.querySelector('.choice-color-option-name');
+      const activeName = activeNameEl ? activeNameEl.textContent.trim() : '';
+      const activeDataImg = active.dataset.imgUrl || activeSwatchImgEl?.getAttribute('data-img-url') || null;
+
+      // --- Меняем верхний блок на выбранный ---
+      if (clickedSwatchSrc && activeSwatchImgEl) activeSwatchImgEl.src = clickedSwatchSrc;
+      if (activeNameEl && clickedName) activeNameEl.textContent = clickedName;
+      if (productImg) active.dataset.imgUrl = productImg;
+      else active.removeAttribute('data-img-url');
+
+      // --- Подставляем в место выбранного прежний активный мини-цвет ---
+      if (clickedImgEl && activeSwatchSrc) clickedImgEl.src = activeSwatchSrc;
+      if (clickedNameEl && activeName) clickedNameEl.textContent = activeName;
+      if (activeDataImg) item.dataset.imgUrl = activeDataImg;
+      else item.removeAttribute('data-img-url');
+
+      // --- Плавная подмена картинки и плавный скролл к продукт-блоку ---
+      if (productImg) {
+        // сначала плавно заменяем картинку (твоя логика)
+        updateMainSliderImage(productImg);
+
+        // небольшой таймаут чтобы пользователь увидел смену (как у тебя было раньше)
+        setTimeout(() => {
+          // offset: на мобильных 20px, на десктопе 0 (как в твоей логике)
+          const OFFSET = (window.innerWidth > MOBILE_MAX_WIDTH) ? 0 : 20;
+          const DURATION = 600;
+          // запускаем плавный скролл
+          scrollToProduct(OFFSET, DURATION).catch(()=>{});
+        }, 120);
+      }
+    });
+  })();
+  // ---- end choice-color handler ----
+
+  // Прочая логика инициализации каруселей (твой исходный код дальше)
   document.querySelectorAll('.other-options-cards, .related-products-cards').forEach(initCarousel);
 
   function initCarousel(cardsWrapper) {
@@ -3388,7 +3484,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const productDiscountWrap = document.querySelector('.product-prices .discount-price');
       const productPriceWrap    = document.querySelector('.product-prices .price');
-
       if (productDiscountWrap) {
         const targetDiscountTextEl = productDiscountWrap.querySelector('h3') || productDiscountWrap;
         if (discText) {
@@ -3398,117 +3493,111 @@ document.addEventListener('DOMContentLoaded', () => {
           productDiscountWrap.style.display = 'none';
         }
       }
-
       if (productPriceWrap) {
         const targetPriceTextEl = productPriceWrap.querySelector('p') || productPriceWrap;
         targetPriceTextEl.textContent = priceText || '';
       }
 
       const productBannerEls = Array.from(document.querySelectorAll('.product-banners .discount'));
-      if (productBannerEls.length) {
-        productBannerEls.forEach(pb => {
-          const p = pb.querySelector('p');
-          if (bannerText) {
-            if (p) p.textContent = bannerText;
-            else pb.textContent = bannerText;
-            pb.style.display = '';
-          } else {
-            pb.style.display = 'none';
-          }
-        });
-      }
+      productBannerEls.forEach(pb => {
+        const p = pb.querySelector('p');
+        if (bannerText) {
+          if (p) p.textContent = bannerText;
+          else pb.textContent = bannerText;
+          pb.style.display = '';
+        } else {
+          pb.style.display = 'none';
+        }
+      });
 
       const mobilePriceBlocks = Array.from(document.querySelectorAll('.product-mobile-price, .product-mobile .product-prices, .product-mobile-price-block'));
-      if (mobilePriceBlocks.length) {
-        mobilePriceBlocks.forEach(block => {
-          const mobPriceEl = block.querySelector('.price') || block.querySelector('p') || block.querySelector('.product-price');
-          const mobDiscEl  = block.querySelector('.price-discount') || block.querySelector('h3') || block.querySelector('.product-discount');
-
-          if (mobDiscEl) {
-            if (bannerText || discText) {
-              const textToUse = bannerText || discText;
-              if (textToUse) {
-                mobDiscEl.textContent = textToUse;
-                mobDiscEl.style.display = '';
-              } else {
-                mobDiscEl.style.display = 'none';
-              }
-            } else {
-              mobDiscEl.style.display = 'none';
-            }
+      mobilePriceBlocks.forEach(block => {
+        const mobPriceEl = block.querySelector('.price') || block.querySelector('p') || block.querySelector('.product-price');
+        const mobDiscEl  = block.querySelector('.price-discount') || block.querySelector('h3') || block.querySelector('.product-discount');
+        if (mobPriceEl) mobPriceEl.textContent = priceText || '';
+        if (mobDiscEl) {
+          if (bannerText || discText) {
+            mobDiscEl.textContent = bannerText || discText;
+            mobDiscEl.style.display = '';
+          } else {
+            mobDiscEl.style.display = 'none';
           }
+        }
+      });
 
-          if (mobPriceEl) {
-            mobPriceEl.textContent = priceText || '';
-          }
-        });
+      const mobBannerEl = document.querySelector('.product-mobile-info .discount-mobile');
+      if (mobBannerEl) {
+        if (bannerText) {
+          mobBannerEl.textContent = bannerText;
+          mobBannerEl.style.display = '';
+        } else {
+          mobBannerEl.style.display = 'none';
+        }
       }
 
       const badgeEls = Array.from(document.querySelectorAll('.product-badge-discount, .product-discount-badge'));
-      if (badgeEls.length) {
-        badgeEls.forEach(b => {
-          if (bannerText) {
-            b.textContent = bannerText;
-            b.style.display = '';
-          } else {
-            b.style.display = 'none';
-          }
-        });
-      }
-  }
+      badgeEls.forEach(b => {
+        if (bannerText) {
+          b.textContent = bannerText;
+          b.style.display = '';
+        } else {
+          b.style.display = 'none';
+        }
+      });
+    }
 
-  function broadcastActive(type, index, sourceWrapper = null) {
-    window.__productActive = window.__productActive || {};
-    window.__productActive[type] = index;
+    function broadcastActive(type, index, sourceWrapper = null) {
+      window.__productActive = window.__productActive || {};
+      window.__productActive[type] = index;
 
-    const selector = (type === 'related') ? '.related-products-cards' : '.other-options-cards';
-    document.querySelectorAll(selector).forEach(wrapper => {
-      if (sourceWrapper && wrapper === sourceWrapper) return;
+      const selector = (type === 'related') ? '.related-products-cards' : '.other-options-cards';
+      document.querySelectorAll(selector).forEach(wrapper => {
+        if (sourceWrapper && wrapper === sourceWrapper) return;
 
-      const otherCards = Array.from(wrapper.querySelectorAll('.other-option-card, .related-products-card'));
-      if (!otherCards.length) return;
+        const otherCards = Array.from(wrapper.querySelectorAll('.other-option-card, .related-products-card'));
+        if (!otherCards.length) return;
 
-      const idx = Math.max(0, Math.min(index, otherCards.length - 1));
-      otherCards.forEach((c, i) => c.classList.toggle('is-active', i === idx));
+        const idx = Math.max(0, Math.min(index, otherCards.length - 1));
+        otherCards.forEach((c, i) => c.classList.toggle('is-active', i === idx));
 
-      const swiperInstance = wrapper.swiper || wrapper.__swiper ||
-        (wrapper.closest && wrapper.closest('.swiper-container') && wrapper.closest('.swiper-container').swiper);
+        const swiperInstance = wrapper.swiper || wrapper.__swiper ||
+          (wrapper.closest && wrapper.closest('.swiper-container') && wrapper.closest('.swiper-container').swiper);
 
-      if (swiperInstance) {
-        try {
-          if (swiperInstance.params && swiperInstance.params.loop && typeof swiperInstance.slideToLoop === 'function') {
-            swiperInstance.slideToLoop(idx, 0, false);
-          } else if (typeof swiperInstance.slideTo === 'function') {
-            swiperInstance.slideTo(idx, 0, false);
-          }
-        } catch (err) {  }
-      }
+        if (swiperInstance) {
+          try {
+            if (swiperInstance.params && swiperInstance.params.loop && typeof swiperInstance.slideToLoop === 'function') {
+              swiperInstance.slideToLoop(idx, 0, false);
+            } else if (typeof swiperInstance.slideTo === 'function') {
+              swiperInstance.slideTo(idx, 0, false);
+            }
+          } catch (err) {  }
+        }
+      });
+    }
+
+    function show(index, direction = 0) {
+      index = (index + cards.length) % cards.length;
+      cards.forEach((c, i) => c.classList.toggle('is-active', i === index));
+      current = index;
+
+      try {
+        const type = isRelated ? 'related' : 'other';
+        broadcastActive(type, index, cardsWrapper);
+      } catch (err) {  }
+    }
+
+    let __syncResizeTO = null;
+    function applySavedStateToAll() {
+      if (!window.__productActive) return;
+      if (window.__productActive.other !== undefined) broadcastActive('other', window.__productActive.other, null);
+      if (window.__productActive.related !== undefined) broadcastActive('related', window.__productActive.related, null);
+    }
+    window.addEventListener('resize', () => {
+      clearTimeout(__syncResizeTO);
+      __syncResizeTO = setTimeout(applySavedStateToAll, 120);
     });
-  }
 
-  function show(index, direction = 0) {
-    index = (index + cards.length) % cards.length;
-    cards.forEach((c, i) => c.classList.toggle('is-active', i === index));
-    current = index;
-
-    try {
-      const type = isRelated ? 'related' : 'other';
-      broadcastActive(type, index, cardsWrapper);
-    } catch (err) {  }
-  }
-
-  let __syncResizeTO = null;
-  function applySavedStateToAll() {
-    if (!window.__productActive) return;
-    if (window.__productActive.other !== undefined) broadcastActive('other', window.__productActive.other, null);
-    if (window.__productActive.related !== undefined) broadcastActive('related', window.__productActive.related, null);
-  }
-  window.addEventListener('resize', () => {
-    clearTimeout(__syncResizeTO);
-    __syncResizeTO = setTimeout(applySavedStateToAll, 120);
-  });
-
-  try { applySavedStateToAll(); } catch (e) {}
+    try { applySavedStateToAll(); } catch (e) {}
 
     let rafIdLocal = null;
     function cancelScrollAnimLocal() { if (rafIdLocal) { cancelAnimationFrame(rafIdLocal); rafIdLocal = null; } }
@@ -3574,7 +3663,7 @@ document.addEventListener('DOMContentLoaded', () => {
           updateMainSliderImage(clickedImg.src);
           updateProductPriceFromCard(cardEl);
         }
-        const OFFSET = 20;
+        const OFFSET = (window.innerWidth > MOBILE_MAX_WIDTH) ? 0 : 20;
         const DURATION = 600;
         scrollToProduct(OFFSET, DURATION).catch(()=>{});
       }
@@ -3724,6 +3813,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
 // Отображение цветов товара в каталоге
 
 (function () {
@@ -3866,4 +3956,12 @@ document.addEventListener('DOMContentLoaded', () => {
   window.__updateColorPalettes = function (force = false) { updateAllPalettes(!!force); };
   window.__getCurrentColorLimit = getCurrentLimit;
 })();
+
+
+
+
+
+
+
+
 
