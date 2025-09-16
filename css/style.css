@@ -8089,6 +8089,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
   background: 0 0;
   border: none;
   padding: 0;
+  color: black;
 }
 .swiper-button-next::after,
 .swiper-button-prev::after {
@@ -8984,7 +8985,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
   vertical-align: middle;
 }
 .product-mobile-discount-icons {
-  margin-top: 18px;
+  margin-top: 20px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -15108,14 +15109,41 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
   cursor: pointer;
 }
 
+
+.choice-color-options {
+  position: relative;
+}
+
 .choice-color-options-list {
   margin-top: 10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 
-  max-height: 170px;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-8px);
+  overflow: hidden;
+  pointer-events: none;
+  transition: max-height 500ms cubic-bezier(.2,.9,.2,1), opacity 500ms ease, transform 500ms cubic-bezier(.2,.9,.2,1);
+}
+
+.choice-color-options-list.open {
+  max-height: 170px; 
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
   overflow-y: auto;
+}
+
+.choice-color-option-button svg {
+  transition: transform 500ms cubic-bezier(.2,.9,.2,1);
+  transform-origin: 50% 50%;
+  display: block;
+}
+
+.choice-color-option-button.open svg {
+  transform: rotate(45deg) scale(1.02);
 }
 
 .choice-color-options-list::-webkit-scrollbar {
@@ -15157,4 +15185,36 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 
 .choice-overflow-buttons button.active {
   background-color: #AE9877;
+}
+
+.choice-color-mobile {
+  margin-top: 50px;
+  border: none;
+  padding: 0;
+  max-width: 300px;
+  width: 100%;
+}
+
+.choice-overflow-mobile {
+  border: none;
+  padding: 0;
+}
+
+.choice-overflow-mobile .choice-overflow-buttons {
+  flex-direction: row;
+  white-space: nowrap;
+  gap: 6px;
+  max-width: 300px;
+}
+
+.choice-overflow-mobile .choice-overflow-buttons button {
+  font-size: 14px;
+}
+
+@media (max-width: 530px) {
+  .choice-color-mobile,
+  .choice-overflow-mobile .choice-overflow-buttons,
+  .choice-overflow-buttons button {
+    max-width: 100%;
+  }
 }

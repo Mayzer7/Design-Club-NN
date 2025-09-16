@@ -3175,641 +3175,906 @@ const gallerySwiper = document.querySelector('.project-gallery-swiper');
 
 
 
-
 // На странице товара блоки "Другие варианты" и "Похожие товары" и палитра цветов
 
 document.addEventListener('DOMContentLoaded', () => {
-  function fadeReplaceImg(imgEl, src) {
-    if (!imgEl || !src) return;
-    if (imgEl.getAttribute('data-src') !== null) imgEl.setAttribute('data-src', src);
-    if (imgEl.getAttribute('data-srcset') !== null) imgEl.removeAttribute('data-srcset');
-    if (imgEl.getAttribute('srcset') !== null) imgEl.removeAttribute('srcset');
-
-    const prevTransition = imgEl.style.transition;
-    imgEl.style.transition = imgEl.style.transition || 'opacity 260ms ease';
-    imgEl.style.willChange = 'opacity';
-    imgEl.style.opacity = '0';
-
-    const applyNew = () => {
-      imgEl.src = src;
-      if (!imgEl.complete) {
-        imgEl.onload = () => {
-          imgEl.style.opacity = '1';
-          imgEl.onload = null;
-          setTimeout(() => {
-            imgEl.style.transition = prevTransition || '';
-            imgEl.style.willChange = '';
-          }, 300);
-        };
-      } else {
-        imgEl.style.opacity = '1';
-        setTimeout(() => {
-          imgEl.style.transition = prevTransition || '';
-          imgEl.style.willChange = '';
-        }, 300);
-      }
-    };
-
-    setTimeout(applyNew, 180);
-  }
-
-  // Меняем первую картинку внутри модалки слайдера 
-  function updateModalFirstImage(newSrc) {
-    if (!newSrc) return;
-    const modalWrapper = document.querySelector('.modal-product-swiper');
-    if (!modalWrapper) return;
-
-    const slideEls = Array.from(modalWrapper.querySelectorAll('.swiper-slide'));
-    if (!slideEls.length) return;
-
-    let targetSlides = slideEls.filter(sl => sl.getAttribute('data-swiper-slide-index') === '0');
-    if (!targetSlides.length) targetSlides = [slideEls[0]];
-
-    targetSlides.forEach(sl => {
-      const img = sl.querySelector('img');
-      if (img) {
-        fadeReplaceImg(img, newSrc);
-        return;
-      }
-      const pic = sl.querySelector('picture');
-      if (pic) {
-        const sources = pic.querySelectorAll('source');
-        sources.forEach(s => { if (s.getAttribute('srcset')) s.removeAttribute('srcset'); });
-        const imgInside = pic.querySelector('img');
-        if (imgInside) fadeReplaceImg(imgInside, newSrc);
-        return;
-      }
-
-      const inner = sl.querySelector('.slide-inner');
-      if (inner) {
-        inner.style.backgroundImage = `url("${newSrc}")`;
-      }
-    });
-
-    const modalSwiper = modalWrapper.swiper || modalWrapper.__swiper ||
-      (modalWrapper.closest && modalWrapper.closest('.swiper-container') && modalWrapper.closest('.swiper-container').swiper);
-
-    if (modalSwiper && typeof modalSwiper.update === 'function') {
-      setTimeout(() => {
-        try {
-          modalSwiper.update();
-          if (typeof modalSwiper.slideTo === 'function') modalSwiper.slideTo(0, 0, false);
-        } catch (err) { }
-      }, 350);
-    }
-  }
-
-  function updateMainSliderImage(newSrc) {
-    if (!newSrc) return;
-    const containers = Array.from(document.querySelectorAll('.product-swiper, .product-images, .images-mobile, .product-images.images-mobile'));
-    containers.forEach(container => {
-      const slideEls = Array.from(container.querySelectorAll('.product-swiper-slide, .swiper-slide'));
-      if (!slideEls.length) return;
-
-      const matched = slideEls.filter(sl => sl.getAttribute('data-swiper-slide-index') === '0');
-      if (!matched.length) {
-        const firstSlide = slideEls[0];
-        const img = firstSlide && firstSlide.querySelector('img');
-        if (img) fadeReplaceImg(img, newSrc);
-        else {
-          const inner = firstSlide && firstSlide.querySelector('.slide-inner');
-          if (inner) inner.style.backgroundImage = `url("${newSrc}")`;
-        }
-      } else {
-        matched.forEach(sl => {
-          const img = sl.querySelector('img');
-          if (img) fadeReplaceImg(img, newSrc);
-        });
-      }
-
-      const swiperInstance = container.swiper || container.__swiper || (container.closest && container.closest('.swiper-container') && container.closest('.swiper-container').swiper);
-      if (swiperInstance && typeof swiperInstance.update === 'function') {
-        setTimeout(() => {
-          try {
-            swiperInstance.update();
-
-            let targetIndex = -1;
-            try {
-              const slidesArray = Array.from(swiperInstance.slides || []);
-              targetIndex = slidesArray.findIndex(s => s.getAttribute && s.getAttribute('data-swiper-slide-index') === '0');
-            } catch (err) { targetIndex = -1; }
-
-            if (targetIndex < 0) targetIndex = 0;
-
-            const DURATION = 360; 
-            if (swiperInstance.params && swiperInstance.params.loop && typeof swiperInstance.slideToLoop === 'function') {
-              const current = swiperInstance.realIndex !== undefined ? swiperInstance.realIndex : (swiperInstance.activeIndex || 0);
-              if (current !== 0) {
-                swiperInstance.slideToLoop(0, DURATION, false);
-              }
-            } else if (typeof swiperInstance.slideTo === 'function') {
-              const alreadyOn = (swiperInstance.activeIndex === targetIndex);
-              if (!alreadyOn) swiperInstance.slideTo(targetIndex, DURATION, false);
+    function fadeReplaceImg(imgEl, src) {
+        if (!imgEl || !src) return;
+        if (imgEl.getAttribute('data-src') !== null) imgEl.setAttribute('data-src', src);
+        if (imgEl.getAttribute('data-srcset') !== null) imgEl.removeAttribute('data-srcset');
+        if (imgEl.getAttribute('srcset') !== null) imgEl.removeAttribute('srcset');
+        const prevTransition = imgEl.style.transition;
+        imgEl.style.transition = imgEl.style.transition || 'opacity 260ms ease';
+        imgEl.style.willChange = 'opacity';
+        imgEl.style.opacity = '0';
+        const applyNew = () => {
+            imgEl.src = src;
+            if (!imgEl.complete) {
+                imgEl.onload = () => {
+                    imgEl.style.opacity = '1';
+                    imgEl.onload = null;
+                    setTimeout(() => {
+                        imgEl.style.transition = prevTransition || '';
+                        imgEl.style.willChange = '';
+                    }, 300);
+                };
+            } else {
+                imgEl.style.opacity = '1';
+                setTimeout(() => {
+                    imgEl.style.transition = prevTransition || '';
+                    imgEl.style.willChange = '';
+                }, 300);
             }
-          } catch (err) { }
-        }, 350);
-      }
-    });
+        };
+        setTimeout(applyNew, 180);
+    }
 
-    try { updateModalFirstImage(newSrc); } catch (err) {  }
-  }
-
-  (function syncActiveWithGalleryOnLoad() {
-    // чуть позже (50ms) — чтобы успели инициализироваться слайдеры/DOM, если они создаются скриптами
-    setTimeout(() => {
-      const activeEl = document.querySelector('.choice-color-option');
-      if (!activeEl) return;
-
-      // попытки получить data-img-url из нескольких мест
-      const activeUrlFromAttr = activeEl.dataset.imgUrl || null;
-      const activeUrlFromImg = activeEl.querySelector('img')?.getAttribute('data-img-url') || null;
-      const activeUrl = activeUrlFromAttr || activeUrlFromImg || null;
-
-      // Находим первую картинку галереи (несколько селекторов для надёжности)
-      const firstImg = document.querySelector('.product-swiper .product-swiper-wrapper .product-swiper-slide img')
-                    || document.querySelector('.product-swiper .swiper-slide img')
-                    || document.querySelector('.product-main-image img')
-                    || null;
-      const firstSrc = firstImg ? (firstImg.src || firstImg.getAttribute('data-src')) : null;
-
-      if (activeUrl) {
-        // если активный цвет задаёт картинку — подставляем её в галерею (плавно через твою функцию)
-        if (firstImg && firstSrc !== activeUrl) {
-          try { updateMainSliderImage(activeUrl); } catch (err) { 
-            // fallback: простая замена src
-            try { firstImg.src = activeUrl; } catch(e) {}
-          }
+    // Меняем первую картинку внутри модалки слайдера
+    function updateModalFirstImage(newSrc) {
+        if (!newSrc) return;
+        const modalWrapper = document.querySelector('.modal-product-swiper');
+        if (!modalWrapper) return;
+        const slideEls = Array.from(modalWrapper.querySelectorAll('.swiper-slide'));
+        if (!slideEls.length) return;
+        let targetSlides = slideEls.filter(sl => sl.getAttribute('data-swiper-slide-index') === '0');
+        if (!targetSlides.length) targetSlides = [slideEls[0]];
+        targetSlides.forEach(sl => {
+            const img = sl.querySelector('img');
+            if (img) {
+                fadeReplaceImg(img, newSrc);
+                return;
+            }
+            const pic = sl.querySelector('picture');
+            if (pic) {
+                const sources = pic.querySelectorAll('source');
+                sources.forEach(s => {
+                    if (s.getAttribute('srcset')) s.removeAttribute('srcset');
+                });
+                const imgInside = pic.querySelector('img');
+                if (imgInside) fadeReplaceImg(imgInside, newSrc);
+                return;
+            }
+            const inner = sl.querySelector('.slide-inner');
+            if (inner) {
+                inner.style.backgroundImage = url("${newSrc}");
+            }
+        });
+        const modalSwiper = modalWrapper.swiper || modalWrapper.__swiper || (modalWrapper.closest && modalWrapper.closest('.swiper-container') && modalWrapper.closest('.swiper-container').swiper);
+        if (modalSwiper && typeof modalSwiper.update === 'function') {
+            setTimeout(() => {
+                try {
+                    modalSwiper.update();
+                    if (typeof modalSwiper.slideTo === 'function') modalSwiper.slideTo(0, 0, false);
+                } catch (err) { }
+            }, 350);
         }
-      } else if (firstSrc) {
-        // если у активного цвета нет data-img-url — заполним его текущей картинкой галереи
-        try { activeEl.dataset.imgUrl = firstSrc; } catch (e) {}
-      }
-    }, 50);
-  })();
-
-  // ---------- smooth scroll helpers (твоя реализация) ----------
-  let rafId = null;
-  function cancelScrollAnim() {
-    if (rafId) {
-      cancelAnimationFrame(rafId);
-      rafId = null;
     }
-  }
-  function easeInOutCubic(t){ return t<0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
-  function smoothScrollToY(targetY, duration = 600){
-    cancelScrollAnim();
-    const scroller = document.scrollingElement || document.documentElement || document.body;
-    const startY = scroller.scrollTop || window.pageYOffset || 0;
-    const maxScroll = Math.max(0, scroller.scrollHeight - window.innerHeight);
-    const finalY = Math.min(maxScroll, Math.max(0, Math.round(targetY)));
-    const diff = finalY - startY;
-    if (diff === 0) return Promise.resolve();
-    const startTime = performance.now();
-    const dur = Math.max(50, duration);
-    return new Promise((resolve) => {
-      function step(now){
-        const t = Math.min(1, (now - startTime)/dur);
-        const eased = easeInOutCubic(t);
-        const y = Math.round(startY + diff * eased);
-        window.scrollTo(0, y);
-        if (t < 1) rafId = requestAnimationFrame(step);
-        else { rafId = null; resolve(); }
-      }
-      rafId = requestAnimationFrame(step);
-    });
-  }
 
-  const MOBILE_MAX_WIDTH = 1010;
-  function getProductTarget() {
-    if (window.innerWidth <= MOBILE_MAX_WIDTH) {
-      return document.querySelector('.product-mobile .under-header-container-product')
-        || document.querySelector('.product-mobile .product-item-title');
-    } else {
-      return document.querySelector('.under-header-product')
-        || document.querySelector('.product-section')
-        || document.querySelector('.product-desktop')
-        || document.querySelector('.product')
-        || document.querySelector('#product-section')
-        || document.querySelector('#product-desktop');
+    function updateMainSliderImage(newSrc) {
+        if (!newSrc) return;
+        const containers = Array.from(document.querySelectorAll('.product-swiper, .product-images, .images-mobile, .product-images.images-mobile'));
+        containers.forEach(container => {
+            const slideEls = Array.from(container.querySelectorAll('.product-swiper-slide, .swiper-slide'));
+            if (!slideEls.length) return;
+            const matched = slideEls.filter(sl => sl.getAttribute('data-swiper-slide-index') === '0');
+            if (!matched.length) {
+                const firstSlide = slideEls[0];
+                const img = firstSlide && firstSlide.querySelector('img');
+                if (img) fadeReplaceImg(img, newSrc);
+                else {
+                    const inner = firstSlide && firstSlide.querySelector('.slide-inner');
+                    if (inner) inner.style.backgroundImage = url("${newSrc}");
+                }
+            } else {
+                matched.forEach(sl => {
+                    const img = sl.querySelector('img');
+                    if (img) fadeReplaceImg(img, newSrc);
+                });
+            }
+            const swiperInstance = container.swiper || container.__swiper || (container.closest && container.closest('.swiper-container') && container.closest('.swiper-container').swiper);
+            if (swiperInstance && typeof swiperInstance.update === 'function') {
+                setTimeout(() => {
+                    try {
+                        swiperInstance.update();
+                        let targetIndex = -1;
+                        try {
+                            const slidesArray = Array.from(swiperInstance.slides || []);
+                            targetIndex = slidesArray.findIndex(s => s.getAttribute && s.getAttribute('data-swiper-slide-index') === '0');
+                        } catch (err) {
+                            targetIndex = -1;
+                        }
+                        if (targetIndex < 0) targetIndex = 0;
+                        const DURATION = 360;
+                        if (swiperInstance.params && swiperInstance.params.loop && typeof swiperInstance.slideToLoop === 'function') {
+                            const current = swiperInstance.realIndex !== undefined ? swiperInstance.realIndex : (swiperInstance.activeIndex || 0);
+                            if (current !== 0) {
+                                swiperInstance.slideToLoop(0, DURATION, false);
+                            }
+                        } else if (typeof swiperInstance.slideTo === 'function') {
+                            const alreadyOn = (swiperInstance.activeIndex === targetIndex);
+                            if (!alreadyOn) swiperInstance.slideTo(targetIndex, DURATION, false);
+                        }
+                    } catch (err) { }
+                }, 350);
+            }
+        });
+        try { updateModalFirstImage(newSrc); } catch (err) { }
     }
-  }
-  function scrollToProduct(offset = 0, duration = 600){
-    const target = getProductTarget();
-    if (!target) return Promise.resolve();
-    const top = target.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) - offset;
-    return smoothScrollToY(top, duration);
-  }
 
-  // ---- choice-color handler (встроена логика подмены и плавного скролла) ----
-  (function initChoiceColor() {
-    const active = document.querySelector('.choice-color-option'); // верхний активный блок
-    const list = document.querySelector('.choice-color-options-list'); // контейнер с цветами
-    if (!active || !list) return;
+    function isNoOverflowSelected() {
+        const noBtn = document.querySelector('.choice-overflow .no-overflow');
+        // если кнопка есть и имеет класс active => без перелива
+        return !!(noBtn && noBtn.classList.contains('active'));
+    }
 
-    list.addEventListener('click', (e) => {
-      const item = e.target.closest('.choice-color-option-item');
-      if (!item) return;
+    // возвращает предпочтительную URL картинку для элемента (active/item)
+    // приоритет: если выбран no-overflow и есть data-img-no-overflow -> он, иначе data-img-url
+    function getPreferredImageFromEl(el) {
+        if (!el) return null;
+        const noOverflow = isNoOverflowSelected();
+        const noOverflowUrl = el.dataset.imgNoOverflow || null;
+        const normalUrl = el.dataset.imgUrl || null;
+        if (noOverflow && noOverflowUrl) return noOverflowUrl;
+        return normalUrl || noOverflowUrl || null;
+    }
 
-      // Получаем URL картинки товара (data-img-url может быть на элементе item или на <img>)
-      let productImg = item.dataset.imgUrl || item.querySelector('img')?.getAttribute('data-img-url') || null;
-      // Мини-иконка и имя у выбранного пункта
-      const clickedImgEl = item.querySelector('img');
-      const clickedSwatchSrc = clickedImgEl ? clickedImgEl.src : '';
-      const clickedNameEl = item.querySelector('.choice-color-option-name');
-      const clickedName = clickedNameEl ? clickedNameEl.textContent.trim() : '';
+    // helper: аккуратно переносит оба data-атрибута между элементами (swap)
+    function swapDataImgAttrs(fromEl, toEl) {
+        if (!fromEl || !toEl) return;
+        const fromUrl = fromEl.dataset.imgUrl;
+        const fromNo = fromEl.dataset.imgNoOverflow;
+        if (fromUrl !== undefined) {
+            if (fromUrl === undefined || fromUrl === null) toEl.removeAttribute('data-img-url');
+            else toEl.dataset.imgUrl = fromUrl;
+        }
+        if (fromNo !== undefined) {
+            if (fromNo === undefined || fromNo === null) toEl.removeAttribute('data-img-no-overflow');
+            else toEl.dataset.imgNoOverflow = fromNo;
+        }
+    }
 
-      // Информация из активного верхнего блока
-      const activeSwatchImgEl = active.querySelector('.choice-color-option-image img');
-      const activeSwatchSrc = activeSwatchImgEl ? activeSwatchImgEl.src : '';
-      const activeNameEl = active.querySelector('.choice-color-option-name');
-      const activeName = activeNameEl ? activeNameEl.textContent.trim() : '';
-      const activeDataImg = active.dataset.imgUrl || activeSwatchImgEl?.getAttribute('data-img-url') || null;
-
-      // --- Меняем верхний блок на выбранный ---
-      if (clickedSwatchSrc && activeSwatchImgEl) activeSwatchImgEl.src = clickedSwatchSrc;
-      if (activeNameEl && clickedName) activeNameEl.textContent = clickedName;
-      if (productImg) active.dataset.imgUrl = productImg;
-      else active.removeAttribute('data-img-url');
-
-      // --- Подставляем в место выбранного прежний активный мини-цвет ---
-      if (clickedImgEl && activeSwatchSrc) clickedImgEl.src = activeSwatchSrc;
-      if (clickedNameEl && activeName) clickedNameEl.textContent = activeName;
-      if (activeDataImg) item.dataset.imgUrl = activeDataImg;
-      else item.removeAttribute('data-img-url');
-
-      // --- Плавная подмена картинки и плавный скролл к продукт-блоку ---
-      if (productImg) {
-        // сначала плавно заменяем картинку (твоя логика)
-        updateMainSliderImage(productImg);
-
-        // небольшой таймаут чтобы пользователь увидел смену (как у тебя было раньше)
+    (function syncActiveWithGalleryOnLoad() {
         setTimeout(() => {
-          // offset: на мобильных 20px, на десктопе 0 (как в твоей логике)
+            const activeEl = document.querySelector('.choice-color-option.active') || document.querySelector('.choice-color-option');
+            if (!activeEl) return;
+            // получаем URL в зависимости от состояния overflow
+            const activePreferred = getPreferredImageFromEl(activeEl);
+            // Находим первую картинку галереи
+            const firstImg = document.querySelector('.product-swiper .product-swiper-wrapper .product-swiper-slide img') || document.querySelector('.product-swiper .swiper-slide img') || document.querySelector('.product-main-image img') || null;
+            const firstSrc = firstImg ? (firstImg.src || firstImg.getAttribute('data-src')) : null;
+            if (activePreferred) {
+                if (firstImg && firstSrc !== activePreferred) {
+                    try {
+                        updateMainSliderImage(activePreferred);
+                    } catch (err) {
+                        try { firstImg.src = activePreferred; } catch (e) {}
+                    }
+                }
+            } else if (firstSrc) {
+                // если у активного нет data-img-* — запишем текущую картинку в data-img-url
+                try { activeEl.dataset.imgUrl = firstSrc; } catch (e) {}
+            }
+        }, 50);
+    })();
+
+    // плавный скролл
+    let rafId = null;
+    function cancelScrollAnim() {
+        if (rafId) {
+            cancelAnimationFrame(rafId);
+            rafId = null;
+        }
+    }
+    function easeInOutCubic(t){ return t<0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
+    function smoothScrollToY(targetY, duration = 600){
+        cancelScrollAnim();
+        const scroller = document.scrollingElement || document.documentElement || document.body;
+        const startY = scroller.scrollTop || window.pageYOffset || 0;
+        const maxScroll = Math.max(0, scroller.scrollHeight - window.innerHeight);
+        const finalY = Math.min(maxScroll, Math.max(0, Math.round(targetY)));
+        const diff = finalY - startY;
+        if (diff === 0) return Promise.resolve();
+        const startTime = performance.now();
+        const dur = Math.max(50, duration);
+        return new Promise((resolve) => {
+            function step(now){
+                const t = Math.min(1, (now - startTime)/dur);
+                const eased = easeInOutCubic(t);
+                const y = Math.round(startY + diff * eased);
+                window.scrollTo(0, y);
+                if (t < 1) rafId = requestAnimationFrame(step);
+                else { rafId = null; resolve(); }
+            }
+            rafId = requestAnimationFrame(step);
+        });
+    }
+
+    const MOBILE_MAX_WIDTH = 1010;
+    function getProductTarget() {
+        if (window.innerWidth <= MOBILE_MAX_WIDTH) {
+            return document.querySelector('.product-mobile .under-header-container-product') || document.querySelector('.product-mobile .product-item-title');
+        } else {
+            return document.querySelector('.under-header-product') || document.querySelector('.product-section') || document.querySelector('.product-desktop') || document.querySelector('.product') || document.querySelector('#product-section') || document.querySelector('#product-desktop');
+        }
+    }
+    function scrollToProduct(offset = 0, duration = 600){
+        const target = getProductTarget();
+        if (!target) return Promise.resolve();
+        const top = target.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) - offset;
+        return smoothScrollToY(top, duration);
+    }
+
+    // надежная защита от случайной навигации/submit
+    (function installNavigationGuards() {
+      const SAFE_ZONE_SELECTORS = [
+        '.choice-color-options',
+        '.choice-color-options-list',
+        '.choice-color-option',
+        '.choice-color',
+        '.choice-color-mobile',
+        '.choice-overflow',
+        '.choice-overflow-mobile'
+      ];
+      const CAROUSEL_EXCEPTIONS = ['.other-options-cards', '.related-products-cards', '.other-options', '.related-products'];
+
+      const guardRoot = document;
+      const lastClickForHref = new Map();
+      const THROTTLE_MS = 450;
+
+      function markLastInteraction(info) {
+        try { sessionStorage.setItem('last_nav_interaction', JSON.stringify(Object.assign({ ts: Date.now() }, info))); } catch (e) {}
+      }
+
+      function isInsideAny(selectorList, el) {
+        if (!el || !el.closest) return false;
+        return selectorList.some(sel => !!el.closest(sel));
+      }
+
+      function isInsideCarouselException(el) {
+        return isInsideAny(CAROUSEL_EXCEPTIONS, el);
+      }
+
+      guardRoot.addEventListener('click', function (ev) {
+        const a = ev.target && ev.target.closest ? ev.target.closest('a') : null;
+        if (!a) return;
+
+        if (a.hasAttribute('data-allow-navigation')) return;
+
+        if (isInsideCarouselException(a) || isInsideCarouselException(ev.target)) {
+          return; 
+        }
+
+        if (isInsideAny(SAFE_ZONE_SELECTORS, a) || isInsideAny(SAFE_ZONE_SELECTORS, ev.target)) {
+          const href = a.getAttribute('href') || '';
+          const now = Date.now();
+          const last = lastClickForHref.get(href) || 0;
+          lastClickForHref.set(href, now);
+
+          markLastInteraction({ reason: 'guarded-anchor-click', href: href });
+
+          if (now - last < THROTTLE_MS) {
+            ev.preventDefault();
+            ev.stopImmediatePropagation();
+            return;
+          }
+
+          ev.preventDefault();
+          ev.stopImmediatePropagation();
+          return;
+        }
+
+        const hrefVal = a.getAttribute('href');
+        if (hrefVal === '') {
+          markLastInteraction({ reason: 'empty-href-blocked', href: hrefVal });
+          ev.preventDefault();
+          ev.stopImmediatePropagation();
+          return;
+        }
+      }, { capture: true, passive: false });
+
+      guardRoot.addEventListener('submit', function (ev) {
+        const form = ev.target;
+        if (!form || !form.querySelector) return;
+        if (isInsideAny(SAFE_ZONE_SELECTORS, form) || form.querySelector('.choice-color-options') || form.querySelector('.choice-overflow')) {
+          markLastInteraction({ reason: 'blocked-form-submit', form: (form.id || form.className || '') });
+          ev.preventDefault();
+          ev.stopImmediatePropagation();
+          return false;
+        }
+      }, { capture: true });
+
+      SAFE_ZONE_SELECTORS.forEach(sel => {
+        document.querySelectorAll(sel).forEach(node => {
+          node.addEventListener('pointerdown', (e) => {
+            if (isInsideCarouselException(e.target)) return;
+            try { e.stopPropagation(); } catch (err) {}
+          }, { passive: true, capture: true });
+
+          node.addEventListener('touchstart', (e) => {
+            if (isInsideCarouselException(e.target)) return;
+            try { e.stopPropagation(); } catch (err) {}
+          }, { passive: true, capture: true });
+        });
+      });
+
+    })();
+
+
+    // --- Универсальная инициализация выбора цвета (desktop + mobile) ---
+    (function initAllChoiceColorInstances() {
+      const wrappers = Array.from(document.querySelectorAll('.choice-color-options'));
+      if (!wrappers.length) return;
+
+      wrappers.forEach((wrapper) => {
+        Array.from(wrapper.querySelectorAll('button')).forEach(b => { if (b.tagName === 'BUTTON') b.type = 'button'; });
+
+        const colorBlock = wrapper.closest('.choice-color') || wrapper.closest('.choice-color-mobile') || wrapper;
+        const productContext = wrapper.closest('.product-mobile-info') || wrapper.closest('.product') || document;
+        const overflowWrap = productContext.querySelector('.choice-overflow, .choice-overflow-mobile') || document.querySelector('.choice-overflow, .choice-overflow-mobile');
+
+        const active = wrapper.querySelector('.choice-color-option') || wrapper.querySelector('.choice-color-option.active');
+        const list = wrapper.querySelector('.choice-color-options-list');
+        if (!active || !list) return;
+        const btn = active.querySelector('.choice-color-option-button') || active;
+        const activeSwatchImgEl = active.querySelector('.choice-color-option-image img');
+        const activeNameEl = active.querySelector('.choice-color-option-name');
+        const items = Array.from(list.querySelectorAll('.choice-color-option-item'));
+
+        // флаг: если пользователь открыл меню вручную, не закрываем его на клики вне
+        let userOpened = false;
+
+        function isOpen() { return list.classList.contains('open'); }
+        function openList(userAction = true) {
+          if (isOpen()) return;
+          list.classList.add('open');
+          active.classList.add('open');
+          btn.classList.add('open');
+          active.setAttribute('aria-expanded','true');
+          const first = list.querySelector('.choice-color-option-item');
+          if (first) first.focus();
+          if (userAction) userOpened = true; 
+        }
+        function closeList(userAction = false) {
+          if (!isOpen()) return;
+          list.classList.remove('open');
+          active.classList.remove('open');
+          btn.classList.remove('open');
+          active.setAttribute('aria-expanded','false');
+          try { btn.focus(); } catch(e) {}
+          if (userAction) userOpened = false; 
+          else userOpened = false; 
+        }
+
+        function isNoOverflowSelectedLocal() {
+          if (!overflowWrap) return false;
+          const noBtn = overflowWrap.querySelector('.no-overflow');
+          return !!(noBtn && noBtn.classList.contains('active'));
+        }
+
+        function getPreferredImageFromElLocal(el) {
+          if (!el) return null;
+          const noSelected = isNoOverflowSelectedLocal();
+          const noUrl = el.dataset.imgNoOverflow || null;
+          const normalUrl = el.dataset.imgUrl || null;
+          if (noSelected && noUrl) return noUrl;
+          return normalUrl || noUrl || null;
+        }
+
+        function onDocPointerDown(e) {
+          if (userOpened) return; 
+          if (wrapper.contains(e.target)) return;
+          if (overflowWrap && overflowWrap.contains(e.target)) return;
+          closeList(false);
+        }
+        document.addEventListener('pointerdown', onDocPointerDown);
+
+        wrapper.addEventListener('pointerdown', (e) => { e.stopPropagation(); }, { passive: true });
+        wrapper.addEventListener('click', (e) => { e.stopPropagation(); }, { passive: false });
+
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          if (isOpen()) closeList(true);
+          else openList(true); 
+        });
+        active.addEventListener('click', (e) => {
+          if (e.target.closest('.choice-color-option-button')) return;
+          e.stopPropagation();
+          if (isOpen()) closeList(true);
+          else openList(true);
+        });
+
+        active.setAttribute('role','button');
+        active.setAttribute('tabindex','0');
+        active.setAttribute('aria-expanded','false');
+        active.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (isOpen()) closeList(true); else openList(true); }
+          if (e.key === 'ArrowDown') { e.preventDefault(); openList(true); const first = list.querySelector('.choice-color-option-item'); first && first.focus(); }
+        });
+
+        items.forEach(it => {
+          if (!it.hasAttribute('tabindex')) it.setAttribute('tabindex','0');
+          Array.from(it.querySelectorAll('a')).forEach(a => { a.addEventListener('click', (ev) => { ev.preventDefault(); ev.stopPropagation(); }); });
+        });
+
+        list.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const item = e.target.closest('.choice-color-option-item');
+          if (!item) return;
+
+          const clickedImgEl = item.querySelector('img');
+          const clickedSwatchSrc = clickedImgEl ? clickedImgEl.src : '';
+          const clickedNameEl = item.querySelector('.choice-color-option-name');
+          const clickedName = clickedNameEl ? clickedNameEl.textContent.trim() : '';
+
+          const activeSwatchSrc = activeSwatchImgEl ? activeSwatchImgEl.src : '';
+          const activeName = activeNameEl ? activeNameEl.textContent.trim() : '';
+
+          const clickedDataUrl = item.dataset.imgUrl || (clickedImgEl && clickedImgEl.getAttribute('data-img-url')) || null;
+          const clickedDataNo  = item.dataset.imgNoOverflow || (clickedImgEl && clickedImgEl.getAttribute('data-img-no-overflow')) || null;
+          const activeDataUrl  = active.dataset.imgUrl || activeSwatchImgEl?.getAttribute('data-img-url') || null;
+          const activeDataNo   = active.dataset.imgNoOverflow || activeSwatchImgEl?.getAttribute('data-img-no-overflow') || null;
+
+          if (clickedSwatchSrc && activeSwatchImgEl) activeSwatchImgEl.src = clickedSwatchSrc;
+          if (activeNameEl && clickedName) activeNameEl.textContent = clickedName;
+          if (clickedSwatchSrc && clickedNameEl && activeName) clickedNameEl.textContent = activeName;
+          if (clickedSwatchSrc && clickedImgEl && activeSwatchSrc) clickedImgEl.src = activeSwatchSrc;
+
+          if (clickedDataUrl !== undefined) {
+            if (clickedDataUrl === null) active.removeAttribute('data-img-url');
+            else active.dataset.imgUrl = clickedDataUrl;
+          } else active.removeAttribute('data-img-url');
+
+          if (clickedDataNo !== undefined) {
+            if (clickedDataNo === null) active.removeAttribute('data-img-no-overflow');
+            else active.dataset.imgNoOverflow = clickedDataNo;
+          } else active.removeAttribute('data-img-no-overflow');
+
+          if (activeDataUrl !== undefined) {
+            if (activeDataUrl === null) item.removeAttribute('data-img-url');
+            else item.dataset.imgUrl = activeDataUrl;
+          } else item.removeAttribute('data-img-url');
+
+          if (activeDataNo !== undefined) {
+            if (activeDataNo === null) item.removeAttribute('data-img-no-overflow');
+            else item.dataset.imgNoOverflow = activeDataNo;
+          } else item.removeAttribute('data-img-no-overflow');
+
+          const preferredForDisplay = (isNoOverflowSelectedLocal()) ? (clickedDataNo || clickedDataUrl) : (clickedDataUrl || clickedDataNo);
+
+          if (preferredForDisplay) {
+            try { updateMainSliderImage(preferredForDisplay); }
+            catch (err) {
+              const firstImg = document.querySelector('.product-swiper .product-swiper-wrapper .product-swiper-slide img')
+                            || document.querySelector('.images-mobile .swiper-slide img')
+                            || document.querySelector('.product-main-image img');
+              if (firstImg) firstImg.src = preferredForDisplay;
+            }
+          }
+
           const OFFSET = (window.innerWidth > MOBILE_MAX_WIDTH) ? 0 : 20;
           const DURATION = 600;
-          // запускаем плавный скролл
-          scrollToProduct(OFFSET, DURATION).catch(()=>{});
-        }, 120);
-      }
-    });
-  })();
-  // ---- end choice-color handler ----
+          try { scrollToProduct(OFFSET, DURATION).catch(()=>{}); } catch(e) {}
 
-  // Прочая логика инициализации каруселей (твой исходный код дальше)
-  document.querySelectorAll('.other-options-cards, .related-products-cards').forEach(initCarousel);
+        }, { passive: false });
 
-  function initCarousel(cardsWrapper) {
-    const cards = Array.from(cardsWrapper.querySelectorAll('.other-option-card, .related-products-card'));
-    if (!cards.length) return;
-
-    try { cardsWrapper.style.touchAction = 'pan-y'; } catch(e) {}
-
-    const isRelated = !!cardsWrapper.closest('.related-products') || cardsWrapper.classList.contains('related-products-cards');
-    let current = cards.findIndex(c => c.classList.contains('is-active'));
-    if (current === -1) current = 0;
-    
-    // Меняем цену товара при смене ТП
-    function updateProductPriceFromCard(cardEl) {
-      if (!cardEl) return;
-
-      const discountEl = cardEl.querySelector('.other-option-card-discount');
-      const priceEl    = cardEl.querySelector('.other-option-card-price');
-      const bannerEl   = cardEl.querySelector('.other-option-card-discount-banner');
-
-      const normalize = (s) => (s || '').replace(/\u00A0/g, ' ').replace(/\s+/g, ' ').trim();
-
-      const discText = discountEl ? normalize(discountEl.textContent) : '';
-      const priceText = priceEl ? normalize(priceEl.textContent) : (discText ? '' : '');
-      const bannerText = bannerEl ? normalize(bannerEl.textContent) : '';
-
-      const productDiscountWrap = document.querySelector('.product-prices .discount-price');
-      const productPriceWrap    = document.querySelector('.product-prices .price');
-      if (productDiscountWrap) {
-        const targetDiscountTextEl = productDiscountWrap.querySelector('h3') || productDiscountWrap;
-        if (discText) {
-          targetDiscountTextEl.textContent = discText;
-          productDiscountWrap.style.display = '';
-        } else {
-          productDiscountWrap.style.display = 'none';
-        }
-      }
-      if (productPriceWrap) {
-        const targetPriceTextEl = productPriceWrap.querySelector('p') || productPriceWrap;
-        targetPriceTextEl.textContent = priceText || '';
-      }
-
-      const productBannerEls = Array.from(document.querySelectorAll('.product-banners .discount'));
-      productBannerEls.forEach(pb => {
-        const p = pb.querySelector('p');
-        if (bannerText) {
-          if (p) p.textContent = bannerText;
-          else pb.textContent = bannerText;
-          pb.style.display = '';
-        } else {
-          pb.style.display = 'none';
-        }
-      });
-
-      const mobilePriceBlocks = Array.from(document.querySelectorAll('.product-mobile-price, .product-mobile .product-prices, .product-mobile-price-block'));
-      mobilePriceBlocks.forEach(block => {
-        const mobPriceEl = block.querySelector('.price') || block.querySelector('p') || block.querySelector('.product-price');
-        const mobDiscEl  = block.querySelector('.price-discount') || block.querySelector('h3') || block.querySelector('.product-discount');
-        if (mobPriceEl) mobPriceEl.textContent = priceText || '';
-        if (mobDiscEl) {
-          if (bannerText || discText) {
-            mobDiscEl.textContent = bannerText || discText;
-            mobDiscEl.style.display = '';
-          } else {
-            mobDiscEl.style.display = 'none';
-          }
-        }
-      });
-
-      const mobBannerEl = document.querySelector('.product-mobile-info .discount-mobile');
-      if (mobBannerEl) {
-        if (bannerText) {
-          mobBannerEl.textContent = bannerText;
-          mobBannerEl.style.display = '';
-        } else {
-          mobBannerEl.style.display = 'none';
-        }
-      }
-
-      const badgeEls = Array.from(document.querySelectorAll('.product-badge-discount, .product-discount-badge'));
-      badgeEls.forEach(b => {
-        if (bannerText) {
-          b.textContent = bannerText;
-          b.style.display = '';
-        } else {
-          b.style.display = 'none';
-        }
-      });
-    }
-
-    function broadcastActive(type, index, sourceWrapper = null) {
-      window.__productActive = window.__productActive || {};
-      window.__productActive[type] = index;
-
-      const selector = (type === 'related') ? '.related-products-cards' : '.other-options-cards';
-      document.querySelectorAll(selector).forEach(wrapper => {
-        if (sourceWrapper && wrapper === sourceWrapper) return;
-
-        const otherCards = Array.from(wrapper.querySelectorAll('.other-option-card, .related-products-card'));
-        if (!otherCards.length) return;
-
-        const idx = Math.max(0, Math.min(index, otherCards.length - 1));
-        otherCards.forEach((c, i) => c.classList.toggle('is-active', i === idx));
-
-        const swiperInstance = wrapper.swiper || wrapper.__swiper ||
-          (wrapper.closest && wrapper.closest('.swiper-container') && wrapper.closest('.swiper-container').swiper);
-
-        if (swiperInstance) {
-          try {
-            if (swiperInstance.params && swiperInstance.params.loop && typeof swiperInstance.slideToLoop === 'function') {
-              swiperInstance.slideToLoop(idx, 0, false);
-            } else if (typeof swiperInstance.slideTo === 'function') {
-              swiperInstance.slideTo(idx, 0, false);
-            }
-          } catch (err) {  }
-        }
-      });
-    }
-
-    function show(index, direction = 0) {
-      index = (index + cards.length) % cards.length;
-      cards.forEach((c, i) => c.classList.toggle('is-active', i === index));
-      current = index;
-
-      try {
-        const type = isRelated ? 'related' : 'other';
-        broadcastActive(type, index, cardsWrapper);
-      } catch (err) {  }
-    }
-
-    let __syncResizeTO = null;
-    function applySavedStateToAll() {
-      if (!window.__productActive) return;
-      if (window.__productActive.other !== undefined) broadcastActive('other', window.__productActive.other, null);
-      if (window.__productActive.related !== undefined) broadcastActive('related', window.__productActive.related, null);
-    }
-    window.addEventListener('resize', () => {
-      clearTimeout(__syncResizeTO);
-      __syncResizeTO = setTimeout(applySavedStateToAll, 120);
-    });
-
-    try { applySavedStateToAll(); } catch (e) {}
-
-    let rafIdLocal = null;
-    function cancelScrollAnimLocal() { if (rafIdLocal) { cancelAnimationFrame(rafIdLocal); rafIdLocal = null; } }
-
-    const SWIPE_THRESHOLD = 50;
-    const TAP_THRESHOLD = 10;
-    const MAX_VERTICAL_DELTA = 80;
-    let suppressClick = false;
-    const CLICK_SUPPRESS_MS = 350;
-
-    cards.forEach(card => {
-      const link = card.querySelector("a");
-      if (link) {
-        link.addEventListener("click", e => {
-          if (suppressClick) { e.preventDefault(); e.stopPropagation(); }
+        list.addEventListener('keydown', (e) => {
+          const item = e.target.closest('.choice-color-option-item');
+          if (!item) return;
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); item.click(); }
+          else if (e.key === 'ArrowDown') { e.preventDefault(); const idx = items.indexOf(item); const next = items[(idx + 1) % items.length]; next && next.focus(); }
+          else if (e.key === 'ArrowUp') { e.preventDefault(); const idx = items.indexOf(item); const prev = items[(idx - 1 + items.length) % items.length]; prev && prev.focus(); }
+          else if (e.key === 'Escape') { closeList(true); }
         });
-      }
-    });
 
-    cardsWrapper.addEventListener('click', (e) => {
-      if (suppressClick) { e.stopPropagation(); e.preventDefault(); return; }
-      const prevBtn = e.target.closest('.other-option-left-btn');
-      const nextBtn = e.target.closest('.other-option-right-btn');
-      if (prevBtn) {
-        if (prevBtn.tagName === 'A' && isRelated) {
-          e.preventDefault();
-          show((current - 1 + cards.length) % cards.length, -1);
-          return;
-        }
-        if (prevBtn.tagName === 'A') return;
-        show((current - 1 + cards.length) % cards.length, -1);
-        return;
-      }
-      if (nextBtn) {
-        if (nextBtn.tagName === 'A' && isRelated) {
-          e.preventDefault();
-          show((current + 1) % cards.length, 1);
-          return;
-        }
-        if (nextBtn.tagName === 'A') return;
-        show((current + 1) % cards.length, 1);
-        return;
-      }
-
-      const topClick = e.target.closest('.other-option-card-top, .related-products-card > .other-option-card-top, .related-products-card-top');
-      if (topClick) {
-        const cardEl = topClick.closest('.other-option-card, .related-products-card');
-        if (!cardEl) return;
-        const idx = cards.indexOf(cardEl);
-
-        if (isRelated) {
-          const anchor = cardEl.querySelector('a[href]');
-          if (anchor && anchor.contains(e.target)) {
-            return; 
-          }
-          if (idx >= 0) show(idx, 0);
-          return;
-        }
-
-        if (idx >= 0) show(idx, 0);
-        const clickedImg = cardEl.querySelector('.other-option-card-image img');
-        if (clickedImg && clickedImg.src) {
-          updateMainSliderImage(clickedImg.src);
-          updateProductPriceFromCard(cardEl);
-        }
-        const OFFSET = (window.innerWidth > MOBILE_MAX_WIDTH) ? 0 : 20;
-        const DURATION = 600;
-        scrollToProduct(OFFSET, DURATION).catch(()=>{});
-      }
-    });
-
-    if (window.PointerEvent) {
-      let startX = 0, startY = 0, pointerId = null, isDragging = false, startTarget = null;
-      cardsWrapper.addEventListener('pointerdown', (e) => {
-        if (pointerId !== null) return;
-        if (e.target.closest('.other-option-left-btn, .other-option-right-btn')) return;
-        pointerId = e.pointerId;
-        startX = e.clientX;
-        startY = e.clientY;
-        isDragging = true;
-        startTarget = e.target;
-        try { e.target.setPointerCapture(pointerId); } catch (err) {}
+        window.addEventListener('unload', () => { document.removeEventListener('pointerdown', onDocPointerDown); });
       });
+    })();
 
-      function endPointer(e) {
-        if (!isDragging || e.pointerId !== pointerId) return;
-        const dx = e.clientX - startX;
-        const dy = e.clientY - startY;
-        isDragging = false;
-        try { e.target.releasePointerCapture(pointerId); } catch (err) {}
-        pointerId = null;
+    (function initAllChoiceOverflowInstances() {
+      const overflows = Array.from(document.querySelectorAll('.choice-overflow, .choice-overflow-mobile'));
+      if (!overflows.length) return;
 
-        if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > MAX_VERTICAL_DELTA) return;
+      overflows.forEach((wrap) => {
+        Array.from(wrap.querySelectorAll('button')).forEach(b => { if (b.tagName === 'BUTTON') b.type = 'button'; });
 
-        if (Math.abs(dx) >= SWIPE_THRESHOLD) {
-          if (dx < 0) {
-            const newIndex = (current + 1) % cards.length;
-            show(newIndex, 1);
-          } else {
-            const newIndex = (current - 1 + cards.length) % cards.length;
-            show(newIndex, -1);
+        const btnWith = wrap.querySelector('.with-overflow');
+        const btnNo = wrap.querySelector('.no-overflow');
+        if (!btnWith || !btnNo) return;
+
+        const productContext = wrap.closest('.product-mobile-info') || wrap.closest('.product') || document;
+        const colorWrapper = productContext.querySelector('.choice-color-options') || document.querySelector('.choice-color-options');
+
+        function setActiveBtn(targetBtn) {
+          [btnWith, btnNo].forEach(b => b.classList.toggle('active', b === targetBtn));
+        }
+
+        function updateGalleryByActiveColorLocal() {
+          const activeColor = (colorWrapper && (colorWrapper.querySelector('.choice-color-option.active') || colorWrapper.querySelector('.choice-color-option'))) || document.querySelector('.choice-color-option.active') || document.querySelector('.choice-color-option');
+          if (!activeColor) return;
+          const noSelected = btnNo.classList.contains('active');
+          const noUrl = activeColor.dataset.imgNoOverflow || null;
+          const normalUrl = activeColor.dataset.imgUrl || null;
+          const preferred = (noSelected && noUrl) ? noUrl : (normalUrl || noUrl);
+
+          if (preferred) {
+            try { updateMainSliderImage(preferred); } catch (err) {
+              const firstImg = document.querySelector('.product-swiper .product-swiper-wrapper .product-swiper-slide img')
+                            || document.querySelector('.images-mobile .swiper-slide img')
+                            || document.querySelector('.product-main-image img');
+              if (firstImg) firstImg.src = preferred;
+            }
           }
-          suppressClick = true;
-          setTimeout(()=> suppressClick = false, CLICK_SUPPRESS_MS);
-        } else if (Math.abs(dx) <= TAP_THRESHOLD && Math.abs(dy) <= TAP_THRESHOLD) {
-          const topEl = (startTarget && startTarget.closest) ? startTarget.closest('.other-option-card-top, .related-products-card > .other-option-card-top') : null;
-          if (topEl) {
-            const cardEl = topEl.closest('.other-option-card, .related-products-card');
-            if (cardEl) {
-              const idx = cards.indexOf(cardEl);
-              if (isRelated) {
-                const hrefEl = cardEl.querySelector('a[href]');
-                if (hrefEl && hrefEl.contains(startTarget)) return;
-                if (idx >= 0) show(idx, 0);
-              } else {
+
+          const OFFSET = (window.innerWidth > MOBILE_MAX_WIDTH) ? 0 : 20;
+          const DURATION = 600;
+          try { scrollToProduct(OFFSET, DURATION).catch(()=>{}); } catch(e) {}
+        }
+
+        btnWith.addEventListener('pointerdown', (e) => { e.stopPropagation(); }, { passive: true });
+        btnNo.addEventListener('pointerdown',  (e) => { e.stopPropagation(); }, { passive: true });
+
+        btnWith.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          setActiveBtn(btnWith);
+          updateGalleryByActiveColorLocal();
+        });
+        btnNo.addEventListener('click',  (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          setActiveBtn(btnNo);
+          updateGalleryByActiveColorLocal();
+        });
+
+        if (btnNo.classList.contains('active')) setActiveBtn(btnNo);
+        else setActiveBtn(btnWith);
+      });
+    })();
+
+    document.querySelectorAll('.other-options-cards, .related-products-cards').forEach(initCarousel);
+
+    function initCarousel(cardsWrapper) {
+        const cards = Array.from(cardsWrapper.querySelectorAll('.other-option-card, .related-products-card'));
+        if (!cards.length) return;
+        try { cardsWrapper.style.touchAction = 'pan-y'; } catch(e) {}
+        const isRelated = !!cardsWrapper.closest('.related-products') || cardsWrapper.classList.contains('related-products-cards');
+        let current = cards.findIndex(c => c.classList.contains('is-active'));
+        if (current === -1) current = 0;
+
+        // Меняем цену товара при смене ТП
+        function updateProductPriceFromCard(cardEl) {
+            if (!cardEl) return;
+            const discountEl = cardEl.querySelector('.other-option-card-discount');
+            const priceEl = cardEl.querySelector('.other-option-card-price');
+            const bannerEl = cardEl.querySelector('.other-option-card-discount-banner');
+            const normalize = (s) => (s || '').replace(/\u00A0/g, ' ').replace(/\s+/g, ' ').trim();
+            const discText = discountEl ? normalize(discountEl.textContent) : '';
+            const priceText = priceEl ? normalize(priceEl.textContent) : (discText ? '' : '');
+            const bannerText = bannerEl ? normalize(bannerEl.textContent) : '';
+
+            const productDiscountWrap = document.querySelector('.product-prices .discount-price');
+            const productPriceWrap = document.querySelector('.product-prices .price');
+            if (productDiscountWrap) {
+                const targetDiscountTextEl = productDiscountWrap.querySelector('h3') || productDiscountWrap;
+                if (discText) {
+                    targetDiscountTextEl.textContent = discText;
+                    productDiscountWrap.style.display = '';
+                } else {
+                    productDiscountWrap.style.display = 'none';
+                }
+            }
+            if (productPriceWrap) {
+                const targetPriceTextEl = productPriceWrap.querySelector('p') || productPriceWrap;
+                targetPriceTextEl.textContent = priceText || '';
+            }
+
+            const productBannerEls = Array.from(document.querySelectorAll('.product-banners .discount'));
+            productBannerEls.forEach(pb => {
+                const p = pb.querySelector('p');
+                if (bannerText) {
+                    if (p) p.textContent = bannerText;
+                    else pb.textContent = bannerText;
+                    pb.style.display = '';
+                } else {
+                    pb.style.display = 'none';
+                }
+            });
+
+            const mobilePriceBlocks = Array.from(document.querySelectorAll('.product-mobile-price, .product-mobile .product-prices, .product-mobile-price-block'));
+            mobilePriceBlocks.forEach(block => {
+                const mobPriceEl = block.querySelector('.price') || block.querySelector('p') || block.querySelector('.product-price');
+                const mobDiscEl = block.querySelector('.price-discount') || block.querySelector('h3') || block.querySelector('.product-discount');
+                if (mobPriceEl) mobPriceEl.textContent = priceText || '';
+                if (mobDiscEl) {
+                    if (bannerText || discText) {
+                        mobDiscEl.textContent = bannerText || discText;
+                        mobDiscEl.style.display = '';
+                    } else {
+                        mobDiscEl.style.display = 'none';
+                    }
+                }
+            });
+
+            const mobBannerEl = document.querySelector('.product-mobile-info .discount-mobile');
+            if (mobBannerEl) {
+                if (bannerText) {
+                    mobBannerEl.textContent = bannerText;
+                    mobBannerEl.style.display = '';
+                } else {
+                    mobBannerEl.style.display = 'none';
+                }
+            }
+
+            const badgeEls = Array.from(document.querySelectorAll('.product-badge-discount, .product-discount-badge'));
+            badgeEls.forEach(b => {
+                if (bannerText) { b.textContent = bannerText; b.style.display = ''; } else { b.style.display = 'none'; }
+            });
+        }
+
+        function broadcastActive(type, index, sourceWrapper = null) {
+            window.__productActive = window.__productActive || {};
+            window.__productActive[type] = index;
+            const selector = (type === 'related') ? '.related-products-cards' : '.other-options-cards';
+            document.querySelectorAll(selector).forEach(wrapper => {
+                if (sourceWrapper && wrapper === sourceWrapper) return;
+                const otherCards = Array.from(wrapper.querySelectorAll('.other-option-card, .related-products-card'));
+                if (!otherCards.length) return;
+                const idx = Math.max(0, Math.min(index, otherCards.length - 1));
+                otherCards.forEach((c, i) => c.classList.toggle('is-active', i === idx));
+                const swiperInstance = wrapper.swiper || wrapper.__swiper || (wrapper.closest && wrapper.closest('.swiper-container') && wrapper.closest('.swiper-container').swiper);
+                if (swiperInstance) {
+                    try {
+                        if (swiperInstance.params && swiperInstance.params.loop && typeof swiperInstance.slideToLoop === 'function') {
+                            swiperInstance.slideToLoop(idx, 0, false);
+                        } else if (typeof swiperInstance.slideTo === 'function') {
+                            swiperInstance.slideTo(idx, 0, false);
+                        }
+                    } catch (err) { }
+                }
+            });
+        }
+
+        function show(index, direction = 0) {
+            index = (index + cards.length) % cards.length;
+            cards.forEach((c, i) => c.classList.toggle('is-active', i === index));
+            current = index;
+            try {
+                const type = isRelated ? 'related' : 'other';
+                broadcastActive(type, index, cardsWrapper);
+            } catch (err) { }
+        }
+
+        let __syncResizeTO = null;
+        function applySavedStateToAll() {
+            if (!window.__productActive) return;
+            if (window.__productActive.other !== undefined) broadcastActive('other', window.__productActive.other, null);
+            if (window.__productActive.related !== undefined) broadcastActive('related', window.__productActive.related, null);
+        }
+        window.addEventListener('resize', () => {
+            clearTimeout(__syncResizeTO);
+            __syncResizeTO = setTimeout(applySavedStateToAll, 120);
+        });
+        try { applySavedStateToAll(); } catch (e) {}
+
+        let rafIdLocal = null;
+        function cancelScrollAnimLocal() {
+            if (rafIdLocal) {
+                cancelAnimationFrame(rafIdLocal);
+                rafIdLocal = null;
+            }
+        }
+
+        const SWIPE_THRESHOLD = 50;
+        const TAP_THRESHOLD = 10;
+        const MAX_VERTICAL_DELTA = 80;
+        let suppressClick = false;
+        const CLICK_SUPPRESS_MS = 350;
+
+        cards.forEach(card => {
+            const link = card.querySelector("a");
+            if (link) {
+                link.addEventListener("click", e => {
+                    if (suppressClick) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
+                });
+            }
+        });
+
+        cardsWrapper.addEventListener('click', (e) => {
+            if (suppressClick) {
+                e.stopPropagation();
+                e.preventDefault();
+                return;
+            }
+            const prevBtn = e.target.closest('.other-option-left-btn');
+            const nextBtn = e.target.closest('.other-option-right-btn');
+            if (prevBtn) {
+                if (prevBtn.tagName === 'A' && isRelated) {
+                    e.preventDefault();
+                    show((current - 1 + cards.length) % cards.length, -1);
+                    return;
+                }
+                if (prevBtn.tagName === 'A') return;
+                show((current - 1 + cards.length) % cards.length, -1);
+                return;
+            }
+            if (nextBtn) {
+                if (nextBtn.tagName === 'A' && isRelated) {
+                    e.preventDefault();
+                    show((current + 1) % cards.length, 1);
+                    return;
+                }
+                if (nextBtn.tagName === 'A') return;
+                show((current + 1) % cards.length, 1);
+                return;
+            }
+            const topClick = e.target.closest('.other-option-card-top, .related-products-card > .other-option-card-top, .related-products-card-top');
+            if (topClick) {
+                const cardEl = topClick.closest('.other-option-card, .related-products-card');
+                if (!cardEl) return;
+                const idx = cards.indexOf(cardEl);
+                if (isRelated) {
+                    const anchor = cardEl.querySelector('a[href]');
+                    if (anchor && anchor.contains(e.target)) {
+                        return;
+                    }
+                    if (idx >= 0) show(idx, 0);
+                    return;
+                }
                 if (idx >= 0) show(idx, 0);
                 const clickedImg = cardEl.querySelector('.other-option-card-image img');
                 if (clickedImg && clickedImg.src) {
-                  updateMainSliderImage(clickedImg.src);
-                  updateProductPriceFromCard(cardEl);
+                    updateMainSliderImage(clickedImg.src);
+                    updateProductPriceFromCard(cardEl);
                 }
-                const OFFSET = 20;
+                const OFFSET = (window.innerWidth > MOBILE_MAX_WIDTH) ? 0 : 20;
                 const DURATION = 600;
                 scrollToProduct(OFFSET, DURATION).catch(()=>{});
-              }
             }
-          }
-        }
-      }
+        });
 
-      cardsWrapper.addEventListener('pointermove', () => {});
-      cardsWrapper.addEventListener('pointerup', endPointer);
-      cardsWrapper.addEventListener('pointercancel', () => { pointerId = null; isDragging = false; });
+        if (window.PointerEvent) {
+            let startX = 0, startY = 0, pointerId = null, isDragging = false, startTarget = null;
+            cardsWrapper.addEventListener('pointerdown', (e) => {
+                if (pointerId !== null) return;
+                if (e.target.closest('.other-option-left-btn, .other-option-right-btn')) return;
+                pointerId = e.pointerId;
+                startX = e.clientX;
+                startY = e.clientY;
+                isDragging = true;
+                startTarget = e.target;
+                try { e.target.setPointerCapture(pointerId); } catch (err) {}
+            });
 
-    } else {
-      let startX = 0, startY = 0, tracking = false, startTarget = null;
-      cardsWrapper.addEventListener('touchstart', (e) => {
-        const t = e.touches[0];
-        if (!t) return;
-        const elAt = document.elementFromPoint(t.clientX, t.clientY);
-        if (elAt && elAt.closest && elAt.closest('.other-option-left-btn, .other-option-right-btn')) return;
-        startX = t.clientX;
-        startY = t.clientY;
-        tracking = true;
-        startTarget = elAt;
-      }, { passive: true });
-
-      cardsWrapper.addEventListener('touchmove', (e) => {}, { passive: true });
-
-      cardsWrapper.addEventListener('touchend', (e) => {
-        if (!tracking) return;
-        tracking = false;
-        const t = (e.changedTouches && e.changedTouches[0]);
-        if (!t) return;
-        const dx = t.clientX - startX;
-        const dy = t.clientY - startY;
-        if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > MAX_VERTICAL_DELTA) return;
-        if (Math.abs(dx) >= SWIPE_THRESHOLD) {
-          if (dx < 0) {
-            const newIndex = (current + 1) % cards.length;
-            show(newIndex, 1);
-          } else {
-            const newIndex = (current - 1 + cards.length) % cards.length;
-            show(newIndex, -1);
-          }
-          suppressClick = true;
-          setTimeout(()=> suppressClick = false, CLICK_SUPPRESS_MS);
-        } else if (Math.abs(dx) <= TAP_THRESHOLD && Math.abs(dy) <= TAP_THRESHOLD) {
-          const topEl = (startTarget && startTarget.closest) ? startTarget.closest('.other-option-card-top, .related-products-card > .other-option-card-top') : null;
-          if (topEl) {
-            const cardEl = topEl.closest('.other-option-card, .related-products-card');
-            if (cardEl) {
-              const idx = cards.indexOf(cardEl);
-              if (isRelated) {
-                const hrefEl = cardEl.querySelector('a[href]');
-                if (hrefEl && hrefEl.contains(startTarget)) return;
-                if (idx >= 0) show(idx, 0);
-              } else {
-                if (idx >= 0) show(idx, 0);
-                const clickedImg = cardEl.querySelector('.other-option-card-image img');
-                if (clickedImg && clickedImg.src) {
-                  updateMainSliderImage(clickedImg.src);
-                  updateProductPriceFromCard(cardEl);
+            function endPointer(e) {
+                if (!isDragging || e.pointerId !== pointerId) return;
+                const dx = e.clientX - startX;
+                const dy = e.clientY - startY;
+                isDragging = false;
+                try { e.target.releasePointerCapture(pointerId); } catch (err) {}
+                pointerId = null;
+                if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > MAX_VERTICAL_DELTA) return;
+                if (Math.abs(dx) >= SWIPE_THRESHOLD) {
+                    if (dx < 0) {
+                        const newIndex = (current + 1) % cards.length;
+                        show(newIndex, 1);
+                    } else {
+                        const newIndex = (current - 1 + cards.length) % cards.length;
+                        show(newIndex, -1);
+                    }
+                    suppressClick = true;
+                    setTimeout(()=> suppressClick = false, CLICK_SUPPRESS_MS);
+                } else if (Math.abs(dx) <= TAP_THRESHOLD && Math.abs(dy) <= TAP_THRESHOLD) {
+                    const topEl = (startTarget && startTarget.closest) ? startTarget.closest('.other-option-card-top, .related-products-card > .other-option-card-top') : null;
+                    if (topEl) {
+                        const cardEl = topEl.closest('.other-option-card, .related-products-card');
+                        if (cardEl) {
+                            const idx = cards.indexOf(cardEl);
+                            if (isRelated) {
+                                const hrefEl = cardEl.querySelector('a[href]');
+                                if (hrefEl && hrefEl.contains(startTarget)) return;
+                                if (idx >= 0) show(idx, 0);
+                            } else {
+                                if (idx >= 0) show(idx, 0);
+                                const clickedImg = cardEl.querySelector('.other-option-card-image img');
+                                if (clickedImg && clickedImg.src) {
+                                    updateMainSliderImage(clickedImg.src);
+                                    updateProductPriceFromCard(cardEl);
+                                }
+                                const OFFSET = 20;
+                                const DURATION = 600;
+                                scrollToProduct(OFFSET, DURATION).catch(()=>{});
+                            }
+                        }
+                    }
                 }
-                const OFFSET = 20;
-                const DURATION = 600;
-                scrollToProduct(OFFSET, DURATION).catch(()=>{});
-              }
             }
-          }
+            cardsWrapper.addEventListener('pointermove', () => {});
+            cardsWrapper.addEventListener('pointerup', endPointer);
+            cardsWrapper.addEventListener('pointercancel', () => { pointerId = null; isDragging = false; });
+        } else {
+            let startX = 0, startY = 0, tracking = false, startTarget = null;
+            cardsWrapper.addEventListener('touchstart', (e) => {
+                const t = e.touches[0];
+                if (!t) return;
+                const elAt = document.elementFromPoint(t.clientX, t.clientY);
+                if (elAt && elAt.closest && elAt.closest('.other-option-left-btn, .other-option-right-btn')) return;
+                startX = t.clientX;
+                startY = t.clientY;
+                tracking = true;
+                startTarget = elAt;
+            }, { passive: true });
+
+            cardsWrapper.addEventListener('touchmove', (e) => {}, { passive: true });
+
+            cardsWrapper.addEventListener('touchend', (e) => {
+                if (!tracking) return;
+                tracking = false;
+                const t = (e.changedTouches && e.changedTouches[0]);
+                if (!t) return;
+                const dx = t.clientX - startX;
+                const dy = t.clientY - startY;
+                if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > MAX_VERTICAL_DELTA) return;
+                if (Math.abs(dx) >= SWIPE_THRESHOLD) {
+                    if (dx < 0) {
+                        const newIndex = (current + 1) % cards.length;
+                        show(newIndex, 1);
+                    } else {
+                        const newIndex = (current - 1 + cards.length) % cards.length;
+                        show(newIndex, -1);
+                    }
+                    suppressClick = true;
+                    setTimeout(()=> suppressClick = false, CLICK_SUPPRESS_MS);
+                } else if (Math.abs(dx) <= TAP_THRESHOLD && Math.abs(dy) <= TAP_THRESHOLD) {
+                    const topEl = (startTarget && startTarget.closest) ? startTarget.closest('.other-option-card-top, .related-products-card > .other-option-card-top') : null;
+                    if (topEl) {
+                        const cardEl = topEl.closest('.other-option-card, .related-products-card');
+                        if (cardEl) {
+                            const idx = cards.indexOf(cardEl);
+                            if (isRelated) {
+                                const hrefEl = cardEl.querySelector('a[href]');
+                                if (hrefEl && hrefEl.contains(startTarget)) return;
+                                if (idx >= 0) show(idx, 0);
+                            } else {
+                                if (idx >= 0) show(idx, 0);
+                                const clickedImg = cardEl.querySelector('.other-option-card-image img');
+                                if (clickedImg && clickedImg.src) {
+                                    updateMainSliderImage(clickedImg.src);
+                                    updateProductPriceFromCard(cardEl);
+                                }
+                                const OFFSET = 20;
+                                const DURATION = 600;
+                                scrollToProduct(OFFSET, DURATION).catch(()=>{});
+                            }
+                        }
+                    }
+                }
+            }, { passive: true });
         }
-      }, { passive: true });
+
+        cardsWrapper.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') show((current - 1 + cards.length) % cards.length, -1);
+            if (e.key === 'ArrowRight') show((current + 1) % cards.length, 1);
+        });
+
+        show(current, 0);
     }
 
-    cardsWrapper.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') show((current - 1 + cards.length) % cards.length, -1);
-      if (e.key === 'ArrowRight') show((current + 1) % cards.length, 1);
+    document.addEventListener('click', (e) => {
+        const openBtn = e.target.closest('[data-open-modal="product"], .open-product-modal, .product-main-image');
+        if (!openBtn) return;
+        const mainImg = document.querySelector('.product-swiper .swiper-slide[data-swiper-slide-index="0"] img, .product-images .swiper-slide img, .product-main-image img');
+        const src = mainImg ? (mainImg.src || mainImg.getAttribute('data-src')) : null;
+        if (src) {
+            setTimeout(() => {
+                updateModalFirstImage(src);
+            }, 50);
+        }
     });
-
-    show(current, 0);
-  }
-
-  document.addEventListener('click', (e) => {
-    const openBtn = e.target.closest('[data-open-modal="product"], .open-product-modal, .product-main-image'); 
-    if (!openBtn) return;
-
-    const mainImg = document.querySelector('.product-swiper .swiper-slide[data-swiper-slide-index="0"] img, .product-images .swiper-slide img, .product-main-image img');
-    const src = mainImg ? (mainImg.src || mainImg.getAttribute('data-src')) : null;
-    if (src) {
-      setTimeout(() => { updateModalFirstImage(src); }, 50);
-    }
-  });
 });
 
 
