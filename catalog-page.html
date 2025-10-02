@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <!-- Swiper -->
     <link
       rel="stylesheet"
@@ -335,21 +335,24 @@
             <!-- Секции -->
             <div class="blur-container">
                 <div class="sections">
+                    <section class="categories-section">
+                        <div class="blur-container" style="filter: none;">
+                            <div class="catalog-container">
+
                     <section class="catalog-title-section">
-                        <div class="blur-container">
+                        <div class="blur-container" style="filter: none;">
                             <div class="catalog-title-section-container">
                                 <div class="catalog-content reveal-">
-                                    <h2 class="count-products fade-in">
-                                        (483)
+                                    <h2 class="count-products fade-in active">
+                                        (3468)
                                     </h2>
 
-                                    <div class="reveal-mask">
+                                    <div class="reveal-mask active">
                                         <h1 class="catalog-title line-height">
-                                            Смесители
-                                        </h1>
+                                            Сантехника                    </h1>
                                     </div>
-                    
-                                    <div class="catalog-subtitle-and-arrows fade-in">
+
+                                    <div class="catalog-subtitle-and-arrows fade-in active">
                                         <p class="catalog-subtitle">
                                             В нашем каталоге представлены смесители из различных 
                                             материалов. Выбор смесителя не только влияет на 
@@ -357,19 +360,19 @@
                                             комнат и кухонь, делая их более стильными и удобными.
                                         </p>
 
-                                        <div class="nav-arrows-products nav-arrows-categories">
-                                            <button class="left-arrow left-arrow-categories" id="prev">
+                                        <div class="nav-arrows-products">
+                                            <button class="left-arrow left-arrow-categories swiper-button-disabled" id="prev" disabled="" tabindex="-1" aria-label="Previous slide" aria-controls="swiper-wrapper-1ec8c10103a15b1821" aria-disabled="true">
                                                 <svg width="55" height="33" viewBox="0 0 55 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M18.9414 30L4.94141 16L18.9414 2" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
-                                                    <path d="M48.9414 16L5.94141 16" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
-                                                </svg>        
+                                                    <path d="M18.9414 30L4.94141 16L18.9414 2" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"></path>
+                                                    <path d="M48.9414 16L5.94141 16" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"></path>
+                                                </svg>
                                             </button>
-                        
-                                            <button class="right-arrow right-arrow-categories" id="next">
+
+                                            <button class="right-arrow right-arrow-categories" id="next" tabindex="0" aria-label="Next slide" aria-controls="swiper-wrapper-1ec8c10103a15b1821" aria-disabled="false">
                                                 <svg width="55" height="33" viewBox="0 0 55 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M35.9414 31L49.9414 17L35.9414 3" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
-                                                    <path d="M5.94141 17L48.9414 17" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"/>
-                                                </svg>      
+                                                    <path d="M35.9414 31L49.9414 17L35.9414 3" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"></path>
+                                                    <path d="M5.94141 17L48.9414 17" stroke="#7B8292" stroke-linecap="square" stroke-linejoin="round"></path>
+                                                </svg>
                                             </button>
                                         </div>
                                     </div>
@@ -377,15 +380,12 @@
                             </div>
                         </div>
                     </section>
-                    
-                    <section class="categories-section">
-                        <div class="blur-container">
-                            <div class="catalog-container">
-                                <!-- Категории - первый вариант с макета -->
-                                <div class="categories-one-option">
-                                    <div class="categories-wrapper swiper categories-swiper fade-in">
-                                        <div class="swiper-wrapper">
-                                            <div class="category swiper-slide">
+
+
+<div class="categories-one-option">
+                                    <div class="categories-wrapper swiper categories-swiper fade-in swiper-initialized swiper-horizontal swiper-free-mode active">
+                                        <div class="swiper-wrapper" id="swiper-wrapper-3aaccb33edec3021" aria-live="polite">
+                                            <div class="category swiper-slide swiper-slide-active" role="group" aria-label="1 / 11" style="margin-right: 30px;">
                                                 <a href="#">
                                                     <img src="images/catalog/categories/image-1.png" alt="">
                                             
@@ -395,7 +395,7 @@
                                                 </a>
                                             </div>
 
-                                            <div class="category swiper-slide">
+                                            <div class="category swiper-slide swiper-slide-next" role="group" aria-label="2 / 11" style="margin-right: 30px;">
                                                 <a href="#">
                                                     <img src="images/catalog/categories/image-2.png" alt="">
                                             
@@ -405,7 +405,7 @@
                                                 </a>
                                             </div>
 
-                                            <div class="category swiper-slide">
+                                            <div class="category swiper-slide" role="group" aria-label="3 / 11" style="margin-right: 30px;">
                                                 <a href="#">
                                                     <img src="images/catalog/categories/image-3.png" alt="">
                                             
@@ -415,7 +415,7 @@
                                                 </a>
                                             </div>
 
-                                            <div class="category swiper-slide">
+                                            <div class="category swiper-slide" role="group" aria-label="4 / 11" style="margin-right: 30px;">
                                                 <a href="#">
                                                     <img src="images/catalog/categories/image-4.png" alt="">
                                             
@@ -425,7 +425,7 @@
                                                 </a>
                                             </div>
 
-                                            <div class="category swiper-slide">
+                                            <div class="category swiper-slide" role="group" aria-label="5 / 11" style="margin-right: 30px;">
                                                 <a href="#">
                                                     <img src="images/catalog/categories/image-5.png" alt="">
                                             
@@ -435,7 +435,7 @@
                                                 </a>
                                             </div>
 
-                                            <div class="category swiper-slide">
+                                            <div class="category swiper-slide" role="group" aria-label="6 / 11" style="margin-right: 30px;">
                                                 <a href="#">
                                                     <img src="images/catalog/categories/image-6.png" alt="">
                                             
@@ -445,7 +445,7 @@
                                                 </a>
                                             </div>
 
-                                            <div class="category swiper-slide">
+                                            <div class="category swiper-slide" role="group" aria-label="7 / 11" style="margin-right: 30px;">
                                                 <a href="#">
                                                     <img src="images/catalog/categories/image-6.png" alt="">
                                             
@@ -455,7 +455,7 @@
                                                 </a>
                                             </div>
 
-                                            <div class="category swiper-slide">
+                                            <div class="category swiper-slide" role="group" aria-label="8 / 11" style="margin-right: 30px;">
                                                 <a href="#">
                                                     <img src="images/catalog/categories/image-6.png" alt="">
                                             
@@ -465,7 +465,7 @@
                                                 </a>
                                             </div>
 
-                                            <div class="category swiper-slide">
+                                            <div class="category swiper-slide" role="group" aria-label="9 / 11" style="margin-right: 30px;">
                                                 <a href="#">
                                                     <img src="images/catalog/categories/image-6.png" alt="">
                                             
@@ -475,7 +475,7 @@
                                                 </a>
                                             </div>
 
-                                            <div class="category swiper-slide">
+                                            <div class="category swiper-slide" role="group" aria-label="10 / 11" style="margin-right: 30px;">
                                                 <a href="#">
                                                     <img src="images/catalog/categories/image-6.png" alt="">
                                             
@@ -485,124 +485,7 @@
                                                 </a>
                                             </div>
 
-                                            <div class="category swiper-slide">
-                                                <a href="#">
-                                                    <img src="images/catalog/categories/image-6.png" alt="">
-                                            
-                                                    <p class="category-title">
-                                                        Ванна
-                                                    </p>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Категории - второй вариант с макета -->
-                                <div class="categories-two-option">
-                                    <div class="categories-wrapper swiper categories-swiper fade-in">
-                                        <div class="swiper-wrapper">
-                                            <div class="category swiper-slide">
-                                                <a href="#">
-                                                    <img src="images/catalog/categories/image-1.png" alt="">
-                                            
-                                                    <p class="category-title">
-                                                        Раковина
-                                                    </p>
-                                                </a>
-                                            </div>
-
-                                            <div class="category swiper-slide">
-                                                <a href="#">
-                                                    <img src="images/catalog/categories/image-2.png" alt="">
-                                            
-                                                    <p class="category-title">
-                                                        Душ
-                                                    </p>
-                                                </a>
-                                            </div>
-
-                                            <div class="category swiper-slide">
-                                                <a href="#">
-                                                    <img src="images/catalog/categories/image-3.png" alt="">
-                                            
-                                                    <p class="category-title">
-                                                        Ванна и душ
-                                                    </p>
-                                                </a>
-                                            </div>
-
-                                            <div class="category swiper-slide">
-                                                <a href="#">
-                                                    <img src="images/catalog/categories/image-4.png" alt="">
-                                            
-                                                    <p class="category-title">
-                                                        Биде
-                                                    </p>
-                                                </a>
-                                            </div>
-
-                                            <div class="category swiper-slide">
-                                                <a href="#">
-                                                    <img src="images/catalog/categories/image-5.png" alt="">
-                                            
-                                                    <p class="category-title">
-                                                        Кухня
-                                                    </p>
-                                                </a>
-                                            </div>
-
-                                            <div class="category swiper-slide">
-                                                <a href="#">
-                                                    <img src="images/catalog/categories/image-6.png" alt="">
-                                            
-                                                    <p class="category-title">
-                                                        Ванна
-                                                    </p>
-                                                </a>
-                                            </div>
-
-                                            <div class="category swiper-slide">
-                                                <a href="#">
-                                                    <img src="images/catalog/categories/image-6.png" alt="">
-                                            
-                                                    <p class="category-title">
-                                                        Ванна
-                                                    </p>
-                                                </a>
-                                            </div>
-
-                                            <div class="category swiper-slide">
-                                                <a href="#">
-                                                    <img src="images/catalog/categories/image-6.png" alt="">
-                                            
-                                                    <p class="category-title">
-                                                        Ванна
-                                                    </p>
-                                                </a>
-                                            </div>
-
-                                            <div class="category swiper-slide">
-                                                <a href="#">
-                                                    <img src="images/catalog/categories/image-6.png" alt="">
-                                            
-                                                    <p class="category-title">
-                                                        Ванна
-                                                    </p>
-                                                </a>
-                                            </div>
-
-                                            <div class="category swiper-slide">
-                                                <a href="#">
-                                                    <img src="images/catalog/categories/image-6.png" alt="">
-                                            
-                                                    <p class="category-title">
-                                                        Ванна
-                                                    </p>
-                                                </a>
-                                            </div>
-
-                                            <div class="category swiper-slide">
+                                            <div class="category swiper-slide" role="group" aria-label="11 / 11" style="margin-right: 30px;">
                                                 <a href="#">
                                                     <img src="images/catalog/categories/image-6.png" alt="">
                                             
@@ -612,537 +495,403 @@
                                                 </a>
                                             </div>
                                         </div>
-                                    </div>
+                                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
                                 </div>
 
-                                <!-- Категории - третий вариант с макета -->
-                                <div class="categories-three-option">
-                                    <div class="categories-wrapper swiper categories-swiper fade-in">
-                                        <div class="swiper-wrapper">
-                                            <div class="category swiper-slide">
-                                                <a href="#">
-                                                    <img src="images/catalog/categories/image-1.png" alt="">
-                                            
-                                                    <p class="category-title">
-                                                        Раковина
-                                                    </p>
-                                                </a>
-                                            </div>
-
-                                            <div class="category-non-field swiper-slide">
-                                                <img src="images/catalog/categories/non-field.png" alt="">
-                                            </div>
-
-                                            <div class="category swiper-slide">
-                                                <a href="#">
-                                                    <img src="images/catalog/categories/image-2.png" alt="">
-                                            
-                                                    <p class="category-title">
-                                                        Душ
-                                                    </p>
-                                                </a>
-                                            </div>
-
-                                            <div class="category swiper-slide">
-                                                <a href="#">
-                                                    <img src="images/catalog/categories/image-3.png" alt="">
-                                            
-                                                    <p class="category-title">
-                                                        Ванна и душ
-                                                    </p>
-                                                </a>
-                                            </div>
-
-                                            <div class="category-non-field swiper-slide">
-                                                <img src="images/catalog/categories/non-field.png" alt="">
-                                            </div>
-
-                                            <div class="category-non-field swiper-slide">
-                                                <img src="images/catalog/categories/non-field.png" alt="">
-                                            </div>
-
-                                            <div class="category-non-field swiper-slide">
-                                                <img src="images/catalog/categories/non-field.png" alt="">
-                                            </div>
-
-                                            <div class="category swiper-slide">
-                                                <a href="#">
-                                                    <img src="images/catalog/categories/image-6.png" alt="">
-                                            
-                                                    <p class="category-title">
-                                                        Ванна
-                                                    </p>
-                                                </a>
-                                            </div>
-
-                                            <div class="category swiper-slide">
-                                                <a href="#">
-                                                    <img src="images/catalog/categories/image-6.png" alt="">
-                                            
-                                                    <p class="category-title">
-                                                        Ванна
-                                                    </p>
-                                                </a>
-                                            </div>
-
-                                            <div class="category swiper-slide">
-                                                <a href="#">
-                                                    <img src="images/catalog/categories/image-6.png" alt="">
-                                            
-                                                    <p class="category-title">
-                                                        Ванна
-                                                    </p>
-                                                </a>
-                                            </div>
-
-                                            <div class="category swiper-slide">
-                                                <a href="#">
-                                                    <img src="images/catalog/categories/image-6.png" alt="">
-                                            
-                                                    <p class="category-title">
-                                                        Ванна
-                                                    </p>
-                                                </a>
-                                            </div>
-
-                                            <div class="category swiper-slide">
-                                                <a href="#">
-                                                    <img src="images/catalog/categories/image-6.png" alt="">
-                                            
-                                                    <p class="category-title">
-                                                        Ванна
-                                                    </p>
-                                                </a>
-                                            </div>
-
-                                            <div class="category swiper-slide">
-                                                <a href="#">
-                                                    <img src="images/catalog/categories/image-6.png" alt="">
-                                            
-                                                    <p class="category-title">
-                                                        Ванна
-                                                    </p>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
+                    <div class="filters filters-desktop fade-in active">
+                        <div class="filter-container">
+                            <!-- Кнопка -->
+                            <button class="filter-button filter-btn-first" id="filterToggle">
+                                <div class="filter-title">
+                                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M21.5858 5H6.41421C5.63316 5 5 5.63317 5 6.41421C5 6.78929 5.149 7.149 5.41421 7.41421L10.4142 12.4142C10.7893 12.7893 11 13.298 11 13.8284V18.7639C11 19.5215 11.428 20.214 12.1056 20.5528L16.2764 22.6382C16.6088 22.8044 17 22.5627 17 22.191V13.8284C17 13.298 17.2107 12.7893 17.5858 12.4142L22.5858 7.41421C22.851 7.149 23 6.78929 23 6.41421C23 5.63317 22.3668 5 21.5858 5Z" stroke="#EDE4D7" stroke-opacity="0.4" stroke-linecap="round"></path>
+                                    </svg>
+                                    <p>Фильтровать</p>
                                 </div>
 
-                                <!-- Категории - четвертый вариант с макета -->
-                                <div class="categories-four-option">
-                                    <div class="categories-wrapper swiper categories-swiper fade-in">
-                                        <div class="swiper-wrapper">
-                                            <div class="category-non-field swiper-slide">
-                                                <img src="images/catalog/categories/non-field.png" alt="">
-                                            </div>
+                                <svg class="filter-arrow-icon" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 11L14.7071 16.6854C14.3166 17.1049 13.6834 17.1049 13.2929 16.6854L8 11" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="round"></path>
+                                </svg>
+                            </button>
+                            <form name="arrFilter_form" action="/catalog/santekhnika/" method="get" class="js-filerForm">
+                                            <div class="filter-dropdown" id="filterDropdown">
+                                    <div class="filter-content">
+                                        <div class="scroll-section">
+                                                                    <div class="filter-section">
+                                                <p class="price">Цена</p>
 
-                                            <div class="category-non-field swiper-slide">
-                                                <img src="images/catalog/categories/non-field.png" alt="">
-                                            </div>
-
-                                            <div class="category swiper-slide">
-                                                <a href="#">
-                                                    <img src="images/catalog/categories/image-2.png" alt="">
-                                            
-                                                    <p class="category-title">
-                                                        Душ
-                                                    </p>
-                                                </a>
-                                            </div>
-
-                                            <div class="category swiper-slide">
-                                                <a href="#">
-                                                    <img src="images/catalog/categories/image-3.png" alt="">
-                                            
-                                                    <p class="category-title">
-                                                        Ванна и душ
-                                                    </p>
-                                                </a>
-                                            </div>
-
-                                            <div class="category-non-field swiper-slide">
-                                                <img src="images/catalog/categories/non-field.png" alt="">
-                                            </div>
-
-                                            <div class="category-non-field swiper-slide">
-                                                <img src="images/catalog/categories/non-field.png" alt="">
-                                            </div>
-
-                                            <div class="category-non-field swiper-slide">
-                                                <img src="images/catalog/categories/non-field.png" alt="">
-                                            </div>
-
-                                            <div class="category-non-field swiper-slide">
-                                                <img src="images/catalog/categories/non-field.png" alt="">
-                                            </div>
-
-                                            <div class="category swiper-slide">
-                                                <a href="#">
-                                                    <img src="images/catalog/categories/image-6.png" alt="">
-                                            
-                                                    <p class="category-title">
-                                                        Ванна
-                                                    </p>
-                                                </a>
-                                            </div>
-
-                                            <div class="category swiper-slide">
-                                                <a href="#">
-                                                    <img src="images/catalog/categories/image-6.png" alt="">
-                                            
-                                                    <p class="category-title">
-                                                        Ванна
-                                                    </p>
-                                                </a>
-                                            </div>
-
-                                            <div class="category swiper-slide">
-                                                <a href="#">
-                                                    <img src="images/catalog/categories/image-6.png" alt="">
-                                            
-                                                    <p class="category-title">
-                                                        Ванна
-                                                    </p>
-                                                </a>
-                                            </div>
-
-                                            <div class="category swiper-slide">
-                                                <a href="#">
-                                                    <img src="images/catalog/categories/image-6.png" alt="">
-                                            
-                                                    <p class="category-title">
-                                                        Ванна
-                                                    </p>
-                                                </a>
-                                            </div>
-
-                                            <div class="category swiper-slide">
-                                                <a href="#">
-                                                    <img src="images/catalog/categories/image-6.png" alt="">
-                                            
-                                                    <p class="category-title">
-                                                        Ванна
-                                                    </p>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="filters filters-desktop fade-in">
-                                    <div class="filter-container">
-                                        <!-- Кнопка -->
-                                        <button class="filter-button filter-btn-first" id="filterToggle">
-                                            <div class="filter-title">
-                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M21.5858 5H6.41421C5.63316 5 5 5.63317 5 6.41421C5 6.78929 5.149 7.149 5.41421 7.41421L10.4142 12.4142C10.7893 12.7893 11 13.298 11 13.8284V18.7639C11 19.5215 11.428 20.214 12.1056 20.5528L16.2764 22.6382C16.6088 22.8044 17 22.5627 17 22.191V13.8284C17 13.298 17.2107 12.7893 17.5858 12.4142L22.5858 7.41421C22.851 7.149 23 6.78929 23 6.41421C23 5.63317 22.3668 5 21.5858 5Z" stroke="#EDE4D7" stroke-opacity="0.4" stroke-linecap="round"/>
-                                                </svg>
-                                                <p>Фильтровать</p>
-                                            </div>
-                                        
-                                            <svg class="filter-arrow-icon" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M20 11L14.7071 16.6854C14.3166 17.1049 13.6834 17.1049 13.2929 16.6854L8 11" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="round"/>
-                                            </svg>
-                                        </button>
-                                    
-                                        <!-- Меню -->
-                                        <div class="filter-dropdown" id="filterDropdown">
-                                            <div class="filter-content">
-                                                <div class="scroll-section">
-                                                    <div class="filter-section">
-                                                        <p class="price">Цена</p>
-                                                
-                                                        <div class="range-price">
-                                                            <div class="from">
-                                                                <p class="from-text">от</p>
-                
-                                                                <input type="number" value="3500">
-                                                            </div>
-                
-                                                            <div class="to">
-                                                                <p class="to-text">до</p>
-                
-                                                                <input type="number">
-                                                            </div>
-                                                        </div>
+                                                <div class="range-price">
+                                                    <div class="from">
+                                                        <p class="from-text">от</p>
+                                                        <input name="arrFilter_P1_MIN" id="arrFilter_P1_MIN" type="number" min="318.25" max="442500" placeholder="" value="">
                                                     </div>
-                                        
-                                                    <div class="filter-section">
-                                                        <p class="color">Цвет</p>
-                                                        
-                                                        <label class="radio-label">
-                                                            <input type="radio" name="color" checked />
-                                                            белый
-                                                        </label>
-                
-                                                        <label class="radio-label">
-                                                            <input type="radio" name="color" checked />
-                                                            серый
-                                                        </label>
-                
-                                                        <label class="radio-label">
-                                                            <input type="radio" name="color" checked />
-                                                            чёрный
-                                                        </label>
+
+                                                    <div class="to">
+                                                        <p class="to-text">до</p>
+
+                                                        <input name="arrFilter_P1_MAX" id="arrFilter_P1_MAX" value="" type="number" min="318.25" max="442500" placeholder="">
                                                     </div>
-                                        
-                                                    <div class="filter-section">
+                                                </div>
+                                            </div>
+                                                                            <div class="filter-section">
+                                                        <p class="color">Упаковка</p>
+                                                                                                <label>
+                                                                <input data-id="arrFilter_34_1447784375" data-name="Упаковка" type="checkbox" value="Y" name="arrFilter_34_1447784375" id="arrFilter_34_1447784375">
+                                                                <span class="checkbox-custom"></span> Блистер                                        </label>
+                                                                                                <label>
+                                                                <input data-id="arrFilter_34_10570485" data-name="Упаковка" type="checkbox" value="Y" name="arrFilter_34_10570485" id="arrFilter_34_10570485">
+                                                                <span class="checkbox-custom"></span> картон                                        </label>
+                                                                                                <label>
+                                                                <input data-id="arrFilter_34_826079140" data-name="Упаковка" type="checkbox" value="Y" name="arrFilter_34_826079140" id="arrFilter_34_826079140">
+                                                                <span class="checkbox-custom"></span> Коробка                                        </label>
+                                                                                                <label>
+                                                                <input data-id="arrFilter_34_3116551366" data-name="Упаковка" type="checkbox" value="Y" name="arrFilter_34_3116551366" id="arrFilter_34_3116551366">
+                                                                <span class="checkbox-custom"></span> Пакет                                        </label>
+                                                                                                <label>
+                                                                <input data-id="arrFilter_34_1159645950" data-name="Упаковка" type="checkbox" value="Y" name="arrFilter_34_1159645950" id="arrFilter_34_1159645950">
+                                                                <span class="checkbox-custom"></span> Тубус                                        </label>
+                                                                                        </div>
+                                                                                <div class="filter-section">
                                                         <p class="color">Бренд</p>
-                                                        <label>
-                                                            <input type="checkbox" />
-                                                            <span class="checkbox-custom"></span> WasserKRAFT
-                                                        </label>
-                                                        <label>
-                                                            <input type="checkbox" checked />
-                                                            <span class="checkbox-custom"></span> Grossman
-                                                        </label>
-                                                        <label>
-                                                            <input type="checkbox" />
-                                                            <span class="checkbox-custom"></span> Grossman
-                                                        </label>
-                                                        <label>
-                                                            <input type="checkbox" checked />
-                                                            <span class="checkbox-custom"></span> WasserKRAFT
-                                                        </label>
-                                                        <label>
-                                                            <input type="checkbox" />
-                                                            <span class="checkbox-custom"></span> Grossman
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="filter-section">
+                                                                                                <label>
+                                                                <input data-id="arrFilter_23_2503259063" data-name="Бренд" type="checkbox" value="Y" name="arrFilter_23_2503259063" id="arrFilter_23_2503259063">
+                                                                <span class="checkbox-custom"></span> Grossman                                        </label>
+                                                                                                <label>
+                                                                <input data-id="arrFilter_23_4290116149" data-name="Бренд" type="checkbox" value="Y" name="arrFilter_23_4290116149" id="arrFilter_23_4290116149">
+                                                                <span class="checkbox-custom"></span> Radostone                                        </label>
+                                                                                                <label>
+                                                                <input data-id="arrFilter_23_1718395590" data-name="Бренд" type="checkbox" value="Y" name="arrFilter_23_1718395590" id="arrFilter_23_1718395590">
+                                                                <span class="checkbox-custom"></span> Salini                                        </label>
+                                                                                                <label>
+                                                                <input data-id="arrFilter_23_2246607878" data-name="Бренд" type="checkbox" value="Y" name="arrFilter_23_2246607878" id="arrFilter_23_2246607878">
+                                                                <span class="checkbox-custom"></span> WasserKRAFT                                        </label>
+                                                                                        </div>
+                                                                                <div class="filter-section">
+                                                        <p class="color">Гарантия, лет</p>
+                                                                                                <label>
+                                                                <input data-id="arrFilter_35_33620980" data-name="Гарантия, лет" type="checkbox" value="Y" name="arrFilter_35_33620980" id="arrFilter_35_33620980">
+                                                                <span class="checkbox-custom"></span> 1 год                                        </label>
+                                                                                                <label>
+                                                                <input data-id="arrFilter_35_2702964995" data-name="Гарантия, лет" type="checkbox" value="Y" name="arrFilter_35_2702964995" id="arrFilter_35_2702964995">
+                                                                <span class="checkbox-custom"></span> 1,00                                        </label>
+                                                                                                <label>
+                                                                <input data-id="arrFilter_35_1652565841" data-name="Гарантия, лет" type="checkbox" value="Y" name="arrFilter_35_1652565841" id="arrFilter_35_1652565841">
+                                                                <span class="checkbox-custom"></span> 10,00                                        </label>
+                                                                                                <label>
+                                                                <input data-id="arrFilter_35_450215437" data-name="Гарантия, лет" type="checkbox" value="Y" name="arrFilter_35_450215437" id="arrFilter_35_450215437">
+                                                                <span class="checkbox-custom"></span> 2                                        </label>
+                                                                                                <label>
+                                                                <input data-id="arrFilter_35_3014547181" data-name="Гарантия, лет" type="checkbox" value="Y" name="arrFilter_35_3014547181" id="arrFilter_35_3014547181">
+                                                                <span class="checkbox-custom"></span> 2,00                                        </label>
+                                                                                                <label>
+                                                                <input data-id="arrFilter_35_185741704" data-name="Гарантия, лет" type="checkbox" value="Y" name="arrFilter_35_185741704" id="arrFilter_35_185741704">
+                                                                <span class="checkbox-custom"></span> 3,00                                        </label>
+                                                                                                <label>
+                                                                <input data-id="arrFilter_35_2226203566" data-name="Гарантия, лет" type="checkbox" value="Y" name="arrFilter_35_2226203566" id="arrFilter_35_2226203566">
+                                                                <span class="checkbox-custom"></span> 5                                        </label>
+                                                                                                <label>
+                                                                <input data-id="arrFilter_35_1825508854" data-name="Гарантия, лет" type="checkbox" value="Y" name="arrFilter_35_1825508854" id="arrFilter_35_1825508854">
+                                                                <span class="checkbox-custom"></span> 5 лет                                        </label>
+                                                                                                <label>
+                                                                <input data-id="arrFilter_35_779710036" data-name="Гарантия, лет" type="checkbox" value="Y" name="arrFilter_35_779710036" id="arrFilter_35_779710036">
+                                                                <span class="checkbox-custom"></span> 5,00                                        </label>
+                                                                                                <label>
+                                                                <input data-id="arrFilter_35_2221975263" data-name="Гарантия, лет" type="checkbox" value="Y" name="arrFilter_35_2221975263" id="arrFilter_35_2221975263">
+                                                                <span class="checkbox-custom"></span> 7,00                                        </label>
+                                                                                        </div>
+                                                                                <div class="filter-section">
                                                         <p class="color">Цвет</p>
-                                                        <label>
-                                                            <input type="checkbox" />
-                                                            <span class="checkbox-custom"></span> WasserKRAFT
-                                                        </label>
-                                                        <label>
-                                                            <input type="checkbox" checked />
-                                                            <span class="checkbox-custom"></span> Grossman
-                                                        </label>
-                                                        <label>
-                                                            <input type="checkbox" />
-                                                            <span class="checkbox-custom"></span> Grossman
-                                                        </label>
-                                                        <label>
-                                                            <input type="checkbox" checked />
-                                                            <span class="checkbox-custom"></span> WasserKRAFT
-                                                        </label>
-                                                        <label>
-                                                            <input type="checkbox" />
-                                                            <span class="checkbox-custom"></span> Grossman
-                                                        </label>
-                                                    </div>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="108089395" name="arrFilter_43" id="arrFilter_43_108089395">
+                                                            RAL                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="1429022876" name="arrFilter_43" id="arrFilter_43_1429022876">
+                                                            бежевый                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="3864224617" name="arrFilter_43" id="arrFilter_43_3864224617">
+                                                            Бежевый                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="2733696122" name="arrFilter_43" id="arrFilter_43_2733696122">
+                                                            белый                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="536962777" name="arrFilter_43" id="arrFilter_43_536962777">
+                                                            Белый                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="256890064" name="arrFilter_43" id="arrFilter_43_256890064">
+                                                            Белый / RAL                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="266405056" name="arrFilter_43" id="arrFilter_43_266405056">
+                                                            Белый / Бирюзовый                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="4071217279" name="arrFilter_43" id="arrFilter_43_4071217279">
+                                                            Белый лед                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="358005085" name="arrFilter_43" id="arrFilter_43_358005085">
+                                                            Белый/RAL                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="1408422058" name="arrFilter_43" id="arrFilter_43_1408422058">
+                                                            Белый/Бирюзовый                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="3298412242" name="arrFilter_43" id="arrFilter_43_3298412242">
+                                                            Белый/Бордовый                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="3356658350" name="arrFilter_43" id="arrFilter_43_3356658350">
+                                                            Белый/Серый                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="3530998214" name="arrFilter_43" id="arrFilter_43_3530998214">
+                                                            белый/синий                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="999960004" name="arrFilter_43" id="arrFilter_43_999960004">
+                                                            белый/хром                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="3987821897" name="arrFilter_43" id="arrFilter_43_3987821897">
+                                                            Белый/Чёрный                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="239843172" name="arrFilter_43" id="arrFilter_43_239843172">
+                                                            бордовый                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="2149027011" name="arrFilter_43" id="arrFilter_43_2149027011">
+                                                            Глянцевое золото                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="1035622396" name="arrFilter_43" id="arrFilter_43_1035622396">
+                                                            голубой                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="3147032652" name="arrFilter_43" id="arrFilter_43_3147032652">
+                                                            желтый                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="900320306" name="arrFilter_43" id="arrFilter_43_900320306">
+                                                            Зеленый                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="3329261919" name="arrFilter_43" id="arrFilter_43_3329261919">
+                                                            золото                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="162580502" name="arrFilter_43" id="arrFilter_43_162580502">
+                                                            Карамель                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="2239312846" name="arrFilter_43" id="arrFilter_43_2239312846">
+                                                            коричневый                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="296768394" name="arrFilter_43" id="arrFilter_43_296768394">
+                                                            красный                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="3861725381" name="arrFilter_43" id="arrFilter_43_3861725381">
+                                                            Крем                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="3962678284" name="arrFilter_43" id="arrFilter_43_3962678284">
+                                                            Маренго                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="2398944290" name="arrFilter_43" id="arrFilter_43_2398944290">
+                                                            Матовое золото                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="339026989" name="arrFilter_43" id="arrFilter_43_339026989">
+                                                            Матовый белый                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="1794594590" name="arrFilter_43" id="arrFilter_43_1794594590">
+                                                            мультицвет                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="2642008686" name="arrFilter_43" id="arrFilter_43_2642008686">
+                                                            нержавеющая сталь                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="1110756504" name="arrFilter_43" id="arrFilter_43_1110756504">
+                                                            Никель                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="50178395" name="arrFilter_43" id="arrFilter_43_50178395">
+                                                            Олива                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="143437932" name="arrFilter_43" id="arrFilter_43_143437932">
+                                                            оранжевый                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="1668189852" name="arrFilter_43" id="arrFilter_43_1668189852">
+                                                            Оружейная сталь                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="1197737969" name="arrFilter_43" id="arrFilter_43_1197737969">
+                                                            Розовое золото                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="182554686" name="arrFilter_43" id="arrFilter_43_182554686">
+                                                            Розовый                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="316122766" name="arrFilter_43" id="arrFilter_43_316122766">
+                                                            Светлая бронза                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="2950776610" name="arrFilter_43" id="arrFilter_43_2950776610">
+                                                            Серебристый                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="329120825" name="arrFilter_43" id="arrFilter_43_329120825">
+                                                            Серый                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="2117471943" name="arrFilter_43" id="arrFilter_43_2117471943">
+                                                            Синий                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="1085541594" name="arrFilter_43" id="arrFilter_43_1085541594">
+                                                            Синий/розовый                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="3606681026" name="arrFilter_43" id="arrFilter_43_3606681026">
+                                                            Сиреневый                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="958321311" name="arrFilter_43" id="arrFilter_43_958321311">
+                                                            Слоновая кость                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="3028387031" name="arrFilter_43" id="arrFilter_43_3028387031">
+                                                            Темная бронза                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="3025369759" name="arrFilter_43" id="arrFilter_43_3025369759">
+                                                            Хром                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="1792493074" name="arrFilter_43" id="arrFilter_43_1792493074">
+                                                            Чёрный                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="1510538883" name="arrFilter_43" id="arrFilter_43_1510538883">
+                                                            Черный                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="2079487817" name="arrFilter_43" id="arrFilter_43_2079487817">
+                                                            черный глянец                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="47316193" name="arrFilter_43" id="arrFilter_43_47316193">
+                                                            Черный матовый                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="2686575699" name="arrFilter_43" id="arrFilter_43_2686575699">
+                                                            Черный/белый                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="767619585" name="arrFilter_43" id="arrFilter_43_767619585">
+                                                            Черный/зеленый                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="3131516492" name="arrFilter_43" id="arrFilter_43_3131516492">
+                                                            Черный/красный                                    </label>
+                                                                                            <label class="radio-label">
+                                                            <input type="radio" value="1122277932" name="arrFilter_43" id="arrFilter_43_1122277932">
+                                                            Черный/хром                                    </label>
+                                                                                        </div>
+                                                                        </div>
 
-                                                    <div class="filter-section">
-                                                        <p class="color">Цвет</p>
-                                                        <label>
-                                                            <input type="checkbox" />
-                                                            <span class="checkbox-custom"></span> WasserKRAFT
-                                                        </label>
-                                                        <label>
-                                                            <input type="checkbox" checked />
-                                                            <span class="checkbox-custom"></span> Grossman
-                                                        </label>
-                                                        <label>
-                                                            <input type="checkbox" />
-                                                            <span class="checkbox-custom"></span> Grossman
-                                                        </label>
-                                                        <label>
-                                                            <input type="checkbox" checked />
-                                                            <span class="checkbox-custom"></span> WasserKRAFT
-                                                        </label>
-                                                        <label>
-                                                            <input type="checkbox" />
-                                                            <span class="checkbox-custom"></span> Grossman
-                                                        </label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="buttons">
-                                                    <button class="reset-button">
-                                                        Сбросить
-                                                    </button>
-
-                                                    <button class="show-button">
-                                                        Показать <span>(29)</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="space-between">
-                                        <div class="filter-buttons filter-buttons-middle">
-                                            <div class="filter-button clear-filter-btn">
-                                                <div class="filter-title">
-                                                    <p>Сбросить фильтры</p>
-                                                </div>
-                                                
-                                                <button class="clear-filter">
-                                                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M20 8L8 20M20 20L8 8.00001" stroke="currentColor" stroke-opacity="0.7" stroke-linecap="square"/>
-                                                    </svg>
-                                                </button>
-                                            </div>
-
-                                            <div class="filter-button">
-                                                <div class="filter-title">
-                                                    <p>WaserKraft</p>
-                                                </div>
-                    
-                                                <button class="clear-filter">
-                                                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M20 8L8 20M20 20L8 8.00001" stroke="currentColor" stroke-opacity="0.7" stroke-linecap="square"/>
-                                                    </svg>
-                                                </button>    
-                                            </div>
-
-                                            <div class="filter-button">
-                                                <div class="filter-title">
-                                                    <p>Grossman</p>
-                                                </div>
-                    
-                                                <button class="clear-filter">
-                                                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M20 8L8 20M20 20L8 8.00001" stroke="currentColor" stroke-opacity="0.7" stroke-linecap="square"/>
-                                                    </svg>
-                                                </button>    
-                                            </div>
-
-                                            <div class="filter-button">
-                                                <div class="filter-title">
-                                                    <p>WaserKraft</p>
-                                                </div>
-                    
-                                                <button class="clear-filter">
-                                                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M20 8L8 20M20 20L8 8.00001" stroke="currentColor" stroke-opacity="0.7" stroke-linecap="square"/>
-                                                    </svg>
-                                                </button>    
-                                            </div>
-
-                                            <div class="filter-button">
-                                                <div class="filter-title">
-                                                    <p>Grossman</p>
-                                                </div>
-                    
-                                                <button class="clear-filter">
-                                                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M20 8L8 20M20 20L8 8.00001" stroke="currentColor" stroke-opacity="0.7" stroke-linecap="square"/>
-                                                    </svg>
-                                                </button>    
-                                            </div>    
-                                        </div>
-                
-                                        <div class="filter-container-2">
-                                            <button class="filter-button filter-btn-sort" id="filterToggle-2">
-                                                <div class="filter-title">
-                                                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M9 6H18M9 14H15M9 22H11M9 10H17M9 18H13" stroke="#EDE4D7" stroke-opacity="0.4" stroke-linecap="round"/>
-                                                    </svg>
-                                                        
-                                                    <p>Сортировать: <span>сначала дешевле</span></p>
-                                                </div>
-                                                
-                                                <div>
-                                                    <svg class="filter-arrow-icon-sort" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M20 11L14.7071 16.6854C14.3166 17.1049 13.6834 17.1049 13.2929 16.6854L8 11" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="round"/>
-                                                    </svg>
-                                                </div>
+                                        <div class="buttons js-clearFiler" data-link="/catalog/santekhnika/">
+                                            <button class="reset-button">
+                                                Сбросить
                                             </button>
-                    
-                                            <!-- Меню -->
-                                            <div class="filter-dropdown-2" id="filterDropdown-2">
-                                                <div class="filter-content">
-                                                    <div class="scroll-section">
-                                                        <div class="filter-section">                                
-                                                            <label class="radio-label">
-                                                                <input type="radio" name="color" checked />
-                                                                сначала дешевле
-                                                            </label>
-                    
-                                                            <label class="radio-label">
-                                                                <input type="radio" name="color" />
-                                                                сначала дороже
-                                                            </label>
-                    
-                                                            <label class="radio-label">
-                                                                <input type="radio" name="color" />
-                                                                сначала новые
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+
+                                            <button disabled="" class="show-button js-filterSubmit">
+                                                Показать <span>(0)</span>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
+                            </form>
+                        </div>
+                        <div class="space-between">
 
-                                <div class="filters-mobile fade-in">
-                                    <div class="filter-first-button-mobile" id="filterFirstButtonMobile">
-                                        <div class="filter-first-btn-left-side">
-                                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M21.5858 5H6.41421C5.63316 5 5 5.63317 5 6.41421C5 6.78929 5.149 7.149 5.41421 7.41421L10.4142 12.4142C10.7893 12.7893 11 13.298 11 13.8284V18.7639C11 19.5215 11.428 20.214 12.1056 20.5528L16.2764 22.6382C16.6088 22.8044 17 22.5627 17 22.191V13.8284C17 13.298 17.2107 12.7893 17.5858 12.4142L22.5858 7.41421C22.851 7.149 23 6.78929 23 6.41421C23 5.63317 22.3668 5 21.5858 5Z" stroke="#EDE4D7" stroke-opacity="0.4" stroke-linecap="round"/>
-                                            </svg>
-
-                                            <p>Фильтровать</p>
-
-                                            <span>1</span>
-                                        </div>
-
-                                        <div class="filter-first-btn-right-side">
-                                            <button class="clear-filters-btn">
-                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M20 8L8 20M20 20L8 8.00001" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"/>
-                                                </svg>
-                                            </button>
-                                        </div>
+                            <div class="filter-buttons js-filterDelButton">
+                                <div class="filter-button clear-filter-btn js-clearFiler" data-link="/catalog/santekhnika/">
+                                    <div class="filter-title">
+                                        <p>Сбросить фильтры</p>
                                     </div>
 
-                                    <div class="filter-second-button-mobile" id="filterSecondButtonMobile">
-                                        <div class="filter-second-button">
-                                            <div class="filter-second-btn-left-side">
-                                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M9 6H18M9 14H15M9 22H11M9 10H17M9 18H13" stroke="#EDE4D7" stroke-opacity="0.4" stroke-linecap="round"/>
-                                                </svg>
+                                    <button class="clear-filter">
+                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M20 8L8 20M20 20L8 8.00001" stroke="currentColor" stroke-opacity="0.7" stroke-linecap="square"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                </div>
+                                <div class="filter-container-2">
+                            <button class="filter-button filter-btn-sort" id="filterToggle-2">
+                                <div class="filter-title">
+                                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9 6H18M9 14H15M9 22H11M9 10H17M9 18H13" stroke="#EDE4D7" stroke-opacity="0.4" stroke-linecap="round"></path>
+                                    </svg>
 
-                                                <p>Сначала дешевле</p>         
-                                            </div>
+                                    <p>Сортировать: <span>сначала новые</span></p>
+                                </div>
 
-                                            <div class="filter-second-btn-right-side">
-                                                <button class="open-filters-menu">
-                                                    <!-- Стрелка -->
-                                                    <svg class="arrow-icon-mobile" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M20 11L14.7071 16.6854C14.3166 17.1049 13.6834 17.1049 13.2929 16.6854L8 11" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="round"/>
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </div>
+                                <div class="filter-arrow-icon-sort">
+                                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20 11L14.7071 16.6854C14.3166 17.1049 13.6834 17.1049 13.2929 16.6854L8 11" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="round"></path>
+                                    </svg>
+                                </div>
+                            </button>
 
-                                        <div class="filter-second-button-menu">
-                                            <div class="radio-group-mobile">
-                                                <label class="radio-label-mobile">
-                                                    <input type="radio" name="sort" class="radio-input" checked>
-                                                    <span class="custom-radio"></span>
-                                                    сначала дешевле
-                                                </label>
-                                                
-                                                <label class="radio-label-mobile">
-                                                    <input type="radio" name="sort" class="radio-input">
-                                                    <span class="custom-radio"></span>
-                                                    сначала дороже
-                                                </label>
-                                                
-                                                <label class="radio-label-mobile">
-                                                    <input type="radio" name="sort" class="radio-input">
-                                                    <span class="custom-radio"></span>
-                                                    сначала новые
-                                                </label>
-                                            </div>
+                            <!-- Меню -->
+                            <div class="filter-dropdown-2" id="filterDropdown-2">
+                                <div class="filter-content">
+                                    <div class="scroll-section">
+                                        <div class="filter-section">
+                                            <label class="radio-label">
+                                                <input type="radio" class="js-sortInput" name="sort" checked="" data-link="?sort=default">
+                                                сначала новые                        </label>
+
+                                            <label class="radio-label">
+                                                <input type="radio" class="js-sortInput" name="sort" data-link="?sort=priceAsc">
+                                                сначала дешевле                        </label>
+
+                                            <label class="radio-label">
+                                                <input type="radio" class="js-sortInput" name="sort" data-link="?sort=priceDesc">
+                                                сначала дороже                        </label>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="filters-mobile fade-in active">
+                        <div class="filter-first-button-mobile" id="filterFirstButtonMobile">
+                            <div class="filter-first-btn-left-side js-buttonFilterMobile">
+                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M21.5858 5H6.41421C5.63316 5 5 5.63317 5 6.41421C5 6.78929 5.149 7.149 5.41421 7.41421L10.4142 12.4142C10.7893 12.7893 11 13.298 11 13.8284V18.7639C11 19.5215 11.428 20.214 12.1056 20.5528L16.2764 22.6382C16.6088 22.8044 17 22.5627 17 22.191V13.8284C17 13.298 17.2107 12.7893 17.5858 12.4142L22.5858 7.41421C22.851 7.149 23 6.78929 23 6.41421C23 5.63317 22.3668 5 21.5858 5Z" stroke="#EDE4D7" stroke-opacity="0.4" stroke-linecap="round"></path>
+                                </svg>
+
+                                <p>Фильтровать</p>
+
+                                <span>0</span>
+                            </div>
+
+                            <div class="filter-first-btn-right-side">
+                                <button class="clear-filters-btn">
+                                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20 8L8 20M20 20L8 8.00001" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="square"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                            <div class="filter-second-button-mobile" id="filterSecondButtonMobile">
+                            <div class="filter-second-button">
+                                <div class="filter-second-btn-left-side">
+                                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9 6H18M9 14H15M9 22H11M9 10H17M9 18H13" stroke="#EDE4D7" stroke-opacity="0.4" stroke-linecap="round"></path>
+                                    </svg>
+
+                                    <p>сначала новые</p>
+                                </div>
+
+                                <div class="filter-second-btn-right-side">
+                                    <button class="open-filters-menu">
+                                        <!-- Стрелка -->
+                                        <svg class="arrow-icon-mobile" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M20 11L14.7071 16.6854C14.3166 17.1049 13.6834 17.1049 13.2929 16.6854L8 11" stroke="#EDE4D7" stroke-opacity="0.7" stroke-linecap="round"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="filter-second-button-menu">
+                                <div class="radio-group-mobile">
+                                    <label class="radio-label-mobile js-sortInput" data-link="?sort=default">
+                                        <input type="radio" class="radio-input" name="sort-mobile" checked="">
+                                        <span class="custom-radio"></span>
+                                        сначала новые                </label>
+
+                                    <label class="radio-label-mobile js-sortInput" data-link="?sort=priceAsc">
+                                        <input type="radio" class="radio-input" name="sort-mobile">
+                                        <span class="custom-radio"></span>
+                                        сначала дешевле                </label>
+
+                                    <label class="radio-label-mobile js-sortInput" data-link="?sort=priceDesc">
+                                        <input type="radio" class="radio-input" name="sort-mobile">
+                                        <span class="custom-radio"></span>
+                                        сначала дороже                </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                             </div>
                         </div>
                     </section>
@@ -1195,8 +944,17 @@
                                                         </div>
                         
                                                         <div class="last-info">
-                                                            <p>Цена</p>
-                                                            <h3>14 680 ₽</h3>
+                                                            <div class="last-info-left">
+                                                                <p>Цена</p>
+                                                            </div>
+                                                            
+                                                            <div class="last-info-right">
+                                                                <p class="last-info-discount">
+                                                                    20000 ₽
+                                                                </p>
+
+                                                                <h3>14 680 ₽</h3>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1270,8 +1028,17 @@
                                                         </div>
                         
                                                         <div class="last-info">
-                                                            <p>Цена</p>
-                                                            <h3>14 680 ₽</h3>
+                                                            <div class="last-info-left">
+                                                                <p>Цена</p>
+                                                            </div>
+                                                            
+                                                            <div class="last-info-right">
+                                                                <p class="last-info-discount">
+                                                                    33500 ₽
+                                                                </p>
+
+                                                                <h3>27500 ₽</h3>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>

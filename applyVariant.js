@@ -7,7 +7,7 @@ function applyVariant(image, price = null, discountPrice = null, discount = 0) {
 
   const mainImg = document.querySelector('.product-swiper .product-swiper-slide img');
   const modalImg = document.querySelector('#modal-product .modal-product-swiper .swiper-slide .slide-inner img');
-  const mobileFirstImg = document.querySelector('.product-images.images-mobile .product-swiper-slide img');
+  const mobileFirstImg = document.querySelector('.product-images.images-mobile .swiper-slide img');
 
   if (mainImg) { mainImg.src = image; mainImg.alt = mainImg.alt || 'product image'; }
   if (modalImg) { modalImg.src = image; modalImg.alt = modalImg.alt || 'product image'; }
@@ -86,7 +86,7 @@ function applyVariant(image, price = null, discountPrice = null, discount = 0) {
   }
 
   (function smoothScrollToUnderHeader() {
-    const anchor = document.querySelector('.under-header-container-product') || document.querySelector('.under-header-desktop');
+    const anchor = document.querySelectorAll('.under-header-container-product') || document.querySelector('.under-header-desktop');
     if (!anchor) return;
 
     function waitForImageLoad(img, timeout = 1500) {

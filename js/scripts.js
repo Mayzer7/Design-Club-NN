@@ -3396,6 +3396,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return document.querySelector('.under-header-product') || document.querySelector('.product-section') || document.querySelector('.product-desktop') || document.querySelector('.product') || document.querySelector('#product-section') || document.querySelector('#product-desktop');
         }
     }
+    
     function scrollToProduct(offset = 0, duration = 600){
         const target = getProductTarget();
         if (!target) return Promise.resolve();
@@ -3499,7 +3500,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })();
 
 
-    // --- Универсальная инициализация выбора цвета (desktop + mobile) ---
+    // Универсальная инициализация выбора цвета (desktop + mobile) 
     (function initAllChoiceColorInstances() {
       const wrappers = Array.from(document.querySelectorAll('.choice-color-options'));
       if (!wrappers.length) return;
@@ -3519,7 +3520,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const activeNameEl = active.querySelector('.choice-color-option-name');
         const items = Array.from(list.querySelectorAll('.choice-color-option-item'));
 
-        // флаг: если пользователь открыл меню вручную, не закрываем его на клики вне
         let userOpened = false;
 
         function isOpen() { return list.classList.contains('open'); }
@@ -3568,7 +3568,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('pointerdown', onDocPointerDown);
 
         wrapper.addEventListener('pointerdown', (e) => { e.stopPropagation(); }, { passive: true });
-        wrapper.addEventListener('click', (e) => { e.stopPropagation(); }, { passive: false });
 
         btn.addEventListener('click', (e) => {
           e.preventDefault();
@@ -3597,8 +3596,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         list.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
           const item = e.target.closest('.choice-color-option-item');
           if (!item) return;
 
@@ -3624,6 +3621,11 @@ document.addEventListener('DOMContentLoaded', () => {
           } else {
             active.removeAttribute('data-img-url');
           }
+
+   
+          const detail = getActiveDetailFromWrapper(wrapper);
+          if (detail) document.dispatchEvent(new CustomEvent('product:color-change', { detail: Object.assign({}, detail, { sourceId: wrapper.dataset.choiceId }) }));
+
 
           if (clickedDataNo !== undefined && clickedDataNo !== null) {
             if (clickedDataNo === '' || clickedDataNo === null) active.removeAttribute('data-img-no-overflow');
@@ -3677,16 +3679,6 @@ document.addEventListener('DOMContentLoaded', () => {
           const normalUrl = activeColor.dataset.imgUrl || null;
           const preferred = (noSelected && noUrl) ? noUrl : (normalUrl || noUrl);
 
-          // Отключено: не менять основную картинку при переключении overflow
-          // if (preferred) {
-          //   try { updateMainSliderImage(preferred); } catch (err) {
-          //     const firstImg = document.querySelector('.product-swiper .product-swiper-wrapper .product-swiper-slide img')
-          //                   || document.querySelector('.images-mobile .swiper-slide img')
-          //                   || document.querySelector('.product-main-image img');
-          //     if (firstImg) firstImg.src = preferred;
-          //   }
-          // }
-
           const OFFSET = (window.innerWidth > MOBILE_MAX_WIDTH) ? 0 : 20;
           const DURATION = 600;
           try { scrollToProduct(OFFSET, DURATION).catch(()=>{}); } catch(e) {}
@@ -3699,17 +3691,139 @@ document.addEventListener('DOMContentLoaded', () => {
           e.preventDefault();
           e.stopPropagation();
           setActiveBtn(btnWith);
+          document.dispatchEvent(new CustomEvent('product:overflow-change', { detail: { noOverflow: btnNo.classList.contains('active') } }));
+
           updateGalleryByActiveColorLocal();
         });
         btnNo.addEventListener('click',  (e) => {
           e.preventDefault();
           e.stopPropagation();
           setActiveBtn(btnNo);
+          document.dispatchEvent(new CustomEvent('product:overflow-change', { detail: { noOverflow: btnNo.classList.contains('active') } }));
+
           updateGalleryByActiveColorLocal();
         });
 
         if (btnNo.classList.contains('active')) setActiveBtn(btnNo);
         else setActiveBtn(btnWith);
+      });
+    })();
+
+    function getActiveDetailFromWrapper(wrapper) {
+        const active = wrapper.querySelector('.choice-color-option') || wrapper.querySelector('.choice-color-option.active');
+        if (!active) return null;
+        const imgEl = active.querySelector('.choice-color-option-image img');
+        return {
+          sourceId: wrapper.dataset.choiceId || null,
+          dataColor: active.dataset.color || null,
+          imgUrl: active.dataset.imgUrl || null,
+          imgNoOverflow: active.dataset.imgNoOverflow || null,
+          swatchSrc: imgEl ? imgEl.src : null,
+          name: (active.querySelector('.choice-color-option-name') || {}).textContent || null
+        };
+    }
+
+    (function initChoiceSync() {
+      const COLOR_CHANNEL = 'product:color-change';
+      const OVERFLOW_CHANNEL = 'product:overflow-change';
+
+      document.querySelectorAll('.choice-color-options').forEach((w, i) => {
+        if (!w.dataset.choiceId) w.dataset.choiceId = 'choice-' + i;
+      });
+
+      function copyDataAttrs(fromEl, toEl) {
+        if (!fromEl || !toEl) return;
+        if (fromEl.dataset.imgUrl !== undefined) {
+          if (fromEl.dataset.imgUrl) toEl.dataset.imgUrl = fromEl.dataset.imgUrl;
+          else toEl.removeAttribute('data-img-url');
+        }
+        if (fromEl.dataset.imgNoOverflow !== undefined) {
+          if (fromEl.dataset.imgNoOverflow) toEl.dataset.imgNoOverflow = fromEl.dataset.imgNoOverflow;
+          else toEl.removeAttribute('data-img-no-overflow');
+        }
+      }
+
+      function findMatchingItem(list, detail) {
+        if (!list || !detail) return null;
+
+        if (detail.dataColor) {
+          const byColor = list.querySelector(`[data-color="${detail.dataColor}"]`);
+          if (byColor) return byColor;
+        }
+
+        if (detail.imgUrl) {
+          const byImgUrl = Array.from(list.querySelectorAll('.choice-color-option-item, [data-img-url]'))
+            .find(it => it.dataset && it.dataset.imgUrl === detail.imgUrl);
+          if (byImgUrl) return byImgUrl;
+        }
+
+        if (detail.swatchSrc) {
+          const bySwatch = Array.from(list.querySelectorAll('.choice-color-option-item img'))
+            .map(img => img.closest('.choice-color-option-item'))
+            .find(it => it && it.querySelector('img') && (it.querySelector('img').src === detail.swatchSrc));
+          if (bySwatch) return bySwatch;
+        }
+        if (detail.name) {
+          const byName = Array.from(list.querySelectorAll('.choice-color-option-item'))
+            .find(it => it.querySelector('.choice-color-option-name') && it.querySelector('.choice-color-option-name').textContent.trim() === detail.name.trim());
+          if (byName) return byName;
+        }
+
+        return list.querySelector('.choice-color-option-item') || null;
+      }
+
+      function applyDetailToWrapper(wrapper, detail) {
+        if (!wrapper || !detail) return;
+        const active = wrapper.querySelector('.choice-color-option') || wrapper.querySelector('.choice-color-option.active');
+        const list = wrapper.querySelector('.choice-color-options-list');
+        if (!active || !list) return;
+
+        const match = findMatchingItem(list, detail);
+        if (!match) return;
+
+        const imgInMatch = match.querySelector('img');
+        const headerImg = active.querySelector('.choice-color-option-image img');
+        if (imgInMatch && headerImg) headerImg.src = imgInMatch.src;
+
+        const nameInMatch = match.querySelector('.choice-color-option-name');
+        const headerName = active.querySelector('.choice-color-option-name');
+        if (nameInMatch && headerName) headerName.textContent = nameInMatch.textContent;
+
+        copyDataAttrs(match, active);
+
+        try {
+          const noOverflowSelected = !!(document.querySelector('.choice-overflow .no-overflow.active') || document.querySelector('.choice-overflow-mobile .no-overflow.active'));
+          const preferred = noOverflowSelected && active.dataset.imgNoOverflow ? active.dataset.imgNoOverflow : (active.dataset.imgUrl || active.dataset.imgNoOverflow);
+          if (preferred) updateMainSliderImage(preferred);
+        } catch (err) { }
+      }
+
+      document.addEventListener(COLOR_CHANNEL, (ev) => {
+        const detail = ev && ev.detail ? ev.detail : null;
+        if (!detail) return;
+        document.querySelectorAll('.choice-color-options').forEach(wrapper => {
+          if (detail.sourceId && wrapper.dataset.choiceId && wrapper.dataset.choiceId === detail.sourceId) return;
+          applyDetailToWrapper(wrapper, detail);
+        });
+      });
+
+      document.addEventListener(OVERFLOW_CHANNEL, (ev) => {
+        const noOverflow = !!(ev && ev.detail && ev.detail.noOverflow);
+
+        document.querySelectorAll('.choice-overflow, .choice-overflow-mobile').forEach(wrap => {
+          const btnWith = wrap.querySelector('.with-overflow');
+          const btnNo = wrap.querySelector('.no-overflow');
+          if (btnWith && btnNo) {
+            btnWith.classList.toggle('active', !noOverflow);
+            btnNo.classList.toggle('active', noOverflow);
+          }
+        });
+
+        const activeColor = document.querySelector('.choice-color-option.active') || document.querySelector('.choice-color-option');
+        if (activeColor) {
+          const preferred = noOverflow && activeColor.dataset.imgNoOverflow ? activeColor.dataset.imgNoOverflow : (activeColor.dataset.imgUrl || activeColor.dataset.imgNoOverflow);
+          if (preferred) updateMainSliderImage(preferred);
+        }
       });
     })();
 
@@ -4223,7 +4337,7 @@ function applyVariant(image, price = null, discountPrice = null, discount = 0) {
 
   const mainImg = document.querySelector('.product-swiper .product-swiper-slide img');
   const modalImg = document.querySelector('#modal-product .modal-product-swiper .swiper-slide .slide-inner img');
-  const mobileFirstImg = document.querySelector('.product-images.images-mobile .product-swiper-slide img');
+  const mobileFirstImg = document.querySelector('.product-images.images-mobile .swiper-slide img');
 
   if (mainImg) { mainImg.src = image; mainImg.alt = mainImg.alt || 'product image'; }
   if (modalImg) { modalImg.src = image; modalImg.alt = modalImg.alt || 'product image'; }
@@ -4302,7 +4416,7 @@ function applyVariant(image, price = null, discountPrice = null, discount = 0) {
   }
 
   (function smoothScrollToUnderHeader() {
-    const anchor = document.querySelector('.under-header-container-product') || document.querySelector('.under-header-desktop');
+    const anchor = document.querySelectorAll('.under-header-container-product') || document.querySelector('.under-header-desktop');
     if (!anchor) return;
 
     function waitForImageLoad(img, timeout = 1500) {

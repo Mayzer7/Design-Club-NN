@@ -2116,6 +2116,8 @@ nav ul ul.open + svg {
 }
 .popular-product-desc-last-line {
   margin-top: auto;
+  display: flex;
+  justify-content: space-between;
 }
 .popular-product-desc p {
   font-size: 16px;
@@ -2124,11 +2126,30 @@ nav ul ul.open + svg {
   padding: 5px 0;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  text-align: center;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 .popular-product-desc div:last-child {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
+
+.popular-product-desc-left,
+.popular-product-desc-right {
+  border: none !important;
+}
+
+.popular-product-desc-right {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.popular-product-desc-discount {
+  text-decoration: line-through;
+}
+
 .popular-product-desc div p:first-child {
   color: rgba(237, 228, 215, 0.7);
 }
@@ -7214,7 +7235,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
   flex-direction: column;
   min-height: 81px;
 }
-.product-info p {
+.product-info p:not(.last-info-discount) {
   font-family: "SF Pro Display Thin", sans-serif;
   color: rgba(237, 228, 215, 0.7);
   font-size: 16px;
@@ -7283,6 +7304,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     font-size: 12px;
   }
 }
+
 .last-info {
   padding: 10px 0;
   display: flex;
@@ -7291,6 +7313,23 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
+
+.last-info-right {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.last-info-discount {
+  text-decoration: line-through;
+  font-size: 14px;
+}
+
+.last-info-discount p {
+  font-size: 14px !important;
+}
+
 @media (max-width: 1100px) {
   .search-result-container {
     background-image: url(../images/catalog/adaptive/background-1024.png);
@@ -7310,7 +7349,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
     min-height: 45px;
   }
   .product-info h3,
-  .product-info p {
+  .product-info p:not(.last-info-discount) {
     font-size: 16px;
   }
 }
@@ -7343,8 +7382,12 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 }
 @media (max-width: 800px) {
   .product-info h3,
-  .product-info p {
+  .product-info p:not(.last-info-discount) {
     font-size: 12px;
+  }
+
+  .last-info-discount {
+    font-size: 10px;
   }
 }
 @media (max-width: 768px) {
