@@ -2122,7 +2122,8 @@ nav ul ul.open + svg {
 .popular-product-desc p {
   font-size: 16px;
 }
-.popular-product-desc div {
+
+.popular-product-desc div:not(.popular-product-desc-left):not(.popular-product-desc-right) {
   padding: 5px 0;
   display: flex;
   justify-content: space-between;
