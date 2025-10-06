@@ -2123,17 +2123,30 @@ nav ul ul.open + svg {
   font-size: 16px;
 }
 
-.popular-product-desc div:not(.popular-product-desc-left):not(.popular-product-desc-right) {
-  padding: 5px 0;
+.popular-product-desc div:not(.popular-product-desc-left):not(.popular-product-desc-right):not(.color-palette) {
   display: flex;
   justify-content: space-between;
   align-items: center;
   text-align: center;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
-.popular-product-desc div:last-child {
+.popular-product-desc div:last-child:not(.color-palette) {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
+
+.popular-product-desc-first-line {
+  padding: 5px 0px;
+}
+
+.popular-product-desc-second-line {
+  padding: 5px 0px;
+}
+
+.popular-product-desc-last-line {
+  padding: 5px 0px;
+}
+
+
 
 .popular-product-desc-left,
 .popular-product-desc-right {
@@ -2206,6 +2219,16 @@ a .popular-product-desc p {
   height: 100%;
   width: 100%;
 }
+
+.popular-products-swiper .swiper-slide.swiper-slide-active .color-palette img {
+  all: unset;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  min-height: 0;
+}
+
 .popular-product-info {
   margin-top: 10px;
 }
@@ -2281,6 +2304,17 @@ a .popular-product-desc p {
     height: 100%;
     width: 100%;
   }
+
+  .popular-products-swiper .swiper-slide.swiper-slide-active .color-palette img {
+    all: unset;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    min-height: 0;
+  }
+
+
   .popular-product-card img {
     max-width: 231px;
     max-height: 227px;
@@ -2291,6 +2325,16 @@ a .popular-product-desc p {
     width: 231px;
   }
 }
+
+.popular-products-swiper .swiper-slide .color-palette img {
+    all: unset;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    min-height: 0;
+  }
+
 @media (max-width: 1000px) {
   .open-all-catalog,
   .popular-products-title {
@@ -2331,6 +2375,16 @@ a .popular-product-desc p {
     max-height: 272px;
     min-height: 272px;
   }
+
+  .popular-products-swiper .swiper-slide .color-palette img {
+    all: unset;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    min-height: 0;
+  }
+
   .popular-products-swiper-container
     .popular-products-swiper
     .swiper-slide.swiper-slide-active {
@@ -2347,6 +2401,16 @@ a .popular-product-desc p {
     width: 100%;
     height: 100%;
   }
+
+  .popular-products-swiper .swiper-slide.swiper-slide-active .color-palette img {
+    all: unset;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    min-height: 0;
+  }
+
   .project-products {
     padding: 50px 20px 50px 20px;
   }
@@ -7243,6 +7307,10 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 }
 .product-info h3 {
   font-size: 16px;
+  max-width: 130px; /* подбери ширину под 15 символов */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .first-info {
   display: flex;
@@ -7257,6 +7325,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
   text-align: center;
   justify-content: space-between;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
+  gap: 20px;
 }
 .color-palette {
   display: flex;
@@ -7310,7 +7379,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
   padding: 10px 0;
   display: flex;
   justify-content: space-between;
-  margin-top: auto;
+  /* margin-top: auto; */
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -8577,8 +8646,10 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 .other-option-card-desc {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   padding: 6px 0;
+  gap: 10px;
 }
 .other-option-card-desc:last-child {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -8586,8 +8657,15 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 .other-option-card-desc-right-side {
   display: flex;
   align-items: center;
-  text-align: center;
+  text-align: right;
 }
+
+.other-option-card-desc-right-side p {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .other-option-card-discount {
   text-decoration: line-through;
   margin-right: 10px;
@@ -9084,7 +9162,13 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
   width: 100%;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   padding: 10px 0;
+  gap: 30px;
 }
+
+.product-desc-info-mobile-right {
+  text-align: right;
+}
+
 .about-products-left p,
 .product-desc-info-mobile-left p {
   color: rgba(237, 228, 215, 0.7);
