@@ -9462,6 +9462,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
   min-height: 211px;
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 .product-info-one-line {
   display: flex;
@@ -10210,6 +10211,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
 .order-left img {
   width: 211px;
   height: 211px;
+  object-fit: cover;
 }
 .order-right {
   padding: 0 20px;
@@ -12319,6 +12321,7 @@ input[type="checkbox"]:checked + .checkbox-custom::before {
   min-height: 376px;
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 .services-image a {
   transition: transform 0.3s ease, box-shadow 0.3s ease;

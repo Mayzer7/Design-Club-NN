@@ -1396,6 +1396,14 @@ function handleScrollUp() {
             nextEl: '.popular-right-arrow',
             prevEl: '.popular-left-arrow',
           },
+          breakpoints: {
+            0: {
+              initialSlide: 0,
+            },
+            871: {
+              initialSlide: 2,
+            },
+          }
         });
       }
     }
@@ -2798,9 +2806,6 @@ if (addToCardProduct) {
       if (container.addToCartBtn) container.addToCartBtn.style.display = '';
       if (container.notifyBlock) container.notifyBlock.classList.remove('active');
       if (notifyTimeout) { clearTimeout(notifyTimeout); notifyTimeout = null; }
-      if (typeof addToCart === 'function') {
-        try { addToCart(false, 0); } catch (e) {}
-      }
     }
 
     cartControllers.push({ container, reset });
