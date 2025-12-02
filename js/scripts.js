@@ -81,12 +81,10 @@ function handleSearchInput() {
 }
 
 function activateSearchMode() {
-  // Если каталог открыт — закрываем
   if (isCatalogActive) {
     toggleCatalogMenu();
   }
 
-  // Удаляем старые классы отступа
   menuNavigation.classList.remove('default-margin', 'search-active', 'search-active-down');
 
   const isTop = window.scrollY < 100;
@@ -98,7 +96,6 @@ function activateSearchMode() {
     header.classList.add('header-search-padding');
   }
 
-  // Общая логика
   underHeaders.forEach(el => el.style.filter = 'blur(5px)');
   underHeaders.forEach(el => el.style.cursor = 'pointer');
   blurContainers.forEach(container => {
@@ -128,14 +125,11 @@ function activateSearchMode() {
 }
 
 function deactivateSearchMode() {
-  // Сброс всех классов, связанных с поиском
   menuNavigation.classList.remove('search-active', 'search-active-down');
   menuNavigation.classList.add('default-margin');
 
-  // Скрытие результатов поиска
   searchItems.classList.remove('show');
 
-  // Сброс паддинга и фона хедера
   header.classList.remove('header-search-padding');
   header.classList.remove('header-search-padding-down');
   header.style.paddingBottom = '';
@@ -165,7 +159,6 @@ function performSearch(queryString) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Собираем все инпуты и кнопки, связанные с поиском
   const inputs = document.querySelectorAll(
     '#search-input, #search-input-on-page, .search-bar input, .search-items-burger .search-input input'
   );
@@ -181,7 +174,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Навешиваем клики на все кнопки
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
       const wrapper = btn.closest('.search-bar, .search-bar-on-page, .search-items-burger, #search-input-container, #search-input-on-page-container');
@@ -958,7 +950,7 @@ inputBurger.addEventListener('input', () => {
 // + на странице проекты показываем навигацию по странице
 
 let lastScrollTop = 0;
-const scrollThreshold = 0; // минимальный порог 
+const scrollThreshold = 0; 
 
 const projectsSection = document.querySelector('.projects-section');
 const stickyNavs = document.querySelectorAll('.sticky-nav');
@@ -967,13 +959,11 @@ let hideStickyTimeout = null;
 function handleScroll() {
   const raw = window.pageYOffset || document.documentElement.scrollTop;
 
-  // 1) фильтруем резиновый overscroll iOS
-  // 2) фильтруем «мгновенный» перескок из отрицательного в 0
   if (raw < 0 || (raw === 0 && lastScrollTop > header.offsetHeight)) {
     return; 
   }
 
-  const scrollTop = raw;  // уже всегда ≥ 0
+  const scrollTop = raw;  
   const scrollDelta = scrollTop - lastScrollTop;
 
   const headerHeight = header.offsetHeight;
@@ -1103,7 +1093,7 @@ function handleScrollUp() {
 
     // Валидация ФИО
     const nameInput = form.querySelector('input[data-field="name"]');
-    const nameError = nameInput.nextElementSibling; // <span class="error-contact">
+    const nameError = nameInput.nextElementSibling;
     if (!nameInput.value.trim()) {
       nameError.textContent = 'Пожалуйста, введите ваше ФИО.';
       nameError.style.display = 'block';
@@ -1276,7 +1266,6 @@ function handleScrollUp() {
         const menu = wrapper.querySelector('.menu-contact-method');
         const arrow = wrapper.querySelector('.dropdown-arrow');
 
-        // вместо input[name="…"]
         const contactMethodInput      = form.querySelector('[data-field="contact-method"]');
         const contactMethodValueInput = form.querySelector('[data-field="contact-method-value"]');
 
@@ -1614,12 +1603,10 @@ function handleScrollUp() {
 
                 const wasActive = section.classList.contains("active");
 
-                // Закрывает все меню
                 document.querySelectorAll(".customers-section.active").forEach(activeSection => {
                     activeSection.classList.remove("active");
                 });
 
-                // Если секция была неактивной — открыть и проскроллить
                 if (!wasActive) {
                     section.classList.add("active");
 
@@ -1839,7 +1826,6 @@ function handleScrollUp() {
           if (!textEl || !btn) return;
 
           if (textEl.scrollHeight <= textEl.clientHeight) {
-            // обрезки нет — скрываем кнопку
             btn.style.display = 'none';
           }
         });
@@ -2093,7 +2079,6 @@ function setupDeleteModal(notification) {
           document.documentElement.classList.remove('no-scroll');
         }
 
-        // Открытие модалки
         openButtons.forEach(btn => {
           btn.addEventListener('click', () => {
             // Находим товар по data-id
@@ -2103,30 +2088,25 @@ function setupDeleteModal(notification) {
           });
         });
 
-        // Кнопка "Оставить" — закрыть модалку
         stopButton.addEventListener('click', closeModal);
 
-        // Клик по фону — закрыть модалку
         modal.addEventListener('click', (e) => {
           if (e.target === modal) {
             closeModal();
           }
         });
 
-        // Крестик — закрыть модалку
         if (closeBtn) {
           closeBtn.addEventListener('click', closeModal);
         }
 
         deleteButton.addEventListener('click', () => {
-          // Уведомление
           notification.classList.remove('hidden');
           setTimeout(() => notification.classList.add('hidden'), 3000);
           closeModal();
 
           console.log('Удаляем товар с id:', productId);
 
-          // Функция удаления из корзины
           removeFromCart(productId);
         });
       });
@@ -2142,33 +2122,27 @@ if (heroContent1) {
   
 // Переключение изображений каждые 5 секунд (десктоп + мобилка)
 document.addEventListener('DOMContentLoaded', () => {
-  // Десктопные элементы:
+
   const images       = document.querySelectorAll('.hero-bg');
   const contents     = document.querySelectorAll('.hero-content');
   const allProgress  = document.querySelectorAll('.hero-content .progress-bar');
   const deskButtons  = document.querySelectorAll('.hero-content .hero-right-side button');
 
-  // Получаем все элементы слайдеров:
   const mobContents = document.querySelectorAll('.hero-content-mobile');
   
-  // Получим все мобильные кнопки сразу – querySelectorAll даёт коллекцию из 9 кнопок, 
-  // но далее мы будем опираться на data-index каждого:
   const mobThumbButtons  = document.querySelectorAll('.hero-content-mobile .mobile-thumb');
   const allMobProgress   = document.querySelectorAll('.hero-content-mobile .progress-bar-mobile');
 
-  const slideCount       = images.length; // Должно быть 4 (добавляя ещё один фон в контейнер .hero-image с уникальным классом)
+  const slideCount       = images.length; 
   
   const SWITCH_INTERVAL  = 5000;          // 5 секунд
   let current = 0;
   let intervalId = null;
 
-  // Условие подмены первого фона, если экран <= 1030px
   if (window.innerWidth <= 1030 && images[0]) {
-    // Изображение на главной странице первый слайд при разрещении меньше 1030px
     images[0].src = IMAGE_PATHS.mainBgSmall;
   }
 
-  /*** ФУНКЦИЯ: сброс всех прогресс-баров (десктопные + мобильные) ***/
   function resetAllProgressBars() {
     // Десктоп
     allProgress.forEach(pb => {
@@ -2184,9 +2158,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /*** ФУНКЦИЯ: запускаем прогресс-бар у десктопной кнопки с индексом idx ***/
   function startProgressBarDesktop(idx) {
-    resetAllProgressBars(); // сбрасываем прежде чем запустить любую
+    resetAllProgressBars(); 
     const activeContent = contents[idx];
     const btn = activeContent.querySelector(`button[data-index="${idx}"]`);
     const bar = btn ? btn.querySelector('.progress-bar') : null;
@@ -2198,9 +2171,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /*** ФУНКЦИЯ: запускаем прогресс-бар у мобильной кнопки с индексом idx ***/
   function startProgressBarMobile(idx) {
-    // Снова сбросили все (чтобы десктоп и мобилка синхронизировались).
     const wantedBtns = Array.from(mobThumbButtons).filter(b => {
       return Number(b.getAttribute('data-index')) === idx;
     });
@@ -2216,7 +2187,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /*** ФУНКЦИЯ: показываем десктопный слайд ***/
   function showSlideDesktop(i) {
       images[current].classList.remove('active');
       contents[current].classList.remove('active');
@@ -2224,7 +2194,6 @@ document.addEventListener('DOMContentLoaded', () => {
       contents[i].classList.add('active');
     }
 
-    /*** ФУНКЦИЯ: показываем мобильный слайд ***/
     function showSlideMobile(i) {
     mobContents[current].classList.remove('active');
     mobContents[i].classList.add('active');
@@ -2252,26 +2221,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /*** ФУНКЦИЯ: переключение на слайд (десктоп + мобилка) ***/
   function showSlide(i) {
     if (i === current) return;
-    // Скрываем предыдущий десктоп
     showSlideDesktop(i);
-    // Скрываем предыдущий мобильный
     showSlideMobile(i);
     current = i;
   }
 
-  /*** ФУНКЦИЯ: следующий слайд по кругу ***/
   function nextSlide() {
     const next = (current + 1) % slideCount;
     showSlide(next);
-    // Запускаем прогресс-бары у десктопа и мобилки
     startProgressBarDesktop(next);
     startProgressBarMobile(next);
   }
 
-  /*** ФУНКЦИЯ: запускаем автопрокрутку ***/
   function startAutoSwitch() {
     if (intervalId) {
       clearInterval(intervalId);
@@ -2283,7 +2246,6 @@ document.addEventListener('DOMContentLoaded', () => {
     intervalId = setInterval(nextSlide, SWITCH_INTERVAL);
   }
 
-  /*** ОБРАБОТЧИКИ КЛИКА НА ДЕСКТОПНЫЕ КНОПКИ ***/
   deskButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       const idx = parseInt(btn.getAttribute('data-index'), 10);
@@ -2296,7 +2258,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /*** ОБРАБОТЧИКИ КЛИКА НА МОБИЛЬНЫЕ КНОПКИ ***/
   mobThumbButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       const idx = parseInt(btn.getAttribute('data-index'), 10);
@@ -2309,7 +2270,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Инициируем: показываем первый слайд и запускаем автопрокрутку
   showSlideDesktop(0);
   showSlideMobile(0);
   startAutoSwitch();
@@ -2339,17 +2299,16 @@ if (categoriesSection) {
   const body = document.body;
   let scrollPosition = 0;
 
-  // Функции для открытия/закрытия меню фильтров 
   const backdrop = document.querySelector('.filter-backdrop');
   const filterMenu = document.querySelector('.filter-menu');
 
   function openFilterMenu() {
     document.documentElement.classList.add('no-scroll');
     scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-    body.style.overflow = 'hidden'; // добавлено
+    body.style.overflow = 'hidden';
 
     backdrop.classList.add('active');
-    backdrop.style.overflow = 'hidden'; // добавлено #2
+    backdrop.style.overflow = 'hidden';
     filterMenu.classList.add('active');
     document.querySelector('.main-page-content').style.filter = 'blur(5px)';
   }
@@ -2358,13 +2317,13 @@ if (categoriesSection) {
     document.documentElement.classList.remove('no-scroll');
     filterMenu.classList.remove('active');
     backdrop.classList.remove('active');
-    backdrop.style.overflow = ''; // сброс
+    backdrop.style.overflow = ''; 
     document.querySelector('.main-page-content').style.filter = '';
 
     body.style.position = '';
     body.style.top = '';
     body.style.width = '';
-    body.style.overflow = ''; // сброс #2
+    body.style.overflow = ''; 
 
     window.scrollTo(0, scrollPosition);
   }
@@ -2664,17 +2623,14 @@ if (modalProduct) {
     }
   }
 
-  // Обработчик закрытия модалки
   document.querySelector('.close-product-modal').addEventListener('click', closeModalProduct);
 
-  // Картинки десктопного swiper
   document.querySelectorAll('.product-swiper-slide img').forEach((img, index) => {
     img.addEventListener('click', () => {
       openModalProductAt(index);
     });
   });
 
-  // Картинки мобильного swiper
   document.querySelectorAll('.product-images.images-mobile .swiper-slide img').forEach((img, index) => {
     img.addEventListener('click', () => {
       openModalProductAt(index);
@@ -2685,14 +2641,11 @@ if (modalProduct) {
 
 document.querySelectorAll('.open-all-about-products').forEach(button => {
     button.addEventListener('click', () => {
-        // Найти родительский элемент, содержащий кнопку
         const container = button.closest('.about-products-mobile');
         
-        // Найти элемент, который нужно показать/скрыть
         const extraText = container.querySelector('.extra-text');
 
         if (extraText) {
-            // Проверяем, скрыт ли элемент и переключаем класс
             const isHidden = !extraText.classList.contains('show'); 
             extraText.classList.toggle('show', isHidden); 
 
@@ -3155,12 +3108,8 @@ if (projectsSection) {
     const btn = document.querySelector('.open-more-project-btn button');
 
     btn.addEventListener('click', () => {
-    // Раскрываем контент
     container.classList.add('expanded');
-    // Убираем кнопку целиком
     btnWrapper.remove();
-    // Если хотите просто скрыть, а не удалять, используйте:
-    // btnWrapper.style.display = 'none';
   });
   }
 }
@@ -3180,7 +3129,7 @@ const gallerySwiper = document.querySelector('.project-gallery-swiper');
 
       swiper = new Swiper('.project-gallery-swiper', {
         slidesPerView: 'auto',
-        centeredSlides: !isMobile, // если не мобильный — центрируем
+        centeredSlides: !isMobile, 
         spaceBetween: 20,
         grabCursor: false,
         loop: false,
@@ -3201,10 +3150,8 @@ const gallerySwiper = document.querySelector('.project-gallery-swiper');
       });
     }
 
-    // Инициализация
     initSwiper();
 
-    // Обновляем при изменении размера окна
     window.addEventListener('resize', () => {
       initSwiper();
     });
@@ -3384,31 +3331,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     guardRoot.addEventListener('click', function (ev) {
   try {
-    // if no target, exit
     const tgt = ev && ev.target;
     if (!tgt) return;
 
-    // Если клик — прямо по кнопке стрелки карусели (или по её любой вложенности), НЕ мешаем.
     if (tgt.closest && (tgt.closest('.other-option-left-btn') || tgt.closest('.other-option-right-btn') || tgt.closest('.other-option-left') || tgt.closest('.other-option-right'))) {
       return;
     }
 
-    // Если клик происходит внутри related-products (любая вложенность) — НЕ мешаем навигации по ссылкам.
     if (tgt.closest && (tgt.closest('.related-products') || tgt.closest('.related-products-cards') || tgt.closest('.related-products-card') || tgt.closest('.related-products-card-top'))) {
       return;
     }
 
-    // Если клик по элементу, который сам является ссылкой <a> — получаем ближайший anchor
     const a = tgt.closest ? tgt.closest('a') : null;
     if (!a) {
-      // если нет anchor — дальше обычная логика (возможно это не navigation)
       return;
     }
 
-    // Если ссылка явно помечена как разрешённая навигация — пропускаем
     if (a.hasAttribute && a.hasAttribute('data-allow-navigation')) return;
 
-    // Если клик в контролах выбора цвета/overflow — сохраняем прежнее поведение (блокировка быстрых кликов)
     const SAFE_ZONE_SELECTORS = [
       '.choice-color-options',
       '.choice-color-options-list',
@@ -3419,8 +3359,7 @@ document.addEventListener('DOMContentLoaded', () => {
       '.choice-overflow-mobile'
     ];
     const THROTTLE_MS = 450;
-    // lastClickForHref и markLastInteraction должны быть в замыкании installNavigationGuards (как в оригинале)
-    // если их нет — создаём локальные заглушки
+
     if (typeof lastClickForHref === 'undefined') window.lastClickForHref = new Map();
     const lastClickMap = window.lastClickForHref || lastClickForHref;
     function markLastInteraction(info){ try { sessionStorage.setItem('last_nav_interaction', JSON.stringify(Object.assign({ ts: Date.now() }, info))); } catch(e){} }
@@ -3437,17 +3376,13 @@ document.addEventListener('DOMContentLoaded', () => {
       lastClickMap.set(href, now);
       markLastInteraction({ reason: 'guarded-anchor-click', href: href });
       if (now - last < THROTTLE_MS) { ev.preventDefault(); ev.stopImmediatePropagation(); return; }
-      // Блокируем навигацию если это элемент управления, чтобы пользователь взаимодействовал с контролом
       ev.preventDefault(); ev.stopImmediatePropagation(); return;
     }
 
-    // Блок пустого href
     const hrefVal = a.getAttribute('href');
     if (hrefVal === '') { markLastInteraction({ reason: 'empty-href-blocked', href: hrefVal }); ev.preventDefault(); ev.stopImmediatePropagation(); return; }
 
-    // Иначе — ничего не блокируем (позволяем навигации идти дальше)
   } catch (err) {
-    // если что-то пошло не так — не мешаем навигации
     return;
   }
 }, { capture: true, passive: false });

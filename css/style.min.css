@@ -10363,7 +10363,10 @@ input[type=checkbox]:checked+.checkbox-custom::before {
 }
 
 .open-menu img {
-    margin-top: 20px
+    margin-top: 20px;
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 
 @media (max-width: 1850px) {
@@ -17870,3 +17873,7 @@ input[type=checkbox]:checked+.checkbox-custom::before {
         max-width:100%
     }
 }
+
+
+
+
